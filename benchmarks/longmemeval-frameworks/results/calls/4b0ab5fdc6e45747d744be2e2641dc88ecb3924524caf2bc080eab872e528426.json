@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 14
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "fadca9abb43333193b0b4a44df5c6b69b706d249904857599dcff52c1e62ff47",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-54dc19f3-fc8e-4f1d-bbc2-1b54fa3f0819",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considering bike transportation services or rental options for transporting bikes to and from the starting and ending points of the Pacific Coast Highway trip.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365667,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 58,
+      "prompt_tokens": 1749,
+      "total_tokens": 1807,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considering bike transportation services or rental options for transporting bikes to and from the starting and ending points of the Pacific Coast Highway trip.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 5.299553757999092,
+  "prompt_tokens_local": 1749
+}

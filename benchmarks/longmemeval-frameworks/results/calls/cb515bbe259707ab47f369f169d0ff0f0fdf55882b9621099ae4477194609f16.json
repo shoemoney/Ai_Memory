@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 7
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f224599f7730f9f9638e677ef5af15f836f0fd0bfe55c8948deac95589ebc878",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-cfca15af-90ca-42b5-80d6-58a87d5a9516",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Social media companies have a responsibility to prevent harmful content and promote positive mental health outcomes\",\n        \"Social media companies should invest more resources into measures such as developing algorithms that proactively detect and flag harmful content\",\n        \"Social media companies should partner with mental health experts and offer resources and support to users struggling with mental health issues\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365447,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 77,
+      "prompt_tokens": 2309,
+      "total_tokens": 2386,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Social media companies have a responsibility to prevent harmful content and promote positive mental health outcomes\",\n        \"Social media companies should invest more resources into measures such as developing algorithms that proactively detect and flag harmful content\",\n        \"Social media companies should partner with mental health experts and offer resources and support to users struggling with mental health issues\"\n    ]\n}",
+  "seconds": 10.546781601995463,
+  "prompt_tokens_local": 2309
+}

@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "beb27a16d2e05f85c44dcb8cc2c37e3208bc834846d76aa2e5373af606372d9c",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-867f0e4a-242f-4cda-aff6-c06709903d58",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Nisha's dad\", \"summary\": \"\"}, {\"name\": \"dog leash\", \"summary\": \"\"}, {\"name\": \"wool coat\", \"summary\": \"\"}]}}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331218,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 45,
+      "prompt_tokens": 7213,
+      "total_tokens": 7258,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 1019
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Nisha's dad\", \"summary\": \"\"}, {\"name\": \"dog leash\", \"summary\": \"\"}, {\"name\": \"wool coat\", \"summary\": \"\"}]}}",
+  "seconds": 28.196190181013662,
+  "prompt_tokens_local_gemma_estimate": 7170
+}

@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "818db4f666e06c716c9b1ae9f70c002a0fa0a9dc383c7e366f66e9551c984088",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-eff7be17-8981-47c3-82ed-ce19bd9a2f74",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"duplicate_facts\": [], \"contradicted_facts\": []}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331445,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 16,
+      "prompt_tokens": 1281,
+      "total_tokens": 1297,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 322
+      }
+    }
+  },
+  "text": "{\"duplicate_facts\": [], \"contradicted_facts\": []}",
+  "seconds": 5.223715052998159,
+  "prompt_tokens_local_gemma_estimate": 1261
+}

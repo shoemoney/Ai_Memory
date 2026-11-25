@@ -1,0 +1,122 @@
+{
+  "question_id": "gpt4_8c8961ae",
+  "system": "mem0-extract",
+  "stratum": "temporal-reasoning",
+  "question_type": "temporal-reasoning",
+  "question": "Which trip did I take first, the one to Europe with family or the solo trip to Thailand?",
+  "reference": "The solo trip to Thailand",
+  "hypothesis": "The provided conversation history does not mention any trips to Thailand.",
+  "context": [
+    {
+      "text": "Planning a trip to London and visiting family in London",
+      "score": 0.43568942982004477,
+      "metadata": {
+        "session_id": "3b22d17b",
+        "date": "2023/05/28 (Sun) 15:28"
+      }
+    },
+    {
+      "text": "Interested in activities like horseback riding, kayaking, ice hiking, and estancia visits",
+      "score": 0.3076785124374355,
+      "metadata": {
+        "session_id": "answer_72d9aa58_1",
+        "date": "2023/05/28 (Sun) 20:06"
+      }
+    },
+    {
+      "text": "Considering a scenic drive to El Chaltén and a boat tour on Lago Argentino",
+      "score": 0.27966825895224473,
+      "metadata": {
+        "session_id": "answer_72d9aa58_1",
+        "date": "2023/05/28 (Sun) 20:06"
+      }
+    },
+    {
+      "text": "Considering booking round-trip or one-way tickets to London",
+      "score": 0.26513166314051306,
+      "metadata": {
+        "session_id": "3b22d17b",
+        "date": "2023/05/28 (Sun) 15:28"
+      }
+    },
+    {
+      "text": "Considered attending a general language exchange event for more cultural diversity",
+      "score": 0.2554028028357545,
+      "metadata": {
+        "session_id": "8ac4bf41",
+        "date": "2023/05/28 (Sun) 23:56"
+      }
+    },
+    {
+      "text": "Started planning to attend an event specifically for Spanish language learners",
+      "score": 0.24683971851098171,
+      "metadata": {
+        "session_id": "8ac4bf41",
+        "date": "2023/05/28 (Sun) 23:56"
+      }
+    },
+    {
+      "text": "specific examples from Garibaldi's travel writings that demonstrate the lessons mentioned",
+      "score": 0.227636840904674,
+      "metadata": {
+        "session_id": "ultrachat_324099",
+        "date": "2023/05/28 (Sun) 18:01"
+      }
+    },
+    {
+      "text": "Iceland and Denmark are leading countries in renewable energy usage.",
+      "score": 0.21247746216064628,
+      "metadata": {
+        "session_id": "ultrachat_336750",
+        "date": "2023/05/28 (Sun) 21:22"
+      }
+    },
+    {
+      "text": "recommend other travel writers whose work is similar to Garibaldi's in terms of exploring personal growth and political activism",
+      "score": 0.2093781138629006,
+      "metadata": {
+        "session_id": "ultrachat_324099",
+        "date": "2023/05/28 (Sun) 18:01"
+      }
+    },
+    {
+      "text": "Thinking of attending professional events in London",
+      "score": 0.20528775775202282,
+      "metadata": {
+        "session_id": "3b22d17b",
+        "date": "2023/05/28 (Sun) 15:28"
+      }
+    }
+  ],
+  "correct": false,
+  "judge": {
+    "correct": false,
+    "votes": [
+      false,
+      false,
+      false
+    ],
+    "calls": [
+      "3b1a777050371d75da105e0214e27cd1ff9f82ee1d3b51cad72c1c728c30e3d9",
+      "d523890f00c086dd774f4c905087544f6e7517ff6de84c58ead1c61c103e4705",
+      "5bb5bfd1efb059ca898c79eb954a7dee0c37a422c1a6aaaac10950ea8944d086"
+    ]
+  },
+  "status": "scored",
+  "ingestion_seconds": 1137.2562589645386,
+  "ingestion_usage": {
+    "prompt_tokens": 286672,
+    "completion_tokens": 17942,
+    "model_calls": 140,
+    "model_seconds": 560.6716851059173
+  },
+  "source_sessions": 50,
+  "source_parts": 76,
+  "attempted_parts": 76,
+  "ingested_parts": 69,
+  "ingestion_failed_parts": 7,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "reader_hardware_class": "Apple M1 Ultra, 64 GB",
+  "judge_hardware_class": "Apple M1 Ultra, 64 GB",
+  "ingestion_hardware_class": "Apple M1 Ultra, 64 GB"
+}

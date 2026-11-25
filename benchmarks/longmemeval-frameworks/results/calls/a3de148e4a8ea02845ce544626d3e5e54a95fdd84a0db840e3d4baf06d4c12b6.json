@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "4575ee9d60e1190adaf9db0e6b15f3fc82492ddce28fb35b8dace791a3469f34",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5fa2a0ea-133b-40aa-8417-b913dd8897f6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"edges\": [\n        {\n            \"source_entity_name\": \"Mustang\",\n            \"target_entity_name\": \"cracked windshield\",\n            \"relation_type\": \"HAS_ATTRIBUTE\",\n            \"fact\": \"The Mustang has a cracked windshield.\",\n            \"valid_at\": \"2023-08-15T10:24:00Z\",\n            \"invalid_at\": null,\n            \"episode_indices\": [0]\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795362467,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 98,
+      "prompt_tokens": 8349,
+      "total_tokens": 8447,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4541
+      }
+    }
+  },
+  "text": "{\n    \"edges\": [\n        {\n            \"source_entity_name\": \"Mustang\",\n            \"target_entity_name\": \"cracked windshield\",\n            \"relation_type\": \"HAS_ATTRIBUTE\",\n            \"fact\": \"The Mustang has a cracked windshield.\",\n            \"valid_at\": \"2023-08-15T10:24:00Z\",\n            \"invalid_at\": null,\n            \"episode_indices\": [0]\n        }\n    ]\n}",
+  "seconds": 27.16504500800511,
+  "prompt_tokens_local": 8349
+}

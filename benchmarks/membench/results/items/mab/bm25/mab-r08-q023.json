@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q023",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "2a60f4802633c3da10b41da81526dd9914fbdb037ab3f94c869b6a80f3d8905a",
+  "reference_sha256": "d42e94f5f43fe775a2a74711fdb0628034d6958d0d9360bc4924938fbc5eb46e",
+  "method": "bm25",
+  "answer": "\"The man knocked at the prison door and requested admission for the night.\"",
+  "response": {
+    "text": "\"The man knocked at the prison door and requested admission for the night.\"",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 15,
+      "prompt_tokens": 2954,
+      "total_tokens": 2969,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 16.872967080009403,
+    "request_sha256": "6abd522d724a85b7a43022f77e0fa2523f6536ef1828def672dfc7a494c6fd55",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    327,
+    326,
+    321,
+    509,
+    328,
+    66,
+    379,
+    387,
+    572,
+    303,
+    329,
+    338,
+    320,
+    40,
+    529,
+    394,
+    413,
+    103,
+    292,
+    542
+  ],
+  "retrieval_scores": [
+    204.04134091528732,
+    200.59960026340673,
+    185.11467423679105,
+    183.1324169288648,
+    182.81624648361537,
+    181.45905167188633,
+    180.91110337268628,
+    178.67780152276424,
+    177.4111408176176,
+    176.65629012948227,
+    176.17859604610274,
+    175.45828309571385,
+    174.97888029671594,
+    174.94147194547955,
+    174.47213772137425,
+    174.30082882544383,
+    174.0036280172837,
+    173.9901975270658,
+    173.70449391487907,
+    173.59478864437298
+  ],
+  "retrieval_seconds": 0.023755140995490365,
+  "provided_context_sha256": "eb4643db272fb7c82169938fced10a60c91780eb50f8139b597278c63614b20a",
+  "provided_context_tokens": 2635,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "a38760cfcf2be129a3810b41759cc943d7edada6d3defcb6341362bfc73042dc",
+    "raw_answer_sha256": "899456bccab4096f8e376378df0bb5958cd382a1e43734393f5a03d096d52b35",
+    "answer_redacted": false
+  }
+}

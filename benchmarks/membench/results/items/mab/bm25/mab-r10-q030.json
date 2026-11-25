@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q030",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "1755ba9a512b6921c00e174592a4b4a39061f8e5123a082714db0a5d636afed7",
+  "reference_sha256": "876e55ac163dc9b1e11581dc74df693430bf1d2b93c9cb3e325e62a7a9f3a702",
+  "method": "bm25",
+  "answer": "Person513 stood stiffly with a candlestick in the center of the room.",
+  "response": {
+    "text": "Person513 stood stiffly with a candlestick in the center of the room.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 19,
+      "prompt_tokens": 3046,
+      "total_tokens": 3065,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 8.15544984099688,
+    "request_sha256": "eaa9f35234bd085a668c2d5c16a5953fe3bf176548fd4e4488c7fc25bc4e06d1",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    61,
+    89,
+    598,
+    124,
+    208,
+    147,
+    84,
+    301,
+    77,
+    72,
+    144,
+    302,
+    63,
+    580,
+    188,
+    64,
+    215,
+    205,
+    530,
+    146
+  ],
+  "retrieval_scores": [
+    156.68660810711623,
+    153.06936767447334,
+    149.21910459451712,
+    146.95665847606014,
+    146.04543287218345,
+    145.535312223746,
+    144.66621495326171,
+    143.13444216003572,
+    142.64860884903294,
+    142.34654030468292,
+    141.87117499811936,
+    140.64411411603496,
+    139.30297490099653,
+    139.2098396107256,
+    138.58581285698546,
+    138.46066223865336,
+    137.24172766394312,
+    136.63372671681944,
+    136.57575754310486,
+    136.24322031328236
+  ],
+  "retrieval_seconds": 0.0273298810061533,
+  "provided_context_sha256": "362404010c19ba51b661f576b7a97135aee108d701c73473d9000ea9787081d2",
+  "provided_context_tokens": 2712,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "64a213ea5f518d716a17d907a1c8f11a4fd51e6b6284aac9ca6382d9ce17920e",
+    "raw_answer_sha256": "4fd3afa47185801e2e8c5b30509d4f2993cfc71fd3217aa2017d9538e7e0f650",
+    "answer_redacted": false
+  }
+}

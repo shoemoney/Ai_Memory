@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 56
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ce43d46811c8339ac1f4f3471671381dc133ec6c92d6edeef760a5526b28618d",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-36fdeece-b739-4e41-bdda-ad0edceff547",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Grand Canyon\",\n            \"summary\": \"The driving distance from Portland, OR to Grand Canyon National Park, AZ is approximately 1,430 miles (2,301 km) and takes around 21 hours and 30 minutes, depending on traffic and the route you take. The recommended must-see attractions include Yosemite Valley, Glacier Point, Tunnel View, Yosemite Falls, and Mariposa Grove. For camping, reservations are highly recommended, especially during peak season. Popular campgrounds include Upper Pines Campground, Tuolumne Meadows Campground, Crane Flat Campground, and Half Dome Village. The campground is close to amenities and offers tent cabins and traditional campsites.\"\n        },\n        {\n            \"name\": \"Yosemite National Park\",\n            \"summary\": \"The driving distance from Portland, OR to Yosemite National Park, CA is approximately 740 miles (1,191 km) and takes around 11 hours and 30 minutes, depending on traffic and the route you take. The recommended must-see attractions include Yosemite Valley, Glacier Point, Tunnel View, Yosemite Falls, and Mariposa Grove. For camping, reservations are highly recommended, especially during peak season. Popular campgrounds include Upper Pines Campground, Tuolumne Meadows Campground, Crane Flat Campground, and Half Dome Village. The campground is close to amenities and offers tent cabins and traditional campsites.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363984,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 310,
+      "prompt_tokens": 7533,
+      "total_tokens": 7843,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Grand Canyon\",\n            \"summary\": \"The driving distance from Portland, OR to Grand Canyon National Park, AZ is approximately 1,430 miles (2,301 km) and takes around 21 hours and 30 minutes, depending on traffic and the route you take. The recommended must-see attractions include Yosemite Valley, Glacier Point, Tunnel View, Yosemite Falls, and Mariposa Grove. For camping, reservations are highly recommended, especially during peak season. Popular campgrounds include Upper Pines Campground, Tuolumne Meadows Campground, Crane Flat Campground, and Half Dome Village. The campground is close to amenities and offers tent cabins and traditional campsites.\"\n        },\n        {\n            \"name\": \"Yosemite National Park\",\n            \"summary\": \"The driving distance from Portland, OR to Yosemite National Park, CA is approximately 740 miles (1,191 km) and takes around 11 hours and 30 minutes, depending on traffic and the route you take. The recommended must-see attractions include Yosemite Valley, Glacier Point, Tunnel View, Yosemite Falls, and Mariposa Grove. For camping, reservations are highly recommended, especially during peak season. Popular campgrounds include Upper Pines Campground, Tuolumne Meadows Campground, Crane Flat Campground, and Half Dome Village. The campground is close to amenities and offers tent cabins and traditional campsites.\"\n        }\n    ]\n}",
+  "seconds": 17.628590065985918,
+  "prompt_tokens_local": 7533
+}

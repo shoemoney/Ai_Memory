@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 43
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c593f3d6c5a5ba0c687e6a8c3c8cd0762c3783a778786e80b36346aa4a95b6f9",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e6d319ec-aaa1-43e2-9c13-d616e7a76edd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Can find Mamak dishes in Mamak stalls in Malaysia and Singapore\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Kari kambing and Mamak are dishes from Malaysia and Singapore\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Vege Heritage offers an English menu and is open for dinner\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Can make kari kambing and Mamak dishes at home\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"10 popular restaurants in Ubud, Bali that are popular with digital nomads\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366425,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 288,
+      "prompt_tokens": 1776,
+      "total_tokens": 2064,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Can find Mamak dishes in Mamak stalls in Malaysia and Singapore\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Kari kambing and Mamak are dishes from Malaysia and Singapore\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Vege Heritage offers an English menu and is open for dinner\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Can make kari kambing and Mamak dishes at home\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"10 popular restaurants in Ubud, Bali that are popular with digital nomads\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 13.50412037599017,
+  "prompt_tokens_local": 1776
+}

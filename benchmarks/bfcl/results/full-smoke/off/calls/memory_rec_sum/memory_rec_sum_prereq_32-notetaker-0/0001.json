@@ -1,0 +1,210 @@
+{
+  "request_sha256": "a18f9c032b5e5ef81fa103a9e93e203f35709a90c8eb1574d660a00de013c2e5",
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a personal organization assistant. Capture key information from conversations, like tasks, deadlines, and preferences, and use it to give reliable reminders and answers in future sessions.\n\nYou have access to an advanced memory system, which is persistent across multiple conversations with the user, and can be accessed in a later interactions. You should actively manage your memory data to keep track of important information, ensure that it is up-to-date and easy to retrieve to provide personalized responses to the user later.\n\nHere is the content of your memory system from previous interactions:\nThere is no content in the memory at this point.\n"
+      },
+      {
+        "role": "user",
+        "content": "Monday: Team meeting ran over by 30 minutes. Need to finalize Q1 budget report before Friday. IT updated security protocols—change passwords ASAP. Client call with Jacob—delayed till Wednesday."
+      }
+    ],
+    "model": "membench-bfcl-Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_append",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Append a new text to the end of the memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The text to append to the memory. "
+              }
+            },
+            "required": [
+              "text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_clear",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Clear all content in the memory, including any from previous interactions. This operation is irreversible. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_replace",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Replace a specific text in the memory with new text. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "old_text": {
+                "type": "string",
+                "description": "The text to be replaced in the memory."
+              },
+              "new_text": {
+                "type": "string",
+                "description": "The new text to replace the old text."
+              }
+            },
+            "required": [
+              "old_text",
+              "new_text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_retrieve",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Retrieve the current content of the memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "memory_content": {
+                "type": "string",
+                "description": "The current content of the memory."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_update",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Update the memory with new text. This will replace the existing memory content. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The new text to set as the memory. "
+              }
+            },
+            "required": [
+              "text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      }
+    ],
+    "max_tokens": 16384,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-gvWNbTJZmkbnv6pPvqSQ9OpHsWsYuyfv",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "Here is the summary of your Monday's priorities:\n\n*   **Meeting:** Team meeting ran over by 30 minutes.\n*   **Budget Report:** Need to finalize Q1 budget report before Friday.\n*   **IT:** Security protocols updated; passwords need to be changed ASAP.\n*   **Client:** Call with Jacob is delayed until Wednesday.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795292686,
+    "model": "membench-bfcl-Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 75,
+      "prompt_tokens": 914,
+      "total_tokens": 989,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 914,
+      "prompt_ms": 239.278,
+      "prompt_per_token_ms": 0.2617921225382932,
+      "prompt_per_second": 3819.824639122694,
+      "predicted_n": 75,
+      "predicted_ms": 985.488,
+      "predicted_per_token_ms": 13.317405405405406,
+      "predicted_per_second": 75.08970175182245
+    }
+  },
+  "seconds": 1.2446662829970592,
+  "completed_at": 1795292686.7456772
+}

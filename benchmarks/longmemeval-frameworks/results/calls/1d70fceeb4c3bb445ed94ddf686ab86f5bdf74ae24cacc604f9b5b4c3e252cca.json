@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 12
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "bccf802c00f3e7b539655e86f7211e6d604266e3c898b1afdd7ab24baef50818",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-bfd6af3e-486a-4962-8125-d01b1366f4ea",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        {\"Added parsley to the garlic mixture for extra flavor\", \"Picked up fresh fettuccine and arrabbiata sauce from an Italian grocery store\"},\n        {\"Exploring new ingredients and cooking techniques\", \"Discovered a great Italian grocery store in the neighborhood\"},\n        {\"Cooked a quick and easy dinner with arrabbiata sauce\", \"Used fresh fettuccine for the dinner\"}\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354965,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 92,
+      "prompt_tokens": 2099,
+      "total_tokens": 2191,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        {\"Added parsley to the garlic mixture for extra flavor\", \"Picked up fresh fettuccine and arrabbiata sauce from an Italian grocery store\"},\n        {\"Exploring new ingredients and cooking techniques\", \"Discovered a great Italian grocery store in the neighborhood\"},\n        {\"Cooked a quick and easy dinner with arrabbiata sauce\", \"Used fresh fettuccine for the dinner\"}\n    ]\n}",
+  "seconds": 16.699849094991805,
+  "prompt_tokens_local": 2099
+}

@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 24
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5f97660468b1a5ec3737dc61ab5cca1d772cc470e78414040e7fef0fc328cc30",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-878cc216-68c4-4e6d-9725-27fc3d36886f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "```json\n{\n  \"summaries\": [\n    {\n      \"name\": \"Gamecube\",\n      \"summary\": \"\"\n    },\n    {\n      \"name\": \"red and purple lighting\",\n      \"summary\": \"\"\n    }\n  ]\n}\n```",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795343621,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 51,
+      "prompt_tokens": 284,
+      "total_tokens": 335,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 235
+      }
+    }
+  },
+  "text": "```json\n{\n  \"summaries\": [\n    {\n      \"name\": \"Gamecube\",\n      \"summary\": \"\"\n    },\n    {\n      \"name\": \"red and purple lighting\",\n      \"summary\": \"\"\n    }\n  ]\n}\n```",
+  "seconds": 30.300465174994315,
+  "prompt_tokens_local": 284
+}

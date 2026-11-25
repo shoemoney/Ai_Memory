@@ -1,0 +1,732 @@
+<article class="chapter" data-ch="03" data-part="b" data-running="Text embeddings">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part B &middot; Chapter 03</p>
+  <div class="opener-num" aria-hidden="true">03</div>
+  <h1>Text embeddings</h1>
+  <p class="opener-summary">A model turns text into numbers so a program can find it by meaning.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">1 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Anyone whose agent must find notes by meaning, on a CPU-only box or through a hosted API.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">An embedding is a model-computed number list for finding notes by meaning: a search for "the tax thing from March" can land on a note that says "quarterly filing", although the two share no words.</p>
+  <p>Similar meanings point in similar directions; the program compares texts by their angle (cosine similarity; a smaller angle scores higher).</p>
+  <p>The list is a vector; dimensions count its entries: 1,024 dimensions means 1,024 numbers per text. The two smallest models tested, bge-small-en-v1.5 (bge-small below) and all-MiniLM-L6-v2 (MiniLM below), return 384, and the largest Qwen3-Embedding model returns 4,096.<sup class="cite"><a href="#s03-1">1</a></sup></p>
+  <p>The model neither answers nor remembers; the vector store holds memory (Part D). Images: Chapter 04.</p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>MTEB</dt><dd>An embedding benchmark suite with several versions.</dd>
+    <dt>nDCG@10</dt><dd>Normalized discounted cumulative gain at 10 rewards ranking relevant results near the top. Scores here are the usual 0 to 1 value times 100.</dd>
+    <dt>Matryoshka (MRL)</dt><dd>Training that makes a vector’s first k numbers usable alone.</dd>
+    <dt>Scalar and binary quantization (of stored vectors)</dt><dd>Shrinking vectors with 8-bit integers or single bits.</dd>
+    <dt>Prefix</dt><dd>A short instruction placed before the text, which some models expect on queries, documents or both.</dd>
+  </dl>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p>Save each chunk beside its embedding. Recall it by embedding the question with the same model and fetching the nearest vectors. Most models read the whole text at once: each token reflects words before and after it. They pool (combine) token vectors, usually by averaging; the model card specifies how. Some, such as Qwen3-Embedding, read left to right and take the last token's vector, which has seen the whole input. Servers may ask for a pooling mode (step 5).</p>
+<p>Chunk at paragraph or heading boundaries near 300 tokens to balance precision and prompt cost, or at the model’s lower context limit; MiniLM truncates at 256 tokens. Overlap only when sentences often cross a boundary. Record chunking and token limits as corpus metadata.</p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 262" role="img" aria-label="Diagram: a chunk is embedded with a document prefix, shortened or quantized, and stored with the model name. A question is embedded with the same model and a query prefix, and the nearest stored chunks go to the model context.">
+  <text class="d-label" x="6" y="22">Write path, once per chunk</text>
+  <rect class="d-box" x="6" y="34" width="108" height="66" rx="4"/>
+  <text class="d-title" x="60" y="56" text-anchor="middle">Chunk</text>
+  <text class="d-sub" x="60" y="74" text-anchor="middle">a note or a</text>
+  <text class="d-sub" x="60" y="88" text-anchor="middle">passage</text>
+  <rect class="d-box accent" x="166" y="34" width="108" height="66" rx="4"/>
+  <text class="d-title" x="220" y="56" text-anchor="middle">Embedding model</text>
+  <text class="d-sub" x="220" y="74" text-anchor="middle">document prefix,</text>
+  <text class="d-sub" x="220" y="88" text-anchor="middle">pooling</text>
+  <rect class="d-box" x="326" y="34" width="108" height="66" rx="4"/>
+  <text class="d-title" x="380" y="56" text-anchor="middle">Vector</text>
+  <text class="d-sub" x="380" y="74" text-anchor="middle">shorten, then</text>
+  <text class="d-sub" x="380" y="88" text-anchor="middle">int8 or binary</text>
+  <rect class="d-box solid" x="486" y="34" width="108" height="66" rx="4"/>
+  <text class="d-title d-on-dark" x="540" y="56" text-anchor="middle">Store</text>
+  <text class="d-sub d-on-dark" x="540" y="74" text-anchor="middle">text, vector,</text>
+  <text class="d-sub d-on-dark" x="540" y="88" text-anchor="middle">model name</text>
+
+  <text class="d-label" x="6" y="166">Read path, once per question</text>
+  <rect class="d-box" x="6" y="178" width="108" height="66" rx="4"/>
+  <text class="d-title" x="60" y="200" text-anchor="middle">Question</text>
+  <text class="d-sub" x="60" y="218" text-anchor="middle">words of the</text>
+  <text class="d-sub" x="60" y="232" text-anchor="middle">user or agent</text>
+  <rect class="d-box accent" x="166" y="178" width="108" height="66" rx="4"/>
+  <text class="d-title" x="220" y="200" text-anchor="middle">Same model</text>
+  <text class="d-sub" x="220" y="218" text-anchor="middle">query prefix,</text>
+  <text class="d-sub" x="220" y="232" text-anchor="middle">same settings</text>
+  <rect class="d-box" x="326" y="178" width="108" height="66" rx="4"/>
+  <text class="d-title" x="380" y="200" text-anchor="middle">Nearest search</text>
+  <text class="d-sub" x="380" y="218" text-anchor="middle">cosine score,</text>
+  <text class="d-sub" x="380" y="232" text-anchor="middle">top results</text>
+  <rect class="d-box dark" x="486" y="178" width="108" height="66" rx="4"/>
+  <text class="d-title d-on-dark" x="540" y="200" text-anchor="middle">Model context</text>
+  <text class="d-sub d-on-dark" x="540" y="218" text-anchor="middle">chunks added</text>
+  <text class="d-sub d-on-dark" x="540" y="232" text-anchor="middle">to the prompt</text>
+
+  <path class="d-line" d="M114 67 H164"/>
+  <path class="d-line" d="M274 67 H324"/>
+  <path class="d-line" d="M434 67 H484"/>
+  <path class="d-line" d="M114 211 H164"/>
+  <path class="d-line" d="M274 211 H324"/>
+  <path class="d-line" d="M434 211 H484"/>
+  <path class="d-line accent dash" d="M540 100 V139 H380 V176"/>
+  <text class="d-sub" x="460" y="156" text-anchor="middle">only if the model matches</text>
+</svg>
+<figcaption><b>Figure 1.</b> The store keeps the model identity with every vector (see When vectors can and cannot be compared).</figcaption>
+</figure>
+
+<h3>Dense, sparse and multi-vector</h3>
+<p>Almost every model here is dense. BGE-M3 can produce all three kinds.<sup class="cite"><a href="#s03-2">2</a></sup></p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c35"><col class="c45"></colgroup>
+  <thead><tr><th>Kind</th><th>What is stored per text</th><th>What it is good at</th></tr></thead>
+  <tbody>
+    <tr><td>Dense</td><td>One fixed-length floating-point vector.</td><td>Meaning matching by nearest-neighbor search, usually cosine. Smaller than multi-vector storage.</td></tr>
+    <tr><td>Sparse</td><td>A weight for each vocabulary term the text uses. Size depends on non-zero term count and index encoding.</td><td>A learned keyword index; rare exact terms still match.<sup class="cite"><a href="#s03-2">2</a></sup></td></tr>
+    <tr><td>Multi-vector</td><td>One vector per token. Each query token is scored against its best-matching document token and the scores are summed (late interaction, MaxSim).</td><td>Better recall on long, detailed queries. At equal dimensions and precision per vector, storage grows roughly with the token count.<sup class="cite"><a href="#s03-2">2</a></sup></td></tr>
+  </tbody>
+</table>
+<p>pgvector 0.8.7 stores a dense vector in <code>4d + 8</code> bytes and a sparse vector in <code>8n + 16</code> bytes, where d is the dimension count and n the number of non-zero weights. At d = 1024, a sparse vector is smaller for n &le; 510 non-zeros (<code>8n + 16 &lt; 4104</code>; equal at 511). With 100 non-zeros it takes 816 bytes against 4,104. Sizes exclude table and index overhead.<sup class="cite"><a href="#s03-3">3</a></sup></p>
+
+<h3>Local models</h3>
+<p>A model card’s license covers weights; check separate training-data and base-model terms before commercial use.</p>
+<p class="table-title">Open-weight text embedding models: size and license (state as of 20 November 2026)</p>
+<table class="data">
+  <colgroup><col class="c34"><col class="c28"><col class="c18"><col class="c20"></colgroup>
+  <thead><tr><th>Model</th><th>Dimensions</th><th>Context</th><th>License</th></tr></thead>
+  <tbody>
+    <tr><td>Qwen3-Embedding-0.6B, 4B, 8B (June 2025)</td><td>1,024, 2,560, 4,096. Matryoshka.<sup class="cite"><a href="#s03-1">1</a></sup></td><td>32,768 tokens</td><td>Apache-2.0<sup class="cite"><a href="#s03-4">4</a></sup></td></tr>
+    <tr><td>jina-embeddings-v5-text-small, 677M (18 February 2026; Jina v5 small below)</td><td>1,024. Matryoshka 32 to 1,024.<sup class="cite"><a href="#s03-5">5</a></sup></td><td>32,768 tokens</td><td>cc-by-nc-4.0, non-commercial</td></tr>
+    <tr><td>Harrier-oss-v1 270M, 0.6B, 27B (30 March 2026; Harrier below)</td><td>640, 1,024, 5,376.<sup class="cite"><a href="#s03-6">6</a></sup></td><td>32,768 tokens</td><td>MIT</td></tr>
+    <tr><td>EmbeddingGemma 2 (repository created 14 September 2026)</td><td>768. Matryoshka 128, 256, 512.<sup class="cite"><a href="#s03-7">7</a></sup></td><td>8,192 tokens, all input kinds</td><td>Apache-2.0<sup class="cite"><a href="#s03-8">8</a></sup></td></tr>
+    <tr><td>BGE-M3, 0.6B (2024)</td><td>1,024.<sup class="cite"><a href="#s03-2">2</a></sup></td><td>8,192 tokens</td><td>MIT<sup class="cite"><a href="#s03-2">2</a></sup></td></tr>
+    <tr><td>bge-small-en-v1.5 (2023)</td><td>384.<sup class="cite"><a href="#s03-9">9</a></sup></td><td>512 tokens</td><td>MIT<sup class="cite"><a href="#s03-9">9</a></sup></td></tr>
+    <tr><td>all-MiniLM-L6-v2 (2021)</td><td>384.<sup class="cite"><a href="#s03-10">10</a></sup></td><td>256 WordPiece tokens, longer input truncated</td><td>Apache-2.0<sup class="cite"><a href="#s03-10">10</a></sup></td></tr>
+  </tbody>
+</table>
+<p class="table-title">Scores reported by each source (benchmark versions differ)</p>
+<p>No overall ranking is claimed: cards report scores from incompatible MTEB versions.</p>
+<table class="data">
+  <colgroup><col class="c34"><col class="c26"><col class="c40"></colgroup>
+  <thead><tr><th>Model</th><th>Score</th><th>Benchmark</th></tr></thead>
+  <tbody>
+    <tr><td>Qwen3-Embedding-0.6B, 4B, 8B</td><td>64.33, 69.45, 70.58</td><td>MTEB multilingual (MMTEB) task mean. The 8B was No. 1 in the 5 June 2025 snapshot.<sup class="cite"><a href="#s03-1">1</a></sup></td></tr>
+    <tr><td>Jina v5 small</td><td>71.7 and 67.7</td><td>MTEB English v2 and MMTEB.<sup class="cite"><a href="#s03-5">5</a></sup></td></tr>
+    <tr><td>Harrier 270M, 0.6B, 27B</td><td>66.5, 69.0, 74.3</td><td>MTEB multilingual v2. The 27B was not timed on CPU; check RAM and latency.<sup class="cite"><a href="#s03-6">6</a></sup></td></tr>
+    <tr><td>EmbeddingGemma 2</td><td>61.36</td><td>MTEB multilingual v2 at 768 dimensions.<sup class="cite"><a href="#s03-7">7</a></sup></td></tr>
+    <tr><td>BGE-M3</td><td>59.56</td><td>MTEB multilingual, from a secondary guide.<sup class="cite"><a href="#s03-11">11</a></sup></td></tr>
+    <tr><td>bge-small-en-v1.5</td><td>62.17</td><td>Mean of the English MTEB tasks in its card.<sup class="cite"><a href="#s03-9">9</a></sup></td></tr>
+    <tr><td>all-MiniLM-L6-v2</td><td>None</td><td>Its card gives no score. A small baseline.</td></tr>
+  </tbody>
+</table>
+<p>Three English retrieval tasks cannot verify these full-suite averages; reproduction details are under Numbers.</p>
+<p>EmbeddingGemma 2 has 740M parameters including optional vision/audio encoders; text alone needs the 270M encoder (step 7). Its shared 8,192-token budget charges 280 per image and 25 per audio second (Chapter 04).<sup class="cite"><a href="#s03-7">7</a></sup></p>
+<p>Run EmbeddingGemma 2 in bfloat16 (a 16-bit floating-point format with the exponent range of float32) on supported hardware and in float32 otherwise. Never use float16: the card warns it can return NaNs or silently degraded embeddings.<sup class="cite"><a href="#s03-7">7</a></sup></p>
+
+<h3>Hosted models</h3>
+<p>Hosted models charge per token and need no GPU.</p>
+<p class="table-title">Hosted text embedding APIs (state as of 20 November 2026)</p>
+<table class="data">
+  <colgroup><col class="c34"><col class="c26"><col class="c16"><col class="c24"></colgroup>
+  <thead><tr><th>Model</th><th>Dimensions</th><th>Context</th><th>Price per 1M tokens</th></tr></thead>
+  <tbody>
+    <tr><td>voyage-4-large, voyage-4, voyage-4-lite</td><td>256, 512, 1,024 (default), 2,048.<sup class="cite"><a href="#s03-12">12</a></sup></td><td>32,000 tokens</td><td>$0.12, $0.06, $0.02<sup class="cite"><a href="#s03-13">13</a></sup></td></tr>
+    <tr><td>OpenAI text-embedding-3-small</td><td>1,536, reducible.<sup class="cite"><a href="#s03-14">14</a></sup></td><td>8,192 tokens</td><td>$0.02<sup class="cite"><a href="#s03-15">15</a></sup></td></tr>
+    <tr><td>OpenAI text-embedding-3-large</td><td>3,072, reducible.<sup class="cite"><a href="#s03-14">14</a></sup></td><td>8,192 tokens</td><td>$0.13<sup class="cite"><a href="#s03-16">16</a></sup></td></tr>
+    <tr><td>Cohere embed-v4.0</td><td>256, 512, 1,024, 1,536 (default).<sup class="cite"><a href="#s03-17">17</a></sup></td><td>128,000 tokens</td><td>$0.12 in gateway listings<sup class="cite"><a href="#s03-18">18</a></sup></td></tr>
+    <tr><td>Cohere embed-v5.0-pro and embed-v5.0-fast</td><td>256, 512, 768, 1,024, 1,536, 2,048 (default).<sup class="cite"><a href="#s03-17">17</a></sup></td><td>128,000 tokens</td><td>Not on the model page</td></tr>
+    <tr><td>gemini-embedding-001 (stable release 14 July 2025)</td><td>128 to 3,072.<sup class="cite"><a href="#s03-19">19</a></sup></td><td>2,048 tokens</td><td>$0.15<sup class="cite"><a href="#s03-20">20</a></sup></td></tr>
+    <tr><td>gemini-embedding-2 (public preview 10 March 2026, generally available 22 April 2026)</td><td>128 to 3,072.<sup class="cite"><a href="#s03-21">21</a></sup></td><td>8,192 tokens</td><td>$0.20, or $0.10 in batch<sup class="cite"><a href="#s03-20">20</a></sup></td></tr>
+  </tbody>
+</table>
+<ul>
+  <li>Voyage lists 200 million free tokens for each 4-series model per account.<sup class="cite"><a href="#s03-13">13</a></sup></li>
+  <li>The Gemini prices are for text; <code>gemini-embedding-2</code> also takes images, video, audio and PDFs.<sup class="cite"><a href="#s03-20">20</a></sup></li>
+  <li>Since 6 November 2026 the name <code>gemini-embedding-2-preview</code> routes to <code>gemini-embedding-2</code>, which Google says is the same embedding space.<sup class="cite"><a href="#s03-22">22</a></sup></li>
+</ul>
+
+<h3>Matryoshka truncation</h3>
+<p>Matryoshka lets you keep 256 of 1,024 dimensions at a small quality cost. Jina v5 small supports sizes spanning 32 to 1,024; use a listed size.<sup class="cite"><a href="#s03-5">5</a></sup> The EmbeddingGemma 2 card reports its MTEB English score falling from 68.46 at 768 dimensions to 67.78 at 256 (0.68 points lost for a third of the size) and to 65.68 at 128.<sup class="cite"><a href="#s03-7">7</a></sup> <strong>Tested:</strong> on these three tasks, cutting EmbeddingGemma 2 from 768 to 256 dimensions cost 2.36 nDCG@10 points (95% interval 1.78 to 2.97): a mean of 60.73 fell to 58.37. The published figure averages the whole English suite.</p>
+<p>Code will slice any vector, so cut only a model trained for it, to card-listed sizes; re-normalize afterwards.</p>
+
+<h3>int8 and binary quantization</h3>
+<p>Scalar int8 keeps one byte per number and binary keeps one bit. Jina says its v5 vectors survive binary quantization.<sup class="cite"><a href="#s03-5">5</a></sup> Recall loss depends on the model and data; this book has no measurement of it. Compare float32 and quantized retrieval on identical held-out questions and corpus. Count answering notes in the top k chunks your agent reads; accept only tolerable loss. Top-10 overlap shows changed rankings but is not the acceptance test. With binary, fetch 10 times more candidates (an unsourced starting estimate; measure) and rescore with float32 or int8 vectors. Fit int8 ranges per dimension on a representative sample, save them with a calibration ID and reuse them for every later write; changing them means requantizing.</p>
+<p>Vector bytes for a 1,024-dimension model (decimal MB and GB, no index overhead; method in the Chapter 00 sizing reference):</p>
+<table class="data">
+  <colgroup><col class="c28"><col class="c20"><col class="c26"><col class="c26"></colgroup>
+  <thead><tr><th>Format</th><th class="num">Bytes per vector</th><th class="num">8,000 vectors</th><th class="num">1,000,000 vectors</th></tr></thead>
+  <tbody>
+    <tr><td>float32, 1,024 dimensions</td><td class="num">4,096</td><td class="num">32.8 MB</td><td class="num">4.1 GB</td></tr>
+    <tr><td>int8, 1,024 dimensions</td><td class="num">1,024</td><td class="num">8.2 MB</td><td class="num">1.0 GB</td></tr>
+    <tr><td>binary, 1,024 dimensions</td><td class="num">128</td><td class="num">1.0 MB</td><td class="num">128 MB</td></tr>
+    <tr><td>int8, cut to 256 dimensions</td><td class="num">256</td><td class="num">2.0 MB</td><td class="num">256 MB</td></tr>
+  </tbody>
+</table>
+
+<h3>Query and document prefixes</h3>
+<p>Asymmetric models embed questions and passages differently. Omitting a prefix silently lowers quality. Ollama's documentation does not say it adds one, so add it in separate query and document functions.<sup class="cite"><a href="#s03-23">23</a></sup></p>
+<ul>
+  <li>Qwen3-Embedding expects a task instruction on the query side. Its card says instructions typically add 1 to 5 points and recommends writing them in English.<sup class="cite"><a href="#s03-1">1</a></sup></li>
+  <li>The EmbeddingGemma 2 card says omitting its prefix still works but lowers precision, and that prefixes apply to text only.<sup class="cite"><a href="#s03-7">7</a></sup></li>
+</ul>
+
+<h3>When vectors can and cannot be compared</h3>
+<p>Compare matching models, revisions and preprocessing. Separate coordinate systems remain incomparable despite equal dimensions. <code>bge-small-en-v1.5</code> and <code>all-MiniLM-L6-v2</code> both return 384 dimensions, so a store takes either, yet the walkthrough scored one sentence across both at 0.2608, a plausible number with no meaning.</p>
+<p>Two exceptions apply. A model trained with distinct query and document prefixes expects that difference: use each prefix as its card specifies (see Query and document prefixes).<sup class="cite"><a href="#s03-1">1</a>,<a href="#s03-7">7</a></sup> Two vendors also document shared family spaces:</p>
+<ul>
+  <li>Voyage states that all embeddings from its 4 series are compatible, so a large model can index and a lighter one answer queries.<sup class="cite"><a href="#s03-12">12</a></sup></li>
+  <li>Cohere states that embed-v5.0-pro and embed-v5.0-fast share one space, and recommends indexing with Pro and querying with Fast.<sup class="cite"><a href="#s03-17">17</a></sup></li>
+</ul>
+<p>For shared families, record the space identity and models separately; this lab checks one model. Otherwise treat the model name, revision, prefix, cut length (Matryoshka dimensions kept), quantization and, for int8, the calibration ID as one identity recorded beside every vector. Search quantized vectors only with the scoring the store documents for that format: for binary vectors (one bit per dimension; step 6), Hamming distance (counting differing bits), never float cosine on the packed bytes.</p>
+<h3>Re-indexing</h3>
+<p>The identity identifies stale vectors. A supported Matryoshka cut needs no model call on saved full-precision vectors: slice, re-normalize and rebuild the store's index. Otherwise, changed spaces or document preprocessing require re-embedding every chunk. A change to the query instruction alone leaves stored vectors valid: version it and retest retrieval. To re-embed:</p>
+<ol>
+  <li>Build a second index; preserve the old one.</li>
+  <li>Embed every chunk again at the first ingest's cost: 1 billion tokens is about $20 on text-embedding-3-small and about $130 on text-embedding-3-large.<sup class="cite"><a href="#s03-15">15</a>,<a href="#s03-16">16</a></sup> For a local model the cost is wall-clock time.</li>
+  <li>Pause writes before backfilling, or use a snapshot and replay writes, edits and deletions through a recorded cutover point. Check coverage, compare real questions on both indexes, switch reads and retain the old index. During the rollback window, apply writes, edits and deletes to both with their respective encoders, or log changes and catch up the old index before reverting. A deprecated hosted model forces it.</li>
+</ol>
+
+
+<h3>Which model to pick</h3>
+<p class="table-title">Picks by situation</p>
+<table class="data">
+  <colgroup><col class="c22"><col class="c30"><col class="c48"></colgroup>
+  <thead><tr><th>Situation</th><th>Start with</th><th>Reason and check</th></tr></thead>
+  <tbody>
+    <tr><td>CPU-only box</td><td>Qwen3-Embedding-0.6B for occasional writes; bge-small when higher throughput is needed.</td><td>Apache-2.0 (Qwen3-Embedding) or MIT (bge-small); both ran below. Store int8 vectors only after a retrieval check; weights stay unchanged.</td></tr>
+    <tr><td>Apple Silicon Mac</td><td>Qwen3-Embedding-0.6B in Ollama or <code>mlx-embeddings</code>.<sup class="cite"><a href="#s03-24">24</a>,<a href="#s03-25">25</a></sup></td><td>Mac speed unmeasured. Choose 4B only if it loads beside your agent and 200 representative chunks meet your write-rate budget.</td></tr>
+    <tr><td>Many languages</td><td>Qwen3-Embedding-4B or 8B; BGE-M3 for sparse output too.<sup class="cite"><a href="#s03-1">1</a>,<a href="#s03-2">2</a></sup></td><td>Harrier 0.6B (MIT) is lighter. Jina v5 small is non-commercial.</td></tr>
+    <tr><td>No spare machine; data may leave the network</td><td>text-embedding-3-small or voyage-4-lite ($0.02 per 1M).<sup class="cite"><a href="#s03-13">13</a>,<a href="#s03-15">15</a></sup></td><td>Providers see notes/queries (Chapter 17); deprecation forces re-indexing.</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>Finding a note by its meaning when the question shares no words with it.</li>
+      <li>Checking a new memory against stored ones before writing, to avoid duplicates.</li>
+      <li>A corpus of thousands of chunks on a CPU-only machine.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>Exact strings such as error codes: use a keyword or sparse index (Chapter 05).</li>
+      <li>Choosing the current fact by similarity alone: filter on validity dates or a superseded flag first (Chapter 14).</li>
+      <li>A commercial product built on a non-commercial license, or a setup that cannot record the model identity next to each vector.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span> 8,000 blog passages on a mini PC</h3>
+  <dl>
+    <dt>Situation</dt><dd>A writer searches eight years of posts: 8,000 passages on a CPU-only PC.</dd>
+    <dt>Why it fits</dt><dd>At 1,024 dimensions, vectors fit in memory: 32.8 MB float32 or 8.2 MB int8. Qwen3-Embedding-0.6B embedded 6 short notes in 1.17 seconds on 4 CPUs (Numbers): about 26 minutes for 8,000; real passages are far longer, so plan for hours (estimate) and time 200 first.</dd>
+    <dt>Pair with</dt><dd>SQLite or pgvector for storage (Chapters 12 and 08), and a reranker from Chapter 05.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span> Personal notes search</h3>
+  <dl>
+    <dt>Situation</dt><dd>A few thousand personal Markdown notes need meaning-based search, as in the opening filing example.</dd>
+    <dt>Why it fits</dt><dd>MiniLM returns 384 numbers per chunk with a few sentence-transformers lines.<sup class="cite"><a href="#s03-10">10</a></sup></dd>
+    <dt>Pair with</dt><dd>Chapter 01 flat files for the notes, and grep for exact words.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span> Deduplicate memories before writing</h3>
+  <dl>
+    <dt>Situation</dt><dd>An agent saves "User lives in Paris", then "The user is based in Paris". Near copies accumulate.</dd>
+    <dt>Why it fits</dt><dd>Embed each new memory and find its nearest neighbor (one call per write). Before merging, check entity, claim, polarity and time, since "User no longer lives in Paris" is a near match to keep. Set the threshold on labeled pairs; the walkthrough's question-to-note scores (0.7480 and 0.6636) only show that related text stays well below 1.0.</dd>
+    <dt>Pair with</dt><dd>A memory framework (Chapter 13) and a small model that decides merge or keep (Chapter 06).</dd>
+  </dl>
+</article>
+
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span> Support docs in several languages</h3>
+  <dl>
+    <dt>Situation</dt><dd>A team keeps help articles in English, Spanish and Japanese, and users ask in any of them.</dd>
+    <dt>Why it fits</dt><dd>Qwen3-Embedding has multilingual MTEB scores; BGE-M3 also offers sparse output.<sup class="cite"><a href="#s03-1">1</a>,<a href="#s03-2">2</a></sup> One index holds all languages; cross-lingual retrieval (Japanese questions finding English articles) remains untested. Check your pairs.</dd>
+    <dt>Pair with</dt><dd>Hybrid search with a keyword index, from Chapter 05.</dd>
+  </dl>
+</article>
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p>Sources were checked through 22 November 2026; the walkthrough reran on 23 November 2026. Timings are single observations on a shared 32-thread CPU (containers limited to 2 or 4 CPUs, no GPU), including local HTTP overhead. Larger models need a RAM and latency check on the target CPU.</p>
+<p><strong>Tested:</strong> three English tasks (SciFact, NFCorpus, ArguAna; 2,029 queries/model) ran on an 8 GB NVIDIA GPU: Qwen3-Embedding-0.6B, Jina v5 small, Harrier 270M and 0.6B, EmbeddingGemma 2, BGE-M3 and bge-small. Of 21 model-task pairs, 19 have published scores; 18 lie within the local 95% interval (resample queries; recompute task means). The exception is Qwen3-Embedding-0.6B on ArguAna (69.15 locally, 70.97 published). Harness: <code>benchmarks/mteb</code>. A Mac run (<code>benchmarks/mteb-large</code>; Apple M3 Ultra, 96 GB) used Qwen3-Embedding-4B at 8-bit and the 8B at 4-bit weights, which may shift scores. Five of six published scores lie within intervals; 8B/ArguAna differs: 74.37 locally (1,406 queries, 95% interval 72.89 to 75.88) against 76.85 published. Harrier 27B was skipped for time, so its 74.3 was not reproduced. Intervals describe query variability, not repeat runs.</p>
+<p>GPU and Mac encoding throughput was not isolated by the benchmark harness; no sourced speed figure was found.</p>
+<p class="table-title">Measurements made for this chapter (scores and prices above)</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>153,600, 38,400, 4,800 bytes</td><td>100 vectors of 384 dimensions as float32, int8 and packed binary, confirming the ratios.</td><td class="src"><span class="pill example">Measured once</span></td></tr>
+    <tr><td>373.1 texts per second</td><td>text-embeddings-inference (TEI, Hugging Face's embedding server) cpu-1.9, bge-small-en-v1.5, 100 short synthetic texts in 0.268 s, 2 CPUs, shared host.</td><td class="src"><span class="pill example">Measured once</span></td></tr>
+  </tbody>
+</table>
+
+
+
+<h3>Scope and scale</h3>
+<p>Vectors cost no context tokens; only retrieved chunks do. A write is one embedding pass per chunk, with no generation call; a read is one pass plus the tokens of the top results: five chunks of 300 tokens add about 1,500 prompt tokens (estimate).</p>
+<p>No source gives a maximum count for scanning every vector (brute-force search). Check scan latency against your read budget and embedding throughput against your write rate.</p>
+<ul>
+  <li><strong>Scan latency.</strong> Storage grows linearly (Chapter 00 sizing reference). At 1,024 dimensions, 10,000 memories take 41 MB as float32 and 100 such users take 4.1 GB, a million vectors. At an assumed 10 GB/s, reading an isolated 41 MB user partition takes at least about 4 ms; reading all 4.1 GB takes at least 0.41 s (estimates). Time the actual filtered query, including scoring.</li>
+  <li><strong>Embedding throughput.</strong> Ten agents writing 20 chunks per second need 200 sustained. Measured: 373.1 texts per second (bge-small, 2 CPUs) and about 5.1 per second (Qwen3-Embedding-0.6B through Ollama, 4 CPUs), both on short texts; 300-token chunks will be slower. Replay your own chunk lengths.</li>
+</ul>
+<p>Move to a store with an index (Chapters 08 or 11) when a scan misses your latency budget, to Chapter 05 when exact terms matter, and to Chapter 14 when facts change.</p>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Requires Linux, Bash, Docker, curl, GNU coreutils and Python venv; macOS needs a Linux VM. Steps 1 to 3 build a stored search with Ollama. Steps 4 to 7 are optional: TEI, llama.cpp, quantization and an EmbeddingGemma 2 precision check. The 23 November 2026 rerun used the shared host above, with Docker, Ollama 0.40.16 (0.40.17 was published on 10 November 2026), TEI image <code>cpu-1.9</code>, llama.cpp image <code>server-b12464</code>, sentence-transformers 6.3.0 and Python 3.14.4. Timings are observations.<sup class="cite"><a href="#s03-29">29</a></sup></p>
+
+<ol class="steps">
+  <li class="step-long">
+    <p class="step-title">Make a working folder and the shared script</p>
+    <p>Later steps and cleanup need <code>$LAB</code> and its run token. Type <code>bash</code> first; failures close only that inner shell. If it closes, restore them with <code>export LAB=/var/tmp/memlab-03; export LAB_TOKEN=$(cat "$LAB/.owner"); export LAB_REAL=$(cat "$LAB/.canonical")</code>. Run <code>cd "$LAB/scripts"</code>; once saved, source readiness.sh again for its function and shell settings. Token/path files prove cleanup owns this folder and containers.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+export LAB=/var/tmp/memlab-03
+if [ -e "$LAB" ] || [ -L "$LAB" ]; then
+  echo "STOP: reserved lab path already exists; inspect it before retrying" &gt;&amp;2
+  exit 1
+fi
+mkdir "$LAB"
+export LAB_TOKEN=$(cat /proc/sys/kernel/random/uuid)
+export LAB_REAL=$(realpath -e "$LAB")
+printf '%s\n' "$LAB_TOKEN" &gt; "$LAB/.owner"
+printf '%s\n' "$LAB_REAL" &gt; "$LAB/.canonical"
+mkdir "$LAB/scripts" "$LAB/ollama" "$LAB/tei" "$LAB/models" "$LAB/hf"
+cd "$LAB/scripts"</pre></div>
+<p>If the folder exists, the guard stops with:</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>STOP: reserved lab path already exists; inspect it before retrying</pre></div>
+<p>Save the next two files in <code>$LAB/scripts</code>, then run <code>source readiness.sh</code> before the first wait_http call. It tries at most 120 times, limits each request to 5 seconds and prints the container logs on timeout.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">readiness.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+wait_http() {
+  local name=$1 url=$2 payload=${3-}
+  for attempt in $(seq 1 120); do
+    if [ -n "$payload" ]; then
+      if curl --fail -s --max-time 5 -H 'Content-Type: application/json' \
+          -d "$payload" "$url" &gt; /dev/null; then return 0; fi
+    elif curl --fail -s --max-time 5 "$url" &gt; /dev/null; then
+      return 0
+    fi
+    sleep 1
+  done
+  docker logs --tail 40 "$name" &gt;&amp;2
+  echo "STOP: readiness timed out: $url" &gt;&amp;2
+  return 1
+}</pre></div>
+    <p><code>lab.py</code> holds six notes, one question, a standard-library JSON client and four modes: <code>ready</code> (digest check), <code>write</code> and <code>read</code> (step 3) and <code>batch</code> (step 5). <code>RECORD</code> is the identity kept beside the vectors.</p>
+    <div class="codeblock splittable" data-listing-note="Stored identity checks and embedding client"><div class="code-head"><span class="code-lang">python</span><span class="code-file">lab.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import json
+import math
+import sys
+import time
+import urllib.error
+import urllib.request
+
+NOTES = [
+    "Quarterly estimated tax payment is due on 15 March; pay it online.",
+    "Dentist appointment moved to Thursday at 9:30 in the morning.",
+    "Alice lives in Paris and works as a translator.",
+    "Replace the kitchen tap washer, the left tap drips at night.",
+    "The tax thing from March: file form 1040-ES and keep the receipt.",
+    "Recipe: soak the chickpeas overnight, then simmer for one hour.",
+]
+QUERY = "when do I have to pay the tax thing from March?"
+TASK = "Given a question, retrieve the notes that answer it"
+RECORD = {"model": "qwen3-embedding:0.6b", "dimensions": 1024,
+          "doc_prefix": "", "query_prefix": f"Instruct: {TASK}\nQuery:",
+          "cut": None, "quantization": "float32",
+          "revision": "ac6da0dfba84a81fdbfbaf330198c33cd"
+                      "77c4cdfc53e8bc50eb581914a15621d"}
+ROUTES = {"ollama": (39030, "/api/embed"), "tei": (39031, "/embed"),
+          "llama": (39032, "/v1/embeddings")}
+
+
+def post(url, payload):
+    req = urllib.request.Request(
+        url, data=json.dumps(payload).encode(),
+        headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=300) as r:
+        return json.load(r)
+
+
+def check_record(rec):
+    for key in RECORD:
+        if key not in rec or rec[key] != RECORD[key]:
+            action = ("validate query configuration before searching"
+                      if key == "query_prefix" else "re-index before comparing")
+            sys.exit(f"STOP: {key} differs: {action}")
+
+
+def embed(kind, texts, rec=None):
+    port, path = ROUTES[kind]
+    url = f"http://127.0.0.1:{port}{path}"
+    if kind == "ollama":
+        with urllib.request.urlopen(
+                f"http://127.0.0.1:{port}/api/tags", timeout=30) as r:
+            tags = json.load(r)["models"]
+        digest = next((m["digest"] for m in tags if m["name"] == rec["model"]), None)
+        if digest != rec["revision"]:
+            sys.exit("STOP: live model revision differs: re-index before comparing")
+        return post(url, {"model": rec["model"], "input": texts})["embeddings"]
+    if kind == "tei":
+        return post(url, {"inputs": texts})
+    return [d["embedding"] for d in post(url, {"input": texts})["data"]]
+
+
+def timed(kind, texts, rec=None):
+    t0 = time.perf_counter()
+    vecs = embed(kind, texts, rec)
+    return vecs, round(time.perf_counter() - t0, 4)
+
+
+def cosine(a, b):
+    dot = sum(x * y for x, y in zip(a, b))
+    return dot / (math.sqrt(sum(x * x for x in a)) *
+                  math.sqrt(sum(y * y for y in b)))
+
+
+if sys.argv[1] == "write":
+    vecs, secs = timed("ollama", [RECORD["doc_prefix"] + n for n in NOTES], RECORD)
+    json.dump({"record": RECORD, "notes": NOTES, "vectors": vecs},
+              open("store.json", "w"))
+    print("wrote", len(vecs), "vectors of", len(vecs[0]), "numbers in", secs, "s")
+elif sys.argv[1] == "read":
+    store = json.load(open(sys.argv[2] if len(sys.argv) &gt; 2 else "store.json"))
+    rec = store["record"]
+    check_record(rec)
+    q, secs = timed("ollama", [rec["query_prefix"] + QUERY], rec)
+    assert all(len(v) == rec["dimensions"] for v in store["vectors"])
+    assert len(q[0]) == rec["dimensions"], "dimension changed: re-index"
+    ranked = sorted(((cosine(q[0], v), n) for v, n in
+                     zip(store["vectors"], store["notes"])), reverse=True)
+    print("query embedded in", secs, "s with", rec["model"])
+    for score, note in ranked[:3]:
+        print(f"{score:.4f}  {note}")
+    assert any(note == NOTES[0] for _, note in ranked[:2]), "deadline missing from top two"
+    print("check passed")
+elif sys.argv[1] == "ready":
+    embed("ollama", ["ready"], RECORD)
+    print("live model digest checked")
+else:
+    texts = [f"Alice likes coffee and lives in Paris. passage {i}" for i in range(100)]
+    try:
+        post("http://127.0.0.1:39031/embed", {"inputs": texts})
+    except urllib.error.HTTPError as err:
+        print("one request of 100:", err)
+        print(" ", err.read().decode())
+    except urllib.error.URLError as err:
+        sys.exit(f"STOP: TEI request failed: {err}")
+    vecs, secs = [], 0.0
+    for i in range(0, 100, 32):
+        v, s = timed("tei", texts[i:i + 32])
+        vecs, secs = vecs + v, secs + s
+    print("TEI", len(vecs), len(vecs[0]), "seconds", round(secs, 4),
+          "texts_per_second", round(len(vecs) / secs, 1))
+    v, s = timed("llama", ["Alice lives in Paris."])
+    print("LLAMA", len(v), len(v[0]), "seconds", s)</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Start Ollama on CPU and pull Qwen3-Embedding-0.6B</p>
+    <p>On 4 CPUs and 5 GiB, the pulled model is 639 MB, 595.78M parameters, 1,024 dimensions, 32,768 context and Q8_0 quantization (a compact weight format), as <code>ollama show</code> reported, with model id <code>ac6da0dfba84</code> (a prefix of the digest in <code>lab.py</code>).<sup class="cite"><a href="#s03-25">25</a></sup> The endpoint <code>/api/embed</code> answers with an <code>embeddings</code> array.<sup class="cite"><a href="#s03-23">23</a></sup></p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>docker run -d --label memfix.run="$LAB_TOKEN" \
+  --name memlab-03-ollama --cpus 4 -m 5g -p 127.0.0.1:39030:11434 \
+  -e OLLAMA_NUM_PARALLEL=1 -e OLLAMA_MAX_LOADED_MODELS=1 -e OLLAMA_NO_CLOUD=1 \
+  -v $LAB/ollama:/root/.ollama ollama/ollama:0.40.16
+wait_http memlab-03-ollama http://127.0.0.1:39030/api/tags
+docker exec memlab-03-ollama ollama pull qwen3-embedding:0.6b
+wait_http memlab-03-ollama http://127.0.0.1:39030/api/embed \
+  '{"model":"qwen3-embedding:0.6b","input":["ready"]}'
+python3 -I lab.py ready</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Write six notes, read one back in a fresh process, and prove mismatches are refused</p>
+    <p><code>write</code> embeds the notes and saves them with a record of the model, artifact digest, dimensions, prefixes, cut length and quantization. <code>read</code>, a separate Python process, checks every field of that record, the live Ollama digest and both vector dimensions, then embeds the question with the query instruction Qwen3-Embedding expects and ranks the notes.<sup class="cite"><a href="#s03-1">1</a></sup> Documents get no prefix.</p>
+    <p>Ollama’s model-list digest identifies the artifact. If ready reports a revision mismatch, inspect /api/tags and update RECORD’s revision only for a fresh index; rebuild an existing one.<sup class="cite"><a href="#s03-26">26</a></sup></p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>python3 -I lab.py write
+python3 -I lab.py read</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>wrote 6 vectors of 1024 numbers in 1.1677 s
+query embedded in 0.3464 s with qwen3-embedding:0.6b
+0.7480  The tax thing from March: file form 1040-ES and keep the receipt.
+0.6636  Quarterly estimated tax payment is due on 15 March; pay it online.
+0.3990  Dentist appointment moved to Thursday at 9:30 in the morning.
+check passed</pre></div>
+    <p>Shared tax/March words mean this demo does not prove word-disjoint retrieval. Tax notes outrank the dentist note; the 15 March deadline ranks second. One chunk misses it; the check requires it in the top two.</p>
+    <p>Save as <code>refuse.py</code>. Each case changes or deletes an identity field while keeping 1,024 dimensions. BGE-M3 also has 1,024 dimensions; naming it while retaining Qwen3-Embedding vectors requires an identity check.<sup class="cite"><a href="#s03-2">2</a></sup> Each read must fail before comparing vectors.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">refuse.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import json
+import subprocess
+import sys
+from pathlib import Path
+
+# None means delete the key, not set its value to None.
+for key, value in [("model", "bge-m3:latest"), ("revision", "changed"),
+                   ("query_prefix", "different preprocessing"), ("cut", None)]:
+    store = json.loads(Path("store.json").read_text())
+    if value is None:
+        del store["record"][key]
+    else:
+        store["record"][key] = value
+    path = Path("refusal.json")
+    path.write_text(json.dumps(store))
+    result = subprocess.run([sys.executable, "-I", "lab.py", "read", str(path)],
+                            capture_output=True, text=True)
+    assert result.returncode == 1 and not result.stdout, result
+    assert result.stderr.startswith(f"STOP: {key} differs:"), result
+    print(result.stderr.strip())
+    path.unlink()</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>python3 -I refuse.py</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>STOP: model differs: re-index before comparing
+STOP: revision differs: re-index before comparing
+STOP: query_prefix differs: validate query configuration before searching
+STOP: cut differs: re-index before comparing</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Run text-embeddings-inference on CPU</p>
+    <p>TEI is documented in its repository.<sup class="cite"><a href="#s03-27">27</a></sup> It had 2 CPUs and 2 GiB, pinned to the tag <code>cpu-1.9</code> and to bge-small revision <code>5c38ec7c405e</code>. By default it accepts at most 32 texts per request.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>docker run -d --label memfix.run="$LAB_TOKEN" \
+  --name memlab-03-tei --cpus 2 -m 2g -p 127.0.0.1:39031:80 \
+  -e HF_HOME=/data/hf -e OMP_NUM_THREADS=2 -v $LAB/tei:/data \
+  ghcr.io/huggingface/text-embeddings-inference:cpu-1.9 \
+  --model-id BAAI/bge-small-en-v1.5 \
+  --revision 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+wait_http memlab-03-tei http://127.0.0.1:39031/embed '{"inputs":["ready"]}'</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Run llama.cpp in embedding mode, then time both servers</p>
+    <p>First-generation EmbeddingGemma 300M differs from EmbeddingGemma 2; its GGUF (llama.cpp model file) is 318 MB. Download it at a pinned revision, then start the official server image (build b12464). Checksum mismatches stop execution. License unverified (gated card): check terms before downloading or using.<sup class="cite"><a href="#s03-28">28</a></sup> Tested flags: <code>--embedding --pooling mean</code> for this encoder; <code>-ngl 0</code> for no GPU layers. Last-token models such as Qwen3-Embedding need last-token pooling (server README; untested). When both endpoints answer, <code>batch</code> sends TEI 100 texts in one request (refused), then batches of 32, and sends llama.cpp one text.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>curl -fsSL -o $LAB/models/embed.gguf \
+  https://huggingface.co/ggml-org/embeddinggemma-300M-GGUF/resolve/\
+0f741b5a6585bd53aeb15cd1372c56f2a0f65e12/embeddinggemma-300M-Q8_0.gguf
+sha256=b5ce9d77a3fc4b3b39ccb5643c36777911cc4eb46a66962eadfa3f5f60490d63
+echo "$sha256  $LAB/models/embed.gguf" | sha256sum -c -
+docker run -d --label memfix.run="$LAB_TOKEN" \
+  --name memlab-03-llama --cpus 2 -m 2g -p 127.0.0.1:39032:8080 \
+  -v $LAB/models:/models ghcr.io/ggml-org/llama.cpp:server-b12464 \
+  -m /models/embed.gguf --host 0.0.0.0 --port 8080 --embedding --pooling mean \
+  -t 2 -c 2048 -ngl 0
+wait_http memlab-03-llama http://127.0.0.1:39032/v1/embeddings \
+  '{"input":["ready"]}'
+python3 -I lab.py batch</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>/var/tmp/memlab-03/models/embed.gguf: OK
+one request of 100: HTTP Error 422: Unprocessable Entity
+  {"error":"batch size 100 &gt; maximum allowed batch size 32","error_type":"Validation"}
+TEI 100 384 seconds 0.268 texts_per_second 373.1
+LLAMA 1 768 seconds 0.0232</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Encode, quantize and compare two models with sentence-transformers</p>
+    <p>Create a pinned virtual environment. The extra index supplies CPU PyTorch/torchvision; EmbeddingGemma 2 needs Pillow and torchvision. It resolved to torch 2.15.0+cpu, transformers 5.24.0 and numpy 2.5.5.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>python3 -m venv $LAB/venv
+PIP_CACHE_DIR=$LAB/pipcache $LAB/venv/bin/pip install -q \
+  "sentence-transformers==6.3.0" "Pillow==13.0.0" "torchvision==0.29.2+cpu" \
+  --extra-index-url https://download.pytorch.org/whl/cpu</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">st_demo.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import numpy as np
+from sentence_transformers import SentenceTransformer
+from sentence_transformers.quantization import quantize_embeddings
+
+texts = [f"Alice likes coffee and lives in Paris. passage {i}" for i in range(100)]
+minilm = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device="cpu",
+                             revision="1110a243fdf4706b3f48f1d95db1a4f5529b4d41")
+bge = SentenceTransformer("BAAI/bge-small-en-v1.5", device="cpu",
+                          revision="5c38ec7c405ec4b44b94cc5a9bb96e735b38267a")
+e = minilm.encode(texts, normalize_embeddings=True)
+print(e.shape, e.nbytes)
+for precision in ["int8", "binary", "ubinary"]:
+    q = quantize_embeddings(e, precision=precision)
+    print(precision, q.shape, q.dtype, "bytes", q.nbytes)
+eb = bge.encode(texts, normalize_embeddings=True)
+print("dims", e.shape[1], eb.shape[1])
+print("MiniLM text0 vs MiniLM text1:", round(float(np.dot(e[0], e[1])), 4))
+print("MiniLM text0 vs bge text0:", round(float(np.dot(e[0], eb[0])), 4))</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>HF_HOME=$LAB/hf HF_HUB_DISABLE_TELEMETRY=1 $LAB/venv/bin/python -I st_demo.py</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>(100, 384) 153600
+int8 (100, 384) int8 bytes 38400
+binary (100, 48) int8 bytes 4800
+ubinary (100, 48) uint8 bytes 4800
+dims 384 384
+MiniLM text0 vs MiniLM text1: 0.9526
+MiniLM text0 vs bge text0: 0.2608</pre></div>
+    <p class="small muted">Int8 scales use only these 100 texts; use a corpus sample in production.</p>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Check EmbeddingGemma 2 precision on CPU</p>
+    <p>This float32 check (Local models) loads only the text encoder, requires finite vectors and ranks the known answer first.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">gemma_precision.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import numpy as np
+import torch
+from sentence_transformers import SentenceTransformer
+
+dtype = torch.float32  # CPU lab; bfloat16 only on supported hardware
+assert dtype in (torch.bfloat16, torch.float32)
+model = SentenceTransformer(
+    "google/embeddinggemma-2", device="cpu",
+    revision="f9972ac22e696a105c482202646979e33e4b5a1e",
+    model_kwargs={"torch_dtype": dtype},
+    config_kwargs={"vision_config": None, "audio_config": None})
+assert next(model.parameters()).dtype == dtype
+q = model.encode(["What causes the northern lights?"],
+                 prompt_name="SearchQuery", normalize_embeddings=True)
+docs = model.encode([
+    "The northern lights are caused by charged particles from the sun.",
+    "Chickpeas should be soaked overnight before cooking."],
+    prompt_name="Document", normalize_embeddings=True)
+assert np.isfinite(q).all() and np.isfinite(docs).all(), "non-finite vectors"
+assert int((q @ docs.T)[0].argmax()) == 0, "known-answer recall failed"
+print("dtype", dtype, "finite", q.shape, docs.shape, "recall passed")</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>HF_HOME=$LAB/hf HF_HUB_DISABLE_TELEMETRY=1 \
+  $LAB/venv/bin/python -I gemma_precision.py</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>dtype torch.float32 finite (1, 768) (2, 768) recall passed</pre></div>
+  </li>
+</ol>
+<p>Run cleanup.sh with Bash, never source it: <code>bash "$LAB/scripts/cleanup.sh"</code>. It removes this run’s resources, including after steps 1 to 3 alone; root-owned mounts need sudo.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">cleanup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+if [ "$LAB" != /var/tmp/memlab-03 ] || [ -L "$LAB" ] ||
+   [ "$(realpath -e "$LAB")" != "$LAB_REAL" ] ||
+   [ "$(cat "$LAB/.canonical")" != "$LAB_REAL" ] ||
+   [ -z "$LAB_TOKEN" ] || [ "$(cat "$LAB/.owner")" != "$LAB_TOKEN" ]; then
+  echo "STOP: lab ownership check failed" &gt;&amp;2
+  exit 1
+fi
+containers=()
+for name in memlab-03-ollama memlab-03-tei memlab-03-llama; do
+  docker container inspect "$name" &gt; /dev/null 2&gt;&amp;1 || continue
+  test "$(docker inspect -f '{{index .Config.Labels "memfix.run"}}' "$name")" \
+    = "$LAB_TOKEN" || { echo "STOP: container ownership differs" &gt;&amp;2; exit 1; }
+  containers+=("$name")
+done
+if [ "${#containers[@]}" -gt 0 ]; then docker rm -f "${containers[@]}"; fi
+cd /var/tmp
+sudo rm -rf -- "$LAB"
+test ! -e "$LAB" &amp;&amp; test ! -L "$LAB"
+echo "Cleanup verified: lab and containers removed"</pre></div>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+<ul>
+<li>EmbeddingGemma 2: avoid float16 (Local models).</li>
+<li>A missing prefix can silently lower precision (Query and document prefixes).</li>
+<li>Equal dimensions do not make cross-model cosine meaningful (When vectors can and cannot be compared).</li>
+<li>TEI defaults to at most 32 texts per request (step 4).</li>
+</ul>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: the context claim differs by source</p>
+  <p>The Qwen3-Embedding card gives 32,768 tokens; Ollama’s 4b tag differs at 40K (0.6b shows 32K).<sup class="cite"><a href="#s03-1">1</a>,<a href="#s03-25">25</a></sup> Count prefixed tokens; obey documented and server limits. Test retrieval before relying on extensions.</p>
+</aside>
+
+
+<aside class="callout unverified">
+  <p class="callout-label">Unverified: open questions</p>
+  <ul>
+    <li>Current MTEB No. 1 and GPU/Mac speed.</li>
+    <li>Cohere embed-v5.0 and official embed-v4.0 prices; EmbeddingGemma 300M license (gated card).</li>
+  </ul>
+</aside>
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: small, local, labeled</p>
+  <p>Follow Picks by situation: Qwen3-Embedding-0.6B handles occasional writes, about 5.1 short notes per second on 4 CPUs.<sup class="cite"><a href="#s03-1">1</a>,<a href="#s03-25">25</a></sup> For throughput or tight storage, test bge-small’s held-out recall. Record vector identity; check recall before int8 (Chapter 17).</p>
+  <p>For multilingual GPU work, time 200 representative chunks before choosing 4B/8B; GPU throughput remains unmeasured. Add keyword search and a reranker for exact terms (Chapter 05). Chapters 21 to 23 use 1,024-dimensional Qwen3-Embedding-0.6B notes for a painter, doctor’s office and homebuilder.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s03-1"><span class="src-title">Qwen3-Embedding-8B model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/Qwen/Qwen3-Embedding-8B">https://huggingface.co/Qwen/Qwen3-Embedding-8B</a></li>
+  <li id="s03-2"><span class="src-title">BGE-M3 model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/BAAI/bge-m3">https://huggingface.co/BAAI/bge-m3</a></li>
+  <li id="s03-3"><span class="src-title">pgvector 0.8.7 README: vector and sparsevec storage (read 20 November 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/pgvector/pgvector/v0.8.7/README.md">https://raw.githubusercontent.com/pgvector/pgvector/v0.8.7/README.md</a></li>
+  <li id="s03-4"><span class="src-title">Qwen3-Embedding-0.6B model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/Qwen/Qwen3-Embedding-0.6B">https://huggingface.co/Qwen/Qwen3-Embedding-0.6B</a></li>
+  <li id="s03-5"><span class="src-title">jina-embeddings-v5-text-small model card (released 2026-02-18)</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/jinaai/jina-embeddings-v5-text-small">https://huggingface.co/jinaai/jina-embeddings-v5-text-small</a></li>
+  <li id="s03-6"><span class="src-title">Microsoft Harrier-oss-v1 model card (2026-03-30)</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/microsoft/harrier-oss-v1-270m">https://huggingface.co/microsoft/harrier-oss-v1-270m</a></li>
+  <li id="s03-7"><span class="src-title">EmbeddingGemma 2 model card</span> <span class="src-note">(official)</span><a class="url" href="https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2">https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2</a></li>
+  <li id="s03-8"><span class="src-title">google/embeddinggemma-2 model card on Hugging Face</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/google/embeddinggemma-2">https://huggingface.co/google/embeddinggemma-2</a></li>
+  <li id="s03-9"><span class="src-title">bge-small-en-v1.5 model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/BAAI/bge-small-en-v1.5">https://huggingface.co/BAAI/bge-small-en-v1.5</a></li>
+  <li id="s03-10"><span class="src-title">all-MiniLM-L6-v2 model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2">https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2</a></li>
+  <li id="s03-11"><span class="src-title">Superlinked, Qwen3 embedding and reranker guide</span> <span class="src-note">(secondary)</span><a class="url" href="https://superlinked.com/blog/qwen3-embedding-reranker-guide">https://superlinked.com/blog/qwen3-embedding-reranker-guide</a></li>
+  <li id="s03-12"><span class="src-title">Voyage AI text embeddings documentation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.voyageai.com/docs/embeddings">https://docs.voyageai.com/docs/embeddings</a></li>
+  <li id="s03-13"><span class="src-title">Voyage AI pricing</span> <span class="src-note">(official)</span><a class="url" href="https://docs.voyageai.com/docs/pricing">https://docs.voyageai.com/docs/pricing</a></li>
+  <li id="s03-14"><span class="src-title">OpenAI embeddings guide</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/guides/embeddings">https://developers.openai.com/api/docs/guides/embeddings</a></li>
+  <li id="s03-15"><span class="src-title">OpenAI text-embedding-3-small model page</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/models/text-embedding-3-small">https://developers.openai.com/api/docs/models/text-embedding-3-small</a></li>
+  <li id="s03-16"><span class="src-title">OpenAI text-embedding-3-large model page</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/models/text-embedding-3-large">https://developers.openai.com/api/docs/models/text-embedding-3-large</a></li>
+  <li id="s03-17"><span class="src-title">Cohere embed models documentation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.cohere.com/docs/cohere-embed">https://docs.cohere.com/docs/cohere-embed</a></li>
+  <li id="s03-18"><span class="src-title">Cohere embed-v4.0 on the Vercel AI Gateway</span> <span class="src-note">(secondary)</span><a class="url" href="https://vercel.com/ai-gateway/models/embed-v4.0">https://vercel.com/ai-gateway/models/embed-v4.0</a></li>
+  <li id="s03-19"><span class="src-title">gemini-embedding-001 model page</span> <span class="src-note">(official)</span><a class="url" href="https://aistudio.google.com/docs/models/gemini-embedding-001">https://aistudio.google.com/docs/models/gemini-embedding-001</a></li>
+  <li id="s03-20"><span class="src-title">Gemini API pricing</span> <span class="src-note">(official)</span><a class="url" href="https://ai.google.dev/gemini-api/docs/pricing">https://ai.google.dev/gemini-api/docs/pricing</a></li>
+  <li id="s03-21"><span class="src-title">gemini-embedding-2 model page</span> <span class="src-note">(official)</span><a class="url" href="https://aistudio.google.com/docs/models/gemini-embedding-2">https://aistudio.google.com/docs/models/gemini-embedding-2</a></li>
+  <li id="s03-22"><span class="src-title">Gemini API changelog (10 March, 22 April, 6 November 2026 entries; 14 July 2025 entry)</span> <span class="src-note">(official)</span><a class="url" href="https://ai.google.dev/gemini-api/docs/changelog">https://ai.google.dev/gemini-api/docs/changelog</a></li>
+  <li id="s03-23"><span class="src-title">Ollama embeddings documentation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.ollama.com/capabilities/embeddings">https://docs.ollama.com/capabilities/embeddings</a></li>
+  <li id="s03-24"><span class="src-title">mlx-embeddings repository</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/Blaizzy/mlx-embeddings">https://github.com/Blaizzy/mlx-embeddings</a></li>
+  <li id="s03-25"><span class="src-title">Qwen3-Embedding on Ollama</span> <span class="src-note">(official)</span><a class="url" href="https://ollama.com/library/qwen3-embedding">https://ollama.com/library/qwen3-embedding</a></li>
+  <li id="s03-26"><span class="src-title">Ollama API: list local models, digest field (read 20 November 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.ollama.com/api/tags">https://docs.ollama.com/api/tags</a></li>
+  <li id="s03-27"><span class="src-title">Hugging Face text-embeddings-inference repository</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/huggingface/text-embeddings-inference">https://github.com/huggingface/text-embeddings-inference</a></li>
+  <li id="s03-28"><span class="src-title">llama.cpp server README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md">https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md</a></li>
+  <li id="s03-29"><span class="src-title">Ollama releases (v0.40.17 published 2026-11-10, read 22 November 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/ollama/ollama/releases">https://github.com/ollama/ollama/releases</a></li>
+</ol>
+</section>
+
+</article>

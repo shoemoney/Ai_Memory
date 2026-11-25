@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9b4423c31cec560d8b4c3f375b53afa0d6baad8d59d4271534fd7bff9e09b623",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c0478844-24fb-4116-9508-caa2668bcb9c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"cracked windshield\", \"summary\": \"\"}, {\"name\": \"throw pillows\", \"summary\": \"The user has ordered new throw pillows for their living room. They are a darker blue color, which they think will really pop with the rug. They are planning to place the rug under the coffee table and are looking for a modern rug with a subtle texture or pattern to add depth to the space without overpowering the throw pillows.\"}]}}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367480,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 97,
+      "prompt_tokens": 6798,
+      "total_tokens": 6895,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4361
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"cracked windshield\", \"summary\": \"\"}, {\"name\": \"throw pillows\", \"summary\": \"The user has ordered new throw pillows for their living room. They are a darker blue color, which they think will really pop with the rug. They are planning to place the rug under the coffee table and are looking for a modern rug with a subtle texture or pattern to add depth to the space without overpowering the throw pillows.\"}]}}",
+  "seconds": 38.77848790900316,
+  "prompt_tokens_local": 6798
+}

@@ -1,0 +1,87 @@
+<section class="cover" id="cover">
+<img class="cover-art" src="cover-art/cover-ai-memory.jpg" alt="" width="816" height="1056">
+<div class="cover-scrim-top" aria-hidden="true"></div>
+<div class="cover-scrim-bottom" aria-hidden="true"></div>
+<div class="cover-scrim-author" aria-hidden="true"></div>
+<div class="cover-top"><span>Technical book</span><span>November 2026</span></div>
+<p class="cover-title"><span class="ai">AI</span> Memory</p>
+<p class="cover-sub">Building an LLM brain</p>
+<div class="cover-key" aria-hidden="true"><i data-part="a"></i><i data-part="b"></i><i data-part="c"></i><i data-part="d"></i><i data-part="e"></i><i data-part="f"></i></div>
+<div class="cover-foot">
+  <div><b>Sources checked to</b>22 November 2026<br><b>Labs rerun to</b>23 November 2026</div>
+  <div class="cover-author"><span class="by">Written By Jeremy Schoemaker</span><em>Author of AiBook</em></div>
+</div>
+</section>
+
+<section class="frontpage howto">
+<h1 class="front-title">How to read this book</h1>
+<p class="front-lede">Build memory that an agent based on a large language model (LLM) can read and update. Entry points: Chapter 00 for the memory loop, 01 for flat files, 17 to evaluate, secure and operate memory, 18 to compare architectures, 20 for one assistant's six stages.</p>
+
+<div class="howto-grid">
+<div>
+<h2>Three kinds of chapter</h2>
+<p class="small"><strong>Architecture chapters, 01–14.</strong> Each has a summary, a strip showing maturity, setup effort and running cost, and nine sections: What it is, How it works, Good for and not for, Use cases, Numbers, Setup walkthrough, Gotchas, Verdict and Sources.</p>
+<p class="small"><strong>Essay chapters, 00 and 15–19.</strong> They cover memory basics, history, research, security, evaluation and operations, architecture selection and a field report. Each keeps the summary and Sources list. Strip fields vary by topic; setup and cost ratings are omitted. Read these chapters in any order.</p>
+<p class="small"><strong>Case studies, 20–23.</strong> These designs use only self-hosted models: one assistant in six memory stages, then a painter, a doctor's office and an international homebuilder. The last three have a full-page "What does what" map. These reference designs offer no legal, compliance, tax or clinical advice.</p>
+<h2>Running the Setup walkthroughs</h2>
+<p class="small">Use disposable service instances, such as temporary databases without real data. Most walkthroughs refuse an existing working folder, mark created items with a run token (random string) and clean up only matching items. Some short walkthroughs use fixed names; keep those disposable too.</p>
+<p class="small">For a named file longer than eight lines, the chapter prints a one-line pointer<!--ed:ebook--> that links to it. In the PDF edition, files are attached (Attachments panel, a paperclip icon) and are in the companion repository, whose address Appendix B prints.<!--/ed--><!--ed:print--> with its repository path; this appendix prints the repository address.<!--/ed--> Labels such as ch09-code05 mean Chapter 09, fifth named file; the repository README maps labels to files. Source links appear under sources/ in the repository.</p>
+<p class="small">Walkthroughs carry these labels:</p>
+<table class="legend">
+  <tr><td><span class="code-tag tested">Tested</span></td><td>Run in November 2026 using listed versions and linked files where pointers replace code.</td></tr>
+  <tr><td><span class="code-tag docs">From docs, not run</span></td><td>Adapted from documentation, not run.</td></tr>
+</table>
+<h2>Back matter</h2>
+<p class="small"><strong>Appendix A, Glossary.</strong> Defines memory terminology and abbreviations, with chapter pointers; terms are also defined at first use.
+<strong>Appendix B, Code files.</strong> Indexes code files by label and path.</p>
+
+</div>
+<div>
+<h2>Citations</h2>
+<p class="small">A raised number after a claim points to the Sources list at the end of the chapter<!--ed:ebook-->, where each title is a link<!--/ed--><!--ed:print-->, with the full URL<!--/ed-->. Check it before relying on a version or price.</p>
+<h2>Evidence labels</h2>
+<table class="legend">
+  <tr><td><span class="pill official">Official docs</span></td><td>Behavior described in maintainer documentation.</td></tr>
+  <tr><td><span class="pill official">Maintainer blog</span></td><td>First-party account; check release docs for supported behavior.</td></tr>
+  <tr><td><span class="pill official">Authors' paper</span></td><td>Authors' results, not reproduced here. Also Paper and Paper text.</td></tr>
+  <tr><td><span class="pill unverified">Paper abstract</span></td><td>Only the abstract was read; details remain unverified.</td></tr>
+  <tr><td><span class="pill official">Independent paper</span></td><td>A third party's own measurements.</td></tr>
+  <tr><td><span class="pill secondary">Secondary</span></td><td>A write-up of another source's result; check it. Also Paper, restated.</td></tr>
+  <tr><td><span class="pill vendor">Vendor claim</span></td><td>Vendor-reported figure, not independently verified; check test conditions before planning. Also Vendor measurement.</td></tr>
+  <tr><td><span class="pill example">Measured here</span></td><td>This book's own result. Also Test run, Measured once, Single measurement and One home lab.</td></tr>
+  <tr><td><span class="pill example">Example value</span></td><td>An example, not a default.</td></tr>
+  <tr><td><span class="pill unverified">Unverified</span></td><td>Not confirmed at the source.</td></tr>
+</table>
+<h2>Maturity badge</h2>
+<table class="legend">
+  <tr><td><span class="badge badge-shipped">Shipped</span></td><td>Documented release; no production-readiness claim.</td></tr>
+  <tr><td><span class="badge badge-prototype">Prototype</span></td><td>Demonstration code only; no supported release.</td></tr>
+  <tr><td><span class="badge badge-research">Research</span></td><td>A paper or experiment only.</td></tr>
+  <tr><td><span class="badge badge-outdated">Outdated</span></td><td>Once common, now discouraged.</td></tr>
+</table>
+<h2>Editorial ratings</h2>
+<table class="legend">
+  <tr><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span> <span class="rating r5" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><strong>Setup effort</strong> (colored dots): 1 is edit files on one machine; 3 is one database or service to run; 5 is several services plus model hosting.</td></tr>
+  <tr><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span> <span class="rating r5 ink" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><strong>Running cost</strong> (dark dots): count only what memory adds over the same agent without it. 1 adds no service or hardware, though compute/storage charges may grow; 3 is one managed service or small virtual machine; 5 is several paid managed services or an added accelerator.</td></tr>
+</table>
+<p class="small muted">Ratings are editorial judgments, not measurements or budgets; cost dots compare added infrastructure. Even numbers fall between anchors. Architecture strips and Chapter 18 share these dots; essay strips omit them. Resolve ties using existing infrastructure, hosting limits and Chapter 18.</p>
+
+</div>
+</div>
+
+</section>
+
+<section class="frontpage toc-page">
+<h1 class="front-title no-toc">Contents</h1>
+<p class="part-key-label">Seven color-coded parts; Appendices A and B follow.</p>
+<div class="part-key">
+  <div data-part="a"><b>Part A</b>Files and text, 00–02</div>
+  <div data-part="b"><b>Part B</b>Vectors and retrieval, 03–05</div>
+  <div data-part="c"><b>Part C</b>Models that remember, 06–07</div>
+  <div data-part="d"><b>Part D</b>Stores, 08–12</div>
+  <div data-part="e"><b>Part E</b>Frameworks and graphs, 13–14</div>
+  <div data-part="f"><b>Part F</b>History, research and practice, 15–19</div>
+  <div data-part="g"><b>Part G</b>Case studies, 20–23</div>
+</div>
+<nav id="toc"></nav>
+</section>

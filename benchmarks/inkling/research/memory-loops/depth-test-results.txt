@@ -1,0 +1,7 @@
+2026-11-25, the workstation; no the Mac Studio jobs.
+Command: python3 -m unittest discover -s benchmarks/inkling/research/memory-loops -p "test*.py" -v
+Ran 10 tests in 8.762s: OK (no skips).
+New design: three tests; all 12 cells using 3 real eligible archived IDs, 36 reader + 108 judge stub calls; no-call resume, failed hook, changed settings/type, missing-cell rejection, analysis CLI, synthetic interaction/sign/pairing/Wilson/equivalence controls, SVG XML.
+Legacy: seven tests including native schedule and owned lifecycle stub.
+Python compilation, bash -n sweep.sh: passed.
+Fixture SVGs are synthetic diagnostics, not model results.

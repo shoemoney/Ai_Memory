@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 72
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b9977edd239ef604dc2a4b59e148a3b34564f5183dd22829e778c27b87d89e5e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0b378e0e-5aee-4ae5-8824-572afe1d3807",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"entity_name_1\", \"target_entity_name\": \"entity_name_2\", \"relation_type\": \"IS_FRIENDS_WITH\", \"fact\": \"Mr. Moraes and Mr. Bolsonaro have a tense relationship, with Mr. Moraes speaking directly to Mr. Bolsonaro at his inauguration, and Mr. Bolsonaro criticizing Mr. Moraes's actions.\", \"valid_at\": \"2023-05-30T12:50:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795374845,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 129,
+      "prompt_tokens": 7647,
+      "total_tokens": 7776,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"entity_name_1\", \"target_entity_name\": \"entity_name_2\", \"relation_type\": \"IS_FRIENDS_WITH\", \"fact\": \"Mr. Moraes and Mr. Bolsonaro have a tense relationship, with Mr. Moraes speaking directly to Mr. Bolsonaro at his inauguration, and Mr. Bolsonaro criticizing Mr. Moraes's actions.\", \"valid_at\": \"2023-05-30T12:50:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 73.23821788499481,
+  "prompt_tokens_local": 7647
+}

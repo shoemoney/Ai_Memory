@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 31
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5758c4d8b6e8944117eb8454ace6d604d29d1ae54dee8b205a559f8ae4529f62",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b0c3fe01-b894-4cd7-b3f2-6de010b9ee15",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\" : [\n        {\n            \"id\" : \"10\",\n            \"text\" : \"Thinking of selling Taylor GS Mini acoustic guitar\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"11\",\n            \"text\" : \"Thinking of buying used Ibanez bass guitar\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"12\",\n            \"text\" : \"Interested in finding good deals on used bass guitars online\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332479,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 122,
+      "prompt_tokens": 1886,
+      "total_tokens": 2008,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\" : [\n        {\n            \"id\" : \"10\",\n            \"text\" : \"Thinking of selling Taylor GS Mini acoustic guitar\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"11\",\n            \"text\" : \"Thinking of buying used Ibanez bass guitar\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"12\",\n            \"text\" : \"Interested in finding good deals on used bass guitars online\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+  "seconds": 4.1867163040005835,
+  "prompt_tokens_local": 1886,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

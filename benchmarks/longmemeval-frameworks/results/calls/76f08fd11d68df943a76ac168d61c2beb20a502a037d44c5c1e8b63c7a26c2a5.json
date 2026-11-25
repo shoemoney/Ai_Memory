@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 59
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9fbeac4414cb357515a4addbd65c68ec53b8506a5192bf0157e061c3df1ce782",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-fc4a2b66-210e-4d35-b679-f71bcd374493",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\n      \"current_location\": \"Portland, Oregon\",\n      \"planned_activities\": [\n        \"Visit Yosemite National Park\",\n        \"Drive to Glacier Point\",\n        \"Explore Yosemite Valley\",\n        \"Visit Mariposa Grove of giant sequoias\",\n        \"Drive to Half Dome Village\",\n        \"Camping in Yosemite National Park\"\n      ],\n      \"fuel_efficiency\": \"Keeping track of fuel efficiency since the last road trip 6 weeks ago\",\n      \"road_trip_plan\": [\n        {\n          \"destination\": \"Grand Canyon National Park\",\n          \"distance\": \"1,430 miles\",\n          \"time\": \"21 hours and 30 minutes\"\n        },\n        {\n          \"destination\": \"Yosemite National Park\",\n          \"distance\": \"740 miles\",\n          \"time\": \"11 hours and 30 minutes\"\n        },\n        {\n          \"destination\": \"Glacier Point\",\n          \"distance\": \"1,430 miles\",\n          \"time\": \"21 hours and 30 minutes\"\n        }\n      ]\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357202,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 231,
+      "prompt_tokens": 2610,
+      "total_tokens": 2841,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\n      \"current_location\": \"Portland, Oregon\",\n      \"planned_activities\": [\n        \"Visit Yosemite National Park\",\n        \"Drive to Glacier Point\",\n        \"Explore Yosemite Valley\",\n        \"Visit Mariposa Grove of giant sequoias\",\n        \"Drive to Half Dome Village\",\n        \"Camping in Yosemite National Park\"\n      ],\n      \"fuel_efficiency\": \"Keeping track of fuel efficiency since the last road trip 6 weeks ago\",\n      \"road_trip_plan\": [\n        {\n          \"destination\": \"Grand Canyon National Park\",\n          \"distance\": \"1,430 miles\",\n          \"time\": \"21 hours and 30 minutes\"\n        },\n        {\n          \"destination\": \"Yosemite National Park\",\n          \"distance\": \"740 miles\",\n          \"time\": \"11 hours and 30 minutes\"\n        },\n        {\n          \"destination\": \"Glacier Point\",\n          \"distance\": \"1,430 miles\",\n          \"time\": \"21 hours and 30 minutes\"\n        }\n      ]\n    }\n  ]\n}",
+  "seconds": 38.37554751499556,
+  "prompt_tokens_local": 2610
+}

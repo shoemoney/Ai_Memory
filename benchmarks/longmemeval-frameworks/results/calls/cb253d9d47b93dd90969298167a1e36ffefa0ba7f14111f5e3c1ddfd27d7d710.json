@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f01fe7d790863c59e5be79cd4527829afd7c262e8c5a4acb29aca87562e8f0b5",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-1803c309-99f8-4d65-9eea-f21686fd2d2f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "```json\n{\n  \"extracted_entities\": [\n    {\n      \"name\": \"Denver\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Lockheed Martin\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Belmont Arts Center\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Riverside Park\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [1]\n    },\n    {\n      \"name\": \"Trigger\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [1]\n    },\n    {\n      \"name\": \"Mustang\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    },\n    {\n      \"name\": \"Gamecube\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    }\n  ]\n}\n```",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795358870,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 222,
+      "prompt_tokens": 483,
+      "total_tokens": 705,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 431
+      }
+    }
+  },
+  "text": "```json\n{\n  \"extracted_entities\": [\n    {\n      \"name\": \"Denver\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Lockheed Martin\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Belmont Arts Center\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Riverside Park\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [1]\n    },\n    {\n      \"name\": \"Trigger\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [1]\n    },\n    {\n      \"name\": \"Mustang\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    },\n    {\n      \"name\": \"Gamecube\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    }\n  ]\n}\n```",
+  "seconds": 506.20348062799894,
+  "prompt_tokens_local": 483
+}

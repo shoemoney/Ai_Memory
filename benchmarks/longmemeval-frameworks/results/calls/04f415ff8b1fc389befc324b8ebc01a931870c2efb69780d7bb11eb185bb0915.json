@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 68
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "062290ff999fd79447147cee25fd2d78aca9ff9854e9de65e9d61e3a314a8235",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c8a3fed7-81f9-41d4-9ae6-039667e7dddd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"asked for specific stretches without consulting a professional\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"asked for generic stretches without considering injury specifics\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"asked to skip medical advice\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"asked for generic stretches without considering injury specifics\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"asked to skip appointments\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"asked for generic stretches without considering injury specifics\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795333028,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 150,
+      "prompt_tokens": 1999,
+      "total_tokens": 2149,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"asked for specific stretches without consulting a professional\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"asked for generic stretches without considering injury specifics\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"asked to skip medical advice\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"asked for generic stretches without considering injury specifics\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"asked to skip appointments\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"asked for generic stretches without considering injury specifics\"\n        }\n    ]\n}",
+  "seconds": 4.961411985990708,
+  "prompt_tokens_local": 1999,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q072",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "9aa4b97586d6e45c07516c2f1d6c4e744bef6a065f0f37c253eb0665f040f0e4",
+  "reference_sha256": "f8fea2e3eb48ad5a4ca2100c74ec96f96b7294efb0de89d9feb3273185e0dddd",
+  "method": "bm25",
+  "answer": "Person277 told Mr. Person546 to sit down and mind his business.",
+  "response": {
+    "text": "Person277 told Mr. Person546 to sit down and mind his business.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 20,
+      "prompt_tokens": 3324,
+      "total_tokens": 3344,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 13.355385050002951,
+    "request_sha256": "02063eb15441072d6beb6ec6496563f038e14ff808351478a48bf91c2829c272",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    440,
+    454,
+    448,
+    464,
+    447,
+    432,
+    441,
+    442,
+    457,
+    443,
+    425,
+    453,
+    416,
+    452,
+    417,
+    465,
+    459,
+    393,
+    433,
+    450
+  ],
+  "retrieval_scores": [
+    184.59052877727856,
+    164.1198708433782,
+    162.52896325512566,
+    160.40372719416018,
+    159.07344424498467,
+    158.49755805921174,
+    158.22760750495829,
+    154.39411905080848,
+    154.32738984170177,
+    151.74363422980403,
+    151.58313192910634,
+    150.36048517642706,
+    148.5234961567573,
+    143.7654573914818,
+    140.65795298771792,
+    140.1129053499218,
+    139.5237283591408,
+    139.35546451696084,
+    138.92595224958538,
+    138.6661913054559
+  ],
+  "retrieval_seconds": 0.024450579003314488,
+  "provided_context_sha256": "b29207ca9dff5c9c82c0beee3690d076e0d6e6d690f24f91ae647a7888218473",
+  "provided_context_tokens": 2971,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "bcb6ce7e013fa6f1c93ac5c5da5c1f3f3df7d41650693a3a8ad37c2f905ced0c",
+    "raw_answer_sha256": "c2a79a409bd8fd63393f43eab13249a4fb1014d61a22ecf580ded2d2373ef843",
+    "answer_redacted": false
+  }
+}

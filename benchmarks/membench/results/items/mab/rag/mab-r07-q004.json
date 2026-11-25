@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q004",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "08edc6c9a8d3a09286ce664a7aaa23fbaa96411a28e3ff4b1bbd74eeec3b7e88",
+  "reference_sha256": "9234f3ba3e9ce3aac575da297683c8dc0454d215d82bb5117abb1c7733c6577d",
+  "method": "rag",
+  "answer": "Person238 hoped it would not rain on the day of the barbecue.",
+  "response": {
+    "text": "Person238 hoped it would not rain on the day of the barbecue.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 3240,
+      "total_tokens": 3257,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 15.09471420099726,
+    "request_sha256": "449e0f92c9ecf8e96723f700473210ebd9ed79e0c797feb48b83ed40b1a538a9",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    17,
+    188,
+    501,
+    404,
+    456,
+    423,
+    359,
+    350,
+    245,
+    55,
+    457,
+    454,
+    54,
+    447,
+    152,
+    112,
+    323,
+    474,
+    309,
+    436
+  ],
+  "retrieval_scores": [
+    0.5062713623046875,
+    0.4724048972129822,
+    0.4722341001033783,
+    0.4634014964103699,
+    0.4542369842529297,
+    0.4519597887992859,
+    0.44354403018951416,
+    0.44246038794517517,
+    0.44235917925834656,
+    0.44055187702178955,
+    0.44046351313591003,
+    0.43439289927482605,
+    0.4339263439178467,
+    0.43374142050743103,
+    0.43241381645202637,
+    0.43201571702957153,
+    0.4311838448047638,
+    0.4310181736946106,
+    0.4303838014602661,
+    0.42998597025871277
+  ],
+  "retrieval_seconds": 0.2222557869972661,
+  "provided_context_sha256": "bc108e11764a339effa3c2dffd7ee10ea743b0d9f6866905bfd11e5b2bc3ff45",
+  "provided_context_tokens": 2884,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "fc9f1a1749e3943a5a08d694cfcc0d55213ea0219f9824ebece0af4e5335989f",
+    "raw_answer_sha256": "d34afa17c75e708584974ed3b9f400b8ce5cf19debf3f327bb5b5728994fa720",
+    "answer_redacted": false
+  }
+}

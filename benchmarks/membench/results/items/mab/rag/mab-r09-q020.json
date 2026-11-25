@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q020",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "f28a290505c44bd0cab093e4ac596902b2907751975a4e8c726a61c32ae14838",
+  "reference_sha256": "9b2ad3d6d907812f11da02d71172f6a93a0306f282cc8df2231413a6b50c37b1",
+  "method": "rag",
+  "answer": "Person441 Person361 arrived and called for Person323.",
+  "response": {
+    "text": "Person441 Person361 arrived and called for Person323.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3419,
+      "total_tokens": 3437,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.70595434999268,
+    "request_sha256": "ca349e05d1cd962bf1586cecaa519840065b69e19441543331212534c1a91c28",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    62,
+    307,
+    122,
+    22,
+    503,
+    169,
+    107,
+    120,
+    23,
+    182,
+    140,
+    104,
+    363,
+    89,
+    297,
+    116,
+    105,
+    68,
+    370,
+    88
+  ],
+  "retrieval_scores": [
+    0.5943145751953125,
+    0.5903327465057373,
+    0.5813069939613342,
+    0.5794888734817505,
+    0.5737965106964111,
+    0.5650070309638977,
+    0.5548755526542664,
+    0.5526069402694702,
+    0.5522494316101074,
+    0.5518870949745178,
+    0.5459282398223877,
+    0.5436538457870483,
+    0.5418587923049927,
+    0.5385810136795044,
+    0.538322925567627,
+    0.5372623205184937,
+    0.5360257625579834,
+    0.5356628894805908,
+    0.5350075960159302,
+    0.5341402292251587
+  ],
+  "retrieval_seconds": 0.034865308000007644,
+  "provided_context_sha256": "e7759b115e5bed8b03aeaf7d34cabc2f47fd2df9d029fe2e133ba0efea6fec9a",
+  "provided_context_tokens": 3065,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "5e8fa2b0b4a095e5a488258abbf4cfe71efbd4e5711f98df192a9937203bf8cc",
+    "raw_answer_sha256": "f674f9dcc7e2270f01ae5d2e640fa7d4f16e305de6915eab05f395ca52353368",
+    "answer_redacted": false
+  }
+}

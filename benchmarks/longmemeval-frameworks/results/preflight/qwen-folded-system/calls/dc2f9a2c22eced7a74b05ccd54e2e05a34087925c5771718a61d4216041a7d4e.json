@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "bd1e33c2f6baaef17c1bebd831b76c5b362cc9d5858859b493d5ccf69be2c8ca",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ab40ae5b-70bf-429c-9bce-fb47c0e5b263",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_OWNER_OF\", \"fact\": \"Nisha's dad owns the Trigger dog leash.\", \"valid_at\": \"2023-05-28T00:18:00Z\"}, {\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"wool coat\", \"relation_type\": \"Wears\", \"fact\": \"Nisha's dad wears a wool coat.\", \"valid_at\": \"2023-05-28T00:18:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331300,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 141,
+      "prompt_tokens": 9283,
+      "total_tokens": 9424,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 184
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_OWNER_OF\", \"fact\": \"Nisha's dad owns the Trigger dog leash.\", \"valid_at\": \"2023-05-28T00:18:00Z\"}, {\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"wool coat\", \"relation_type\": \"Wears\", \"fact\": \"Nisha's dad wears a wool coat.\", \"valid_at\": \"2023-05-28T00:18:00Z\"}]}",
+  "seconds": 19.324256724998122,
+  "prompt_tokens_local_gemma_estimate": 9390
+}

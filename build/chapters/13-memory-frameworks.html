@@ -1,0 +1,956 @@
+<article class="chapter" data-ch="13" data-part="e" data-running="Memory frameworks">
+<header class="opener">
+<p class="opener-eyebrow">Part E · Chapter 13</p>
+<div aria-hidden="true" class="opener-num">13</div>
+<h1>Memory frameworks</h1>
+<p class="opener-summary">A memory framework decides how an agent saves facts, retrieves them and places them in a language model’s context.</p>
+<div class="glance">
+<div class="glance-cell">
+<p class="glance-label">Maturity</p>
+<p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+</div>
+<div class="glance-cell">
+<p class="glance-label">Setup effort</p>
+<p class="glance-value"><span aria-label="3 of 5" class="rating r3" role="img"><i></i><i></i><i></i><i></i><i></i></span><span class="of">3 of 5</span></p>
+</div>
+<div class="glance-cell">
+<p class="glance-label">Running cost</p>
+<p class="glance-value"><span aria-label="3 of 5" class="rating r3" role="img"><i></i><i></i><i></i><i></i><i></i></span><span class="of">3 of 5</span></p>
+</div>
+<div class="glance-cell">
+<p class="glance-label">Best for</p>
+<p class="glance-value">Agents that need persistent facts, shared recall or editable context blocks.</p>
+</div>
+</div>
+</header>
+<section>
+<h2>What it is</h2>
+<div class="plain"><p class="lead">Memory frameworks save and retrieve facts. Choose by who selects them, a model or your code, and the saving cost.</p>
+<p>The Model Context Protocol (MCP) exposes tools; its memory server stores local entities/notes. LangGraph resumes conversations (threads) from state snapshots (checkpoints); Store shares facts across threads. Letta V1 is retired; Letta Code is current. Use LangGraph Store for keyed facts: namespace identifies whose, key identifies which. For extraction, try Mem0 (Chapter 06) or Hindsight (Step 6).<sup class="cite"><a href="#s13-1">1</a>,<a href="#s13-2">2</a>,<a href="#s13-3">3</a></sup></p>
+</div>
+<table class="data"><colgroup><col class="c25"/><col class="c40"/><col class="c35"/></colgroup><thead><tr><th>Choose</th><th>Best fit</th><th>What to validate</th></tr></thead><tbody><tr><td>MCP reference server 2.2.1</td><td>Local clients write named entities and notes to a shared file.</td><td>File persistence and tool results; tested below.<sup class="cite"><a href="#s13-1">1</a></sup></td></tr><tr><td>LangGraph 1.2.24</td><td>Your code chooses namespace, key and timing.</td><td>Store facts span threads; a checkpointer saves snapshots for resumption. Tested below.<sup class="cite"><a href="#s13-2">2</a></sup></td></tr><tr><td>Letta</td><td>Investigate Code’s editable files; V1 is legacy only.</td><td>Step 4 tests legacy blocks; Step 7 reports later Code outcomes. Pass it before adopting.<sup class="cite"><a href="#s13-3">3</a>,<a href="#s13-4">4</a></sup></td></tr><tr><td>Mem0 OSS / Platform</td><td>A model extracts user facts automatically, then relevant notes are retrieved.</td><td>Tested in Chapter 06, not here. Validate corrections in fresh threads (Gotchas).<sup class="cite"><a href="#s13-5">5</a></sup></td></tr></tbody></table>
+</section>
+<section>
+<h2>How it works</h2>
+<p>Direct writes need no model. Extraction/agent edits add calls (Step 7); semantic indexing embeds writes/queries. Letta V1 blocks stay in prompts; keyed/semantic reads fetch on demand.<sup class="cite"><a href="#s13-1">1</a>,<a href="#s13-2">2</a>,<a href="#s13-5">5</a></sup></p>
+<figure class="diagram"><svg aria-label="An agent or extraction model writes notes to persistent storage; lookup results enter the language model prompt." role="img" viewbox="0 0 600 170">
+<rect class="d-box" height="80" rx="4" width="150" x="20" y="40"></rect>
+<text class="d-title" text-anchor="middle" x="95" y="65">Agent or extractor</text>
+<text class="d-sub" text-anchor="middle" x="95" y="85">chooses facts to save</text>
+<text class="d-sub" text-anchor="middle" x="95" y="103">may call a model</text>
+<rect class="d-box accent" height="80" rx="4" width="150" x="225" y="40"></rect>
+<text class="d-title" text-anchor="middle" x="300" y="65">Persistent memory</text>
+<text class="d-sub" text-anchor="middle" x="300" y="85">file, Store, blocks,</text>
+<text class="d-sub" text-anchor="middle" x="300" y="103">vectors or graph</text>
+<rect class="d-box dark" height="80" rx="4" width="150" x="430" y="40"></rect>
+<text class="d-title d-on-dark" text-anchor="middle" x="505" y="65">LLM context</text>
+<text class="d-sub d-on-dark" text-anchor="middle" x="505" y="85">selected notes or</text>
+<text class="d-sub d-on-dark" text-anchor="middle" x="505" y="103">always-visible blocks</text>
+<path class="d-line" d="M170 80 H223"></path><path class="d-line accent" d="M375 80 H428"></path>
+</svg><figcaption><b>Figure 1.</b> Saving and looking up are separate from answering. Semantic indexing and fact extraction add model work.</figcaption></figure>
+<h3>Mem0: current retrieval design</h3>
+<p>Mem0’s April 2026 algorithm v3 (package mem0ai 2.2.1; algorithm versions are separate) makes one generative call per extraction-enabled save. ADD-only facts lack stable field keys. Your code must search user-scoped memories, identify contradictions and delete superseded IDs (Gotchas; Chapter 06’s delete call). It links entities; retrieval adds BM25 keyword scores, entity signals and time-aware ranking to semantic search. Python’s <code>[nlp]</code> extra and spaCy model enable entity extraction and keyword lemmatization, and Qdrant BM25 also needs <code>fastembed</code>. Chapter 06’s minimal installation uses semantic search only.<sup class="cite"><a href="#s13-5">5</a>,<a href="#s13-6">6</a></sup></p>
+<p>In <code>mem0ai==2.2.1</code>, keyword and entity signals only re-rank semantic hits, so they cannot recover an exact match it missed. If exact identifiers matter, measure how often semantic search finds them and add a keyword branch.<sup class="cite"><a href="#s13-6">6</a></sup></p>
+<p>Mem0 OSS is self-run. Mem0 Platform’s proprietary optimizations, terms and published scores do not carry over (Benchmark evidence).<sup class="cite"><a href="#s13-5">5</a>,<a href="#s13-7">7</a></sup></p>
+</section>
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf"><div class="gnf-col good"><p class="gnf-title">Good for</p><ul><li>Notes the agent writes that must survive a session.</li><li>Namespaced facts shared across agent threads.</li><li>Preferences picked out for a small prompt budget.</li><li>Agent-editable context with an audit trail.</li></ul></div><div class="gnf-col not"><p class="gnf-title">Not for</p><ul><li>Fixed profile fields, which belong in a database (Chapter 08).</li><li>Short project instructions, which belong in a file (Chapter 01).</li><li>Authoritative task ownership, which needs transactional guarantees (Chapter 08).</li><li>Exact evidence, where you should also keep the original sources.</li><li>Histories that fit in context, or where plain retrieval meets your target; local extraction did not beat full context (Chapter 17).</li></ul></div></div></section>
+<section>
+<h2>Use cases</h2>
+<div class="ucases"><article class="ucase"><h3 class="ucase-title"><span class="n">1</span>One local assistant</h3><dl><dt>Situation</dt><dd>A single user wants a client to remember a drink preference.</dd><dt>Why it fits</dt><dd>The agent calls an MCP tool and the server stores the exact note.<sup class="cite"><a href="#s13-1">1</a></sup></dd><dt>Pair with</dt><dd>Chapter 01 for readable instructions, and a size limit on the shared file.</dd></dl></article>
+<article class="ucase"><h3 class="ucase-title"><span class="n">2</span>Two agent sessions, one profile</h3><dl><dt>Situation</dt><dd>A support agent opens a new thread but must keep a user preference.</dd><dt>Why it fits</dt><dd>A shared Store namespace outlives each thread’s checkpoints.<sup class="cite"><a href="#s13-2">2</a></sup></dd><dt>Pair with</dt><dd>Chapter 08 once several workers need a database service.</dd></dl></article>
+<article class="ucase"><h3 class="ucase-title"><span class="n">3</span>Editable persona</h3><dl><dt>Situation</dt><dd>An agent must see its current role and preferences on every turn.</dd><dt>Why it fits</dt><dd>Inject Store/file content each turn; provide an edit tool (Chapter 01). V1 blocks are legacy only.<sup class="cite"><a href="#s13-4">4</a></sup></dd><dt>Pair with</dt><dd>A context budget, with older facts moved into retrieval.</dd></dl></article>
+<article class="ucase"><h3 class="ucase-title"><span class="n">4</span>Automatic preference extraction</h3><dl><dt>Situation</dt><dd>Many users produce conversation histories too long to read whole.</dd><dt>Why it fits</dt><dd>Mem0 ranks extracted facts within user/tenant scope (user_id); vendor scopes differ.<sup class="cite"><a href="#s13-5">5</a></sup></dd><dt>Pair with</dt><dd>Chapter 06 for the local test and Chapter 17 for correction and isolation tests.</dd></dl></article>
+</div>
+</section>
+<section>
+<h2>Framework landscape</h2>
+<h3>Also in this space</h3>
+<p>Documentation-based, checked 20 to 22 November 2026, except Hindsight retain/recall (Step 6; reflect unrun). Repository licenses exclude service terms.</p>
+<table class="data"><colgroup><col class="c20"/><col class="c30"/><col class="c25"/><col class="c25"/></colgroup><thead><tr><th>Option</th><th>What it keeps</th><th>Where / license</th><th>When to investigate</th></tr></thead><tbody><tr><td colspan="4">Memory services and graphs</td></tr><tr><td>Zep</td><td>Managed context graphs, episodes and summaries.</td><td>Managed; service terms.</td><td>Managed retrieval with source provenance.<sup class="cite"><a href="#s13-8">8</a></sup></td></tr><tr><td>Graphiti</td><td>Temporal entities, facts and source episodes.</td><td>Self-run; Apache-2.0.</td><td>Time-sensitive recall. Backends: Neo4j, FalkorDB (including Lite) or Neptune plus OpenSearch (Chapter 14).<sup class="cite"><a href="#s13-9">9</a></sup></td></tr><tr><td>Hindsight 1.2.3</td><td>Facts, observations and mental models.</td><td>Self-run MIT; cloud available.</td><td>Retain/recall; reflect answers from memories using a model. Compare extraction quality.<sup class="cite"><a href="#s13-10">10</a></sup></td></tr><tr><td>Cognee 1.6.10</td><td>Graph and vector index from documents.</td><td>Self-run Apache-2.0; cloud available.</td><td>Graph/vector ingestion; compare extraction cost and graph model with Graphiti.<sup class="cite"><a href="#s13-11">11</a></sup></td></tr><tr><td>Supermemory</td><td>Extracted memories and stable and recent user profiles.</td><td>Hosted; repository MIT.</td><td>One API for profiles and retrieval; check self-host terms separately.<sup class="cite"><a href="#s13-12">12</a>,<a href="#s13-13">13</a></sup></td></tr><tr><td>Memanto</td><td>Typed memories, context briefings and lifecycle state.</td><td>Local or cloud; MIT code.</td><td>Sidecar memory agent; local mode supports on-prem Moorcheh.<sup class="cite"><a href="#s13-14">14</a>,<a href="#s13-15">15</a></sup></td></tr><tr><td>memU beta</td><td>Shared wiki and agent-written Markdown skills.</td><td>Local SQLite or Postgres, or cloud; Apache-2.0.</td><td>Cross-agent reuse. Version 0.11.0-beta.3 is a beta.<sup class="cite"><a href="#s13-16">16</a>,<a href="#s13-17">17</a></sup></td></tr><tr><td>Honcho</td><td>Peer representations and observer-to-peer perspectives.</td><td>Self-run AGPL-3.0 or managed.</td><td>Participant knowledge of others; background reasoning.<sup class="cite"><a href="#s13-18">18</a></sup></td></tr><tr><td colspan="4">Capture, observation and storage layers</td></tr><tr><td>Copilot Memory</td><td>Repository facts and cross-repository user preferences.</td><td>GitHub-hosted; service terms.</td><td>Coding-agent recall with code citations checked at use time.<sup class="cite"><a href="#s13-19">19</a></sup></td></tr><tr><td>Memori</td><td>Captured agent interactions and extracted memories.</td><td>Cloud or bring-your-own database; Apache-2.0 SDK.</td><td>Provider-independent capture and recall.<sup class="cite"><a href="#s13-20">20</a></sup></td></tr><tr><td>Mastra Observational Memory</td><td>Dated observations, condensed by a Reflector.</td><td>Self-run; Apache-2.0 outside enterprise directories, which have separate terms.</td><td>Long-running threads with background observation.<sup class="cite"><a href="#s13-21">21</a>,<a href="#s13-29">29</a></sup></td></tr><tr><td>Claude-Mem</td><td>Tool observations and session summaries; SQLite plus semantic search.</td><td>Local worker or cloud sync; Apache-2.0.</td><td>Lifecycle hooks; index before detail retrieval.<sup class="cite"><a href="#s13-22">22</a></sup></td></tr><tr><td>AgentMemory</td><td>Coding sessions, decisions, fixes and handoffs.</td><td>Local store; Apache-2.0.</td><td>Cross-harness capture hooks, search and selective context.<sup class="cite"><a href="#s13-23">23</a></sup></td></tr><tr><td>Redis Agent Memory</td><td>Session memory and extracted long-term facts.</td><td>Redis Cloud or self-managed Kubernetes; product terms.</td><td>Managed extraction/namespaces; original Apache-2.0 server deprecated.<sup class="cite"><a href="#s13-24">24</a></sup></td></tr><tr><td>MemPalace 3.12.0</td><td>Verbatim conversations: scoped wings/rooms/drawers. Local SQLite temporal graph and validity windows.</td><td>Local first; MIT.</td><td>Original wording matters. Pluggable backend, Chroma by default.<sup class="cite"><a href="#s13-25">25</a></sup></td></tr><tr><td>EverOS</td><td>Canonical Markdown; SQLite/LanceDB indexes, user/agent tracks, reflection.</td><td>Self-run; Apache-2.0.</td><td>Readable source files with derived retrieval and offline evolution.<sup class="cite"><a href="#s13-26">26</a></sup></td></tr><tr><td>Strands + MongoDB</td><td>Session snapshots and extracted long-term facts.</td><td>Self-run SDK and integration; Apache-2.0.</td><td>Session snapshots plus scoped long-term recall in existing Strands apps.<sup class="cite"><a href="#s13-27">27</a></sup></td></tr><tr><td>MemOS 2.0</td><td>Memories and skills; Neo4j and Qdrant service, or SQLite plugins.</td><td>Self-run REST or local plugins; Apache-2.0.</td><td>Service/local recall; delete within a memory cube (isolated container). Uninstall retains data, skills, logs.<sup class="cite"><a href="#s13-54">54</a></sup></td></tr><tr><td>TencentDB Agent Memory</td><td>Raw dialogue, atomic facts, scenarios, profiles and skills.</td><td>Self-run; MIT.</td><td>Layered recall with source drill-down; default SQLite + sqlite-vec.<sup class="cite"><a href="#s13-28">28</a></sup></td></tr><tr><td colspan="4">Framework built-ins</td></tr><tr><td>OpenAI Agents SDK sessions</td><td>Per-session history: SQLite, Redis, SQLAlchemy, MongoDB, Conversations API or compaction sessions.</td><td>Self-run SDK 0.25.0; MIT.</td><td>Continue conversations across runs; history, not extracted facts.<sup class="cite"><a href="#s13-55">55</a></sup></td></tr><tr><td>Google ADK Memory Service</td><td>Searchable knowledge from past sessions via <code>MemoryService</code>.</td><td>Self-run google-adk 2.15.0; Apache-2.0.</td><td>ADK agents needing cross-session recall.<sup class="cite"><a href="#s13-56">56</a></sup></td></tr><tr><td>CrewAI and LlamaIndex memory</td><td>Each framework’s built-in memory module.</td><td>Self-run crewai 1.15.44 and llama-index-core 0.14.26; MIT.</td><td>Existing CrewAI crews and LlamaIndex agents.<sup class="cite"><a href="#s13-57">57</a>,<a href="#s13-58">58</a></sup></td></tr><tr><td>LangMem</td><td>Memory tools, background extraction/consolidation, LangGraph Store integration.</td><td>Self-run 0.0.30 (last release 27 October 2025); MIT.</td><td>Model-extracted LangGraph Store memories. Check maintenance.<sup class="cite"><a href="#s13-59">59</a></sup></td></tr></tbody></table>
+<p>Adoption checks for seven tools (Chapter 01 covers repository-memory upkeep):</p>
+<ul>
+<li><strong>Claude-Mem and AgentMemory.</strong> Both require supported capture hooks; audit capture/export/deletion separately from hook removal.<sup class="cite"><a href="#s13-22">22</a>,<a href="#s13-23">23</a></sup></li>
+<li><strong>Honcho.</strong> Workspace/session/peer scopes track knowledge of others. Keep direct evidence, label inferences, budget background reasoning. Before sharing beliefs, inspect Dream Histories (inference logs), correct sources, test scoped deletion.<sup class="cite"><a href="#s13-18">18</a>,<a href="#s13-30">30</a></sup></li>
+<li><strong>memU.</strong> Chat-model calls outside storage convert history into candidate skills; budget/log separately. Separate human instructions, candidates and reviewed skills. Test, approve and version before reuse; revoke after regression failures (Chapter 17).<sup class="cite"><a href="#s13-16">16</a></sup></li>
+<li><strong>MemPalace and EverOS.</strong> For exact quotations, try MemPalace’s verbatim retrieval before extraction. Recall@5 (correct item among five retrieved) measures retrieval, not answer accuracy. EverOS derives indexes/reflected memories from Markdown; its answer scores cannot compare with retrieval-only Recall@5. Export both source corpora; verify deletion across sources, derived stores, exports and backups. EverOS deletes by session/user/agent; deleting one session leaves aggregates.<sup class="cite"><a href="#s13-25">25</a>,<a href="#s13-26">26</a></sup></li>
+<li><strong>Strands with MongoDB.</strong> <code>SnapshotSessionManager</code> resumes sessions; <code>MemoryManager</code> searches long-term memory within a scope, and time to live (TTL) limits how long items survive before expiry. Choose scope from authenticated application state. Closing the agent context flushes pending extraction before closing connections.<sup class="cite"><a href="#s13-27">27</a></sup></li>
+</ul>
+<h3>Managed memory services</h3>
+<p>Services handle extraction and storage; applications authenticate users, select scopes and trigger ingestion. Client-supplied user ids do not establish identity.</p>
+<table class="data"><colgroup><col class="c25"/><col class="c40"/><col class="c35"/></colgroup>
+<thead><tr><th>Service</th><th>Extraction and isolation</th><th>Retention and deletion</th></tr></thead><tbody>
+<tr><td>Google Agent Platform Memory Bank</td><td>Extracts/consolidates session or supplied facts. Resource identity and access management (IAM) protects banks; scope key/value pairs group users’ memories.<sup class="cite"><a href="#s13-31">31</a></sup></td><td>Expiry set by default, on creation or generation; revisions retained separately. Delete memories or purge a scope; revisions can remain accessible for 48 hours after deletion.<sup class="cite"><a href="#s13-32">32</a></sup></td></tr>
+<tr><td>Amazon Bedrock AgentCore Memory</td><td>Events feed asynchronous semantic/preference/summary/episodic strategies. Actor identifies whose events; session groups a conversation. Actor names confer no access: enforce record-namespace IAM policies.<sup class="cite"><a href="#s13-33">33</a></sup></td><td>Raw events expire within 365 days; optional strategy-record TTL, minimum 31 days. Delete events/derived records separately, or the entire resource.<sup class="cite"><a href="#s13-34">34</a></sup></td></tr>
+
+<tr><td>Microsoft Foundry Agent Service Memory (public preview)</td><td>User profiles, chat summaries and procedural routines. Low-level APIs require explicit scope; the agent tool can resolve user identity.<sup class="cite"><a href="#s13-52">52</a></sup></td><td>Item create/read/update/list/delete; scope or store deletion. Store-default TTL in seconds, with direct remember/forget controls.<sup class="cite"><a href="#s13-53">53</a></sup></td></tr>
+</tbody></table>
+<p>Google generates memories when the application calls <code>generate</code>,<sup class="cite"><a href="#s13-31">31</a></sup> and its scope decides which memories are consolidated and retrieved. AWS policies can restrict actor, session and normalized namespace paths such as <code>/actors/alice/</code>. For a stronger customer boundary, use separate projects, banks or resources. Google Cloud Logging/AWS CloudWatch record operations, not extraction correctness.<sup class="cite"><a href="#s13-32">32</a>,<a href="#s13-33">33</a></sup></p>
+<ul>
+<li><strong>Export.</strong> On Google, page through the memory and revision lists, and keep source sessions separately.<sup class="cite"><a href="#s13-32">32</a></sup> On AWS, page through events per actor and session and records per namespace, and keep the actor, session and strategy metadata so records stay interpretable.<sup class="cite"><a href="#s13-34">34</a></sup> Re-extraction from an export need not give the same facts.<sup class="cite"><a href="#s13-32">32</a>,<a href="#s13-34">34</a>,<a href="#s13-35">35</a></sup></li>
+<li><strong>Foundry TTL.</strong> Default TTL covers command, extracted and direct items only in stores created after TTL support. Zero disables expiry; update/consolidation resets last-updated time. Set defaults on creation; check API-version support for later changes.<sup class="cite"><a href="#s13-53">53</a></sup></li>
+<li><strong>Foundry identity.</strong> Validate ownership for item-id reads/edits/deletes and scoped searches. The agent tool resolves identity from the <code>x-memory-user-id</code> header or from Microsoft Entra. Only trusted backends should set that header.<sup class="cite"><a href="#s13-53">53</a></sup></li>
+</ul>
+<h3>Managed pricing and limits</h3>
+<p>Prices (Google/AWS) and preview limits (Foundry), checked 20 November 2026. Google bills GiB; AWS’s GB is undefined. Do not compare directly.</p>
+<ul>
+<li><strong>Google.</strong> Storage, including revisions, costs $0.30/GiB-month. Reads cost $0.085 per 3 million reads; writes cost $0.085 per 1 million writes, both prorated. Generation and embedding tokens are charged separately.<sup class="cite"><a href="#s13-36">36</a></sup></li>
+<li><strong>AWS.</strong> Short-term memory bills ingestion and retrieval by GB, and storage by GB-month; rates not recorded here, see the linked price list. Built-in long-term storage costs $0.75/1,000 records/month and retrieval $0.50/1,000 requests. Override and self-managed strategies are charged separately. Check region and model costs before ingesting.<sup class="cite"><a href="#s13-37">37</a></sup></li>
+<li><strong>Foundry.</strong> Public preview needs compatible Azure OpenAI chat/embedding deployments in a supported region. Model usage is billed; memory pricing may change. Limits are 100 scopes per store, 10,000 memories per scope and 1,000 requests/minute each for search and update. Memory stores have no virtual network integration.<sup class="cite"><a href="#s13-52">52</a></sup></li>
+</ul>
+<h3>Consumer chat memory is not an application store</h3>
+<p>These products store memory in provider accounts; controls vary by plan and workspace.</p>
+<table class="data"><colgroup><col class="c20"/><col class="c35"/><col class="c45"/></colgroup><thead><tr><th>Product</th><th>Remembered material</th><th>Audit and deletion</th></tr></thead><tbody><tr><td>ChatGPT</td><td>Saved facts, past-chat context, other enabled sources.</td><td>Settings → Personalization → Memory; inspect the summary and Sources. Delete memories and their chats and files, and disconnect relevant apps.<sup class="cite"><a href="#s13-38">38</a></sup></td></tr><tr><td>Claude</td><td>Chat context, project memory and chat search.</td><td>Settings → Your Claude (older layout: Memory); inspect and edit entries, or reset memory. Delete entries separately from chats.<sup class="cite"><a href="#s13-39">39</a></sup></td></tr><tr><td>Gemini</td><td>Past-chat context, response instructions, connected-app contributions.</td><td>Settings → Personal Intelligence; inspect instructions and Gemini Apps Activity. Delete the relevant chats and instructions, and disconnect relevant apps.<sup class="cite"><a href="#s13-40">40</a>,<a href="#s13-41">41</a></sup></td></tr></tbody></table>
+<p>Disabling memory need not erase sources. ChatGPT summaries are incomplete inventories; Claude chat deletion may retain derived memory; Gemini chat deletion may affect personalization later. Forgetting an answer does not prove deletion.<sup class="cite"><a href="#s13-38">38</a>,<a href="#s13-39">39</a>,<a href="#s13-40">40</a></sup></p>
+</section>
+<section>
+<h2>Numbers</h2>
+<h3>Scope and scale</h3>
+<p>Server 2.2.1 reads the entire file per read. Writes lock, read, modify and atomically replace it; other processes wait. Stale locks recover, but sharing requires exclusive file creation. File size increases work and lock wait: set <code>MEMORY_MAX_FILE_BYTES</code>, <code>MEMORY_MAX_ENTITIES</code> and <code>MEMORY_MAX_RELATIONS</code>. They are unset by default.<sup class="cite"><a href="#s13-42">42</a></sup></p>
+<p>The MCP, keyed LangGraph Store and Letta V1 fixtures issue storage calls directly and use no inference tokens; their cost is process, API and disk work, with no latency promised. The Letta Code fixture also pays for the model turn that selects and issues each edit (Step 7 reports the times).<sup class="cite"><a href="#s13-1">1</a>,<a href="#s13-2">2</a>,<a href="#s13-4">4</a>,<a href="#s13-5">5</a></sup></p>
+<p>These are arithmetic budgets, not measured defaults; see Chapter 00’s sizing reference.</p>
+<table class="data"><colgroup><col class="c25"/><col class="c40"/><col class="c35"/></colgroup><thead><tr><th>Estimate</th><th>Assumption</th><th>Result</th></tr></thead><tbody>
+<tr><td>Extraction cost</td><td>One call turns 1,000 input tokens into a 100-token fact.</td><td>1,000 input + 100 output tokens per write, so one million writes need 1B input + 100M output tokens.</td></tr>
+<tr><td>Facts read per answer</td><td>Ten 100-token facts.</td><td>About 1,000 extra tokens in each answer prompt.</td></tr>
+<tr><td>Always-visible block</td><td>One 2,000-token block.</td><td>2,000 extra tokens on every turn.</td></tr>
+<tr><td>Text storage</td><td>100 facts/user × 500 bytes/fact × 10,000 users.</td><td>500 MB of text before metadata and indexes.</td></tr>
+<tr><td>Vector storage</td><td>One 768-dimensional float32 vector for each of 1,000,000 facts.</td><td>3.072 GB before index overhead.</td></tr>
+<tr><td>MCP whole-file cost</td><td>A 500 MB file at an assumed 100 MB/second.</td><td>About 5 s per read and about 10 s per write (read plus rewrite) under an exclusive lock, so roughly six writes per minute at most.</td></tr>
+</tbody></table>
+<p>Whole-file storage is costly at that size. The lock supports local sharing; only two small concurrent writes were tested, not crash recovery.<sup class="cite"><a href="#s13-1">1</a></sup></p>
+<p>Use namespaced database storage (Chapter 08) as writers, lock waits or latency grow. Replace LangGraph’s local SQLite backends before running independent workers. Monitor Letta’s per-turn context; retrieve instead of enlarging blocks. Measure extraction queue age and correction accuracy before increasing concurrency.<sup class="cite"><a href="#s13-2">2</a>,<a href="#s13-4">4</a>,<a href="#s13-5">5</a></sup></p>
+<h3>Benchmark evidence</h3>
+<p>Mem0’s managed April 2026 stack claims LoCoMo 92.5 and LongMemEval 94.4 with top-200 retrieval: percent correct on long-conversation questions (Chapter 17). These <strong>vendor claims</strong> are untested here. Locally, <code>benchmarks/longmemeval-frameworks</code> in the companion repository tested Mem0 OSS and Graphiti with 3B extraction on LongMemEval. Ingestion per history took Mem0 19 to 58 minutes; Graphiti took two to five hours and about five times the tokens. Within the shared 14-hour wall-clock budget (Chapter 17), three histories finished, one question each; both frameworks scored zero. That cannot rank them or test vendor figures. The vendor harness defaults to GPT-4o for answering and judging; its OSS comparison uses GPT-5 for both. Record retrieval depth, extractor, answerer and judge before comparing scores.<sup class="cite"><a href="#s13-5">5</a>,<a href="#s13-7">7</a></sup></p>
+<p>Tested locally with a 14B model (harness: <code>benchmarks/locomo</code> in the companion repository), Mem0 OSS scored 66/123 on LoCoMo (53.7%), between plain RAG (62/123) and full context (71/123). With extraction off (harness: <code>benchmarks/longmemeval</code>), it earned the same aggregate score as dense retrieval on LongMemEval: 165/300 (55.0%). Chapter 17 has the tables, intervals and ingestion times.</p>
+</section>
+<section>
+<h2>Setup walkthrough</h2>
+<p>These fixtures check behavior, not quality or throughput. See Chapter 17’s evaluation protocol and Chapter 19’s anecdotal field report.</p>
+<p>Six fixtures ran on 20 and 21 November before the 22 November 2026 cutoff: MCP smoke/parallel writes, LangGraph smoke/Step 5 forks, Letta V1 and Hindsight. The 23 November 2026 supplement adds Letta Code and strengthens Hindsight assertions, unverified at cutoff:</p>
+<ul>
+<li><strong>Environment.</strong> Linux, a consumer CPU with 32 logical threads, CPU only, except the Letta Code fixture (Step 7), which uses a GPU. The Letta V1 container and both Step 6 containers are each capped at four CPUs. Python 3.14.4, local SQLite 3.51.3, Node 24.22.3, npm 11.19.1, Docker 29.1.3. MCP Python client 1.26.0, reference server 2.2.1, LangGraph 1.2.24, checkpoint-sqlite 3.0.3 (checkpoint 4.3.2), Letta V1 0.16.8.</li>
+<li><strong>Needs.</strong> MCP, LangGraph and Letta V1 need no inference endpoint; Hindsight’s script starts local Ollama. Downloads need network; SQLite needs curl, unzip, a C compiler. Cleanup needs passwordless sudo. Steps 1–6 use CPU; Step 7 needs an 8 GB NVIDIA GPU. Letta Code’s interactive <code>/remember</code> is wholly unverified; later directed edits passed at 32,768 tokens. CPU-only readers have verified MCP/LangGraph, no verified Letta Code route.</li>
+</ul>
+<p>The tested <code>mcp==1.26.0</code> pin preserves 1.x <code>ClientSession</code>/<code>stdio_client</code>. Latest 2.3.0 (2 October 2026) needs separate compatibility testing.<sup class="cite"><a href="#s13-43">43</a></sup></p>
+<p>Save the Step 1 block as <code>setup.sh</code> and execute <code>bash setup.sh &amp;&amp; cd /var/tmp/memlab-13/run</code> in your shell. Do not paste or source the block: a failure must stop the script, not your terminal. <code>mkdir</code> stops it if the scratch root exists, protecting earlier runs. Save files there. MCP, Letta V1 and Hindsight recall after server restart; LangGraph reopens SQLite in a fresh process; Letta Code checks a new conversation, then resumes it from a fresh CLI process. All but the parallel-write fixture also delete and verify the fact is gone from the stores they check. The application drives these fixtures; only the Letta Code fixture has the model make the tool edits.</p>
+<h3>Step 1. Install isolated clients and the reference server</h3><p>Setup labels Docker resources with a run token and records their IDs. ownership.sh checks both for stop, restart and removal.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">setup.sh</span><span class="code-tag tested">Tested</span></div><pre>set -euo pipefail
+mkdir -p /var/tmp/memlab-13
+mkdir /var/tmp/memlab-13/run
+cd /var/tmp/memlab-13/run
+pwd -P &gt; .lab-root
+cat /proc/sys/kernel/random/uuid &gt; .run-id
+: &gt; container.ids
+: &gt; network.ids
+cat &gt; ownership.sh &lt;&lt;'SHFILE'
+# Source after entering the scratch root; IDs belong to this run only.
+lab_root=/var/tmp/memlab-13/run
+lab_run=$(cat "$lab_root/.run-id")
+owned_id() {
+  local kind=$1 target=$2 id label
+  id=$(command docker "$kind" inspect --format '{{.Id}}' "$target") || return 1
+  grep -Fxq "$id" "$lab_root/$kind.ids" || return 1
+  if [ "$kind" = container ]; then
+    label=$(command docker container inspect --format \
+      '{{index .Config.Labels "memlab.run"}}' "$id")
+  else
+    label=$(command docker network inspect --format \
+      '{{index .Labels "memlab.run"}}' "$id")
+  fi
+  [ "$label" = "$lab_run" ] || return 1
+  printf '%s\n' "$id"
+}
+docker() {
+  local id label target
+  case "$1 ${2-}" in
+    'network create')
+      shift 2
+      id=$(command docker network create --label "memlab.run=$lab_run" "$@") || return 1
+      printf '%s\n' "$id" &gt;&gt; "$lab_root/network.ids"
+      printf '%s\n' "$id" ;;
+    'run '*)
+      shift
+      id=$(command docker run --label "memlab.run=$lab_run" "$@") || return 1
+      printf '%s\n' "$id" &gt;&gt; "$lab_root/container.ids"
+      printf '%s\n' "$id" ;;
+    'stop '*|'restart '*|'rm '*)
+      target=${@: -1}
+      id=$(owned_id container "$target") || return 1
+      set -- "${@:1:$#-1}" "$id"
+      command docker "$@" ;;
+    *) command docker "$@" ;;
+  esac
+}
+SHFILE
+export HF_HOME=$PWD/hf PIP_CACHE_DIR=$PWD/pip-cache
+export npm_config_cache=$PWD/npm-cache
+python3 -m venv venv
+venv/bin/pip install mcp==1.26.0 langgraph==1.2.24 \
+  langgraph-checkpoint-sqlite==3.0.3 langgraph-checkpoint==4.3.2
+npm install --prefix "$PWD/npm" @modelcontextprotocol/server-memory@2.2.1</pre></div>
+<h3>Step 2. MCP: create, restart, read and delete</h3>
+<p>Each client invocation starts and closes a stdio server, so <code>read</code> checks the file after a real restart. <code>create_entities</code> writes an observation, <code>open_nodes</code> reads it by name and <code>delete_entities</code> removes it. <code>search_nodes</code> does substring search, not semantic similarity. The 2.2.1 tarball omits its referenced LICENSE file; check licensing before redistribution.<sup class="cite"><a href="#s13-1">1</a></sup></p>
+<p>The 2.2.1 README also documents Streamable HTTP, a knowledge-graph resource, update subscriptions (protocol-dependent over HTTP), observation and search limits, and typed graph reads. Bounded responses still read the whole file.<sup class="cite"><a href="#s13-42">42</a></sup></p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">mcp-smoke.py</span><span class="code-tag tested">Tested</span></div><pre>import asyncio, json, os, sys
+from mcp import ClientSession, StdioServerParameters
+from mcp.client.stdio import stdio_client
+
+async def main():
+    server = StdioServerParameters(
+        command='node', args=['/var/tmp/memlab-13/run/npm/node_modules/'
+                             '@modelcontextprotocol/server-memory/dist/index.js'],
+        env={**os.environ, 'MEMORY_FILE_PATH': '/var/tmp/memlab-13/run/graph.jsonl'})
+    async with stdio_client(server) as (reader, writer):
+        async with ClientSession(reader, writer) as client:
+            await client.initialize()
+            mode = sys.argv[1]
+            if mode == 'write':
+                result = await client.call_tool('create_entities', {'entities': [{
+                    'name': 'test-user', 'entityType': 'person',
+                    'observations': ['Prefers coffee to tea']}]})
+            elif mode == 'delete':
+                result = await client.call_tool('delete_entities',
+                                               {'entityNames': ['test-user']})
+            else:
+                result = await client.call_tool('open_nodes',
+                                               {'names': ['test-user']})
+            assert not result.isError, result
+            if mode in ('read', 'empty'):
+                graph = json.loads(result.content[0].text)
+                expected = [] if mode == 'empty' else [{
+                    'name': 'test-user', 'entityType': 'person',
+                    'observations': ['Prefers coffee to tea']}]
+                assert graph['entities'] == expected, graph
+            print(mode, 'OK')
+
+asyncio.run(main())</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>venv/bin/python mcp-smoke.py write
+venv/bin/python mcp-smoke.py read
+venv/bin/python mcp-smoke.py delete
+venv/bin/python mcp-smoke.py empty</pre></div>
+<p>Each prints its mode followed by <code>OK</code>.</p>
+<p>Save <code>mcp-parallel.py</code>. Two servers write different entities to another file; a third verifies both. This tests small concurrent writes, not crashes or throughput.<sup class="cite"><a href="#s13-42">42</a></sup></p><div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">mcp-parallel.py</span><span class="code-tag tested">Tested</span></div><pre>import asyncio, json, os
+from mcp import ClientSession, StdioServerParameters
+from mcp.client.stdio import stdio_client
+
+async def use(name=None):
+    server = StdioServerParameters(command='node', args=[
+        '/var/tmp/memlab-13/run/npm/node_modules/'
+        '@modelcontextprotocol/server-memory/dist/index.js'],
+        env={**os.environ,
+             'MEMORY_FILE_PATH': '/var/tmp/memlab-13/run/parallel.jsonl'})
+    async with stdio_client(server) as (reader, writer):
+        async with ClientSession(reader, writer) as client:
+            await client.initialize()
+            if name:
+                result = await client.call_tool('create_entities', {'entities': [{
+                    'name': name, 'entityType': 'test', 'observations': [name]}]})
+            else:
+                result = await client.call_tool('read_graph', {})
+            assert not result.isError, result
+            return json.loads(result.content[0].text)
+
+async def main():
+    await asyncio.gather(use('writer-a'), use('writer-b'))
+    graph = await use()
+    assert {e['name'] for e in graph['entities']} == {'writer-a', 'writer-b'}
+    print('two processes: 2 entities OK')
+
+asyncio.run(main())</pre></div><div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>venv/bin/python mcp-parallel.py</pre></div><p>Observed: <code>two processes: 2 entities OK</code>.</p>
+<p>The client configuration below, was not installed. Save separately; merge only its server entry into a compatible host’s settings.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">json</span><span class="code-file">mcp-client.json</span><span class="code-tag docs">From docs, not run</span></div><pre>{
+  "mcpServers": {
+    "memory": {
+      "command": "/var/tmp/memlab-13/run/npm/node_modules/.bin/mcp-server-memory",
+      "env": {"MEMORY_FILE_PATH": "/var/tmp/memlab-13/run/graph.jsonl"}
+    }
+  }
+}</pre></div>
+<h3>Step 3. LangGraph: Store is not a checkpointer</h3>
+<p>Save <code>langgraph-smoke.py</code>. The graph node reads the Store into state, where an LLM step would consume it. The Store key is shared across two threads, while each thread’s checkpoint saves its own execution state, and the fresh-process read asserts both. Delete both threads along with the Store item.<sup class="cite"><a href="#s13-2">2</a>,<a href="#s13-44">44</a></sup></p>
+<p>Build SQLite 3.51.3 locally and use it only for these processes, because earlier releases carry the WAL-reset bug (Chapter 12). This test does not show that concurrent writers are safe.<sup class="cite"><a href="#s13-45">45</a></sup></p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>curl -fsSLo sqlite.zip https://sqlite.org/2026/sqlite-amalgamation-3510300.zip
+unzip -q sqlite.zip
+cc -O2 -fPIC -shared -DSQLITE_ENABLE_FTS5 \
+  sqlite-amalgamation-3510300/sqlite3.c -o libsqlite3.so.0 -lm -ldl -lpthread
+LD_LIBRARY_PATH=$PWD venv/bin/python -c "import sqlite3; \
+  print(sqlite3.sqlite_version); assert sqlite3.sqlite_version == '3.51.3'"</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">langgraph-smoke.py</span><span class="code-tag tested">Tested</span></div><pre>import sys
+from pathlib import Path
+from typing import TypedDict
+from langgraph.graph import StateGraph, START, END
+from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.store.sqlite import SqliteStore
+
+class State(TypedDict):
+    answer: str
+
+def recall(state, *, store):
+    item = store.get(('users', 'test-user'), 'drink')
+    return {'answer': item.value['text'] if item else 'missing'}
+
+root = Path('/var/tmp/memlab-13/run')
+with SqliteStore.from_conn_string(str(root / 'store.db')) as store:
+    with SqliteSaver.from_conn_string(str(root / 'checkpoints.db')) as saver:
+        store.setup()
+        builder = StateGraph(State)
+        builder.add_node('recall', recall)
+        builder.add_edge(START, 'recall')
+        builder.add_edge('recall', END)
+        graph = builder.compile(store=store, checkpointer=saver)
+        config = {'configurable': {'thread_id': 'session-1'}}
+        mode = sys.argv[1]
+        if mode == 'write':
+            store.put(('users', 'test-user'), 'drink', {'text': 'coffee'})
+            assert graph.invoke({'answer': ''}, config)['answer'] == 'coffee'
+        elif mode == 'read':
+            assert graph.get_state(config).values['answer'] == 'coffee'
+            other = {'configurable': {'thread_id': 'session-2'}}
+            assert not graph.get_state(other).values
+            assert graph.invoke({'answer': ''}, other)['answer'] == 'coffee'
+        else:
+            store.delete(('users', 'test-user'), 'drink')
+            for thread in ('session-1', 'session-2'):
+                saver.delete_thread(thread)
+                cfg = {'configurable': {'thread_id': thread}}
+                assert not graph.get_state(cfg).values
+            assert store.get(('users', 'test-user'), 'drink') is None
+        print(mode, 'OK')</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>LD_LIBRARY_PATH=$PWD venv/bin/python langgraph-smoke.py write
+LD_LIBRARY_PATH=$PWD venv/bin/python langgraph-smoke.py read
+LD_LIBRARY_PATH=$PWD venv/bin/python langgraph-smoke.py delete</pre></div>
+<p>Without semantic indexing or LangMem extraction, this tests sequential persistence and erasure only. Chapter 12 explains SQLite’s one-writer boundary and WAL.</p>
+<h3>Step 4. Letta V1 (retired): optional block persistence test</h3>
+<p>This is a legacy-only branch, never a prerequisite. Continue to the LangGraph fork in Step 5; Step 7 covers Letta Code for new work. It uses the <strong>retired Letta V1 server</strong>; the official repository now directs active projects to Letta Code (below). The agent gets one in-context block and no messages, so the test checks stored blocks, not tool calling or memory edits.<sup class="cite"><a href="#s13-3">3</a>,<a href="#s13-4">4</a></sup></p>
+<aside class="callout gotcha"><p class="callout-label">Letta V1 (retired) security boundary</p><p>CVE-2026-77937, published 20 October 2026, affects Letta through 0.16.8. A caller-supplied <code>user_id</code> header can impersonate another tenant even with <code>LETTA_SERVER_SECURE</code> enabled. The CVE lists no fixed V1 release; Letta’s security policy says the retired server and Docker images receive no fixes. Keep this fixture disposable and reachable only through the loopback mapping below, and migrate active agents to Letta Code.<sup class="cite"><a href="#s13-46">46</a>,<a href="#s13-47">47</a></sup></p></aside>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>source /var/tmp/memlab-13/run/ownership.sh
+docker run -d --name memlab-13-letta --cpus 4 -m 4g \
+  -p 127.0.0.1:39132:8283 \
+  -v /var/tmp/memlab-13/run/letta:/root/.letta \
+  -v /var/tmp/memlab-13/run/letta-pg:/var/lib/postgresql/data \
+  letta/letta:0.16.8</pre></div>
+<p>Save <code>wait-letta.py</code> (it waits for API startup and database migrations) and <code>letta-smoke.py</code>. Write records the agent and block ids, read checks the attached block, and delete checks that both return HTTP 404. Deleting the agent and the block are separate calls.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">wait-letta.py</span><span class="code-tag tested">Tested</span></div><pre>import time, urllib.request
+for _ in range(90):
+    try:
+        with urllib.request.urlopen('http://127.0.0.1:39132/openapi.json',
+                                    timeout=2) as r:
+            if r.status == 200:
+                print('Letta ready')
+                break
+    except OSError:
+        pass
+    time.sleep(1)
+else:
+    raise TimeoutError('Inspect docker logs memlab-13-letta')</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">letta-smoke.py</span><span class="code-tag tested">Tested</span></div><pre>import json, sys, urllib.request, urllib.error
+from pathlib import Path
+
+base = 'http://127.0.0.1:39132/v1'
+ids = Path('/var/tmp/memlab-13/run/letta-ids.json')
+def api(method, path, data=None):
+    body = None if data is None else json.dumps(data).encode()
+    request = urllib.request.Request(base + path, body,
+        {'Content-Type': 'application/json'}, method=method)
+    with urllib.request.urlopen(request, timeout=30) as response:
+        raw = response.read()
+        return json.loads(raw) if raw else None
+
+mode = sys.argv[1]
+if mode == 'write':
+    agent = api('POST', '/agents/', {
+        'name': 'chapter13-smoke', 'include_base_tools': False,
+        'llm_config': {'model': 'not-called', 'model_endpoint_type': 'openai',
+                      'model_endpoint': 'http://127.0.0.1:9/v1',
+                      'context_window': 8192},
+        'embedding_config': {'embedding_endpoint_type': 'openai',
+                             'embedding_endpoint': 'http://127.0.0.1:9/v1',
+                             'embedding_model': 'not-called', 'embedding_dim': 8},
+        'memory_blocks': [{'label': 'human', 'value': 'Prefers coffee to tea'}]})
+    ids.write_text(json.dumps({'agent': agent['id'],
+                              'block': agent['memory']['blocks'][0]['id']}))
+else:
+    saved = json.loads(ids.read_text())
+    path = '/agents/' + saved['agent'] + '/core-memory/blocks/human'
+    if mode == 'read':
+        assert api('GET', path)['value'] == 'Prefers coffee to tea'
+    else:
+        api('DELETE', '/agents/' + saved['agent'])
+        api('DELETE', '/blocks/' + saved['block'])
+        for path in ['/agents/' + saved['agent'], '/blocks/' + saved['block']]:
+            try:
+                api('GET', path)
+            except urllib.error.HTTPError as error:
+                assert error.code == 404, error
+            else:
+                raise AssertionError('Deleted object still readable')
+print(mode, 'OK')</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>source /var/tmp/memlab-13/run/ownership.sh
+venv/bin/python wait-letta.py
+venv/bin/python letta-smoke.py write
+docker restart memlab-13-letta
+venv/bin/python wait-letta.py
+venv/bin/python letta-smoke.py read
+venv/bin/python letta-smoke.py delete</pre></div>
+<p>Observed: <code>Letta ready</code>, <code>write OK</code>, restart, <code>Letta ready</code>, <code>read OK</code>, <code>delete OK</code>.</p>
+<h3 id="forked-planning">Step 5. Forked planning: draft locally, promote explicitly</h3>
+<p>Two forks draft blue and green paint plans. After human approval, trusted code promotes blue from checkpoint state to Store. Replay reruns later tool/API nodes without reverting Store or external sends. Receivers must deduplicate stable action keys (Chapter 17’s outbox protocol).<sup class="cite"><a href="#s13-2">2</a>,<a href="#s13-48">48</a></sup></p>
+<p>Save <code>fork-memory.py</code> in the scratch root and run it once with the installed pins and the SQLite build above. This CPU fixture sends no message: a separate SQLite table simulates atomic acceptance per action key, rejecting the second send. Production receivers must enforce this key; a local pre-call flag leaves a crash gap.</p>
+<p>The key identifies a logical send: first fork wins. Resume only the approved fork. Relative database paths resolve under the printed scratch root.</p>
+<div class="codeblock" data-listing-note="Forks one checkpoint into isolated drafts, promotes the approved fact and deduplicates a simulated external send."><div class="code-head"><span class="code-lang">python</span><span class="code-file">fork-memory.py</span><span class="code-tag tested">Tested</span></div><pre>import sqlite3
+from typing import TypedDict
+from langgraph.graph import StateGraph, START, END
+from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.store.sqlite import SqliteStore
+
+class State(TypedDict):
+    draft: str
+    action_key: str
+
+# A durable fake external service, outside the checkpoint database.
+with sqlite3.connect(&#x27;external.db&#x27;) as external:
+    external.execute(&#x27;CREATE TABLE IF NOT EXISTS sent (key TEXT PRIMARY KEY)&#x27;)
+    def send_once(key):
+        external.execute(&#x27;INSERT OR IGNORE INTO sent VALUES (?)&#x27;, (key,))
+        external.commit()
+
+    def prepare(state):
+        send_once(state[&#x27;action_key&#x27;])
+        return {&#x27;draft&#x27;: state[&#x27;draft&#x27;]}
+
+    with SqliteStore.from_conn_string(&#x27;fork-store.db&#x27;) as store:
+        with SqliteSaver.from_conn_string(&#x27;fork-checkpoints.db&#x27;) as saver:
+            store.setup()
+            builder = StateGraph(State)
+            builder.add_node(&#x27;prepare&#x27;, prepare)
+            builder.add_edge(START, &#x27;prepare&#x27;)
+            builder.add_edge(&#x27;prepare&#x27;, END)
+            g = builder.compile(store=store, checkpointer=saver,
+                          interrupt_before=[&#x27;prepare&#x27;])
+            cfg = {&#x27;configurable&#x27;: {&#x27;thread_id&#x27;: &#x27;plan&#x27;}}
+            g.invoke({&#x27;draft&#x27;: &#x27;&#x27;, &#x27;action_key&#x27;: &#x27;send:plan-7:v1&#x27;}, cfg)
+            root = g.get_state(cfg).config
+            blue = g.update_state(root, {&#x27;draft&#x27;: &#x27;Use blue paint&#x27;})
+            green = g.update_state(root, {&#x27;draft&#x27;: &#x27;Use green paint&#x27;})
+            assert g.get_state(blue).values[&#x27;draft&#x27;] == &#x27;Use blue paint&#x27;
+            assert g.get_state(green).values[&#x27;draft&#x27;] == &#x27;Use green paint&#x27;
+            ns = (&#x27;approved&#x27;, &#x27;project-7&#x27;)
+            assert store.get(ns, &#x27;paint&#x27;) is None
+            print(&#x27;two isolated drafts; shared Store empty&#x27;)
+            approved = g.invoke(None, blue)  # Human chooses blue.
+            store.put(ns, &#x27;paint&#x27;, {&#x27;text&#x27;: approved[&#x27;draft&#x27;]})
+            g.invoke(None, green)  # Replays the same logical external action.
+            assert external.execute(&#x27;SELECT count(*) FROM sent&#x27;).fetchone()[0] == 1
+            print(&#x27;repeated action key: one simulated send&#x27;)
+            rewound = g.invoke(None, root)
+            assert rewound[&#x27;draft&#x27;] == &#x27;&#x27;
+            assert store.get(ns, &#x27;paint&#x27;).value[&#x27;text&#x27;] == &#x27;Use blue paint&#x27;
+            print(&#x27;rewind: draft empty; approved Store fact still blue&#x27;)
+            store.delete(ns, &#x27;paint&#x27;)
+            saver.delete_thread(&#x27;plan&#x27;)
+            external.execute(&#x27;DELETE FROM sent&#x27;)
+            external.commit()
+            assert store.get(ns, &#x27;paint&#x27;) is None
+            print(&#x27;cleanup OK&#x27;)</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>cd /var/tmp/memlab-13/run
+LD_LIBRARY_PATH=$PWD venv/bin/python fork-memory.py</pre></div>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">output</span><span class="code-tag tested">Tested</span></div><pre>two isolated drafts; shared Store empty
+repeated action key: one simulated send
+rewind: draft empty; approved Store fact still blue
+cleanup OK</pre></div>
+<h3>Step 6. Local Hindsight: retain, recall and restart</h3><p>This test used Hindsight server and client 1.2.3, Ollama 0.40.16, Qwen2.5 1.5B, Python 3.14.4 and the pinned CPU embedding and reranking revisions in the listing. Ollama 0.40.17 (10 November 2026) is newer and was not tested. Both containers: four CPUs, no GPU; downloads: about 15 GB disk. Run <code>hindsight-lab.sh</code> after Step 1, before cleanup; client installation is included. Its unavailable credential-helper prefix needs replacement with reader-owned HF_TOKEN setup and a lab rerun. It creates its own Docker network and loopback ports 39130 and 39131. The small model tests plumbing, not quality.<sup class="cite"><a href="#s13-10">10</a></sup></p><div class="codeblock" data-listing-note="Creates the isolated CPU Hindsight stack, checks timed recall across restart and verifies document deletion."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">hindsight-lab.sh</span><span class="code-tag tested">Tested</span></div><pre>set -euo pipefail
+cd /var/tmp/memlab-13/run
+source ./ownership.sh
+export HF_HOME=$PWD/hf PIP_CACHE_DIR=$PWD/pip-cache
+venv/bin/pip install hindsight-client==1.2.3 huggingface-hub==1.7.1
+cat &gt; download.py &lt;&lt;'PYFILE'
+from huggingface_hub import snapshot_download
+for model, rev, target in [
+ ('BAAI/bge-small-en-v1.5','5c38ec7c405ec4b44b94cc5a9bb96e735b38267a','embed'),
+ ('cross-encoder/ms-marco-MiniLM-L-6-v2',
+  '233902d25c440f23af6f7d6e94d2946bac0bee0a','rerank')]:
+ snapshot_download(model, revision=rev,
+  local_dir='/var/tmp/memlab-13/run/'+target,
+  allow_patterns=['*.json','*.txt','*.safetensors','1_Pooling/*'])
+ print(target, 'downloaded')
+PYFILE
+HF_TOKEN="YOUR_HUGGING_FACE_TOKEN" venv/bin/python download.py
+docker network create memlab-13-net
+docker run -d --name memlab-13-ollama --cpus 4 -m 5g \
+  --network memlab-13-net -p 127.0.0.1:39130:11434 \
+  -e OLLAMA_NUM_PARALLEL=1 -e OLLAMA_NO_CLOUD=1 \
+  -v /var/tmp/memlab-13/run/ollama:/root/.ollama ollama/ollama:0.40.16
+ready=false
+for attempt in {1..30}; do
+  if curl -fsS --connect-timeout 1 --max-time 2 \
+    http://127.0.0.1:39130/api/tags &gt;/dev/null; then
+    ready=true
+    break
+  fi
+  sleep 1
+done
+if [ "$ready" != true ]; then
+  docker logs memlab-13-ollama
+  exit 1
+fi
+printf 'Ollama ready\n'
+docker exec memlab-13-ollama ollama pull qwen2.5:1.5b
+cat &gt; create-model.py &lt;&lt;'PYFILE'
+import json, urllib.request
+from pathlib import Path
+from hashlib import sha256
+
+manifest = Path('/var/tmp/memlab-13/run/ollama/models/manifests/'
+                'registry.ollama.ai/library/qwen2.5/1.5b')
+expected = 'f2b0a490f661d58f20c4b98e5797ecf55e6e96293a88b71e96e7cc389f658f7e'
+assert sha256(manifest.read_bytes()).hexdigest() == expected, 'Model tag changed'
+data = {'model': 'memfix13-qwen', 'from': 'qwen2.5:1.5b', 'stream': False,
+        'parameters': {'num_ctx': 16384, 'num_thread': 4, 'temperature': 0}}
+request = urllib.request.Request(
+    'http://127.0.0.1:39130/api/create', json.dumps(data).encode(),
+    {'Content-Type': 'application/json'})
+print(json.load(urllib.request.urlopen(request)))
+PYFILE
+venv/bin/python create-model.py
+mkdir -p /var/tmp/memlab-13/run/db
+chmod 777 /var/tmp/memlab-13/run/db
+docker run -d --name memlab-13-hindsight --cpus 4 -m 8g \
+  --network memlab-13-net -p 127.0.0.1:39131:8888 \
+  -e HINDSIGHT_API_LLM_PROVIDER=ollama \
+  -e HINDSIGHT_API_LLM_BASE_URL=http://memlab-13-ollama:11434/v1 \
+  -e HINDSIGHT_API_LLM_MODEL=memfix13-qwen \
+  -e HINDSIGHT_API_LLM_MAX_CONCURRENT=1 \
+  -e HINDSIGHT_API_RETAIN_MAX_COMPLETION_TOKENS=4096 \
+  -e HINDSIGHT_API_EMBEDDINGS_PROVIDER=local \
+  -e HINDSIGHT_API_EMBEDDINGS_LOCAL_MODEL=/models/embed \
+  -e HINDSIGHT_API_EMBEDDINGS_LOCAL_FORCE_CPU=true \
+  -e HINDSIGHT_API_RERANKER_PROVIDER=local \
+  -e HINDSIGHT_API_RERANKER_LOCAL_MODEL=/models/rerank \
+  -e HINDSIGHT_API_RERANKER_LOCAL_FORCE_CPU=true \
+  -e HF_HOME=/cache -e HF_HUB_OFFLINE=1 -e OMP_NUM_THREADS=4 \
+  -v /var/tmp/memlab-13/run/embed:/models/embed:ro \
+  -v /var/tmp/memlab-13/run/rerank:/models/rerank:ro \
+  -v /var/tmp/memlab-13/run/hf:/cache \
+  -v /var/tmp/memlab-13/run/db:/home/hindsight/.pg0 \
+  ghcr.io/vectorize-io/hindsight:1.2.3
+cat &gt; wait.py &lt;&lt;'PYFILE'
+import json, time, urllib.request
+for attempt in range(180):
+    try:
+        with urllib.request.urlopen('http://127.0.0.1:39131/health', timeout=2) as r:
+            if json.load(r)['status'] == 'healthy':
+                print('Hindsight ready')
+                break
+    except (OSError, ValueError):
+        pass
+    time.sleep(1)
+else:
+    raise TimeoutError('Inspect: docker logs memlab-13-hindsight')
+PYFILE
+cat &gt; smoke.py &lt;&lt;'PYFILE'
+import asyncio, sys, time
+from hindsight_client import Hindsight
+from hindsight_client_api.exceptions import NotFoundException
+
+async def main():
+    mode, deadline = sys.argv[1], float(sys.argv[2])
+    assert deadline &gt; 0
+    client = Hindsight(base_url='http://127.0.0.1:39131',
+                       timeout=deadline, max_attempts=1)
+    bank, document = 'chapter13-alice', 'profile-v1'
+    try:
+        if mode == 'write':
+            result = await client.aretain(bank_id=bank, document_id=document,
+                content='Alice lives in Paris. Alice prefers coffee to tea.')
+            assert result.success and result.items_count &gt; 0, result
+            print(result.success, result.items_count, flush=True)
+        elif mode == 'delete':
+            result = await client.documents.delete_document(
+                bank, document, _request_timeout=deadline)
+            assert result.success and result.memory_units_deleted &gt; 0, result
+            try:
+                await client.documents.get_document(
+                    bank, document, _request_timeout=deadline)
+            except NotFoundException:
+                print('document absent (404)', flush=True)
+            else:
+                raise AssertionError('Document remains')
+            print('deleted memory units:', result.memory_units_deleted, flush=True)
+        else:
+            start = time.monotonic()
+            hits = await asyncio.wait_for(client.arecall(bank_id=bank,
+                query='What drink does Alice prefer?', budget='low',
+                types=['world']), timeout=deadline)
+            elapsed = time.monotonic() - start
+            print(mode, 'recall', round(elapsed, 2), 'seconds', flush=True)
+            assert elapsed &lt;= deadline, elapsed
+            texts = [hit.text for hit in hits.results]
+            if mode == 'empty':
+                assert not texts, texts
+                print('recall empty', flush=True)
+            else:
+                print('\n'.join(texts), flush=True)
+                facts = [text.split(' | Involving:')[0].strip() for text in texts]
+                assert 'Alice prefers coffee to tea' in [
+                    fact.rstrip('.') for fact in facts], texts
+    finally:
+        await client.aclose()
+
+asyncio.run(main())
+PYFILE
+venv/bin/python wait.py
+venv/bin/python smoke.py write 300
+venv/bin/python smoke.py before-restart 120
+docker restart memlab-13-hindsight
+venv/bin/python wait.py
+venv/bin/python smoke.py after-restart 120
+
+venv/bin/python smoke.py delete 120
+venv/bin/python smoke.py empty 120</pre></div><div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>bash hindsight-lab.sh</pre></div><p>Supplemental observations, 23 November 2026: <code>True 1</code> (retain success and item count), then <code>Alice prefers coffee to tea | Involving: Alice</code> before and after restart. Both recalls took 0.05 seconds against the supplied 120-second deadline. Retain success and the exact preference are asserted. Deletion printed <code>document absent (404)</code> and <code>deleted memory units: 2</code>; the subsequent recall took 0.03 seconds and printed <code>recall empty</code>. Document deletion requires absence and no world-fact hits. Earlier extraction: 37.8 seconds, four CPUs. Negation, correction, tenant isolation and reflect remain untested.</p><h3>Step 7. Letta Code (current): local agent memory</h3><p>For the supplemental directed-edit fixture, save current-letta.py and current-letta.sh below; run the latter after Hindsight. The separate install/start check uses <code>letta-config</code> and <code>letta-state</code>; skip it for the memory fixture. Letta Code 0.34.67 is the checked harness, distinct from Letta V1 above. Local use needs no account; Cloud is available. MemFS (memory filesystem) tracks files in Git. Block-request success does not prove model edits.<sup class="cite"><a href="#s13-49">49</a></sup></p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested: install and start only</span></div><pre>export LETTA_CONFIG_DIR=/var/tmp/memlab-13/run/letta-config
+export LETTA_LOCAL_BACKEND_DIR=/var/tmp/memlab-13/run/letta-state
+npm install --prefix /var/tmp/memlab-13/run/letta-current \
+  @letta-ai/letta-code@0.34.67
+/var/tmp/memlab-13/run/letta-current/node_modules/.bin/letta \
+  --backend local --new-agent</pre></div><ul>
+<li><strong>A 16,384-token context was too small.</strong> The pinned CLI started account-free, but its system prompt/tools needed about 17,844 tokens: saving failed and the file stayed unchanged. This probe used Qwen2.5 1.5B. Increase context (the fixture uses 32,768) or reduce tools.</li>
+<li><strong>Interactive remember was not run successfully; these are documented steps.</strong> With a model configured, run <code>letta --backend local --new-agent</code> from the pinned package, enter <code>/remember My preferred drink is coffee.</code>, then inspect <code>/memory</code>. Use <code>/new</code> to ask the preference in a new conversation on the same agent, then resume in a fresh process. Require the fact in its memory files, recall in the new conversation and removal by edit. The fixture tests directed edits.<sup class="cite"><a href="#s13-50">50</a></sup></li>
+<li><strong>The directed 32,768-token fixture ran on 23 November 2026, after the research cutoff.</strong> It used Qwen3.5 4B (Q4_K_M: 4-bit weights; q8_0: 8-bit attention cache, chosen to fit VRAM) on an 8 GB consumer GPU at temperature zero, with a 2,048-token output limit. Despite <code>--reasoning none</code>, this pin emitted short reasoning segments. Timings include these and CLI startup, excluding downloads. This Qwen3.5 4B run reported at most 17,334 context tokens; 17,844 belongs to the earlier probe.<sup class="cite"><a href="#s13-51">51</a></sup></li>
+</ul>
+<p>The shell stops an existing earlier inference container after ownership checks. Independent execution with that container absent passed; it uses loopback port 39133 and removes its container on exit. The client creates blank human memory with frontmatter (metadata). Assertions accept coffee in any Markdown file, without proving successful Edit/Read on human.md. Resumption checks continuity. Missing headers/replies fail; tool paths remain unverified. The listing sets 28 GPU layers and 64-token batches because automatic GPU allocation can exhaust VRAM on a shared machine.</p>
+<div class="codeblock" data-listing-note="Checks actual model memory writes, new-conversation recall, explicit conversation resume and current-file deletion."><div class="code-head"><span class="code-lang">python</span><span class="code-file">current-letta.py</span><span class="code-tag tested">Tested</span></div><pre>import json, os, subprocess, time, urllib.request
+from hashlib import sha256
+from pathlib import Path
+
+root = Path(&#x27;/var/tmp/memlab-13/run&#x27;)
+manifest = root / &#x27;ollama/models/manifests/registry.ollama.ai/library/qwen3.5/4b&#x27;
+expected = &#x27;e0b8c85c75aad2573ff49bec177ebb1013772fba665a53d64c04266439a2222d&#x27;
+assert sha256(manifest.read_bytes()).hexdigest() == expected, &#x27;Model tag changed&#x27;
+def api(path, data=None):
+    body = None if data is None else json.dumps(data).encode()
+    req = urllib.request.Request(&#x27;http://127.0.0.1:39133&#x27; + path, body,
+                                 {&#x27;Content-Type&#x27;: &#x27;application/json&#x27;})
+    with urllib.request.urlopen(req, timeout=600) as response:
+        return json.load(response)
+
+api(&#x27;/api/create&#x27;, {&#x27;model&#x27;: &#x27;memfix13-qwen32&#x27;, &#x27;from&#x27;: &#x27;qwen3.5:4b&#x27;,
+    &#x27;stream&#x27;: False, &#x27;parameters&#x27;: {&#x27;num_ctx&#x27;: 32768, &#x27;num_thread&#x27;: 8,
+                                    &#x27;temperature&#x27;: 0, &#x27;presence_penalty&#x27;: 0,
+                                    &#x27;num_gpu&#x27;: 28, &#x27;num_batch&#x27;: 64}})
+cli = str(root / &#x27;letta-current/node_modules/.bin/letta&#x27;)
+subprocess.run([cli, &#x27;--backend&#x27;, &#x27;local&#x27;, &#x27;connect&#x27;, &#x27;ollama&#x27;,
+    &#x27;--base-url&#x27;, &#x27;http://127.0.0.1:39133/v1&#x27;, &#x27;--timeout&#x27;, &#x27;600s&#x27;], check=True)
+def run(label, args, prompt):
+    start = time.monotonic()
+    result = subprocess.run([cli, &#x27;--backend&#x27;, &#x27;local&#x27;, &#x27;--no-skills&#x27;,
+        &#x27;--reflection-trigger&#x27;, &#x27;off&#x27;, *args, &#x27;-p&#x27;, prompt,
+        &#x27;--output-format&#x27;, &#x27;stream-json&#x27;], capture_output=True, text=True, timeout=1200)
+    (root / (label + &#x27;.json&#x27;)).write_text(result.stdout)
+    (root / (label + &#x27;.err&#x27;)).write_text(result.stderr)
+    assert result.returncode == 0, result.stderr + result.stdout
+    print(label, &#x27;OK&#x27;, round(time.monotonic() - start, 1), &#x27;seconds&#x27;, flush=True)
+    events = [json.loads(line) for line in result.stdout.splitlines() if line.strip()]
+    final = next(e for e in reversed(events) if e.get(&#x27;type&#x27;) == &#x27;result&#x27;)
+    messages = [e for e in events if e.get(&#x27;message_type&#x27;) in (
+        &#x27;assistant_message&#x27;, &#x27;reasoning_message&#x27;, &#x27;tool_call_message&#x27;,
+        &#x27;tool_return_message&#x27;)]
+    last = messages[-1] if messages else {}
+    content = (last.get(&#x27;content&#x27;, [])
+        if last.get(&#x27;message_type&#x27;) == &#x27;assistant_message&#x27; else [])
+    final[&#x27;assistant_reply&#x27;] = &#x27;&#x27;.join(
+        part[&#x27;text&#x27;] for part in content if part.get(&#x27;type&#x27;) == &#x27;text&#x27;)
+    return final
+
+subprocess.run([cli, &#x27;--backend&#x27;, &#x27;local&#x27;, &#x27;agents&#x27;, &#x27;create&#x27;,
+    &#x27;--name&#x27;, &#x27;chapter13-memory&#x27;, &#x27;--model&#x27;, &#x27;ollama/memfix13-qwen32:latest&#x27;],
+    check=True, capture_output=True)
+state = Path(os.environ[&#x27;LETTA_LOCAL_BACKEND_DIR&#x27;])
+agent = json.loads(next((state / &#x27;agents&#x27;).glob(&#x27;*.json&#x27;)).read_text())[&#x27;id&#x27;]
+settings = subprocess.run([cli, &#x27;--backend&#x27;, &#x27;local&#x27;, &#x27;model&#x27;, &#x27;set&#x27;,
+    &#x27;--agent&#x27;, agent, &#x27;--reasoning&#x27;, &#x27;none&#x27;, &#x27;--model-settings&#x27;,
+    json.dumps({&#x27;context_window_limit&#x27;: 32768, &#x27;max_tokens&#x27;: 2048,
+                &#x27;temperature&#x27;: 0})], check=True,
+    capture_output=True, text=True)
+(root / &#x27;model-settings.json&#x27;).write_text(settings.stdout)
+print(&#x27;reasoning: none&#x27;, flush=True)
+memory = state / &#x27;memfs&#x27; / agent / &#x27;memory&#x27;
+header = &#x27;---\nname: Human\ndescription: Durable user facts.\n---\n&#x27;
+memory.mkdir(parents=True, exist_ok=True)
+(memory / &#x27;human.md&#x27;).write_text(header + &#x27;No drink preference recorded.\n&#x27;)
+first = run(&#x27;save32&#x27;, [&#x27;--agent&#x27;, agent],
+    &#x27;Use Edit on &quot;$MEMORY_DIR/human.md&quot;: replace exactly &#x27;
+    &#x27;&quot;No drink preference recorded.&quot; with &quot;Preferred drink: coffee.&quot;. &#x27;
+    &#x27;Preserve all other content. Execute Edit, then confirm.&#x27;)
+def has_coffee():
+    return any(&#x27;coffee&#x27; in p.read_text().lower() for p in memory.rglob(&#x27;*.md&#x27;))
+assert has_coffee(), &#x27;Model did not save the preference&#x27;
+assert (memory / &#x27;human.md&#x27;).read_text().startswith(header)
+served = api(&#x27;/api/ps&#x27;)[&#x27;models&#x27;][0]
+assert served[&#x27;context_length&#x27;] == 32768, served
+print(&#x27;served:&#x27;, served[&#x27;details&#x27;][&#x27;quantization_level&#x27;],
+      served[&#x27;context_length&#x27;], &#x27;tokens&#x27;, flush=True)
+question = (&#x27;Use Read to open \&quot;$MEMORY_DIR/human.md\&quot;, then answer: &#x27;
+            &#x27;what is my preferred drink? Reply with one word only. &#x27;
+            &#x27;Do not search chats.&#x27;)
+new = run(&#x27;new32&#x27;, [&#x27;--agent&#x27;, agent, &#x27;--new&#x27;], question)
+assert new[&#x27;assistant_reply&#x27;].strip().lower() == &#x27;coffee&#x27;, new
+print(&#x27;new final reply:&#x27;, new[&#x27;assistant_reply&#x27;].strip(), flush=True)
+conversation = new[&#x27;conversation_id&#x27;]
+assert conversation != first[&#x27;conversation_id&#x27;]
+resumed = run(&#x27;resume32&#x27;, [&#x27;--conversation&#x27;, conversation], question)
+assert resumed[&#x27;assistant_reply&#x27;].strip().lower() == &#x27;coffee&#x27;, resumed
+print(&#x27;resume final reply:&#x27;, resumed[&#x27;assistant_reply&#x27;].strip(), flush=True)
+assert resumed[&#x27;conversation_id&#x27;] == conversation
+assert resumed[&#x27;agent_id&#x27;] == agent
+run(&#x27;delete32&#x27;, [&#x27;--agent&#x27;, agent],
+    &#x27;Use Edit on &quot;$MEMORY_DIR/human.md&quot;: replace exactly &#x27;
+    &#x27;&quot;Preferred drink: coffee.&quot; with &quot;No drink preference recorded.&quot;. &#x27;
+    &#x27;Preserve all other content. Execute Edit, then confirm.&#x27;)
+assert not has_coffee(), &#x27;Preference remains in current memory files&#x27;
+assert (memory / &#x27;human.md&#x27;).read_text().startswith(header)
+print(&#x27;current memory: preference absent; Git history and chats still retained&#x27;)</pre></div>
+<div class="codeblock" data-listing-note="Starts the pinned GPU-assisted local model service, runs the fixture and removes its container."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">current-letta.sh</span><span class="code-tag tested">Tested</span></div><pre>set -euo pipefail
+cd /var/tmp/memlab-13/run
+source ./ownership.sh
+nvidia-smi
+export LETTA_CONFIG_DIR=$PWD/letta-config35-28
+export LETTA_LOCAL_BACKEND_DIR=$PWD/letta-state35-28
+export npm_config_cache=$PWD/npm-cache
+npm install --prefix "$PWD/letta-current" @letta-ai/letta-code@0.34.67
+# Stop the earlier Hindsight inference service before this separate test.
+if command docker container inspect memlab-13-ollama &gt;/dev/null 2&gt;&amp;1; then
+  docker stop memlab-13-ollama
+fi
+docker run -d --name memlab-13-current-ollama --gpus device=0 --cpus 8 -m 12g \
+  -p 127.0.0.1:39133:11434 -e OLLAMA_NUM_PARALLEL=1 -e OLLAMA_NO_CLOUD=1 \
+  -e OLLAMA_FLASH_ATTENTION=1 -e OLLAMA_KV_CACHE_TYPE=q8_0 \
+  -v /var/tmp/memlab-13/run/ollama:/root/.ollama ollama/ollama:0.40.16
+trap 'docker rm -f memlab-13-current-ollama' EXIT
+ready=false
+for attempt in {1..30}; do
+  if curl -fsS --connect-timeout 1 --max-time 2 \
+    http://127.0.0.1:39133/api/tags &gt;/dev/null; then
+    ready=true
+    break
+  fi
+  sleep 1
+done
+if [ "$ready" != true ]; then
+  docker logs memlab-13-current-ollama
+  exit 1
+fi
+printf 'Ollama ready\n'
+docker exec memlab-13-current-ollama ollama pull qwen3.5:4b &gt;pull32.log 2&gt;&amp;1
+venv/bin/python current-letta.py</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>bash current-letta.sh</pre></div>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">output</span><span class="code-tag tested">Tested</span></div><pre>Ollama ready
+Validating Ollama (local) API key...
+Saving provider...
+Connected Ollama (local) (ollama) in local storage.
+reasoning: none
+save32 OK 101.4 seconds
+served: Q4_K_M 32768 tokens
+new32 OK 26.8 seconds
+new final reply: coffee
+resume32 OK 3.5 seconds
+resume final reply: coffee
+delete32 OK 26.1 seconds
+current memory: preference absent; Git history and chats still retained</pre></div>
+<p>In the supplemental run, both parsed final assistant replies were exactly coffee. One-word final assistant-message assertions exclude tools, reasoning, empty/wrong replies, independently of file/conversation IDs. Deletion checks current Markdown only; Git history/transcripts survive until cleanup. Require all four steps (save, new-conversation read, resume, delete) within your model’s time budget.<sup class="cite"><a href="#s13-49">49</a>,<a href="#s13-50">50</a></sup></p>
+<h3>Step 8. Remove only this test’s resources</h3>
+<p>Remove any installed client entry. Remove only this run’s containers and network. cleanup.sh keeps images; manually remove Hindsight’s only if this lab pulled it and no container uses it. Keep pre-existing Ollama and Letta images, and do not prune Docker. Save <code>cleanup.sh</code> in the scratch root. Cleanup checks both before removal; a collision test preserved the existing container and network. The retired Letta database uses a scratch-directory mount, avoiding an anonymous volume. Sudo removes the scratch root, including container-created root-owned files.</p>
+<div class="codeblock" data-listing-note="Removes only the owned lab resources and verifies the scratch root is gone."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">cleanup.sh</span><span class="code-tag tested">Tested</span></div><pre>set -euo pipefail
+root=/var/tmp/memlab-13/run
+[ ! -L "$root" ]
+[ "$(realpath -e "$root")" = "$root" ]
+[ "$(cat "$root/.lab-root")" = "$root" ]
+cd "$root"
+source ./ownership.sh
+for kind in container network; do
+  while IFS= read -r id; do
+    if ! command docker "$kind" inspect "$id" &gt;/dev/null 2&gt;&amp;1; then
+      continue
+    fi
+    owned_id "$kind" "$id" &gt;/dev/null
+    if [ "$kind" = container ]; then
+      command docker container rm -f "$id"
+    else
+      command docker network rm "$id"
+    fi
+    ! command docker "$kind" inspect "$id" &gt;/dev/null 2&gt;&amp;1
+  done &lt; "$kind.ids"
+done
+cd /var/tmp
+sudo -n rm -rf -- "$root"
+[ ! -e "$root" ]
+[ ! -L "$root" ]
+printf 'Scratch root gone\n'</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>bash cleanup.sh</pre></div>
+<p>Observed: <code>Scratch root gone</code>.</p>
+<h3>Managed routes (not run): create, write, recall, delete</h3><p>Google, AWS and Foundry require paid cloud accounts; none was run. SDK method shapes were inspected offline. Save <code>cloud-memory.py</code>. Google requires billing, an enabled API, Application Default Credentials and <code>GOOGLE_CLOUD_PROJECT</code>; this uses <code>us-central1</code>. AWS uses the credential chain in <code>us-west-2</code>. Use the permissions sections of the linked Google quickstart and AWS creation guide for resource creation, retrieval, deletion and ingestion. Both print resource identifiers and delete whole test resources in <code>finally</code>; keep identifiers after cleanup failures. Polling stops after 60 attempts; Google generation uses the SDK completion wait.<sup class="cite"><a href="#s13-31">31</a>,<a href="#s13-34">34</a></sup></p><p>Google waits for generation, retrieving within one scope. AWS waits for extraction into <code>/actors/alice/</code>. Expected, unobserved: resource id, coffee preference, deletion’s not-found response. Google merely asserts nonempty facts; AWS accepts the first hit. Fail unrelated/reversed preferences manually. Timeouts fail; loops check only resource disappearance.</p>
+<div class="codeblock" data-listing-note="Choose google or aws; these documented cloud operations incur service charges and were not run."><div class="code-head"><span class="code-lang">python</span><span class="code-file">cloud-memory.py</span><span class="code-tag docs">From docs, not run</span></div><pre>import sys
+
+def google():
+    import os, time
+    import agentplatform
+    from google.genai.errors import ClientError
+
+    client = agentplatform.Client(
+        project=os.environ['GOOGLE_CLOUD_PROJECT'], location='us-central1')
+    bank = client.memory_banks.create()
+    print('bank:', bank.name)
+    scope = {'user_id': 'chapter13-alice'}
+    try:
+        client.memory_banks.memories.generate(
+            name=bank.name, scope=scope,
+            direct_contents_source={'events': [{'content': {
+                'role': 'user', 'parts': [{'text': 'I prefer coffee to tea.'}]
+            }}]}, config={'wait_for_completion': True})
+        hits = client.memory_banks.memories.retrieve(
+            name=bank.name, scope=scope,
+            similarity_search_params={'search_query': 'Which drink do I prefer?',
+                                      'top_k': 3})
+        facts = [hit.memory.fact for hit in hits]
+        print(facts)
+        assert facts, 'No facts extracted; inspect the generation operation'
+    finally:
+        client.memory_banks.delete(name=bank.name, force=True)
+        for _ in range(60):
+            try:
+                client.memory_banks.get(name=bank.name)
+            except ClientError as error:
+                if error.code != 404:
+                    raise
+                print('Bank deleted')
+                break
+            time.sleep(10)
+        else:
+            raise TimeoutError('Deletion pending: ' + bank.name)
+
+def aws():
+    import time
+    from datetime import datetime, timezone
+    import boto3
+
+    control = boto3.client('bedrock-agentcore-control', region_name='us-west-2')
+    data = boto3.client('bedrock-agentcore', region_name='us-west-2')
+    created = control.create_memory(
+        name='Chapter13Smoke', eventExpiryDuration=7,
+        memoryStrategies=[{'semanticMemoryStrategy': {
+            'name': 'facts', 'namespaces': ['/actors/{actorId}/']}}])
+    mid = created['memory']['id']
+    print('memory:', mid)
+    try:
+        for _ in range(60):
+            status = control.get_memory(memoryId=mid)['memory']['status']
+            if status == 'ACTIVE':
+                break
+            if status == 'FAILED':
+                raise RuntimeError('Memory creation failed')
+            time.sleep(10)
+        else:
+            raise TimeoutError('Memory did not become ACTIVE')
+        data.create_event(
+            memoryId=mid, actorId='alice', sessionId='chapter13-session',
+            eventTimestamp=datetime.now(timezone.utc),
+            payload=[{'conversational': {
+                'content': {'text': 'I prefer coffee to tea.'}, 'role': 'USER'}}])
+        for _ in range(60):
+            hits = data.retrieve_memory_records(
+                memoryId=mid, namespace='/actors/alice/',
+                searchCriteria={'searchQuery': 'Which drink does Alice prefer?',
+                                'topK': 3})['memoryRecordSummaries']
+            if hits:
+                print([h['content']['text'] for h in hits])
+                break
+            time.sleep(10)
+        else:
+            raise TimeoutError('No extracted record after 10 minutes')
+    finally:
+        control.delete_memory(memoryId=mid)
+        for _ in range(60):
+            try:
+                control.get_memory(memoryId=mid)
+            except control.exceptions.ResourceNotFoundException:
+                print('Resource deleted:', mid)
+                break
+            time.sleep(10)
+        else:
+            raise TimeoutError('Deletion pending; remove resource ' + mid)
+
+if __name__ == '__main__':
+    {'google': google, 'aws': aws}[sys.argv[1]]()</pre></div><div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag docs">From docs, not run</span></div><pre>python3 -m venv cloud-venv
+cloud-venv/bin/pip install google-cloud-agentplatform==2.10.0 boto3==1.44.7
+cloud-venv/bin/python cloud-memory.py google
+# Or, using an independently authorized AWS test account:
+cloud-venv/bin/python cloud-memory.py aws</pre></div><h3>Microsoft Foundry route (not run; follows the documentation)</h3>
+<p>Follow Microsoft’s linked setup using compatible model deployments and a disposable store with explicit TTL. Within one application-owned scope, create/read/list/update/search/delete a user-profile item, then delete the scope. Separately extract a conversation; inspect profile, summary and procedural results. Test direct remember/forget commands. Remove the store and source conversations.<sup class="cite"><a href="#s13-52">52</a>,<a href="#s13-53">53</a></sup></p>
+<p>On each managed route’s first run, check:</p>
+<ul>
+<li>Wrong-scope reads, including by known item id, fail without exposing another user’s facts.</li>
+<li>Deletion separately removes raw events or conversations and derived records. Inspect revisions and retention delays; not-found responses do not prove source, revision or backup erasure.</li>
+<li>Fresh-session lists and retrieval match expectations, catching stale caches. Record extraction latency, expiry behavior and cleanup failures.<sup class="cite"><a href="#s13-32">32</a>,<a href="#s13-34">34</a>,<a href="#s13-53">53</a></sup></li>
+</ul>
+
+</section>
+<section>
+<h2>Gotchas</h2>
+<aside class="callout gotcha"><p class="callout-label">Gotcha: ADD-only stores keep contradicted facts</p><p>Mem0 keeps both “I prefer coffee” and later “I now prefer tea.” This correction test was not run here. Do not adopt Mem0 OSS for authoritative corrections until it passes. Check:</p><ol><li>The tea fact is stored.</li><li>The fresh thread’s prompt identifies tea as current; coffee is absent or explicitly historical.</li><li>A fresh thread answers tea.</li></ol><p>Record the first failure. Ranking may miss current facts. Resolve per user, field and effective time; test late-arriving history. Before deletion, fetch the user’s facts for that field and confirm contradiction. Age-based deletion also loses valid old facts, such as allergies.<sup class="cite"><a href="#s13-5">5</a></sup></p>
+</aside>
+<aside class="callout gotcha"><p class="callout-label">Gotcha: Retrieved text is untrusted</p><p>Trusted application code chooses tenant scope, never a model-generated user id. Observations/learned skills are data, not instructions. Chapter 17 tests injection/isolation.</p>
+</aside>
+<aside class="callout gotcha"><p class="callout-label">Gotcha: Checkpoints can retain deleted facts</p><p>Store deletion leaves earlier thread state, cached prompts, exports and backups. Test every readable copy.<sup class="cite"><a href="#s13-2">2</a></sup></p>
+</aside>
+</section>
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict"><p class="callout-label">Verdict: choose who decides what is saved</p><p>Use MCP for small local note graphs, including shared locked files. Use LangGraph Store for application-owned cross-thread facts; a separate checkpointer resumes threads. Adopt Letta Code’s CLI/Git files only after passing Step 7 within your hardware/latency budget. For custom-service edits, expose file tools (Chapter 01) or Store. Supplemental directed-edit outcomes alone were checked; /remember and CPU-only Letta Code remain unverified.</p>
+<p>For extraction, compare Chapter 06’s Mem0 with Hindsight (Step 6) on your histories. Choose temporal graphs (Chapter 14) for changing relationships, files (Chapters 01 and 02) for small readable corpora, Chapter 08 services for concurrent writers. Managed Google/AWS/Foundry remain unrun: consider only on your existing cloud, accepting untested extraction and its deletion/retention limits.</p>
+</aside>
+</section>
+<section><h2>Sources</h2><ol class="sources-list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li id="s13-1"><span class="src-title">MCP reference memory server: tools, client configuration and file storage</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory">https://github.com/modelcontextprotocol/servers/tree/main/src/memory</a></li><li id="s13-2"><span class="src-title">LangGraph persistence: thread checkpoints and cross-thread Store</span> <span class="src-note">(official)</span><a class="url" href="https://docs.langchain.com/oss/python/langgraph/persistence">https://docs.langchain.com/oss/python/langgraph/persistence</a></li><li id="s13-3"><span class="src-title">Letta repository: current harness and retired V1 server</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/letta-ai/letta">https://github.com/letta-ai/letta</a></li><li id="s13-4"><span class="src-title">Letta V1 0.16.8 source and API schema</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/letta-ai/letta/tree/0.16.8">https://github.com/letta-ai/letta/tree/0.16.8</a></li><li id="s13-5"><span class="src-title">Mem0 README: April 2026 algorithm and managed benchmark caveat</span> <span class="src-note">(vendor)</span><a class="url" href="https://github.com/mem0ai/mem0">https://github.com/mem0ai/mem0</a></li><li id="s13-6"><span class="src-title">Mem0 OSS v2-to-v3 migration: NLP extras and hybrid retrieval</span> <span class="src-note">(official)</span><a class="url" href="https://docs.mem0.ai/migration/oss-v2-to-v3">https://docs.mem0.ai/migration/oss-v2-to-v3</a><a class="url" href="https://github.com/mem0ai/mem0/blob/v2.2.1/mem0/memory/main.py">https://github.com/mem0ai/mem0/blob/v2.2.1/mem0/memory/main.py</a></li><li id="s13-7"><span class="src-title">Mem0 memory-benchmarks: retrieval budgets, answerers and judges</span> <span class="src-note">(vendor)</span><a class="url" href="https://github.com/mem0ai/memory-benchmarks">https://github.com/mem0ai/memory-benchmarks</a></li><li id="s13-8"><span class="src-title">Zep concepts: managed context graphs and source episodes</span> <span class="src-note">(official)</span><a class="url" href="https://help.getzep.com/concepts">https://help.getzep.com/concepts</a></li><li id="s13-9"><span class="src-title">Graphiti: Zep distinction and supported database backends</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/getzep/graphiti">https://github.com/getzep/graphiti</a></li><li id="s13-10"><span class="src-title">Hindsight: retain, recall and reflect</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/vectorize-io/hindsight">https://github.com/vectorize-io/hindsight</a></li><li id="s13-11"><span class="src-title">Cognee: graph and vector pipeline</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/topoteretes/cognee">https://github.com/topoteretes/cognee</a></li><li id="s13-12"><span class="src-title">Supermemory: memory API and user profiles</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/supermemoryai/supermemory">https://github.com/supermemoryai/supermemory</a></li><li id="s13-13"><span class="src-title">Supermemory repository MIT license</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/supermemoryai/supermemory/blob/main/LICENSE">https://github.com/supermemoryai/supermemory/blob/main/LICENSE</a></li><li id="s13-14"><span class="src-title">Memanto: typed memory, local and cloud modes</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/moorcheh-ai/memanto">https://github.com/moorcheh-ai/memanto</a></li><li id="s13-15"><span class="src-title">Memanto repository license</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/moorcheh-ai/memanto/blob/main/LICENSE">https://github.com/moorcheh-ai/memanto/blob/main/LICENSE</a></li><li id="s13-16"><span class="src-title">memU: shared wiki, automatic skill extraction and local/cloud backends</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/NevaMind-AI/memU">https://github.com/NevaMind-AI/memU</a></li><li id="s13-17"><span class="src-title">memU package metadata: 0.11.0-beta.3</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/NevaMind-AI/memU/blob/main/pyproject.toml">https://github.com/NevaMind-AI/memU/blob/main/pyproject.toml</a></li><li id="s13-18"><span class="src-title">Honcho: peer scopes, observer/observed pairs and AGPL-3.0</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/plastic-labs/honcho">https://github.com/plastic-labs/honcho</a></li><li id="s13-19"><span class="src-title">GitHub Copilot Memory: scope, verification, controls and expiry</span> <span class="src-note">(official)</span><a class="url" href="https://docs.github.com/en/copilot/concepts/prompting-and-context/copilot-memory">https://docs.github.com/en/copilot/concepts/prompting-and-context/copilot-memory</a></li><li id="s13-20"><span class="src-title">Memori documentation, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/MemoriLabs/Memori">https://github.com/MemoriLabs/Memori</a></li><li id="s13-21"><span class="src-title">Mastra Observational Memory documentation, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://mastra.ai/docs/memory/observational-memory">https://mastra.ai/docs/memory/observational-memory</a></li><li id="s13-22"><span class="src-title">Claude-Mem documentation, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/thedotmack/claude-mem">https://github.com/thedotmack/claude-mem</a></li><li id="s13-23"><span class="src-title">AgentMemory documentation, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/rohitg00/agentmemory">https://github.com/rohitg00/agentmemory</a></li><li id="s13-24"><span class="src-title">Redis Agent Memory documentation, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/redis/agent-memory-server">https://github.com/redis/agent-memory-server</a></li><li id="s13-25"><span class="src-title">MemPalace: verbatim storage, retrieval metric and MIT license, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/MemPalace/mempalace">https://github.com/MemPalace/mempalace</a><a class="url" href="https://github.com/MemPalace/mempalace/blob/main/LICENSE">https://github.com/MemPalace/mempalace/blob/main/LICENSE</a></li><li id="s13-26"><span class="src-title">EverOS: canonical storage, benchmarks, deletion and Apache-2.0, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/EverMind-AI/EverOS">https://github.com/EverMind-AI/EverOS</a><a class="url" href="https://github.com/EverMind-AI/EverOS/blob/main/docs/api.md">https://github.com/EverMind-AI/EverOS/blob/main/docs/api.md</a></li><li id="s13-27"><span class="src-title">Strands MongoDB session and long-term memory integration, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://strandsagents.com/blog/mongodb-memory-for-strands-agents/">https://strandsagents.com/blog/mongodb-memory-for-strands-agents/</a><a class="url" href="https://github.com/mongodb/strands-mongodb/blob/main/LICENSE">https://github.com/mongodb/strands-mongodb/blob/main/LICENSE</a></li><li id="s13-28"><span class="src-title">TencentDB Agent Memory: layers, SQLite default and MIT license, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/TencentCloud/TencentDB-Agent-Memory">https://github.com/TencentCloud/TencentDB-Agent-Memory</a></li><li id="s13-29"><span class="src-title">Mastra repository license and enterprise exclusions, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/mastra-ai/mastra/blob/main/LICENSE.md">https://github.com/mastra-ai/mastra/blob/main/LICENSE.md</a></li><li id="s13-30"><span class="src-title">Honcho Dream Histories, 16 November 2026</span> <span class="src-note">(vendor)</span><a class="url" href="https://honcho.dev/blog/dream-histories">https://honcho.dev/blog/dream-histories</a></li><li id="s13-31"><span class="src-title">Google Memory Bank API quickstart, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/api-quickstart">https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/api-quickstart</a></li><li id="s13-32"><span class="src-title">Google Memory Bank setup and memory revisions, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/setup">https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/setup</a><a class="url" href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/revisions">https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/revisions</a></li><li id="s13-33"><span class="src-title">AWS memory quickstart and namespace isolation, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory-get-started.html">https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory-get-started.html</a><a class="url" href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/specify-long-term-memory-organization.html">https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/specify-long-term-memory-organization.html</a></li><li id="s13-34"><span class="src-title">AWS CreateMemory retention controls and Boto3 APIs, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory-create-a-memory-store.html">https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory-create-a-memory-store.html</a><a class="url" href="https://docs.aws.amazon.com/boto3/latest/reference/services/bedrock-agentcore-control/client/create_memory.html">https://docs.aws.amazon.com/boto3/latest/reference/services/bedrock-agentcore-control/client/create_memory.html</a><a class="url" href="https://docs.aws.amazon.com/boto3/latest/reference/services/bedrock-agentcore/client/create_event.html">https://docs.aws.amazon.com/boto3/latest/reference/services/bedrock-agentcore/client/create_event.html</a></li><li id="s13-35">AWS list events and memory records (official, checked 20 November 2026) <a class="url" href="https://docs.aws.amazon.com/boto3/latest/reference/services/bedrock-agentcore/client/list_events.html">https://docs.aws.amazon.com/boto3/latest/reference/services/bedrock-agentcore/client/list_events.html</a><a class="url" href="https://docs.aws.amazon.com/boto3/latest/reference/services/bedrock-agentcore/client/list_memory_records.html">https://docs.aws.amazon.com/boto3/latest/reference/services/bedrock-agentcore/client/list_memory_records.html</a></li><li id="s13-36"><span class="src-title">Google Memory Bank pricing, September 2026 billing structure, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing?hl=nb">https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing?hl=nb</a></li><li id="s13-37"><span class="src-title">AWS AgentCore current pricing, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://aws.amazon.com/bedrock/agentcore/pricing/">https://aws.amazon.com/bedrock/agentcore/pricing/</a></li><li id="s13-38"><span class="src-title">Memory in ChatGPT: review and remove remembered information</span> <span class="src-note">(official)</span><a class="url" href="https://help.openai.com/en/articles/8590148-memory-in-chatgpt">https://help.openai.com/en/articles/8590148-memory-in-chatgpt</a></li><li id="s13-39"><span class="src-title">Claude chat search and memory: visibility, deletion and reset</span> <span class="src-note">(official)</span><a class="url" href="https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context">https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context</a></li><li id="s13-40"><span class="src-title">Gemini personalization using past chats: audit and deletion</span> <span class="src-note">(official)</span><a class="url" href="https://support.google.com/gemini/answer/16598469?hl=en">https://support.google.com/gemini/answer/16598469?hl=en</a></li><li id="s13-41"><span class="src-title">Gemini instructions: view, edit and delete</span> <span class="src-note">(official)</span><a class="url" href="https://support.google.com/gemini/answer/16598625?hl=en">https://support.google.com/gemini/answer/16598625?hl=en</a></li><li id="s13-42"><span class="src-title">MCP memory server 2.2.1 README: atomic saves, locks and limits, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://unpkg.com/@modelcontextprotocol/server-memory@2.2.1/README.md">https://unpkg.com/@modelcontextprotocol/server-memory@2.2.1/README.md</a></li><li id="s13-43"><span class="src-title">MCP Python SDK 1.26.0 release, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://pypi.org/project/mcp/1.26.0/">https://pypi.org/project/mcp/1.26.0/</a></li><li id="s13-44"><span class="src-title">LangGraph SQLite persistence package and serialization controls</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint-sqlite">https://github.com/langchain-ai/langgraph/tree/main/libs/checkpoint-sqlite</a></li><li id="s13-45"><span class="src-title">SQLite 3.51.3 release: WAL-reset corruption fix (13 March 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://sqlite.org/releaselog/3_51_3.html">https://sqlite.org/releaselog/3_51_3.html</a></li><li id="s13-46"><span class="src-title">CVE-2026-77937: affected versions and publication, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://cveawg.mitre.org/api/cve/CVE-2026-77937">https://cveawg.mitre.org/api/cve/CVE-2026-77937</a></li><li id="s13-47"><span class="src-title">Letta security policy: retired V1 has no fixes, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/letta-ai/letta/blob/main/SECURITY.md">https://github.com/letta-ai/letta/blob/main/SECURITY.md</a></li><li id="s13-48"><span class="src-title">LangGraph time travel: replay and checkpoint forks, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://docs.langchain.com/oss/python/langgraph/use-time-travel">https://docs.langchain.com/oss/python/langgraph/use-time-travel</a></li><li id="s13-49"><span class="src-title">Letta Code current harness, local backend and memory, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/letta-ai/letta-code">https://github.com/letta-ai/letta-code</a></li><li id="s13-50"><span class="src-title">Letta current slash commands: remember, memory and new, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://docs.letta.com/letta-code/slash-commands">https://docs.letta.com/letta-code/slash-commands</a></li><li id="s13-51"><span class="src-title">Ollama Qwen3.5 4B model and thinking controls, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://ollama.com/library/qwen3.5:4b">https://ollama.com/library/qwen3.5:4b</a><a class="url" href="https://docs.ollama.com/api/openai-compatibility">https://docs.ollama.com/api/openai-compatibility</a></li><li id="s13-52"><span class="src-title">Microsoft Foundry Agent Service Memory: types, public preview, quotas and pricing, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/agent-memory">https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/agent-memory</a></li><li id="s13-53"><span class="src-title">Microsoft Foundry memory usage: scopes, item operations, commands and TTL, checked 20 November 2026</span> <span class="src-note">(official)</span><a class="url" href="https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/memory-usage">https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/memory-usage</a></li><li id="s13-54"><span class="src-title">MemOS 2.0 README, local-plugin storage and deletion API, checked 21 November 2026</span> <span class="src-note">(official; not run)</span><a class="url" href="https://github.com/MemTensor/MemOS">https://github.com/MemTensor/MemOS</a><a class="url" href="https://github.com/MemTensor/MemOS/blob/main/apps/memos-local-plugin/README.md">https://github.com/MemTensor/MemOS/blob/main/apps/memos-local-plugin/README.md</a><a class="url" href="https://github.com/MemTensor/MemOS/blob/main/docs/en/open_source/open_source_api/core/delete_memory.md">https://github.com/MemTensor/MemOS/blob/main/docs/en/open_source/open_source_api/core/delete_memory.md</a><a class="url" href="https://github.com/MemTensor/MemOS/blob/main/LICENSE">https://github.com/MemTensor/MemOS/blob/main/LICENSE</a></li><li id="s13-55"><span class="src-title">OpenAI Agents SDK sessions, built-in session implementations, checked 22 November 2026</span> <span class="src-note">(official; not run)</span><a class="url" href="https://openai.github.io/openai-agents-python/sessions/">https://openai.github.io/openai-agents-python/sessions/</a></li><li id="s13-56"><span class="src-title">Google ADK: Memory with MemoryService, checked 22 November 2026</span> <span class="src-note">(official; not run)</span><a class="url" href="https://google.github.io/adk-docs/sessions/memory/">https://google.github.io/adk-docs/sessions/memory/</a></li><li id="s13-57"><span class="src-title">CrewAI memory concepts, docs v1.15.44, checked 22 November 2026</span> <span class="src-note">(official; not run)</span><a class="url" href="https://docs.crewai.com/en/concepts/memory">https://docs.crewai.com/en/concepts/memory</a></li><li id="s13-58"><span class="src-title">LlamaIndex agent memory documentation, checked 22 November 2026</span> <span class="src-note">(official; not run)</span><a class="url" href="https://developers.llamaindex.ai/python/framework/module_guides/deploying/agents/memory/">https://developers.llamaindex.ai/python/framework/module_guides/deploying/agents/memory/</a></li><li id="s13-59"><span class="src-title">LangMem README and license, checked 22 November 2026</span> <span class="src-note">(official; not run)</span><a class="url" href="https://github.com/langchain-ai/langmem">https://github.com/langchain-ai/langmem</a></li></ol></section>
+</article>

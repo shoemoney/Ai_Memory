@@ -1,0 +1,157 @@
+{
+  "model": "Qwen2.5-0.5B-Instruct Q4_K_M",
+  "model_revision": "9217f5db79a29953eb74d5343926648285ec7e67",
+  "model_sha256": "74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db",
+  "image": "ghcr.io/ggml-org/llama.cpp@sha256:5b43086e3ba7ea5794d72904654f6cd41224a9b1c6ac0398f4940ee380d30f23",
+  "gpu_layers": 0,
+  "threads": 2,
+  "pairs": 3,
+  "trials": [
+    {
+      "ttft_ms": 2597.7589119866025,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 889,
+        "prompt_ms": 2595.447,
+        "prompt_per_token_ms": 2.9195129358830147,
+        "prompt_per_second": 342.5228871943831,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "content": "1",
+      "pair": 1,
+      "condition": "cold",
+      "restore_wall_ms": 0,
+      "restore_plus_ttft_ms": 2597.7589119866025
+    },
+    {
+      "ttft_ms": 29.592317005153745,
+      "timings": {
+        "cache_n": 888,
+        "prompt_n": 1,
+        "prompt_ms": 28.009,
+        "prompt_per_token_ms": 28.009,
+        "prompt_per_second": 35.702809811132134,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "content": "1",
+      "pair": 1,
+      "condition": "restored",
+      "restore_wall_ms": 2.8588109998963773,
+      "restore_plus_ttft_ms": 32.45112800505012
+    },
+    {
+      "ttft_ms": 24.962394003523514,
+      "timings": {
+        "cache_n": 888,
+        "prompt_n": 1,
+        "prompt_ms": 22.853,
+        "prompt_per_token_ms": 22.853,
+        "prompt_per_second": 43.757931125016405,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "content": "1",
+      "pair": 2,
+      "condition": "restored",
+      "restore_wall_ms": 2.633092983160168,
+      "restore_plus_ttft_ms": 27.59548698668368
+    },
+    {
+      "ttft_ms": 2603.9691790065262,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 889,
+        "prompt_ms": 2602.151,
+        "prompt_per_token_ms": 2.9270539932508433,
+        "prompt_per_second": 341.6404351630632,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "content": "1",
+      "pair": 2,
+      "condition": "cold",
+      "restore_wall_ms": 0,
+      "restore_plus_ttft_ms": 2603.9691790065262
+    },
+    {
+      "ttft_ms": 2569.769030989846,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 889,
+        "prompt_ms": 2567.815,
+        "prompt_per_token_ms": 2.888430821147357,
+        "prompt_per_second": 346.2087416733682,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "content": "1",
+      "pair": 3,
+      "condition": "cold",
+      "restore_wall_ms": 0,
+      "restore_plus_ttft_ms": 2569.769030989846
+    },
+    {
+      "ttft_ms": 25.948084017727524,
+      "timings": {
+        "cache_n": 888,
+        "prompt_n": 1,
+        "prompt_ms": 24.057,
+        "prompt_per_token_ms": 24.057,
+        "prompt_per_second": 41.56794280251071,
+        "predicted_n": 1,
+        "predicted_ms": 0.001,
+        "predicted_per_token_ms": 0.0,
+        "predicted_per_second": 0.0
+      },
+      "content": "1",
+      "pair": 3,
+      "condition": "restored",
+      "restore_wall_ms": 3.738516999874264,
+      "restore_plus_ttft_ms": 29.686601017601788
+    }
+  ],
+  "seed_timings": {
+    "cache_n": 0,
+    "prompt_n": 889,
+    "prompt_ms": 2635.474,
+    "prompt_per_token_ms": 2.9645376827896515,
+    "prompt_per_second": 337.32072484873686,
+    "predicted_n": 1,
+    "predicted_ms": 0.001,
+    "predicted_per_token_ms": 0.0,
+    "predicted_per_second": 0.0
+  },
+  "save": {
+    "id_slot": 0,
+    "filename": "slot.bin",
+    "n_saved": 889,
+    "n_written": 10938884,
+    "timings": {
+      "save_ms": 3.593
+    }
+  },
+  "cold": {
+    "ttft_ms": 2597.7589119866025,
+    "restore_wall_ms": 0,
+    "restore_plus_ttft_ms": 2597.7589119866025
+  },
+  "restored": {
+    "ttft_ms": 25.948084017727524,
+    "restore_wall_ms": 2.8588109998963773,
+    "restore_plus_ttft_ms": 29.686601017601788
+  },
+  "passed": true,
+  "cleanup": "container, model and slot removed; pre-existing image retained"
+}

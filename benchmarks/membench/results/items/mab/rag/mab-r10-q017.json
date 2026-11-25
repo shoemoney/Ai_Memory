@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q017",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "84713577a6e572fd323bad0325737646cb769b371293d117d35edeb00d9cb4b3",
+  "reference_sha256": "76432e1ae8c939ec6e396bd653dd7e6801b7a97b03c5701c81051ca40a405439",
+  "method": "rag",
+  "answer": "Mr. Person324 announced to Person513 that the baby would arrive in the spring.",
+  "response": {
+    "text": "Mr. Person324 announced to Person513 that the baby would arrive in the spring.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 22,
+      "prompt_tokens": 3425,
+      "total_tokens": 3447,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.433458296000026,
+    "request_sha256": "caddfe4732db783d18d2ffb10672c9d38b25dbbaa75855ac8ce0c0b2de826a0e",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    523,
+    554,
+    498,
+    525,
+    47,
+    53,
+    546,
+    361,
+    34,
+    41,
+    368,
+    160,
+    524,
+    484,
+    159,
+    127,
+    15,
+    526,
+    110,
+    46
+  ],
+  "retrieval_scores": [
+    0.5663938522338867,
+    0.5401338338851929,
+    0.5333284735679626,
+    0.5306746959686279,
+    0.5273371338844299,
+    0.5228461623191833,
+    0.5097870826721191,
+    0.5065464377403259,
+    0.5051562190055847,
+    0.5024546384811401,
+    0.5015836358070374,
+    0.4979130029678345,
+    0.48418641090393066,
+    0.48291096091270447,
+    0.4810050129890442,
+    0.47932446002960205,
+    0.4788483679294586,
+    0.47625938057899475,
+    0.47463059425354004,
+    0.47459548711776733
+  ],
+  "retrieval_seconds": 0.030881284998031333,
+  "provided_context_sha256": "f450c7ffae2d1e3bb567480007cbb7ff603f6b55a7960348a449865f2d8c1402",
+  "provided_context_tokens": 3046,
+  "score": 0,
+  "privacy_export": {
+    "raw_record_sha256": "73363a62c6c0a19f9f07219d13a091abca7e22846de5faba7bc86f88a378781a",
+    "raw_answer_sha256": "05ed9eac85492c5573c7511c8ab944347f7145dbbc261185361e408df11cbbfd",
+    "answer_redacted": false
+  }
+}

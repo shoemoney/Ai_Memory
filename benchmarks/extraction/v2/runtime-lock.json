@@ -1,0 +1,14 @@
+{
+  "server_build": 12359,
+  "server_commit": "b1b770d90",
+  "batch": 512,
+  "ubatch": 128,
+  "slots": 2,
+  "context_per_slot": 4096,
+  "note": "Writer prompt/schema unchanged. M1 and first M3 instance measurements are preserved as pilots. All main measurements restart on the second M3 instance; timing and quality are not pooled across instances. Batch 512/microbatch 128, two 4096-context slots. Pause owned server below 40% free or at warning/critical pressure.",
+  "main_serving_hardware": "Apple M3 Ultra, 96 GB",
+  "pilot_serving_hardware": "Apple M1 Ultra, 64 GB",
+  "minimum_load_free_percent": 40,
+  "pause_free_percent_m3": 40,
+  "main_serving_instance": "M3 main"
+}

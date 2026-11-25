@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "77229298195c33a626db349211f108674268d30e756758db43a5c91f11501030",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-eddfedc0-8adb-41a7-95f8-664f9489b1ad",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"The Mustang has a cracked windshield.\", \"valid_at\": \"2023-05-27T07:58:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795371804,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 82,
+      "prompt_tokens": 5978,
+      "total_tokens": 6060,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"The Mustang has a cracked windshield.\", \"valid_at\": \"2023-05-27T07:58:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 9.413316151010804,
+  "prompt_tokens_local": 5978
+}

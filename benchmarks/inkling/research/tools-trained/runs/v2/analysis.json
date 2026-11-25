@@ -1,0 +1,484 @@
+{
+  "post_hoc": true,
+  "episodes_per_arm": 400,
+  "tool_episodes": 280,
+  "arms": {
+    "A": {
+      "counts": {
+        "tool_correct": 279.0,
+        "tool_needed": 280.0,
+        "arguments_valid": 379.0,
+        "calls": 379.0,
+        "no_tool_correct": 120.0,
+        "no_tool_needed": 120.0,
+        "predicted_no_tool": 121.0,
+        "final_correct": 390.0,
+        "episode_correct": 390.0,
+        "first_command_correct": 279.0,
+        "sequence_contained": 279.0,
+        "extra_calls": 0.0,
+        "actual_final_correct": 390.0
+      },
+      "tool_accuracy": 0.9964285714285714,
+      "first_command_accuracy": 0.9964285714285714,
+      "sequence_contained_accuracy": 0.9964285714285714,
+      "extra_calls_per_episode": 0.0,
+      "actual_final_accuracy": 0.975,
+      "prompt_tokens": 82990,
+      "completion_tokens": 19978,
+      "turns": 779,
+      "native_mapped_calls": 0,
+      "list_price_usd": 0.0224375,
+      "cohorts": {
+        "ask_model": {
+          "episodes": 20,
+          "tool_correct": 20.0,
+          "first_command_correct": 20.0,
+          "sequence_contained": 20.0,
+          "actual_final_correct": 20.0
+        },
+        "calc": {
+          "episodes": 20,
+          "tool_correct": 19.0,
+          "first_command_correct": 19.0,
+          "sequence_contained": 19.0,
+          "actual_final_correct": 19.0
+        },
+        "direct": {
+          "episodes": 120,
+          "tool_correct": 0.0,
+          "first_command_correct": 0.0,
+          "sequence_contained": 0.0,
+          "actual_final_correct": 111.0
+        },
+        "help": {
+          "episodes": 40,
+          "tool_correct": 40.0,
+          "first_command_correct": 40.0,
+          "sequence_contained": 40.0,
+          "actual_final_correct": 40.0
+        },
+        "image_gen": {
+          "episodes": 20,
+          "tool_correct": 20.0,
+          "first_command_correct": 20.0,
+          "sequence_contained": 20.0,
+          "actual_final_correct": 20.0
+        },
+        "image_search": {
+          "episodes": 20,
+          "tool_correct": 20.0,
+          "first_command_correct": 20.0,
+          "sequence_contained": 20.0,
+          "actual_final_correct": 20.0
+        },
+        "read_url": {
+          "episodes": 20,
+          "tool_correct": 20.0,
+          "first_command_correct": 20.0,
+          "sequence_contained": 20.0,
+          "actual_final_correct": 20.0
+        },
+        "recall": {
+          "episodes": 20,
+          "tool_correct": 20.0,
+          "first_command_correct": 20.0,
+          "sequence_contained": 20.0,
+          "actual_final_correct": 20.0
+        },
+        "remember": {
+          "episodes": 20,
+          "tool_correct": 20.0,
+          "first_command_correct": 20.0,
+          "sequence_contained": 20.0,
+          "actual_final_correct": 20.0
+        },
+        "unsupported": {
+          "episodes": 20,
+          "tool_correct": 20.0,
+          "first_command_correct": 20.0,
+          "sequence_contained": 20.0,
+          "actual_final_correct": 20.0
+        },
+        "web_search": {
+          "episodes": 20,
+          "tool_correct": 20.0,
+          "first_command_correct": 20.0,
+          "sequence_contained": 20.0,
+          "actual_final_correct": 20.0
+        },
+        "web_search+read_url": {
+          "episodes": 60,
+          "tool_correct": 60.0,
+          "first_command_correct": 60.0,
+          "sequence_contained": 60.0,
+          "actual_final_correct": 60.0
+        }
+      }
+    },
+    "B": {
+      "counts": {
+        "tool_correct": 208.0,
+        "tool_needed": 280.0,
+        "arguments_valid": 401.0,
+        "calls": 402.0,
+        "no_tool_correct": 113.0,
+        "no_tool_needed": 120.0,
+        "predicted_no_tool": 114.0,
+        "final_correct": 146.0,
+        "episode_correct": 141.0,
+        "first_command_correct": 247.0,
+        "sequence_contained": 250.0,
+        "extra_calls": 54.0,
+        "actual_final_correct": 149.0
+      },
+      "tool_accuracy": 0.7428571428571429,
+      "first_command_accuracy": 0.8821428571428571,
+      "sequence_contained_accuracy": 0.8928571428571429,
+      "extra_calls_per_episode": 0.135,
+      "actual_final_accuracy": 0.3725,
+      "prompt_tokens": 2318037,
+      "completion_tokens": 83030,
+      "turns": 799,
+      "native_mapped_calls": 11,
+      "list_price_usd": 0.38922055,
+      "cohorts": {
+        "ask_model": {
+          "episodes": 20,
+          "tool_correct": 14.0,
+          "first_command_correct": 14.0,
+          "sequence_contained": 14.0,
+          "actual_final_correct": 0.0
+        },
+        "calc": {
+          "episodes": 20,
+          "tool_correct": 16.0,
+          "first_command_correct": 16.0,
+          "sequence_contained": 16.0,
+          "actual_final_correct": 8.0
+        },
+        "direct": {
+          "episodes": 120,
+          "tool_correct": 0.0,
+          "first_command_correct": 0.0,
+          "sequence_contained": 0.0,
+          "actual_final_correct": 102.0
+        },
+        "help": {
+          "episodes": 40,
+          "tool_correct": 33.0,
+          "first_command_correct": 38.0,
+          "sequence_contained": 38.0,
+          "actual_final_correct": 7.0
+        },
+        "image_gen": {
+          "episodes": 20,
+          "tool_correct": 14.0,
+          "first_command_correct": 14.0,
+          "sequence_contained": 17.0,
+          "actual_final_correct": 6.0
+        },
+        "image_search": {
+          "episodes": 20,
+          "tool_correct": 18.0,
+          "first_command_correct": 19.0,
+          "sequence_contained": 19.0,
+          "actual_final_correct": 8.0
+        },
+        "read_url": {
+          "episodes": 20,
+          "tool_correct": 18.0,
+          "first_command_correct": 18.0,
+          "sequence_contained": 18.0,
+          "actual_final_correct": 0.0
+        },
+        "recall": {
+          "episodes": 20,
+          "tool_correct": 5.0,
+          "first_command_correct": 19.0,
+          "sequence_contained": 19.0,
+          "actual_final_correct": 0.0
+        },
+        "remember": {
+          "episodes": 20,
+          "tool_correct": 15.0,
+          "first_command_correct": 15.0,
+          "sequence_contained": 15.0,
+          "actual_final_correct": 15.0
+        },
+        "unsupported": {
+          "episodes": 20,
+          "tool_correct": 9.0,
+          "first_command_correct": 16.0,
+          "sequence_contained": 16.0,
+          "actual_final_correct": 0.0
+        },
+        "web_search": {
+          "episodes": 20,
+          "tool_correct": 6.0,
+          "first_command_correct": 18.0,
+          "sequence_contained": 18.0,
+          "actual_final_correct": 3.0
+        },
+        "web_search+read_url": {
+          "episodes": 60,
+          "tool_correct": 60.0,
+          "first_command_correct": 60.0,
+          "sequence_contained": 60.0,
+          "actual_final_correct": 0.0
+        }
+      }
+    },
+    "C": {
+      "counts": {
+        "tool_correct": 172.0,
+        "tool_needed": 280.0,
+        "arguments_valid": 404.0,
+        "calls": 432.0,
+        "no_tool_correct": 112.0,
+        "no_tool_needed": 120.0,
+        "predicted_no_tool": 112.0,
+        "final_correct": 146.0,
+        "episode_correct": 137.0,
+        "first_command_correct": 219.0,
+        "sequence_contained": 229.0,
+        "extra_calls": 110.0,
+        "actual_final_correct": 150.0
+      },
+      "tool_accuracy": 0.6142857142857143,
+      "first_command_accuracy": 0.7821428571428571,
+      "sequence_contained_accuracy": 0.8178571428571428,
+      "extra_calls_per_episode": 0.275,
+      "actual_final_accuracy": 0.375,
+      "prompt_tokens": 439329,
+      "completion_tokens": 99507,
+      "turns": 815,
+      "native_mapped_calls": 88,
+      "list_price_usd": 0.11565284999999999,
+      "cohorts": {
+        "ask_model": {
+          "episodes": 20,
+          "tool_correct": 11.0,
+          "first_command_correct": 18.0,
+          "sequence_contained": 18.0,
+          "actual_final_correct": 0.0
+        },
+        "calc": {
+          "episodes": 20,
+          "tool_correct": 13.0,
+          "first_command_correct": 13.0,
+          "sequence_contained": 13.0,
+          "actual_final_correct": 10.0
+        },
+        "direct": {
+          "episodes": 120,
+          "tool_correct": 0.0,
+          "first_command_correct": 0.0,
+          "sequence_contained": 0.0,
+          "actual_final_correct": 93.0
+        },
+        "help": {
+          "episodes": 40,
+          "tool_correct": 32.0,
+          "first_command_correct": 36.0,
+          "sequence_contained": 37.0,
+          "actual_final_correct": 16.0
+        },
+        "image_gen": {
+          "episodes": 20,
+          "tool_correct": 8.0,
+          "first_command_correct": 10.0,
+          "sequence_contained": 14.0,
+          "actual_final_correct": 7.0
+        },
+        "image_search": {
+          "episodes": 20,
+          "tool_correct": 3.0,
+          "first_command_correct": 3.0,
+          "sequence_contained": 6.0,
+          "actual_final_correct": 4.0
+        },
+        "read_url": {
+          "episodes": 20,
+          "tool_correct": 11.0,
+          "first_command_correct": 13.0,
+          "sequence_contained": 15.0,
+          "actual_final_correct": 3.0
+        },
+        "recall": {
+          "episodes": 20,
+          "tool_correct": 14.0,
+          "first_command_correct": 19.0,
+          "sequence_contained": 19.0,
+          "actual_final_correct": 0.0
+        },
+        "remember": {
+          "episodes": 20,
+          "tool_correct": 15.0,
+          "first_command_correct": 16.0,
+          "sequence_contained": 16.0,
+          "actual_final_correct": 15.0
+        },
+        "unsupported": {
+          "episodes": 20,
+          "tool_correct": 13.0,
+          "first_command_correct": 18.0,
+          "sequence_contained": 18.0,
+          "actual_final_correct": 0.0
+        },
+        "web_search": {
+          "episodes": 20,
+          "tool_correct": 0.0,
+          "first_command_correct": 18.0,
+          "sequence_contained": 18.0,
+          "actual_final_correct": 2.0
+        },
+        "web_search+read_url": {
+          "episodes": 60,
+          "tool_correct": 52.0,
+          "first_command_correct": 55.0,
+          "sequence_contained": 55.0,
+          "actual_final_correct": 0.0
+        }
+      }
+    },
+    "C0": {
+      "counts": {
+        "tool_correct": 132.0,
+        "tool_needed": 280.0,
+        "arguments_valid": 290.0,
+        "calls": 343.0,
+        "no_tool_correct": 106.0,
+        "no_tool_needed": 120.0,
+        "predicted_no_tool": 107.0,
+        "final_correct": 123.0,
+        "episode_correct": 120.0,
+        "first_command_correct": 163.0,
+        "sequence_contained": 172.0,
+        "extra_calls": 116.0,
+        "actual_final_correct": 131.0
+      },
+      "tool_accuracy": 0.4714285714285714,
+      "first_command_accuracy": 0.5821428571428572,
+      "sequence_contained_accuracy": 0.6142857142857143,
+      "extra_calls_per_episode": 0.29,
+      "actual_final_accuracy": 0.3275,
+      "prompt_tokens": 232227,
+      "completion_tokens": 96058,
+      "turns": 724,
+      "native_mapped_calls": 240,
+      "list_price_usd": 0.08286305,
+      "cohorts": {
+        "ask_model": {
+          "episodes": 20,
+          "tool_correct": 11.0,
+          "first_command_correct": 13.0,
+          "sequence_contained": 13.0,
+          "actual_final_correct": 0.0
+        },
+        "calc": {
+          "episodes": 20,
+          "tool_correct": 2.0,
+          "first_command_correct": 2.0,
+          "sequence_contained": 2.0,
+          "actual_final_correct": 2.0
+        },
+        "direct": {
+          "episodes": 120,
+          "tool_correct": 0.0,
+          "first_command_correct": 0.0,
+          "sequence_contained": 0.0,
+          "actual_final_correct": 83.0
+        },
+        "help": {
+          "episodes": 40,
+          "tool_correct": 24.0,
+          "first_command_correct": 28.0,
+          "sequence_contained": 28.0,
+          "actual_final_correct": 16.0
+        },
+        "image_gen": {
+          "episodes": 20,
+          "tool_correct": 7.0,
+          "first_command_correct": 7.0,
+          "sequence_contained": 11.0,
+          "actual_final_correct": 9.0
+        },
+        "image_search": {
+          "episodes": 20,
+          "tool_correct": 5.0,
+          "first_command_correct": 6.0,
+          "sequence_contained": 11.0,
+          "actual_final_correct": 5.0
+        },
+        "read_url": {
+          "episodes": 20,
+          "tool_correct": 18.0,
+          "first_command_correct": 18.0,
+          "sequence_contained": 18.0,
+          "actual_final_correct": 2.0
+        },
+        "recall": {
+          "episodes": 20,
+          "tool_correct": 12.0,
+          "first_command_correct": 18.0,
+          "sequence_contained": 18.0,
+          "actual_final_correct": 0.0
+        },
+        "remember": {
+          "episodes": 20,
+          "tool_correct": 17.0,
+          "first_command_correct": 17.0,
+          "sequence_contained": 17.0,
+          "actual_final_correct": 14.0
+        },
+        "unsupported": {
+          "episodes": 20,
+          "tool_correct": 11.0,
+          "first_command_correct": 18.0,
+          "sequence_contained": 18.0,
+          "actual_final_correct": 0.0
+        },
+        "web_search": {
+          "episodes": 20,
+          "tool_correct": 1.0,
+          "first_command_correct": 10.0,
+          "sequence_contained": 10.0,
+          "actual_final_correct": 0.0
+        },
+        "web_search+read_url": {
+          "episodes": 60,
+          "tool_correct": 24.0,
+          "first_command_correct": 26.0,
+          "sequence_contained": 26.0,
+          "actual_final_correct": 0.0
+        }
+      }
+    }
+  },
+  "paired": {
+    "tool_correct": {
+      "A_minus_B": 0.25357142857142856,
+      "paired_bootstrap_95pct_interval": [
+        0.20357142857142857,
+        0.30714285714285716
+      ]
+    },
+    "first_command_correct": {
+      "A_minus_B": 0.11428571428571428,
+      "paired_bootstrap_95pct_interval": [
+        0.07857142857142857,
+        0.15357142857142858
+      ]
+    },
+    "sequence_contained": {
+      "A_minus_B": 0.10357142857142858,
+      "paired_bootstrap_95pct_interval": [
+        0.06785714285714285,
+        0.1392857142857143
+      ]
+    }
+  },
+  "bootstrap_draws": 10000,
+  "seed": 0
+}

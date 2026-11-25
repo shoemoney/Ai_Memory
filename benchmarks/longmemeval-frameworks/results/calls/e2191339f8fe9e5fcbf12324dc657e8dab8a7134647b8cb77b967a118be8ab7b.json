@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 68
+  },
+  "phase": "graphiti-json-repair-2",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "221df4462137cd5049ab3f2c2017b52f3faaefc93ea8cb747f5fc9f87bc53738",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-94542cca-0fcb-4e76-9d99-df1eb7300117",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"$defs\": {\n        \"NodeDuplicate\": {\n            \"properties\": {\n                \"id\": {\n                    \"description\": \"integer id of the entity\",\n                    \"title\": \"Id\",\n                    \"type\": \"integer\"\n                },\n                \"name\": {\n                    \"description\": \"Name of the entity. Should be the most complete and descriptive name of the entity. Do not include any JSON formatting in the Entity name such as {}.\",\n                    \"title\": \"Name\",\n                    \"type\": \"string\"\n                },\n                \"duplicate_candidate_id\": {\n                    \"description\": \"candidate_id of the matching EXISTING ENTITY, or -1 if no duplicate exists.\",\n                    \"title\": \"Duplicate Candidate Id\",\n                    \"type\": \"integer\"\n                }\n            },\n            \"required\": [\"id\", \"name\", \"duplicate_candidate_id\"],\n            \"title\": \"NodeDuplicate\",\n            \"type\": \"object\"\n        }\n    },\n    \"properties\": {\n        \"entity_resolutions\": {\n            \"description\": \"List of resolved nodes\",\n            \"items\": {\n                \"$ref\": \"#/$defs/NodeDuplicate\"\n            },\n            \"title\": \"Entity Resolutions\",\n            \"type\": \"array\"\n        }\n    },\n    \"required\": [\"entity_resolutions\"],\n    \"title\": \"NodeResolutions\",\n    \"type\": \"object\"\n},\n\"entity_resolutions\": []",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795364873,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 283,
+      "prompt_tokens": 593,
+      "total_tokens": 876,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 285
+      }
+    }
+  },
+  "text": "{\n    \"$defs\": {\n        \"NodeDuplicate\": {\n            \"properties\": {\n                \"id\": {\n                    \"description\": \"integer id of the entity\",\n                    \"title\": \"Id\",\n                    \"type\": \"integer\"\n                },\n                \"name\": {\n                    \"description\": \"Name of the entity. Should be the most complete and descriptive name of the entity. Do not include any JSON formatting in the Entity name such as {}.\",\n                    \"title\": \"Name\",\n                    \"type\": \"string\"\n                },\n                \"duplicate_candidate_id\": {\n                    \"description\": \"candidate_id of the matching EXISTING ENTITY, or -1 if no duplicate exists.\",\n                    \"title\": \"Duplicate Candidate Id\",\n                    \"type\": \"integer\"\n                }\n            },\n            \"required\": [\"id\", \"name\", \"duplicate_candidate_id\"],\n            \"title\": \"NodeDuplicate\",\n            \"type\": \"object\"\n        }\n    },\n    \"properties\": {\n        \"entity_resolutions\": {\n            \"description\": \"List of resolved nodes\",\n            \"items\": {\n                \"$ref\": \"#/$defs/NodeDuplicate\"\n            },\n            \"title\": \"Entity Resolutions\",\n            \"type\": \"array\"\n        }\n    },\n    \"required\": [\"entity_resolutions\"],\n    \"title\": \"NodeResolutions\",\n    \"type\": \"object\"\n},\n\"entity_resolutions\": []",
+  "seconds": 9.569905929005472,
+  "prompt_tokens_local": 593
+}

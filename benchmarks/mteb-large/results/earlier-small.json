@@ -1,0 +1,722 @@
+[
+  {
+    "task": "ArguAna",
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.5404588305631836,
+    "official_ndcg_at_10_rounded": 0.54046,
+    "bootstrap_95_ci": [
+      0.5222697563834326,
+      0.5588968812548176
+    ],
+    "hit_at_10_count": 1155,
+    "elapsed_seconds": 61.321420516003855,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/BAAI__bge-m3/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.6454803938930749,
+    "official_ndcg_at_10_rounded": 0.64548,
+    "bootstrap_95_ci": [
+      0.5989249953342672,
+      0.6894125970125812
+    ],
+    "hit_at_10_count": 239,
+    "elapsed_seconds": 50.541219382001145,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/BAAI__bge-m3/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "BAAI/bge-m3",
+    "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.31531527840462376,
+    "official_ndcg_at_10_rounded": 0.31532,
+    "bootstrap_95_ci": [
+      0.2821048869541836,
+      0.3491826027173508
+    ],
+    "hit_at_10_count": 221,
+    "elapsed_seconds": 35.29314803700254,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/BAAI__bge-m3/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.3038922644300492,
+    "official_ndcg_at_10_rounded": 0.30389,
+    "bootstrap_95_ci": [
+      0.2718814344376103,
+      0.33733208470724824
+    ],
+    "hit_at_10_count": 217,
+    "elapsed_seconds": 45.026530515999184,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2__128d/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.8089386290757312,
+    "official_ndcg_at_10_rounded": 0.80894,
+    "bootstrap_95_ci": [
+      0.7694856977234158,
+      0.8473044122489822
+    ],
+    "hit_at_10_count": 267,
+    "elapsed_seconds": 56.88566611600254,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2__128d/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.5116133554894163,
+    "official_ndcg_at_10_rounded": 0.51161,
+    "bootstrap_95_ci": [
+      0.4913711702851455,
+      0.5316701288387236
+    ],
+    "hit_at_10_count": 1033,
+    "elapsed_seconds": 77.28291583499959,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2__128d/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "jinaai/jina-embeddings-v5-text-small",
+    "revision": "46ed7da5b47e4bca710b756313fafaf4110c6bd1",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.3982158383469848,
+    "official_ndcg_at_10_rounded": 0.39822,
+    "bootstrap_95_ci": [
+      0.3629610199415839,
+      0.4337874080764597
+    ],
+    "hit_at_10_count": 246,
+    "elapsed_seconds": 126.04703964300279,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/jinaai__jina-embeddings-v5-text-small/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "jinaai/jina-embeddings-v5-text-small",
+    "revision": "46ed7da5b47e4bca710b756313fafaf4110c6bd1",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.6474842999191717,
+    "official_ndcg_at_10_rounded": 0.64748,
+    "bootstrap_95_ci": [
+      0.6304964557730522,
+      0.6642648220177783
+    ],
+    "hit_at_10_count": 1295,
+    "elapsed_seconds": 234.52763674000016,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/jinaai__jina-embeddings-v5-text-small/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "jinaai/jina-embeddings-v5-text-small",
+    "revision": "46ed7da5b47e4bca710b756313fafaf4110c6bd1",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.7636083805935164,
+    "official_ndcg_at_10_rounded": 0.76361,
+    "bootstrap_95_ci": [
+      0.7244982878648031,
+      0.8019832950640953
+    ],
+    "hit_at_10_count": 272,
+    "elapsed_seconds": 163.13388462800503,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/jinaai__jina-embeddings-v5-text-small/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "microsoft/harrier-oss-v1-0.6b",
+    "revision": "f9b9dc8d367d443f2479d27aa5d8d2850c0774ee",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.3707507748730254,
+    "official_ndcg_at_10_rounded": 0.37075,
+    "bootstrap_95_ci": [
+      0.335535832802795,
+      0.4062394478799937
+    ],
+    "hit_at_10_count": 240,
+    "elapsed_seconds": 68.605703524001,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/microsoft__harrier-oss-v1-0.6b/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "microsoft/harrier-oss-v1-0.6b",
+    "revision": "f9b9dc8d367d443f2479d27aa5d8d2850c0774ee",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.7595213187729593,
+    "official_ndcg_at_10_rounded": 0.75952,
+    "bootstrap_95_ci": [
+      0.719870972905441,
+      0.7982371935379301
+    ],
+    "hit_at_10_count": 267,
+    "elapsed_seconds": 89.01754539399553,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/microsoft__harrier-oss-v1-0.6b/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "microsoft/harrier-oss-v1-0.6b",
+    "revision": "f9b9dc8d367d443f2479d27aa5d8d2850c0774ee",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.6519548398043377,
+    "official_ndcg_at_10_rounded": 0.65195,
+    "bootstrap_95_ci": [
+      0.6349074070170035,
+      0.6692037873747873
+    ],
+    "hit_at_10_count": 1290,
+    "elapsed_seconds": 122.57957357299892,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/microsoft__harrier-oss-v1-0.6b/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "microsoft/harrier-oss-v1-270m",
+    "revision": "31de22b673913c7d658c0f03f792d77c2dcf8ebd",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.7530198978903432,
+    "official_ndcg_at_10_rounded": 0.75302,
+    "bootstrap_95_ci": [
+      0.7121052321488679,
+      0.7929156108103209
+    ],
+    "hit_at_10_count": 265,
+    "elapsed_seconds": 33.003286512997875,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/microsoft__harrier-oss-v1-270m/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "microsoft/harrier-oss-v1-270m",
+    "revision": "31de22b673913c7d658c0f03f792d77c2dcf8ebd",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.6423138967072947,
+    "official_ndcg_at_10_rounded": 0.64231,
+    "bootstrap_95_ci": [
+      0.6244313541008142,
+      0.6595631347537773
+    ],
+    "hit_at_10_count": 1268,
+    "elapsed_seconds": 45.500500832997204,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/microsoft__harrier-oss-v1-270m/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "microsoft/harrier-oss-v1-270m",
+    "revision": "31de22b673913c7d658c0f03f792d77c2dcf8ebd",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.36009790240696726,
+    "official_ndcg_at_10_rounded": 0.3601,
+    "bootstrap_95_ci": [
+      0.3248709545720992,
+      0.3953950257412588
+    ],
+    "hit_at_10_count": 242,
+    "elapsed_seconds": 25.50706732699473,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/microsoft__harrier-oss-v1-270m/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.34266029599282627,
+    "official_ndcg_at_10_rounded": 0.34266,
+    "bootstrap_95_ci": [
+      0.30771280812599205,
+      0.3780857381525059
+    ],
+    "hit_at_10_count": 224,
+    "elapsed_seconds": 6.1848610380038735,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/BAAI__bge-small-en-v1.5/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.6042525524316691,
+    "official_ndcg_at_10_rounded": 0.60425,
+    "bootstrap_95_ci": [
+      0.585430679624743,
+      0.6227656587555718
+    ],
+    "hit_at_10_count": 1208,
+    "elapsed_seconds": 11.694811524997931,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/BAAI__bge-small-en-v1.5/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.7141472597899797,
+    "official_ndcg_at_10_rounded": 0.71415,
+    "bootstrap_95_ci": [
+      0.670241219379299,
+      0.7561789869959284
+    ],
+    "hit_at_10_count": 255,
+    "elapsed_seconds": 9.820442664997245,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/BAAI__bge-small-en-v1.5/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "Qwen/Qwen3-Embedding-0.6B",
+    "revision": "b22da495047858cce924d27d76261e96be6febc0",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.3617020075560539,
+    "official_ndcg_at_10_rounded": 0.3617,
+    "bootstrap_95_ci": [
+      0.3263994963475748,
+      0.39685474261325465
+    ],
+    "hit_at_10_count": 240,
+    "elapsed_seconds": 68.97916740400251,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/Qwen__Qwen3-Embedding-0.6B/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "Qwen/Qwen3-Embedding-0.6B",
+    "revision": "b22da495047858cce924d27d76261e96be6febc0",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.6915197680774988,
+    "official_ndcg_at_10_rounded": 0.69152,
+    "bootstrap_95_ci": [
+      0.675193013120172,
+      0.708199465426254
+    ],
+    "hit_at_10_count": 1320,
+    "elapsed_seconds": 120.2234036949958,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/Qwen__Qwen3-Embedding-0.6B/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "Qwen/Qwen3-Embedding-0.6B",
+    "revision": "b22da495047858cce924d27d76261e96be6febc0",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.699895182664549,
+    "official_ndcg_at_10_rounded": 0.6999,
+    "bootstrap_95_ci": [
+      0.6562015065878543,
+      0.7423313157749412
+    ],
+    "hit_at_10_count": 254,
+    "elapsed_seconds": 89.74980519199744,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/Qwen__Qwen3-Embedding-0.6B/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "Qwen/Qwen3-VL-Embedding-2B",
+    "revision": "9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.37341180541863306,
+    "official_ndcg_at_10_rounded": 0.37341,
+    "bootstrap_95_ci": [
+      0.33763777428884634,
+      0.4101098185433784
+    ],
+    "hit_at_10_count": 244,
+    "elapsed_seconds": 201.20184480900207,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/Qwen__Qwen3-VL-Embedding-2B/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "Qwen/Qwen3-VL-Embedding-2B",
+    "revision": "9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.747764762450659,
+    "official_ndcg_at_10_rounded": 0.74776,
+    "bootstrap_95_ci": [
+      0.7075284901910481,
+      0.7870068090725404
+    ],
+    "hit_at_10_count": 265,
+    "elapsed_seconds": 326.67001336600515,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/Qwen__Qwen3-VL-Embedding-2B/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "Qwen/Qwen3-VL-Embedding-2B",
+    "revision": "9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.5864094307197456,
+    "official_ndcg_at_10_rounded": 0.58641,
+    "bootstrap_95_ci": [
+      0.5689254599855935,
+      0.603649176836694
+    ],
+    "hit_at_10_count": 1239,
+    "elapsed_seconds": 336.52068873400276,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/Qwen__Qwen3-VL-Embedding-2B/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.3685184212784902,
+    "official_ndcg_at_10_rounded": 0.36852,
+    "bootstrap_95_ci": [
+      0.33451121743304996,
+      0.40329553139152075
+    ],
+    "hit_at_10_count": 243,
+    "elapsed_seconds": 49.25201426300191,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.6000691737329275,
+    "official_ndcg_at_10_rounded": 0.60007,
+    "bootstrap_95_ci": [
+      0.5811429971577784,
+      0.618564328433827
+    ],
+    "hit_at_10_count": 1180,
+    "elapsed_seconds": 89.62164964200201,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.8531690514390345,
+    "official_ndcg_at_10_rounded": 0.85317,
+    "bootstrap_95_ci": [
+      0.8182157436728498,
+      0.8862238503226156
+    ],
+    "hit_at_10_count": 281,
+    "elapsed_seconds": 72.00451970599534,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "NFCorpus",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/nfcorpus",
+      "revision": "ec0fa4fe99da2ff19ca1214b7966684033a58814"
+    },
+    "dataset_license": "not specified",
+    "n_queries": 323,
+    "n_corpus": 3633,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.3501509188140221,
+    "official_ndcg_at_10_rounded": 0.35015,
+    "bootstrap_95_ci": [
+      0.3165648023117006,
+      0.38429121869553357
+    ],
+    "hit_at_10_count": 239,
+    "elapsed_seconds": 46.65186513099616,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2__256d/NFCorpus.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "SciFact",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/scifact",
+      "revision": "d56462d0e63a25450459c4f213e49ffdb866f7f9"
+    },
+    "dataset_license": "cc-by-nc-4.0",
+    "n_queries": 300,
+    "n_corpus": 5183,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.8219178129936062,
+    "official_ndcg_at_10_rounded": 0.82192,
+    "bootstrap_95_ci": [
+      0.7830976366279114,
+      0.8582703568398425
+    ],
+    "hit_at_10_count": 269,
+    "elapsed_seconds": 64.05435778399988,
+    "ignore_identical_ids": false,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2__256d/SciFact.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  },
+  {
+    "task": "ArguAna",
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dataset": {
+      "path": "mteb/arguana",
+      "revision": "c22ab2a51041ffd869aaddef7af8d8215647e41a"
+    },
+    "dataset_license": "cc-by-sa-4.0",
+    "n_queries": 1406,
+    "n_corpus": 8674,
+    "sample_rule": "all test queries; full corpus",
+    "ndcg_at_10": 0.5789135955124243,
+    "official_ndcg_at_10_rounded": 0.57891,
+    "bootstrap_95_ci": [
+      0.5600866134066745,
+      0.5980515321065072
+    ],
+    "hit_at_10_count": 1159,
+    "elapsed_seconds": 74.54844188599964,
+    "ignore_identical_ids": true,
+    "evidence": "../mteb/results/local/google__embeddinggemma-2__256d/ArguAna.json",
+    "run": "Earlier 8 GB GPU run; reused, not rerun"
+  }
+]

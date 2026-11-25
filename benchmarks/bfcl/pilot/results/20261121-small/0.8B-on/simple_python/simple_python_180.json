@@ -1,0 +1,174 @@
+{
+  "id": "simple_python_180",
+  "category": "simple_python",
+  "result": [
+    {
+      "lawsuits_search": "{\"company_name\":\"Google\",\"location\":\"California\",\"year\":2020}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Find the lawsuits filed against the company Google in California in the year 2020.'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "lawsuits_search",
+                "description": "Search for lawsuits against a specific company within a specific time and location.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "company_name": {
+                      "type": "string",
+                      "description": "The name of the company."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The location where the lawsuit was filed."
+                    },
+                    "year": {
+                      "type": "integer",
+                      "description": "The year when the lawsuit was filed."
+                    },
+                    "case_type": {
+                      "type": "string",
+                      "description": "The type of the case. Options include: 'civil', 'criminal', 'small_claims', etc. Default is 'all'."
+                    }
+                  },
+                  "required": [
+                    "company_name",
+                    "location",
+                    "year"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 400,
+    "output_token_count": 143,
+    "latency": 1.3672359530028189
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Find the lawsuits filed against the company Google in California in the year 2020."
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lawsuits_search",
+          "description": "Search for lawsuits against a specific company within a specific time and location.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "company_name": {
+                "type": "string",
+                "description": "The name of the company."
+              },
+              "location": {
+                "type": "string",
+                "description": "The location where the lawsuit was filed."
+              },
+              "year": {
+                "type": "integer",
+                "description": "The year when the lawsuit was filed."
+              },
+              "case_type": {
+                "type": "string",
+                "description": "The type of the case. Options include: 'civil', 'criminal', 'small_claims', etc. Default is 'all'."
+              }
+            },
+            "required": [
+              "company_name",
+              "location",
+              "year"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-St95VGDI4ZZsPDjgbHy5n3wuxuI4OJ2W",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "RcVpj1pRliTy9XTvBaOanHJFhXR2mvKu",
+              "function": {
+                "arguments": "{\"company_name\":\"Google\",\"location\":\"California\",\"year\":2020}",
+                "name": "lawsuits_search"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for lawsuits filed against Google in California in the year 2020. I need to use the lawsuits_search function with the following parameters:\n- company_name: \"Google\"\n- location: \"California\"\n- year: 2020\n- case_type: This is optional, so I won't specify it to get all types\n\nLet me make the function call."
+        }
+      }
+    ],
+    "created": 1795287645,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 143,
+      "prompt_tokens": 400,
+      "total_tokens": 543,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 398,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 398,
+      "prompt_n": 2,
+      "prompt_ms": 27.805,
+      "prompt_per_token_ms": 13.9025,
+      "prompt_per_second": 71.92950908110052,
+      "predicted_n": 143,
+      "predicted_ms": 1225.578,
+      "predicted_per_token_ms": 8.630830985915493,
+      "predicted_per_second": 115.86369859772286
+    }
+  },
+  "elapsed_seconds": 1.3676297359997989,
+  "score": {
+    "valid": true
+  }
+}

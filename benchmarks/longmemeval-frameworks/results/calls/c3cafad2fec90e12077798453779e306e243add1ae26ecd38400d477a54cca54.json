@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 40
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "90e121ccdcf36d3d3e0d867016abfc062fd29e9685c0a12901e0ae202cf76934",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4ed09497-eb94-4be5-b2b3-8675ce5601f5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"user\",\n            \"summary\": \"You can set a reminder for your recreational volleyball league game at 2 pm today with your team \\\"The Spikers\\\". You can also plan your meals for the day, including healthy snack ideas before and after the game. You've achieved a personal best time in a charity 5K run a few weeks ago and are feeling confident for today's game. You plan to grab food and drinks with your teammates after the game to unwind and celebrate. You're also planning to get a tennis lesson with your coach, Mark, on Saturday morning to improve your serves.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363179,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 140,
+      "prompt_tokens": 7639,
+      "total_tokens": 7779,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"user\",\n            \"summary\": \"You can set a reminder for your recreational volleyball league game at 2 pm today with your team \\\"The Spikers\\\". You can also plan your meals for the day, including healthy snack ideas before and after the game. You've achieved a personal best time in a charity 5K run a few weeks ago and are feeling confident for today's game. You plan to grab food and drinks with your teammates after the game to unwind and celebrate. You're also planning to get a tennis lesson with your coach, Mark, on Saturday morning to improve your serves.\"\n        }\n    ]\n}",
+  "seconds": 33.7643037920061,
+  "prompt_tokens_local": 7639
+}

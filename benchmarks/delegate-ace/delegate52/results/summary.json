@@ -1,0 +1,294 @@
+{
+ "environments_planned": 40,
+ "environments_complete": 40,
+ "incomplete": [],
+ "steps": {
+  "interaction_2": {
+   "n_env": 40,
+   "corruption_mean": 0.5429141498157737,
+   "ci95": [
+    0.41882715788323316,
+    0.6657882671862957
+   ],
+   "median": 0.65445365738654,
+   "frac_env_corruption_ge_0.5": 0.55,
+   "sensitivity_drop_unscored": {
+    "n": 36,
+    "mean": 0.4921268331286374,
+    "ci95": [
+     0.368872373698023,
+     0.6146149466708242
+    ]
+   },
+   "unscored_steps": 4
+  },
+  "interaction_4": {
+   "n_env": 40,
+   "corruption_mean": 0.7122064212609256,
+   "ci95": [
+    0.5986208497708767,
+    0.8213927827792311
+   ],
+   "median": 0.9449790449546522,
+   "frac_env_corruption_ge_0.5": 0.75,
+   "sensitivity_drop_unscored": {
+    "n": 36,
+    "mean": 0.6802293569565839,
+    "ci95": [
+     0.5588351068063173,
+     0.7950092070433347
+    ]
+   },
+   "unscored_steps": 4
+  }
+ },
+ "rows": [],
+ "end_of_chain_interaction": 4,
+ "per_env": [
+  {
+   "sample_id": "accounting3",
+   "domain": "accounting",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "audiosyn4",
+   "domain": "audiosyn",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 0.9999
+  },
+  {
+   "sample_id": "calendar5",
+   "domain": "calendar",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "chess2",
+   "domain": "chess",
+   "corruption_at_2": 0.7902,
+   "corruption_at_4": 0.7518
+  },
+  {
+   "sample_id": "circuit5",
+   "domain": "circuit",
+   "corruption_at_2": 0.0266,
+   "corruption_at_4": 0.9916
+  },
+  {
+   "sample_id": "dbschema2",
+   "domain": "dbschema",
+   "corruption_at_2": 0.0833,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "dns1",
+   "domain": "dns",
+   "corruption_at_2": 0.9999,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "docker5",
+   "domain": "docker",
+   "corruption_at_2": 0.0371,
+   "corruption_at_4": 0.5152
+  },
+  {
+   "sample_id": "edifact2",
+   "domain": "edifact",
+   "corruption_at_2": 0.75,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "emails6",
+   "domain": "emails",
+   "corruption_at_2": 0.0,
+   "corruption_at_4": 0.0001
+  },
+  {
+   "sample_id": "filesystem3",
+   "domain": "filesystem",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "fonteng4",
+   "domain": "fonteng",
+   "corruption_at_2": 0.001,
+   "corruption_at_4": 0.9563
+  },
+  {
+   "sample_id": "foodmenu3",
+   "domain": "foodmenu",
+   "corruption_at_2": 0.7627,
+   "corruption_at_4": 0.7607
+  },
+  {
+   "sample_id": "genealogy5",
+   "domain": "genealogy",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "geodata4",
+   "domain": "geodata",
+   "corruption_at_2": 0.1174,
+   "corruption_at_4": 0.136
+  },
+  {
+   "sample_id": "geotrack6",
+   "domain": "geotrack",
+   "corruption_at_2": 0.6501,
+   "corruption_at_4": 0.6501
+  },
+  {
+   "sample_id": "graphviz5",
+   "domain": "graphviz",
+   "corruption_at_2": 0.3675,
+   "corruption_at_4": 0.532
+  },
+  {
+   "sample_id": "hamradio3",
+   "domain": "hamradio",
+   "corruption_at_2": 0.5234,
+   "corruption_at_4": 0.6881
+  },
+  {
+   "sample_id": "infra2",
+   "domain": "infra",
+   "corruption_at_2": 0.7504,
+   "corruption_at_4": 0.9337
+  },
+  {
+   "sample_id": "jobboard4",
+   "domain": "jobboard",
+   "corruption_at_2": 0.9797,
+   "corruption_at_4": 0.9799
+  },
+  {
+   "sample_id": "json1",
+   "domain": "json",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 0.6677
+  },
+  {
+   "sample_id": "libcatalog5",
+   "domain": "libcatalog",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "makefile4",
+   "domain": "makefile",
+   "corruption_at_2": 0.0095,
+   "corruption_at_4": 0.0235
+  },
+  {
+   "sample_id": "malware1",
+   "domain": "malware",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "mathlean4",
+   "domain": "mathlean",
+   "corruption_at_2": 0.0035,
+   "corruption_at_4": 0.0523
+  },
+  {
+   "sample_id": "musicsheet6",
+   "domain": "musicsheet",
+   "corruption_at_2": 0.81,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "obj3d3",
+   "domain": "obj3d",
+   "corruption_at_2": 0.287,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "protein6",
+   "domain": "protein",
+   "corruption_at_2": 0.3353,
+   "corruption_at_4": 0.3353
+  },
+  {
+   "sample_id": "quantum5",
+   "domain": "quantum",
+   "corruption_at_2": 0.3692,
+   "corruption_at_4": 0.5734
+  },
+  {
+   "sample_id": "recipe1",
+   "domain": "recipe",
+   "corruption_at_2": 0.6588,
+   "corruption_at_4": 0.8889
+  },
+  {
+   "sample_id": "robotics1",
+   "domain": "robotics",
+   "corruption_at_2": 0.1627,
+   "corruption_at_4": 0.1627
+  },
+  {
+   "sample_id": "satellite1",
+   "domain": "satellite",
+   "corruption_at_2": 0.6896,
+   "corruption_at_4": 0.3683
+  },
+  {
+   "sample_id": "screenplay2",
+   "domain": "screenplay",
+   "corruption_at_2": 0.0093,
+   "corruption_at_4": 0.1249
+  },
+  {
+   "sample_id": "spreadsheet3",
+   "domain": "spreadsheet",
+   "corruption_at_2": 0.9517,
+   "corruption_at_4": 0.9625
+  },
+  {
+   "sample_id": "starcatalog4",
+   "domain": "starcatalog",
+   "corruption_at_2": 0.355,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "subtitles4",
+   "domain": "subtitles",
+   "corruption_at_2": 0.0047,
+   "corruption_at_4": 0.0047
+  },
+  {
+   "sample_id": "transit1",
+   "domain": "transit",
+   "corruption_at_2": 0.1718,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "translation1",
+   "domain": "translation",
+   "corruption_at_2": 1.0,
+   "corruption_at_4": 1.0
+  },
+  {
+   "sample_id": "treebank6",
+   "domain": "treebank",
+   "corruption_at_2": 0.1197,
+   "corruption_at_4": 0.4286
+  },
+  {
+   "sample_id": "vector6",
+   "domain": "vector",
+   "corruption_at_2": 0.9395,
+   "corruption_at_4": 1.0
+  }
+ ],
+ "mean_latency": 354.06747777462004,
+ "mean_completion_tokens": 3046.31875,
+ "mean_prompt_tokens": 13110.35,
+ "steps_without_score": 8,
+ "steps_at_token_cap": 8
+}

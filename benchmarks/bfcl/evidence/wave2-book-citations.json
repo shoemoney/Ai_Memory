@@ -1,0 +1,34 @@
+{
+  "observed_utc": "2026-11-22T18:05:38.184478+00:00",
+  "files_sha256": {
+    "build/chapters/06-small-memory-models.html": "6d59b5156e658f07016dd32a5b8e7c41ce5890898f7da13f42720c6b3f3a902f",
+    "build/chapters/20-glossary.html": "92dfc53b37b1bb70644dfb01aae1a745308b0cbbdfe623341b1372fb86273b29"
+  },
+  "statements": [
+    {
+      "file": "build/chapters/06-small-memory-models.html",
+      "line": 178,
+      "statement": "Qwen's model cards report BFCL-V4 tool-calling scores of 25.3 at 0.8B, 43.6 at 2B, 50.3 at 4B and 66.1 at 9B.12,13,14,15 These are not extraction scores; the 0.8B and 2B cards label them as thinking mode.",
+      "kind": "model_card"
+    },
+    {
+      "file": "build/chapters/06-small-memory-models.html",
+      "line": 179,
+      "statement": "Tested On a partial local run across the 19 offline BFCL-V4 categories using Q4_K_M files, Qwen3.5 0.8B, 2B, 4B and 9B had 175, 90, 81 and 95 paired questions respectively, and thinking on raised the score by 16.5 points for 0.8B (95% interval 9.2 to 24.0) and 22.1 for 9B (10.7 to 34.0), while the 2B and 4B intervals cross zero. The run covers part of the benchmark and excludes web-search categories, so it neither reproduces nor contradicts the card totals. The harness is in the companion repository under benchmarks/bfcl; keep thinking off for schema-constrained extraction and test thinking on for tool-calling steps.",
+      "kind": "prior_local"
+    },
+    {
+      "file": "build/chapters/06-small-memory-models.html",
+      "line": 287,
+      "statement": "25.3 to 66.1Qwen3.5 BFCL-V4 tool-calling scores: 25.3 (0.8B), 43.6 (2B), 50.3 (4B), 66.1 (9B). Model-card results, not extraction accuracy.12,13,14,15Official docs",
+      "kind": "model_card"
+    },
+    {
+      "file": "build/chapters/20-glossary.html",
+      "line": 24,
+      "statement": "BFCLA benchmark of tool-calling ability. Chapter 06 cites BFCL-V4 scores for small models, which fall steeply below 4B parameters.06",
+      "kind": "qualitative"
+    }
+  ],
+  "note": "Book files are read only. Current statements may include prior incomplete results; this report supplies a separate uniformly paired continuation."
+}

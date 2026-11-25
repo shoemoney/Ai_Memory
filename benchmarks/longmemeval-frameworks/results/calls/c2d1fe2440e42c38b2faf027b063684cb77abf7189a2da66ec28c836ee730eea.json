@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 76
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f814699c090641473c244a1ec758bbabef65732bc9bb4329e7856d776d4094de",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6e0e44ce-71b8-486f-b398-8c4b53ee87fa",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Halloween Horror Nights\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Universal Studios Hollywood\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"VIP Experience's Gourmet Buffet\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365179,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 81,
+      "prompt_tokens": 8573,
+      "total_tokens": 8654,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Halloween Horror Nights\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Universal Studios Hollywood\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"VIP Experience's Gourmet Buffet\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+  "seconds": 15.854259320010897,
+  "prompt_tokens_local": 8573
+}

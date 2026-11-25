@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 24
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1589ce5cffb782d48e04e8f8ea6be2d7dc534c6cb5d4552a6a2f5be7843fb46c",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-86758696-8f57-47ef-8da0-5c9449042790",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Lockheed Martin\",\n            \"summary\": \"\"\n        },\n        {\n            \"name\": \"cracked windshield\",\n            \"summary\": \"\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795343576,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 47,
+      "prompt_tokens": 455,
+      "total_tokens": 502,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Lockheed Martin\",\n            \"summary\": \"\"\n        },\n        {\n            \"name\": \"cracked windshield\",\n            \"summary\": \"\"\n        }\n    ]\n}",
+  "seconds": 60.996764448005706,
+  "prompt_tokens_local": 455
+}

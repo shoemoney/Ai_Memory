@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 41
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "a9bba9f61c74f5a3b2d46ed695e261c1784f8ac61cc0b26b845b08f6f12b16e6",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6a82d884-a46c-4831-b123-a0514e874a01",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Kari kambing and Mamak are dishes from Malaysia and Singapore\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Can make kari kambing and Mamak dishes at home\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Can find Mamak dishes in Mamak stalls in Malaysia and Singapore\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366380,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 122,
+      "prompt_tokens": 1877,
+      "total_tokens": 1999,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Kari kambing and Mamak are dishes from Malaysia and Singapore\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Can make kari kambing and Mamak dishes at home\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Can find Mamak dishes in Mamak stalls in Malaysia and Singapore\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 6.684098768979311,
+  "prompt_tokens_local": 1877
+}

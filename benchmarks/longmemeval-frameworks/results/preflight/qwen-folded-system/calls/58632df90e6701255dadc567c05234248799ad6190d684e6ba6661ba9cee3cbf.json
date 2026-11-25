@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 73
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "994fb84d22cd62ad910562c9480980f7063e9c4ed450f1fb32069faf78f96ccd",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d995e09e-862d-453a-9cb7-bdd6bf5bc61f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Stackable shelves from Target for folded clothes\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Scarves, hats, and belts for accessories\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Individuals can reduce single-use plastic\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"How to account for gift cards in the budget\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Consider a DIY popcorn bar with different toppings\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"considered organizing the workspace and furniture for the studio\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Storing winter accessories in stackable plastic bins\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Storing winter accessories in stackable plastic bins\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Cleaning winter accessories before storing them\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Cleaning winter accessories before storing them\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330538,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 297,
+      "prompt_tokens": 1720,
+      "total_tokens": 2017,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Stackable shelves from Target for folded clothes\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Scarves, hats, and belts for accessories\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Individuals can reduce single-use plastic\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"How to account for gift cards in the budget\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Consider a DIY popcorn bar with different toppings\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"considered organizing the workspace and furniture for the studio\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Storing winter accessories in stackable plastic bins\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Storing winter accessories in stackable plastic bins\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Cleaning winter accessories before storing them\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Cleaning winter accessories before storing them\"\n        }\n    ]\n}",
+  "seconds": 3.710040530000697,
+  "prompt_tokens_local_gemma_estimate": 1850
+}

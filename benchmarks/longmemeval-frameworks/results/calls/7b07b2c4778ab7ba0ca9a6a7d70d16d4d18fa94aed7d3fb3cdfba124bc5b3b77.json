@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 72
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d83c578bbad1697d50ef65444a5e586288658c214b874ee7853812fa216aad89",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-38732624-d5c7-4fd7-bb8a-175cec628336",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Lewis N. Clark Travel Adapter\", \"target_entity_name\": \"user\", \"relation_type\": \"USES\", \"fact\": \"user will use Lewis N. Clark Travel Adapter for international travel\", \"valid_at\": \"2023-08-15T23:12:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795364991,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 89,
+      "prompt_tokens": 6591,
+      "total_tokens": 6680,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Lewis N. Clark Travel Adapter\", \"target_entity_name\": \"user\", \"relation_type\": \"USES\", \"fact\": \"user will use Lewis N. Clark Travel Adapter for international travel\", \"valid_at\": \"2023-08-15T23:12:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 8.928122856013943,
+  "prompt_tokens_local": 6591
+}

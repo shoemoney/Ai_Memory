@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 48
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "523b6572aa9664e660b8acd4e4d5630a5017a1b691f42621399949b42cb6a036",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c1b14bae-0b3b-489b-b9d1-a23bafd29abf",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Quizizz\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Amazon Cockatoo\", \"entity_type_id\": 0, \"episode_indices\": [2]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795352160,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 53,
+      "prompt_tokens": 7015,
+      "total_tokens": 7068,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Quizizz\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Amazon Cockatoo\", \"entity_type_id\": 0, \"episode_indices\": [2]}]}",
+  "seconds": 19.401666816993384,
+  "prompt_tokens_local": 7015
+}

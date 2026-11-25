@@ -1,0 +1,782 @@
+<article class="chapter" data-ch="02" data-part="a" data-running="The LLM-maintained wiki">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part A &middot; Chapter 02</p>
+  <div class="opener-num" aria-hidden="true">02</div>
+  <h1>The LLM-maintained wiki</h1>
+  <p class="opener-summary">An agent compiles raw sources into linked Markdown pages, maintaining knowledge across questions.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-prototype">Prototype</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">3 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">One person or small team building lasting, reviewed knowledge on one domain.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">An LLM-maintained wiki is a git repository of Markdown pages an agent maintains from sources. A person reads and reviews it.</p>
+  <p>Andrej Karpathy described the pattern in a gist titled "LLM Wiki", created on 4 April 2026. It is an "idea file" for an agent such as Claude Code or Codex.<sup class="cite"><a href="#s02-1">1</a></sup> It contains no code.<sup class="cite"><a href="#s02-1">1</a></sup></p>
+  <p>Chapter 01's flat files hold notes. A wiki maintains source-derived claims with cross-references and contradictions. Retrieval over raw chunks (Chapters 03 and 05) rebuilds those links for every question. Two families follow: agent-written Markdown wikis and context databases (OpenViking), which retain files and summarize directories.</p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Schema</dt><dd>A file such as <code>AGENTS.md</code> or <code>CLAUDE.md</code> specifying page format and ingest, query and lint steps.</dd>
+    <dt>Ingest, query, lint</dt><dd>The three loops: add a source, ask a question, check the wiki's health. Lint is a structural script on every commit plus periodic agent semantic lint.</dd>
+    <dt>L0, L1, L2</dt><dd>Three detail levels in a context database: a short abstract (about 256 characters by default), a longer overview (about 4,000 characters), and the original files.</dd>
+  </dl>
+  <p class="small muted">BM25 (keyword ranking), embeddings, vector search and reranking are defined in Chapter 00 and the glossary.</p>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p>The gist defines immutable <strong>raw sources</strong>, an LLM-written <strong>wiki</strong> (summaries, entity and concept pages, cross-references, overview), and a <strong>schema</strong> specifying page structure and workflows, its key configuration file.<sup class="cite"><a href="#s02-1">1</a></sup></p>
+<p>Two files anchor three loops. <code>index.md</code> is the catalog the agent reads first, one line per page; <code>log.md</code> is append-only, with a prefix <code>grep</code> can find, such as <code>## [2026-04-02] ingest | Title</code>.<sup class="cite"><a href="#s02-1">1</a></sup> During <strong>ingest</strong>, the agent reads a source, summarizes it, updates the index and related pages; the gist says one source may touch 10 to 15 pages.<sup class="cite"><a href="#s02-1">1</a></sup> In <strong>query</strong>, the agent follows index entries to pages and answers with citations. A query writes nothing; keeping an answer counts as ingest, with branching, lint and review. In <strong>lint</strong>, checks look for contradictions, stale claims, orphans and missing cross-references. The walkthrough tests structural lint; semantic lint is specified but untested.<sup class="cite"><a href="#s02-1">1</a></sup></p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 262" role="img" aria-label="Diagram: an agent reads raw sources and a schema file, writes wiki pages through a lint and git review gate, and reads the index and pages back to answer questions.">
+  <text class="d-label" x="20" y="22">Inputs</text>
+  <rect class="d-box soft" x="20" y="30" width="140" height="64" rx="4"/>
+  <text class="d-mono" x="90" y="58" text-anchor="middle">raw/</text>
+  <text class="d-sub" x="90" y="76" text-anchor="middle">immutable sources</text>
+  <rect class="d-box" x="20" y="116" width="140" height="64" rx="4"/>
+  <text class="d-mono" x="90" y="144" text-anchor="middle">AGENTS.md</text>
+  <text class="d-sub" x="90" y="162" text-anchor="middle">schema and loops</text>
+
+  <rect class="d-box dark" x="230" y="30" width="140" height="150" rx="4"/>
+  <text class="d-title d-on-dark" x="300" y="96" text-anchor="middle">Agent</text>
+  <text class="d-sub d-on-dark" x="300" y="114" text-anchor="middle">ingest, query,</text>
+  <text class="d-sub d-on-dark" x="300" y="128" text-anchor="middle">lint</text>
+
+  <rect class="d-box" x="230" y="208" width="140" height="44" rx="4"/>
+  <text class="d-title" x="300" y="228" text-anchor="middle">Lint, then</text>
+  <text class="d-title" x="300" y="243" text-anchor="middle">git review</text>
+
+  <text class="d-label" x="450" y="22">Wiki</text>
+  <rect class="d-box accent" x="450" y="30" width="130" height="222" rx="4"/>
+  <text class="d-mono" x="515" y="62" text-anchor="middle">index.md</text>
+  <text class="d-sub" x="515" y="78" text-anchor="middle">one line per page</text>
+  <text class="d-mono" x="515" y="112" text-anchor="middle">log.md</text>
+  <text class="d-sub" x="515" y="128" text-anchor="middle">append only</text>
+  <text class="d-mono" x="515" y="162" text-anchor="middle">page-slug.md</text>
+  <text class="d-sub" x="515" y="178" text-anchor="middle">cites raw/ paths</text>
+  <text class="d-sub" x="515" y="230" text-anchor="middle">a git repository</text>
+
+  <path class="d-line" d="M160 62 H228"/>
+  <path class="d-line" d="M160 148 H228"/>
+  <path class="d-line" d="M300 180 V206"/>
+  <path class="d-line accent" d="M370 230 H448"/>
+  <path class="d-line accent dash" d="M448 100 H372"/>
+  <text class="d-sub" x="194" y="54" text-anchor="middle">ingest</text>
+  <text class="d-sub" x="410" y="92" text-anchor="middle">query reads</text>
+</svg>
+<figcaption><b>Figure 1.</b> Ingest sends a source through the agent, the lint script and a git diff into the wiki. A query reads the index and pages back, with no write.</figcaption>
+</figure>
+<h3>Searching a wiki</h3>
+<p>The gist reports an index serving about 100 sources and hundreds of pages without embeddings.<sup class="cite"><a href="#s02-1">1</a></sup> Beyond that, add search in this order:</p>
+<ol>
+  <li>Keep <code>index.md</code> while it finds the right pages on recurring test questions; add search if it recovers missed pages at acceptable cost.</li>
+  <li>Add <code>rg</code> (ripgrep, exact text) or <code>qmd search</code> (BM25 keyword ranking, no model; qmd is a local search tool) when you know the words.</li>
+  <li>Add <code>qmd query</code> when you do not: it combines BM25, vector search and LLM reranking, all on your machine, and qmd has a CLI and an MCP (Model Context Protocol) server.<sup class="cite"><a href="#s02-2">2</a></sup></li>
+</ol>
+<p>A vector index over both <code>raw/</code> and <code>wiki/</code> can rank generated pages above human-written sources (embedding retrievers show this bias; see Numbers), so check that raw quotes still surface.</p>
+
+<h3>The second family: context databases</h3>
+<p>A context database retains files and adds two model-written directory summaries. OpenViking, an open-source project from Volcengine, presents knowledge, memory and skills as one virtual filesystem under <code>viking://</code>, with <code>ls</code>, <code>read</code> and <code>grep</code> to scan summaries before files.<sup class="cite"><a href="#s02-3">3</a></sup></p>
+<p>L0 lives in a hidden <code>.abstract.md</code> file, L1 in <code>.overview.md</code>, and L2 is the original file, read only when needed. Imported files get wrapper directories and thus directory summaries (Walkthrough, step 8).<sup class="cite"><a href="#s02-4">4</a></sup> The server needs an embedding model and a summary model, from providers such as Ollama. The summary model uses the <code>vlm</code> (vision-language model) key even when it is text-only.<sup class="cite"><a href="#s02-5">5</a></sup> The <code>ov</code> client offers <code>ov read</code> for files or summary URIs, <code>ov find</code> for embedded-query vector search over a target directory’s L0/L1/L2 records with optional reranking, and <code>ov search</code> for LLM query planning from session context.<sup class="cite"><a href="#s02-6">6</a></sup></p>
+
+<h3>Tools for this pattern (state as of 20 November 2026)</h3>
+<table class="data">
+  <colgroup><col class="c15"><col class="c30"><col class="c30"><col class="c25"></colgroup>
+  <thead><tr><th>Product</th><th>What it stores</th><th>Run, license, version</th><th>Pick it when</th></tr></thead>
+  <tbody>
+    <tr><td>OpenViking</td><td>Files plus L0 and L1 directory summaries and a vector index.<sup class="cite"><a href="#s02-3">3</a></sup></td><td>Self-run server; hosted edition from Volcengine. AGPL-3.0, so check it if you modify OpenViking and offer it over a network.<sup class="cite"><a href="#s02-3">3</a></sup> 0.5.5.<sup class="cite"><a href="#s02-7">7</a></sup></td><td>A large project directory needs summaries and you can run a server.</td></tr>
+    <tr><td>qmd</td><td>A search index over a Markdown folder, no summaries.<sup class="cite"><a href="#s02-2">2</a></sup></td><td>Local CLI or MCP server. MIT. 2.9.0.</td><td>The agent opens the wrong pages from the index, or the index uses too much context.</td></tr>
+    <tr><td>Hermes Agent LLM Wiki skill</td><td>The Markdown wiki, with the loop packaged as a skill, tagged <code>rag-alternative</code>.<sup class="cite"><a href="#s02-8">8</a></sup></td><td>Self-run, installed with <code>hermes skills install</code>. MIT. 2.1.0.</td><td>You already run Hermes Agent.</td></tr>
+    <tr><td>obsidian-llm-wiki</td><td>A wiki built in an Obsidian vault. Per its README: no embeddings, pages ranked by Personalized PageRank (link-graph ranking seeded from the query's matches) over wikilinks.<sup class="cite"><a href="#s02-9">9</a></sup></td><td>Obsidian plugin. Apache-2.0. 1.32.0.</td><td>The wiki already lives in a vault.</td></tr>
+    <tr><td>memU</td><td>A shared Markdown wiki for several sessions, agents and devices, plus derived skills (Chapter 16).<sup class="cite"><a href="#s02-10">10</a></sup></td><td>Self-run (embedding key needed) or hosted. Apache-2.0 per its README badge. Beta, 0.11.0-beta.3.</td><td>Several agent hosts (Codex, Claude Code, Cursor) should share one memory.</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>One person or small team researching one domain over weeks, such as due diligence.<sup class="cite"><a href="#s02-1">1</a></sup></li>
+      <li>A few hundred pages or fewer, with reliable index navigation.<sup class="cite"><a href="#s02-1">1</a></sup></li>
+      <li>Work where every change should be reviewable in git.<sup class="cite"><a href="#s02-1">1</a></sup></li>
+      <li>A large project directory that needs summaries without hand-written pages (use a context database such as OpenViking).</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>Large or fast-changing data such as tickets or logs: use retrieval over the raw data (Chapters 03 and 05).</li>
+      <li>Company-wide knowledge with one curator. A vendor argues the pattern does not scale to a company.<sup class="cite"><a href="#s02-11">11</a></sup></li>
+      <li>Exact recall of original text. A wiki is synthesis, so keep and cite the raw sources.</li>
+      <li>Many writers and no human review. Use a database with access controls (Chapter 08).</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>One analyst, one research file or decision log</h3>
+  <dl>
+    <dt>Situation</dt><dd>An investor reads 60 filings, papers and articles on one company over two months, asking what each claims and where they disagree.</dd>
+    <dt>Why it fits</dt><dd>Each document is ingested once, within the gist's scale.<sup class="cite"><a href="#s02-1">1</a></sup> Semantic lint is untested here; its conflict-detection rate is unknown. The schema requires source tags, which structural lint can check.</dd>
+    <dt>Pair with</dt><dd>Obsidian as the viewer, raw PDFs in <code>raw/</code> for exact quotes, and a person reading every diff.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Several agents on one shared wiki</h3>
+  <dl>
+    <dt>Situation</dt><dd>Coding and research agents overwrite each other's wording in one knowledge base; their flat memory files scatter and duplicate facts.</dd>
+    <dt>Why it fits</dt><dd>Schema and lint give agents shared rules; flat files become an immutable compilation inbox. One home-lab wiki works this way, but its backlog was about four fifths uncompiled (Numbers). It fits only while review keeps pace: cap agents or sources to what the merger can review.</dd>
+    <dt>Pair with</dt><dd>Per-agent branches, pre-commit lint, backlog counts and a human merger. Every ingest appends to index.md and log.md, so the second of two parallel branches conflicts there: rebase each branch on main first.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>A large project directory for a coding agent</h3>
+  <dl>
+    <dt>Situation</dt><dd>A team keeps a few thousand files of API docs, design notes and runbooks. Grep finds the words but not the directory, and nobody will hand-write a wiki of it all.</dd>
+    <dt>Why it fits</dt><dd>A context database summarizes each directory at import, so the agent reads an L0 or L1 to pick a subtree, scopes <code>find</code> to it and reads L2 for the hit.<sup class="cite"><a href="#s02-3">3</a>,<a href="#s02-6">6</a></sup></dd>
+    <dt>Pair with</dt><dd>A capable summary model, a test that re-import skips unchanged files, and a review of the summaries (see Gotchas).</dd>
+  </dl>
+</article>
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p class="table-title">Scale, cost and risk figures with their evidence</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>About 25%</td><td>Average share of document content that the three frontier models tested corrupted by the end of long delegated editing workflows; the other models of the 19 tested did worse (52 domains, DELEGATE-52 benchmark).<sup class="cite"><a href="#s02-12">12</a></sup></td><td class="src"><span class="pill official">Paper abstract</span></td></tr>
+    <tr><td>71% within four edits</td><td>Content corrupted across 40 documents by Qwen2.5-7B-Instruct (4-bit quantized, see Chapter 06), scored by the benchmark's own evaluators; it says nothing about frontier models. Code: benchmarks/delegate-ace.</td><td class="src"><span class="pill example">Measured here</span></td></tr>
+    <tr><td>Under 10% of the top 50 results</td><td>Share of human-written text in retrieval results after ten write and read iterations, in a simulation on question-answering data.<sup class="cite"><a href="#s02-13">13</a></sup> Embedding-based retrievers rank LLM-written text above human text; keyword rankers (BM25, TF-IDF) show little such bias.<sup class="cite"><a href="#s02-14">14</a></sup></td><td class="src"><span class="pill official">Paper text</span></td></tr>
+    <tr><td>100% to 62.9%</td><td>Human share of top results after ten rounds in a reduced local rerun (183 questions, one 3B writer adding about 4% as much generated text per round as the paper). Same direction as the paper, smaller effect. Code: <code>benchmarks/paper-reruns</code>.</td><td class="src"><span class="pill example">Measured here</span></td></tr>
+    <tr><td>17 records, 7 min 18 s</td><td>Three short files imported into OpenViking with a 1.7B summary model on a shared CPU machine (Walkthrough, step 7).</td><td class="src"><span class="pill example">Measured here</span></td></tr>
+    <tr><td>1,177 of 1,424</td><td>Backlog of memory files waiting to be compiled in one home-lab wiki, at one reading. First-party, anecdotal: the reported compiled count exceeds the subtraction by 10 (Chapter 19).<sup class="cite"><a href="#s02-15">15</a></sup></td><td class="src"><span class="pill example">One home lab</span></td></tr>
+  </tbody>
+</table>
+<p>The retriever-bias studies above cover web-style corpora, so applying them to a wiki is inference.</p>
+
+<h3>Scope and scale</h3>
+<table class="data">
+  <colgroup><col class="c30"><col class="c70"></colgroup>
+  <thead><tr><th>Question</th><th>Answer for an LLM application</th></tr></thead>
+  <tbody>
+    <tr><td>Job</td><td>Replaces re-retrieval with a short index and a few cited pages, so context holds compiled text, not raw chunks.</td></tr>
+    <tr><td>Cost per write</td><td>An ingest reads one source, rewriting up to 10 to 15 pages.<sup class="cite"><a href="#s02-1">1</a></sup> Write estimate, 40-line index: 5,000 source tokens, a 1,000-token index (about 40 lines) and 10 pages of 700 tokens yield about 13,000 tokens in, 7,000 out for full rewrites. OpenViking made 17 records; step 7 measures re-import times. Model-call counts were not measured.</td></tr>
+    <tr><td>Cost per read</td><td>Wiki reads need no embedding or reranking model; budget separately for agent selection and answer turns. Read estimate, 300-line index: 300 lines × about 25 tokens plus 3 × 700-token pages yield about 9,600 tokens in. <code>qmd query</code> runs local models (61.7 seconds for expansion on the first CPU query, measured here in step 4). OpenViking <code>find</code> embeds the query and can rerank results; <code>search</code> also calls an LLM to plan queries.</td></tr>
+    <tr><td>Storage</td><td>Markdown and git history, kilobytes per page. qmd adds a SQLite index and about 2.2 GB of GGUF files (a local-model format). OpenViking adds a server, a vector index and two Ollama models (about 1.6 GB here).</td></tr>
+    <tr><td>Growth</td><td>More agents mean more branches and a person merging; when volume outruns review, the backlog builds.</td></tr>
+    <tr><td>Breaks first, then move</td><td>At 300 index lines the index alone is about 7,500 tokens and the read about 9,600, so the limit is finding the right line, not fitting it. Then add qmd, or move to retrieval over the raw data (see the Verdict).</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Steps 1 to 4 build and search a wiki (schema, lint, git hook). Rerun: 23 November 2026, after the research cutoff; Ubuntu (32-thread shared consumer CPU), git 2.53.0, ripgrep 15.2.0, Node 24.22.3, npm 11.19.1 and qmd 2.9.0, plus uv, Docker, curl and sudo. Steps 5 to 8 import three files: OpenViking 0.5.5, containerized Ollama 0.40.16, Python 3.12.16, models <code>nomic-embed-text</code> and <code>qwen3:1.7b</code> (digest prefixes 0a109f422b47 and 8f68893c685c), also on CPU. Semantic lint remains untested; see AGENTS.md.</p>
+<p>Copy chapter files from the companion repository outside the lab, retaining <code>bin/wiki-lint</code>, and run <code>bash lab.sh</code> there. By default only wiki and ripgrep run; enable <code>WITH_QMD=1</code> and <code>WITH_OPENVIKING=1</code> beforehand. Step 6 replaces <code>ov.conf</code> placeholder <code>__LAB__</code> with the lab path.</p>
+<p>qmd, npm, uv, OpenViking and XDG state share one lab folder; step 9 deletes it and owned containers. Outside remain the Ollama image and machine-wide model lock (gpu filename), which serializes either opt-in. An existing-folder refusal creates nothing. The exit trap checks ownership after success or failure. Defect: even wiki-only cleanup inspects Docker by name and invokes sudo; an unrelated same-name container can block cleanup. It should track only a successfully created container ID and remove wiki-only files unprivileged (repair not tested).</p>
+
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">lab.sh</span><span class="code-tag tested">Tested</span></div><pre>#!/usr/bin/env bash
+set -euo pipefail
+if [ "${MODEL_LOCKED:-0}" != 1 ] &amp;&amp;
+   { [ "${WITH_OPENVIKING:-0}" = 1 ] || [ "${WITH_QMD:-0}" = 1 ]; }; then
+  exec flock /var/tmp/memlab-gpu.lock env MODEL_LOCKED=1 bash "$0"
+fi
+ATTACHMENTS=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &amp;&amp; pwd)
+finish() {
+  status=$?
+  trap - EXIT
+  if [ -n "${LAB_TOKEN:-}" ]; then source "$ATTACHMENTS/cleanup.sh"; fi
+  exit "$status"
+}
+trap finish EXIT
+for step in setup.sh check-lint.sh ingest.sh fixtures.sh; do
+  source "$ATTACHMENTS/$step"
+done
+rg -n 'ingest-loop' wiki
+rg -l '\[UNVERIFIED\]' wiki
+if [ "${WITH_QMD:-0}" = 1 ]; then source "$ATTACHMENTS/search.sh"; fi
+if [ "${WITH_OPENVIKING:-0}" = 1 ]; then
+  for step in install-server.sh start-server.sh import.sh read.sh; do
+    source "$ATTACHMENTS/$step"
+  done
+fi</pre></div>
+<h3>Build and query the Markdown wiki</h3>
+<ol class="steps">
+  <li class="step-long">
+    <p class="step-title">Make the isolated lab, the repository and the schema</p>
+    <p>qmd keeps config, index and models under <code>XDG_CONFIG_HOME</code> and <code>XDG_CACHE_HOME</code>, the standard per-user configuration and cache locations, so pointing both into the lab leaves your own qmd setup alone.<sup class="cite"><a href="#s02-2">2</a></sup></p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">setup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>#!/usr/bin/env bash
+set -euo pipefail
+LAB=/var/tmp/memlab-02
+if [ -e "$LAB" ] || [ -L "$LAB" ]; then
+  echo "STOP: $LAB already exists, pick a new path" &gt;&amp;2
+  exit 1
+fi
+mkdir "$LAB"
+LAB_TOKEN=$(cat /proc/sys/kernel/random/uuid)
+LAB_REAL=$(realpath -e -- "$LAB")
+printf '%s\n' "$LAB_TOKEN" &gt; "$LAB/.memlab-02-owner"
+printf '%s\n' "$LAB_REAL" &gt; "$LAB/.memlab-02-path"
+cd "$LAB"
+export XDG_CONFIG_HOME="$LAB/xdg/config" XDG_CACHE_HOME="$LAB/xdg/cache"
+export UV_PYTHON_INSTALL_DIR="$LAB/uv-python"
+export npm_config_cache="$LAB/npm-cache" UV_CACHE_DIR="$LAB/uv-cache"
+uv venv --python 3.12 "$LAB/venv"
+uv pip install --python "$LAB/venv/bin/python" "PyYAML==6.0.3"
+export PATH="$LAB/venv/bin:$PATH"
+mkdir -p kb/raw kb/wiki kb/bin &amp;&amp; cd kb &amp;&amp; git init -q -b main
+git config user.name "Wiki Demo" &amp;&amp; git config user.email "demo@example.com"
+printf '# Index\n' &gt; wiki/index.md
+printf '# Log\n' &gt; wiki/log.md
+cp "$ATTACHMENTS/AGENTS.md" AGENTS.md
+cp "$ATTACHMENTS/bin/wiki-lint" bin/wiki-lint</pre></div>
+    <p>The schema puts hard rules first.<sup class="cite"><a href="#s02-1">1</a></sup></p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">markdown</span><span class="code-file">AGENTS.md</span><span class="code-tag tested">Tested</span></div>
+<pre># Wiki schema
+- raw/ holds sources. Never edit or delete a file there.
+- wiki/ holds the agent's pages. One fact lives on one page.
+- Start pages with YAML metadata between two --- lines (frontmatter):
+  title, type, updated (YYYY-MM-DD), sources (YAML list of raw/ paths).
+- Tag every claim [src:raw/&lt;file&gt;] or [UNVERIFIED]. Link with [[slug]].
+- Every page needs an inbound link from another page; index.md does not count.
+- Ingest: read the new raw file, write or update pages, update wiki/index.md,
+  append one line to wiki/log.md, run bin/wiki-lint, commit on a branch.
+- Index line: - [[slug]] - one sentence. Log line: ## [YYYY-MM-DD] op | title
+  (op uses lowercase letters or hyphens, e.g. ingest or semantic-lint).
+- Query: read wiki/index.md first, open the pages it points to, cite page
+  names. For an exact quote, open and cite its tagged raw source.
+- Lint: run bin/wiki-lint. Fix every ERROR before committing.
+- Semantic lint, every 10 ingests or weekly: on a branch, report where changed
+  pages contradict or outlive their raw sources (page, claim, source A,
+  source B, verdict). Keep both attributed values (Acme 40% [src:raw/acme.md];
+  Beta 35% [src:raw/beta.md]) unless a later source retracts the earlier one.</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Write the lint script and the commit hook, then commit the skeleton on main</p>
+    <p>Structural lint validates frontmatter, index entries, inbound links, source tags/files, targets and log format; failures exit 1, stopping commits. Stage everything: checks read disk, not the staged snapshot. Python checks delimiters, PyYAML 6.0.3 frontmatter, four keys and ISO dates.<sup class="cite"><a href="#s02-16">16</a>,<a href="#s02-17">17</a></sup> Tags do not prove every claim is tagged or true. Check at least three changed source-tagged claims against raw text, or all if fewer changed; keep unsupported claims [UNVERIFIED]. Ingest corrections as new attributed sources: staged changes to existing raw files are refused.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">bin/wiki-lint</span><span class="code-tag tested">Tested</span></div>
+<pre>#!/usr/bin/env bash
+cd "$(dirname "$0")/.." || exit 2
+err=0
+fail() { echo "ERROR $1"; err=1; }
+changed=$(git diff --cached --no-renames --name-only --diff-filter=CDMRTUXB -- raw/)
+[ -z "$changed" ] || fail "raw/: existing sources are immutable"
+for f in wiki/*.md; do
+  s=$(basename "$f" .md)
+  case $s in index|log) continue ;; esac
+  if ! python3 - "$f" &lt;&lt;'PYAML'
+import datetime, pathlib, re, sys, yaml
+path = pathlib.Path(sys.argv[1])
+lines = path.read_text().splitlines()
+try:
+    if not lines or lines[0] != "---":
+        raise ValueError("no opening YAML delimiter")
+    if "---" not in lines[1:]:
+        raise ValueError("no closing YAML delimiter")
+    end = lines.index("---", 1)
+    data = yaml.safe_load("\n".join(lines[1:end]))
+    if not isinstance(data, dict):
+        raise ValueError("frontmatter must be a mapping")
+    missing = sorted({"title", "type", "updated", "sources"} - data.keys())
+    if missing:
+        raise ValueError("missing keys: " + ", ".join(missing))
+    if any(not isinstance(data[k], str) or not data[k].strip()
+           for k in ("title", "type")):
+        raise ValueError("title and type must be nonempty strings")
+    if not isinstance(data["sources"], list) or not data["sources"] or any(
+        not isinstance(v, str) or not v.strip() for v in data["sources"]
+    ):
+        raise ValueError("sources must be a nonempty list of paths")
+    raw = pathlib.Path("raw").resolve()
+    for source in data["sources"]:
+        target = pathlib.Path(source)
+        if not source.startswith("raw/") or not target.is_file() or not (
+            target.resolve().is_relative_to(raw)
+        ):
+            raise ValueError(f"invalid source {source}")
+    for source in re.findall(r"\[src:([^]]+)\]", "\n".join(lines[end + 1:])):
+        if source not in data["sources"]:
+            raise ValueError(f"unlisted source tag {source}")
+    date = str(data["updated"])
+    if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", date):
+        raise ValueError("updated must be an ISO date")
+    datetime.date.fromisoformat(date)
+except (ValueError, yaml.YAMLError) as exc:
+    print(f"ERROR {path.stem}: {exc}")
+    sys.exit(1)
+PYAML
+  then err=1; fi
+  grep -q "\[\[$s\]\]" wiki/index.md || fail "$s: missing from index.md"
+  others=$(ls wiki/*.md | grep -v -e "/$s.md$" -e "/index.md$" -e "/log.md$")
+  grep -lq "\[\[$s\]\]" /dev/null $others 2&gt;/dev/null || fail "$s: orphan, no inlink"
+  grep -Eq '\[src:[^]]+\]|\[UNVERIFIED\]' "$f" || fail "$s: no [src:] or [UNVERIFIED] tag"
+  for l in $(grep -o '\[\[[^]]*\]\]' "$f" | tr -d '[]' | sort -u); do
+    [ -f "wiki/$l.md" ] || fail "$s: broken link [[$l]]"
+  done
+done
+bad=$(grep -v -e '^$' -e '^# ' wiki/log.md |
+  grep -Ev '^## \[[0-9]{4}-[0-9]{2}-[0-9]{2}\] [a-z-]+ \| ')
+[ -z "$bad" ] || fail "log.md: line not in '## [date] op | title' form"
+exit $err</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">check-lint.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>chmod +x bin/wiki-lint
+printf '#!/bin/sh\nexec bin/wiki-lint\n' &gt; .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+printf 'broken log line\n' &gt;&gt; wiki/log.md
+if bin/wiki-lint; then
+  echo "STOP: first lint run accepted a planted fault" &gt;&amp;2; exit 1
+else
+  echo "first lint exit=$?"
+fi
+printf '# Log\n' &gt; wiki/log.md
+bin/wiki-lint
+echo "fixed lint exit=$?"
+git add -A &amp;&amp; git commit -qm "chore: empty wiki skeleton"
+git log --oneline
+<span class="c"># prints: ERROR log.md: line not in '## [date] op | title' form</span>
+<span class="c"># prints: first lint exit=1</span>
+<span class="c"># prints: fixed lint exit=0, then the skeleton commit</span></pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Ingest mechanics on a branch: the hook refuses, then passes</p>
+    <p>These hand-written fixtures test mechanics; no agent ingest or query ran. An agent would receive AGENTS.md and "Ingest the new raw file following AGENTS.md". Raw text supports llm-wiki-pattern; ingest-loop's "one ingest can touch many pages" stays [UNVERIFIED]. The pages satisfy the schema's inbound-link rule. Omitting ingest-loop from the index blocks the first commit; indexing it clears the error. A real ingest stops at <code>git diff main...HEAD</code> for source review. The script merges immediately with <code>--no-ff</code> for fixture setup.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">ingest.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>git checkout -q -b ingest/2026-11-20-gist
+printf '%s\n' \
+  'The pattern has three layers: raw sources, wiki pages and a schema.' \
+  'Ingest reads a new source and updates the index and related pages.' \
+  'The log is append-only.' &gt; raw/2026-11-20-gist.md
+cat &gt; wiki/llm-wiki-pattern.md &lt;&lt;'EOF'
+---
+title: LLM wiki pattern
+type: concept
+updated: 2026-11-20
+sources: [raw/2026-11-20-gist.md]
+---
+Three layers: raw sources, wiki pages, schema. [src:raw/2026-11-20-gist.md]
+See [[ingest-loop]].
+EOF
+cat &gt; wiki/ingest-loop.md &lt;&lt;'EOF'
+---
+title: Ingest loop
+type: procedure
+updated: 2026-11-20
+sources: [raw/2026-11-20-gist.md]
+---
+One ingest can touch many pages. [UNVERIFIED]
+Part of [[llm-wiki-pattern]].
+EOF
+printf -- '- [[llm-wiki-pattern]] - three layers (updated 2026-11-20)\n' \
+  &gt;&gt; wiki/index.md
+printf '## [2026-11-20] ingest | LLM wiki gist\n' &gt;&gt; wiki/log.md
+git add -A
+if git commit -qm "ingest: LLM wiki gist"; then
+  echo "STOP: expected lint refusal" &gt;&amp;2; exit 1
+else
+  echo "commit exit=$?"
+fi
+<span class="c"># prints: ERROR ingest-loop: missing from index.md</span>
+<span class="c"># prints: commit exit=1   (git records nothing)</span>
+printf -- '- [[ingest-loop]] - how one source updates pages (updated 2026-11-20)\n' \
+  &gt;&gt; wiki/index.md
+git add -A
+git commit -qm "ingest: LLM wiki gist"
+echo "commit exit=$?"
+git diff --stat main...HEAD | tail -1
+git checkout -q main
+git merge -q --no-ff ingest/2026-11-20-gist -m "merge: ingest LLM wiki gist"
+<span class="c"># prints: commit exit=0</span>
+<span class="c"># prints: 5 files changed, 22 insertions(+)</span></pre></div>
+
+    <p>These fixtures corrupt a valid page and always restore it. Metadata faults, invalid or unlisted sources, malformed log lines and staged raw edits must exit 1; restored pages must pass.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">fixtures.sh</span><span class="code-tag tested">Tested</span></div><pre>python3 - &lt;&lt;'PYFIX'
+import pathlib, subprocess
+path = pathlib.Path("wiki/llm-wiki-pattern.md")
+original = path.read_text()
+fixtures = {
+    "missing key": original.replace("title: LLM wiki pattern\n", ""),
+    "missing terminator": original.replace("\n---\n", "\n", 1),
+    "invalid date": original.replace("updated: 2026-11-20", "updated: 2026-02-30"),
+    "missing source": original.replace("raw/2026-11-20-gist.md", "missing.md"),
+    "unlisted tag": original.replace("[src:raw/2026-11-20-gist.md]", "[src:raw/other.md]"),
+}
+try:
+    for name, text in fixtures.items():
+        path.write_text(text)
+        result = subprocess.run(["bin/wiki-lint"], capture_output=True, text=True)
+        print(f"{name}: exit={result.returncode}; {result.stdout.strip()}")
+        assert result.returncode == 1, name
+finally:
+    path.write_text(original)
+log = pathlib.Path("wiki/log.md")
+saved_log = log.read_text()
+try:
+    log.write_text(saved_log + "## [20---]  | Title\n")
+    result = subprocess.run(["bin/wiki-lint"], capture_output=True, text=True)
+    print(f"malformed log: exit={result.returncode}; {result.stdout.strip()}")
+    assert result.returncode == 1
+    log.write_text(saved_log + "## [2026-11-20] semantic-lint | Check\n")
+    assert subprocess.run(["bin/wiki-lint"]).returncode == 0
+finally:
+    log.write_text(saved_log)
+raw = pathlib.Path("raw/2026-11-20-gist.md")
+saved_raw = raw.read_text()
+try:
+    raw.write_text(saved_raw + "A later edit.\n")
+    subprocess.run(["git", "add", str(raw)], check=True)
+    result = subprocess.run(["bin/wiki-lint"], capture_output=True, text=True)
+    print(f"staged raw edit: exit={result.returncode}; {result.stdout.strip()}")
+    assert result.returncode == 1
+finally:
+    raw.write_text(saved_raw)
+    subprocess.run(["git", "reset", "-q", "HEAD", "--", str(raw)], check=True)
+result = subprocess.run(["bin/wiki-lint"])
+print(f"valid pages: exit={result.returncode}")
+assert result.returncode == 0
+PYFIX</pre></div>
+    <div class="codeblock output"><div class="code-head"><span class="code-lang">output</span><span class="code-tag tested">Tested</span></div><pre>missing key: exit=1; ERROR llm-wiki-pattern: missing keys: title
+missing terminator: exit=1; ERROR llm-wiki-pattern: no closing YAML delimiter
+invalid date: exit=1; ERROR llm-wiki-pattern: day is out of range for month
+missing source: exit=1; ERROR llm-wiki-pattern: invalid source missing.md
+unlisted tag: exit=1; ERROR llm-wiki-pattern: unlisted source tag raw/other.md
+malformed log: exit=1; ERROR log.md: line not in '## [date] op | title' form
+staged raw edit: exit=1; ERROR raw/: existing sources are immutable
+valid pages: exit=0</pre></div>
+    <p>Expected answer, not model output: "What does ingest update, and how many pages can it touch?" Follow index.md to ingest-loop and llm-wiki-pattern, then their raw source: the index and related pages change; no page count is given. Keep it unverified.</p>  </li>
+  <li>
+    <p class="step-title">Search: ripgrep, then qmd installed inside the lab</p>
+    <p><code>npm install --prefix</code> puts qmd under the lab; the <code>PATH</code> line affects only this shell. <code>qmd search</code> is BM25 only, with no model. <code>qmd embed</code> and <code>qmd query</code> download three GGUF models into the lab's cache: an embedding model, a reranker and a query-expansion model. Embedding the four files took 33 seconds on CPU; the first query spent 61.7 seconds on query expansion, then ranked <code>index.md</code> first (it mentions every page; four tiny files cannot show whether qmd helps).<sup class="cite"><a href="#s02-2">2</a></sup> Each qmd command saves full output before grep selects display lines. Empty grep results are tolerated; failed qmd commands stop the lab. The last check verifies the cache under <code>$XDG_CACHE_HOME/qmd</code>.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">search.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>rg -n 'ingest-loop' wiki
+rg -l '\[UNVERIFIED\]' wiki
+npm install --prefix "$LAB/npm" @tobilu/qmd@2.9.0
+export PATH="$LAB/npm/node_modules/.bin:$PATH"
+qmd collection add "$PWD/wiki" --name wiki
+qmd context add qmd://wiki "Agent-maintained knowledge base"
+qmd search "ingest" &gt; "$LAB/qmd-search.txt"
+grep '^qmd://' "$LAB/qmd-search.txt" || true
+QMD_FORCE_CPU=1 qmd embed
+QMD_FORCE_CPU=1 qmd query "how does a new source change the wiki" \
+  &gt; "$LAB/qmd-query.txt"
+grep -E '^qmd://|Score' "$LAB/qmd-query.txt" || true
+test -d "$XDG_CACHE_HOME/qmd"
+echo "qmd cache verified"
+# rg -n prints wiki/index.md:3 and wiki/llm-wiki-pattern.md:8
+# rg -l prints wiki/ingest-loop.md
+# search prints four qmd://wiki/... paths, ingest-loop.md first
+# query: index.md 97%, llm-wiki-pattern.md 55%, ingest-loop.md 25%, log.md 15%</pre></div>
+  </li>
+<li>
+    <h3>Optional alternative: evaluate a context database</h3>
+    <p class="step-title">OpenViking: start Ollama and install the server</p>
+    <p>One CPU-only Ollama container serves both models. A bounded readiness loop precedes pulls; premature pulls leave embeddings uninstalled, causing an import 404 for <code>nomic-embed-text</code>. A check verifies both digest prefixes.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">install-server.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>docker run -d --name memlab-02-ollama --label "memlab.owner=$LAB_TOKEN" -p 127.0.0.1:39020:11434 \
+  -v "$LAB/ollama:/root/.ollama" ollama/ollama:0.40.16
+ready=0
+for attempt in {1..60}; do
+  if curl --fail --silent http://127.0.0.1:39020/api/tags &gt; /dev/null; then
+    ready=1; break
+  fi
+  sleep 1
+done
+if [ "$ready" != 1 ]; then
+  docker logs memlab-02-ollama &gt;&amp;2; exit 1
+fi
+docker exec memlab-02-ollama ollama pull nomic-embed-text
+docker exec memlab-02-ollama ollama pull qwen3:1.7b
+curl --fail --silent http://127.0.0.1:39020/api/tags &gt; "$LAB/models.json"
+python3 - "$LAB/models.json" &lt;&lt;'PYMODELS'
+import json, sys
+models = {m["name"]: m["digest"] for m in json.load(open(sys.argv[1]))["models"]}
+for name, prefix in [("nomic-embed-text:latest", "0a109f422b47"),
+                     ("qwen3:1.7b", "8f68893c685c")]:
+    assert models.get(name, "").startswith(prefix), (name, models.get(name))
+    print(name, models[name][:12])
+PYMODELS
+uv pip install --python "$LAB/venv/bin/python" "openviking==0.5.5"</pre></div>
+    <div class="codeblock output"><div class="code-head"><span class="code-lang">output</span><span class="code-tag tested">Tested</span></div><pre>nomic-embed-text:latest 0a109f422b47
+qwen3:1.7b 8f68893c685c</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Configure and start the server</p>
+    <p>The embedding provider is <code>ollama</code>, with the 768 dimensions of <code>nomic-embed-text</code>. LiteLLM gives providers one OpenAI-style interface; the summary model uses it with thinking disabled as the Ollama guide specifies.<sup class="cite"><a href="#s02-5">5</a></sup> <code>ov language en</code> writes under HOME/.openviking; the scripts set HOME to LAB/home through <code>env</code>, keeping that state inside the lab.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">json</span><span class="code-file">ov.conf</span><span class="code-tag tested">Tested</span></div>
+<pre>{
+  "storage": {"workspace": "__LAB__/data", "agfs": {"backend": "local"},
+    "vectordb": {"name": "context", "backend": "local"}},
+  "embedding": {"dense": {"provider": "ollama", "api_key": "ollama",
+    "api_base": "http://127.0.0.1:39020/v1",
+    "model": "nomic-embed-text", "dimension": 768}},
+  "vlm": {"provider": "litellm", "api_key": "ollama",
+    "api_base": "http://127.0.0.1:39020", "model": "ollama/qwen3:1.7b",
+    "extra_request_body": {"think": false}}
+}</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">start-server.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>mkdir -p "$LAB/home" "$LAB/data"
+# Replace __LAB__ in the saved JSON; $LAB inside JSON would stay literal.
+sed "s|__LAB__|$LAB|g" "$ATTACHMENTS/ov.conf" &gt; "$LAB/ov.conf"
+"$LAB/venv/bin/python" -m json.tool "$LAB/ov.conf" &gt; /dev/null
+export OPENVIKING_CONFIG_FILE="$LAB/ov.conf"
+export OPENVIKING_CLI_CONFIG_FILE="$LAB/ovcli.conf"
+echo '{"url": "http://127.0.0.1:39021"}' &gt; "$LAB/ovcli.conf"
+env HOME="$LAB/home" "$LAB/venv/bin/openviking-server" \
+  --config "$OPENVIKING_CONFIG_FILE" \
+  --host 127.0.0.1 --port 39021 &gt; "$LAB/server.log" 2&gt;&amp;1 &amp;
+echo $! &gt; "$LAB/server.pid"
+awk '{print $22}' "/proc/$(cat "$LAB/server.pid")/stat" &gt; "$LAB/server.start"
+ready=0
+for attempt in {1..120}; do
+  if curl --fail --silent http://127.0.0.1:39021/health &gt; "$LAB/health.json"; then
+    ready=1; break
+  fi
+  sleep 1
+done
+if [ "$ready" != 1 ]; then
+  cat "$LAB/server.log" &gt;&amp;2; exit 1
+fi
+cat "$LAB/health.json"
+# prints: {"status":"ok","healthy":true,"version":"0.5.5","auth_mode":"dev"}</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Create the sample project and import it (the write)</p>
+    <p>CPU import took 7 minutes 18 seconds; <code>--wait</code> waits for processing. Three short files produced 17 records (OpenViking's context_count): 3 files plus L0 and L1 for 7 directories, including file wrappers and ancestors. That is about 63 seconds per directory, suggesting multi-day imports at 3,000 files; time a representative subtree. An unchanged re-import took 1 second and made 0 records; changing 2,000 to 2,001 jobs took 340 seconds and made 9 records. The edit regenerated the file and two summaries for its directory and three ancestors (1 + 4×2), about 85 seconds per regenerated directory. Small parents refresh immediately; wide parents can lag (Gotchas). Large-directory performance remains untested. The CLI requires <code>ov language en</code> first.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">import.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>mkdir -p "$LAB/lighthouse/docs/api" "$LAB/lighthouse/docs/decisions"
+cat &gt; "$LAB/lighthouse/docs/api/auth.md" &lt;&lt;'EOF'
+# Authentication
+
+The Lighthouse API uses short-lived JWT access tokens. A client signs in with an
+API key at POST /v1/token and receives a token that expires after 15 minutes.
+Refresh tokens are not supported. Rotate API keys every 90 days.
+EOF
+cat &gt; "$LAB/lighthouse/docs/api/feedback.md" &lt;&lt;'EOF'
+# Feedback endpoints
+
+POST /v1/feedback stores one feedback item for a customer. GET /v1/feedback
+lists items, newest first, 50 per page. Items are deleted 400 days after
+creation. Rate limit: 60 requests per minute per API key.
+EOF
+cat &gt; "$LAB/lighthouse/docs/decisions/0001-queue.md" &lt;&lt;'EOF'
+# Decision 1: use a Postgres job table, not Kafka
+
+Status: accepted. The team is four people and the volume is about 2,000 jobs
+a day. SKIP LOCKED lets workers claim different jobs without a new service.
+Revisit if volume passes 1 million jobs a day.
+EOF
+export PATH="$LAB/venv/bin:$PATH"
+ov() { env HOME="$LAB/home" "$LAB/venv/bin/ov" "$@"; }
+ov language en
+IMPORT_START=$(date +%s)
+ov add-resource "$LAB/lighthouse" --to viking://resources/lighthouse --wait \
+  | grep -E '^(status|root_uri|context_count) '
+echo "import seconds=$(($(date +%s) - IMPORT_START))"
+for mode in unchanged edited; do
+  if [ "$mode" = edited ]; then
+    sed -i 's/2,000 jobs/2,001 jobs/' "$LAB/lighthouse/docs/decisions/0001-queue.md"
+  fi
+  IMPORT_START=$(date +%s)
+  ov add-resource "$LAB/lighthouse" --to viking://resources/lighthouse --wait \
+    &gt; "$LAB/reimport-$mode.txt"
+  cat "$LAB/reimport-$mode.txt"
+  echo "$mode reimport seconds=$(($(date +%s) - IMPORT_START))"
+done</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Read it back: browse, search, read, grep</p>
+    <p>Auth reads return L2 facts; final overview reads expose L1 coverage metadata (Gotchas). <code>ov grep</code> is exact text and needs no model. Use <code>ov find</code> with <code>-n</code>; piping to <code>head</code> caused a Rust broken-pipe panic. OpenViking stores <code>docs/api/auth.md</code> at <code>docs/api/auth/auth.md</code>, wrapping each file in its own directory. Listing and abstract follow; other output is trimmed. The abstract wrongly omits feedback.md despite both entries being sampled: zero unsampled_entries does not prove summary coverage.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">read.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>echo "ov ls:"
+ov ls viking://resources/lighthouse/docs/api
+echo "ov abstract:"
+ov abstract viking://resources/lighthouse/docs/api
+ov find "how long does a login token last" \
+  --uri viking://resources/lighthouse -n 3
+ov read viking://resources/lighthouse/docs/api/auth/auth.md
+ov grep "400 days" --uri viking://resources/lighthouse
+ov read viking://resources/lighthouse/docs/api/.overview.md
+ov read viking://resources/lighthouse/docs/decisions/.overview.md</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>ov ls (URIs; summaries omitted):
+   viking://resources/lighthouse/docs/api/auth
+   viking://resources/lighthouse/docs/api/feedback
+ov abstract:
+1. **Title**
+api
+2. **Brief Description**
+This directory contains a single file, `auth.md`, which provides guidelines for
+authentication using short-lived JWT access tokens for the Lighthouse API.
+ov find (previews omitted): 2 results, limit 3
+1. resource · Level 2 · score 0.816
+   viking://resources/lighthouse/docs/api/auth/auth.md
+2. resource · Level 1 · score 0.783
+   viking://resources/lighthouse/docs/api/auth/.overview.md
+ov read:
+# Authentication
+The Lighthouse API uses short-lived JWT access tokens. A client signs in with an
+API key at POST /v1/token and receives a token that expires after 15 minutes.
+ov grep: 1 match · 1 file scanned
+   viking://resources/lighthouse/docs/api/feedback/feedback.md
+   lists items, newest first, 50 per page. Items are deleted 400 days after</pre></div>
+    <div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>ov read .overview.md (raw frontmatter; body omitted):
+---
+directory: viking://resources/lighthouse/docs/api/
+generated_by:
+  component: SemanticProcessor
+  trigger: resource_ingest
+freshness:
+  total_entries: 2
+  sampled_entries: 2
+  unsampled_entries: 0
+  pending_child_changes: 0
+---</pre></div>
+  </li>
+<li>
+    <p class="step-title">Shared cleanup and check</p>
+    <p>The exit trap verifies folder token, server identity and container label before deleting owned resources and the lab (Ollama data is root-owned, hence <code>sudo</code>). It runs after errors and bounds server shutdown; a pre-existing lab is refused untouched. Process starttime (procfs field 22) guards against PID reuse; its awk parser assumes a process name without spaces.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">cleanup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+if [ "${LAB:-}" != /var/tmp/memlab-02 ] || [ -L "$LAB" ] ||
+   [ ! -f "$LAB/.memlab-02-owner" ] || [ -L "$LAB/.memlab-02-owner" ] ||
+   [ ! -f "$LAB/.memlab-02-path" ] || [ -L "$LAB/.memlab-02-path" ] ||
+   [ -z "${LAB_TOKEN:-}" ] || [ -z "${LAB_REAL:-}" ] ||
+   [ "$(cat "$LAB/.memlab-02-owner")" != "$LAB_TOKEN" ] ||
+   [ "$(cat "$LAB/.memlab-02-path")" != "$LAB_REAL" ] ||
+   [ "$(realpath -e -- "$LAB")" != /var/tmp/memlab-02 ] ||
+   [ "$LAB_REAL" != /var/tmp/memlab-02 ]; then
+  echo "STOP: lab ownership check failed" &gt;&amp;2
+  exit 1
+fi
+if [ -f "$LAB/server.pid" ]; then
+  pid=$(cat "$LAB/server.pid")
+  if [ -f "/proc/$pid/stat" ] &amp;&amp;
+     [ "$(awk '{print $22}' "/proc/$pid/stat")" = "$(cat "$LAB/server.start")" ]; then
+    kill "$pid"
+    for attempt in {1..50}; do
+      [ -e "/proc/$pid/stat" ] || break
+      sleep 0.2
+    done
+    if [ -f "/proc/$pid/stat" ] &amp;&amp;
+       [ "$(awk '{print $22}' "/proc/$pid/stat")" = "$(cat "$LAB/server.start")" ]; then
+      kill -KILL "$pid"
+    fi
+    wait "$pid" || true
+  fi
+fi
+if docker inspect memlab-02-ollama &gt; /dev/null 2&gt;&amp;1; then
+  owner=$(docker inspect -f '{{index .Config.Labels "memlab.owner"}}' memlab-02-ollama)
+  [ "$owner" = "$LAB_TOKEN" ] || { echo "STOP: container ownership mismatch"; exit 1; }
+  docker rm -f memlab-02-ollama
+fi
+cd /var/tmp
+sudo rm -rf -- "$LAB"
+test ! -e "$LAB"
+test -z "$(docker ps -aq --filter name='^memlab-02-ollama$')"
+echo "Cleanup verified: lab and owned container removed"</pre></div>
+  </li>
+</ol>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: repeated rewrites corrupt documents</p>
+  <p>DELEGATE-52 found agentic tool use did not reduce long-workflow editing corruption; larger documents, longer interactions and distractor files worsened it.<sup class="cite"><a href="#s02-12">12</a></sup> Repeated wiki rewrites resemble that workload (inference; wikis were not tested). Review every agent rewrite. Structural lint catches missing index lines and broken links, not dropped caveats. Keep raw sources immutable and review diffs against them, applying step 2’s changed-claim checks and [UNVERIFIED] rule. Human review is the tested control; semantic-lint detection is unmeasured.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: the compile backlog</p>
+  <p>Maintenance shifts effort from notes to schema and lint.<sup class="cite"><a href="#s02-1">1</a></sup> Count un-ingested sources and unreviewed ingest branches. If either grows, stop sources or narrow scope until ingest and review catch up.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: generated summaries can be wrong</p>
+  <p>The 1.7B abstract omitted feedback.md despite full sampling (step 8). The <code>decisions</code> overview invented Postgres reasons ("performance, scalability, and the existing infrastructure") and an invalid link, <code>viking://input_sample_f1</code>, rejected by the server. The file gives SKIP LOCKED, team size, volume and a revisit threshold, not those invented reasons. Summaries varied; retrieval found the files. Use a stronger summary model (Chapter 06); abstracts are pointers. Spot-check L0/L1 for three known files: passing summaries invent no facts or links.<sup class="cite"><a href="#s02-4">4</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: summaries can be sampled and pending</p>
+  <p>OpenViking’s default sample covers 32 direct children (<code>semantic.overview_sample_limit</code>).<sup class="cite"><a href="#s02-4">4</a></sup> Above that limit, parent overviews lag until pending changes reach 10% of entries (<code>semantic.freshness_refresh_ratio</code>); no timed refresh is promised.<sup class="cite"><a href="#s02-4">4</a></sup> Read raw <code>.overview.md</code> (step 8); <code>ov abstract</code> and search previews hide metadata. Positive <code>pending_child_changes</code> means lag; positive <code>unsampled_entries</code> means skipped children, requiring direct reads. The three-file lab cannot test sampling.</p>
+</aside>
+
+<aside class="callout unverified">
+  <p class="callout-label">Unverified: open questions</p>
+  <ul>
+    <li>Where cross-linking pays. A vendor says 100 to 200 notes, as "community calibration"; the post gives no measurement.<sup class="cite"><a href="#s02-18">18</a></sup></li>
+    <li>Whether the OpenViking gains on LoCoMo (a long-conversation memory benchmark, see the glossary) hold outside the maintainers' evaluation. They report 80 to 83% for three agents versus 24 to 57% on built-in memory, using Volcengine’s Doubao models. Not reproduced here; the local test used a 1.7B model.<sup class="cite"><a href="#s02-3">3</a></sup></li>
+    <li>The obsidian-llm-wiki retrieval claim. Its README compares Personalized PageRank with nearest-neighbor retrieval on a private vault, not a public benchmark. Its scoring denominator is unspecified.<sup class="cite"><a href="#s02-9">9</a></sup></li>
+  </ul>
+</aside>
+
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: a good second step after flat files</p>
+  <p><strong>Pick a wiki when</strong> one person or small team maintains a few hundred pages of lasting domain knowledge with diff review and lint. Linked, dated, source-cited pages remain readable and revertible without retrieval infrastructure.<sup class="cite"><a href="#s02-1">1</a></sup> <strong>Evaluate a context database when</strong> index navigation fails recurring questions and you can run a server. Untested large-directory overviews require checks at every level. The tested 1.7B model failed (Gotchas). Before adopting, check a stronger model (Chapter 06) and time unchanged/edited re-imports on your corpus.</p>
+  <p>Add qmd when the index misses pages on recurring test questions, retrieval over the raw data (Chapters 03 and 05) when the data is large or changes fast, and a database with access controls (Chapter 08) when many writers need isolation. Skip the wiki if you cannot keep up the lint and review loop.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s02-1"><span class="src-title">Karpathy, "LLM Wiki" gist (created 2026-04-04, read 2026-11-20)</span> <span class="src-note">(pattern author)</span><a class="url" href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f</a></li>
+  <li id="s02-2"><span class="src-title">qmd README, version 2.9.0 (2026-11-18)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/tobi/qmd">https://github.com/tobi/qmd</a></li>
+  <li id="s02-3"><span class="src-title">OpenViking README (read 2026-11-20)</span> <span class="src-note">(official, benchmark figures are maintainer claims)</span><a class="url" href="https://github.com/volcengine/OpenViking">https://github.com/volcengine/OpenViking</a></li>
+  <li id="s02-4"><span class="src-title">OpenViking documentation, Context Layers (L0/L1/L2)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.openviking.ai/en/concepts/03-context-layers">https://docs.openviking.ai/en/concepts/03-context-layers</a></li>
+  <li id="s02-5"><span class="src-title">OpenViking documentation, Configure models and services</span> <span class="src-note">(official)</span><a class="url" href="https://docs.openviking.ai/en/guides/01-configuration">https://docs.openviking.ai/en/guides/01-configuration</a></li>
+  <li id="s02-6"><span class="src-title">OpenViking documentation, Retrieval Mechanism</span> <span class="src-note">(official)</span><a class="url" href="https://docs.openviking.ai/en/concepts/07-retrieval">https://docs.openviking.ai/en/concepts/07-retrieval</a></li>
+  <li id="s02-7"><span class="src-title">OpenViking release v0.5.5 (2026-11-13)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/volcengine/OpenViking/releases/tag/v0.5.5">https://github.com/volcengine/OpenViking/releases/tag/v0.5.5</a></li>
+  <li id="s02-8"><span class="src-title">Hermes Agent documentation, LLM Wiki skill 2.1.0</span> <span class="src-note">(official)</span><a class="url" href="https://hermes-agent.nousresearch.com/docs/user-guide/skills/optional/research/research-llm-wiki">https://hermes-agent.nousresearch.com/docs/user-guide/skills/optional/research/research-llm-wiki</a></li>
+  <li id="s02-9"><span class="src-title">obsidian-llm-wiki README, version 1.32.0 (updated 2026-11-17)</span> <span class="src-note">(official, benchmark is the author's own)</span><a class="url" href="https://github.com/GD4AI/obsidian-llm-wiki">https://github.com/GD4AI/obsidian-llm-wiki</a></li>
+  <li id="s02-10"><span class="src-title">memU README and package metadata, 0.11.0-beta.3 (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/NevaMind-AI/memU">https://github.com/NevaMind-AI/memU</a></li>
+  <li id="s02-11"><span class="src-title">Falconer, "The enterprise LLM wiki" (2026-04-28)</span> <span class="src-note">(vendor)</span><a class="url" href="https://falconer.com/guides/enterprise-llm-wiki-karpathy/">https://falconer.com/guides/enterprise-llm-wiki-karpathy/</a></li>
+  <li id="s02-12"><span class="src-title">Laban, Schnabel, Neville, "LLMs Corrupt Your Documents When You Delegate", arXiv:2604.15597 (2026-04-17)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2604.15597">https://arxiv.org/abs/2604.15597</a></li>
+  <li id="s02-13"><span class="src-title">Chen et al., "Spiral of Silence: How is Large Language Model Killing Information Retrieval?", ACL 2024</span> <span class="src-note">(paper, text read)</span><a class="url" href="https://arxiv.org/abs/2404.10496">https://arxiv.org/abs/2404.10496</a></li>
+  <li id="s02-14"><span class="src-title">Dai et al., "Neural Retrievers are Biased Towards LLM-Generated Content", KDD 2024</span> <span class="src-note">(paper, abstract and tables read)</span><a class="url" href="https://arxiv.org/abs/2310.20501">https://arxiv.org/abs/2310.20501</a></li>
+  <li id="s02-15"><span class="src-title">A home-lab wiki backlog count, read 2026-11-20</span> <span class="src-note">(first-party measurement published with the operator's permission; see Chapter 19; cited for the measurement only)</span></li>
+  <li id="s02-16"><span class="src-title">PyYAML documentation, safe_load (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://pyyaml.org/wiki/PyYAMLDocumentation">https://pyyaml.org/wiki/PyYAMLDocumentation</a></li>
+  <li id="s02-17"><span class="src-title">Python 3.12 datetime.date.fromisoformat (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.python.org/3.12/library/datetime.html#datetime.date.fromisoformat">https://docs.python.org/3.12/library/datetime.html#datetime.date.fromisoformat</a></li>
+  <li id="s02-18"><span class="src-title">welzin.ai, "Build a Karpathy-style LLM wiki in Obsidian" (2026-07-16, updated 2026-08-10)</span> <span class="src-note">(vendor)</span><a class="url" href="https://welzin.ai/blogs/build-an-llm-wiki-in-obsidian">https://welzin.ai/blogs/build-an-llm-wiki-in-obsidian</a></li>
+</ol>
+</section>
+
+</article>

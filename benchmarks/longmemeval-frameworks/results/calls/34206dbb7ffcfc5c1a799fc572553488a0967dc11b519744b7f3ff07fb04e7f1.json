@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "752ee3f6714af436dc7dd47ef317edb98a0277d7604242a397056761235164c7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4c2d8fe3-2dd2-4066-93bd-a855d7181b6e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"mindful breathing\",\n            \"summary\": \"Mindful breathing is an excellent choice for reducing stress and promoting relaxation. Here are the steps to practice mindful breathing: 1. Find a quiet and comfortable place to sit or lie down. 2. Close your eyes and focus your attention on your breath. 3. Slowly inhale through your nose, filling your lungs with air. 4. Hold your breath for a few seconds. 5. Slowly exhale through your mouth, pushing out all the air from your lungs. 6. Repeat this process for a few minutes, focusing only on your breath. Remember, it is normal to get distracted during the practice, but when you notice that your mind has wandered away from your breath, gently bring your attention back to your breath. With regular practice, mindful breathing can help you manage stress, improve your mood, and boost your productivity. Good luck with your practice!\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795346021,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 208,
+      "prompt_tokens": 3817,
+      "total_tokens": 4025,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 458
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"mindful breathing\",\n            \"summary\": \"Mindful breathing is an excellent choice for reducing stress and promoting relaxation. Here are the steps to practice mindful breathing: 1. Find a quiet and comfortable place to sit or lie down. 2. Close your eyes and focus your attention on your breath. 3. Slowly inhale through your nose, filling your lungs with air. 4. Hold your breath for a few seconds. 5. Slowly exhale through your mouth, pushing out all the air from your lungs. 6. Repeat this process for a few minutes, focusing only on your breath. Remember, it is normal to get distracted during the practice, but when you notice that your mind has wandered away from your breath, gently bring your attention back to your breath. With regular practice, mindful breathing can help you manage stress, improve your mood, and boost your productivity. Good luck with your practice!\"\n        }\n    ]\n}",
+  "seconds": 314.85797352099326,
+  "prompt_tokens_local": 3817
+}

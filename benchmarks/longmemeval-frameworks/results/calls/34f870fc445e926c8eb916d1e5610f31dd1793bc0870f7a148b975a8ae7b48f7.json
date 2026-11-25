@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "587ef402083baf8b696d6d7d88b3bac04cfb099cf91e33566e601575dceb5585",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b48d7563-bbf4-48c1-a8da-c119dbca5ba9",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Jemaa el-Fnaa\",\n            \"duplicate_candidate_id\": 0\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Nisha\",\n            \"duplicate_candidate_id\": 5\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Nisha\",\n            \"duplicate_candidate_id\": 5\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795368509,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 101,
+      "prompt_tokens": 6812,
+      "total_tokens": 6913,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4864
+      }
+    }
+  },
+  "text": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Jemaa el-Fnaa\",\n            \"duplicate_candidate_id\": 0\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Nisha\",\n            \"duplicate_candidate_id\": 5\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Nisha\",\n            \"duplicate_candidate_id\": 5\n        }\n    ]\n}",
+  "seconds": 33.11076439797762,
+  "prompt_tokens_local": 6812
+}

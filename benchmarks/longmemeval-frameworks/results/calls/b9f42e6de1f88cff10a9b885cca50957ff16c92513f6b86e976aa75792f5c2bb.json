@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 30
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "29c359cc56817360d9ab3f83589a71b703db3d77f9e36133989a060e7d9a21b8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-18dbb029-a925-47b2-b9e7-d3a84f566036",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Considered Codenames and Taboo for the game night\",\n        \"Had a blast playing Carcassonne with friend David\",\n        \"Interested in exploring more games like Azul, Pandemic, 7 Wonders, and El Grande\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332466,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 61,
+      "prompt_tokens": 2368,
+      "total_tokens": 2429,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Considered Codenames and Taboo for the game night\",\n        \"Had a blast playing Carcassonne with friend David\",\n        \"Interested in exploring more games like Azul, Pandemic, 7 Wonders, and El Grande\"\n    ]\n}",
+  "seconds": 3.9989834379957756,
+  "prompt_tokens_local": 2368,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "75241e25a1db7008c2776a8c41dd2fcc3df0989c33ce7f002f8adfcfd419f5ba",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c388e6fe-4a8a-40f0-a946-3f2518d4e015",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"OWNS\", \"fact\": \"Garibaldi owned a Mustang during his travels through various regions.\", \"valid_at\": \"2023-05-28T18:01:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795352704,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 6651,
+      "total_tokens": 6737,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 162
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"OWNS\", \"fact\": \"Garibaldi owned a Mustang during his travels through various regions.\", \"valid_at\": \"2023-05-28T18:01:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 72.02659991000837,
+  "prompt_tokens_local": 6651
+}

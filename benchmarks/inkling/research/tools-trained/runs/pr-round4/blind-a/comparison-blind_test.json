@@ -1,0 +1,52 @@
+{
+  "adapter": {
+    "blind_test/tools/adapter/first_command_accuracy": 0.8875,
+    "blind_test/tools/adapter/first_turn_malformed": 0.0,
+    "blind_test/tools/adapter/parsed_calls": 95.0,
+    "blind_test/tools/adapter/call_attempts": 95.0,
+    "blind_test/tools/adapter/invented_names": 2.0,
+    "blind_test/tools/adapter/parallel_episodes": 0.0,
+    "blind_test/tools/adapter/exact_sequence_accuracy": 0.8375,
+    "blind_test/tools/adapter/extra_calls_per_episode": 0.09166666666666666,
+    "blind_test/tools/adapter/no_tool_specificity": 0.9,
+    "blind_test/tools/adapter/prompt_tokens_per_episode": 176.00833333333333,
+    "blind_test/tools/adapter/completion_tokens_per_episode": 55.95,
+    "blind_test/tools/adapter/episodes": 120.0,
+    "list_price_usd": 0.0065251499999999995
+  },
+  "native": {
+    "blind_test/tools/native/first_command_accuracy": 0.9625,
+    "blind_test/tools/native/first_turn_malformed": 0.0,
+    "blind_test/tools/native/parsed_calls": 156.0,
+    "blind_test/tools/native/call_attempts": 158.0,
+    "blind_test/tools/native/invented_names": 0.0,
+    "blind_test/tools/native/parallel_episodes": 2.0,
+    "blind_test/tools/native/exact_sequence_accuracy": 0.5125,
+    "blind_test/tools/native/extra_calls_per_episode": 0.5416666666666666,
+    "blind_test/tools/native/no_tool_specificity": 0.975,
+    "blind_test/tools/native/prompt_tokens_per_episode": 2224.116666666667,
+    "blind_test/tools/native/completion_tokens_per_episode": 261.2583333333333,
+    "blind_test/tools/native/episodes": 120.0,
+    "list_price_usd": 0.0557096
+  },
+  "sheet": {
+    "blind_test/tools/sheet/first_command_accuracy": 0.6875,
+    "blind_test/tools/sheet/first_turn_malformed": 19.0,
+    "blind_test/tools/sheet/parsed_calls": 111.0,
+    "blind_test/tools/sheet/call_attempts": 116.0,
+    "blind_test/tools/sheet/invented_names": 6.0,
+    "blind_test/tools/sheet/parallel_episodes": 2.0,
+    "blind_test/tools/sheet/exact_sequence_accuracy": 0.35,
+    "blind_test/tools/sheet/extra_calls_per_episode": 0.375,
+    "blind_test/tools/sheet/no_tool_specificity": 0.975,
+    "blind_test/tools/sheet/prompt_tokens_per_episode": 764.35,
+    "blind_test/tools/sheet/completion_tokens_per_episode": 229.70833333333334,
+    "blind_test/tools/sheet/episodes": 120.0,
+    "list_price_usd": 0.0275408
+  },
+  "first_command_adapter_minus_native": {
+    "diff": -7.500000000000007,
+    "low": -15.000000000000002,
+    "high": 0.0
+  }
+}

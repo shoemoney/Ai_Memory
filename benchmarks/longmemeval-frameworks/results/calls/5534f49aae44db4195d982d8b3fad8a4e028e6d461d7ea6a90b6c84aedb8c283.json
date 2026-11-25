@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 72
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "94e1f2ba72606b4651b4fc1132946083065dac42d4ee388c5e1f583b7e409f5f",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f6cc4d85-a513-4c70-9384-b46eb30837bd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"entity_name\",\n            \"summary\": \"Brazil's Supreme Court has been expanding its powers in recent years, allowing it to act as an investigator, prosecutor and judge all at once in some cases. This has led to some judges jailing people without trial for posts on social media that they believe attack Brazil's institutions, ordering social networks to remove thousands of posts and videos with little room for appeal and sentencing a congressman to nearly nine years in prison. Legal experts say that this power grab by the Supreme Court has undermined a key democratic institution in Latin America's biggest country, as voters prepare to pick a president on Oct. 2.\"\n        },\n        {\n            \"name\": \"entity_name_1\",\n            \"summary\": \"The Supreme Court of Brazil has been expanding its powers, acting as an investigator, prosecutor, and judge. This has led to judges jailing people without trial for posts on social media that they believe attack Brazil's institutions, ordering social networks to remove thousands of posts and videos with little room for appeal, and sentencing a congressman to nearly nine years in prison. Legal experts say this undermines a key democratic institution in Latin America's biggest country.\"\n        },\n        {\n            \"name\": \"entity_name_2\",\n            \"summary\": \"The Supreme Court of Brazil has been expanding its powers, acting as an investigator, prosecutor, and judge. This has led to judges jailing people without trial for posts on social media that they believe attack Brazil's institutions, ordering social networks to remove thousands of posts and videos with little room for appeal, and sentencing a congressman to nearly nine years in prison. Legal experts say this undermines a key democratic institution in Latin America's biggest country.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795374945,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 358,
+      "prompt_tokens": 6388,
+      "total_tokens": 6746,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"entity_name\",\n            \"summary\": \"Brazil's Supreme Court has been expanding its powers in recent years, allowing it to act as an investigator, prosecutor and judge all at once in some cases. This has led to some judges jailing people without trial for posts on social media that they believe attack Brazil's institutions, ordering social networks to remove thousands of posts and videos with little room for appeal and sentencing a congressman to nearly nine years in prison. Legal experts say that this power grab by the Supreme Court has undermined a key democratic institution in Latin America's biggest country, as voters prepare to pick a president on Oct. 2.\"\n        },\n        {\n            \"name\": \"entity_name_1\",\n            \"summary\": \"The Supreme Court of Brazil has been expanding its powers, acting as an investigator, prosecutor, and judge. This has led to judges jailing people without trial for posts on social media that they believe attack Brazil's institutions, ordering social networks to remove thousands of posts and videos with little room for appeal, and sentencing a congressman to nearly nine years in prison. Legal experts say this undermines a key democratic institution in Latin America's biggest country.\"\n        },\n        {\n            \"name\": \"entity_name_2\",\n            \"summary\": \"The Supreme Court of Brazil has been expanding its powers, acting as an investigator, prosecutor, and judge. This has led to judges jailing people without trial for posts on social media that they believe attack Brazil's institutions, ordering social networks to remove thousands of posts and videos with little room for appeal, and sentencing a congressman to nearly nine years in prison. Legal experts say this undermines a key democratic institution in Latin America's biggest country.\"\n        }\n    ]\n}",
+  "seconds": 65.17970226999023,
+  "prompt_tokens_local": 6388
+}

@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 25
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "40791915ad0c77f608fa7c250741bff1fef8317a6275ea7b93160d3eb0f1ff6c",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-2329792d-c334-4d95-93a6-5b87db968d56",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"considered custom framing and online framing services for the artwork\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"considered custom framing and online framing services for the artwork\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"thought about setting up a small art studio in the backyard\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"thought about setting up a small art studio in the backyard\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"considered organizing the workspace and furniture for the studio\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"considered organizing the workspace and furniture for the studio\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"thought about joining a painting group or club for feedback and learning\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"thought about joining a painting group or club for feedback and learning\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330290,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 222,
+      "prompt_tokens": 1863,
+      "total_tokens": 2085,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"considered custom framing and online framing services for the artwork\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"considered custom framing and online framing services for the artwork\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"thought about setting up a small art studio in the backyard\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"thought about setting up a small art studio in the backyard\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"considered organizing the workspace and furniture for the studio\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"considered organizing the workspace and furniture for the studio\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"thought about joining a painting group or club for feedback and learning\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"thought about joining a painting group or club for feedback and learning\"\n        }\n    ]\n}",
+  "seconds": 3.224280109992833,
+  "prompt_tokens_local_gemma_estimate": 1988
+}

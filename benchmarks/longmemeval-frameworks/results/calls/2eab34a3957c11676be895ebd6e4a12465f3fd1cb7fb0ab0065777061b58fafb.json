@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "caece0368fe4600739325107b6236e1457c378681d4e1b9318298a5087c7bf6e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5817785c-58d2-4ef7-9cda-f385f1bc788b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Google Cloud Platform\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Cloud Storage\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Cloud Dataflow\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Cloud Spanner\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Bigtable\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Apache NiFi\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Apache Kafka\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Alpha Vantage\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Cloud ML Engine\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"BigQuery ML\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Cloud Dataproc\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Data Studio\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"ceramics\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"cycling\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"wool coat\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"red and purple lighting\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"Gamecube\", \"entity_type_id\": 0, \"episode_indices\": [3]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363690,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 512,
+      "prompt_tokens": 5452,
+      "total_tokens": 5964,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Google Cloud Platform\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Cloud Storage\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Cloud Dataflow\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Cloud Spanner\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Bigtable\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Apache NiFi\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Apache Kafka\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Alpha Vantage\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Cloud ML Engine\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"BigQuery ML\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Cloud Dataproc\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Google Data Studio\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"ceramics\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"cycling\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"wool coat\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"red and purple lighting\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"Gamecube\", \"entity_type_id\": 0, \"episode_indices\": [3]}]}",
+  "seconds": 22.877755569992587,
+  "prompt_tokens_local": 5452
+}

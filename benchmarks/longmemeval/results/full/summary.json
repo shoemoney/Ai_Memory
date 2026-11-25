@@ -1,0 +1,631 @@
+{
+  "oracle_window_matched_subset": {
+    "bm25-standard": {
+      "correct": 156,
+      "n": 212,
+      "wilson95": [
+        0.6726851572328758,
+        0.790617864097577
+      ]
+    },
+    "dense-standard": {
+      "correct": 135,
+      "n": 212,
+      "wilson95": [
+        0.5701527817811618,
+        0.698562970590501
+      ]
+    },
+    "mem0-raw-standard": {
+      "correct": 135,
+      "n": 212,
+      "wilson95": [
+        0.5701527817811618,
+        0.698562970590501
+      ]
+    },
+    "full-oracle": {
+      "correct": 127,
+      "n": 212,
+      "wilson95": [
+        0.5318881835998795,
+        0.6626990853589106
+      ]
+    }
+  },
+  "updated_epoch": 1795308845.9968457,
+  "selected_n": 300,
+  "complete": true,
+  "systems": {
+    "full-standard": {
+      "correct": 0,
+      "n": 0,
+      "wilson95": null,
+      "context_skips": 300,
+      "checkpointed": 300,
+      "missing": 0,
+      "per_stratum": {
+        "abstention": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "knowledge-update": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "multi-session": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "single-session-assistant": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "single-session-preference": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "single-session-user": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "temporal-reasoning": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        }
+      },
+      "per_question_type": {
+        "knowledge-update": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "multi-session": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "single-session-assistant": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "single-session-preference": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "single-session-user": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        },
+        "temporal-reasoning": {
+          "correct": 0,
+          "n": 0,
+          "wilson95": null
+        }
+      },
+      "judge_format_invalid_calls": 0,
+      "answer_empty": 0,
+      "empty_answer_positive": 0,
+      "answer_length_stops": 0,
+      "judge_vote_disagreements": 0
+    },
+    "bm25-standard": {
+      "correct": 191,
+      "n": 300,
+      "wilson95": [
+        0.5808316248758707,
+        0.6890459629894203
+      ],
+      "context_skips": 0,
+      "checkpointed": 300,
+      "missing": 0,
+      "per_stratum": {
+        "abstention": {
+          "correct": 17,
+          "n": 18,
+          "wilson95": [
+            0.7424269921812815,
+            0.9901248090216964
+          ]
+        },
+        "knowledge-update": {
+          "correct": 36,
+          "n": 43,
+          "wilson95": [
+            0.7002759410625328,
+            0.9188337265293784
+          ]
+        },
+        "multi-session": {
+          "correct": 30,
+          "n": 73,
+          "wilson95": [
+            0.30531272700930906,
+            0.5255077675581492
+          ]
+        },
+        "single-session-assistant": {
+          "correct": 30,
+          "n": 34,
+          "wilson95": [
+            0.7337915722962867,
+            0.9532855333511756
+          ]
+        },
+        "single-session-preference": {
+          "correct": 5,
+          "n": 18,
+          "wilson95": [
+            0.12499753379554271,
+            0.5087265656029683
+          ]
+        },
+        "single-session-user": {
+          "correct": 36,
+          "n": 38,
+          "wilson95": [
+            0.8271453786823006,
+            0.9854457918527071
+          ]
+        },
+        "temporal-reasoning": {
+          "correct": 37,
+          "n": 76,
+          "wilson95": [
+            0.37783728779151443,
+            0.5971130697101996
+          ]
+        }
+      },
+      "per_question_type": {
+        "knowledge-update": {
+          "correct": 38,
+          "n": 46,
+          "wilson95": [
+            0.6927664628362192,
+            0.9091420829775353
+          ]
+        },
+        "multi-session": {
+          "correct": 38,
+          "n": 81,
+          "wilson95": [
+            0.3643337335618261,
+            0.5767328149216562
+          ]
+        },
+        "single-session-assistant": {
+          "correct": 30,
+          "n": 34,
+          "wilson95": [
+            0.7337915722962867,
+            0.9532855333511756
+          ]
+        },
+        "single-session-preference": {
+          "correct": 5,
+          "n": 18,
+          "wilson95": [
+            0.12499753379554271,
+            0.5087265656029683
+          ]
+        },
+        "single-session-user": {
+          "correct": 39,
+          "n": 41,
+          "wilson95": [
+            0.8386102112962958,
+            0.9865190546348305
+          ]
+        },
+        "temporal-reasoning": {
+          "correct": 41,
+          "n": 80,
+          "wilson95": [
+            0.40493334216542537,
+            0.6189212045961865
+          ]
+        }
+      },
+      "judge_format_invalid_calls": 0,
+      "answer_empty": 0,
+      "empty_answer_positive": 0,
+      "answer_length_stops": 0,
+      "judge_vote_disagreements": 0
+    },
+    "dense-standard": {
+      "correct": 165,
+      "n": 300,
+      "wilson95": [
+        0.493425604523955,
+        0.6053100983535905
+      ],
+      "context_skips": 0,
+      "checkpointed": 300,
+      "missing": 0,
+      "per_stratum": {
+        "abstention": {
+          "correct": 16,
+          "n": 18,
+          "wilson95": [
+            0.6720023486982192,
+            0.9689804773543866
+          ]
+        },
+        "knowledge-update": {
+          "correct": 30,
+          "n": 43,
+          "wilson95": [
+            0.5489463582227082,
+            0.8139799986415156
+          ]
+        },
+        "multi-session": {
+          "correct": 25,
+          "n": 73,
+          "wilson95": [
+            0.243948673393188,
+            0.45673374007231543
+          ]
+        },
+        "single-session-assistant": {
+          "correct": 32,
+          "n": 34,
+          "wilson95": [
+            0.809063930957195,
+            0.9837173447898768
+          ]
+        },
+        "single-session-preference": {
+          "correct": 7,
+          "n": 18,
+          "wilson95": [
+            0.20305246572164004,
+            0.6138095839776154
+          ]
+        },
+        "single-session-user": {
+          "correct": 30,
+          "n": 38,
+          "wilson95": [
+            0.6365422052467307,
+            0.8892520815700391
+          ]
+        },
+        "temporal-reasoning": {
+          "correct": 25,
+          "n": 76,
+          "wilson95": [
+            0.23379273635816278,
+            0.44056191116412025
+          ]
+        }
+      },
+      "per_question_type": {
+        "knowledge-update": {
+          "correct": 32,
+          "n": 46,
+          "wilson95": [
+            0.5519435355159276,
+            0.8092015919723251
+          ]
+        },
+        "multi-session": {
+          "correct": 32,
+          "n": 81,
+          "wilson95": [
+            0.29568103807990437,
+            0.5039452267639354
+          ]
+        },
+        "single-session-assistant": {
+          "correct": 32,
+          "n": 34,
+          "wilson95": [
+            0.809063930957195,
+            0.9837173447898768
+          ]
+        },
+        "single-session-preference": {
+          "correct": 7,
+          "n": 18,
+          "wilson95": [
+            0.20305246572164004,
+            0.6138095839776154
+          ]
+        },
+        "single-session-user": {
+          "correct": 33,
+          "n": 41,
+          "wilson95": [
+            0.6598641481293702,
+            0.897655626148418
+          ]
+        },
+        "temporal-reasoning": {
+          "correct": 29,
+          "n": 80,
+          "wilson95": [
+            0.2657079306444939,
+            0.47189205497777525
+          ]
+        }
+      },
+      "judge_format_invalid_calls": 0,
+      "answer_empty": 0,
+      "empty_answer_positive": 0,
+      "answer_length_stops": 0,
+      "judge_vote_disagreements": 0
+    },
+    "mem0-raw-standard": {
+      "correct": 165,
+      "n": 300,
+      "wilson95": [
+        0.493425604523955,
+        0.6053100983535905
+      ],
+      "context_skips": 0,
+      "checkpointed": 300,
+      "missing": 0,
+      "per_stratum": {
+        "abstention": {
+          "correct": 16,
+          "n": 18,
+          "wilson95": [
+            0.6720023486982192,
+            0.9689804773543866
+          ]
+        },
+        "knowledge-update": {
+          "correct": 30,
+          "n": 43,
+          "wilson95": [
+            0.5489463582227082,
+            0.8139799986415156
+          ]
+        },
+        "multi-session": {
+          "correct": 25,
+          "n": 73,
+          "wilson95": [
+            0.243948673393188,
+            0.45673374007231543
+          ]
+        },
+        "single-session-assistant": {
+          "correct": 32,
+          "n": 34,
+          "wilson95": [
+            0.809063930957195,
+            0.9837173447898768
+          ]
+        },
+        "single-session-preference": {
+          "correct": 7,
+          "n": 18,
+          "wilson95": [
+            0.20305246572164004,
+            0.6138095839776154
+          ]
+        },
+        "single-session-user": {
+          "correct": 30,
+          "n": 38,
+          "wilson95": [
+            0.6365422052467307,
+            0.8892520815700391
+          ]
+        },
+        "temporal-reasoning": {
+          "correct": 25,
+          "n": 76,
+          "wilson95": [
+            0.23379273635816278,
+            0.44056191116412025
+          ]
+        }
+      },
+      "per_question_type": {
+        "knowledge-update": {
+          "correct": 32,
+          "n": 46,
+          "wilson95": [
+            0.5519435355159276,
+            0.8092015919723251
+          ]
+        },
+        "multi-session": {
+          "correct": 32,
+          "n": 81,
+          "wilson95": [
+            0.29568103807990437,
+            0.5039452267639354
+          ]
+        },
+        "single-session-assistant": {
+          "correct": 32,
+          "n": 34,
+          "wilson95": [
+            0.809063930957195,
+            0.9837173447898768
+          ]
+        },
+        "single-session-preference": {
+          "correct": 7,
+          "n": 18,
+          "wilson95": [
+            0.20305246572164004,
+            0.6138095839776154
+          ]
+        },
+        "single-session-user": {
+          "correct": 33,
+          "n": 41,
+          "wilson95": [
+            0.6598641481293702,
+            0.897655626148418
+          ]
+        },
+        "temporal-reasoning": {
+          "correct": 29,
+          "n": 80,
+          "wilson95": [
+            0.2657079306444939,
+            0.47189205497777525
+          ]
+        }
+      },
+      "judge_format_invalid_calls": 0,
+      "answer_empty": 0,
+      "empty_answer_positive": 0,
+      "answer_length_stops": 0,
+      "judge_vote_disagreements": 0
+    },
+    "full-oracle": {
+      "correct": 127,
+      "n": 212,
+      "wilson95": [
+        0.5318881835998795,
+        0.6626990853589106
+      ],
+      "context_skips": 88,
+      "checkpointed": 300,
+      "missing": 0,
+      "per_stratum": {
+        "abstention": {
+          "correct": 14,
+          "n": 15,
+          "wilson95": [
+            0.7018347012622079,
+            0.988133104506731
+          ]
+        },
+        "knowledge-update": {
+          "correct": 7,
+          "n": 33,
+          "wilson95": [
+            0.10676021533021005,
+            0.3775164499215019
+          ]
+        },
+        "multi-session": {
+          "correct": 10,
+          "n": 30,
+          "wilson95": [
+            0.19230498083676434,
+            0.5121994835545567
+          ]
+        },
+        "single-session-assistant": {
+          "correct": 34,
+          "n": 34,
+          "wilson95": [
+            0.8984854458466813,
+            1.0
+          ]
+        },
+        "single-session-preference": {
+          "correct": 6,
+          "n": 18,
+          "wilson95": [
+            0.16278774750834019,
+            0.5625053270405429
+          ]
+        },
+        "single-session-user": {
+          "correct": 36,
+          "n": 38,
+          "wilson95": [
+            0.8271453786823006,
+            0.9854457918527071
+          ]
+        },
+        "temporal-reasoning": {
+          "correct": 20,
+          "n": 44,
+          "wilson95": [
+            0.3170523414222123,
+            0.5993381680103764
+          ]
+        }
+      },
+      "per_question_type": {
+        "knowledge-update": {
+          "correct": 10,
+          "n": 36,
+          "wilson95": [
+            0.15848337940134866,
+            0.4399248999739664
+          ]
+        },
+        "multi-session": {
+          "correct": 15,
+          "n": 36,
+          "wilson95": [
+            0.27140562051446404,
+            0.5779974842512791
+          ]
+        },
+        "single-session-assistant": {
+          "correct": 34,
+          "n": 34,
+          "wilson95": [
+            0.8984854458466813,
+            1.0
+          ]
+        },
+        "single-session-preference": {
+          "correct": 6,
+          "n": 18,
+          "wilson95": [
+            0.16278774750834019,
+            0.5625053270405429
+          ]
+        },
+        "single-session-user": {
+          "correct": 39,
+          "n": 41,
+          "wilson95": [
+            0.8386102112962958,
+            0.9865190546348305
+          ]
+        },
+        "temporal-reasoning": {
+          "correct": 23,
+          "n": 47,
+          "wilson95": [
+            0.35275555033682504,
+            0.6275754625177281
+          ]
+        }
+      },
+      "judge_format_invalid_calls": 15,
+      "answer_empty": 58,
+      "empty_answer_positive": 31,
+      "answer_length_stops": 21,
+      "judge_vote_disagreements": 0
+    }
+  },
+  "manual_audit": {
+    "n": 40,
+    "agreement": 0.925,
+    "agree": 37,
+    "wilson95": [
+      0.8013576647568991,
+      0.9741639742254112
+    ],
+    "reviewer": "Implementation assistant: direct reference-based editorial review, not an independent human assessment"
+  },
+  "scored_total": 1112,
+  "checkpoint_total": 1500
+}

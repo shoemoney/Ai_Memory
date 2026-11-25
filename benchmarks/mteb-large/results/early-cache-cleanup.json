@@ -1,0 +1,10 @@
+{
+  "reason": "GPU worker had fully loaded the unquantized model; remove its own on-disk weights to make space for the next model. Live GPU tensors and scoring checkpoints remain intact.",
+  "removed": [
+    {
+      "bytes": 4255140312,
+      "file": "model.safetensors"
+    }
+  ],
+  "disk_free_bytes": 178146181120
+}

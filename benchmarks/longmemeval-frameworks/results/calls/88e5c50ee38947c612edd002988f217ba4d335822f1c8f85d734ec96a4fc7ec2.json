@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b0fb3fe68ccc467570d22a85df5af0855e212240d2ef722112e95da574d741ec",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6e0af8f5-79af-4f15-8f11-cf36c2542247",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Denver\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Belmont Arts Center is sited in Denver.\", \"valid_at\": \"2023-05-28T00:05:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795335705,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 87,
+      "prompt_tokens": 5178,
+      "total_tokens": 5265,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 2628
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Denver\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Belmont Arts Center is sited in Denver.\", \"valid_at\": \"2023-05-28T00:05:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 17.386748254008126,
+  "prompt_tokens_local": 5178
+}

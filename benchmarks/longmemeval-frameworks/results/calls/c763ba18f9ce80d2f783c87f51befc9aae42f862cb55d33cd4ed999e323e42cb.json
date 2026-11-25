@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 15
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "babea9b4cfe0723c64dec574bcacfc25ec90e979ab005b09c98577ae97ea14f8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d197a810-db73-4a25-9bf1-eb31d633ee19",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"cozy atmosphere with blankets, pillows, and snacks\", \"set up a DIY popcorn bar with different toppings\", \"suggestions for toppings include butter and salt, cheese, caramel, chili powder, paprika, garlic powder, dried herbs, cinnamon sugar, nutella, peanuts, almonds, pecans, crushed cookies, candy pieces, coconut flakes, candy melts\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331977,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 2463,
+      "total_tokens": 2541,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 660
+      }
+    }
+  },
+  "text": "{\"facts\": [\"cozy atmosphere with blankets, pillows, and snacks\", \"set up a DIY popcorn bar with different toppings\", \"suggestions for toppings include butter and salt, cheese, caramel, chili powder, paprika, garlic powder, dried herbs, cinnamon sugar, nutella, peanuts, almonds, pecans, crushed cookies, candy pieces, coconut flakes, candy melts\"]}",
+  "seconds": 2.120029142999556,
+  "prompt_tokens_local": 2463,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

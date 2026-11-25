@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 44
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "05ee36355904d4a673d932b8899c4d2e4f7db1db8c415bfdb1bfa946958b7b8e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-75abd5ba-4a52-4a51-a318-56a20a280ece",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Interested in starting a small business and incorporating sustainability initiatives\",\n        \"Aware of consumers' growing interest in sustainability and their willingness to pay more for sustainable products\",\n        \"Interested in developing a sustainability plan for the business\",\n        \"Interested in considering the sustainability of the supply chain\",\n        \"Interested in promoting sustainable behavior among employees and customers\",\n        \"Interested in measuring and sharing progress towards sustainability goals\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366439,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 91,
+      "prompt_tokens": 2622,
+      "total_tokens": 2713,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Interested in starting a small business and incorporating sustainability initiatives\",\n        \"Aware of consumers' growing interest in sustainability and their willingness to pay more for sustainable products\",\n        \"Interested in developing a sustainability plan for the business\",\n        \"Interested in considering the sustainability of the supply chain\",\n        \"Interested in promoting sustainable behavior among employees and customers\",\n        \"Interested in measuring and sharing progress towards sustainability goals\"\n    ]\n}",
+  "seconds": 5.795951495994814,
+  "prompt_tokens_local": 2622
+}

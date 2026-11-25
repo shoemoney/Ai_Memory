@@ -1,0 +1,27 @@
+{
+  "python": "3.12.16",
+  "torch": "2.7.1+cu126",
+  "compiled_cuda_runtime": "12.6",
+  "logical_cpu_threads": 32,
+  "scored_model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "scored_hardware_class": "8 GB NVIDIA GPU",
+  "scored_dtype": "bfloat16",
+  "attention_backend": "PyTorch SDPA",
+  "gpu_admissions": [
+    {
+      "time": 1795353659.68531,
+      "free_mib": 6355,
+      "required_mib": 6144
+    },
+    {
+      "time": 1795354212.915483,
+      "free_mib": 6395,
+      "required_mib": 6144
+    },
+    {
+      "time": 1795354426.091984,
+      "free_mib": 6355,
+      "required_mib": 6144
+    }
+  ]
+}

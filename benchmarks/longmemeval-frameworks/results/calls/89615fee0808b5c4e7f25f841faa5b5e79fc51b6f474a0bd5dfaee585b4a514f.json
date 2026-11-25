@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "8d558410dc1da58c60236b77c933edac9e159cd8eb66e5bb635155eb686e5aec",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d3486793-139a-40d2-a93c-6a8476e59f50",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"ISpoweredBY\", \"fact\": \"The Mustang is powered by the Trigger engine.\", \"valid_at\": null, \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363757,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 63,
+      "prompt_tokens": 9280,
+      "total_tokens": 9343,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5354
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"ISpoweredBY\", \"fact\": \"The Mustang is powered by the Trigger engine.\", \"valid_at\": null, \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 56.03316907197586,
+  "prompt_tokens_local": 9280
+}

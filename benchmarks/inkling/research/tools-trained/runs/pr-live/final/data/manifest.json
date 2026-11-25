@@ -1,0 +1,72 @@
+{
+  "license": "CC0-1.0",
+  "counts": {
+    "train": 4000,
+    "valid": 400,
+    "test": 400
+  },
+  "kinds": {
+    "train": {
+      "help": 200,
+      "concept": 200,
+      "single": 1540,
+      "reword": 120,
+      "arith": 200,
+      "chain": 400,
+      "explain": 120,
+      "wordgame": 200,
+      "smalltalk": 100,
+      "unsupported": 120,
+      "follow_tool": 48,
+      "define": 160,
+      "factual": 80,
+      "follow_none": 192,
+      "brainstorm": 100,
+      "opinion": 100,
+      "translate": 120
+    },
+    "valid": {
+      "opinion": 10,
+      "single": 154,
+      "brainstorm": 10,
+      "follow_none": 19,
+      "concept": 20,
+      "wordgame": 20,
+      "factual": 8,
+      "chain": 40,
+      "smalltalk": 10,
+      "unsupported": 12,
+      "reword": 12,
+      "arith": 20,
+      "help": 20,
+      "explain": 12,
+      "define": 16,
+      "follow_tool": 5,
+      "translate": 12
+    },
+    "test": {
+      "brainstorm": 10,
+      "wordgame": 20,
+      "single": 154,
+      "help": 20,
+      "arith": 20,
+      "chain": 40,
+      "define": 16,
+      "follow_none": 19,
+      "factual": 8,
+      "smalltalk": 10,
+      "explain": 12,
+      "unsupported": 12,
+      "concept": 20,
+      "follow_tool": 5,
+      "reword": 12,
+      "opinion": 10,
+      "translate": 12
+    }
+  },
+  "files": {
+    "train.jsonl": "dea285cca75e52608f135865ad97fd4d629693b93b33e0c5cf29ab9195b136c7",
+    "valid.jsonl": "bd8a858879c1227d19ed5f0afadb12970aa01a26e77e0c6eac342799c652e9d9",
+    "test.jsonl": "e67fd75e88d0a66be5978348131430ea6516c6cd9e9db2dfcd49f6c35cb0b69d"
+  }
+}

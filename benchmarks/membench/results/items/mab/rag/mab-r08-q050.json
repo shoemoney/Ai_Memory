@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q050",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "697e61b8a7ec2140a2e2bceeda6be95340d89c2d38f550e9e01220dbb1ae2d7c",
+  "reference_sha256": "c20010e8368b94d64cbe45f196eba6f24b7be68d09f6dbb6969fb87601d624d0",
+  "method": "rag",
+  "answer": "Person347 Person218 was sentenced to five years in the galleys.",
+  "response": {
+    "text": "Person347 Person218 was sentenced to five years in the galleys.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 20,
+      "prompt_tokens": 3221,
+      "total_tokens": 3241,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 16.509252181000193,
+    "request_sha256": "691724dd66cbeb57b81b2db6342ecbb6eb3b86fda72e676df3e77cccf2f94a42",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    427,
+    479,
+    495,
+    428,
+    592,
+    533,
+    441,
+    576,
+    594,
+    430,
+    396,
+    518,
+    245,
+    445,
+    205,
+    248,
+    356,
+    310,
+    426,
+    609
+  ],
+  "retrieval_scores": [
+    0.5405833721160889,
+    0.5163814425468445,
+    0.495076447725296,
+    0.48738327622413635,
+    0.48220717906951904,
+    0.4622098207473755,
+    0.4499019980430603,
+    0.4489065110683441,
+    0.44854891300201416,
+    0.44634997844696045,
+    0.44158869981765747,
+    0.4313044250011444,
+    0.42652612924575806,
+    0.4238370656967163,
+    0.42283889651298523,
+    0.4191892147064209,
+    0.41662293672561646,
+    0.4163591265678406,
+    0.4149535000324249,
+    0.4145486056804657
+  ],
+  "retrieval_seconds": 0.05417518300237134,
+  "provided_context_sha256": "e30d92dee25584544424766f0bc24c090d8a1e53f9156c83264b0affea469865",
+  "provided_context_tokens": 2857,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "45b4ac9580203c37c0e2d8e1949c1d8126f145a4d18b1b4314fb09e6da85062e",
+    "raw_answer_sha256": "b04177afeb05af3e7752c911d76daaa2c3229ea05fe6388df617c30eedcc7cac",
+    "answer_redacted": false
+  }
+}

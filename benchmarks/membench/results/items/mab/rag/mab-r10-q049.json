@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q049",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "ff48f20a98d8a8bd35b8f079d55d2b5a909cb7b6bce635debdb5a01827264fc7",
+  "reference_sha256": "e0942d007838c3fbe7c1266f28aaa089909000b67aaff1c741ec0fbe57762f13",
+  "method": "rag",
+  "answer": "Person513 gave Person426 paper bags of cakes and a purse.",
+  "response": {
+    "text": "Person513 gave Person426 paper bags of cakes and a purse.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3140,
+      "total_tokens": 3158,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 7.053671653993661,
+    "request_sha256": "f83eadfcddb2db50eb3aff9025ab8921310446e36d529a1b617d3ee059a84f30",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    171,
+    546,
+    424,
+    53,
+    476,
+    626,
+    294,
+    498,
+    186,
+    297,
+    289,
+    132,
+    278,
+    41,
+    258,
+    233,
+    632,
+    157,
+    134,
+    190
+  ],
+  "retrieval_scores": [
+    0.47410622239112854,
+    0.4594791829586029,
+    0.45596641302108765,
+    0.4528582692146301,
+    0.4448353052139282,
+    0.44459936022758484,
+    0.4353717565536499,
+    0.4280664920806885,
+    0.42509809136390686,
+    0.424548476934433,
+    0.4242737889289856,
+    0.4192335605621338,
+    0.4185771644115448,
+    0.4175007939338684,
+    0.4166104793548584,
+    0.4163452982902527,
+    0.4163253903388977,
+    0.4161555767059326,
+    0.41517287492752075,
+    0.41394859552383423
+  ],
+  "retrieval_seconds": 0.031602925999322906,
+  "provided_context_sha256": "503b26af9e38d263e9fc3447fbe80cd7ac307e6d63148960ab7f5f722888a2b9",
+  "provided_context_tokens": 2791,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "948b5b165e9f1b8a16013b1e09041dbd9dfc70ca144c013f1700914573b1857d",
+    "raw_answer_sha256": "5bd579d16b41040ed477a30cb5d7b2664bc64d765d66b4621dbd1946e9bb0ea8",
+    "answer_redacted": false
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 0
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "10600cec6eeca0c24ed21a8108ddad03be55c58c4dd602375daaabb3a44d7f96",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5befeb51-261f-422e-bdd2-cea5d4649b0f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Created a video script about misinformation and fake news\", \"Discussed the negative impact of misinformation on public opinion and social unrest\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354426,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 30,
+      "prompt_tokens": 1114,
+      "total_tokens": 1144,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Created a video script about misinformation and fake news\", \"Discussed the negative impact of misinformation on public opinion and social unrest\"]}",
+  "seconds": 4.642365305000567,
+  "prompt_tokens_local": 1114
+}

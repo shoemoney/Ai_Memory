@@ -1,0 +1,924 @@
+<article class="chapter" data-ch="12" data-part="d" data-running="SQLite and other stores">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part D &middot; Chapter 12</p>
+  <div class="opener-num" aria-hidden="true">12</div>
+  <h1>SQLite and other stores</h1>
+  <p class="opener-summary">One database holds text, keyword index and vectors rebuilt from JSONL; the survey compares other stores.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">1 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">One desktop app or agent with searchable local memory.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">A laptop assistant stores notes, a keyword index and per-note vectors in one database file. SQLite provides FTS5 keyword search; sqlite-vec adds the <code>vec0</code> vector table. Both run through one in-process connection, without a server.<sup class="cite"><a href="#s12-1">1</a>,<a href="#s12-2">2</a></sup> Pick it when one user or host owns the memory.</p>
+  <p>The JSONL log is the source of truth; searches read a rebuilt SQLite index. The survey compares neighboring stores. Memory kinds (semantic, episodic, procedural) follow CoALA.<sup class="cite"><a href="#s12-3">3</a></sup></p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms used in this chapter</p>
+  <dl>
+    <dt>JSONL</dt><dd>One JSON object per line; here, the append-only event log.</dd>
+    <dt>Materializer</dt><dd>Rebuilds the database from the log; <code>materialize()</code> builds a fresh file or in-memory index.</dd>
+    <dt>Supersede</dt><dd>A correction naming the event IDs it replaces as parents.</dd>
+    <dt>Tombstone</dt><dd>A log entry recording a deletion.</dd>
+    <dt>WAL</dt><dd>Write-ahead logging: a journal mode that lets readers continue during a write.</dd>
+  </dl>
+</aside>
+
+</section>
+
+<section>
+<h2>How it works</h2>
+
+<p><strong>Write.</strong> An add transaction atomically writes a <code>memories</code> row, FTS5 entry and <code>vec0</code> vector under one row ID, preserving crash consistency.</p>
+<p><strong>Read.</strong> Non-empty text merges two searches. Skip embedding and recall for blank queries: they return nothing. This fixture has no vector-only mode. FTS5 returns keyword matches ordered by BM25 (a keyword relevance score).<sup class="cite"><a href="#s12-1">1</a></sup> <code>vec0</code> returns nearest vectors (k-nearest-neighbor search, KNN; exact here) through <code>embedding MATCH ? AND k = ?</code>, by L2 distance (straight-line Euclidean distance; smaller is nearer). For cosine ranking, unit-normalize stored and query vectors; record preprocessing (Chapter 03).<sup class="cite"><a href="#s12-2">2</a></sup> Reciprocal rank fusion (RRF) adds <code>1 / (60 + rank)</code> per list containing an item; rank 1 is best (60 is usual; see Chapter 05 for BM25 and RRF).</p>
+<p><strong>Log underneath.</strong> Events contain IDs, keys, operations and parent IDs; materialization rebuilds live state.</p>
+<p><strong>Worked example from the test.</strong> <code>laptop:1</code> puts the preference "metric". <code>laptop:2</code> supersedes it with "imperial", the sole live value. <code>laptop:3</code> deletes the key permanently; retrying <code>laptop:1</code> cannot revive it. Replay is arrival-order independent, using an explicit stack for deep histories:</p>
+<table class="data">
+<colgroup><col class="c15"><col class="c35"><col class="c50"></colgroup>
+<thead><tr><th>Event</th><th>What it does</th><th>Rules</th></tr></thead>
+<tbody>
+<tr><td><code>put</code></td><td>Creates the first value for a key.</td><td>Takes no parents.</td></tr>
+<tr><td><code>supersede</code></td><td>Replaces earlier values, each named as a parent.</td><td>Parents must be puts or supersedes of the same key. A supersede missing a parent waits, out of the live index.</td></tr>
+<tr><td><code>delete</code></td><td>Removes the key.</td><td>Permanent: recreating the item needs a new key. Takes no parents.</td></tr>
+</tbody></table>
+<p>Puts are ready immediately; supersedes wait until every parent is present and ready. Ready values stay live until superseded. Multiple live values are contested; rebuilds exclude them.</p>
+<p>Log and SQLite commits are separate: acknowledged corrections and deletes leave stale search results. Block freshness-sensitive reads until a published rebuild includes the acknowledged event (Chapter 17). Without log keys or source event IDs, this fixture cannot validate search candidates against live state.</p>
+<ul>
+<li><strong>Conflict:</strong> supersede changes; give episodes distinct keys. To resolve contention, the app or user appends a supersede naming every live event for that key, then materializes again; only the agreed value enters search.</li>
+<li><strong>Erasure:</strong> a delete is logical; old log bytes keep the text. Protect live logs and databases with file permissions and OS full-disk encryption. Physical erasure needs retention and compaction policies covering archives, backups and derived database files and journals (Chapter 17).</li>
+</ul>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 312" role="img" aria-label="Diagram: the agent appends events to a JSONL log, writes rows, keyword entries and vectors into one SQLite file after calling an embedding model, and reads the top results back for the language model.">
+  <rect class="d-box" x="20" y="110" width="120" height="80" rx="4"/>
+  <text class="d-title" x="80" y="146" text-anchor="middle">Agent app</text>
+  <text class="d-sub" x="80" y="164" text-anchor="middle">writes and reads</text>
+
+  <rect class="d-box" x="200" y="26" width="180" height="66" rx="4"/>
+  <text class="d-mono" x="290" y="52" text-anchor="middle">episodes.jsonl</text>
+  <text class="d-sub" x="290" y="70" text-anchor="middle">append-only, source of truth</text>
+
+  <rect class="d-box accent" x="200" y="120" width="180" height="160" rx="4"/>
+  <text class="d-title" x="290" y="146" text-anchor="middle">One SQLite file</text>
+  <text class="d-sub" x="290" y="164" text-anchor="middle">one transaction per live item</text>
+  <text class="d-mono" x="290" y="196" text-anchor="middle">memories (rows)</text>
+  <text class="d-mono" x="290" y="216" text-anchor="middle">memories_fts (FTS5)</text>
+  <text class="d-mono" x="290" y="236" text-anchor="middle">memories_vec (vec0)</text>
+  <text class="d-sub" x="290" y="262" text-anchor="middle">journal mode: WAL</text>
+
+  <rect class="d-box dark" x="20" y="226" width="120" height="56" rx="4"/>
+  <text class="d-title d-on-dark" x="80" y="250" text-anchor="middle">Embedding</text>
+  <text class="d-sub d-on-dark" x="80" y="266" text-anchor="middle">model</text>
+
+  <rect class="d-box dark" x="450" y="110" width="130" height="80" rx="4"/>
+  <text class="d-title d-on-dark" x="515" y="146" text-anchor="middle">Language model</text>
+  <text class="d-sub d-on-dark" x="515" y="164" text-anchor="middle">sees top k rows</text>
+
+  <path class="d-line" d="M80 110 V59 H198"/>
+  <text class="d-sub" x="92" y="90">1. append first</text>
+  <path class="d-line" d="M140 150 H198"/>
+  <path class="d-line" d="M80 190 V224"/>
+  <path class="d-line" d="M140 254 H198"/>
+  <path class="d-line accent dash" d="M290 92 V118"/>
+  <text class="d-sub" x="300" y="109">replay live state</text>
+  <path class="d-line accent dash" d="M380 150 H448"/>
+</svg>
+<figcaption><b>Figure 1.</b> Materialization embeds logged live text and writes each item and its indexes atomically. Reads return the best rows; the dashed arrow shows rebuilding.</figcaption>
+</figure>
+</section>
+
+<section>
+<h2>Where SQLite and the other options fit</h2>
+<table class="data">
+<colgroup><col class="c25"><col class="c45"><col class="c30"></colgroup>
+<thead><tr><th>Route</th><th>Pick it when</th><th>Boundary</th></tr></thead>
+<tbody>
+<tr><td>SQLite + sqlite-vec 0.1.9</td><td>You want local keyword and vector search in one file.<sup class="cite"><a href="#s12-1">1</a>,<a href="#s12-2">2</a></sup></td><td>Pre-v1; pin the version. One host and writer; benchmark exact scans.</td></tr>
+<tr><td>libSQL / Turso</td><td>You ship a mobile or edge app and want native vector columns.<sup class="cite"><a href="#s12-4">4</a></sup></td><td>A different engine and API; verify its sync contract.</td></tr>
+<tr><td>DuckDB + vss</td><td>You analyze archived episodes in batches.</td><td>Experimental; its index must fit in RAM (measured in this chapter’s Numbers section).<sup class="cite"><a href="#s12-5">5</a></sup></td></tr>
+<tr><td>MariaDB 11.8 LTS (VECTOR)</td><td>You run MariaDB and need semantic recall beside tenant data.<sup class="cite"><a href="#s12-6">6</a></sup></td><td>Server administration; measure filtered recall.</td></tr>
+<tr><td>Browser SQLite / wa-sqlite</td><td>You need an offline SQLite database inside a browser page.<sup class="cite"><a href="#s12-7">7</a></sup></td><td>From docs, not run; vectors unestablished. Retain exports and a server copy.</td></tr>
+</tbody></table>
+<p>Framework checkpoints and provider conversation state resume runs, not fact stores (Chapter 13).<sup class="cite"><a href="#s12-8">8</a>,<a href="#s12-9">9</a></sup> For the earlier taxonomy, keep procedures in reviewable files and tasks in a tracker such as Beads (Chapter 01).<sup class="cite"><a href="#s12-10">10</a></sup></p>
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>Personal disk memory for one agent or desktop app.</li>
+      <li>Keyword and vector search merged in application code.</li>
+      <li>A JSONL event log written before any other store.</li>
+      <li>Serialized writes owned by one host.</li>
+      <li>Exact scans within the query latency budget.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>Several hosts writing one memory: use PostgreSQL (Chapter 08).</li>
+      <li>Network filesystems: WAL shares memory, requiring all connections on one host; network filesystems were not tested.<sup class="cite"><a href="#s12-11">11</a></sup></li>
+      <li>Exact scans exceeding the query latency budget: benchmark an approximate index (Chapter 11).</li>
+      <li>The browser as the only copy of user memory.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Personal assistant on one laptop</h3>
+  <dl>
+    <dt>Situation</dt><dd>A desktop assistant needs semantic search over one user’s notes; Markdown folders lack it.</dd>
+    <dt>Why it fits</dt><dd>One file combines FTS5 keyword and sqlite-vec vector search in Python.<sup class="cite"><a href="#s12-1">1</a>,<a href="#s12-2">2</a></sup></dd>
+    <dt>Pair with</dt><dd>The JSONL log as the source of truth and an embedding model (Chapter 03).</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Coding agent that must find exact identifiers</h3>
+  <dl>
+    <dt>Situation</dt><dd>A coding agent recalls function names, errors and paths. Vector search blurs them; a word index misses fragments.</dd>
+    <dt>Why it fits</dt><dd>FTS5’s trigram tokenizer (walkthrough step 2) matches identifier substrings; the local check tests the feature, not retrieval quality.<sup class="cite"><a href="#s12-1">1</a></sup> Vector hits catch paraphrases.</dd>
+    <dt>Pair with</dt><dd>Quote every user term before <code>MATCH</code> (see the query-grammar gotcha).</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Mobile vectors, browser storage (from docs, not run)</h3>
+  <dl>
+    <dt>Situation</dt><dd>An offline phone app needs vectors without native extensions; a web app needs offline SQLite.</dd>
+    <dt>Why it fits</dt><dd>libSQL provides indexed vector columns without an extension.<sup class="cite"><a href="#s12-4">4</a></sup> wa-sqlite runs SQLite in a browser page,<sup class="cite"><a href="#s12-7">7</a></sup> but this chapter shows no vector search there.</dd>
+    <dt>Pair with</dt><dd>A server copy, the browser checks and sync rules below.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>Scoring last month's agent runs</h3>
+  <dl>
+    <dt>Situation</dt><dd>A team wants sessions that ended in a tool error from rotated JSONL files.</dd>
+    <dt>Why it fits</dt><dd>DuckDB scans, joins and aggregates large tables for analysis; keep live writes elsewhere.</dd>
+    <dt>Pair with</dt><dd>Independent archives and a hot SQLite index (suggested, not measured).</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>Multi-tenant memory next to existing data</h3>
+  <dl>
+    <dt>Situation</dt><dd>A product runs MariaDB for tenants and permissions and needs per-user memory reads.</dd>
+    <dt>Why it fits</dt><dd>MariaDB's <code>VECTOR</code> type and index allow tenant filtering and distance sorting under existing backups and grants.<sup class="cite"><a href="#s12-6">6</a></sup></dd>
+    <dt>Pair with</dt><dd>Measure filtered recall and check the server index plan (Chapter 11).</dd>
+  </dl>
+</article>
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p>No generative model needed. Probes: <code>benchmarks/stores</code> in the companion repository.</p>
+<ul>
+<li>Exact search over 10,000 vectors per user evaluates 10,000 L2 distances (3.84 million float components): 15.36 MB of 384-dimension float32 vectors. The 100-user reference layout holds 1.536 GB (about 1.43 GiB); scanning all 100 users evaluates one million distances (384 million components) per query; a per-user file scans only 10,000 vectors (Chapter 00).</li>
+<li>Shared CPU host, hardware unrecorded: the stores probe (SQLite 3.46.1; sqlite-vec 0.1.9, k = 10) timed 200 serial vec0 queries over 100,000 384-dimension vectors: median 138.6 ms, 95th percentile 154.4 ms. This older SQLite differs from the walkthrough pin; treat timing as order-of-magnitude only. It covers vector SQL and row fetch, not hybrid recall.</li>
+<li>SQLite permits one writer. With two connections, the second used a 50 ms timeout (the walkthrough uses 5000 ms). It read the committed snapshot during the first’s uncommitted write; its write waited about 50 ms, then failed with "database is locked". This tests contention, not throughput.<sup class="cite"><a href="#s12-11">11</a></sup></li>
+<li>In one CPU-only build with a 32 MiB buffer limit, building DuckDB's graph-based vector index (HNSW, hierarchical navigable small world) over 100,000 384-dimension vectors grew process memory from about 138 MiB to 210 MiB: the limit did not cap the RAM-resident index. These measure whole-process memory.</li>
+</ul>
+<p>Count embedding and prompt tokens with their respective models’ tokenizers (Chapter 03). Measure log replay, query embedding and KNN search separately. If replay dominates, checkpoint derived state and replay the tail; if KNN dominates, benchmark an indexed alternative (Chapter 11).</p>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Require loaded SQLite 3.51.3 or later, or backports 3.44.6/3.50.7; verify FTS5 and sqlite-vec load. Linux requires CPython 3.14, venv, curl, unzip and a C compiler. Start a separate bash shell: it uses set -e and exports LD_LIBRARY_PATH. Save named listings in lab/. Post-cutoff validation on 23 November 2026 supplements the 22 November research cutoff: CPU only, a 32-thread consumer CPU, Python 3.14.4, SQLite 3.51.3 (locally compiled) and sqlite-vec 0.1.9. Text and four-dimensional synthetic vectors test correctness, not retrieval quality, without models or datasets.</p>
+<p>One trusted process owns the log. Never overlap <code>events()</code> with append or rotation: reads can repair tails and need write permission. Use a local filesystem honoring fsync. File sync makes bytes durable; parent-directory sync makes the new filename durable before truncating the old log. Choose JSONL for grep, DuckDB scans and device export despite broken SQLite schemas or extensions. Without that need, a separate SQLite events database replaces fsync, tail repair and rotation code with journaling.</p>
+
+<ol class="steps">
+  <li>
+    <p class="step-title">Install sqlite-vec in a virtual environment</p>
+    <p>Pin sqlite-vec 0.1.9.<sup class="cite"><a href="#s12-12">12</a></sup> CPython must allow extension loading (check: <code>python3.14 -c "import sqlite3; sqlite3.connect(':memory:').enable_load_extension(True)"</code>) and link libsqlite3 dynamically. Fixture compiles SQLite 3.51.3 with FTS5 for the WAL fix and asserts the loaded version.<sup class="cite"><a href="#s12-13">13</a></sup></p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+mkdir lab &amp;&amp; cd lab
+curl -fsSLo sqlite.zip https://sqlite.org/2026/sqlite-amalgamation-3510300.zip
+unzip -q sqlite.zip
+cc -O2 -fPIC -shared -DSQLITE_ENABLE_FTS5 \
+  sqlite-amalgamation-3510300/sqlite3.c -o libsqlite3.so.0 -lm -ldl -lpthread
+export LD_LIBRARY_PATH="$PWD"
+python3.14 -c "import sys; assert sys.version_info[:2] == (3, 14)"
+python3.14 -m venv venv
+venv/bin/pip install -q sqlite-vec==0.1.9
+venv/bin/python -c "import sqlite3; print(sqlite3.sqlite_version); \
+  assert sqlite3.sqlite_version == '3.51.3'"</pre></div>
+<p>The compiler may print warnings; the last line is:</p>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">output</span><span class="code-tag tested">Tested</span></div>
+<pre>3.51.3</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Write the memory module</p>
+    <p>WAL allows reads during writes; <code>busy_timeout</code> makes another writer wait up to 5000 ms. The FTS5 table uses <code>content='memories'</code>, indexing that table without copying text.<sup class="cite"><a href="#s12-1">1</a></sup> <code>quote()</code> wraps every word in double quotes so FTS5 treats each as a literal and joins them with OR: one matching word recalls a row and BM25 ranks it (a space join would require every word). <code>hybrid()</code> runs both searches and the row lookups in one read transaction and fuses the lists with RRF; <code>remove_indexed_row()</code> removes indexed rows. User deletion appends a tombstone, then rebuilds; log keys lack row-ID mappings. A collection is one database file per embedding identity. Call add only outside an existing transaction: it can commit or roll back caller work. Initialization errors before identity checks or during schema creation can leak connections; harden connect before production.</p>
+    <p>For substrings, replace the FTS5 declaration with <code>fts5(content, content='memories', content_rowid='id', tokenize='trigram')</code>; substrings under three characters match nothing. For existing databases, recreate this table, rebuild from <code>memories</code> and rerun the recall check.</p>
+    <div class="codeblock splittable" data-listing-note="Builds the SQLite keyword and vector recall index."><div class="code-head"><span class="code-lang">python</span><span class="code-file">memory_store.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import json, math, sqlite3, struct
+import sqlite_vec
+
+DIM = 4  # use your embedding model's size, for example 384
+
+SPACE = dict(model="toy-4d", revision="fixture-v1", dimensions=DIM,
+             preprocessing="identity")
+
+def identity(space):
+    if set(space) != {"model", "revision", "dimensions", "preprocessing"}:
+        raise ValueError("invalid embedding identity")
+    if type(space["dimensions"]) is not int or space["dimensions"] != DIM:
+        raise ValueError("invalid embedding dimensions")
+    if any(type(space[k]) is not str or not space[k].strip()
+           for k in ("model", "revision", "preprocessing")):
+        raise ValueError("invalid embedding identity")
+    return json.dumps(space, sort_keys=True)
+
+def check(db, space, vector=None):
+    saved = db.execute("SELECT identity FROM collection WHERE id=1").fetchone()
+    if saved != (identity(space),):
+        raise ValueError("embedding space mismatch")
+    if vector is not None:
+        if len(vector) != DIM or not all(math.isfinite(x) for x in vector):
+            raise ValueError("invalid embedding vector")
+
+def connect(path, space):
+    wanted = identity(space)
+    db = sqlite3.connect(path)
+    db.execute("PRAGMA journal_mode=WAL")
+    db.execute("PRAGMA busy_timeout=5000")
+    db.enable_load_extension(True)
+    sqlite_vec.load(db)
+    db.enable_load_extension(False)
+    try:
+        with db:
+            db.execute("CREATE TABLE IF NOT EXISTS collection "
+                       "(id INTEGER PRIMARY KEY CHECK(id=1), identity TEXT)")
+            saved = db.execute("SELECT identity FROM collection").fetchone()
+            if saved is None:
+                if db.execute("SELECT 1 FROM sqlite_master "
+                              "WHERE name='memories'").fetchone():
+                    raise ValueError("collection identity missing; rebuild")
+                db.execute("INSERT INTO collection VALUES (1, ?)", (wanted,))
+            check(db, space)
+    except Exception:
+        db.close()
+        raise
+    db.executescript(f"""
+    CREATE TABLE IF NOT EXISTS memories(id INTEGER PRIMARY KEY, kind TEXT,
+      content TEXT, embed_model TEXT,
+      created_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')));
+    CREATE VIRTUAL TABLE IF NOT EXISTS memories_fts USING fts5(
+      content, content='memories', content_rowid='id');
+    CREATE VIRTUAL TABLE IF NOT EXISTS memories_vec USING vec0(
+      embedding float[{DIM}]);
+    """)
+    return db
+
+def vec(v):
+    return struct.pack(f"&lt;{len(v)}f", *v)
+
+def add(db, kind, content, vector, space):
+    with db:
+        check(db, space, vector)
+        cur = db.execute(
+            "INSERT INTO memories(kind, content, embed_model) VALUES (?,?,?)",
+            (kind, content, space["model"]))
+        rid = cur.lastrowid
+        db.execute("INSERT INTO memories_fts(rowid, content) VALUES (?,?)",
+                   (rid, content))
+        db.execute("INSERT INTO memories_vec(rowid, embedding) VALUES (?,?)",
+                   (rid, vec(vector)))
+
+def quote(text):
+    return " OR ".join('"' + w.replace('"', '""') + '"' for w in text.split())
+
+def hybrid(db, text, vector, space, k=3, pool=20, rrf_k=60):
+    own = not db.in_transaction
+    if own:
+        db.execute("BEGIN")  # one snapshot for both rankings and the lookups
+    try:
+        check(db, space, vector)
+        if not text.strip():
+            return []  # no search at all, including no dense branch
+        fts = db.execute(
+            "SELECT rowid FROM memories_fts WHERE memories_fts MATCH ? "
+            "ORDER BY rank LIMIT ?", (quote(text), pool)).fetchall()
+        knn = db.execute(
+            "SELECT rowid FROM memories_vec WHERE embedding MATCH ? AND k = ? "
+            "ORDER BY distance", (vec(vector), pool)).fetchall()
+        score = {}
+        for ranked in (fts, knn):
+            for i, (rid,) in enumerate(ranked):
+                score[rid] = score.get(rid, 0) + 1 / (rrf_k + i + 1)
+        top = sorted(score, key=score.get, reverse=True)[:k]
+        return [(r, round(score[r], 4)) + db.execute(
+            "SELECT kind, content FROM memories WHERE id = ?", (r,)).fetchone()
+            for r in top]
+    finally:
+        if own:
+            db.rollback()
+
+def remove_indexed_row(db, rid):
+    if db.in_transaction:
+        raise ValueError("removal requires its own write transaction")
+    db.execute("BEGIN IMMEDIATE")  # lock before reading the old FTS text
+    try:
+        row = db.execute("SELECT content FROM memories WHERE id = ?",
+                         (rid,)).fetchone()
+        if row:
+            db.execute("INSERT INTO memories_fts(memories_fts, rowid, content) "
+                       "VALUES('delete', ?, ?)", (rid, row[0]))
+            db.execute("DELETE FROM memories_vec WHERE rowid = ?", (rid,))
+            db.execute("DELETE FROM memories WHERE id = ?", (rid,))
+        db.commit()
+    except BaseException:
+        db.rollback()
+        raise</pre></div>
+  </li>
+  <li>
+<p class="step-title">Write and reopen the database</p>
+<p>Separate processes test persistence. Three rows with a two-candidate pool test fusion: keywords rank A, B, vectors rank C, B, and B wins with 2/62 against 1/61. B holds one query word, so the OR join matters. Other assertions check embedding identity, empty text, invalid vectors, mid-query deletion, caller-transaction rejection and competing removals.</p>
+<div class="codeblock splittable" data-listing-note="Checks persistence, embedding identity and empty queries."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">recall-check.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+venv/bin/python - &lt;&lt;'PY'
+from memory_store import SPACE, connect, add
+db = connect("agent-memory.db", SPACE)
+add(db, "semantic", "metric units", [0, 0, 1, 0], SPACE)       # A
+add(db, "semantic", "metric system", [0.6, 0.8, 0, 0], SPACE)  # B
+add(db, "semantic", "imperial", [1, 0, 0, 0], SPACE)           # C
+db.close()
+PY
+venv/bin/python - &lt;&lt;'PY'
+import memory_store
+from memory_store import SPACE, connect, add, hybrid
+db = connect("agent-memory.db", SPACE)
+assert db.execute("PRAGMA journal_mode").fetchone() == ("wal",)
+assert db.execute("PRAGMA integrity_check").fetchone() == ("ok",)
+Q = [1, 0, 0, 0]  # keywords rank A, B; vectors rank C, B
+assert hybrid(db, "metric units", Q, SPACE, pool=2)[0][:2] == (2, 0.0323)
+print("fresh-process recall and integrity: ok")
+for field, value in (("model", "other-4d"), ("revision", "fixture-v2"),
+                     ("dimensions", 8), ("preprocessing", "normalise")):
+    wrong = dict(SPACE, **{field: value})
+    for action in (lambda: connect("agent-memory.db", wrong),
+                   lambda: add(db, "semantic", "wrong", [1, 0, 0, 0], wrong),
+                   lambda: hybrid(db, "metric", [1, 0, 0, 0], wrong)):
+        try:
+            action()
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("incompatible identity accepted")
+    print(field + " mismatch: reopen, write and query refused")
+assert db.execute("SELECT count(*) FROM memories").fetchone() == (3,)
+for text in ("", " \t\n"):
+    assert hybrid(db, text, [1, 0, 0, 0], SPACE) == []
+print("empty and whitespace queries: []")
+try:
+    hybrid(db, "", [1, 0], SPACE)
+except ValueError as exc:
+    assert str(exc) == "invalid embedding vector"
+    print("invalid vector: refused before empty-query return")
+else:
+    raise AssertionError("invalid vector accepted")
+other = connect("agent-memory.db", SPACE)
+real = memory_store.vec
+def delete_between(v):  # runs between the two rankings
+    memory_store.remove_indexed_row(other, 1)
+    return real(v)
+memory_store.vec = delete_between
+ids = [row[0] for row in hybrid(db, "metric units", Q, SPACE, pool=2)]
+memory_store.vec = real
+assert ids[0] == 2 and 1 in ids
+assert 1 not in [row[0] for row in hybrid(db, "metric units", Q, SPACE)]
+print("concurrent delete: coherent snapshot, then gone")
+other.close()
+# An existing caller transaction must remain untouched.
+db.execute("BEGIN IMMEDIATE")
+try:
+    memory_store.remove_indexed_row(db, 2)
+except ValueError as exc:
+    assert str(exc) == "removal requires its own write transaction"
+else:
+    raise AssertionError("caller transaction accepted")
+assert db.in_transaction
+db.rollback()
+print("existing transaction: refused, caller retains control")
+
+# Both connections attempt the same removal; the second must wait before SELECT.
+from concurrent.futures import ThreadPoolExecutor
+from threading import Event
+ready, go, attempted = Event(), Event(), Event()
+def competitor():
+    conn = connect("agent-memory.db", SPACE)
+    conn.set_trace_callback(lambda sql: attempted.set()
+                            if sql == "BEGIN IMMEDIATE" else None)
+    ready.set()
+    assert go.wait(5)
+    try:
+        memory_store.remove_indexed_row(conn, 2)
+    finally:
+        conn.close()
+
+class PauseAfterRead:
+    def __getattr__(self, name):
+        return getattr(db, name)
+    def execute(self, sql, args=()):
+        cur = db.execute(sql, args)
+        if sql.startswith("SELECT content FROM memories"):
+            assert db.in_transaction
+            go.set()
+            assert attempted.wait(5)
+        return cur
+
+with ThreadPoolExecutor(max_workers=1) as pool:
+    future = pool.submit(competitor)
+    assert ready.wait(5)
+    memory_store.remove_indexed_row(PauseAfterRead(), 2)
+    future.result(timeout=10)
+assert db.execute("SELECT id FROM memories ORDER BY id").fetchall() == [(3,)]
+assert db.execute("SELECT rowid FROM memories_vec").fetchall() == [(3,)]
+assert db.execute("SELECT rowid FROM memories_fts "
+                  "WHERE memories_fts MATCH 'metric'").fetchall() == []
+db.execute("INSERT INTO memories_fts(memories_fts, rank) "
+           "VALUES('integrity-check', 1)")
+db.commit()
+print("competing removals: serialized; text and both indexes consistent")
+db.close()
+PY</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>bash recall-check.sh</pre></div>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">output</span><span class="code-tag tested">Tested</span></div>
+<pre>fresh-process recall and integrity: ok
+model mismatch: reopen, write and query refused
+revision mismatch: reopen, write and query refused
+dimensions mismatch: reopen, write and query refused
+preprocessing mismatch: reopen, write and query refused
+empty and whitespace queries: []
+invalid vector: refused before empty-query return
+concurrent delete: coherent snapshot, then gone
+existing transaction: refused, caller retains control
+competing removals: serialized; text and both indexes consistent</pre></div>
+</li>
+  <li class="step-long">
+<p class="step-title">Make the log the source of truth</p>
+<p>Newlines complete records. Acknowledge appends after file and directory syncs succeed; retry lost acknowledgements with identical IDs and payloads. Recovery truncates unfinished final records; malformed records and conflicting IDs raise errors. Generate IDs once (production UUIDs; demo device:counter). <code>episodic_log.py</code> accepts any memory kind; the fixture discards kind and indexes everything as semantic. Preserve kind if filtering by it.</p>
+<p><code>Log.append()</code> replays all part files per append; rotation cannot bound write cost. Writers can cache events and rescan on startup. Rotation fsyncs a copy, publishes it atomically, syncs the directory, then truncates the active file. Interrupted rotation leaves duplicates; replay deduplicates by event ID.<sup class="cite"><a href="#s12-14">14</a></sup></p>
+<div class="codeblock splittable" data-listing-note="Durable event log with causal validation and pending corrections."><div class="code-head"><span class="code-lang">python</span><span class="code-file">episodic_log.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import json, os, shutil
+from pathlib import Path
+
+class Log:
+    # One writer; stop readers/sync while recovering or rotating.
+    def __init__(self, folder):
+        self.root = Path(folder)
+        self.root.mkdir(exist_ok=True)
+        self.current = self.root / "current.jsonl"
+        self.syncdir(self.root.parent)
+
+    def syncdir(self, path=None):
+        fd = os.open(path or self.root, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+
+    def events(self):
+        seen = {}
+        paths = sorted(self.root.glob("part-*.jsonl")) + [self.current]
+        for path in paths:
+            if not path.exists():
+                continue
+            with path.open("r+b" if path == self.current else "rb") as f:
+                line_no = 0
+                while True:
+                    start = f.tell()
+                    raw = f.readline()
+                    if not raw:
+                        break
+                    line_no += 1
+                    if path == self.current and not raw.endswith(b"\n"):
+                        f.truncate(start)  # only an uncommitted final record
+                        f.flush()
+                        os.fsync(f.fileno())
+                        break
+                    try:
+                        if not raw.endswith(b"\n"):
+                            raise ValueError("unterminated archived record")
+                        e = json.loads(raw)
+                        validate(e)
+                        if e["id"] in seen and seen[e["id"]] != e:
+                            raise ValueError("event id reused with different data")
+                    except (ValueError, TypeError, KeyError) as exc:
+                        raise ValueError(f"{path}:{line_no}: {exc}") from exc
+                    seen[e["id"]] = e
+        events = list(seen.values())
+        state(events)  # reject invalid dependencies during replay too
+        return events
+
+    def append(self, e):
+        validate(e)
+        old = {v["id"]: v for v in self.events()}  # recover before append
+        if e["id"] in old:
+            if old[e["id"]] != e:
+                raise ValueError("event id reused with different data")
+            if self.current.exists():
+                with self.current.open("rb") as f:
+                    os.fsync(f.fileno())
+            self.syncdir()  # retry must finish any failed durability barrier
+            return  # retry after lost acknowledgement
+        state([*old.values(), e])  # validate before writing any bytes
+        raw = (json.dumps(e, sort_keys=True, allow_nan=False) + "\n").encode()
+        with self.current.open("ab") as f:
+            f.write(raw)
+            f.flush()
+            os.fsync(f.fileno())
+        self.syncdir()  # also makes first creation durable
+
+    def rotate(self):
+        self.events()  # validate all history; repair only active tail
+        if not self.current.exists() or not self.current.stat().st_size:
+            return
+        parts = sorted(self.root.glob("part-*.jsonl"))
+        n = int(parts[-1].stem.split("-")[1]) + 1 if parts else 1
+        target = self.root / f"part-{n:08d}.jsonl"
+        temp = self.root / "rotation.tmp"
+        with self.current.open("rb") as src, temp.open("wb") as dst:
+            shutil.copyfileobj(src, dst)
+            dst.flush()
+            os.fsync(dst.fileno())
+        os.replace(temp, target)  # same filesystem, atomic publication
+        self.syncdir()  # archive durable before touching current
+        with self.current.open("wb") as f:
+            f.flush()
+            os.fsync(f.fileno())
+        # Crash before truncation leaves duplicates, removed by event id.
+
+def validate(e):
+    fields = ("id", "key", "device", "clock", "op", "text")
+    if not isinstance(e, dict) or any(type(e.get(k)) is not str for k in fields):
+        raise ValueError("event string fields required")
+    if not all(e[k] for k in ("id", "key", "device", "clock")):
+        raise ValueError("empty identity or provenance")
+    if e["op"] not in ("put", "supersede", "delete"):
+        raise ValueError("unknown operation")
+    if type(e.get("parents")) is not list:
+        raise ValueError("parents must be a list")
+    if any(type(p) is not str or not p or p == e["id"] for p in e["parents"]):
+        raise ValueError("invalid parent")
+    if e["op"] == "supersede" and not e["parents"]:
+        raise ValueError("supersede needs parents")
+    if e["op"] != "supersede" and e["parents"]:
+        raise ValueError("only supersede accepts parents")
+
+def state(events):
+    by_id = {}
+    for e in events:
+        validate(e)
+        if e["id"] in by_id and by_id[e["id"]] != e:
+            raise ValueError("event id reused with different data")
+        by_id[e["id"]] = e
+    visiting, ready = set(), {}
+
+    for root in by_id:
+        stack = [(root, False)]
+        while stack:
+            eid, done = stack.pop()
+            if eid in ready:
+                continue
+            e = by_id[eid]
+            if done:
+                visiting.remove(eid)
+                ready[eid] = all(ready.get(pid, False) for pid in e["parents"])
+                continue
+            if eid in visiting:
+                raise ValueError("dependency cycle")
+            visiting.add(eid)
+            stack.append((eid, True))
+            for pid in reversed(e["parents"]):
+                if pid not in by_id:
+                    continue  # pending, but validate every available edge
+                parent = by_id[pid]
+                if parent["key"] != e["key"]:
+                    raise ValueError("parent key mismatch")
+                if parent["op"] not in ("put", "supersede"):
+                    raise ValueError("parent must be put or supersede")
+                stack.append((pid, False))
+    active = [e for eid, e in by_id.items() if ready[eid]]
+    dead = {e["key"] for e in active if e["op"] == "delete"}
+    replaced = {p for e in active for p in e["parents"]}
+    live = {}
+    for e in active:
+        if e["key"] not in dead and e["id"] not in replaced:
+            live.setdefault(e["key"], []).append(e)
+    return {k: sorted(v, key=lambda e: e["id"]) for k, v in live.items()}</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Test replay, faults, sync and restore</p>
+<p><code>materialize(events, path, embed)</code> returns an open, fresh database excluding contested keys. SQL checks all rows independently of search. Restore checkpoints, closes and syncs a fresh disk database, then publishes and reopens it. Switch stopped consumers to a never-used basename without old journals or sidecars. Only first publication is tested. Toy callback tests visibility, not quality.</p>
+<p>Supply a production embedding callback, cached by content hash plus embedding identity. On each write, append, rebuild a fresh file and switch stopped consumers. Measure this pause against the write-visibility budget; beyond it, implement and test incremental updates: retain keys and source event IDs, track log position, recompute affected keys including pending children and tombstones, and commit index changes with that position. Review contested keys with <code>[k for k, v in state(events).items() if len(v) &gt; 1]</code>. Tests cover dependencies, supersedes, deletion, partial appends, rotation faults, corruption and restore; <code>episode</code> has conflicting puts.</p>
+<div class="codeblock splittable" data-listing-note="Tests causal replay, searchable state, faults, sync and restore."><div class="code-head"><span class="code-lang">python</span><span class="code-file">log_demo.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import json, os
+from pathlib import Path
+from unittest.mock import patch
+from episodic_log import Log, state
+from memory_store import SPACE, connect, add, hybrid
+
+def event(eid, key, op="put", text="note", parents=(), device="laptop"):
+    return dict(id=eid, key=key, op=op, text=text, parents=list(parents),
+                device=device, clock="2026-11-20T12:00:00Z")
+
+def toy_embed(text, space):
+    assert space == SPACE
+    return [1, 0, 0, 0]  # visibility fixture, not a meaningful text embedding
+
+def materialize(events, path, embed):
+    if str(path) != ":memory:" and Path(path).exists():
+        raise ValueError("rebuild requires a fresh path")
+    db = connect(path, SPACE)
+    try:
+        for values in state(events).values():
+            if len(values) == 1:
+                text = values[0]["text"]
+                add(db, "semantic", text, embed(text, SPACE), SPACE)
+        return db  # caller owns this connection
+    except BaseException:
+        db.close()
+        raise
+
+def contents(events):
+    db = materialize(events, ":memory:", toy_embed)
+    try:
+        rows = db.execute("SELECT content FROM memories ORDER BY id").fetchall()
+        return [row[0] for row in rows]  # all SQL rows, independent of search
+    finally:
+        db.close()
+
+def rejected(action, message):
+    try:
+        action()
+    except ValueError as exc:
+        assert str(exc) == message, str(exc)
+    else:
+        raise AssertionError("invalid dependency accepted")
+
+# More than the search limit: SQL must check the complete live set.
+fixture = [event(str(i), str(i), text="row-" + str(i)) for i in range(5)]
+fixture += [event("hidden", "0", "delete", ""),
+            event("conflict", "1", text="contested")]
+assert sorted(contents(fixture)) == ["row-2", "row-3", "row-4"]
+assert len(contents(fixture[:5])) == 5
+causal = Log("causal")
+root = event("root", "address", text="Rome")
+parent = event("parent", "address", "supersede", "Lyon", ["root"])
+child = event("child", "address", "supersede", "Paris", ["parent"])
+causal.append(child)
+assert state(Log("causal").events()) == {}
+assert contents(causal.events()) == []
+causal.append(parent)  # immediate parent exists; its ancestor is still missing
+assert state(causal.events()) == {} and contents(causal.events()) == []
+print("missing parent and ancestor: pending; rows: []")
+causal.append(root)
+assert state(causal.events()) == {"address": [child]}
+assert contents(causal.events()) == ["Paris"]
+assert state([root, parent, child]) == state(causal.events())
+print("late ancestor activates chain; rows: ['Paris']")
+
+before = causal.current.read_bytes()
+wrong = event("wrong", "other", "supersede", "bad", ["root"])
+rejected(lambda: causal.append(wrong), "parent key mismatch")
+assert causal.current.read_bytes() == before
+assert contents(causal.events()) == ["Paris"]
+print("wrong key rejected before write; rows: ['Paris']")
+tomb = event("tomb", "address", "delete", "")
+wrong_op = event("wrong-op", "address", "supersede", "bad", ["tomb"])
+rejected(lambda: state([tomb, wrong_op]), "parent must be put or supersede")
+for op in ("put", "delete"):
+    invalid = event("invalid", "address", op, parents=["root"])
+    rejected(lambda: causal.append(invalid), "only supersede accepts parents")
+assert causal.current.read_bytes() == before
+print("incompatible parent and operation rejected")
+
+cycle = Log("cycle")
+x = event("x", "address", "supersede", "bad", ["y", "missing"])
+y = event("y", "address", "supersede", "bad", ["x"])
+cycle.append(x)
+before = cycle.current.read_bytes()
+rejected(lambda: cycle.append(y), "dependency cycle")
+assert cycle.current.read_bytes() == before
+rejected(lambda: state([y, x]), "dependency cycle")
+# A corrupt imported graph must fail replay, not silently erase facts.
+cycle.current.write_text(json.dumps(x) + "\n" + json.dumps(y) + "\n")
+rejected(lambda: cycle.events(), "dependency cycle")
+assert contents([x]) == []
+print("cycle rejected on append and replay; pending rows: []")
+
+log = Log("episodes")
+a = event("laptop:1", "preference", text="metric")
+b = event("laptop:2", "preference", "supersede", "imperial", [a["id"]])
+log.append(a)
+log.append(b)
+assert state(log.events())["preference"] == [b]
+log.append(event("laptop:3", "preference", "delete", text=""))
+assert state(Log("episodes").events()) == {}
+print("supersede and delete survive fresh replay")
+with log.current.open("ab") as f:
+    f.write(b'{"id":"interrupted')  # unacknowledged partial append
+log.append(event("laptop:4", "episode", text="arrived"))
+assert len(log.events()) == 4
+print("tail recovered; next append replayed")
+
+for point in ("rename", "directory sync"):
+    method = ("episodic_log.os.replace" if point == "rename"
+              else "episodic_log.Log.syncdir")
+    with patch(method, side_effect=OSError("simulated crash")):
+        try:
+            log.rotate()
+        except OSError:
+            pass
+        else:
+            raise AssertionError("fault not injected")
+    assert len(Log("episodes").events()) == 4
+log.rotate()
+log.append(a)  # duplicate retry must not undo the tombstone
+assert len(log.events()) == 4 and "preference" not in state(log.events())
+print("rotation faults replayed; duplicate retry ignored")
+
+bad = Log("bad")
+bad.current.write_bytes(b'{}\n{"cut')
+try:
+    bad.events()
+except ValueError as exc:
+    assert str(exc).startswith("bad/current.jsonl:1:")
+    print("non-tail corruption rejected: bad/current.jsonl:1")
+else:
+    raise AssertionError("corruption hidden")
+
+phone = event("phone:1", "episode", text="different", device="phone")
+log.append(phone)  # concurrent puts are a conflict, not last-clock-wins
+assert len(state(log.events())["episode"]) == 2
+log.append(event("server:1", "episode", "supersede", "reviewed",
+                 ["laptop:4", "phone:1"], device="server"))
+# A file transfer stands in for authenticated transport. Ingest is idempotent.
+Path("export.jsonl").write_text(
+    "".join(json.dumps(e) + "\n" for e in log.events()), encoding="utf-8")
+server, restored = Log("server"), Log("restored")
+for target in (server, server, restored):
+    for line in Path("export.jsonl").read_text(encoding="utf-8").splitlines():
+        target.append(json.loads(line))
+assert server.events() == restored.events() == log.events()
+assert len(state(restored.events())["episode"]) == 1
+assert "preference" not in state(restored.events())
+# Offline publication: stop consumers and build beside the destination.
+staging, published = Path("rebuilt.building.db"), Path("rebuilt.db")
+db = materialize(restored.events(), staging, toy_embed)
+assert db.execute("SELECT content FROM memories").fetchall() == [("reviewed",)]
+assert db.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone() == (0, 0, 0)
+assert db.execute("PRAGMA journal_mode=DELETE").fetchone() == ("delete",)
+db.close()  # no WAL dependency survives publication
+with staging.open("rb") as f:
+    os.fsync(f.fileno())
+os.replace(staging, published)
+fd = os.open(".", os.O_RDONLY | os.O_DIRECTORY)
+try:
+    os.fsync(fd)
+finally:
+    os.close(fd)
+assert not Path(str(staging) + "-wal").exists()
+assert not Path(str(staging) + "-shm").exists()
+db = connect(published, SPACE)
+assert db.execute("PRAGMA integrity_check").fetchone() == ("ok",)
+assert db.execute("SELECT content FROM memories").fetchall() == [("reviewed",)]
+print("rebuilt search:", hybrid(db, "reviewed", toy_embed("reviewed", SPACE), SPACE))
+db.close()
+print("conflict reviewed; export/import/restore preserved deletion")
+print("published SQLite reopened: reviewed; deleted preference absent")
+print("server receipt sequence:", list(enumerate(
+    (e["id"] for e in server.events()), start=1)))</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>venv/bin/python log_demo.py</pre></div>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">output</span><span class="code-tag tested">Tested</span></div>
+<pre>missing parent and ancestor: pending; rows: []
+late ancestor activates chain; rows: ['Paris']
+wrong key rejected before write; rows: ['Paris']
+incompatible parent and operation rejected
+cycle rejected on append and replay; pending rows: []
+supersede and delete survive fresh replay
+tail recovered; next append replayed
+rotation faults replayed; duplicate retry ignored
+non-tail corruption rejected: bad/current.jsonl:1
+rebuilt search: [(1, 0.0328, 'semantic', 'reviewed')]
+conflict reviewed; export/import/restore preserved deletion
+published SQLite reopened: reviewed; deleted preference absent
+server receipt sequence: [(1, 'laptop:1'), (2, 'laptop:2'), (3, 'laptop:3'),
+ (4, 'laptop:4'), (5, 'phone:1'), (6, 'server:1')]</pre></div>
+<p>Receipt sequence wraps for print. After Python processes exit, clean up with <code>cd .. &amp;&amp; rm -rf lab</code>.</p>
+</li>
+</ol>
+</section>
+
+<section>
+<h2>Sync rules (not tested)</h2>
+<p>Network sync, browser persistence and browser vector search were not tested. The rules below make retries harmless and track ordered ingestion:</p>
+<ul>
+<li><strong>Accept:</strong> authenticate devices and authorize keys. In one transaction, insert under a unique event ID and assign a server sequence; commit durably, then acknowledge that sequence. An identical retry returns the original sequence; changed payloads are rejected.</li>
+<li><strong>Pull:</strong> devices save pulled events locally before advancing their saved last-seen server sequence number.</li>
+<li><strong>Conflicts:</strong> the server applies the same parent checks, so contested facts stay contested.</li>
+<li><strong>Tombstones:</strong> retain through exports, imports, restores and backups for the longest supported offline-device and backup period, preventing deleted facts from re-entering context; older devices require full resync (Chapter 17).</li>
+</ul>
+</section>
+
+<section>
+<h2>Browser storage (not tested)</h2>
+<p>For browser SQLite, start from wa-sqlite's <code>demo/hello</code> at revision <code>205eed5</code>, which registers <code>IDBBatchAtomicVFS</code>, a virtual filesystem storing database pages in IndexedDB.<sup class="cite"><a href="#s12-7">7</a>,<a href="#s12-15">15</a></sup> The default demo is in-memory; <code>AccessHandlePoolVFS</code> allows one wa-sqlite instance and cannot directly import or export OPFS (origin-private filesystem) files.<sup class="cite"><a href="#s12-7">7</a>,<a href="#s12-16">16</a></sup> Require these checks in every supported browser:</p>
+<ul>
+  <li><strong>Reload:</strong> commit, reload and query a memory. Restored editor SQL proves nothing: it uses separate storage. The <code>reset</code> parameter clears storage.</li>
+  <li><strong>Export and restore:</strong> export events, including supersedes and tombstones, outside browser storage; restore a fresh database and verify deletions survive.</li>
+  <li><strong>Vectors:</strong> for browser vector recall, load your vector implementation, reopen a persisted fixture offline and get the expected nearest row.</li>
+  <li><strong>Multi-tab:</strong> allow one writer, or use a backend with coordinated connections; desktop WAL behavior does not carry over.</li>
+  <li><strong>Storage loss:</strong> handle refused writes and eviction; browser storage is best-effort by default and users can delete even persistent storage.<sup class="cite"><a href="#s12-17">17</a></sup></li>
+</ul>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: upgrade the SQLite library used by your app</p>
+  <p>SQLite documents a rare WAL-reset race that can corrupt a WAL-mode database when threads or processes write or checkpoint at once, likely present in SQLite 3.7.0 through 3.51.2; use 3.51.3 or later, or the backports 3.44.6 or 3.50.7. This book did not reproduce the race or validate the fix.<sup class="cite"><a href="#s12-11">11</a>,<a href="#s12-13">13</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: FTS5 reads user text as a query language</p>
+  <p><code>MATCH</code> has its own grammar. Local parameterized tests of OR syntax, quoted literals and unfinished quotes returned different results or parse errors. Binding stops SQL injection, not query interpretation. <code>quote()</code> wraps words, doubles internal quotes and joins them with OR (see Chapter 05).<sup class="cite"><a href="#s12-1">1</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: sqlite-vec is pre-v1, and deletes do not cascade</p>
+  <p>The README warns of pre-1.0 breaking changes.<sup class="cite"><a href="#s12-2">2</a></sup> Keep vectors rebuildable. Locally, deleting a <code>memories</code> row left its row ID in both indexes. The step 2 <code>remove_indexed_row()</code> helper locks with <code>BEGIN IMMEDIATE</code> before reading old text, issues the FTS5 <code>'delete'</code> command with it,<sup class="cite"><a href="#s12-1">1</a></sup> then removes the <code>vec0</code> and <code>memories</code> rows. All removals commit together. Existing transactions are rejected without ending them; competing removals are tested.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: silent embedding drift across model updates</p>
+<p>Each database file stores one embedding identity (model, revision, dimensions, preprocessing), checked on every write and query. Mismatches refuse reopen, writes and queries, even for same-length vectors; rebuild into a fresh file (Chapter 03).</p>
+</aside>
+
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: one file first, log underneath</p>
+  <p><strong>Pick SQLite with FTS5 and sqlite-vec</strong> for one agent or desktop app needing local keyword and vector search. Durably record puts, corrections and deletes; rebuild uncontested live state; preserve event IDs and tombstones through sync and restore.</p>
+  <p>Use PostgreSQL (Chapter 08) for several writing hosts; benchmark a vector store (Chapter 11) on target hardware when exact scans exceed the latency budget. Use MariaDB vectors when tenant data already lives on that server, DuckDB for batch analysis, files for procedures, and checkpoints only for run state. Chapter 21 runs a painter's business on one SQLite file.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+<li id="s12-1"><span class="src-title">SQLite FTS5 documentation</span> <span class="src-note">(official)</span><a class="url" href="https://sqlite.org/fts5.html">https://sqlite.org/fts5.html</a></li>
+<li id="s12-2"><span class="src-title">sqlite-vec repository and README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/asg017/sqlite-vec">https://github.com/asg017/sqlite-vec</a></li>
+<li id="s12-3"><span class="src-title">CoALA: Cognitive Architectures for Language Agents (arXiv 2309.02427)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2309.02427">https://arxiv.org/abs/2309.02427</a></li>
+<li id="s12-4"><span class="src-title">Turso native vectors</span> <span class="src-note">(vendor)</span><a class="url" href="https://turso.tech/vector">https://turso.tech/vector</a></li>
+<li id="s12-5"><span class="src-title">DuckDB vss maintainer README (checked 20 November 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/duckdb/duckdb-vss">https://github.com/duckdb/duckdb-vss</a></li>
+<li id="s12-6"><span class="src-title">MariaDB Vector overview</span> <span class="src-note">(official)</span><a class="url" href="https://mariadb.com/docs/server/reference/sql-structure/vectors/vector-overview">https://mariadb.com/docs/server/reference/sql-structure/vectors/vector-overview</a></li>
+<li id="s12-7"><span class="src-title">wa-sqlite README, revision 205eed5 (checked 20 November 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/rhashimoto/wa-sqlite/blob/205eed588e60ac43401292df6583dbdc7c7fe966/README.md">https://github.com/rhashimoto/wa-sqlite/blob/205eed588e60ac43401292df6583dbdc7c7fe966/README.md</a></li>
+<li id="s12-8"><span class="src-title">langgraph-checkpoint-sqlite on PyPI</span> <span class="src-note">(official)</span><a class="url" href="https://pypi.org/project/langgraph-checkpoint-sqlite/">https://pypi.org/project/langgraph-checkpoint-sqlite/</a></li>
+<li id="s12-9"><span class="src-title">OpenAI conversation state guide</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/guides/conversation-state">https://developers.openai.com/api/docs/guides/conversation-state</a></li>
+<li id="s12-10"><span class="src-title">Beads README: persistent dependency-aware task memory</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/gastownhall/beads">https://github.com/gastownhall/beads</a></li>
+<li id="s12-11"><span class="src-title">SQLite WAL: concurrency and same-host requirement</span> <span class="src-note">(official)</span><a class="url" href="https://sqlite.org/wal.html">https://sqlite.org/wal.html</a></li>
+<li id="s12-12"><span class="src-title">sqlite-vec on PyPI</span> <span class="src-note">(official)</span><a class="url" href="https://pypi.org/project/sqlite-vec/">https://pypi.org/project/sqlite-vec/</a></li>
+<li id="s12-13"><span class="src-title">SQLite 3.51.3 release and source archive (2026-03-13)</span> <span class="src-note">(official)</span><a class="url" href="https://sqlite.org/releaselog/3_51_3.html">https://sqlite.org/releaselog/3_51_3.html</a></li>
+<li id="s12-14"><span class="src-title">Python 3.14 os: fsync and replace</span> <span class="src-note">(official)</span><a class="url" href="https://docs.python.org/3.14/library/os.html">https://docs.python.org/3.14/library/os.html</a></li>
+<li id="s12-15"><span class="src-title">wa-sqlite persistent hello example, revision 205eed5</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/rhashimoto/wa-sqlite/blob/205eed588e60ac43401292df6583dbdc7c7fe966/demo/hello/hello.js">https://github.com/rhashimoto/wa-sqlite/blob/205eed588e60ac43401292df6583dbdc7c7fe966/demo/hello/hello.js</a></li>
+<li id="s12-16"><span class="src-title">wa-sqlite VFS examples and comparison, revision 205eed5</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/rhashimoto/wa-sqlite/blob/205eed588e60ac43401292df6583dbdc7c7fe966/src/examples/README.md">https://github.com/rhashimoto/wa-sqlite/blob/205eed588e60ac43401292df6583dbdc7c7fe966/src/examples/README.md</a></li>
+<li id="s12-17"><span class="src-title">MDN: Storage quotas and eviction criteria (checked 20 November 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria">https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria</a></li>
+</ol>
+</section>
+
+</article>

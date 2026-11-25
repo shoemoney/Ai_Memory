@@ -1,0 +1,85 @@
+{
+  "reviewer": "implementation agent/tester, not an independent human",
+  "items": [
+    {
+      "method": "full-history",
+      "step": 0,
+      "reviewer_label": "Correct",
+      "automated_correct": true,
+      "agree": true,
+      "notes": "Yes matches the reference."
+    },
+    {
+      "method": "full-history",
+      "step": 1,
+      "reviewer_label": "Correct",
+      "automated_correct": true,
+      "agree": true,
+      "notes": "Equality matches the reference."
+    },
+    {
+      "method": "full-history",
+      "step": 2,
+      "reviewer_label": "Correct",
+      "automated_correct": false,
+      "agree": false,
+      "notes": "-a^{-1}w(a)b equals -b^2 w(a) because b is the inverse of a, so it matches the reference although written in another form; the official judge said no."
+    },
+    {
+      "method": "full-history",
+      "step": 3,
+      "reviewer_label": "Incorrect",
+      "automated_correct": true,
+      "agree": false,
+      "notes": "Replaces v(x_i|_M) by the coordinate derivation partial_i without justification; the reference keeps v(x_i|_M). The official judge said yes."
+    },
+    {
+      "method": "full-history",
+      "step": 4,
+      "reviewer_label": "Correct",
+      "automated_correct": true,
+      "agree": true,
+      "notes": "Unique flow matches one."
+    },
+    {
+      "method": "no-memory",
+      "step": 0,
+      "reviewer_label": "Correct",
+      "automated_correct": true,
+      "agree": true,
+      "notes": "Yes matches the reference."
+    },
+    {
+      "method": "no-memory",
+      "step": 1,
+      "reviewer_label": "Correct",
+      "automated_correct": true,
+      "agree": true,
+      "notes": "Equality matches the reference."
+    },
+    {
+      "method": "no-memory",
+      "step": 2,
+      "reviewer_label": "Incorrect",
+      "automated_correct": false,
+      "agree": true,
+      "notes": "w(b)=-w(a)b drops a factor of b; reference is -b^2 w(a)."
+    },
+    {
+      "method": "no-memory",
+      "step": 3,
+      "reviewer_label": "Incorrect",
+      "automated_correct": false,
+      "agree": true,
+      "notes": "Restates v(h|_M) without the required expression."
+    },
+    {
+      "method": "no-memory",
+      "step": 4,
+      "reviewer_label": "Correct",
+      "automated_correct": true,
+      "agree": true,
+      "notes": "Exactly one flow matches the reference."
+    }
+  ]
+}

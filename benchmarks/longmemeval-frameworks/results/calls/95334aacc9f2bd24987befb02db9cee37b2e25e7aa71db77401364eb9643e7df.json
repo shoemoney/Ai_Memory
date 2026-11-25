@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 33
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ad38163ea899a36c19fb730f2f36c5944ef3ed5d30385bc616104e8bca7a2680",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-22de3c0c-51cb-4d6d-bbf9-4311d4fc903b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Ibanez SR300\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Ibanez SR505\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Ibanez BTB740\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Ibanez GIO GSR200\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332493,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 138,
+      "prompt_tokens": 1851,
+      "total_tokens": 1989,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Ibanez SR300\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Ibanez SR505\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Ibanez BTB740\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Ibanez GIO GSR200\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 4.573427911003819,
+  "prompt_tokens_local": 1851,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

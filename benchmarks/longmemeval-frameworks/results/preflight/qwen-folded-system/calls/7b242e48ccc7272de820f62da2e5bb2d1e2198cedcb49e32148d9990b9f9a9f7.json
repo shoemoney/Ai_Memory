@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 70
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e1ee5a1a366280473d4442dd537759ff2dc297a30ee6fce7c2bcbf1eebb47b00",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5fd80ce6-8546-4ae7-a3d9-8edda6ced622",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Interested in measuring the effectiveness of influencer collaborations\",\n    \"Asked about analytics and tracking features in AspireIQ and Grin\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330521,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 38,
+      "prompt_tokens": 2455,
+      "total_tokens": 2493,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Interested in measuring the effectiveness of influencer collaborations\",\n    \"Asked about analytics and tracking features in AspireIQ and Grin\"\n  ]\n}",
+  "seconds": 1.7933212429925334,
+  "prompt_tokens_local_gemma_estimate": 2467
+}

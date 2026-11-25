@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "cf907d0cc228ad4f5e6d375f52e5432a0d4ec3247e7eb35858332246d30a83aa",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4ff334ee-34ed-4c52-a3ef-45d6b3028dc4",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Nisha\", \"relation_type\": \"IS_PARENT_OF\", \"fact\": \"Nisha's dad is Nisha's parent.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795368419,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 87,
+      "prompt_tokens": 7704,
+      "total_tokens": 7791,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Nisha\", \"relation_type\": \"IS_PARENT_OF\", \"fact\": \"Nisha's dad is Nisha's parent.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 20.95839308600989,
+  "prompt_tokens_local": 7704
+}

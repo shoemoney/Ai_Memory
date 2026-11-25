@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 7
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2fdc664cd04e58b920ee6b2724a00353c8105a651f257f6c1625d18470e969e2",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c9d283ef-ade2-4bf4-b0f7-e204799fdb15",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\"Had a flat tire on the bike two weeks ago\"},\n    {\"Biking to work is an excellent option for a healthier and more environmentally friendly commute\"},\n    {\"Planed bike route in advance to ensure it's safe and convenient\"},\n    {\"Wear a helmet, follow traffic rules, and be mindful of road conditions\"},\n    {\"Regularly check bike's tire pressure, brakes, and chain to ensure it's in good working condition\"},\n    {\"Dress comfortably and consider wearing clothing with reflective materials\"},\n    {\"Bring a waterproof bag or panniers to carry gear, and don't forget a lock for the bike\"},\n    {\"Consider shower facilities or invest in a portable shower kit if arriving at work sweaty\"},\n    {\"Start with a shorter route or a more leisurely pace to build up endurance if not comfortable biking the entire distance\"},\n    {\"Combine biking with public transit if not comfortable biking the entire distance\"}\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795329911,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 194,
+      "prompt_tokens": 2880,
+      "total_tokens": 3074,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\"Had a flat tire on the bike two weeks ago\"},\n    {\"Biking to work is an excellent option for a healthier and more environmentally friendly commute\"},\n    {\"Planed bike route in advance to ensure it's safe and convenient\"},\n    {\"Wear a helmet, follow traffic rules, and be mindful of road conditions\"},\n    {\"Regularly check bike's tire pressure, brakes, and chain to ensure it's in good working condition\"},\n    {\"Dress comfortably and consider wearing clothing with reflective materials\"},\n    {\"Bring a waterproof bag or panniers to carry gear, and don't forget a lock for the bike\"},\n    {\"Consider shower facilities or invest in a portable shower kit if arriving at work sweaty\"},\n    {\"Start with a shorter route or a more leisurely pace to build up endurance if not comfortable biking the entire distance\"},\n    {\"Combine biking with public transit if not comfortable biking the entire distance\"}\n  ]\n}",
+  "seconds": 3.4770043489988893,
+  "prompt_tokens_local": 2973
+}

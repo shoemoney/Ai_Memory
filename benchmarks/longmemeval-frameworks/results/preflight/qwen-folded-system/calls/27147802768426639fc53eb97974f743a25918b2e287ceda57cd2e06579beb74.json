@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 3
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ffef3bd9bfeb31146fe47168cac277d16811711dc81f888a6924417170e9d609",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-22dd3f3f-31ff-4c63-9411-efca508b0705",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Thinking of displaying an antique brooch and seeking advice on choosing a display case\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Considering a display case that will do the antique brooch justice\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Celebrating heritage\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Unity and diversity\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"phygital experiences with an emphasis on Chinese culture\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the user wants to create a cohesive display that tells a story and evokes a certain mood. The user is looking for tips on how to curate a themed display that showcases the vinyl record and other items in a visually appealing and meaningful way.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the user wants to create a cohesive display that tells a story and evokes a certain mood. The user is looking for tips on how to curate a themed display that showcases the vinyl record and other items in a visually appealing and meaningful way.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795329894,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 338,
+      "prompt_tokens": 1751,
+      "total_tokens": 2089,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Thinking of displaying an antique brooch and seeking advice on choosing a display case\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Considering a display case that will do the antique brooch justice\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Celebrating heritage\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Unity and diversity\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"phygital experiences with an emphasis on Chinese culture\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the user wants to create a cohesive display that tells a story and evokes a certain mood. The user is looking for tips on how to curate a themed display that showcases the vinyl record and other items in a visually appealing and meaningful way.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the user wants to create a cohesive display that tells a story and evokes a certain mood. The user is looking for tips on how to curate a themed display that showcases the vinyl record and other items in a visually appealing and meaningful way.\"\n        }\n    ]\n}",
+  "seconds": 5.962048468994908,
+  "prompt_tokens_local": 1879
+}

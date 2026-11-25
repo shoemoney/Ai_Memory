@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 24
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d9e37292ff618fed771666d261a6eae1f73b659619695902a8936e2041dd10fb",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d7ffb9e1-42f7-418e-aa02-fdeb029f49fc",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Patagonia is a great destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Galapagos Islands are an amazing destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"The Gringo Trail is a popular destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Brazilian Coast is a popular destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Colombian Coffee Region is a popular destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Iguazú Falls is a popular destination for solo travelers\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332051,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 220,
+      "prompt_tokens": 1791,
+      "total_tokens": 2011,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Patagonia is a great destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Galapagos Islands are an amazing destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"The Gringo Trail is a popular destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Brazilian Coast is a popular destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Colombian Coffee Region is a popular destination for solo travelers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Iguazú Falls is a popular destination for solo travelers\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 5.482055236003362,
+  "prompt_tokens_local": 1791,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

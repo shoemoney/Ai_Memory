@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 60
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "3a0a4bb9bdb8df62fc223f383945ff1340be57954169db265b724c1800797bbf",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ab9bc4f3-6eb0-4b71-ad26-89e8dd24f68a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Lockheed Martin\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Denver works at Lockheed Martin.\", \"valid_at\": \"2023-05-29T11:20:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795372165,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 81,
+      "prompt_tokens": 9201,
+      "total_tokens": 9282,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Lockheed Martin\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Denver works at Lockheed Martin.\", \"valid_at\": \"2023-05-29T11:20:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 59.00896021301742,
+  "prompt_tokens_local": 9201
+}

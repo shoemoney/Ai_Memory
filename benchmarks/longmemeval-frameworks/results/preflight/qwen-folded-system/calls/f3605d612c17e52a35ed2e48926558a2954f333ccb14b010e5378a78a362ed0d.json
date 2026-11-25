@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "31511f8d884615d01091d462af07b3aa71fc69847f513e59d4cdfa9c28868232",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0e041ab9-06db-47c4-9276-27c1c7b81bc4",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_OWNER_OF\", \"fact\": \"Nisha's dad owns the dog leash named Trigger.\", \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331185,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 55,
+      "prompt_tokens": 9150,
+      "total_tokens": 9205,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 703
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_OWNER_OF\", \"fact\": \"Nisha's dad owns the dog leash named Trigger.\", \"episode_indices\": [0]}]}",
+  "seconds": 18.46378738801286,
+  "prompt_tokens_local_gemma_estimate": 9238
+}

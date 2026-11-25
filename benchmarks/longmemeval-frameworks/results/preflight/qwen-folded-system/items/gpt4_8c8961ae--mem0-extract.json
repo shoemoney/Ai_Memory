@@ -1,0 +1,118 @@
+{
+  "question_id": "gpt4_8c8961ae",
+  "system": "mem0-extract",
+  "stratum": "temporal-reasoning",
+  "question_type": "temporal-reasoning",
+  "question": "Which trip did I take first, the one to Europe with family or the solo trip to Thailand?",
+  "reference": "The solo trip to Thailand",
+  "hypothesis": "The provided conversation history does not mention any trips to Europe or Thailand.",
+  "context": [
+    {
+      "text": "considering visiting the Galapagos Islands as a solo traveler",
+      "score": 0.43134577625437875,
+      "metadata": {
+        "session_id": "answer_72d9aa58_2",
+        "date": "2023/05/28 (Sun) 05:31"
+      }
+    },
+    {
+      "text": "considering visiting Patagonia as a solo traveler",
+      "score": 0.37132697591453245,
+      "metadata": {
+        "session_id": "answer_72d9aa58_2",
+        "date": "2023/05/28 (Sun) 05:31"
+      }
+    },
+    {
+      "text": "Look for hostels with social areas and group tours that cater to solo travelers",
+      "score": 0.35557705208030976,
+      "metadata": {
+        "session_id": "answer_72d9aa58_2",
+        "date": "2023/05/28 (Sun) 05:31"
+      }
+    },
+    {
+      "text": "Considered scenic drive to El Chaltén, boat tour on Lago Argentino, and activities like horseback riding, kayaking, ice hiking, estancia visit, and scenic flights. as a solo traveler",
+      "score": 0.34300625726768597,
+      "metadata": {
+        "session_id": "answer_72d9aa58_1",
+        "date": "2023/05/28 (Sun) 20:06"
+      }
+    },
+    {
+      "text": "Join Facebook groups or online forums for solo travel and meetups in South America",
+      "score": 0.3359714082340388,
+      "metadata": {
+        "session_id": "answer_72d9aa58_2",
+        "date": "2023/05/28 (Sun) 05:31"
+      }
+    },
+    {
+      "text": "Iceland and Denmark are leading countries in using renewable energy",
+      "score": 0.20215963507824186,
+      "metadata": {
+        "session_id": "ultrachat_336750",
+        "date": "2023/05/28 (Sun) 21:22"
+      }
+    },
+    {
+      "text": "Interested in hiking in Torres del Paine and exploring the Perito Moreno Glacier",
+      "score": 0.19866077601183418,
+      "metadata": {
+        "session_id": "answer_72d9aa58_1",
+        "date": "2023/05/28 (Sun) 20:06"
+      }
+    },
+    {
+      "text": "Shakespeare's works touch on universal human experiences that people across time and cultures can relate to.",
+      "score": 0.1902956846149179,
+      "metadata": {
+        "session_id": "ultrachat_334521",
+        "date": "2023/05/28 (Sun) 12:26"
+      }
+    },
+    {
+      "text": "Bought several bottles of wine",
+      "score": 0.1753703993446494,
+      "metadata": {
+        "session_id": "b77d0b58",
+        "date": "2023/05/28 (Sun) 13:17"
+      }
+    },
+    {
+      "text": "Considering volunteering at an animal shelter",
+      "score": 0.17302011438687667,
+      "metadata": {
+        "session_id": "1d14730c_1",
+        "date": "2023/05/28 (Sun) 02:50"
+      }
+    }
+  ],
+  "correct": false,
+  "judge": {
+    "correct": false,
+    "votes": [
+      false,
+      false,
+      false
+    ],
+    "calls": [
+      "9acc0a8d2320b0795a574eea065350850d3737d5b6077dcb340e535ac90592d3",
+      "c9e57b780d2fe6dcb9490fbc0943a5a2655665029dc6e3633e6ff68fd35c3f6d",
+      "a9481cacf92d55b9b08f1242eb463f3c174f1bb21d95bf2f6151c3863d80addf"
+    ]
+  },
+  "status": "scored",
+  "ingestion_seconds": 373.3040277957916,
+  "ingestion_usage": {
+    "prompt_tokens": 276908,
+    "completion_tokens": 16256,
+    "model_calls": 134,
+    "model_seconds": 371.3863188878895
+  },
+  "source_sessions": 50,
+  "source_parts": 76,
+  "attempted_parts": 76,
+  "ingested_parts": 66,
+  "ingestion_failed_parts": 10
+}

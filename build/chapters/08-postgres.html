@@ -1,0 +1,775 @@
+<article class="chapter" data-ch="08" data-part="d" data-running="PostgreSQL and pgvector">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part D &middot; Chapter 08</p>
+  <div class="opener-num" aria-hidden="true">08</div>
+  <h1>PostgreSQL and pgvector</h1>
+  <p class="opener-summary">One Postgres database holds facts, vectors and keywords for one filtered, ranked memory query.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Teams already running Postgres who need per-user, transactional memory.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">pgvector adds embedding types (Chapter 03) and nearest-neighbour indexes to PostgreSQL for similarity search.<sup class="cite"><a href="#s08-1">1</a></sup></p>
+  <p>Agent memory uses <code>episodes</code> rows for events and <code>memories</code> rows for facts and summaries, each with an embedding. One backup, permission model and query language cover keyword search, permissions and transactions.</p>
+  <p>Memory, embedding, audit and outbox rows (pending deliveries) commit or roll back together, and reads can join users and permissions while ranking. Framework support (Chapter 13): LangGraph ships <code>PostgresSaver</code> and <code>PostgresStore</code>,<sup class="cite"><a href="#s08-2">2</a>,<a href="#s08-3">3</a></sup> Mem0 has a pgvector provider,<sup class="cite"><a href="#s08-4">4</a></sup> and Hindsight uses Postgres with pgvector as its primary storage backend.<sup class="cite"><a href="#s08-5">5</a></sup></p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms used in this chapter</p>
+  <dl>
+    <dt>HNSW</dt><dd>Hierarchical Navigable Small World, a layered-graph approximate-search index (Chapter 00). Chapter 11 compares index families.</dd>
+    <dt>ef_search</dt><dd>Candidate-list size per HNSW query: higher means better recall, slower queries.</dd>
+    <dt>Recall@10, RRF</dt><dd>With at least ten eligible rows, recall@10 is the overlap of returned and exact top tens under identical filters, divided by ten. Reciprocal rank fusion (RRF) merges ranked lists (Chapter 05).</dd>
+    <dt>IVFFlat</dt><dd>pgvector's clustered-list index: probes sets how many clusters (lists) a query searches, trading speed for recall. It learns list centres from existing rows.</dd>
+    <dt>tsvector, GIN</dt><dd>tsvector holds searchable words; GIN indexes them for fast matching.</dd>
+    <dt>RLS</dt><dd>Row-level security. Policies control which rows a role sees.</dd>
+  </dl>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p>The application commits raw turns to <code>episodes</code>. Fact extraction, often a model call (Chapter 06), produces <code>memories</code>. After extraction and embedding succeed, one transaction commits each memory, its vector and any audit or outbox row, with index updates. Never hold a transaction open across model calls.</p>
+<p>Reads embed the question with the same model. One SQL statement filters user and validity, merges vector-distance and keyword rankings, and returns prompt rows. The walkthrough checks memory timestamps <code>valid_from &lt;= now()</code> and <code>valid_to IS NULL</code> for current facts. For future start or end dates, test <code>valid_from &lt;= :as_of AND (valid_to IS NULL OR :as_of &lt; valid_to)</code> in both branches; the current-row partial index cannot cover this predicate.</p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 306" role="img" aria-label="Diagram: the agent app writes episodes and memories into PostgreSQL, calls an embedding model for each vector, and reads the top rows back for the model.">
+  <rect class="d-box" x="20" y="34" width="110" height="54" rx="4"/>
+  <text class="d-title" x="75" y="58" text-anchor="middle">Agent app</text>
+  <text class="d-sub" x="75" y="75" text-anchor="middle">writes, queries</text>
+
+  <rect class="d-box accent" x="20" y="130" width="110" height="60" rx="4"/>
+  <text class="d-title" x="75" y="155" text-anchor="middle">Embedding</text>
+  <text class="d-sub" x="75" y="172" text-anchor="middle">model call</text>
+
+  <rect class="d-zone" x="190" y="8" width="250" height="292" rx="6"/>
+  <text class="d-label" x="205" y="26">PostgreSQL</text>
+  <rect class="d-box" x="205" y="40" width="220" height="50" rx="4"/>
+  <text class="d-mono" x="315" y="60" text-anchor="middle">episodes</text>
+  <text class="d-sub" x="315" y="77" text-anchor="middle">raw turns, JSONB metadata</text>
+  <rect class="d-box accent" x="205" y="125" width="220" height="70" rx="4"/>
+  <text class="d-mono" x="315" y="148" text-anchor="middle">memories</text>
+  <text class="d-sub" x="315" y="165" text-anchor="middle">facts, validity dates</text>
+  <text class="d-sub" x="315" y="181" text-anchor="middle">embedding and tsvector</text>
+  <rect class="d-box soft" x="205" y="214" width="220" height="74" rx="4"/>
+  <text class="d-title" x="315" y="234" text-anchor="middle">Indexes</text>
+  <text class="d-sub" x="315" y="251" text-anchor="middle">HNSW on embedding</text>
+  <text class="d-sub" x="315" y="265" text-anchor="middle">GIN on tsvector</text>
+  <text class="d-sub" x="315" y="279" text-anchor="middle">B-tree on user_id</text>
+
+  <rect class="d-box dark" x="490" y="125" width="90" height="70" rx="4"/>
+  <text class="d-title d-on-dark" x="535" y="157" text-anchor="middle">LLM</text>
+  <text class="d-sub d-on-dark" x="535" y="174" text-anchor="middle">prompt</text>
+
+  <path class="d-line" d="M130 61 H203"/>
+  <path class="d-line" d="M75 88 V128"/>
+  <path class="d-line accent dash" d="M130 160 H203"/>
+  <path class="d-line accent dash" d="M425 160 H488"/>
+  <text class="d-sub" x="166" y="53" text-anchor="middle">write</text>
+  <text class="d-sub" x="166" y="152" text-anchor="middle">vector</text>
+  <text class="d-sub" x="457" y="152" text-anchor="middle">top rows</text>
+</svg>
+<figcaption><b>Figure 1.</b> Extraction and embedding precede the atomic memory/vector write. Reads embed the question, fuse exact or HNSW vector search with GIN keyword search, and pass rows through the app to the model.</figcaption>
+</figure>
+
+<h3>Types and distance operators</h3>
+<p>pgvector adds three column types (<code>vector</code>, <code>halfvec</code> and <code>sparsevec</code>) and supports binary-distance search on PostgreSQL's built-in <code>bit</code> type. Its distance operators are <code>&lt;-&gt;</code> for L2 distance, <code>&lt;#&gt;</code> for negative inner product, <code>&lt;=&gt;</code> for cosine distance, <code>&lt;+&gt;</code> for L1, <code>&lt;~&gt;</code> for Hamming and <code>&lt;%&gt;</code> for Jaccard.<sup class="cite"><a href="#s08-1">1</a></sup> Index use requires <code>LIMIT</code> and an <code>ORDER BY</code> matching the operator class (e.g. <code>&lt;=&gt;</code> with <code>vector_cosine_ops</code>); the planner may prefer exact scan and sort.</p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c50"><col class="c30"></colgroup>
+  <thead><tr><th>Type</th><th>Use</th><th>Largest indexable size</th></tr></thead>
+  <tbody>
+    <tr><td><code>vector</code></td><td>The default dense embedding column.</td><td>2,000 dimensions</td></tr>
+    <tr><td><code>halfvec</code></td><td>Dense embeddings that need an index above 2,000 dimensions.</td><td>4,000 dimensions</td></tr>
+    <tr><td><code>bit</code></td><td>Binary vectors, for example from <code>binary_quantize</code> with Hamming distance.</td><td>64,000 dimensions</td></tr>
+    <tr><td><code>sparsevec</code></td><td>Sparse vectors that store only non-zero elements.</td><td>1,000 non-zero elements</td></tr>
+  </tbody>
+</table>
+<p class="small muted">These are the README's index caps.<sup class="cite"><a href="#s08-1">1</a></sup> Tested: each HNSW cap was accepted and cap+1 rejected, two boundary cases per type. Above 2,000 dimensions (e.g. 3,072), HNSW needs <code>halfvec</code> or dimension reduction. Alternatively, use <code>CREATE INDEX ON memories USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)</code> and order by <code>embedding::halfvec(3072) &lt;=&gt; $1::halfvec(3072)</code>.</p>
+
+<h3>Index kinds</h3>
+<table class="data">
+  <colgroup><col class="c20"><col class="c45"><col class="c35"></colgroup>
+  <thead><tr><th>Index (100,000 vectors)</th><th>Defaults and tuning</th><th>Trade-off</th></tr></thead>
+  <tbody>
+    <tr><td>None (exact)</td><td>Unfiltered exact search scores all 100,000 rows; a user index narrows it to one user.</td><td>Recall is perfect. Tested median latency was 37.242 ms; no growth curve was measured.</td></tr>
+    <tr><td>HNSW</td><td><code>m</code> 16, <code>ef_construction</code> 64, query setting <code>hnsw.ef_search</code> 40.</td><td>Tested recall@10 was 96.95%, above default IVFFlat; median query latency was 2.827 ms. The build took 202.359 seconds and 204,808,192 bytes (195 MiB).</td></tr>
+    <tr><td>IVFFlat</td><td>Load data first. Recommended lists: rows / 1000 up to 1M rows, then √rows; probes near √lists. Tested <code>ivfflat.probes</code> defaulted to 1.</td><td>With 100 lists, it built in 2.725 seconds using 164,323,328 bytes (157 MiB). At 10 probes, recall@10 rose from 38.90% to 67.10%, median latency from 1.165 ms to 4.010 ms.</td></tr>
+  </tbody>
+</table>
+<p class="small muted">README defaults and sizing.<sup class="cite"><a href="#s08-1">1</a></sup> Tests use 100,000 clustered synthetic vectors of 384 dimensions, CPU only: one build per index, 200 queries per setting, default HNSW parameters. HNSW built with 512 MB of maintenance memory and no parallel workers. Treat the numbers as one run. Boundary, filter and storage tests: companion repository, benchmarks/stores.</p>
+
+<p><code>EXPLAIN (ANALYZE, BUFFERS)</code> distinguishes exact sorts from HNSW scans naming the matching distance operator. Measure recall against exact search.</p>
+<p class="small muted">Higher <code>m</code> (links per node) can enlarge the index; higher <code>ef_construction</code> (build candidate list) lengthens the build. Either can raise recall; measure it. If the build reports the graph no longer fits in <code>maintenance_work_mem</code>, raise it for that session before building, e.g. <code>SET maintenance_work_mem = '2GB'</code>, leaving memory for other work; otherwise expect a slower build.</p>
+
+<h3>Variants and tools (as of 2026-11-20)</h3>
+<table class="data">
+  <colgroup><col class="c22"><col class="c40"><col class="c38"></colgroup>
+  <thead><tr><th>Tool</th><th>What it adds</th><th>Version and caveat</th></tr></thead>
+  <tbody>
+    <tr><td>pgvector</td><td>Vector types, distance operators, HNSW and IVFFlat.<sup class="cite"><a href="#s08-1">1</a></sup></td><td>0.8.7, changelog dated 2026-10-01; pinned below. Older versions: see Security below.<sup class="cite"><a href="#s08-6">6</a></sup></td></tr>
+    <tr><td>PostgreSQL</td><td>The database.</td><td>19 released 2026-11-19.<sup class="cite"><a href="#s08-7">7</a></sup> Latest 18.x is 18.7, released 2026-11-12.<sup class="cite"><a href="#s08-8">8</a></sup></td></tr>
+    <tr><td>pgvectorscale</td><td>StreamingDiskANN (disk-based graph) index, Statistical Binary Quantization and label-filtered search. Requires pgvector.<sup class="cite"><a href="#s08-9">9</a></sup></td><td>0.9.1 (release page checked 2026-11-20); not used below.<sup class="cite"><a href="#s08-10">10</a></sup></td></tr>
+    <tr><td>VectorChord</td><td>The <code>vchordrq</code> index: IVF with RaBitQ (binary) quantization and reranking, using pgvector's types.<sup class="cite"><a href="#s08-11">11</a></sup></td><td>1.1.1 (Docker tag <code>pg18-v1.1.1</code>). 1.0 was released 2025-11-11.</td></tr>
+    <tr><td>ParadeDB <code>pg_search</code></td><td>BM25 (term-frequency) ranked full text as an index, plus hybrid search.<sup class="cite"><a href="#s08-12">12</a></sup></td><td>Docs at v0.27.0. The index access method was renamed <code>paradedb</code> in 0.25.0.</td></tr>
+    <tr><td>Built-in full text</td><td><code>tsvector</code> with GIN and <code>ts_rank_cd</code> for ranking, and <code>pg_trgm</code> for fuzzy matching.</td><td>Ships with Postgres. No BM25 scoring.</td></tr>
+    <tr><td>Apache AGE</td><td>openCypher graph queries inside Postgres.<sup class="cite"><a href="#s08-13">13</a></sup> Chapter 14 covers graphs.</td><td>1.7.0, released 2026-01-21, with PostgreSQL 18 builds and RLS support. Its GitHub tag is named v1.7.0-rc0; a 1.8.0 release candidate was published 2026-09-19.</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Hybrid search and filters.</strong> RRF (Chapter 05) sums <code>1 / (60 + rank)</code> per keyword/vector list; 60 is tunable and follows pgvector's example.<sup class="cite"><a href="#s08-14">14</a></sup> Filter user and validity in both branches; HNSW can underfill (Gotchas). RLS restricts visible rows,<sup class="cite"><a href="#s08-15">15</a></sup> without creating per-user approximate indexes.</p>
+
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>Existing Postgres teams adding memory tables.</li>
+      <li>Memory writes committing with business data and audit.</li>
+      <li>Queries mixing user/validity filters, keyword rank and vector rank.</li>
+      <li>RLS-enforced user isolation (one tenant = one <code>user_id</code>).</li>
+      <li>Exact search within budget (tested: 37.242 ms median, 100,000 384-dimension rows, 2 CPUs), or HNSW meeting recall targets.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>Tuned queries missing p99 targets: compare VectorChord, pgvectorscale and dedicated stores (Chapter 11).</li>
+      <li>Primarily multi-hop reasoning: Apache AGE covers moderate graphs; Chapter 14 covers dedicated graph memory.</li>
+      <li>Write-heavy streaming ingestion with no tuning or vacuum budget.</li>
+      <li>A single user with a few hundred notes: flat files (Chapter 01) or SQLite (Chapter 12) need less.</li>
+      <li>Teams unable to operate Postgres. Managed hosting handles provisioning, patching and most backups; tuning, vacuum, extension upgrades and RLS remain yours.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<p>Row counts here are assumed sizes.</p>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Shared documentation assistant</h3>
+  <dl>
+    <dt>Situation</dt><dd>A team searches 8,000 documentation passages and needs exact error-code matches alongside paraphrases.</dd>
+    <dt>Why it fits</dt><dd>SQL combines keyword and vector ranks on the same rows,<sup class="cite"><a href="#s08-14">14</a></sup> so no second store needs synchronising.</dd>
+    <dt>Pair with</dt><dd>Pre-release <code>EXPLAIN</code> and model revision metadata. Chapter 05 covers reranking.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Per-user assistant memory in a SaaS app</h3>
+  <dl>
+    <dt>Situation</dt><dd>A support assistant remembers preferences and tickets: 5,000 users, about 2,000 memories each, 10 million rows total.</dd>
+    <dt>Why it fits</dt><dd>RLS keeps each user's rows private.<sup class="cite"><a href="#s08-15">15</a></sup> At 2,000 rows per user, exact <code>user_id</code>-indexed search gives perfect recall. Shared HNSW can underfill even with iterative scans (continuing until enough rows pass the filter); see Gotchas.<sup class="cite"><a href="#s08-1">1</a></sup></dd>
+    <dt>Pair with</dt><dd>Use the partial user index; partition and vector-index large tenants only when filtered exact search misses budget.<sup class="cite"><a href="#s08-1">1</a></sup> Compare Chapter 11 if tuning still misses latency.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Booking agent with an audit trail</h3>
+  <dl>
+    <dt>Situation</dt><dd>A booking agent records "prefers aisle seats" with 200,000 yearly reservations; compliance requires every change logged.</dd>
+    <dt>Why it fits</dt><dd>The memory, reservation, audit and outbox rows commit together, preserving the pending Redis cache refresh (Chapter 09).</dd>
+    <dt>Pair with</dt><dd>A worker retries pending outbox rows, so refreshes must be safe to repeat. <code>NOTIFY</code> only wakes the worker; a missed one does not lose the row.<sup class="cite"><a href="#s08-16">16</a></sup> See Chapters 09 and 17.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>Support agent that must match order numbers</h3>
+  <dl>
+    <dt>Situation</dt><dd>An agent searches 300,000 past tickets. Embeddings blur an error code or order number, and a pure keyword search misses paraphrases.</dd>
+    <dt>Why it fits</dt><dd><code>tsvector</code> with GIN and an HNSW index sit on the same rows, and RRF merges their rankings in one statement.<sup class="cite"><a href="#s08-14">14</a></sup></dd>
+    <dt>Pair with</dt><dd>ParadeDB BM25 if keyword ranking quality matters more than <code>ts_rank_cd</code>.<sup class="cite"><a href="#s08-12">12</a></sup></dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>Facts that change over time</h3>
+  <dl>
+    <dt>Situation</dt><dd>A sales assistant tracks 100,000 customer facts. "Works at Acme" must become "worked at Acme" when the customer moves, without losing history.</dd>
+    <dt>Why it fits</dt><dd>A <code>valid_to</code> column marks superseded rows: one transaction closes the old fact and inserts its replacement and audit row. A partial index on null rows keeps current-fact lookups small.</dd>
+    <dt>Pair with</dt><dd>A fact-extraction model (Chapter 06). Chapter 14 covers temporal graphs when relations outweigh rows.</dd>
+  </dl>
+</article>
+
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p><strong>Result quality.</strong> Filtered HNSW can finish quickly yet underfill (see Gotchas).<sup class="cite"><a href="#s08-1">1</a></sup> Measure count, recall and p95/p99 under expected concurrency. Run <code>pgbench -c CLIENTS -T 60 -l -f read.sql</code>; compute logged transaction-latency percentiles against an exact-search baseline. Exact cost follows eligible rows per user; no universal cutoff applies.</p>
+<p><strong>Storage.</strong> The documented <code>4d + 8</code> bytes for <code>vector(d)</code> gives 1,544 bytes at 384 dimensions, confirmed here.<sup class="cite"><a href="#s08-1">1</a></sup> Tested table storage was 163,905,536 bytes (156 MiB) for 100,000 rows. Vector-only extrapolations: 1.54 GB per million, 15.44 GB per ten million, excluding text, indexes and replicas; not loaded tests.</p>
+<p><strong>Calls and tokens.</strong> A raw episode write needs no model call. An extracted memory costs one extraction call (Chapter 06) plus one embedding call. A semantic read costs one query embedding, and ten illustrative 100-token facts add about 1,000 prompt tokens plus wrappers. Keyword-only reads need no embedding call.</p>
+<p><strong>Time.</strong> Extraction and embedding calls add model time (Chapter 03) where used; the walkthrough timings report SQL time only. Chapter 20 measures caching of repeated finished answers.</p>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Post-cutoff walkthrough test: 2026-11-23, CPU only, with the container limited to 2 CPUs and 4 GB: PostgreSQL/psql 18.7, pgvector 0.8.7. Requires Linux, Bash, Docker, procfs and GNU coreutils; database clients run inside the image. PostgreSQL 19 was not tested. Synthetic vectors test storage, search and permissions, not semantic quality or application latency.</p>
+<p>Paste shell blocks into one <code>bash</code> subshell; separate script processes lose <code>start.sh</code> variables needed by <code>cleanup.sh</code>. Save SQL listings by name in the created lab directory. If the directory or container exists, stop and leave it alone. After interruption, restore <code>LAB=/var/tmp/memlab-08</code>, <code>LAB_TOKEN=$(cat "$LAB/.owner")</code> and <code>LAB_REAL=$(cat "$LAB/.path")</code> before cleanup, only for your own run.</p>
+<h3>Start the isolated database</h3>
+<p><code>start.sh</code> refuses to reuse an existing lab directory or container. A socket readiness check can pass against the temporary setup server; the script instead polls over TCP and runs a real query.<sup class="cite"><a href="#s08-17">17</a>,<a href="#s08-18">18</a></sup></p><div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">start.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+LAB=/var/tmp/memlab-08
+if [ -e "$LAB" ] || [ -L "$LAB" ]; then
+  echo "STOP: $LAB already exists" &gt;&amp;2
+  exit 1
+fi
+if docker container inspect memlab-08-pg &gt;/dev/null 2&gt;&amp;1; then
+  echo "STOP: memlab-08-pg already exists" &gt;&amp;2
+  exit 1
+fi
+mkdir "$LAB"
+LAB_TOKEN=$(cat /proc/sys/kernel/random/uuid)
+LAB_REAL=$(realpath -e -- "$LAB")
+printf '%s\n' "$LAB_TOKEN" &gt; "$LAB/.owner"
+printf '%s\n' "$LAB_REAL" &gt; "$LAB/.path"
+cd "$LAB"
+pg_image=pgvector/pgvector@sha256:
+pg_image+=38681dc6eaf55308e2a4c6de392d131652dcfac70e1263e35cd9b5ea3fe39782
+docker pull "$pg_image"
+docker run -d --name memlab-08-pg --cpus=2 \
+  --label "memfix.owner=$LAB_TOKEN" \
+  --memory=4g --tmpfs /var/lib/postgresql:rw,size=1g \
+  -e POSTGRES_PASSWORD=memlab-local-only "$pg_image"
+ready=0
+for attempt in {1..90}; do
+  if docker exec memlab-08-pg pg_isready -h 127.0.0.1 -U postgres -t 2 \
+       &gt;/dev/null 2&gt;&amp;1 &amp;&amp;
+     [ "$(docker exec memlab-08-pg psql -X -h 127.0.0.1 -U postgres \
+       -Atqc 'SELECT 1' 2&gt;/dev/null)" = 1 ]; then
+    ready=1
+    break
+  fi
+  sleep 1
+done
+if [ "$ready" != 1 ]; then
+  echo "STOP: PostgreSQL TCP readiness timed out" &gt;&amp;2
+  docker logs memlab-08-pg &gt;&amp;2
+  exit 1
+fi
+echo "Ready: container TCP; SELECT 1 = 1"</pre></div>
+<p>Startup printed:</p>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>Ready: container TCP; SELECT 1 = 1</pre></div>
+
+<h3>Create and index the memory tables</h3>
+<p><code>setup.sql</code> creates the episode and memory tables with a user-qualified foreign key, validity dates, embedding provenance and full-text data. It loads 20,000 seeded random vectors, shows plans before and after HNSW, keyword and current-user indexes; exact search suffices here. The fixture assigns users by <code>i % 20</code> and text by <code>(i / 20) % 4</code>, so each user has all four texts. Fusion asserts keyword-only, vector-only and both-list hits. Bulk loading uses autocommit; the supersession step below demonstrates a transaction. Without <code>i * 0</code>, Postgres would evaluate the ARRAY subquery once, giving all 20,000 rows the same random vector.</p><div class="codeblock splittable" data-listing-note="Creates the tables, loads synthetic vectors and compares query plans."><div class="code-head"><span class="code-lang">sql</span><span class="code-file">setup.sql</span><span class="code-tag tested">Tested</span></div>
+<pre>\timing on
+CREATE EXTENSION IF NOT EXISTS vector;
+
+CREATE TABLE episodes (
+  id         bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id    text NOT NULL CHECK (user_id &lt;&gt; ''),
+  session_id text NOT NULL,
+  role       text NOT NULL CHECK (role IN ('user', 'assistant', 'tool')),
+  content    text NOT NULL,
+  metadata   jsonb NOT NULL DEFAULT '{}',
+  created_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (user_id, id)
+);
+
+CREATE TABLE memories (
+  id              bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id         text NOT NULL CHECK (user_id &lt;&gt; ''),
+  kind            text NOT NULL CHECK (kind IN ('fact', 'summary')),
+  content         text NOT NULL,
+  episode_id      bigint,
+  valid_from      timestamptz NOT NULL DEFAULT now(),
+  valid_to        timestamptz,
+  metadata        jsonb NOT NULL DEFAULT '{}',
+  embedding_model text NOT NULL,
+  embedding       vector(384) NOT NULL,
+  tsv             tsvector GENERATED ALWAYS AS
+                  (to_tsvector('english', content)) STORED,
+  FOREIGN KEY (user_id, episode_id) REFERENCES episodes (user_id, id)
+);
+
+INSERT INTO episodes (user_id, session_id, role, content)
+VALUES ('alice', 'a1', 'user', 'Keep my replies short'),
+       ('bob', 'b1', 'user', 'Use detailed replies');
+SELECT user_id, content FROM episodes ORDER BY user_id;
+SELECT version();
+SELECT extversion FROM pg_extension WHERE extname = 'vector';
+SELECT setseed(0.42);
+INSERT INTO memories (user_id, kind, content, episode_id, metadata,
+                      embedding_model, embedding)
+SELECT 'user' || (i % 20), 'fact',
+       CASE (i / 20) % 4 WHEN 0 THEN 'prefers dark mode and short answers'
+                  WHEN 1 THEN 'planning a trip to Paris in March'
+                  WHEN 2 THEN 'agent memory loves databases'
+                  ELSE 'deploys to a single Postgres server' END,
+       NULL, jsonb_build_object('source', 'chat', 'n', i),
+       'test-fixture-384',
+       ARRAY(SELECT (random() + i * 0)::real
+             FROM generate_series(1, 384))::vector
+FROM generate_series(1, 20000) i;
+ANALYZE;
+
+EXPLAIN (ANALYZE, BUFFERS, COSTS OFF, TIMING OFF)
+SELECT id, content FROM memories
+ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 1)
+LIMIT 5;
+
+CREATE INDEX memories_hnsw ON memories
+  USING hnsw (embedding vector_cosine_ops)
+  WITH (m = 16, ef_construction = 64);
+CREATE INDEX memories_fts ON memories USING gin (tsv);
+CREATE INDEX memories_user_current ON memories (user_id)
+  WHERE valid_to IS NULL;
+ANALYZE;
+EXPLAIN (ANALYZE, BUFFERS, COSTS OFF, TIMING OFF)
+SELECT id, content FROM memories
+ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 1)
+LIMIT 5;
+SELECT pg_size_pretty(pg_relation_size('memories_hnsw')) AS index_size;</pre></div>
+
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">run-setup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>docker exec -i memlab-08-pg psql -X -U postgres -v ON_ERROR_STOP=1 &lt; setup.sql</pre></div>
+<p>The setup inserted two raw turns in 0.287 ms.</p>
+
+<h3>Check search, isolation and supersession</h3>
+<p><code>recall.sql</code> runs keyword, vector and fused search, compares approximate results with the exact top 10, and tries default, iterative and wider HNSW scans. Searches use stored vectors (<code>id = 1</code> or 22) as queries, under the table owner before RLS. At LIMIT 50 the vector branch sorts the user-index rows exactly; at LIMIT 10 the planner chooses HNSW, exposing underfill and recovery with iterative or wider scans.<sup class="cite"><a href="#s08-1">1</a></sup></p>
+<p>With HNSW present, materialize filtered current rows in a CTE before sorting for exact search. Fusion needs unrounded RRF ordering, rounding only for display. The keyword parser ANDs terms: extract key terms or use OR; test code tokenization.</p>
+<p>Supersession needs a lab repair: row 22 is a travel fact; use preference row 2 with a newly computed embedding. The copied vector is wrong; stale retries can duplicate outbox rows. Enqueue only this transaction's audit RETURNING rows; zero means stale. Validity boundaries match. NOTIFY has no listener here (Chapter 09).</p>
+<p>RLS assertions then check unset-identity and Alice/Bob isolation, aborting on failure. Owners bypass RLS unless forced; use a non-owner without <code>BYPASSRLS</code>.<sup class="cite"><a href="#s08-15">15</a></sup> Set <code>app.user_id</code> with <code>set_config('app.user_id', $1, true)</code> in the query's own transaction to expire at commit; session-level <code>SET</code> survives for the next pooled caller. Only trusted application code may hold this role, deriving identity from authentication; exclude caller- or agent-supplied SQL. After COMMIT, <code>current_setting('app.user_id', true)</code> returns an empty string, hence <code>NULLIF</code>. Both tables reject empty <code>user_id</code>; post-<code>COMMIT</code> isolation is asserted on the same connection.</p><div class="codeblock splittable" data-listing-note="Runs recall and verifies unset, Alice and Bob row-level permissions."><div class="code-head"><span class="code-lang">sql</span><span class="code-file">recall.sql</span><span class="code-tag tested">Tested</span></div>
+<pre>SELECT id, content FROM memories,
+  plainto_tsquery('english', 'agent memory') query
+WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL AND tsv @@ query
+ORDER BY ts_rank_cd(tsv, query) DESC, id LIMIT 3;
+
+SELECT id, content FROM memories
+WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 1)
+LIMIT 3;
+
+EXPLAIN (ANALYZE, BUFFERS, COSTS OFF, TIMING OFF)
+SELECT id FROM memories
+WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 1)
+LIMIT 50;
+
+CREATE TEMP TABLE fused AS
+WITH q AS (SELECT embedding AS e FROM memories WHERE id = 1),
+semantic AS (
+  SELECT id, row_number() OVER (ORDER BY dist) AS rnk
+  FROM (SELECT id, embedding &lt;=&gt; (SELECT e FROM q) AS dist FROM memories
+        WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+        ORDER BY embedding &lt;=&gt; (SELECT e FROM q) LIMIT 50) s
+),
+keyword AS (
+  SELECT id, row_number() OVER (ORDER BY score DESC, id) AS rnk
+  FROM (SELECT id, ts_rank_cd(tsv, query) AS score
+        FROM memories, plainto_tsquery('english', 'agent memory') query
+        WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL AND tsv @@ query
+        ORDER BY score DESC, id LIMIT 50) k
+)
+SELECT m.id, m.content, s.rnk AS vector_rank, k.rnk AS keyword_rank,
+       round((coalesce(1.0 / (60 + s.rnk), 0)
+            + coalesce(1.0 / (60 + k.rnk), 0))::numeric, 5) AS rrf
+FROM semantic s
+FULL OUTER JOIN keyword k ON k.id = s.id
+JOIN memories m ON m.id = coalesce(s.id, k.id)
+ORDER BY rrf DESC, m.id;
+SELECT id, content, rrf FROM fused ORDER BY rrf DESC, id LIMIT 3;
+SELECT count(*) FILTER (WHERE vector_rank IS NULL) AS keyword_only,
+       count(*) FILTER (WHERE keyword_rank IS NULL) AS vector_only,
+       count(*) FILTER (WHERE vector_rank IS NOT NULL
+                         AND keyword_rank IS NOT NULL) AS both_lists FROM fused;
+DO $test$
+BEGIN
+  ASSERT EXISTS (SELECT FROM fused WHERE vector_rank IS NULL), 'no keyword-only hit';
+  ASSERT EXISTS (SELECT FROM fused WHERE keyword_rank IS NULL), 'no vector-only hit';
+  ASSERT EXISTS (SELECT FROM fused WHERE vector_rank IS NOT NULL
+                  AND keyword_rank IS NOT NULL), 'no both-list hit';
+  RAISE NOTICE 'fusion: keyword-only, vector-only and both-list hits verified';
+END $test$;
+
+BEGIN;
+SET LOCAL enable_indexscan = off;
+SET LOCAL enable_bitmapscan = off;
+CREATE TEMP TABLE truth ON COMMIT DROP AS
+SELECT id FROM memories
+WHERE embedding_model = 'test-fixture-384'
+  AND valid_from &lt;= now() AND valid_to IS NULL
+ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 1)
+LIMIT 10;
+SET LOCAL enable_indexscan = on;
+SET LOCAL hnsw.ef_search = 40;
+SELECT format('overlap=%s', count(*)) AS result FROM truth WHERE id IN (
+  SELECT id FROM memories
+  WHERE embedding_model = 'test-fixture-384'
+    AND valid_from &lt;= now() AND valid_to IS NULL
+  ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 1)
+  LIMIT 10);
+COMMIT;
+
+BEGIN;
+SET LOCAL hnsw.iterative_scan = off;
+SET LOCAL hnsw.ef_search = 40;
+EXPLAIN (ANALYZE, BUFFERS, COSTS OFF, TIMING OFF)
+SELECT id FROM memories WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+  ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 22)
+  LIMIT 10;
+SELECT format('default_scan=%s', count(*)) AS result FROM (
+  SELECT id FROM memories WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+  ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 22)
+  LIMIT 10) s;
+COMMIT;
+
+BEGIN;
+SET LOCAL hnsw.iterative_scan = relaxed_order;
+SET LOCAL hnsw.ef_search = 40;
+EXPLAIN (ANALYZE, BUFFERS, COSTS OFF, TIMING OFF)
+SELECT id FROM memories WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+  ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 22)
+  LIMIT 10;
+SELECT format('relaxed_order=%s', count(*)) AS result FROM (
+  SELECT id FROM memories WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+  ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 22)
+  LIMIT 10) s;
+COMMIT;
+
+BEGIN;
+SET LOCAL hnsw.iterative_scan = off;
+SET LOCAL hnsw.ef_search = 200;
+EXPLAIN (ANALYZE, BUFFERS, COSTS OFF, TIMING OFF)
+SELECT id FROM memories WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+  ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 22)
+  LIMIT 10;
+SELECT format('ef_search_200=%s', count(*)) AS result FROM (
+  SELECT id FROM memories WHERE embedding_model = 'test-fixture-384'
+  AND user_id = 'user2' AND valid_from &lt;= now() AND valid_to IS NULL
+  ORDER BY embedding &lt;=&gt; (SELECT embedding FROM memories WHERE id = 22)
+  LIMIT 10) s;
+COMMIT;
+
+CREATE ROLE agent_app LOGIN PASSWORD 'memlab-local-only'
+  NOSUPERUSER NOBYPASSRLS;
+GRANT SELECT, INSERT, UPDATE ON memories, episodes TO agent_app;
+GRANT USAGE ON ALL SEQUENCES IN SCHEMA public TO agent_app;
+ALTER TABLE memories ENABLE ROW LEVEL SECURITY;
+ALTER TABLE episodes ENABLE ROW LEVEL SECURITY;
+CREATE POLICY memories_owner ON memories TO agent_app
+  USING (user_id = NULLIF(current_setting('app.user_id', true), ''))
+  WITH CHECK (user_id = NULLIF(current_setting('app.user_id', true), ''));
+CREATE POLICY episodes_owner ON episodes TO agent_app
+  USING (user_id = NULLIF(current_setting('app.user_id', true), ''))
+  WITH CHECK (user_id = NULLIF(current_setting('app.user_id', true), ''));
+
+SET ROLE agent_app;
+SELECT current_user;
+DO $test$
+DECLARE t text; n integer;
+BEGIN
+  FOREACH t IN ARRAY ARRAY['episodes', 'memories'] LOOP
+    EXECUTE format('SELECT count(*) FROM %I', t) INTO n;
+    ASSERT n = 0, 'unset identity exposed rows';
+    EXECUTE format('UPDATE %I SET content = content', t);
+    GET DIAGNOSTICS n = ROW_COUNT;
+    ASSERT n = 0, 'unset identity updated rows';
+    BEGIN
+      EXECUTE format('INSERT INTO %I (user_id, %s) VALUES (%L, %s)',
+        t, CASE t WHEN 'episodes' THEN 'session_id, role, content'
+          ELSE 'kind, content, embedding_model, embedding' END,
+        'alice', CASE t WHEN 'episodes' THEN $$'test', 'user', 'test'$$
+          ELSE $$'fact', 'test', 'test-fixture-384',
+            array_fill(0.1::real, ARRAY[384])::vector$$ END);
+      RAISE EXCEPTION 'unset identity inserted a row';
+    EXCEPTION WHEN insufficient_privilege THEN NULL;
+    END;
+  END LOOP;
+  RAISE NOTICE 'unset: both tables hide rows and deny writes';
+END $test$;
+
+BEGIN;
+SET LOCAL ROLE agent_app;
+DO $test$
+DECLARE t text; who text; other_user text; n integer;
+BEGIN
+  FOREACH who IN ARRAY ARRAY['alice', 'bob'] LOOP
+    PERFORM set_config('app.user_id', who, true);
+    other_user := CASE who WHEN 'alice' THEN 'bob' ELSE 'alice' END;
+    FOREACH t IN ARRAY ARRAY['episodes', 'memories'] LOOP
+      EXECUTE format('SELECT count(*) FROM %I WHERE user_id &lt;&gt; %L',
+                     t, who) INTO n;
+      ASSERT n = 0, 'cross-user SELECT leak';
+      EXECUTE format('INSERT INTO %I (user_id, %s) VALUES (%L, %s)',
+        t, CASE t WHEN 'episodes' THEN 'session_id, role, content'
+          ELSE 'kind, content, embedding_model, embedding' END,
+        who, CASE t WHEN 'episodes' THEN $$'test', 'user', 'test'$$
+          ELSE $$'fact', 'test', 'test-fixture-384',
+            array_fill(0.1::real, ARRAY[384])::vector$$ END);
+      EXECUTE format('SELECT count(*) FROM %I WHERE user_id = %L',
+                     t, who) INTO n;
+      ASSERT n &gt; 0, 'own INSERT not readable';
+      EXECUTE format('UPDATE %I SET content = %L WHERE user_id = %L',
+                     t, 'updated', who);
+      GET DIAGNOSTICS n = ROW_COUNT;
+      ASSERT n &gt; 0, 'own UPDATE failed';
+      EXECUTE format('UPDATE %I SET content = %L WHERE user_id = %L',
+                     t, 'leak', other_user);
+      GET DIAGNOSTICS n = ROW_COUNT;
+      ASSERT n = 0, 'cross-user UPDATE leak';
+      BEGIN
+        EXECUTE format('INSERT INTO %I (user_id, %s) VALUES (%L, %s)',
+          t, CASE t WHEN 'episodes' THEN 'session_id, role, content'
+            ELSE 'kind, content, embedding_model, embedding' END,
+          other_user, CASE t WHEN 'episodes' THEN $$'x', 'user', 'x'$$
+            ELSE $$'fact', 'x', 'test-fixture-384',
+              array_fill(0.1::real, ARRAY[384])::vector$$ END);
+        RAISE EXCEPTION 'cross-user INSERT accepted';
+      EXCEPTION WHEN insufficient_privilege THEN NULL;
+      END;
+      BEGIN
+        EXECUTE format('UPDATE %I SET user_id = %L WHERE user_id = %L',
+                       t, other_user, who);
+        RAISE EXCEPTION 'owner reassignment accepted';
+      EXCEPTION WHEN insufficient_privilege THEN NULL;
+      END;
+      RAISE NOTICE '%: % SELECT/INSERT/UPDATE checks passed', who, t;
+    END LOOP;
+  END LOOP;
+END $test$;
+COMMIT;
+SET ROLE agent_app;
+DO $test$
+DECLARE t text; n integer;
+BEGIN
+  ASSERT NULLIF(current_setting('app.user_id', true), '') IS NULL,
+         'identity survived COMMIT';
+  FOREACH t IN ARRAY ARRAY['episodes', 'memories'] LOOP
+    EXECUTE format('SELECT count(*) FROM %I', t) INTO n;
+    ASSERT n = 0, 'post-COMMIT identity exposed rows';
+    BEGIN
+      EXECUTE format('INSERT INTO %I (user_id, %s) VALUES (%L, %s)',
+        t, CASE t WHEN 'episodes' THEN 'session_id, role, content'
+          ELSE 'kind, content, embedding_model, embedding' END,
+        '', CASE t WHEN 'episodes' THEN $$'test', 'user', 'test'$$
+          ELSE $$'fact', 'test', 'test-fixture-384',
+            array_fill(0.1::real, ARRAY[384])::vector$$ END);
+      RAISE EXCEPTION 'empty identity inserted a row';
+    EXCEPTION WHEN insufficient_privilege OR check_violation THEN NULL;
+    END;
+  END LOOP;
+  RAISE NOTICE 'post-COMMIT: both tables hide rows and deny empty-identity writes';
+END $test$;
+RESET ROLE;
+DO $test$
+DECLARE t text;
+BEGIN
+  FOREACH t IN ARRAY ARRAY['episodes', 'memories'] LOOP
+    BEGIN
+      EXECUTE format('UPDATE %I SET user_id = %L', t, '');
+      RAISE EXCEPTION 'empty user_id accepted';
+    EXCEPTION WHEN check_violation THEN NULL;
+    END;
+  END LOOP;
+  RAISE NOTICE 'CHECK: both tables reject empty user_id';
+END $test$;
+
+\timing on
+CREATE TABLE memory_audit (
+  old_id bigint NOT NULL REFERENCES memories,
+  new_id bigint NOT NULL REFERENCES memories,
+  changed_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE TABLE memory_outbox (
+  memory_id bigint NOT NULL REFERENCES memories,
+  delivered boolean NOT NULL DEFAULT false
+);
+BEGIN;
+WITH old AS (
+  UPDATE memories SET valid_to = now()
+  WHERE id = 22 AND user_id = 'user2' AND valid_to IS NULL
+  RETURNING *
+), fresh AS (
+  INSERT INTO memories (user_id, kind, content, episode_id,
+                        embedding_model, embedding)
+  SELECT user_id, kind, 'prefers light mode and short answers', episode_id,
+         embedding_model, embedding FROM old
+  RETURNING id
+)
+INSERT INTO memory_audit (old_id, new_id) SELECT 22, id FROM fresh;
+INSERT INTO memory_outbox (memory_id)
+SELECT new_id FROM memory_audit WHERE old_id = 22;
+NOTIFY memory_changed, 'user2';
+COMMIT;
+SELECT a.old_id, a.new_id, o.valid_to = n.valid_from AS same_boundary,
+       n.valid_from &lt;= now() AND n.valid_to IS NULL AS current,
+       (SELECT count(*) FROM memory_outbox WHERE memory_id = n.id) AS outbox_rows
+FROM memory_audit a JOIN memories o ON o.id = a.old_id
+JOIN memories n ON n.id = a.new_id;
+DO $test$
+BEGIN
+  ASSERT (SELECT count(*) FROM memory_audit) = 1, 'missing audit';
+  ASSERT (SELECT count(*) FROM memory_outbox) = 1, 'missing outbox';
+  ASSERT (SELECT valid_to FROM memories WHERE id = 22) =
+         (SELECT valid_from FROM memories WHERE id =
+           (SELECT new_id FROM memory_audit)), 'validity gap';
+  RAISE NOTICE 'supersession: old row closed; new row, audit and outbox committed';
+END $test$;
+BEGIN;
+INSERT INTO memories (user_id, kind, content, embedding_model, embedding)
+SELECT user_id, kind, 'timing probe', embedding_model, embedding
+FROM memories WHERE id = 22 RETURNING id;
+ROLLBACK;</pre></div>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">run-recall.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>docker exec -i memlab-08-pg psql -X -U postgres -v ON_ERROR_STOP=1 &lt; recall.sql</pre></div>
+
+<p>Approximate counts vary. Here overlap=7 is 70% for one query on 20,000 random vectors, versus the 200-query clustered average above. default_scan=2 underfills; both tuned scans fill LIMIT 10.</p>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>overlap=7
+default_scan=2
+relaxed_order=10
+ef_search_200=10
+NOTICE:  unset: both tables hide rows and deny writes
+NOTICE:  alice: episodes SELECT/INSERT/UPDATE checks passed
+NOTICE:  alice: memories SELECT/INSERT/UPDATE checks passed
+NOTICE:  bob: episodes SELECT/INSERT/UPDATE checks passed
+NOTICE:  bob: memories SELECT/INSERT/UPDATE checks passed
+NOTICE:  post-COMMIT: both tables hide rows and deny empty-identity writes
+NOTICE:  CHECK: both tables reject empty user_id</pre></div>
+<table class="data">
+  <colgroup><col class="c50"><col class="c25"><col class="c25"></colgroup>
+  <thead><tr><th>Measured in the walkthrough (20,000 synthetic vectors)</th><th>Exact search</th><th>HNSW</th></tr></thead>
+  <tbody>
+    <tr><td>Five-row read, SQL execution</td><td>18.620 ms</td><td>1.583 ms</td></tr>
+    <tr><td>Index size (raw pg_size_pretty)</td><td>None</td><td>39 MB</td></tr>
+  </tbody>
+</table>
+<p class="small muted">Single-run observations. Bulk-loading 20,000 memories took 716.956 ms. A separate single-row insert took 1.699 ms and was rolled back.</p>
+<h3>Remove only this walkthrough's resources</h3>
+<p>It removes the container, its temporary database data and lab files; the pre-existing image stays.</p><div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">cleanup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+if [ "${LAB:-}" != /var/tmp/memlab-08 ] || [ -L "$LAB" ] ||
+   [ ! -f "$LAB/.owner" ] || [ -L "$LAB/.owner" ] ||
+   [ ! -f "$LAB/.path" ] || [ -L "$LAB/.path" ] ||
+   [ -z "${LAB_TOKEN:-}" ] || [ -z "${LAB_REAL:-}" ] ||
+   [ "$(cat "$LAB/.owner")" != "$LAB_TOKEN" ] ||
+   [ "$(cat "$LAB/.path")" != "$LAB_REAL" ] ||
+   [ "$(realpath -e -- "$LAB")" != /var/tmp/memlab-08 ] ||
+   [ "$LAB_REAL" != /var/tmp/memlab-08 ]; then
+  echo "STOP: lab ownership check failed" &gt;&amp;2
+  exit 1
+fi
+owner=$(docker inspect -f '{{ index .Config.Labels "memfix.owner" }}' memlab-08-pg)
+if [ "$owner" != "$LAB_TOKEN" ]; then
+  echo "STOP: container ownership check failed" &gt;&amp;2
+  exit 1
+fi
+docker rm -fv memlab-08-pg
+cd /var/tmp
+rm -rf -- "$LAB"
+test ! -e "$LAB" &amp;&amp; test ! -L "$LAB"
+test -z "$(docker ps -aq --filter name='^memlab-08-pg$')"
+echo "Cleanup verified: lab and container removed"</pre></div>
+<p>Probes confirmed both scripts refuse to touch what they did not create. Selected output:</p>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>STOP: /var/tmp/memlab-08 already exists
+STOP: memlab-08-pg already exists
+STOP: lab ownership check failed
+Cleanup verified: lab and container removed</pre></div>
+
+
+</section>
+
+<section>
+<h2>Gotchas</h2>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: exact search slows down silently</p>
+  <p>A bare <code>vector</code> column returns correct answers at any size, only more slowly. Check <code>EXPLAIN</code> before launch and during growth: sorting a whole-table sequential scan may be unintended, while sorting user-index rows is intended exact search. Alert on p99 and rows sorted, not plan shape alone. Chapter 19 reports audit-discovered unindexed search; its fix remains unconfirmed.<sup class="cite"><a href="#s08-19">19</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: filters shorten the result</p>
+  <p>HNSW finds distance candidates before the <code>WHERE</code> filter, so it can underfill <code>LIMIT</code> even for thousands of eligible rows (a 5% filter keeps about 2 of 40 candidates). Tested at <code>ef_search</code> 40 and LIMIT 10 on the 100,000-row table, one-user filters averaged 2.025 rows with 20 equal users (5,000 rows each) and 0.005 rows with 5,000 users (20 rows each; 200 queries). Iterative scans raised the mean from 2.025 to 10.000 rows at 5% selectivity but only to 4.015 at 0.02% selectivity (eligible share), where the scan stopped at <code>hnsw.max_scan_tuples</code> (default 20,000). The 10-million-row case was not run. Counts do not measure eligible-top-10 recall. Consider higher <code>ef_search</code>, exact search over a selective user index, partial indexes or partitions.<sup class="cite"><a href="#s08-1">1</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: incompatible embedding spaces break search</p>
+  <p>Store immutable model-and-revision IDs in <code>embedding_model</code> and filter the vector branch on them; the fixture names a synthetic space. Re-embed and rebuild the indexes when the model, revision or dimension count changes (Chapter 03), validating the new space before switching reads; a dimension change also needs a second column or shadow table.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: churn and old versions</p>
+  <p>For update-heavy memory, run current pgvector. After bulk updates or re-embedding, watch <code>n_dead_tup</code> and <code>last_autovacuum</code> in <code>pg_stat_user_tables</code> and the size of <code>memories</code> indexes; the README speeds HNSW vacuum with <code>REINDEX INDEX CONCURRENTLY</code> first.<sup class="cite"><a href="#s08-1">1</a></sup> The changelog lists HNSW vacuum and index-repair fixes in 0.8.3 and 0.8.4.<sup class="cite"><a href="#s08-6">6</a></sup></p>
+</aside>
+
+<h3 id="pgvector-security">Security: IVFFlat index builds</h3>
+<p>CVE-2026-103484 affects pgvector versions before 0.8.7. A database user permitted to create an IVFFlat index can write data out of bounds during the index build, which could lead to arbitrary code execution. It concerns IVFFlat builds, not ordinary nearest-neighbour queries.<sup class="cite"><a href="#s08-20">20</a></sup></p>
+<p>Upgrade older installations to 0.8.7 or later before allowing IVFFlat index builds; the setup above pins 0.8.7. Its release tag is the version-bump commit of 2026-10-01; the announcement is dated 2026-10-05.<sup class="cite"><a href="#s08-6">6</a>,<a href="#s08-21">21</a>,<a href="#s08-22">22</a></sup> Restricting who can create indexes reduces exposure during the upgrade but does not patch the extension.</p>
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: the default store once memory is shared</p>
+  <p><strong>Pick it when</strong> Postgres is installed, writes need transactions, users need database isolation, or queries mix filters, keywords and vectors. Start with exact search and add HNSW when it exceeds a p99 SQL budget from your end-to-end latency target, at expected concurrency. Keep per-user search exact as described above; reserve HNSW for shared or large-tenant corpora with iterative scans, partial indexes or partitions.</p>
+  <p>Reconsider it when latency still misses the target after tuning, or when multi-hop relationships are the core need. Try pgvectorscale (label-filtered or disk-resident search) or VectorChord (quantized IVF with reranking) on dedicated hardware first, then a dedicated vector store (Chapter 11) or graph memory (Chapter 14). Chapter 22 (case study) shows row-level security as a second boundary below a patient-scoped gateway. Chapter 20 combines exact vector search, dated facts and a response cache in a single-user assistant.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s08-1"><span class="src-title">pgvector README (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/pgvector/pgvector/v0.8.7/README.md">https://raw.githubusercontent.com/pgvector/pgvector/v0.8.7/README.md</a></li>
+  <li id="s08-2"><span class="src-title">langgraph-checkpoint-postgres README</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/langchain-ai/langgraph/main/libs/checkpoint-postgres/README.md">https://raw.githubusercontent.com/langchain-ai/langgraph/main/libs/checkpoint-postgres/README.md</a></li>
+  <li id="s08-3"><span class="src-title">LangChain documentation, add memory</span> <span class="src-note">(official)</span><a class="url" href="https://docs.langchain.com/oss/python/langgraph/add-memory">https://docs.langchain.com/oss/python/langgraph/add-memory</a></li>
+  <li id="s08-4"><span class="src-title">mem0 pgvector vector-store documentation</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/mem0ai/mem0/main/docs/components/vectordbs/dbs/pgvector.mdx">https://raw.githubusercontent.com/mem0ai/mem0/main/docs/components/vectordbs/dbs/pgvector.mdx</a></li>
+  <li id="s08-5"><span class="src-title">Hindsight storage documentation</span> <span class="src-note">(official)</span><a class="url" href="https://hindsight.vectorize.io/developer/storage">https://hindsight.vectorize.io/developer/storage</a></li>
+  <li id="s08-6"><span class="src-title">pgvector CHANGELOG</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/pgvector/pgvector/v0.8.7/CHANGELOG.md">https://raw.githubusercontent.com/pgvector/pgvector/v0.8.7/CHANGELOG.md</a></li>
+  <li id="s08-7"><span class="src-title">PostgreSQL 19 released (2026-11-19)</span> <span class="src-note">(official)</span><a class="url" href="https://www.postgresql.org/about/news/postgresql-19-released-3449/">https://www.postgresql.org/about/news/postgresql-19-released-3449/</a></li>
+  <li id="s08-8"><span class="src-title">PostgreSQL 18.7, 17.12, 16.16, 15.20, 14.25 and 19 RC 2 released (2026-11-12)</span> <span class="src-note">(official)</span><a class="url" href="https://www.postgresql.org/about/news/postgresql-187-1712-1616-1520-1425-and-19-rc-2-released-3442/">https://www.postgresql.org/about/news/postgresql-187-1712-1616-1520-1425-and-19-rc-2-released-3442/</a></li>
+  <li id="s08-9"><span class="src-title">pgvectorscale README</span> <span class="src-note">(vendor)</span><a class="url" href="https://raw.githubusercontent.com/timescale/pgvectorscale/main/README.md">https://raw.githubusercontent.com/timescale/pgvectorscale/main/README.md</a></li>
+  <li id="s08-10"><span class="src-title">pgvectorscale releases, 0.9.1</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/timescale/pgvectorscale/releases">https://github.com/timescale/pgvectorscale/releases</a></li>
+  <li id="s08-11"><span class="src-title">VectorChord README</span> <span class="src-note">(vendor)</span><a class="url" href="https://raw.githubusercontent.com/tensorchord/VectorChord/main/README.md">https://raw.githubusercontent.com/tensorchord/VectorChord/main/README.md</a></li>
+  <li id="s08-12"><span class="src-title">ParadeDB documentation, create an index</span> <span class="src-note">(official)</span><a class="url" href="https://docs.paradedb.com/documentation/indexing/create-index">https://docs.paradedb.com/documentation/indexing/create-index</a></li>
+  <li id="s08-13"><span class="src-title">Apache AGE release notes</span> <span class="src-note">(official)</span><a class="url" href="https://age.apache.org/release-notes/">https://age.apache.org/release-notes/</a></li>
+  <li id="s08-14"><span class="src-title">pgvector-python, hybrid search with RRF example</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/pgvector/pgvector-python/master/examples/hybrid_search/rrf.py">https://raw.githubusercontent.com/pgvector/pgvector-python/master/examples/hybrid_search/rrf.py</a></li>
+  <li id="s08-15"><span class="src-title">PostgreSQL documentation, row security policies</span> <span class="src-note">(official)</span><a class="url" href="https://www.postgresql.org/docs/current/ddl-rowsecurity.html">https://www.postgresql.org/docs/current/ddl-rowsecurity.html</a></li>
+  <li id="s08-16"><span class="src-title">PostgreSQL documentation, NOTIFY</span> <span class="src-note">(official)</span><a class="url" href="https://www.postgresql.org/docs/current/sql-notify.html">https://www.postgresql.org/docs/current/sql-notify.html</a></li>
+  <li id="s08-17"><span class="src-title">PostgreSQL documentation, pg_isready</span> <span class="src-note">(official; TCP host, port and timeout options)</span><a class="url" href="https://www.postgresql.org/docs/current/app-pg-isready.html">https://www.postgresql.org/docs/current/app-pg-isready.html</a></li>
+  <li id="s08-18"><span class="src-title">Official PostgreSQL Docker entrypoint</span> <span class="src-note">(temporary server uses listen_addresses='')</span><a class="url" href="https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh">https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh</a></li>
+  <li id="s08-19"><span class="src-title">First-party case study, audit and migration status (26–27 September 2026); see Chapter 19</span> <span class="src-note">(operator measurements, published with permission; not independently checkable)</span></li>
+  <li id="s08-20"><span class="src-title">CVE-2026-103484: pgvector buffer overflow in IVFFlat index build (published 2026-10-01)</span> <span class="src-note">(official CVE record)</span><a class="url" href="https://www.cve.org/CVERecord?id=CVE-2026-103484">https://www.cve.org/CVERecord?id=CVE-2026-103484</a></li>
+  <li id="s08-21"><span class="src-title">pgvector v0.8.7 release tag, version-bump commit dated 2026-10-01</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/pgvector/pgvector/releases/tag/v0.8.7">https://github.com/pgvector/pgvector/releases/tag/v0.8.7</a></li>
+  <li id="s08-22"><span class="src-title">pgvector 0.8.7 Released (PostgreSQL announcement, 2026-10-05)</span> <span class="src-note">(official)</span><a class="url" href="https://www.postgresql.org/about/news/pgvector-087-released-3392/">https://www.postgresql.org/about/news/pgvector-087-released-3392/</a></li>
+</ol>
+</section>
+
+</article>

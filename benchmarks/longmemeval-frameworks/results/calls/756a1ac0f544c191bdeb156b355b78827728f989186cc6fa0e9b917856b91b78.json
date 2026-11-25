@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 24
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c1c94e1124d08b2de43a0edf332ec453fb4231a4282a5d5b4f8d4988a5697310",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-efcfb12b-1b70-481b-a7e3-c2c125062a80",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"DRIVES\", \"fact\": \"The Mustang drives the Trigger.\", \"valid_at\": \"2023-05-28T06:29:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"The Mustang is sited in Belmont Arts Center.\", \"valid_at\": \"2023-05-28T06:29:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"The Mustang is sited in Riverside Park.\", \"valid_at\": \"2023-05-28T06:29:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"The Mustang has a cracked windshield.\", \"valid_at\": \"2023-05-28T06:29:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795342869,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 321,
+      "prompt_tokens": 9120,
+      "total_tokens": 9441,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"DRIVES\", \"fact\": \"The Mustang drives the Trigger.\", \"valid_at\": \"2023-05-28T06:29:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"The Mustang is sited in Belmont Arts Center.\", \"valid_at\": \"2023-05-28T06:29:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"The Mustang is sited in Riverside Park.\", \"valid_at\": \"2023-05-28T06:29:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"The Mustang has a cracked windshield.\", \"valid_at\": \"2023-05-28T06:29:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 410.8972783319914,
+  "prompt_tokens_local": 9120
+}

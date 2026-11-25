@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1a0703a0dce34cd612cde3fd8c5c0f16398a33e452a57066a9af7c76a8ab775f",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0d52ea0a-2aab-4f06-a633-3d9680d16f8d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"County Cork\", \"target_entity_name\": \"IrishCentral\", \"relation_type\": \"IS_ABOUT\", \"fact\": \"IrishCentral is a comprehensive website covering Irish news, culture, history, and heritage.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null}, {\"source_entity_name\": \"County Cork\", \"target_entity_name\": \"The Irish Times\", \"relation_type\": \"IS_ABOUT\", \"fact\": \"The Irish Times is a leading Irish newspaper with a wealth of information on Irish news, culture, and lifestyle.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null}, {\"source_entity_name\": \"County Cork\", \"target_entity_name\": \"IrishGenealogy.ie\", \"relation_type\": \"IS_ABOUT\", \"fact\": \"IrishGenealogy.ie is a government-funded website providing access to Irish genealogy records and resources.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null}, {\"source_entity_name\": \"County Cork\", \"target_entity_name\": \"Duchas.ie\", \"relation_type\": \"IS_ABOUT\", \"fact\": \"Duchas.ie is a digital archive of Irish folklore, mythology, and cultural heritage.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795368419,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 342,
+      "prompt_tokens": 8934,
+      "total_tokens": 9276,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4916
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"County Cork\", \"target_entity_name\": \"IrishCentral\", \"relation_type\": \"IS_ABOUT\", \"fact\": \"IrishCentral is a comprehensive website covering Irish news, culture, history, and heritage.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null}, {\"source_entity_name\": \"County Cork\", \"target_entity_name\": \"The Irish Times\", \"relation_type\": \"IS_ABOUT\", \"fact\": \"The Irish Times is a leading Irish newspaper with a wealth of information on Irish news, culture, and lifestyle.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null}, {\"source_entity_name\": \"County Cork\", \"target_entity_name\": \"IrishGenealogy.ie\", \"relation_type\": \"IS_ABOUT\", \"fact\": \"IrishGenealogy.ie is a government-funded website providing access to Irish genealogy records and resources.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null}, {\"source_entity_name\": \"County Cork\", \"target_entity_name\": \"Duchas.ie\", \"relation_type\": \"IS_ABOUT\", \"fact\": \"Duchas.ie is a digital archive of Irish folklore, mythology, and cultural heritage.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null}]}",
+  "seconds": 57.01645265999832,
+  "prompt_tokens_local": 8934
+}

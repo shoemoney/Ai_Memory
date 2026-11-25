@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q007",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "c1a10941ea050c24fc09a8376192629c0f4b410729ea77ab5ac6b02d5bf77bd5",
+  "reference_sha256": "e04c221ef0e28eb40887055bf98a90383f01c796e0ed5cfb1beb70f473e0c4af",
+  "method": "rag",
+  "answer": "The man entered the inn at the sign of the Cross of Colbas.",
+  "response": {
+    "text": "The man entered the inn at the sign of the Cross of Colbas.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 16,
+      "prompt_tokens": 3025,
+      "total_tokens": 3041,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 20.952138068998465,
+    "request_sha256": "4106be6f698a221944348a91a02f23e07ff08d8014c09ac0dae7aecba0a6a4c3",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    319,
+    570,
+    441,
+    573,
+    559,
+    298,
+    371,
+    303,
+    123,
+    533,
+    532,
+    174,
+    302,
+    396,
+    530,
+    584,
+    178,
+    479,
+    583,
+    585
+  ],
+  "retrieval_scores": [
+    0.48605072498321533,
+    0.4756178855895996,
+    0.4709717035293579,
+    0.46961405873298645,
+    0.4637334942817688,
+    0.4475358724594116,
+    0.44328993558883667,
+    0.4425613582134247,
+    0.4412453770637512,
+    0.4412141442298889,
+    0.4387039840221405,
+    0.43689051270484924,
+    0.43673622608184814,
+    0.4365561008453369,
+    0.43545806407928467,
+    0.4270322322845459,
+    0.42575663328170776,
+    0.4246762692928314,
+    0.4242580533027649,
+    0.42322155833244324
+  ],
+  "retrieval_seconds": 0.058058280003024265,
+  "provided_context_sha256": "daf48b8dad19d39f773093a565c8b351b188cdc768b33f5c95960abccec73c08",
+  "provided_context_tokens": 2710,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "3fdd2d7874a4c029c8d3880b4db1c1959ce0913c58f0356c011e8f49615f036c",
+    "raw_answer_sha256": "130277f18c6050cc4536bd9f843a78e7d998dc17fa09ae8d0826994dd3c89d40",
+    "answer_redacted": false
+  }
+}

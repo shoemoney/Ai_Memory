@@ -1,0 +1,168 @@
+{
+  "id": "simple_python_150",
+  "category": "simple_python",
+  "result": [
+    {
+      "calculate_roi": "{\"deposit\":1000,\"annual_interest_rate\":0.03,\"years\":1}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': \"Calculate the return of investment of a bank's savings account with a deposit of $1000, annual interest rate of 3% for 1 year.\"}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "calculate_roi",
+                "description": "Calculate the return on investment for a given deposit amount, annual interest rate, and time frame.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "deposit": {
+                      "type": "integer",
+                      "description": "The initial deposit amount."
+                    },
+                    "annual_interest_rate": {
+                      "type": "number",
+                      "description": "The annual interest rate provided by the bank. This is a float type value.",
+                      "format": "float"
+                    },
+                    "years": {
+                      "type": "integer",
+                      "description": "The period for which the money is invested."
+                    }
+                  },
+                  "required": [
+                    "deposit",
+                    "annual_interest_rate",
+                    "years"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 390,
+    "output_token_count": 134,
+    "latency": 0.6992276940000011
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Calculate the return of investment of a bank's savings account with a deposit of $1000, annual interest rate of 3% for 1 year."
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "calculate_roi",
+          "description": "Calculate the return on investment for a given deposit amount, annual interest rate, and time frame.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "deposit": {
+                "type": "integer",
+                "description": "The initial deposit amount."
+              },
+              "annual_interest_rate": {
+                "type": "number",
+                "description": "The annual interest rate provided by the bank. This is a float type value.",
+                "format": "float"
+              },
+              "years": {
+                "type": "integer",
+                "description": "The period for which the money is invested."
+              }
+            },
+            "required": [
+              "deposit",
+              "annual_interest_rate",
+              "years"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-BjJCzE5Z3uAGoQFU5uOMaNikeWOnBGGs",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "GrIVSPGioN1PyUzbSjTXhjiMPjxXbmWX",
+              "function": {
+                "arguments": "{\"deposit\":1000,\"annual_interest_rate\":0.03,\"years\":1}",
+                "name": "calculate_roi"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants me to calculate the return of investment for a savings account. I have the following information:\n- Deposit amount: $1000\n- Annual interest rate: 3% (or 0.03 as a decimal)\n- Time period: 1 year\n\nI need to use the calculate_roi function with these parameters."
+        }
+      }
+    ],
+    "created": 1795286707,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 134,
+      "prompt_tokens": 390,
+      "total_tokens": 524,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 388,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 388,
+      "prompt_n": 2,
+      "prompt_ms": 8.593,
+      "prompt_per_token_ms": 4.2965,
+      "prompt_per_second": 232.7475852438031,
+      "predicted_n": 134,
+      "predicted_ms": 680.128,
+      "predicted_per_token_ms": 5.113744360902256,
+      "predicted_per_second": 195.55142561400206
+    }
+  },
+  "elapsed_seconds": 0.6993506629951298,
+  "score": {
+    "valid": true
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "MemoryAgentBench": {
+    "source": "https://arxiv.org/html/2507.05257v4",
+    "source_sha256": "10099fc592cad0b7c7c71cd28e91f7d7c4f7a929ca4a111e476a5a64de541dcd",
+    "main_table_EventQA_percent": {
+      "GPT-4o-mini full context": 59.0,
+      "BM25": 74.6,
+      "Text-Embed-3-Small": 63.0
+    },
+    "GPT-4o-mini_EventQA_length_ablation_percent": {
+      "51K": 90.2,
+      "108K": 85.8,
+      "534K": 59.0
+    },
+    "published_EventQA_retrieval_chunk_tokens": 4096,
+    "published_EventQA_retrieval_top_k": 10
+  },
+  "HaluMem": {
+    "source": "https://arxiv.org/html/2511.03506",
+    "source_sha256": "354dcb273dbac93c9d815ce657c988b274f60cd8c5cc2d5fdd427f42c1c7ee14",
+    "Medium_QA_percent": {
+      "MemOS": {
+        "Correct": 67.23,
+        "Hallucination": 15.17,
+        "Omission": 17.59
+      },
+      "Mem0": {
+        "Correct": 53.02,
+        "Hallucination": 19.17,
+        "Omission": 27.81
+      }
+    },
+    "published_QA_n": 3467,
+    "published_reader": "GPT-4o",
+    "published_judge": "GPT-4o",
+    "published_retrieval_top_k": 20
+  },
+  "CMB": {
+    "source": "https://github.com/Tencent-Hunyuan/Hy-Memory/blob/d8138b501a755f662a024f7e8eb879613eabf1d3/docs/papers/CMB_A_Coding_Memory_Benchmark_for_Long_Horizon_and_Interleaved_Coding_Agents.pdf",
+    "source_sha256": "46365d4f12709e08951701413f352b910afb5675155e156edb61e4e8ef81e99c",
+    "TriLink_resolved_percent": {
+      "Sonnet-5": 43.1,
+      "DeepSeek v4-flash": 35.6
+    },
+    "other_memory_resolved_percent": {
+      "Sonnet-5": 36.6,
+      "DeepSeek v4-flash": 28.2
+    },
+    "DeepSeek_v4_flash_RAG_resolved_percent": 26.9,
+    "DeepSeek_v4_flash_QA_percent": {
+      "TriLink": 64.2,
+      "RAG": 62.2
+    }
+  }
+}

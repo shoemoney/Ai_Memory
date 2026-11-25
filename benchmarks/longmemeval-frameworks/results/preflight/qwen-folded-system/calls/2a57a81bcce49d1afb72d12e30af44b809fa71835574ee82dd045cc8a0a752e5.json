@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 65
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1e7601fc9eef04cf5760ce9550368f115b805213ca32a34acd8355bf84407da8",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-bf06b7c3-4c43-4c0b-9601-b351c55d96b7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Tokyo's urban landscape reflects the city's commitment to sustainability and creating livable spaces for residents\", \"Tokyo has one of the world's most efficient public transportation systems\", \"Tokyo has a compact city design\", \"Tokyo has many parks and gardens\", \"Tokyo has strict building codes that require energy-efficient design and technology\", \"Tokyo's focus on sustainability can serve as an example for other cities\", \"Individuals can reduce energy consumption\", \"Individuals can reduce single-use plastic\", \"Individuals can practice environmentally friendly lifestyle choices\", \"Individuals can support sustainable practices\", \"Individuals can educate themselves and others about the importance of sustainability\", \"Individuals can join local advocacy groups\", \"Individuals can participate in local government meetings\", \"Individuals can write to elected officials\", \"Individuals can share their ideas with peers, friends, and family members\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330494,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 182,
+      "prompt_tokens": 2470,
+      "total_tokens": 2652,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Tokyo's urban landscape reflects the city's commitment to sustainability and creating livable spaces for residents\", \"Tokyo has one of the world's most efficient public transportation systems\", \"Tokyo has a compact city design\", \"Tokyo has many parks and gardens\", \"Tokyo has strict building codes that require energy-efficient design and technology\", \"Tokyo's focus on sustainability can serve as an example for other cities\", \"Individuals can reduce energy consumption\", \"Individuals can reduce single-use plastic\", \"Individuals can practice environmentally friendly lifestyle choices\", \"Individuals can support sustainable practices\", \"Individuals can educate themselves and others about the importance of sustainability\", \"Individuals can join local advocacy groups\", \"Individuals can participate in local government meetings\", \"Individuals can write to elected officials\", \"Individuals can share their ideas with peers, friends, and family members\"]}",
+  "seconds": 3.142835960010416,
+  "prompt_tokens_local_gemma_estimate": 2520
+}

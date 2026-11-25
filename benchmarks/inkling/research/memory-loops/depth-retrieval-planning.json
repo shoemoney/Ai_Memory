@@ -1,0 +1,47 @@
+{
+  "n": 150,
+  "cells": 12,
+  "reader_calls": 1800,
+  "judge_votes": 5400,
+  "stock_reader_mean_seconds": {
+    "full-oracle": 5.835207425745123,
+    "bm25-standard": 3.0218319411232852,
+    "dense-standard": 3.040607720983777
+  },
+  "judge_vote_mean_seconds": 0.1551273590562643,
+  "stock_snapshot_sha256": {
+    "run.log": "5375121796d726bbc1b5144cb8c27fb331f7efe3f4ee1baeb0076eca1cd2255a",
+    "memory-samples.jsonl": "b070acb6cfa2c83be8386457ef6887622843fc143a80609ef4d5aeddbc84ecc1",
+    "longmemeval/summary.json": "fb80cc72d11b1ee077afc067f9008e7f6d2966ee5afeb1dc21a69a639574729a"
+  },
+  "log_evidence": {
+    "reader_starts": 184,
+    "longmemeval_progress_records": 151,
+    "caution": "run.log spans refusal, LongMemEval, LoCoMo, interruptions and failures; its total is not LongMemEval wall time"
+  },
+  "memory_sample_evidence": {
+    "n": 69,
+    "span_seconds": 2151.4228780269623,
+    "observed_server_pid_changes": 49,
+    "median_observed_restart_spacing_seconds": 30.565083980560303,
+    "max_swap_used_mib": 6311.19,
+    "caution": "30-second sampling aliases restart durations; spacing includes inference and is not startup latency"
+  },
+  "runtime_hours": 3.5916983960613007,
+  "stress_hours": 5.711367515220268,
+  "assumptions": "Reader scales by layer visits (24+36+48+72)/48=3.75; 30s/start; stress: 60s/start and summed scaling 5; no downloads/conversions; stock quantization differs from native varloop",
+  "largest_n_under_8h_up_to_requested_150": 150,
+  "power": {
+    "alpha": 0.05,
+    "power": 0.8,
+    "assumed_depth_discordance": 0.42,
+    "mde_depth_pp": 14.824595527763123,
+    "mde_depth_sensitivity_pp": {
+      "0.2": 10.229942804890024,
+      "0.4": 14.467323856976531,
+      "0.6": 17.71878069659319
+    },
+    "mde_interaction_pp": 20.965144052058143,
+    "caution": "Normal approximation; depth discordance unmeasured; interaction assumes independent lane difference scores with variance .42 each. Multiplicity and per-type effects need more power."
+  }
+}

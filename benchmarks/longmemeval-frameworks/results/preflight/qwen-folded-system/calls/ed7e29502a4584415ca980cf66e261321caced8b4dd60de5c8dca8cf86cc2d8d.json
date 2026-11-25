@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 18
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "57b16e8a7a19a9794dce6b2d5d7e521bcb4240ddecb9a4f55d2dc3178588225e",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-61e3cdbf-5f5f-42c7-ab35-b26509351303",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"considered buying sandals with a heel\", \"remembered wearing Converse Chuck Taylor's to a music festival\", \"considered buying from Birkenstock, Teva, Sanuk, Steve Madden, and OluKai brands\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330246,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 52,
+      "prompt_tokens": 1677,
+      "total_tokens": 1729,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 680
+      }
+    }
+  },
+  "text": "{\"facts\": [\"considered buying sandals with a heel\", \"remembered wearing Converse Chuck Taylor's to a music festival\", \"considered buying from Birkenstock, Teva, Sanuk, Steve Madden, and OluKai brands\"]}",
+  "seconds": 1.210074959002668,
+  "prompt_tokens_local_gemma_estimate": 1710
+}

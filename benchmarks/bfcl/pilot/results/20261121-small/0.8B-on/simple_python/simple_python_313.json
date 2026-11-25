@@ -1,0 +1,156 @@
+{
+  "id": "simple_python_313",
+  "category": "simple_python",
+  "result": [
+    {
+      "celebrity_net_worth_get": "{\"name\":\"Messi\",\"currency\":\"EUR\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': \"What's the total worth in euro of Messi according to latest data?\"}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "celebrity_net_worth_get",
+                "description": "Get the total net worth of a sports celebrity based on most recent data.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The full name of the sports celebrity."
+                    },
+                    "currency": {
+                      "type": "string",
+                      "description": "The currency in which the net worth will be returned. Default is 'USD'."
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "currency"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 341,
+    "output_token_count": 187,
+    "latency": 5.321175866003614
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the total worth in euro of Messi according to latest data?"
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "celebrity_net_worth_get",
+          "description": "Get the total net worth of a sports celebrity based on most recent data.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The full name of the sports celebrity."
+              },
+              "currency": {
+                "type": "string",
+                "description": "The currency in which the net worth will be returned. Default is 'USD'."
+              }
+            },
+            "required": [
+              "name",
+              "currency"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-GU7U9UrOtS8ejQRBonoUOtFsbAAMKiVD",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "bSjjj5xKhEaePQTKztEhkN25Tfji9vp6",
+              "function": {
+                "arguments": "{\"name\":\"Messi\",\"currency\":\"EUR\"}",
+                "name": "celebrity_net_worth_get"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for the total net worth of Messi in euros according to latest data. I can see there's a celebrity net worth function available that I can use. Let me check what parameters are needed:\n\n- name: The full name of the sports celebrity\n- currency: The currency in which the net worth will be returned (default is 'USD')\n\nFor Messi, the full name would be \"Messi\" (or \"Messi Cristiano Ronaldo\" if they want to be more specific, but I'll use \"Messi\" as that's the most common representation). The currency should be 'EUR' since they're asking for euros.\n\nLet me make the function call."
+        }
+      }
+    ],
+    "created": 1795287664,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 187,
+      "prompt_tokens": 341,
+      "total_tokens": 528,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 339,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 339,
+      "prompt_n": 2,
+      "prompt_ms": 7.381,
+      "prompt_per_token_ms": 3.6905,
+      "prompt_per_second": 270.96599376778215,
+      "predicted_n": 187,
+      "predicted_ms": 5302.864,
+      "predicted_per_token_ms": 28.510021505376343,
+      "predicted_per_second": 35.07538567838059
+    }
+  },
+  "elapsed_seconds": 5.321360253998137,
+  "score": {
+    "valid": true
+  }
+}

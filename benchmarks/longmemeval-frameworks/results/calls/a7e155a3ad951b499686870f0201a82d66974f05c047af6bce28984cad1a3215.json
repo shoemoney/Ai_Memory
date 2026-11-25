@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 22
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "104c047f52f4adfff72aaee56e1cb605f9fe8f1a4100e3bf536bae5c81e7aafc",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-af5b8f1e-ec12-4060-bd79-191817592c2e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Asked about the latest cutting-edge technologies in robotics\",\n        \"Asked about the potential of wearable robots for the average person\",\n        \"Asked about ethical concerns associated with robotics\",\n        \"Asked about the potential for unforeseen consequences of emerging technologies\",\n        \"Asked about regulations and guidelines for the use of robotics technology\",\n        \"Asked about consequences for those who misuse robotics technology\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332028,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 2686,
+      "total_tokens": 2772,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Asked about the latest cutting-edge technologies in robotics\",\n        \"Asked about the potential of wearable robots for the average person\",\n        \"Asked about ethical concerns associated with robotics\",\n        \"Asked about the potential for unforeseen consequences of emerging technologies\",\n        \"Asked about regulations and guidelines for the use of robotics technology\",\n        \"Asked about consequences for those who misuse robotics technology\"\n    ]\n}",
+  "seconds": 3.6498928500077454,
+  "prompt_tokens_local": 2686,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

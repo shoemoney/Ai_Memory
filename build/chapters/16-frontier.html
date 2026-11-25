@@ -1,0 +1,387 @@
+<article class="chapter essay" data-ch="16" data-part="f" data-running="The research frontier">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part F &middot; Chapter 16</p>
+  <div class="opener-num" aria-hidden="true">16</div>
+  <h1>The research frontier</h1>
+  <p class="opener-summary">Research beyond files, vectors and graphs: maturity, evidence and what builders can use now.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-research">Mostly research</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Evidence</p>
+      <p class="glance-value">Most numbers are reported by the authors.</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">State of</p>
+      <p class="glance-value">November 2026</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Builders deciding what to watch, test or ignore.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>Map of the frontier</h2>
+<div class="plain">
+  <p class="lead">Agent memory mostly uses files, vector indexes and graphs. Figure 1 maps twelve lines of research beyond them, grouped into six sections below.</p>
+</div>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 321" role="img" aria-label="Matrix of twelve lines of work against three maturity levels: shipped, prototype and paper only, with example names in each cell.">
+  <text class="d-label" x="20" y="16">Line of work</text>
+  <text class="d-label" x="198" y="16">Shipped</text>
+  <text class="d-label" x="340" y="16">Prototype</text>
+  <text class="d-label" x="482" y="16">Paper only</text>
+
+  <text class="d-title" x="20" y="38">Sleep-time work</text>
+  <rect class="d-box accent" x="190" y="22" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="259" y="38" text-anchor="middle">Letta agents</text>
+  <rect class="d-box" x="332" y="22" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="38" text-anchor="middle">Claude dreams</text>
+
+  <text class="d-title" x="20" y="63">Memory in weights</text>
+  <rect class="d-box" x="332" y="47" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="63" text-anchor="middle">ROME, MemoryLLM</text>
+  <rect class="d-box" x="474" y="47" width="124" height="22" rx="3"/>
+  <text class="d-sub" x="536" y="63" text-anchor="middle">Titans, user edits</text>
+
+  <text class="d-title" x="20" y="88">Compressed, latent</text>
+  <rect class="d-box" x="332" y="72" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="88" text-anchor="middle" textLength="126" lengthAdjust="spacingAndGlyphs">Cartridges, RLM, MemGen</text>
+
+  <text class="d-title" x="20" y="113">Self-curated notes</text>
+  <rect class="d-box" x="332" y="97" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="113" text-anchor="middle">A-MEM, ACE, AgeMem</text>
+  <rect class="d-box" x="474" y="97" width="124" height="22" rx="3"/>
+  <text class="d-sub" x="536" y="113" text-anchor="middle">Mem-alpha, SoMem</text>
+
+  <text class="d-title" x="20" y="138">Context engineering</text>
+  <rect class="d-box accent" x="190" y="122" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="259" y="138" text-anchor="middle">Memory tool, editing</text>
+
+  <text class="d-title" x="20" y="163">Long context vs RAG</text>
+  <rect class="d-box" x="474" y="147" width="124" height="22" rx="3"/>
+  <text class="d-sub" x="536" y="163" text-anchor="middle">Context-rot studies</text>
+
+  <text class="d-title" x="20" y="188">Memory systems</text>
+  <rect class="d-box accent" x="190" y="172" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="259" y="188" text-anchor="middle">Mem0</text>
+  <rect class="d-box" x="332" y="172" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="188" text-anchor="middle">MemOS, MemoryOS</text>
+
+  <text class="d-title" x="20" y="213">Skills, procedures</text>
+  <rect class="d-box accent" x="190" y="197" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="259" y="213" text-anchor="middle">Agent Skills</text>
+  <rect class="d-box" x="332" y="197" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="213" text-anchor="middle">memU (beta), auto-skills</text>
+
+  <text class="d-title" x="20" y="238">Shared agent memory</text>
+  <rect class="d-box" x="474" y="222" width="124" height="22" rx="3"/>
+  <text class="d-sub" x="536" y="238" text-anchor="middle">Governed scopes</text>
+
+  <text class="d-title" x="20" y="263">New benchmarks</text>
+  <rect class="d-box" x="332" y="247" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="263" text-anchor="middle">WorldMemArena</text>
+  <rect class="d-box" x="474" y="247" width="124" height="22" rx="3"/>
+  <text class="d-sub" x="536" y="263" text-anchor="middle">MemoryAgentBench</text>
+
+  <text class="d-title" x="20" y="288">Action benchmarks</text>
+  <rect class="d-box accent" x="190" y="272" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="259" y="288" text-anchor="middle">STATE-Bench</text>
+  <rect class="d-box" x="332" y="272" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="288" text-anchor="middle" textLength="128" lengthAdjust="spacingAndGlyphs">MemoryArena, DolphinBench</text>
+
+  <text class="d-title" x="20" y="313">Memory attacks</text>
+  <rect class="d-box" x="332" y="297" width="138" height="22" rx="3"/>
+  <text class="d-sub" x="401" y="313" text-anchor="middle">InjecMEM, SkillJack</text>
+  <rect class="d-box" x="474" y="297" width="124" height="22" rx="3"/>
+  <text class="d-sub" x="536" y="313" text-anchor="middle">MINJA, AgentPoison</text>
+</svg>
+<figcaption><b>Figure 1.</b> Lines of work by maturity, as of November 2026. Colored boxes mark usable products, APIs or maintained open-source implementations. Badges in the text use the same scale: Shipped, Research preview (Claude dreams, access request needed), Beta, Prototype and Paper only. Prototype labels state whether code was run; Paper only entries were not run. Badges label leading artifacts. Unbadged entries have no code-maturity assessment; incidental comparisons are unbadged. For benchmarks and attacks, Prototype means public code or data. Empty cells mean no sourced entry. Local results without intervals are indicative only.</figcaption>
+</figure>
+
+<p><strong>Prototype</strong> in Figure 1 means open code that works in a lab, with no support promise, and <strong>Paper only</strong> means a published result with no code a team could adopt. Placement follows cited evidence; lines can occupy multiple columns.</p>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: results are mostly self-reported</p>
+  <p>Most figures are self-reported. An independent audit disputes LoCoMo’s reference answers (a long-conversation benchmark); its official issue thread records judge inconsistencies and acknowledged data-quality concerns (Chapter 17).<sup class="cite"><a href="#s16-74">74</a>,<a href="#s16-1">1</a></sup></p>
+</aside>
+</section>
+
+<section>
+<h2>Compute before the question arrives</h2>
+
+<h3>Sleep-time compute, dreaming and offline consolidation</h3>
+<p>Sleep-time compute moves work off the query path. It anticipates questions and saves notes instead of rederiving them at query time.<sup class="cite"><a href="#s16-2">2</a></sup> The authors report up to 2.5 times lower cost per query when several questions share one context. <strong>Tested locally</strong> (benchmarks/gap-reruns): a 7B model on 32 grade-school math contexts, 5 questions each. Arms: direct answers, notes for one question and notes shared across 5 questions, at different verbosity levels. Notes average 646 tokens per context. Weighted cost per answer = note tokens ÷ questions sharing notes + 10 × query-time generated tokens. The paper’s assumed tenfold cost for latency-optimized query tokens is a proxy here, not measured prices. Substitute your price ratio for spend estimates. Single-question notes cost 3.2 times shared notes with the tersest prompt, 1.1 with the most verbose. These ratios measure reuse, not savings over direct answering. Verbose notes lowered accuracy from 58.8% to 48.1% (difference -10.6 points, 95% interval -17.5 to -3.7). A/B consolidation against direct answers; shorten or skip notes if accuracy falls.</p>
+<ul>
+  <li><span class="badge badge-shipped">Shipped</span> <strong>Letta.</strong> Version 0.7.0 added sleep-time agents: one talks to the user while another edits its memory blocks.<sup class="cite"><a href="#s16-3">3</a></sup></li>
+  <li><span class="badge badge-prototype">Research preview</span> <strong>Claude dreams</strong> (Managed Agents, access request needed). An asynchronous dream reads a memory store and 1 to 100 past session transcripts. It merges duplicates and replaces stale or contradicted entries in a new store. Inputs stay unchanged; outputs are discardable. A dream takes minutes to hours, is billed at standard token rates, and is not eligible for zero data retention or HIPAA.<sup class="cite"><a href="#s16-4">4</a></sup></li>
+  <li><strong>Anthropic's own measurements.</strong> A 6 November 2026 essay reports wikis built over 128 dreams lifted scores on 25 questions from 13% to 48% of graded criteria, and that wiki plus search scored 61% against 53% for search alone. On one task the wiki grew to 1.77 times the source token count with no clear accuracy gain. These are vendor measurements, not rerun here.<sup class="cite"><a href="#s16-5">5</a></sup></li>
+</ul>
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: a dream can promote a wrong note</p>
+  <p>Anthropic's essay warns that a wrong note promoted into the always-loaded layer enters every session, and that agents sharing one page overwrote each other's facts, leaving 41 of 57 facts intact until each agent got its own page.<sup class="cite"><a href="#s16-5">5</a></sup> Review a dream's output before attaching it (write gates: Chapter 17).</p>
+</aside>
+</section>
+
+<section>
+<h2>Memory in weights and caches</h2>
+
+<h3>Test-time memory: Titans and its relatives</h3>
+<p><span class="badge badge-research">Paper only (original release)</span> Titans keeps attention as short-term memory and adds a small neural module that updates while the model reads.<sup class="cite"><a href="#s16-6">6</a></sup> Google reports gains over Transformers and linear recurrent models across language, reasoning, genomics and time series, including needle-in-haystack tests beyond 2 million tokens.<sup class="cite"><a href="#s16-6">6</a></sup> An independent reimplementation finds memory helps, but smaller chunks lose attention context and strain cross-chunk recall.<sup class="cite"><a href="#s16-7">7</a></sup> <span class="badge badge-research">Paper only</span> Nested Learning studies learning processes that update at different rates, letting some learned state change while other state stays stable; its continual-learning proposal has no independent replication cited here.<sup class="cite"><a href="#s16-8">8</a></sup></p>
+
+<h3>Self-updating pools, per-user edits and knowledge editing</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> MemoryLLM adds a fixed-size memory pool inside the model's latent space that updates itself from new text. Its authors released code and a model, reporting no degradation after nearly a million updates.<sup class="cite"><a href="#s16-9">9</a></sup></p>
+<p><span class="badge badge-research">Paper only</span> A June 2026 paper stores each user's facts as edits to a hash-keyed lookup table inside the model, with one small shared adapter that reasons over it. Its authors report that direct recall matches a separate low-rank adapter (LoRA) per user, with 5.6 times higher indirect-reasoning accuracy, and that edits from different users combine in one table; none of this was run here.<sup class="cite"><a href="#s16-10">10</a></sup> If it shipped, per-user facts would leave the prompt and deleting one would mean editing weights.</p>
+<p><span class="badge badge-prototype">Prototype, not run</span> ROME edits one fact with a rank-one update to a feed-forward layer.<sup class="cite"><a href="#s16-11">11</a></sup> This single-association edit does not establish per-user memory support; keep user facts elsewhere.</p>
+
+<h3>Looped transformers: compute is not stored knowledge</h3>
+<p><span class="badge badge-shipped">Shipped</span> Inkling 2 Mini, released with open weights on 20 November 2026, runs its middle layers several times per token.<sup class="cite"><a href="#s16-72">72</a></sup> In its variable-loop research checkpoint, Thinking Machines Lab reports better multi-step reasoning and long-context retrieval with more passes, but no gain on factual-recall tests. The maker says stored knowledge mostly tracks total parameter count.<sup class="cite"><a href="#s16-72">72</a>,<a href="#s16-73">73</a></sup> These are vendor claims, not reproduced here. Extra computation does not replace an external memory store; the maker says search and tools close the knowledge gap.<sup class="cite"><a href="#s16-72">72</a></sup> Add retrieval when questions need facts absent from pretraining, whatever the loop count. Chapter 06 has its details and this book's one local test.</p>
+
+<h3>Cartridges: a trained KV cache per corpus</h3>
+<p><span class="badge badge-prototype">Prototype (run here)</span> Train a small KV cache (attention state built from text) once instead of prompting with the corpus repeatedly. Self-study generates synthetic conversations about the corpus and trains the cache with a context-distillation loss (teaching it to reproduce the model's answers with the corpus in context); plain next-token training was not competitive with in-context learning.<sup class="cite"><a href="#s16-12">12</a></sup> Stanford’s authors released code, reporting in-context quality with 38.6 times less memory.<sup class="cite"><a href="#s16-12">12</a></sup> A short local training run (1.5B model, one patient’s records, 20 questions) did not match that. The cache cut stored attention state from 338.6 MiB to 5.75 MiB, but accuracy fell from 16/20 (80%) with documents in context to 6/20 (30%). The run does not test the full method. Code: benchmarks/param-reruns.</p>
+<p>Cartridges suit stable corpora and trainable open-weight models. If new per-query cost reaches baseline cost, there is no break-even. Otherwise:</p>
+<p>Break-even queries = preparation cost per corpus version ÷ (baseline minus new cost per query), in one currency. Preparation includes synthetic self-study and cache training. Before refresh, queries must exceed break-even and held-out quality meet your target.</p>
+<p><strong>Also not run:</strong> DeepSeek's Engram adds an N-gram lookup table inside the model, trained with the model, so it holds shared pretraining knowledge, not per-user memory.<sup class="cite"><a href="#s16-75">75</a></sup> KVzip evicts low-importance KV-cache entries without knowing the query, so one compressed cache serves many questions. It needs no training, unlike Cartridges, and stores less than an uncompressed prompt cache (Chapter 10).<sup class="cite"><a href="#s16-76">76</a></sup></p>
+</section>
+
+<section>
+<h2>Compressed context and recursion</h2>
+
+<h3>Latent memory: MemGen</h3>
+<p><span class="badge badge-prototype">Prototype (run here)</span> A reinforcement-learned trigger watches the model's reasoning and decides when a second module, the weaver, inserts latent tokens (internal vectors, not words). Authors report gains up to 38.22% over two external-memory systems and up to 13.44% over a baseline trained with Group Relative Policy Optimization (GRPO, an RL fine-tuning method) on eight benchmarks, none reproduced here.<sup class="cite"><a href="#s16-13">13</a></sup> <strong>Tested locally:</strong> on 150 GSM8K (grade-school math word problems) test questions (benchmarks/param-reruns), the released 1.5B checkpoint scored 68.0% against 58.0% for the same model without the memory module, a gain of 10.0 points (95% interval 1.3 to 18.7). The implementation publishes weaver/trigger training, evaluation scripts and Qwen2.5-1.5B-Instruct and SmolLM3-3B checkpoints for KodCode, GSM8K and TriviaQA, with no production support.<sup class="cite"><a href="#s16-14">14</a></sup></p>
+
+<h3>Recursive language models</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> The model inspects a long prompt variable through code and calls itself on pieces. Authors report inputs about two orders of magnitude beyond the window and, on GPT-5, median relative gains of 26% over compaction and 13% over Claude Code at comparable cost; none rerun.<sup class="cite"><a href="#s16-15">15</a></sup> Use a code sandbox and cap recursion depth and tokens. Start with offline inputs too large for one window; measure interactive latency against your response-time budget.</p>
+</section>
+
+<section>
+<h2>Memory the agent curates or carries</h2>
+<p>Agents store, link, rewrite and retrieve memory, sometimes trained with reinforcement learning (RL). Chapter 13 covers shipped frameworks; these gains are self-reported.</p>
+
+<table class="data">
+  <colgroup><col class="c20"><col class="c50"><col class="c30"></colgroup>
+  <thead><tr><th>Project</th><th>What the agent does, and what it would change for your application</th><th>Maturity and reported result</th></tr></thead>
+  <tbody>
+    <tr><td>A-MEM</td><td>Writes linked, tagged notes and rewrites old ones.<sup class="cite"><a href="#s16-16">16</a></sup> Writes cost model calls; reads return linked notes.</td><td>Prototype, not run. Open code; no result figure extracted.</td></tr>
+    <tr><td>ACE</td><td>Edits a playbook through generate, reflect and curate steps, adding small deltas to avoid "context collapse" (rewrites that erase detail).<sup class="cite"><a href="#s16-17">17</a></sup> The playbook consumes prompt tokens every call.</td><td>Prototype (run here). Open code. Authors report +10.6 points on agent tasks. Local 7B run, 200 finance items (benchmarks/delegate-ace): 46.5% without a playbook to 57.0% with it (paired gain 10.5 points, 95% interval 3.5 to 18.0). Gains mostly reused captured formulas, not new problem-type reasoning.</td></tr>
+    <tr><td>ReasoningBank</td><td>Distills strategies from its own judged successes and failures.<sup class="cite"><a href="#s16-18">18</a></sup> Adds a judging call per task and retrieved strategies in the prompt.</td><td>Prototype, not run. Open code. Gains over raw trajectories; no figure extracted.</td></tr>
+    <tr><td>Memento</td><td>The reasoner stays frozen; train and host a separate policy selecting past cases.<sup class="cite"><a href="#s16-19">19</a></sup></td><td>Prototype, not run. 87.88% Pass@3 (success within three attempts) on the GAIA agent benchmark's validation set.</td></tr>
+    <tr><td>AgeMem</td><td>One policy learns long-term operations (add, update, delete) and context operations (summarize, clear, retrieve).<sup class="cite"><a href="#s16-20">20</a>,<a href="#s16-21">21</a></sup> Memory calls become the model's own tool calls. Training needs GPUs managed by Ray (a distributed-computing framework) and a judge-model key.</td><td>Prototype, not run. Open training code. Gains on five benchmarks; no figure extracted.</td></tr>
+    <tr><td>MemRL</td><td>Stores episodes with feedback-derived utility scores; model weights stay frozen.<sup class="cite"><a href="#s16-22">22</a>,<a href="#s16-23">23</a></sup></td><td>Prototype, not run. Self-hosted; MIT code. Detailed below.</td></tr>
+    <tr><td>SoMem</td><td>Keeps linked documents, revises them and keeps evidence links.<sup class="cite"><a href="#s16-24">24</a></sup> Revision costs model calls; evidence links make answers checkable.</td><td>Prototype, not run. Open code. +2.00 to +3.10 points over the strongest baseline on three benchmarks.</td></tr>
+  </tbody>
+</table>
+<p>Start with an untrained playbook (ACE above; details below). Below: utility selection, hierarchical retrieval, evidence fallback, decay and learned state.</p>
+
+<h3>Runtime utility learning: MemRL</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> MemRL targets repeated tasks with pass/fail checks, such as similar build failures. Two-Phase Retrieval selects similar episodes by learned utility score. Passing tests raise the retrieved episode's score, letting it outrank a similar failed attempt. Weights stay frozen. Authors report gains on HLE (hard knowledge questions), BigCodeBench (code generation), ALFWorld (household text tasks) and Lifelong Agent Bench (repeated agent tasks), none reproduced.<sup class="cite"><a href="#s16-22">22</a></sup></p>
+<ul>
+  <li><strong>Test it.</strong> Compare against retrieval over the raw history (RAG, Chapter 00) with the same model, task split and budget, measuring held-out repair success, tokens, latency and verifier errors.</li>
+  <li><strong>Cost.</strong> Feedback needs test execution, environment interaction or a judge call on top of the reasoning and summary calls; frozen weights remove fine-tuning, not these costs.<sup class="cite"><a href="#s16-22">22</a>,<a href="#s16-23">23</a></sup></li>
+  <li><strong>Risk.</strong> The paper's appendix G.4 warns that false-positive rewards can give bad episodes high utility and spread contaminated behavior. Keep the verifier independent of retrieved text, audit rewards and be able to remove poisoned episodes.<sup class="cite"><a href="#s16-22">22</a></sup></li>
+</ul>
+
+<h3>Hierarchical retrieval: xMemory</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> xMemory separates interaction history into events and reusable memory components, then groups related components. Retrieval selects complementary groups and expands to original messages only when needed, avoiding redundant flat top-k results and details lost in summaries. Authors report better answer quality and token efficiency on LoCoMo and PerLTQA (personal long-term question answering); official code is available. For near-duplicate support conversations, test update separation against flat retrieval.<sup class="cite"><a href="#s16-25">25</a>,<a href="#s16-26">26</a></sup></p>
+
+<h3>Compact notes with a route back to evidence: TierMem</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> TierMem (COLM 2026, MIT license) keeps two linked tiers: compact summaries and extracted facts, and original interaction pages. A trained Qwen3-0.6B router checks retrieved notes for enough evidence. Otherwise, bounded retrieval follows source links to raw pages; note updates preserve those links. A lighter variant called Jev in the repository uses Markdown notes and searchable raw history, with no router training or vector database.<sup class="cite"><a href="#s16-27">27</a></sup> Test: from a debugging session, store the timeout in a note and the failing test’s name only on its linked raw page. Ask for the timeout: require a note-only answer. Ask for the test name: require a page fetch and the correct name.</p>
+
+<h3>Soft forgetting without erasure</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> Vestige’s maintainer advertises FSRS-6 (a spaced-repetition scheduling algorithm) memory decay for retrieval, a claim with no independent evidence of better answers.<sup class="cite"><a href="#s16-28">28</a></sup> Test: toggle decay on a fixed corpus at fixed top-k. Require rare-critical-fact recall not to fall; report answer accuracy for those facts and recent trivia. <a href="#soft-forgetting">Soft forgetting</a> in Chapter 05 covers the scoring and its risk to rare facts. A low score cannot replace hard expiry or required deletion (Chapters 10 and 17).</p>
+
+<h3>Learned internal state: MEM1 and MemAgent</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> MEM1 trains memory consolidation and reasoning together with RL: each turn merges new observations into a compact internal state and discards irrelevant history. Authors release training code, reporting gains on retrieval QA, web QA and shopping tasks.<sup class="cite"><a href="#s16-30">30</a></sup> MemAgent reads document segments, overwrites working memory repeatedly and publishes RL training and inference code.<sup class="cite"><a href="#s16-31">31</a>,<a href="#s16-32">32</a></sup> Unlike playbooks, both carry state within one task and need training; neither replaces a per-user fact database.</p>
+
+<h3>Start with a playbook</h3>
+<p><span class="badge badge-prototype">Prototype (local attempt invalid)</span> A playbook is a small text file the agent edits in place; ACE and Dynamic Cheatsheet authors report gains without training. Dynamic Cheatsheet keeps an evolving cheatsheet for a black-box model, and its authors report GPT-4o on Game of 24 rising from 10% to 99%.<sup class="cite"><a href="#s16-33">33</a></sup> Local 3B run on the same 100 public puzzles was invalid: most cheatsheet answers hit the output-token limit (benchmarks/small-reruns). It does not test the GPT-4o gain. A playbook costs prompt tokens on every call; a wrong rule loads every session (write gates: Chapter 17).</p>
+<h3>Learned write policies: Mem-alpha</h3>
+<p><span class="badge badge-research">Paper only</span> Mem-alpha instead trains the agent by RL to decide what to store, on histories up to 30K tokens.<sup class="cite"><a href="#s16-34">34</a></sup></p>
+</section>
+
+<section>
+<h2>Context, skills, long windows and memory systems</h2>
+
+<h3>Context engineering, editing, compaction and the memory tool</h3>
+<p><span class="badge badge-shipped">Shipped</span> <strong>Usable today:</strong> the memory tool is generally available. <span class="badge badge-prototype">Beta</span> Context editing and compaction are beta. Anthropic defines context engineering as curating the tokens available at inference time.<sup class="cite"><a href="#s16-35">35</a></sup> Its memory tool needs <code>{"type": "memory_20250818", "name": "memory"}</code>, and your application stores the files.<sup class="cite"><a href="#s16-36">36</a></sup> Context editing clears old tool results and thinking blocks by rule and is in beta behind the header <code>context-management-2025-06-27</code>.<sup class="cite"><a href="#s16-37">37</a></sup> Server-side compaction replaces older turns with a summary Claude writes. Compaction runs on demand or at a token threshold.<sup class="cite"><a href="#s16-38">38</a></sup> Chapter 01 shows the memory tool's file layout.</p>
+
+<h3>Long context versus retrieval, and context rot</h3>
+<p>Chroma tested 18 models, including GPT-4.1, Claude 4, Gemini 2.5 and Qwen3, and found reliability falls as input grows, even on a trivial repeat-the-text task.<sup class="cite"><a href="#s16-39">39</a></sup> A re-evaluation of long context against RAG finds long context generally scores higher on question answering, summarization-based retrieval comes close, and RAG has advantages on dialogue-based and general queries.<sup class="cite"><a href="#s16-40">40</a></sup> A February 2026 study found that repository context files tend to lower task success compared with no context file.<sup class="cite"><a href="#s16-41">41</a></sup> Full context is the baseline to beat when the history fits the window, accuracy on your own questions holds as history grows, and you can afford the tokens. Past that, retrieve, and keep the always-loaded layer to what every session needs.</p>
+<aside class="callout unverified">
+  <p class="callout-label">Unverified: a 113K token cliff</p>
+  <p>Secondary blogs quote a degradation point near 113K tokens. Chroma's report does not contain it, so treat it as unconfirmed.</p>
+</aside>
+
+<h3>Net value against raw-history RAG: Memory Tax</h3>
+<p><span class="badge badge-research">Paper only</span> Memory Tax (October 2026) calls gains over raw-history RAG memory benefit and losses memory tax, because reorganizing history can remove evidence. Its authors find dedicated memory systems underperform RAG in many cases, though not every workload.<sup class="cite"><a href="#s16-42">42</a></sup> Compare against raw-history retrieval on the same history, reader and questions.</p>
+
+<p><strong>Tested locally:</strong> correct answers on LoCoMo: full context 71/123 (58%), Mem0 66/123 (54%), plain RAG 62/123 (50%), Graphiti (temporal knowledge graph, Chapter 14) 44/123 (36%); on LongMemEval (multi-session chat-history questions): BM25 (keyword ranking, Chapter 05) 191/300 (64%), dense retrieval 165/300 (55%). Intervals and limits: Chapter 17; code: benchmarks/locomo and benchmarks/longmemeval. Mem0’s 4-answer lead over RAG is inconclusive at this sample size; Graphiti trails RAG by 18, consistent with Memory Tax.</p>
+
+<h3>Procedural and skill memory</h3>
+<p><span class="badge badge-shipped">Shipped</span> A skill (format in Chapter 01) is a folder with a <code>SKILL.md</code> file and optional scripts, loaded when relevant, so only its short description costs context until then.<sup class="cite"><a href="#s16-43">43</a></sup> On 22 October 2026 Anthropic donated the open standard to the Agentic AI Foundation under the Linux Foundation, saying more than 70 agent platforms had integrated it.<sup class="cite"><a href="#s16-44">44</a></sup> Skills have three authorship models. <strong>Human-written</strong> skills are standard. <strong>Agent-written</strong> skills start with research such as Voyager, a Minecraft agent that kept a growing library of executable skills,<sup class="cite"><a href="#s16-45">45</a></sup> ACE above, and Agent Workflow Memory, which induces reusable workflows from past trajectories.<sup class="cite"><a href="#s16-46">46</a></sup> <strong>Reviewed</strong> skills are agent-written skills that a person approves before they load. No product read here documents that review step.</p>
+<p><span class="badge badge-prototype">Beta</span> memU offers automatic skill authorship in beta. It is an Apache-2.0 open-source project at version 0.11.0-beta.3 and installs scheduled tasks for Codex, Claude Code, Cursor and other hosts. They slice new session logs into jobs, and the host agent decides to do nothing, patch a skill or create one. The skill is saved as Markdown, embedded by name and description and retrieved on similar tasks.<sup class="cite"><a href="#s16-47">47</a></sup> Its service makes no model calls, so skill writing costs your own agent sessions, and its steps include no human review.</p>
+
+<h3>Memory operating systems</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> MemOS and MemoryOS manage memory as schedulable tiers. Both report state-of-the-art LoCoMo results.<sup class="cite"><a href="#s16-48">48</a>,<a href="#s16-49">49</a></sup> Mem0, the shipped library (Chapter 13), reported a 26% relative gain over OpenAI's memory in its 2025 paper.<sup class="cite"><a href="#s16-50">50</a></sup> Neither LoCoMo headline result nor Mem0's OpenAI comparison was reproduced here; the local Mem0 run above uses different comparators. Before adoption, compare raw-history RAG and full context on your questions as above.</p>
+<p>MemOS's research design differs from MemOS 2.0's self-hosted REST service (Neo4j and Qdrant) and local SQLite plugins (Chapter 13).<sup class="cite"><a href="#s16-51">51</a></sup></p>
+</section>
+
+<section>
+<h2>Sharing, benchmarks and attacks</h2>
+
+<h3>Multi-agent shared memory</h3>
+<p><span class="badge badge-research">Paper only</span> A June 2026 paper names four failure modes for fleets of agents sharing memory (leakage, stale propagation, contradictions that persist, lost provenance) and proposes scoped retrieval, temporal supersession, provenance tracking and policy-governed propagation. Authors tested these in one production multi-tenant service, MemClaw, without a baseline; a direct-read scope bypass was fixed during the study.<sup class="cite"><a href="#s16-52">52</a></sup></p>
+
+<h3>Portable memory between harnesses</h3>
+<p><span class="badge badge-research">Paper only</span> Memoryfields proposes Markdown pages with optional YAML metadata and a rebuildable vector index.<sup class="cite"><a href="#s16-53">53</a></sup> Universal Memory Protocol (UMP) proposes transport-neutral records with scope, provenance, validity and recording times, optional signatures, and revision and forgetting operations. Both are proposals.<sup class="cite"><a href="#s16-54">54</a></sup></p>
+<p><strong>Migration to test.</strong> Export one user’s memory between agent harnesses (runtimes hosting agents, such as Claude Code) and back, keeping source ids, scope, validity times, provenance, supersession links and deletions. Check that an expired fact stays expired, a deleted fact stays absent, another user's record stays inaccessible, and vectors are rebuilt for the destination model.</p>
+
+<h3>New benchmarks</h3>
+<p><span class="badge badge-prototype">Prototype (full-context arm run)</span> MemoryAgentBench tests accurate retrieval over incremental input, test-time learning, long-range understanding and selective forgetting across turns; its authors report that no method masters all four.<sup class="cite"><a href="#s16-57">57</a></sup> <strong>Tested locally:</strong> on 150 paired questions from the five smaller histories, a local 14B model with 4-bit quantization scored 95.3% with full context (95% interval 90.7 to 97.7). No RAG comparison is reported: 111 of 150 questions exceeded the encoder’s token limit. Histories, reader and chunking also differ from the paper. Code: benchmarks/membench. <span class="badge badge-prototype">Prototype (code run)</span> BEAM has 100 conversations up to 10 million tokens and 2,000 validated questions, and reports that 1 million token models degrade as dialogues grow, with or without retrieval.<sup class="cite"><a href="#s16-55">55</a></sup> Counts were verified and BEAM code run on 100 questions (LIGHT below); degradation was not reproduced.</p>
+<p><span class="badge badge-prototype">Prototype (run here)</span> <strong>LIGHT</strong>, the architecture paired with BEAM, combines an episodic index of the full conversation, recent-turn working memory and a salient-fact scratchpad. Each turn, a model extracts index keys, a summary and scratchpad notes; questions trigger dialogue retrieval and scratchpad filtering. BEAM’s authors report gains of 3.5% to 12.7% over their strongest baselines by backbone, without specifying relative or point units. <strong>Tested locally:</strong> BEAM's own code, run on 100 questions with a 3B local model, put LIGHT at 31% against 35% for plain retrieval on BEAM's rubric score (difference -4 points, 95% interval -12 to +3), so the gain did not appear at that size (benchmarks/gap-reruns). Indexing, note updates and compression cost model calls before questions arrive, and filtering adds query-time calls.<sup class="cite"><a href="#s16-55">55</a></sup> Compare against raw logs plus recent context, counting preprocessing/query tokens, latency and accuracy.</p>
+<p><span class="badge badge-prototype">Prototype (QA attempt invalid)</span> <strong>HaluMem</strong> (EMNLP, October 2026) evaluates hallucinations at three stages: memory extraction, updating and memory question answering. Its authors release resources and report hallucinations accumulating during extraction and updates.<sup class="cite"><a href="#s16-58">58</a>,<a href="#s16-59">59</a></sup> <strong>Tested locally:</strong> a question-answering-only attempt on 150 questions was abandoned: the local 14B judge matched a hand check on only 28 of 41 answers and privacy masking altered ordinary words in 12 questions; validate masked questions against originals, then check a replacement judge against hand labels before scoring (benchmarks/membench). Inspect the stored record, retrieved evidence and final answer to locate failure. A task-success check shows whether it changed the outcome (Chapter 17).</p>
+<p><span class="badge badge-prototype">Prototype, not run</span> Chapter 04 covers embodied ConceptGraphs memory: a 3D object map and scene graph.<sup class="cite"><a href="#s16-56">56</a></sup> WorldMemArena (May 2026) tests agents that see and act, with 400 multi-session multimodal tasks and gold evidence chains that locate a failure in writing, maintenance, retrieval or use. Authors report poor use of visual evidence. The repository (MIT license per its README) runs 19 baselines and needs a 10 GB download.<sup class="cite"><a href="#s16-60">60</a>,<a href="#s16-61">61</a></sup></p>
+<p><strong>Benchmarks that score actions.</strong> A recall benchmark asks the agent to reproduce a stored fact; three newer suites test whether memory changes its actions.</p>
+<ul>
+  <li><strong>MemoryArena</strong> (arXiv February 2026, revised September 2026) gives agents interdependent multi-session tasks in web navigation, planning, information search and formal reasoning. Its authors report that agents near saturation on LoCoMo perform poorly there; this book ran no action tasks and did not reproduce that.<sup class="cite"><a href="#s16-62">62</a></sup></li>
+  <li><strong>DolphinBench</strong> (September 2026) has three knowledge-work personas of about 500K tokens of user messages each and 200 tasks per persona. Each task fails without the history and passes with it, and submissions report cost and latency. It is hosted under Mem0's GitHub organization and two authors also wrote the Mem0 paper, so weigh any Mem0 comparison accordingly.<sup class="cite"><a href="#s16-63">63</a></sup></li>
+  <li><strong>STATE-Bench</strong> (Microsoft, 19 May 2026, MIT license) has 450 customer-support, travel and shopping tasks scored against deterministic end-state checks, five runs per task, a pass^5 reliability score (a task counts only if all five runs pass) and cost per task. Microsoft reports that GPT-5.1 without memory completes fewer than half of the tasks reliably. The official protocol needs a hosted simulator and judge, so that claim was not reproduced.<sup class="cite"><a href="#s16-64">64</a></sup></li>
+</ul>
+
+
+<h3>Coding memory: Hy-Memory, CMB and diff chains</h3>
+<p><span class="badge badge-prototype">Prototype, not run</span> <strong>Hy-Memory</strong> (self-hosted SDK, Apache-2.0) stores a chat hierarchy, working facts and coding diff chains; test it when coding tasks resume across sessions or branches. Its coding pipeline links facts and reusable experiences to revision diffs, preserving changes later reverted from the working tree (Chapter 06 covers its writer model). Its model card pins retrieval and reader settings and uses fixed 20% subsamples. Its CMB (Coding Memory Benchmark) column averages two repository question-answering evaluations; do not compare it with the code-editing resolved rates below.<sup class="cite"><a href="#s16-29">29</a>,<a href="#s16-65">65</a></sup></p>
+<p>The September 2026 CMB paper, linked by the official repository as an ICLR 2027 submission, evaluates 216 executable code-editing tasks and 750 diagnostic questions across nine repositories, replaying the same frozen histories for each memory method. Resolution requires a nonempty patch, valid test report, and passing new and regression tests. <strong>Reported by Tencent's authors, not run here:</strong> their TriLink method links facts, experiences and diffs. The public release lacks frozen tasks and grading files, preventing verification.<sup class="cite"><a href="#s16-66">66</a></sup></p>
+<p><strong>Figures from the paper</strong> (results tables, source 66; DeepSeek v4-flash): TriLink resolved 35.6% of tasks against 28.2% for MemOS (tied with FullContext) and 26.9% for RAG, and scored 64.2% on QA against 62.2% for RAG. With Claude Sonnet-5, TriLink resolved 43.1% against 36.6% for Mem0.</p>
+<p>Check both evidence recovery and repository tests. The QA score counts judge-matched reference requirements and the resolved rate counts finished edits, so on these figures RAG is within 2 points of TriLink on QA but 8.7 points (about 19 of 216 tasks) lower on resolved tasks. Limited scale and no significance test make the gap suggestive.<sup class="cite"><a href="#s16-66">66</a></sup></p>
+
+<h3>Memory attacks</h3>
+<p>MINJA<sup class="cite"><a href="#s16-67">67</a></sup> and AgentPoison<sup class="cite"><a href="#s16-68">68</a></sup> are early papers on attacking agent memory, building on older retrieval-poisoning work, and defenses are early. Chapter 17 holds the threat model, rates and controls. Two newer attacks follow.</p>
+<p><span class="badge badge-prototype">Prototype (run here)</span> <strong>InjecMEM</strong> (COLM 2026) needs one chat turn and no access to the store.<sup class="cite"><a href="#s16-69">69</a></sup> An anchor supplies topical cues for retrieval; a short adversarial command found by gradient-based search steers the answer once retrieved. The authors report reliable topic-conditioned retrieval with unrelated queries unaffected.</p>
+<p><strong>Tested locally:</strong> a 7B-family payload in a 3B toy store was retrieved in 0/100 trials with defenses and 0/100 without. This undiagnosed retrieval miss leaves steering unmeasurable and neither confirms nor refutes the paper (setup and limits: Chapter 17; benchmarks/security).</p>
+<ul>
+  <li><strong>Limits.</strong> The strongest version needs white-box access to a model, a command tuned on some model families can fail on a held-out family, and systems that summarize before storing need a different attack.</li>
+  <li><strong>Defense code.</strong> The repository screens text with a small judge model, a perplexity check, Llama Prompt Guard 2 or a ProtectAI classifier, at initialization, on writes or on retrieval (default: retrieval only).<sup class="cite"><a href="#s16-70">70</a></sup> If your tests support it, screen at both write and read. In the local test the prompt write reviewer (a local model screening proposed writes) rejected all 100 benign factual writes (from ten templates), so a defended success rate of zero does not show the screening is selective.</li>
+</ul>
+<p><span class="badge badge-prototype">Prototype, not run</span> <strong>SkillJack</strong> (August 2026) attacks the step that turns experience into skills, where the agent's own extraction rewrites a poisoned experience into a skill. The authors name three properties: extraction hides malicious intent, a transient experience becomes a persistent capability, and the skill survives deletion of its source records.<sup class="cite"><a href="#s16-71">71</a></sup></p>
+<ul>
+  <li><strong>Reported figures.</strong> On two research systems, SkillX and Anything2Skill, with 150 trajectories, safety detection fell from 98.5% on the poisoned trajectories to 11.4% on the extracted skills in SkillX. Attack success was 56.2% on SkillX and 89.2% on Anything2Skill, and 80.0% of skill-mediated attacks persisted after the original records were deleted. These author-reported figures concern systems other than memU; nothing reproduced.<sup class="cite"><a href="#s16-71">71</a></sup></li>
+  <li><strong>What to do.</strong> Link learned skills to sources and require approval before loading. On source revocation, block dependent skills at once and restore only reviewed, reapproved versions (Chapter 17).</li>
+</ul>
+</section>
+
+<section>
+<h2>Usable today</h2>
+<p><strong>Use now,</strong> safest first:</p>
+<ul>
+  <li><strong>Memory tool</strong> (generally available), <strong>context editing and compaction</strong> (beta; expect header and field changes).</li>
+  <li><strong>Agent Skills.</strong> An open, broadly supported format (Chapter 01). Agent-written skills (memU, beta) need a review step you add yourself.</li>
+  <li><strong>A consolidation pass.</strong> Letta sleep-time agents ship, Claude dreams are a preview, and a home-built merge-and-prune job works too (Chapter 02; guardrails, Chapter 17).</li>
+  <li><strong>Mem0 or Letta.</strong> Maintained libraries (Chapter 13), with vendor benchmark claims. Pick Letta for agent-edited memory blocks via tools; pick Mem0 for application code to extract and retrieve facts around each turn.</li>
+  <li><strong>An agent-edited playbook.</strong> ACE needs no training. Gate writes, version files, prune rarely used rules, and measure token cost against accuracy.</li>
+</ul>
+<p><strong>Test in a lab only.</strong> Prototype implementations are lab candidates. Before production, compare held-out application tasks against no memory, raw-history retrieval and, where it fits, full context, within write-cost and latency budgets. MemoryArena and DolphinBench are secondary checks (weigh DolphinBench’s Mem0 ties); STATE-Bench needs its hosted simulator and judge. None was run here (Chapter 17).</p>
+<p><strong>Wait for production.</strong> Every Paper only artifact, including original Titans, per-user edits and Nested Learning. ROME is a single-fact-editing lab prototype, not a user-fact store. The independent Titans reimplementation has chunking limits described above.</p>
+</section>
+
+<section>
+<h2>Open problems</h2>
+<ol>
+  <li><strong>Saturated, self-reported benchmarks.</strong> LoCoMo's reference answers are disputed (Chapter 17), few papers test MemoryAgentBench and BEAM together, and a memory vendor runs one action suite.</li>
+  <li><strong>Amortization.</strong> No published cross-workload break-even figures; see the Cartridges rule.</li>
+  <li><strong>Weight memory.</strong> No independent evidence of robustness to conflicting updates.</li>
+  <li><strong>Attacks.</strong> Authors report single-turn injection (payload tuning may need white-box model access) and poisoned skills surviving source deletion; neither was reproduced here.</li>
+  <li><strong>Deletion.</strong> Deletion propagation to weights, caches, summaries and derived skills is unsolved.</li>
+</ol>
+<p class="small muted">Licenses were read only where a Sources entry names one; check each LICENSE before reuse.</p>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+<li id="s16-1"><span class="src-title">Snap Research, LoCoMo issue 23 on wrong ground-truth answers (2025-10-15)</span> <span class="src-note">(secondary)</span><a class="url" href="https://github.com/snap-research/locomo/issues/23">https://github.com/snap-research/locomo/issues/23</a></li>
+<li id="s16-2"><span class="src-title">Sleep-time Compute: Beyond Inference Scaling at Test-time, arXiv:2504.13171 (2025-04-17)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2504.13171">https://arxiv.org/abs/2504.13171</a></li>
+<li id="s16-3"><span class="src-title">Letta, sleep-time compute (2025-04-21)</span> <span class="src-note">(vendor blog, read)</span><a class="url" href="https://www.letta.com/blog/sleep-time-compute/">https://www.letta.com/blog/sleep-time-compute/</a></li>
+<li id="s16-4"><span class="src-title">Anthropic, Dreams (Managed Agents documentation, research preview)</span> <span class="src-note">(official, read 2026-11-20)</span><a class="url" href="https://platform.claude.com/docs/en/managed-agents/dreams">https://platform.claude.com/docs/en/managed-agents/dreams</a></li>
+<li id="s16-5"><span class="src-title">Anthropic, The components of agent memory (2026-11-06)</span> <span class="src-note">(official essay, vendor measurements)</span><a class="url" href="https://www.anthropic.com/research/components-of-agent-memory">https://www.anthropic.com/research/components-of-agent-memory</a></li>
+<li id="s16-6"><span class="src-title">Titans, arXiv:2501.00663 (2024-12-31)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2501.00663">https://arxiv.org/abs/2501.00663</a></li>
+<li id="s16-7"><span class="src-title">Titans Revisited, arXiv:2510.09551 (2025-10)</span> <span class="src-note">(paper, independent reimplementation)</span><a class="url" href="https://arxiv.org/abs/2510.09551">https://arxiv.org/abs/2510.09551</a></li>
+<li id="s16-8"><span class="src-title">Nested Learning, arXiv:2512.24695 (2025-12-31)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2512.24695">https://arxiv.org/abs/2512.24695</a></li>
+<li id="s16-9"><span class="src-title">MemoryLLM, arXiv:2402.04624 (2024-02)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2402.04624">https://arxiv.org/abs/2402.04624</a></li>
+<li id="s16-10"><span class="src-title">Internalizing Per-User Memory as Local Parametric Edits, arXiv:2606.19172 (2026-06-17)</span> <span class="src-note">(paper, self-reported)</span><a class="url" href="https://arxiv.org/html/2606.19172v1">https://arxiv.org/html/2606.19172v1</a></li>
+<li id="s16-11"><span class="src-title">ROME, Locating and Editing Factual Associations in GPT, arXiv:2202.05262 (2022-02)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2202.05262">https://arxiv.org/abs/2202.05262</a></li>
+<li id="s16-12"><span class="src-title">Cartridges, arXiv:2506.06266 (2025-06-06)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2506.06266">https://arxiv.org/abs/2506.06266</a></li>
+<li id="s16-13"><span class="src-title">MemGen, arXiv:2509.24704 (2025-09-29)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2509.24704">https://arxiv.org/abs/2509.24704</a></li>
+<li id="s16-14"><span class="src-title">MemGen official implementation, README (read 2026-11-20)</span> <span class="src-note">(maintainer)</span><a class="url" href="https://github.com/bingreeky/MemGen">https://github.com/bingreeky/MemGen</a></li>
+<li id="s16-15"><span class="src-title">Recursive Language Models, arXiv:2512.24601 (2025-12-31, v3 2026-05-11)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2512.24601">https://arxiv.org/abs/2512.24601</a></li>
+<li id="s16-16"><span class="src-title">A-MEM, arXiv:2502.12110 (2025-02, NeurIPS 2025)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2502.12110">https://arxiv.org/abs/2502.12110</a></li>
+<li id="s16-17"><span class="src-title">Agentic Context Engineering, arXiv:2510.04618 (2025-10-06, v3 2026-03-29)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2510.04618">https://arxiv.org/abs/2510.04618</a></li>
+<li id="s16-18"><span class="src-title">ReasoningBank, arXiv:2509.25140 (2025-09-29, v2 2026-03-16)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2509.25140">https://arxiv.org/abs/2509.25140</a></li>
+<li id="s16-19"><span class="src-title">Memento, arXiv:2508.16153 (2025-08-25)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2508.16153">https://arxiv.org/abs/2508.16153</a></li>
+<li id="s16-20"><span class="src-title">AgeMem, Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management, arXiv:2601.01885 (2026-01-05, v3 2026-07-23)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2601.01885">https://arxiv.org/abs/2601.01885</a></li>
+<li id="s16-21"><span class="src-title">AgeMem repository README</span> <span class="src-note">(maintainer, read)</span><a class="url" href="https://github.com/y1y5/AgeMem">https://github.com/y1y5/AgeMem</a></li>
+<li id="s16-22"><span class="src-title">MemRL: Self-Evolving Agents via Runtime Reinforcement Learning on Episodic Memory, arXiv:2601.03192v2 (2026-02-12)</span> <span class="src-note">(paper, sections 4, 6 and appendices F, G read; authors' results, not reproduced)</span><a class="url" href="https://arxiv.org/html/2601.03192v2">https://arxiv.org/html/2601.03192v2</a></li>
+<li id="s16-23"><span class="src-title">MemRL official README and MIT LICENSE (read 2026-11-20)</span> <span class="src-note">(maintainer; prototype, not run)</span><a class="url" href="https://github.com/MemTensor/MemRL">https://github.com/MemTensor/MemRL</a></li>
+<li id="s16-24"><span class="src-title">SoMem, arXiv:2611.11929 (2026-11)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2611.11929">https://arxiv.org/abs/2611.11929</a></li>
+<li id="s16-25"><span class="src-title">xMemory, Beyond RAG for Agent Memory, arXiv:2602.02007v4 (2026-05-12)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2602.02007">https://arxiv.org/abs/2602.02007</a></li>
+<li id="s16-26"><span class="src-title">xMemory official implementation (read 2026-11-20)</span> <span class="src-note">(maintainer)</span><a class="url" href="https://github.com/HU-xiaobai/xMemory">https://github.com/HU-xiaobai/xMemory</a></li>
+<li id="s16-27"><span class="src-title">TierMem official README and MIT LICENSE (read 2026-11-20)</span> <span class="src-note">(maintainer; prototype, not run)</span><a class="url" href="https://github.com/FreedomIntelligence/Tiermem">https://github.com/FreedomIntelligence/Tiermem</a></li>
+<li id="s16-28"><span class="src-title">Vestige official README, FSRS-6 retrieval decay (read 2026-11-20)</span> <span class="src-note">(maintainer claim, unreplicated)</span><a class="url" href="https://github.com/samvallad33/vestige">https://github.com/samvallad33/vestige</a></li>
+<li id="s16-29"><span class="src-title">Tencent Hunyuan, Hy-Memory README and Apache-2.0 LICENSE (read 2026-11-20)</span> <span class="src-note">(maintainer; not run)</span><a class="url" href="https://github.com/Tencent-Hunyuan/Hy-Memory">https://github.com/Tencent-Hunyuan/Hy-Memory</a></li>
+<li id="s16-30"><span class="src-title">MEM1 official implementation and paper abstract (read 2026-11-20)</span> <span class="src-note">(maintainer, self-reported results)</span><a class="url" href="https://github.com/MIT-MI/MEM1">https://github.com/MIT-MI/MEM1</a></li>
+<li id="s16-31"><span class="src-title">MemAgent, arXiv:2507.02259v2 (2026-07-29)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2507.02259">https://arxiv.org/abs/2507.02259</a></li>
+<li id="s16-32"><span class="src-title">MemAgent official implementation (read 2026-11-20)</span> <span class="src-note">(maintainer)</span><a class="url" href="https://github.com/BytedTsinghua-SIA/MemAgent">https://github.com/BytedTsinghua-SIA/MemAgent</a></li>
+<li id="s16-33"><span class="src-title">Dynamic Cheatsheet, arXiv:2504.07952 (2025-04-10)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2504.07952">https://arxiv.org/abs/2504.07952</a></li>
+<li id="s16-34"><span class="src-title">Mem-alpha, arXiv:2509.25911 (2025-09-30)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2509.25911">https://arxiv.org/abs/2509.25911</a></li>
+<li id="s16-35"><span class="src-title">Anthropic, Effective context engineering for AI agents (2025-09-29)</span> <span class="src-note">(official)</span><a class="url" href="https://www.anthropic.com/research/effective-context-engineering-for-ai-agents">https://www.anthropic.com/research/effective-context-engineering-for-ai-agents</a></li>
+<li id="s16-36"><span class="src-title">Anthropic memory tool documentation</span> <span class="src-note">(official)</span><a class="url" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool">https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool</a></li>
+<li id="s16-37"><span class="src-title">Anthropic context editing documentation</span> <span class="src-note">(official, read)</span><a class="url" href="https://platform.claude.com/docs/en/build-with-claude/context-editing">https://platform.claude.com/docs/en/build-with-claude/context-editing</a></li>
+<li id="s16-38"><span class="src-title">Anthropic compaction documentation</span> <span class="src-note">(official, read)</span><a class="url" href="https://platform.claude.com/docs/en/build-with-claude/compaction">https://platform.claude.com/docs/en/build-with-claude/compaction</a></li>
+<li id="s16-39"><span class="src-title">Chroma, Context Rot (2025-07-14)</span> <span class="src-note">(vendor technical report)</span><a class="url" href="https://www.trychroma.com/research/context-rot">https://www.trychroma.com/research/context-rot</a></li>
+<li id="s16-40"><span class="src-title">Long Context vs. RAG for LLMs: An Evaluation and Revisits, arXiv:2501.01880 (2024-12-27)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2501.01880">https://arxiv.org/abs/2501.01880</a></li>
+<li id="s16-41"><span class="src-title">Study of repository context files and task success, arXiv:2602.11988 (2026-02-12)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2602.11988">https://arxiv.org/abs/2602.11988</a></li>
+<li id="s16-42"><span class="src-title">Memory Tax: Dissecting the Net Value of Agent Memory, arXiv:2610.34073 (2026-10-25)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2610.34073">https://arxiv.org/abs/2610.34073</a></li>
+<li id="s16-43"><span class="src-title">Anthropic, Equipping agents with Agent Skills (2025-10-16)</span> <span class="src-note">(official)</span><a class="url" href="https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills">https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills</a></li>
+<li id="s16-44"><span class="src-title">Anthropic, donating Agent Skills to the Agentic AI Foundation (2026-10-22)</span> <span class="src-note">(official)</span><a class="url" href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation</a></li>
+<li id="s16-45"><span class="src-title">Voyager, arXiv:2305.16291 (2023-05)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2305.16291">https://arxiv.org/abs/2305.16291</a></li>
+<li id="s16-46"><span class="src-title">Agent Workflow Memory, arXiv:2409.07429 (2024-09-11)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2409.07429">https://arxiv.org/abs/2409.07429</a></li>
+<li id="s16-47"><span class="src-title">memU README and pyproject.toml (version 0.11.0-beta.3)</span> <span class="src-note">(maintainer, read 2026-11-20)</span><a class="url" href="https://github.com/NevaMind-AI/memU">https://github.com/NevaMind-AI/memU</a></li>
+<li id="s16-48"><span class="src-title">MemOS, arXiv:2505.22101</span> <span class="src-note">(paper, self-reported)</span><a class="url" href="https://arxiv.org/abs/2505.22101">https://arxiv.org/abs/2505.22101</a></li>
+<li id="s16-49"><span class="src-title">MemoryOS, arXiv:2506.06326 (2025-05-30)</span> <span class="src-note">(paper, self-reported)</span><a class="url" href="https://arxiv.org/abs/2506.06326">https://arxiv.org/abs/2506.06326</a></li>
+<li id="s16-50"><span class="src-title">Mem0, arXiv:2504.19413 (2025-04-28)</span> <span class="src-note">(paper, self-reported)</span><a class="url" href="https://arxiv.org/abs/2504.19413">https://arxiv.org/abs/2504.19413</a></li>
+<li id="s16-51"><span class="src-title">MemOS 2.0 repository README (read 2026-11-21)</span> <span class="src-note">(maintainer; service and local plugins, not run)</span><a class="url" href="https://github.com/MemTensor/MemOS">https://github.com/MemTensor/MemOS</a></li>
+<li id="s16-52"><span class="src-title">Governed Shared Memory for Multi-Agent LLM Systems, arXiv:2606.24535 (2026-06-23)</span> <span class="src-note">(paper, abstract read, self-evaluated)</span><a class="url" href="https://arxiv.org/abs/2606.24535">https://arxiv.org/abs/2606.24535</a></li>
+<li id="s16-53"><span class="src-title">Memoryfields: Agent memory as a file format (2026-08)</span> <span class="src-note">(maintainer proposal and linked specification, read 2026-11-21)</span><a class="url" href="https://calpaterson.com/memoryfields.html">https://calpaterson.com/memoryfields.html</a></li>
+<li id="s16-54"><span class="src-title">Universal Memory Protocol specification (read 2026-11-21)</span> <span class="src-note">(maintainer proposal; not run)</span><a class="url" href="https://universalmemoryprotocol.io/specification/">https://universalmemoryprotocol.io/specification/</a></li>
+<li id="s16-55"><span class="src-title">BEAM, arXiv:2510.27246 (2025-10-31)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2510.27246">https://arxiv.org/abs/2510.27246</a></li>
+<li id="s16-56"><span class="src-title">ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning (2023)</span> <span class="src-note">(paper and official code, read; not run)</span><a class="url" href="https://concept-graphs.github.io/">https://concept-graphs.github.io/</a></li>
+<li id="s16-57"><span class="src-title">MemoryAgentBench, arXiv:2507.05257 (2025-07-07)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2507.05257">https://arxiv.org/abs/2507.05257</a></li>
+<li id="s16-58"><span class="src-title">HaluMem: Evaluating Hallucinations in Memory Systems of Agents (EMNLP, October 2026)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://aclanthology.org/2026.emnlp-main.220/">https://aclanthology.org/2026.emnlp-main.220/</a></li>
+<li id="s16-59"><span class="src-title">HaluMem official benchmark repository (read 2026-11-20)</span> <span class="src-note">(maintainer)</span><a class="url" href="https://github.com/MemTensor/HaluMem">https://github.com/MemTensor/HaluMem</a></li>
+<li id="s16-60"><span class="src-title">WorldMemArena, arXiv:2605.29341 (2026-05-28, v2 2026-06-01)</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2605.29341">https://arxiv.org/abs/2605.29341</a></li>
+<li id="s16-61"><span class="src-title">WorldMemArena repository README</span> <span class="src-note">(maintainer, read)</span><a class="url" href="https://github.com/UCSB-AI/WorldMemArena">https://github.com/UCSB-AI/WorldMemArena</a></li>
+<li id="s16-62"><span class="src-title">MemoryArena, arXiv:2602.16313 (2026-02-18, v2 2026-09-17) and project page</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2602.16313">https://arxiv.org/abs/2602.16313</a></li>
+<li id="s16-63"><span class="src-title">DolphinBench, arXiv:2609.24971 (2026-09-21) and repository</span> <span class="src-note">(paper, abstract read)</span><a class="url" href="https://arxiv.org/abs/2609.24971">https://arxiv.org/abs/2609.24971</a></li>
+<li id="s16-64"><span class="src-title">Microsoft, Introducing STATE-Bench (2026-05-19)</span> <span class="src-note">(vendor blog, read; repository license from GitHub)</span><a class="url" href="https://opensource.microsoft.com/blog/2026/05/19/introducing-state-bench-a-benchmark-for-ai-agent-memory/">https://opensource.microsoft.com/blog/2026/05/19/introducing-state-bench-a-benchmark-for-ai-agent-memory/</a></li>
+<li id="s16-65"><span class="src-title">Hy-Memory-30B-A3B model card (read 2026-11-20)</span> <span class="src-note">(vendor, self-reported; fixed 20% subsamples)</span><a class="url" href="https://huggingface.co/tencent/Hy-Memory-30B-A3B">https://huggingface.co/tencent/Hy-Memory-30B-A3B</a></li>
+<li id="s16-66"><span class="src-title">CMB: A Coding Memory Benchmark for Long-Horizon and Interleaved Coding Agents (repository paper, read 2026-11-20)</span> <span class="src-note">(vendor authors; self-reported, not run)</span><a class="url" href="https://github.com/Tencent-Hunyuan/Hy-Memory/blob/main/docs/papers/CMB_A_Coding_Memory_Benchmark_for_Long_Horizon_and_Interleaved_Coding_Agents.pdf">https://github.com/Tencent-Hunyuan/Hy-Memory/blob/main/docs/papers/CMB_A_Coding_Memory_Benchmark_for_Long_Horizon_and_Interleaved_Coding_Agents.pdf</a></li>
+<li id="s16-67"><span class="src-title">MINJA, arXiv:2503.03704 (2025-03-05)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2503.03704">https://arxiv.org/abs/2503.03704</a></li>
+<li id="s16-68"><span class="src-title">AgentPoison, arXiv:2407.12784 (2024-07-17)</span> <span class="src-note">(paper, read)</span><a class="url" href="https://arxiv.org/abs/2407.12784">https://arxiv.org/abs/2407.12784</a></li>
+<li id="s16-69"><span class="src-title">InjecMEM, arXiv:2608.23471 (2026-08-24, COLM 2026)</span> <span class="src-note">(paper, abstract and limitations appendix read)</span><a class="url" href="https://arxiv.org/abs/2608.23471">https://arxiv.org/abs/2608.23471</a></li>
+<li id="s16-70"><span class="src-title">InjecMEM repository README and Defense README</span> <span class="src-note">(maintainer, read)</span><a class="url" href="https://github.com/BlueBlood6/InjecMEM">https://github.com/BlueBlood6/InjecMEM</a></li>
+<li id="s16-71"><span class="src-title">SkillJack: Persistent Skill Backdoors in Self-Evolving Agents, arXiv:2608.03509 (2026-08-04)</span> <span class="src-note">(paper, abstract read, self-reported)</span><a class="url" href="https://arxiv.org/abs/2608.03509">https://arxiv.org/abs/2608.03509</a></li>
+<li id="s16-72"><span class="src-title">Thinking Machines Lab, Introducing Inkling 2 Mini (2026-11-20)</span> <span class="src-note">(vendor claims, not reproduced)</span><a class="url" href="https://thinkingmachines.ai/news/inkling-2-mini/">https://thinkingmachines.ai/news/inkling-2-mini/</a></li>
+<li id="s16-73"><span class="src-title">TML-d24-varloop-research model card (read 2026-11-21)</span> <span class="src-note">(official; vendor experiments, not reproduced)</span><a class="url" href="https://thinkingmachines.ai/model-card/tml-d24-varloop-research/">https://thinkingmachines.ai/model-card/tml-d24-varloop-research/</a></li>
+<li id="s16-74"><span class="src-title">LoCoMo ground-truth audit repository</span> <span class="src-note">(secondary)</span><a class="url" href="https://github.com/dial481/locomo-audit">https://github.com/dial481/locomo-audit</a></li>
+<li id="s16-75"><span class="src-title">Conditional Memory via Scalable Lookup (Engram), arXiv:2601.07372 (2026-01-12, v2 2026-07-12)</span> <span class="src-note">(paper, abstract read 2026-11-22; not run)</span><a class="url" href="https://arxiv.org/abs/2601.07372">https://arxiv.org/abs/2601.07372</a></li>
+<li id="s16-76"><span class="src-title">KVzip, arXiv:2505.23416 (2025-05-29, v2 2025-09-30)</span> <span class="src-note">(paper, abstract read 2026-11-22; not run)</span><a class="url" href="https://arxiv.org/abs/2505.23416">https://arxiv.org/abs/2505.23416</a></li>
+</ol>
+</section>
+
+</article>

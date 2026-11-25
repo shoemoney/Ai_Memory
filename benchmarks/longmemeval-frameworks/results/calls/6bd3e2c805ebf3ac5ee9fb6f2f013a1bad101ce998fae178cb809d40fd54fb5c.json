@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 64
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "00e26c575325df3f09177c42dffeca07eee988505111bd378df8fd2be09abfb4",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-71aba5c6-f528-421c-a02a-bceb0945d703",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Riverside Park\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795372230,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 99,
+      "prompt_tokens": 6632,
+      "total_tokens": 6731,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4928
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Riverside Park\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+  "seconds": 19.326788998994743,
+  "prompt_tokens_local": 6632
+}

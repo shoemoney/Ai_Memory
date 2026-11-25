@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 63
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d3dd98b7bf93c0150130203101076775be78a88d83995f7a0bb40dc6e4b88253",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-8b97a7e2-97be-4193-b6b8-ee616a5fa131",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"quiredする方法は、関連する脅威についての情報を収集し、システムをより安全に保つために、ポリシー, 手順, およびトレーニングを作成すること\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"セキュリティの強化についてどのように貢献できますか？を質問に回答しました\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"サイバーセキュリティスペシャリストとして行動することについての質問に答えました\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"サイバーセキュリティスペシャリストとしての役割についての質問に答えました\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332978,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 237,
+      "prompt_tokens": 1903,
+      "total_tokens": 2140,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"quiredする方法は、関連する脅威についての情報を収集し、システムをより安全に保つために、ポリシー, 手順, およびトレーニングを作成すること\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"セキュリティの強化についてどのように貢献できますか？を質問に回答しました\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"サイバーセキュリティスペシャリストとして行動することについての質問に答えました\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"サイバーセキュリティスペシャリストとしての役割についての質問に答えました\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        }\n    ]\n}",
+  "seconds": 6.125093050999567,
+  "prompt_tokens_local": 1903,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

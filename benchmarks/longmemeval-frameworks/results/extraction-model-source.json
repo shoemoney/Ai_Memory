@@ -1,0 +1,11 @@
+{
+  "url": "https://huggingface.co/api/models/mlx-community/Qwen2.5-3B-Instruct-4bit",
+  "revision": "4f83f8f146fdf28b512a06562b671d7af4fab457",
+  "license": "other",
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+  "card_url": "https://huggingface.co/mlx-community/Qwen2.5-3B-Instruct-4bit/raw/4f83f8f146fdf28b512a06562b671d7af4fab457/README.md",
+  "card_sha256": "fecf595155116837d6ccd97918cb59ae7228ee1511c2dd1d9b1725bdfeea9919",
+  "card": "---\nbase_model: Qwen/Qwen2.5-3B\nlanguage:\n- en\nlicense: other\nlicense_name: qwen-research\nlicense_link: https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/blob/main/LICENSE\npipeline_tag: text-generation\ntags:\n- chat\n- mlx\n---\n\n# mlx-community/Qwen2.5-3B-Instruct-4bit\n\nThe Model [mlx-community/Qwen2.5-3B-Instruct-4bit](https://huggingface.co/mlx-community/Qwen2.5-3B-Instruct-4bit) was converted to MLX format from [Qwen/Qwen2.5-3B-Instruct](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) using mlx-lm version **0.18.1**.\n\n## Use with mlx\n\n```bash\npip install mlx-lm\n```\n\n```python\nfrom mlx_lm import load, generate\n\nmodel, tokenizer = load(\"mlx-community/Qwen2.5-3B-Instruct-4bit\")\nresponse = generate(model, tokenizer, prompt=\"hello\", verbose=True)\n```\n",
+  "config_url": "https://huggingface.co/mlx-community/Qwen2.5-3B-Instruct-4bit/raw/4f83f8f146fdf28b512a06562b671d7af4fab457/config.json",
+  "max_position_embeddings": 32768
+}

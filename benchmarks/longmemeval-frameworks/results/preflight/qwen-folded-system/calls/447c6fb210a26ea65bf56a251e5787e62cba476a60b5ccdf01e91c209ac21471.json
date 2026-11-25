@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 17
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "95bb0720f24d1330bbf0d16db40bf1e12370e7d392ff2310dc6e9efc7a3a5095",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e854d748-c175-4d76-bcba-bea4e95e8a45",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    [\"Interested in finding a good brand and style for sandals for the summer season\"],\n    [\"Wore old Converse Chuck Taylor's to a music festival last month\"],\n    [\"Impressed with how well the Converse Chuck Taylor's held up\"]\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330243,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 60,
+      "prompt_tokens": 2930,
+      "total_tokens": 2990,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    [\"Interested in finding a good brand and style for sandals for the summer season\"],\n    [\"Wore old Converse Chuck Taylor's to a music festival last month\"],\n    [\"Impressed with how well the Converse Chuck Taylor's held up\"]\n  ]\n}",
+  "seconds": 2.3555535240011523,
+  "prompt_tokens_local_gemma_estimate": 2981
+}

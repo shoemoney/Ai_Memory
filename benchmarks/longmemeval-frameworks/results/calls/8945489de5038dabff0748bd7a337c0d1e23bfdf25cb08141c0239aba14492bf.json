@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti"
+  },
+  "phase": "answer",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/model",
+  "prompt_sha256": "649d054fd7de18cc9aae32bf8bf16622472c35591f1cb57c2b2a81a87860fa86",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 512,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e827c1e5-fea4-403f-8101-9e59396a6e06",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "Based on the conversation history, Universal Studios Hollywood is available for booking. \n",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365319,
+    "model": "membench-longmemeval-frameworks-tmp/model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 519,
+      "total_tokens": 536,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "text": "Based on the conversation history, Universal Studios Hollywood is available for booking.",
+  "seconds": 5.1658317880064715,
+  "prompt_tokens_local": 519
+}

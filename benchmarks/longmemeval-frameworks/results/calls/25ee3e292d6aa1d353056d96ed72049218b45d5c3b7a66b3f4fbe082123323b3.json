@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 72
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0b8dc2582c16928940330dc03a744fb2f47efb8e24e8082730f03f9739597da1",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9b74fad1-e4a0-42a1-872c-e4a1d62ad7d5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Brazil's Supreme Court has been expanding its powers, allowing it to act as an investigator, prosecutor, and judge in some cases.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"The Supreme Court has jailed people without trial for posts on social media that they believe attack Brazil's institutions.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"The Supreme Court has ordered social networks to remove thousands of posts and videos with little room for appeal.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"The Supreme Court sentenced a congressman to nearly nine years in prison.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367152,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 182,
+      "prompt_tokens": 2069,
+      "total_tokens": 2251,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Brazil's Supreme Court has been expanding its powers, allowing it to act as an investigator, prosecutor, and judge in some cases.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"The Supreme Court has jailed people without trial for posts on social media that they believe attack Brazil's institutions.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"The Supreme Court has ordered social networks to remove thousands of posts and videos with little room for appeal.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"The Supreme Court sentenced a congressman to nearly nine years in prison.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 17.569016324006952,
+  "prompt_tokens_local": 2069
+}

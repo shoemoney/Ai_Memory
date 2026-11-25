@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f3bebb5cdfd6a7b6228a7c5c7507eacb7997ddbb1314320fd743564db255e3a8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-551f77c4-3191-4825-95b8-c38792118ec4",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Jemaa el-Fnaa\",\n            \"summary\": \"Jemaa el-Fnaa: The iconic square in the heart of the Old City is a must-visit for any visitor to Marrakech. It's a vibrant, bustling marketplace that sells an array of goods from Moroccan handicrafts to spices and traditional street food. It's a great place to start your Marrakech market experience and immerse yourself in the city's vibrant atmosphere. From there, you can explore other famous markets like Souk Semmarine or Rahba Kedima to find the unique goods you are interested in buying.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367479,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 144,
+      "prompt_tokens": 2779,
+      "total_tokens": 2923,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Jemaa el-Fnaa\",\n            \"summary\": \"Jemaa el-Fnaa: The iconic square in the heart of the Old City is a must-visit for any visitor to Marrakech. It's a vibrant, bustling marketplace that sells an array of goods from Moroccan handicrafts to spices and traditional street food. It's a great place to start your Marrakech market experience and immerse yourself in the city's vibrant atmosphere. From there, you can explore other famous markets like Souk Semmarine or Rahba Kedima to find the unique goods you are interested in buying.\"\n        }\n    ]\n}",
+  "seconds": 14.061552702012705,
+  "prompt_tokens_local": 2779
+}

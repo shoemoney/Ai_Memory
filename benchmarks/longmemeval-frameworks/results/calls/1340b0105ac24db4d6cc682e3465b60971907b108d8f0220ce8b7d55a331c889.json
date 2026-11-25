@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 16
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0c041e91fee35494620cf1b576b6c4715b90e1fd4cec3d3db62c656f26fcb54a",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-84ff74cb-2f7b-4961-8a45-96b3fb34ad6d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"user\", \"target_entity_name\": \"Converse Chuck Taylor's\", \"relation_type\": \"WORE\", \"fact\": \"I wore my old Converse Chuck Taylor's to a music festival last month.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Vans Old Skool\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Dr. Martens Pascal 8-Eye Boot\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Tevas Terra-Float\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Birkenstock Gizeh\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Adidas Superstar\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Sanuk Beaumont\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795340261,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 618,
+      "prompt_tokens": 8624,
+      "total_tokens": 9242,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"user\", \"target_entity_name\": \"Converse Chuck Taylor's\", \"relation_type\": \"WORE\", \"fact\": \"I wore my old Converse Chuck Taylor's to a music festival last month.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Vans Old Skool\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Dr. Martens Pascal 8-Eye Boot\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Tevas Terra-Float\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Birkenstock Gizeh\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Adidas Superstar\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"Sanuk Beaumont\", \"relation_type\": \"OWNS\", \"fact\": \"I've heard good things about Vans, but I've never tried them before.\", \"valid_at\": \"2023-05-28T04:46:00+00:00\", \"episode_indices\": [4]}]}",
+  "seconds": 362.05991711599927,
+  "prompt_tokens_local": 8624
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 64
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9ffc5652f3f57a8e486bd976e9596ca970b5bd943fc3b2e87f0e7b69b9c733a8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-57815411-a0cb-464d-a5e8-efa033455927",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"T.L.C. Sukari Babyfacial\", \"target_entity_name\": \"user\", \"relation_type\": \"USES\", \"fact\": \"user will use the T.L.C. Sukari Babyfacial once or twice a week\", \"valid_at\": \"2023-05-30T06:28:00Z\", \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795372294,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 92,
+      "prompt_tokens": 8405,
+      "total_tokens": 8497,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"T.L.C. Sukari Babyfacial\", \"target_entity_name\": \"user\", \"relation_type\": \"USES\", \"fact\": \"user will use the T.L.C. Sukari Babyfacial once or twice a week\", \"valid_at\": \"2023-05-30T06:28:00Z\", \"episode_indices\": [0]}]}",
+  "seconds": 30.344301848992473,
+  "prompt_tokens_local": 8405
+}

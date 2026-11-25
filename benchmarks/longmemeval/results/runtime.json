@@ -1,0 +1,32 @@
+{
+  "generation_hardware": "Apple M1 Ultra, 64 GB unified memory",
+  "client_hardware": "32-thread x86 CPU",
+  "client_python": "3.13.18",
+  "uv": "0.13.9",
+  "server": {
+    "mlx-lm": "0.32.2",
+    "mlx": "0.32.4",
+    "transformers": "5.20.2",
+    "huggingface-hub": "2.3.0"
+  },
+  "client_versions_file": "requirements.txt",
+  "mem0": "0.1.118",
+  "generation_quantization": "4-bit",
+  "embedding_device": "cpu",
+  "dev_gpu_used": false,
+  "thinking": false,
+  "temperature": 0,
+  "answer_max_tokens": 512,
+  "judge_max_tokens": 10,
+  "memory_max_tokens": 2048,
+  "server_flags": {
+    "host": "localhost",
+    "port": 39710,
+    "chat-template-args": {
+      "enable_thinking": false
+    },
+    "prompt-cache-size": 1,
+    "prompt-cache-bytes": 2147483648,
+    "prefill-step-size": 512
+  }
+}

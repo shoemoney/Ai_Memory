@@ -1,0 +1,164 @@
+{
+  "id": "simple_python_146",
+  "category": "simple_python",
+  "result": [
+    {
+      "stock_price": "{\"company\":\"Amazon\",\"days\":3,\"data_type\":\"Close\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': \"What's the price of Amazon stock for the last 3 days?\"}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "stock_price",
+                "description": "Get stock price data for a given company over a specified number of days.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "company": {
+                      "type": "string",
+                      "description": "The company name."
+                    },
+                    "days": {
+                      "type": "integer",
+                      "description": "The number of previous days to retrieve data for."
+                    },
+                    "data_type": {
+                      "type": "string",
+                      "description": "The type of price data to retrieve (e.g., 'Open', 'Close', 'High', 'Low'). Default is 'Close'."
+                    }
+                  },
+                  "required": [
+                    "company",
+                    "days"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 369,
+    "output_token_count": 138,
+    "latency": 0.7295706069999142
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the price of Amazon stock for the last 3 days?"
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "stock_price",
+          "description": "Get stock price data for a given company over a specified number of days.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "company": {
+                "type": "string",
+                "description": "The company name."
+              },
+              "days": {
+                "type": "integer",
+                "description": "The number of previous days to retrieve data for."
+              },
+              "data_type": {
+                "type": "string",
+                "description": "The type of price data to retrieve (e.g., 'Open', 'Close', 'High', 'Low'). Default is 'Close'."
+              }
+            },
+            "required": [
+              "company",
+              "days"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-SJdLhki6qUacQKX8eRB5NZMGXDQHIdTh",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "V7uK6Hx04j9Dyi4FvTCLMb5V8OjMvOK6",
+              "function": {
+                "arguments": "{\"company\":\"Amazon\",\"days\":3,\"data_type\":\"Close\"}",
+                "name": "stock_price"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for Amazon stock price data for the last 3 days. I need to use the stock_price function to get this information. The function requires:\n- company: \"Amazon\" (or similar)\n- days: 3 (as requested)\n- data_type: This is optional and defaults to \"Close\", which is what I should use by default\n\nLet me make the function call."
+        }
+      }
+    ],
+    "created": 1795286714,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 138,
+      "prompt_tokens": 369,
+      "total_tokens": 507,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 367,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 367,
+      "prompt_n": 2,
+      "prompt_ms": 8.6,
+      "prompt_per_token_ms": 4.3,
+      "prompt_per_second": 232.55813953488374,
+      "predicted_n": 138,
+      "predicted_ms": 711.008,
+      "predicted_per_token_ms": 5.189839416058394,
+      "predicted_per_second": 192.68418920743508
+    }
+  },
+  "elapsed_seconds": 0.7296658710038173,
+  "score": {
+    "valid": true
+  }
+}

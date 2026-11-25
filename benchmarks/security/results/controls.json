@@ -1,0 +1,23 @@
+{
+  "clean_reader_failure": {
+    "passed": true,
+    "status": "n/a",
+    "reason": "clean store failed to verify before attack"
+  },
+  "unedited_reopen_failure": {
+    "passed": true,
+    "status": "n/a",
+    "reason": "store failed to verify after a reload with no edit, so no verdict can be taken"
+  },
+  "no_op_mutation": {
+    "passed": true,
+    "status": "ERROR",
+    "reason": "edit did not land: expected only record 2 to change, changed []"
+  },
+  "real_mutation_native_vs_wrapper": {
+    "passed": true,
+    "native": "VULNERABLE",
+    "wrapper": "safe",
+    "wrapper_reason": "detected on reload (external keyed chain head mismatch)"
+  }
+}

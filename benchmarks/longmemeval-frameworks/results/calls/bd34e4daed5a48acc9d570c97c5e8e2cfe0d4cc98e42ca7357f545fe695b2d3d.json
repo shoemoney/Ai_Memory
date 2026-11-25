@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 35
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1fdd250ccad8d6779f964204513855fa343d48c399afc296d5c880b217c810cf",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-840259ca-e8fe-4e8c-8806-e3a7868f628d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Try mindful breathing\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Meditation can help reduce stress and improve focus\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Meditation should be practiced daily for at least 10-15 minutes\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Mindful breathing is an excellent choice for reducing stress\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Meditation can be practiced for a shorter duration if it is more comfortable\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332510,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 185,
+      "prompt_tokens": 1823,
+      "total_tokens": 2008,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Try mindful breathing\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Meditation can help reduce stress and improve focus\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Meditation should be practiced daily for at least 10-15 minutes\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Mindful breathing is an excellent choice for reducing stress\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Meditation can be practiced for a shorter duration if it is more comfortable\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 5.029953245000797,
+  "prompt_tokens_local": 1823,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

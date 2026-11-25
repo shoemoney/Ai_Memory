@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "758308394931c7269a4336db04b80b141a508d0afa2850fa99a9d442902c2501",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-749f2d40-c5dd-491d-adfe-f30b4994e5c5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"ISpoweredBY\", \"fact\": \"The Mustang is powered by the Trigger engine.\", \"valid_at\": \"2023-05-21T03:07:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"ISlocatedIN\", \"fact\": \"The Belmont Arts Center is located in the same place as the Mustang.\", \"valid_at\": \"2023-05-21T03:07:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"ISlocatedIN\", \"fact\": \"The Mustang is located in Riverside Park.\", \"valid_at\": \"2023-05-21T03:07:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367637,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 210,
+      "prompt_tokens": 9575,
+      "total_tokens": 9785,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"ISpoweredBY\", \"fact\": \"The Mustang is powered by the Trigger engine.\", \"valid_at\": \"2023-05-21T03:07:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"ISlocatedIN\", \"fact\": \"The Belmont Arts Center is located in the same place as the Mustang.\", \"valid_at\": \"2023-05-21T03:07:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"ISlocatedIN\", \"fact\": \"The Mustang is located in Riverside Park.\", \"valid_at\": \"2023-05-21T03:07:00Z\"}]}",
+  "seconds": 58.941971177002415,
+  "prompt_tokens_local": 9575
+}

@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9fc7c0e44bddb12350ffdef893d7cc9d65b61af2a77fb81e386f44654905a22b",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c79af783-7d66-4b79-9526-db7bc9f6efb2",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "```json\n{\n  \"summaries\": [\n    {\n      \"name\": \"cracked windshield\",\n      \"summary\": \"\"\n    },\n    {\n      \"name\": \"throw pillows\",\n      \"summary\": \"The user has ordered new throw pillows for their living room. They are a darker blue color, which they think will really pop with the rug. They are planning to place the rug under the coffee table and are looking for a modern rug with a subtle texture or pattern to add depth to the space without overpowering the throw pillows.\"\n    }\n  ]\n}\n```",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367519,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 116,
+      "prompt_tokens": 349,
+      "total_tokens": 465,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "```json\n{\n  \"summaries\": [\n    {\n      \"name\": \"cracked windshield\",\n      \"summary\": \"\"\n    },\n    {\n      \"name\": \"throw pillows\",\n      \"summary\": \"The user has ordered new throw pillows for their living room. They are a darker blue color, which they think will really pop with the rug. They are planning to place the rug under the coffee table and are looking for a modern rug with a subtle texture or pattern to add depth to the space without overpowering the throw pillows.\"\n    }\n  ]\n}\n```",
+  "seconds": 11.871160690992838,
+  "prompt_tokens_local": 349
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q027",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "fed4d509e91e865df6c579d11b4ba802a066ac9d1a41bf7ff4bd0da1380fb754",
+  "reference_sha256": "efb987b0604f0bc6e4a12b08330605cb83d854ed77aecd3ea39f46eba05b1112",
+  "method": "rag",
+  "answer": "The peasant expressed distrust towards the man.",
+  "response": {
+    "text": "The peasant expressed distrust towards the man.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 9,
+      "prompt_tokens": 2983,
+      "total_tokens": 2992,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 17.282841713007656,
+    "request_sha256": "c1206a48fafbea6259a3bc44c763f49b4d8f3ad38d2dafb0bff3543a390a2783",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    335,
+    314,
+    332,
+    336,
+    328,
+    317,
+    573,
+    371,
+    117,
+    356,
+    333,
+    310,
+    315,
+    311,
+    133,
+    327,
+    312,
+    331,
+    350,
+    396
+  ],
+  "retrieval_scores": [
+    0.5146530866622925,
+    0.463800311088562,
+    0.462954580783844,
+    0.4559020698070526,
+    0.45582497119903564,
+    0.4556274712085724,
+    0.4554668664932251,
+    0.45533013343811035,
+    0.4484766125679016,
+    0.4462609887123108,
+    0.44548219442367554,
+    0.4451558291912079,
+    0.44457072019577026,
+    0.4424097239971161,
+    0.44166505336761475,
+    0.4386012554168701,
+    0.43754976987838745,
+    0.43669724464416504,
+    0.4353422522544861,
+    0.43502962589263916
+  ],
+  "retrieval_seconds": 0.04308513400610536,
+  "provided_context_sha256": "4568f3a9b40d77d94d21db25e8263f3625ae5f6e9eeb058bb91bcd3f7fa7c01b",
+  "provided_context_tokens": 2704,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "788df8296b5698d458096cbb1bd7f117de2ba7252fc85126002db91a85cb8c3c",
+    "raw_answer_sha256": "05b155ea74b1b2f837292dbac55aba549c0c93f795d76c95d4bcb14a6f6a4f70",
+    "answer_redacted": false
+  }
+}

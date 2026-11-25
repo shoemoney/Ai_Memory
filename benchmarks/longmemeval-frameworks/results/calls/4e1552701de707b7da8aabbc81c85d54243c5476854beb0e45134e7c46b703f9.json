@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 34
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1825108a8a7982665daf78b9d1a14a94a181e7997b2f127d5d0a7afa674df13c",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-7b27c509-9392-4622-8166-83cb7eaf4b91",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"10\",\n            \"text\": \"Considered trying to smoke a whole turkey or a pork belly\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"Checked resources for smoking a whole turkey and pork belly\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"12\",\n            \"text\": \"Plan to start a new smoking project\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366222,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 114,
+      "prompt_tokens": 1849,
+      "total_tokens": 1963,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"10\",\n            \"text\": \"Considered trying to smoke a whole turkey or a pork belly\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"Checked resources for smoking a whole turkey and pork belly\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"12\",\n            \"text\": \"Plan to start a new smoking project\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 11.258317979983985,
+  "prompt_tokens_local": 1849
+}

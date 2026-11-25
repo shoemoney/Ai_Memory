@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q047",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "cbf07cf8915ea6591cd0568c0f3eb2e6f7f2bd298e06e5ef9404c260005b1783",
+  "reference_sha256": "6b86376c5e4690f3a6064e4a16936e3cc123b21bc8fc0932b82ea112116817e7",
+  "method": "bm25",
+  "answer": "Person009 expressed his political stance and disowned his father's principles.",
+  "response": {
+    "text": "Person009 expressed his political stance and disowned his father's principles.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 3323,
+      "total_tokens": 3340,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 8.834624944996904,
+    "request_sha256": "7ea3c05d49706adef7bf380b674c4b73c04bee7ee6437fc9b30fcd196f3d59b1",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    204,
+    102,
+    272,
+    305,
+    282,
+    375,
+    206,
+    263,
+    216,
+    503,
+    401,
+    13,
+    14,
+    33,
+    156,
+    234,
+    140,
+    428,
+    398,
+    283
+  ],
+  "retrieval_scores": [
+    141.54751066471988,
+    130.3092033277394,
+    129.9868223694797,
+    129.7989402033613,
+    128.67873060149964,
+    127.91113643402655,
+    127.74173656760594,
+    127.12260422437924,
+    126.18666477929338,
+    125.53376296028839,
+    125.5217281514454,
+    125.48334992501036,
+    125.43691425514577,
+    125.19237739240997,
+    125.02300695554345,
+    123.93794380885258,
+    123.70512074619506,
+    123.41736668579793,
+    123.07354710530453,
+    123.03218577884314
+  ],
+  "retrieval_seconds": 0.01429658399138134,
+  "provided_context_sha256": "915e2366e193ffbb35a276517c9634136d73135f2420addbe0927c844477e05e",
+  "provided_context_tokens": 2945,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "8413b7a3e92942811e4be496840b44c746b605de831e6cc98bf3811e78065868",
+    "raw_answer_sha256": "b002f2aef2c84ff6c9b75ba0a24b3318ceecab5c77d7024b482dae8615d1371c",
+    "answer_redacted": false
+  }
+}

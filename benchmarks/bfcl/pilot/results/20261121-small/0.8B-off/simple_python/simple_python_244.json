@@ -1,0 +1,214 @@
+{
+  "id": "simple_python_244",
+  "category": "simple_python",
+  "result": "The law of universal gravitation was published by Isaac Newton in **1687**.\n\nIt was published in the book *Philosophiæ Naturalis Principia Mathematica* (The Mathematical Principles of Natural Philosophy), which was first printed in London in 1687 and subsequently in Paris in 1688.",
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'What year was the law of universal gravitation published by Isaac Newton?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "publication_year_find",
+                "description": "Fetches the year a particular scientific work was published.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "author": {
+                      "type": "string",
+                      "description": "Name of the author of the work."
+                    },
+                    "work_title": {
+                      "type": "string",
+                      "description": "Title of the scientific work."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "Place of the publication, if known. Default to 'all'."
+                    }
+                  },
+                  "required": [
+                    "author",
+                    "work_title"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 354,
+    "output_token_count": 69,
+    "latency": 0.7720445730010397
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What year was the law of universal gravitation published by Isaac Newton?"
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "publication_year_find",
+          "description": "Fetches the year a particular scientific work was published.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "author": {
+                "type": "string",
+                "description": "Name of the author of the work."
+              },
+              "work_title": {
+                "type": "string",
+                "description": "Title of the scientific work."
+              },
+              "location": {
+                "type": "string",
+                "description": "Place of the publication, if known. Default to 'all'."
+              }
+            },
+            "required": [
+              "author",
+              "work_title"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-EjY3306rGwzTVWCX23oaWQzCfkWSMohj",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "The law of universal gravitation was published by Isaac Newton in **1687**.\n\nIt was published in the book *Philosophiæ Naturalis Principia Mathematica* (The Mathematical Principles of Natural Philosophy), which was first printed in London in 1687 and subsequently in Paris in 1688.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795287446,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 69,
+      "prompt_tokens": 354,
+      "total_tokens": 423,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 354,
+      "prompt_ms": 178.899,
+      "prompt_per_token_ms": 0.505364406779661,
+      "prompt_per_second": 1978.7701440477588,
+      "predicted_n": 69,
+      "predicted_ms": 582.754,
+      "predicted_per_token_ms": 8.569911764705882,
+      "predicted_per_second": 116.68731574558046
+    }
+  },
+  "elapsed_seconds": 0.772384662006516,
+  "score": {
+    "id": "simple_python_244",
+    "model_name": "local-subset-FC",
+    "test_category": "simple_python",
+    "valid": false,
+    "error": [
+      "Invalid syntax. Failed to decode AST. 'str' object has no attribute 'keys'"
+    ],
+    "error_type": "ast_decoder:decoder_failed",
+    "prompt": {
+      "id": "simple_python_244",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What year was the law of universal gravitation published by Isaac Newton?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "publication_year.find",
+          "description": "Fetches the year a particular scientific work was published.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "author": {
+                "type": "string",
+                "description": "Name of the author of the work."
+              },
+              "work_title": {
+                "type": "string",
+                "description": "Title of the scientific work."
+              },
+              "location": {
+                "type": "string",
+                "description": "Place of the publication, if known. Default to 'all'."
+              }
+            },
+            "required": [
+              "author",
+              "work_title"
+            ]
+          }
+        }
+      ]
+    },
+    "model_result_raw": "The law of universal gravitation was published by Isaac Newton in **1687**.\n\nIt was published in the book *Philosophiæ Naturalis Principia Mathematica* (The Mathematical Principles of Natural Philosophy), which was first printed in London in 1687 and subsequently in Paris in 1688.",
+    "possible_answer": [
+      {
+        "publication_year.find": {
+          "author": [
+            "Isaac Newton"
+          ],
+          "work_title": [
+            "Law of Universal Gravitation",
+            "Universal Law of Gravitation",
+            "The law of universal gravitation"
+          ],
+          "location": [
+            "",
+            "all"
+          ]
+        }
+      }
+    ]
+  }
+}

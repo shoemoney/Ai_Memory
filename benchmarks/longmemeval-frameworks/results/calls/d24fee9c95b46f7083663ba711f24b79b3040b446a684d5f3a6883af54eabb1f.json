@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 40
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1f937b6fb0819f58a87d31729cf1e8c845ccb27cdffd403cd8a3c826b71aeea2",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-816d0faf-a759-4543-bc3a-63b210d3f38f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"The Mustang is a model of the Trigger vehicle.\", \"valid_at\": \"2023-08-15T13:01:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363055,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 84,
+      "prompt_tokens": 8262,
+      "total_tokens": 8346,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4941
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"The Mustang is a model of the Trigger vehicle.\", \"valid_at\": \"2023-08-15T13:01:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 72.98394592499244,
+  "prompt_tokens_local": 8262
+}

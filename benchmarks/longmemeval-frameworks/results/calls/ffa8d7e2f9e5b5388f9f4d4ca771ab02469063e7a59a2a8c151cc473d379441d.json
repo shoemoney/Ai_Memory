@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d33f9884c1fb52156c6a05d2826296e25f8aa6d8374c4abe5333efe5b413a825",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b518e4ae-8831-4b8b-b36d-a8bcc45443f1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Jemaa el-Fnaa\", \"target_entity_name\": \"user\", \"relation_type\": \"IS_VISITED_IN\", \"fact\": \"Jemaa el-Fnaa is a must-visit market for any visitor to Marrakech and is a great place to start the Marrakech market experience.\", \"valid_at\": \"2023-05-20T01:43:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367401,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 114,
+      "prompt_tokens": 3996,
+      "total_tokens": 4110,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Jemaa el-Fnaa\", \"target_entity_name\": \"user\", \"relation_type\": \"IS_VISITED_IN\", \"fact\": \"Jemaa el-Fnaa is a must-visit market for any visitor to Marrakech and is a great place to start the Marrakech market experience.\", \"valid_at\": \"2023-05-20T01:43:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 13.486827473010635,
+  "prompt_tokens_local": 3996
+}

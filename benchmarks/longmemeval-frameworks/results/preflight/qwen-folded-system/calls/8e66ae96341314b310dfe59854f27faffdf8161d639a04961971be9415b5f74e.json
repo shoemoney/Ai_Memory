@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "fcc0973fe32a6d15b82b0297847c1e301ad712f41623bb62e38a79131631a434",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c312dd7b-1b41-460a-977b-bc07863a4148",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Lantern Garden\", \"target_entity_name\": \"Chinese Calligraphy Wall\", \"relation_type\": \"HAS_PHYGITAL_COMPONENT\", \"fact\": \"The Chinese Calligraphy Wall features a physical wall where visitors can try their hand at Chinese calligraphy by using traditional brushes and ink, and scan a QR code to learn more about their calligraphy.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Lantern Garden\", \"target_entity_name\": \"Chinese Tea Ceremony\", \"relation_type\": \"HAS_PHYGITAL_COMPONENT\", \"fact\": \"The Chinese Tea Ceremony features a physical tea room where visitors can participate in a traditional Chinese tea ceremony, and scan a QR code to access a digital guide to Chinese tea ceremonies.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Lantern Garden\", \"target_entity_name\": \"Zodiac Experience\", \"relation_type\": \"HAS_PHYGITAL_COMPONENT\", \"fact\": \"The Zodiac Experience features a physical installation where visitors can color and decorate the Chinese zodiac animals, and scan a QR code to learn more about their zodiac sign.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Lantern Garden\", \"target_entity_name\": \"Chinese Knot Tying\", \"relation_type\": \"HAS_PHYGITAL_COMPONENT\", \"fact\": \"The Chinese Knot Tying features a physical booth where visitors can learn how to tie traditional Chinese knots, and scan a QR code to access a digital guide to Chinese knot-tying.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331184,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 471,
+      "prompt_tokens": 5230,
+      "total_tokens": 5701,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 2648
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Lantern Garden\", \"target_entity_name\": \"Chinese Calligraphy Wall\", \"relation_type\": \"HAS_PHYGITAL_COMPONENT\", \"fact\": \"The Chinese Calligraphy Wall features a physical wall where visitors can try their hand at Chinese calligraphy by using traditional brushes and ink, and scan a QR code to learn more about their calligraphy.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Lantern Garden\", \"target_entity_name\": \"Chinese Tea Ceremony\", \"relation_type\": \"HAS_PHYGITAL_COMPONENT\", \"fact\": \"The Chinese Tea Ceremony features a physical tea room where visitors can participate in a traditional Chinese tea ceremony, and scan a QR code to access a digital guide to Chinese tea ceremonies.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Lantern Garden\", \"target_entity_name\": \"Zodiac Experience\", \"relation_type\": \"HAS_PHYGITAL_COMPONENT\", \"fact\": \"The Zodiac Experience features a physical installation where visitors can color and decorate the Chinese zodiac animals, and scan a QR code to learn more about their zodiac sign.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Lantern Garden\", \"target_entity_name\": \"Chinese Knot Tying\", \"relation_type\": \"HAS_PHYGITAL_COMPONENT\", \"fact\": \"The Chinese Knot Tying features a physical booth where visitors can learn how to tie traditional Chinese knots, and scan a QR code to access a digital guide to Chinese knot-tying.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 12.032171564002056,
+  "prompt_tokens_local_gemma_estimate": 5281
+}

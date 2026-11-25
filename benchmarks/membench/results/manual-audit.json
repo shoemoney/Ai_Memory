@@ -1,0 +1,335 @@
+{
+  "reviewer": "implementation agent/tester, not an independent human",
+  "judgments_made_before_local_judge_labels": true,
+  "note": "Hand review by the tester (the implementation agent), not an independent human. Reviewer labels were written before the automated labels were joined; automated labels in the main results are retained, including disagreements.",
+  "items": [
+    {
+      "method": "full-context",
+      "item_id": "halu-u19-s17-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Hallucination",
+      "agree": false,
+      "notes": "Core resources, venues and reach match; extra program narrative does not change the conclusion."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u17-s06-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Unknown matches absent burger detail."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u05-s07-q04",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "The response reports the decline but ends with uncertainty rather than the requested definite no."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u05-s28-q01",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Unknown matches absent count."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u19-s07-q02",
+      "reviewer_label": "Hallucination",
+      "automated_label": "Hallucination",
+      "agree": true,
+      "notes": "Outdated Positive and Sunny contradicts Optimistic and Resilient."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u02-s23-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "No and reconsideration match removal of sodas from dislikes."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u18-s22-q03",
+      "reviewer_label": "Hallucination",
+      "automated_label": "Hallucination",
+      "agree": true,
+      "notes": "Final Lead Research Scientist contradicts the required Senior Researcher despite the initial correct phrase."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u13-s09-q11",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Unknown omits secured funding."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u13-s24-q00",
+      "reviewer_label": "Hallucination",
+      "automated_label": "Hallucination",
+      "agree": true,
+      "notes": "Invents a middle name from the alias digits, when reference is unknown."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u06-s15-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Omission",
+      "agree": false,
+      "notes": "Both previous and current mental states match."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u00-s29-q06",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Required health label is absent. Its Abnormal meaning was masked in the frozen reference; this item is semantically compromised."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u02-s10-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Hallucination",
+      "agree": false,
+      "notes": "Storyline and friend recommendation match."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u03-s07-q04",
+      "reviewer_label": "Correct",
+      "automated_label": "Hallucination",
+      "agree": false,
+      "notes": "Successful project contribution matches; additional narrative does not alter it."
+    },
+    {
+      "method": "full-context",
+      "item_id": "halu-u15-s02-q00",
+      "reviewer_label": "Correct",
+      "automated_label": "Omission",
+      "agree": false,
+      "notes": "No directly answers the yes/no question. The commercialization rationale is not requested."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u01-s09-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Hallucination",
+      "agree": false,
+      "notes": "Strategic and social benefits and involving friends in event planning match the required strategic/social influence."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u01-s21-q01",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Support and stress management cover emotional support but omit the required collaborative opportunities."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u01-s21-q01",
+      "reviewer_label": "Omission",
+      "automated_label": "Hallucination",
+      "agree": false,
+      "notes": "Emotional and strategic support are stated, but collaborative opportunities are not identified."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u01-s24-q00",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Unknown omits the provided gratitude, which answers the regret question in the negative."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u02-s07-q08",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Improved exactly matches the required current physical health status."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u03-s19-q00",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "The game type exactly matches the cooperative first-person shooter reference."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u03-s22-q00",
+      "reviewer_label": "Correct",
+      "automated_label": "Omission",
+      "agree": false,
+      "notes": "Cargo pants identifies the requested clothing type. The stylistic adjective is not necessary to identify it."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u06-s16-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Soft cotton textiles exactly matches the required preference."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u08-s09-q01",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Unknown omits the decision to eliminate coffee because of elevated blood pressure."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u09-s02-q00",
+      "reviewer_label": "Correct",
+      "automated_label": "Omission",
+      "agree": false,
+      "notes": "No directly answers the preference question and matches the negative reference. No rationale was requested."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u09-s08-q03",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Unknown omits the savings buffer and financial security supplied by the reference."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u11-s13-q01",
+      "reviewer_label": "Correct",
+      "automated_label": "Omission",
+      "agree": false,
+      "notes": "Mentor identifies the requested career role; no additional activity was requested."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u11-s07-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Omission",
+      "agree": false,
+      "notes": "Employed at a film archive is equivalent to the reference employment status."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u11-s22-q01",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "The partner identity exactly matches both aliases in the reference."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u12-s17-q07",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "The response covers crucial social support and encouragement for the mentoring work."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u14-s00-q00",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Unknown matches the absent middle name in the reference."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u14-s17-q05",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "The response includes inspiring creativity and supplying insights for investment strategies."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u14-s17-q06",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "The response explicitly says the strategic skill was crucial to earning the promotion."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u14-s28-q01",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Psychological thrillers exactly matches the current movie preference."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u16-s17-q01",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Unknown omits the key ally and strategic-advice role supplied by the reference."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u16-s17-q02",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Names the social-motivation category but omits expressing achievements, the specific goal in the reference. Borderline if the broad category alone is considered sufficient."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u16-s26-q02",
+      "reviewer_label": "Omission",
+      "automated_label": "Omission",
+      "agree": true,
+      "notes": "Unknown omits the reference decision to retain green tea as a routine staple."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u18-s07-q01",
+      "reviewer_label": "Correct",
+      "automated_label": "Hallucination",
+      "agree": false,
+      "notes": "Explicitly achieves sustainable work-life balance. Additional research narrative goes beyond the reference but does not change that conclusion."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u18-s15-q01",
+      "reviewer_label": "Correct",
+      "automated_label": "Omission",
+      "agree": false,
+      "notes": "No correctly rejects the combined distracting-and-avoided premise. The yes/no question does not require further elaboration."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u19-s07-q03",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Unknown matches the reference that no middle name is provided."
+    },
+    {
+      "method": "rag",
+      "item_id": "halu-u18-s29-q00",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Unknown matches the reference that the information is not provided."
+    },
+    {
+      "method": "bm25",
+      "item_id": "halu-u19-s20-q02",
+      "reviewer_label": "Correct",
+      "automated_label": "Correct",
+      "agree": true,
+      "notes": "Liver matches the reference."
+    }
+  ]
+}

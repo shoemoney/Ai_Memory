@@ -1,0 +1,163 @@
+{
+  "id": "simple_python_146",
+  "category": "simple_python",
+  "result": [
+    {
+      "stock_price": "{\"company\":\"Amazon\",\"days\":3,\"data_type\":\"Close\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': \"What's the price of Amazon stock for the last 3 days?\"}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "stock_price",
+                "description": "Get stock price data for a given company over a specified number of days.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "company": {
+                      "type": "string",
+                      "description": "The company name."
+                    },
+                    "days": {
+                      "type": "integer",
+                      "description": "The number of previous days to retrieve data for."
+                    },
+                    "data_type": {
+                      "type": "string",
+                      "description": "The type of price data to retrieve (e.g., 'Open', 'Close', 'High', 'Low'). Default is 'Close'."
+                    }
+                  },
+                  "required": [
+                    "company",
+                    "days"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 371,
+    "output_token_count": 51,
+    "latency": 1.6421812319968012
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the price of Amazon stock for the last 3 days?"
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "stock_price",
+          "description": "Get stock price data for a given company over a specified number of days.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "company": {
+                "type": "string",
+                "description": "The company name."
+              },
+              "days": {
+                "type": "integer",
+                "description": "The number of previous days to retrieve data for."
+              },
+              "data_type": {
+                "type": "string",
+                "description": "The type of price data to retrieve (e.g., 'Open', 'Close', 'High', 'Low'). Default is 'Close'."
+              }
+            },
+            "required": [
+              "company",
+              "days"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-ZzEWcmH5NU4XqL3sSWbvs8ZYWol8ZS5H",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "TYuoBgrYN6CIMl2s7aeRxYzABXuR9UyM",
+              "function": {
+                "arguments": "{\"company\":\"Amazon\",\"days\":3,\"data_type\":\"Close\"}",
+                "name": "stock_price"
+              },
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ],
+    "created": 1795286913,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 51,
+      "prompt_tokens": 371,
+      "total_tokens": 422,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 371,
+      "prompt_ms": 594.725,
+      "prompt_per_token_ms": 1.6030323450134771,
+      "prompt_per_second": 623.817730884022,
+      "predicted_n": 51,
+      "predicted_ms": 1039.249,
+      "predicted_per_token_ms": 20.78498,
+      "predicted_per_second": 48.11166525057998
+    }
+  },
+  "elapsed_seconds": 1.6422723499999847,
+  "score": {
+    "valid": true
+  }
+}

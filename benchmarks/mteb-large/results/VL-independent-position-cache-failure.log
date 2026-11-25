@@ -1,0 +1,39 @@
+{"event": "admitted", "free_percent": 60, "kernel_level": "1"}
+
+Fetching 20 files:   0%|          | 0/20 [00:00<?, ?it/s]
+Fetching 20 files: 100%|██████████| 20/20 [00:00<00:00, 3963.62it/s]
+{"event": "quantized", "stats": {"method": "MLX affine, CPU stream, no calibration", "bits": 4, "group_size": 64, "modules": 253, "original_matrix_bytes": 15136194560, "quantized_matrix_parameter_bytes": 4257054720, "skip_vision": true}}
+{"event": "immediate_preload_check", "free_percent": 59, "kernel_level": "1"}
+{"event": "ready", "model": "Qwen/Qwen3-VL-Embedding-8B", "revision": "2c4565515e0f265c6511776e7193b22c0968ddc7", "free_percent": 59, "execution": {"engine": "MLX", "compute_dtype": "bfloat16", "bits": 4, "group_size": 64, "quantization": {"method": "MLX affine, streaming CPU conversion, no calibration", "vision": "bfloat16; not quantized"}, "mlx_embeddings_version": "0.1.0", "mlx_version": "0.32.4", "quantizer_sha256": "c6eccbf503e0452d04ee4b3505a7334853d36e1e4958953556f2f6f40d1920f1", "backend_sha256": "2d0cdd359ed75f176addbcd85a7284e9d290201c83c4f731b224f3c27a169928", "backbone": "Qwen3 VL embedding backbone; unused language-model output head omitted", "instructions_sha256": "73a24aac2ac7d2fa4839b5898019acbebd6af1b0c843cc809271c1cfe94cd05f"}}
+----------------------------------------
+Exception occurred during processing of request from ('[address]', 10826)
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.16/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py", line 318, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.16/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py", line 349, in process_request
+    self.finish_request(request, client_address)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.16/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.16/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/homebrew/Cellar/python@3.12/3.12.16/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/homebrew/Cellar/python@3.12/3.12.16/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/Users/account/membench-mteb-large-tmp/mlx_server.py", line 102, in do_POST
+    vectors=model.process(items,processor=processor)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/mlx_embeddings/models/qwen3_vl/model.py", line 261, in process
+    return self.embed(inputs, processor, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/mlx_embeddings/models/qwen3_vl/model.py", line 245, in embed
+    return self(**model_inputs).text_embeds
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/mlx_embeddings/models/qwen3_vl/model.py", line 215, in __call__
+    hidden_states = compute_qwen3_vl_hidden_states(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/mlx_embeddings/models/qwen3_vl/model.py", line 92, in compute_qwen3_vl_hidden_states
+    position_ids = language_model._position_ids[:, :, : input_ids.shape[-1]]
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Too many indices for array with 2 dimensions.
+----------------------------------------

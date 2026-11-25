@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d2a505e189a0d8451c5723432d935b0040518da31b4a8a3dd1ce46b1d1a7f30e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-340367e8-87e3-4ec7-8636-da64999240e8",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Riverside Park\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Trigger\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [1]}]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795345025,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 166,
+      "prompt_tokens": 7087,
+      "total_tokens": 7253,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5060
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Riverside Park\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Trigger\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [1]}]}]}",
+  "seconds": 227.9577039069991,
+  "prompt_tokens_local": 7087
+}

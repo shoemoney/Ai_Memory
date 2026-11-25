@@ -1,0 +1,5 @@
+{
+ "checker": "the tester (an AI agent), not an independent human; each item solved by reading the context and question and doing the arithmetic",
+ "verified_generated_gold": {"sample": 20, "seed": 11, "correct": 18, "wrong": ["c30|g2 (gold omits adding back the 15000 closing costs)", "c16|g1 (grapes are harvested every 4 months, so 6 months is one harvest, not 1.5)"], "note": "all 20 are drawn from the 36 generated items whose gold an independent expression-based solve reproduced"},
+ "unfiltered_generated_gold": {"sample": 12, "seed": 7, "correct": 7, "wrong_or_ill_posed": ["c9|g2 gold truncated to 1 (work shows 5.04)", "c25|g1 (Theo halves after 2 days: answer 64, gold 88)", "c23|g1 (23 pounds, gold ignores 2 full-price pounds)", "c3|g2 (gold 1 from a unit slip)", "c3|g0 (ill-posed: beach speed not given)"], "note": "drawn from all generated items before verification, from the first 32 contexts"}
+}

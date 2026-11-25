@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 72
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0f1ccb8710bc11cc6d3b1de0ba075ceb04fb36cd551e15ba7439ed4e73f70edc",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-beff2141-2894-4cf4-86a9-a1e41d32da41",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\"Purchased clothes\": \"high-waisted jeans\", \"Got amazing deal\": \"winter coat\"},\n    {\"Plan to store clothes\": \"winter coat in a garment bag, hang it up\"},\n    {\"Plan to store other clothes\": \"stackable plastic bins\"},\n    {\"Plan to prevent wrinkles and creases\": \"use cloth to stuff sleeves and body, store upright, avoid overcrowding\"},\n    {\"Plan to store winter coats\": \"garment bag, hang up\"},\n    {\"Plan to store other jackets\": \"stackable plastic bins, follow tips to prevent wrinkles and creases\"},\n    {\"Plan to moisturize skin\": \"winter skincare routine\"},\n    {\"Skin concern\": \"staying moisturized and healthy during cold months\"}\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330534,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 159,
+      "prompt_tokens": 2843,
+      "total_tokens": 3002,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\"Purchased clothes\": \"high-waisted jeans\", \"Got amazing deal\": \"winter coat\"},\n    {\"Plan to store clothes\": \"winter coat in a garment bag, hang it up\"},\n    {\"Plan to store other clothes\": \"stackable plastic bins\"},\n    {\"Plan to prevent wrinkles and creases\": \"use cloth to stuff sleeves and body, store upright, avoid overcrowding\"},\n    {\"Plan to store winter coats\": \"garment bag, hang up\"},\n    {\"Plan to store other jackets\": \"stackable plastic bins, follow tips to prevent wrinkles and creases\"},\n    {\"Plan to moisturize skin\": \"winter skincare routine\"},\n    {\"Skin concern\": \"staying moisturized and healthy during cold months\"}\n  ]\n}",
+  "seconds": 3.5576945550128585,
+  "prompt_tokens_local_gemma_estimate": 2904
+}

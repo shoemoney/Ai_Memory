@@ -1,0 +1,56 @@
+{
+  "model": "nomic-ai/nomic-embed-multimodal-7b",
+  "revision": "1291f1b6ca07061b0329df9d5713c09b294be576",
+  "dataset": "vidore/vidore_v3_hr_mteb_format",
+  "dataset_revision": "bc7d43d64815ed30f664168c8052106484aba7fd",
+  "license": "cc-by-4.0",
+  "n_queries": 318,
+  "n_corpus": 1110,
+  "ignored_qrels_for_other_query_ids": 8655,
+  "sampling": "All English HR test queries; all corpus pages",
+  "seed": 20261121,
+  "dtype": "bfloat16",
+  "execution": {
+    "engine": "PyTorch MPS",
+    "compute_dtype": "bfloat16",
+    "bits": 4,
+    "group_size": 64,
+    "quantization": {
+      "bits": 4,
+      "group_size": 64,
+      "method": "symmetric RTN, no calibration",
+      "quantized_matrices": 359,
+      "quantized_weights": 7744815104,
+      "merged_adapter_matrices": 196,
+      "excluded": "Embeddings, normalization, biases and matrices below 1000000 weights",
+      "scale_dtype": "bfloat16",
+      "compute_dtype": "bfloat16"
+    },
+    "attention_backend": "native 3D SDPA",
+    "base_model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "base_revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "backend_sha256": "f296ee12e5015758042ca247a4fa21dfa7c09423866cf0cfacd7d6331b0ca0a6",
+    "quantizer_sha256": "b202f73e871beb193e1a9cf2cb08c9eff09b345d993f565b056947e5283b22c6"
+  },
+  "hardware": "Apple M3 Ultra, 96 GB",
+  "scoring": "exact cosine, pytrec_eval nDCG@5 and @10, graded qrels",
+  "elapsed_seconds": 5938.549822867004,
+  "timing_scope": "This resumed invocation only; cached embeddings can be reused. Not an end-to-end latency measurement.",
+  "encoded_this_invocation": 842,
+  "reused_embeddings": 586,
+  "image_processing": "official processor defaults",
+  "ndcg_cut_5": {
+    "mean": 0.5516680283854717,
+    "bootstrap_95_ci": [
+      0.5163566089508337,
+      0.5873763002072679
+    ]
+  },
+  "ndcg_cut_10": {
+    "mean": 0.5719227440645052,
+    "bootstrap_95_ci": [
+      0.5383753309103119,
+      0.6054073218019183
+    ]
+  }
+}

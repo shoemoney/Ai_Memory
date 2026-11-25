@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q066",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "b87488aa5383617a661c0e22c00a819196e68f3043f6f556b20e5630a77085bf",
+  "reference_sha256": "11e5a55e8ef1f199d2908cac2403387a344621c67ea4618d09b05f4d0e4fd3ea",
+  "method": "bm25",
+  "answer": "Person646 planned to travel to Person302 for advice on marriage.",
+  "response": {
+    "text": "Person646 planned to travel to Person302 for advice on marriage.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3240,
+      "total_tokens": 3258,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 15.481772626008024,
+    "request_sha256": "641c2b167b2fa18542a53aa97deb601e28fa8596ee86d6a6a6299f2c1737df15",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    245,
+    248,
+    261,
+    249,
+    253,
+    282,
+    173,
+    244,
+    220,
+    143,
+    219,
+    223,
+    177,
+    214,
+    407,
+    86,
+    240,
+    205,
+    241,
+    151
+  ],
+  "retrieval_scores": [
+    149.9108536773756,
+    144.89834167964727,
+    135.20567639230413,
+    132.64004703447662,
+    131.0504446940816,
+    128.21076490575848,
+    128.00138214409108,
+    127.29071967770817,
+    126.75369294427635,
+    126.73893519397953,
+    126.65767473934804,
+    126.20047712012132,
+    125.49197009635681,
+    124.23395953770458,
+    124.04985473104965,
+    123.10810105697618,
+    122.9892275452674,
+    122.89608223679255,
+    122.51644199799621,
+    122.32389744047032
+  ],
+  "retrieval_seconds": 0.019718424999155104,
+  "provided_context_sha256": "70cbd2369e7d1aa6c72a7467d726547580e9579322d645d17e8bc9a339e2e8c9",
+  "provided_context_tokens": 2895,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "3f99df4f3ac3511f98b0e2423b7e097be518419d8070f35f22efd9b24096ad84",
+    "raw_answer_sha256": "3a054cd3c0f2489a024595152a866a74d69415078a60482e38c55e218bf7162b",
+    "answer_redacted": false
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 17
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "62352e3f76b566456b1405e872c885ef244258e3f80d7c1d8fd8d91d42871ac3",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e196d624-babf-43cc-a96e-1b17fd063cac",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Read about Game Design Theory by Keith Burgun\", \"Read about Designing Games by Tynan Sylvester\", \"Read about Challenges for Game Designers by Brenda Brathwaite and Ian Schreiber\", \"Read about Game Balancing by Steve Rabin\", \"Read about The Art of Game Design by Jesse Schell\", \"Read about Level Up! The Guide to Great Video Game Design by Scott Rogers\", \"Read about The Game Design Reader by Katie Salen and Eric Zimmerman\", \"Read about The Game Maker's Apprentice by Mark Overmars and Jacob Habgood\", \"Read about Game Mechanics by Ernest Adams and Joris Dormans\", \"Read about The Game Design Workshop by Tracy Fullerton\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365716,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 147,
+      "prompt_tokens": 953,
+      "total_tokens": 1100,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Read about Game Design Theory by Keith Burgun\", \"Read about Designing Games by Tynan Sylvester\", \"Read about Challenges for Game Designers by Brenda Brathwaite and Ian Schreiber\", \"Read about Game Balancing by Steve Rabin\", \"Read about The Art of Game Design by Jesse Schell\", \"Read about Level Up! The Guide to Great Video Game Design by Scott Rogers\", \"Read about The Game Design Reader by Katie Salen and Eric Zimmerman\", \"Read about The Game Maker's Apprentice by Mark Overmars and Jacob Habgood\", \"Read about Game Mechanics by Ernest Adams and Joris Dormans\", \"Read about The Game Design Workshop by Tracy Fullerton\"]}",
+  "seconds": 16.119240906002233,
+  "prompt_tokens_local": 953
+}

@@ -1,0 +1,40 @@
+{
+  "followup": true,
+  "arms": [
+    "B-native-1call"
+  ],
+  "rates": {
+    "prefill_usd_per_million": 0.15,
+    "cached_prefill_usd_per_million": 0.015,
+    "sample_usd_per_million": 0.5,
+    "train_usd_per_million": 0.75
+  },
+  "pricing_source": "tinker models.json via cost_estimation.fetch_model_pricing",
+  "budget_usd": 5.0,
+  "per_arm": {
+    "in/B-native-1call": {
+      "episodes": 400,
+      "first_turn_tokens_mean": 921.59,
+      "ceiling_usd": 0.8107816
+    },
+    "ood/B-native-1call": {
+      "episodes": 100,
+      "first_turn_tokens_mean": 914.02,
+      "ceiling_usd": 0.2022412
+    }
+  },
+  "ceiling_usd": 1.0130228000000001,
+  "expected_usd": 0.23751425,
+  "ceiling_tokens": {
+    "sampled": 1024000,
+    "prefill_cached": 0,
+    "prefill_uncached": 3340152,
+    "trained": 0
+  },
+  "expected_tokens": {
+    "sampled": 130000,
+    "prefill_cached": 0,
+    "prefill_uncached": 1150095,
+    "trained": 0
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "716b30945faf7bff26c1454373c9830aababc0141940f9d52acd6685ee3c57e7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-cd77b3fc-a2c6-4d00-8187-34f846161cb2",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Levi's jeans\", \"summary\": \"The Levi's jeans are comfortable and stylish, fitting well. They are known for their high-quality denim and classic styles. The user enjoys wearing them with various tops, from casual tees to dressier button-downs. Tips for extending their life include washing inside out in cold water, avoiding over-washing, using a mild detergent, air drying or tumble drying on low heat, and avoiding over-drying.\"}]}}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795358230,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 102,
+      "prompt_tokens": 5200,
+      "total_tokens": 5302,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 907
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Levi's jeans\", \"summary\": \"The Levi's jeans are comfortable and stylish, fitting well. They are known for their high-quality denim and classic styles. The user enjoys wearing them with various tops, from casual tees to dressier button-downs. Tips for extending their life include washing inside out in cold water, avoiding over-washing, using a mild detergent, air drying or tumble drying on low heat, and avoiding over-drying.\"}]}}",
+  "seconds": 39.14682654500939,
+  "prompt_tokens_local": 5200
+}

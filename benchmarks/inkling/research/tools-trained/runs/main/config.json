@@ -1,0 +1,50 @@
+{
+  "log_path": "benchmarks/inkling/research/tools-trained/runs/main",
+  "model_name": "thinkingmachines/Inkling-2-Mini",
+  "recipe_name": "recipe_trained_tools",
+  "load_checkpoint_path": null,
+  "renderer_name": "tml_v0",
+  "dataset_builder": {
+    "data_path": "$HOME/tinker-runs/trained_tools/data",
+    "model_name": "thinkingmachines/Inkling-2-Mini",
+    "batch_size": 32,
+    "max_length": 4096,
+    "effort": 0.0,
+    "seed": 0
+  },
+  "learning_rate": 0.00054,
+  "lr_schedule": "linear",
+  "num_epochs": 1,
+  "lora_rank": 32,
+  "base_url": null,
+  "evaluator_builders": [
+    {
+      "data_file": "$HOME/tinker-runs/trained_tools/data/valid.jsonl",
+      "arm": "A",
+      "effort": 0.0,
+      "max_tokens": 512,
+      "prefix": "valid/tools",
+      "log_path": "benchmarks/inkling/research/tools-trained/runs/main"
+    }
+  ],
+  "infrequent_evaluator_builders": [],
+  "save_every": 50,
+  "save_every_tokens": 0,
+  "save_every_seconds": 0.0,
+  "eval_every": 50,
+  "infrequent_eval_every": 100,
+  "ttl_seconds": 604800,
+  "rolling_save_every": 0,
+  "rolling_ttl_seconds": 7200,
+  "async_periodic_saves": false,
+  "adam_beta1": 0.9,
+  "adam_beta2": 0.95,
+  "adam_eps": 1e-08,
+  "wandb_project": null,
+  "wandb_name": null,
+  "session_name": null,
+  "enable_trace": false,
+  "span_chart_every": 0,
+  "max_steps": null,
+  "submit_ahead": 0
+}

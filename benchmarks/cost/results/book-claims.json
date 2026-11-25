@@ -1,0 +1,44 @@
+[
+  {
+    "chapter": "build/chapters/06-small-memory-models.html",
+    "line": 159,
+    "text": " Reads are quick because they skip the chat model. Hindsight reports a 167 ms median per request for a small decision model, against 1 to 7 seconds for a main model call. This is a vendor figure for its own workload, not a bound.  26   ",
+    "source_sha256": "3608622cecaa263a90c643187d760b90efe90605d175a074b6d786e90a579d3b"
+  },
+  {
+    "chapter": "build/chapters/06-small-memory-models.html",
+    "line": 292,
+    "text": "      167 ms vs 1 to 7 s  Hindsight's decision model per request, against a main model call.  26     Vendor claim   ",
+    "source_sha256": "3608622cecaa263a90c643187d760b90efe90605d175a074b6d786e90a579d3b"
+  },
+  {
+    "chapter": "build/chapters/16-frontier.html",
+    "line": 120,
+    "text": "  Shipped   Research preview  The model thinks about a stored context while no user is waiting. It writes down likely questions and derived facts ahead of time, then reads those notes at query time instead of rederiving them.  2   For your application, model calls move to idle time. When several questions share one context, the authors report a 2.5 times lower cost per query.  2   ",
+    "source_sha256": "639310ae5ae3e0829647407f8823c86a2e6dc163e870fcb4949370d614408e92"
+  },
+  {
+    "chapter": "build/chapters/17-security-eval-ops.html",
+    "line": 233,
+    "text": " For one published workload, Mem0's authors report 91% lower p95 latency and over 90% lower token use than their full-context baseline.  26   The independent testbed reports a plain RAG baseline with comparable accuracy at 8.4 times lower total cost than Mem0 in its setup.  27   Neither gives universal per-operation costs. ",
+    "source_sha256": "d03a76fd85fa051ec6730d76bca748160ef7496a49be639c548506de0527eb72"
+  },
+  {
+    "chapter": "build/chapters/17-security-eval-ops.html",
+    "line": 236,
+    "text": " One study reports a Mem0-style system cheaper after about ten turns at 100,000 cached tokens, with long context more accurate on LongMemEval and LoCoMo; these are the authors' figures, not run here.  32   The crossover is specific to that workload. Budget for memory only when repeated read savings repay extraction, storage and maintenance. ",
+    "source_sha256": "d03a76fd85fa051ec6730d76bca748160ef7496a49be639c548506de0527eb72"
+  },
+  {
+    "chapter": "build/chapters/18-choosing.html",
+    "line": 275,
+    "text": "    Build it yourself when  the schema is narrow, memory sits in your database, or you must audit writes. A plain retrieval baseline matched Mem0 at 8.4 times lower cost.  10   ",
+    "source_sha256": "3591befc081e36601e81b7617a4d57b98e6b9c6abeb404b47c875ac655772d61"
+  },
+  {
+    "chapter": "build/chapters/18-choosing.html",
+    "line": 310,
+    "text": "    Pick memory when  history outgrows the window. The same study found memory cheaper after about ten turns at 100K context.  26   Chapter 20 measures prompt tokens and answer correctness after each memory addition on a fixed 24-question fixture. ",
+    "source_sha256": "3591befc081e36601e81b7617a4d57b98e6b9c6abeb404b47c875ac655772d61"
+  }
+]

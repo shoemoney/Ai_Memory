@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 73
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "4db6f5ae00ab4fb199010d3b746c8ba0b11d1e61cd5f641be7350fb5d5b3ec5a",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-41fa4f50-d151-4233-aea5-983fb8d444a7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Storing winter accessories in stackable plastic bins\", \"Cleaning winter accessories before storing them\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330537,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 23,
+      "prompt_tokens": 1903,
+      "total_tokens": 1926,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 680
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Storing winter accessories in stackable plastic bins\", \"Cleaning winter accessories before storing them\"]}",
+  "seconds": 1.00439227699826,
+  "prompt_tokens_local_gemma_estimate": 1908
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 35
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "23b6669cc49c85ab073b7afdb2481b2b3f158491c2a74717f0822753316c165e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-79f9f256-e230-47c3-9030-46e9142c2ec7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"traditional clothing can be a way to connect with one's roots and showcase pride in one's heritage\", \"traditional clothing can be a means of preserving and passing on cultural traditions and values\", \"traditional clothing can serve as a physical manifestation of a culture's values, beliefs, and traditions\", \"traditional clothing can help outsiders gain a deeper understanding and appreciation of that culture\", \"traditional clothing can be used as a unifying force that promotes cultural diversity and encourages connection and understanding among people from different backgrounds\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366233,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 104,
+      "prompt_tokens": 1259,
+      "total_tokens": 1363,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"traditional clothing can be a way to connect with one's roots and showcase pride in one's heritage\", \"traditional clothing can be a means of preserving and passing on cultural traditions and values\", \"traditional clothing can serve as a physical manifestation of a culture's values, beliefs, and traditions\", \"traditional clothing can help outsiders gain a deeper understanding and appreciation of that culture\", \"traditional clothing can be used as a unifying force that promotes cultural diversity and encourages connection and understanding among people from different backgrounds\"]}",
+  "seconds": 9.54783760700957,
+  "prompt_tokens_local": 1259
+}

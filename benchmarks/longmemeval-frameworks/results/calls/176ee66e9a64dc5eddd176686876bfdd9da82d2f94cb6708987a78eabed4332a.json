@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 68
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ec4274c5f6567a1ad736f732b79195bd8a13ba07c8f3a8339405b91845b515e8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-dba017a8-3d32-44dc-909c-77dc75c685e9",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_EQUIPPED_WITH\", \"fact\": \"The Mustang is equipped with a Trigger.\", \"valid_at\": \"2023-05-28T22:49:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354093,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 9210,
+      "total_tokens": 9295,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 160
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_EQUIPPED_WITH\", \"fact\": \"The Mustang is equipped with a Trigger.\", \"valid_at\": \"2023-05-28T22:49:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 39.080086134999874,
+  "prompt_tokens_local": 9210
+}

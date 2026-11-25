@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 45
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "8cc096c4392868e68f0b1daf8c044390b722d6d8a4fc3d1ba9010b0a0ed6534b",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5bdbe05a-18b6-4375-b5c7-ae9ba24075db",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Plan to connect with LinkedIn connections in London\", \"Plan to attend HR industry events in London\", \"Plan to discuss HR differences between US and UK markets\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330402,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 36,
+      "prompt_tokens": 1824,
+      "total_tokens": 1860,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 705
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Plan to connect with LinkedIn connections in London\", \"Plan to attend HR industry events in London\", \"Plan to discuss HR differences between US and UK markets\"]}",
+  "seconds": 1.0345048570015933,
+  "prompt_tokens_local_gemma_estimate": 1881
+}

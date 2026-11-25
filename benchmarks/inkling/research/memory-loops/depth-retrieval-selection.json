@@ -1,0 +1,1242 @@
+{
+  "design": "depth-retrieval-v1",
+  "seed": 20261125,
+  "passes": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "lanes": [
+    "full-oracle",
+    "bm25-standard",
+    "dense-standard"
+  ],
+  "method": "largest-remainder proportional allocation among eligible archive strata; sorted IDs; seeded sample and shuffle",
+  "eligibility": "all three archived prompts scored and prompt_tokens + 512 <= 8192",
+  "eligible_n": 212,
+  "eligible_strata": {
+    "single-session-user": 38,
+    "knowledge-update": 33,
+    "single-session-assistant": 34,
+    "abstention": 15,
+    "temporal-reasoning": 44,
+    "multi-session": 30,
+    "single-session-preference": 18
+  },
+  "n": 150,
+  "strata": {
+    "single-session-user": 27,
+    "temporal-reasoning": 31,
+    "single-session-preference": 13,
+    "abstention": 11,
+    "knowledge-update": 23,
+    "single-session-assistant": 24,
+    "multi-session": 21
+  },
+  "questions": [
+    {
+      "question_id": "37d43f65",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "370a8ff4",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "95228167",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "eeda8a6d_abs",
+      "question_type": "multi-session",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "118b2229",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "b86304ba",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "86b68151",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "0977f2af",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "f685340e",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "e3fc4d6e",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "19b5f2b3_abs",
+      "question_type": "single-session-user",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "gpt4_e414231f",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "1d4e3b97",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "b320f3f8",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "08e075c7",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "1cea1afa",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "7405e8b1",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "ccb36322",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "720133ac",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "09d032c9",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "cc06de0d",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "982b5123_abs",
+      "question_type": "temporal-reasoning",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "8e9d538c",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "488d3006",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "77eafa52",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "1de5cff2",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "gpt4_6dc9b45b",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "bcbe585f",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "8a137a7f",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "85fa3a3f",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "982b5123",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "gpt4_fe651585",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "2a1811e2",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "8cf51dda",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "1903aded",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "eace081b",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "edced276_abs",
+      "question_type": "multi-session",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "ad7109d1",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "affe2881",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "2ebe6c90",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "2698e78f",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "ac031881",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "f523d9fe",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "gpt4_7de946e7",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "gpt4_2f584639",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "gpt4_7ddcf75f",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "07741c44",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "ef9cf60a",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "a96c20ee_abs",
+      "question_type": "multi-session",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "4dfccbf8",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "58470ed2",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "d3ab962e",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "0862e8bf_abs",
+      "question_type": "single-session-user",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "gpt4_2c50253f",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "ce6d2d27",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "830ce83f",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "0a34ad58",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "bc8a6e93",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "gpt4_fa19884d",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "gpt4_e072b769",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "gpt4_7bc6cf22",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "d6062bb9",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "c6853660",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "26bdc477",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "eaca4986",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "a96c20ee",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "d905b33f",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "fca762bc",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "a3332713",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "gpt4_93159ced",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "b6025781",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "gpt4_68e94287",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "51b23612",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "55241a1f",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "bc8a6e93_abs",
+      "question_type": "single-session-user",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "61f8c8f8",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "c7cf7dfd",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "3f1e9474",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "d596882b",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "e61a7584",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "7e00a6cb",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "618f13b2",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "06f04340",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "e982271f",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "35a27287",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "6456829e_abs",
+      "question_type": "multi-session",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "078150f1",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "2133c1b5",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "5809eb10",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "d24813b1",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "311778f1",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "8550ddae",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "21d02d0d",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "gpt4_483dd43c",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "a40e080f",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "853b0a1d",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "c8f1aeed",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "1f2b8d4f",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "75832dbd",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "3d86fd0a",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "60d45044",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "6aeb4375_abs",
+      "question_type": "knowledge-update",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "bbf86515",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "7401057b",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "4388e9dd",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "c4ea545c",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "51a45a95",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "001be529",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "gpt4_8279ba02",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "b01defab",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "41275add",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "fca70973",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "a346bb18",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "0e4e4c46",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "gpt4_78cf46a3",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "b29f3365",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "71a3fd6b",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "gpt4_8c8961ae",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "c9f37c46",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "945e3d21",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "3fdac837",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "4d6b87c8",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "fea54f57",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "a82c026e",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "e9327a54",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "d52b4f67",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "561fabcd",
+      "question_type": "single-session-assistant",
+      "stratum": "single-session-assistant"
+    },
+    {
+      "question_id": "94f70d80",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "e66b632c",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "75f70248",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "gpt4_93159ced_abs",
+      "question_type": "temporal-reasoning",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "gpt4_c27434e8",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "e01b8e2f",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "5831f84d",
+      "question_type": "knowledge-update",
+      "stratum": "knowledge-update"
+    },
+    {
+      "question_id": "031748ae_abs",
+      "question_type": "knowledge-update",
+      "stratum": "abstention"
+    },
+    {
+      "question_id": "06878be2",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "3b6f954b",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "8077ef71",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "gpt4_b5700ca9",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "gpt4_0b2f1d21",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "1faac195",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "dccbc061",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "7527f7e2",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "8a2466db",
+      "question_type": "single-session-preference",
+      "stratum": "single-session-preference"
+    },
+    {
+      "question_id": "gpt4_68e94288",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "8979f9ec",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "6cb6f249",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    },
+    {
+      "question_id": "faba32e5",
+      "question_type": "single-session-user",
+      "stratum": "single-session-user"
+    },
+    {
+      "question_id": "gpt4_d9af6064",
+      "question_type": "temporal-reasoning",
+      "stratum": "temporal-reasoning"
+    },
+    {
+      "question_id": "eeda8a6d",
+      "question_type": "multi-session",
+      "stratum": "multi-session"
+    }
+  ],
+  "archive_manifest_sha256": "69dfb4304412b072a2a037884d3c370b4e40d09cf86f70782361e165d7135c73",
+  "input_sha256": {
+    "37d43f65--full-oracle.json": "0b8297c7828ad7d96073a22bb26e446956d396780909d0808b80233114074a81",
+    "37d43f65--bm25-standard.json": "94a544ba8ad57d09a89034b4bd40b850ddf0426614dab763b5e80ad947de8116",
+    "37d43f65--dense-standard.json": "0b8b4caa30618b9a32403da388ae72951077c5445384330201999fad476b2841",
+    "370a8ff4--full-oracle.json": "e2d3913b76bb12675587abb6a3374c85c30a509d61802f3230ef01da126f35da",
+    "370a8ff4--bm25-standard.json": "0f25b39381bdb563a23f9aa1c1a2971bf0375bd4a342bdf47462c907514a0f77",
+    "370a8ff4--dense-standard.json": "4b0a325e81957e8b62b02f5cb991abb8b6571c30a21e42f246a7036cc5e03aef",
+    "95228167--full-oracle.json": "4f973ee14b2a28dcb708a0a43cd48cb5683c5808dda363c7bbb3281e48a129d3",
+    "95228167--bm25-standard.json": "646532a9f98bcd77f7d34c0e34b394f1a65450905d0545866537d4da6b07d53e",
+    "95228167--dense-standard.json": "3d1cf11e9a1084271f32f3ec9948165c277ba1e16639702c43dc2c52ef503f7a",
+    "eeda8a6d_abs--full-oracle.json": "ddcddabde6443c219ed1d86f72ed0fc3c339a07fe1d3ca69234c0b031080f206",
+    "eeda8a6d_abs--bm25-standard.json": "57208d16147f53a36e52c4db0e1005626277d8862892e47a1971775b0fa3f853",
+    "eeda8a6d_abs--dense-standard.json": "734aa8219ddf48358fd33294b7ffa7c1b136faba2ece44bba1f0381c27fe40af",
+    "118b2229--full-oracle.json": "420704cbe4b0814654557f13641451c029b922857db2faa22ba71eaf7b37ad8d",
+    "118b2229--bm25-standard.json": "c10499471f2342930e9ffdbf57883c6aa26d3708b2d967cfa56414df9963520c",
+    "118b2229--dense-standard.json": "0439d232b903021aa367712f2261b5dadacb621285a78f828dd4cb200a3e7ddb",
+    "b86304ba--full-oracle.json": "4e0157381fe2d876b8b664b02880d2b41897d1dddb18a74b1c0c7ffa847c63dc",
+    "b86304ba--bm25-standard.json": "3dd6cba322a22be49b353edf5d074925af006ea75cbfde3e3e57842e2130da45",
+    "b86304ba--dense-standard.json": "d51f4f3112afb00534486c6ea33aa329ecb8da477def5339e7a6d799a3b8b62c",
+    "86b68151--full-oracle.json": "514c067e5fba7cd7b3be9836e9ffc9c1b29fcc03f51e6950adc3572c66b28ee3",
+    "86b68151--bm25-standard.json": "ad2a9fd5a094f59060e350a74cd3affef661aca8623f9fef4b0b63de0907a075",
+    "86b68151--dense-standard.json": "65af28466fdbeb8517086fe39b77bbde53f51e30c3944989a2f4806bb098aa9b",
+    "0977f2af--full-oracle.json": "fd9623172408a2c2374fa6e4b15a844a217a6755d46bd2ffc51043dacca7f348",
+    "0977f2af--bm25-standard.json": "223bcef31fad5795ec401d05bc77e822860222235a94cc9c9b0fb12068609b4b",
+    "0977f2af--dense-standard.json": "d4d704383afcbdde2acbc1a61e5310b5e5d596b92bf86a55abd278f14a3c8084",
+    "f685340e--full-oracle.json": "a9d9547790dded4234875a24cd2b3529f84f6a3734d8f7ef3a93c1571d0146ea",
+    "f685340e--bm25-standard.json": "c9cca997217469c9873e53297f85a2ea5a8e2535c088f36e8d035282a31d370f",
+    "f685340e--dense-standard.json": "cb7625e1dfc8151807ef54bc40a74a9d33d0b6a985b188482f631ac1eb04c99e",
+    "e3fc4d6e--full-oracle.json": "5361237b6dd7062797662223a94edcdd2120c68dd0e154422492b8444119a9be",
+    "e3fc4d6e--bm25-standard.json": "bc39aaf97fa72d5ad6f92d8df1064359fd52d8213cd934008967ab0238de7815",
+    "e3fc4d6e--dense-standard.json": "51b043a4cb97af858aca71545266e4ee94200cd8dd445487a6591bbf4e6758a5",
+    "19b5f2b3_abs--full-oracle.json": "97469a8b22e39d94531426d3d1c9b1c40287b4d0195b0a50fc5685d93e0674c7",
+    "19b5f2b3_abs--bm25-standard.json": "15169e19f848d058c045bd9401a2a0c83cb515b7f0c76b2aefe95b40311ff177",
+    "19b5f2b3_abs--dense-standard.json": "f8068fe7ba8ca2717ca7d985c75a104a1b63ca53eaf118c5fb4c69dada07b9e9",
+    "gpt4_e414231f--full-oracle.json": "ed3d4910cf31d87c523d36102538096b90bfe4700a983c72c63560f9d20864d8",
+    "gpt4_e414231f--bm25-standard.json": "75b26a98b7596ad05ffc7b307e3690d45eb9fd9a6a13b63ee0e9f0faa5a0e2d9",
+    "gpt4_e414231f--dense-standard.json": "b675542ecec19fdd0c4cca9ff77072fe90753d4df9dd18fe242b0b88ed7717d4",
+    "1d4e3b97--full-oracle.json": "338e8e94fb1ef7ad96c3fe858942da057eba20f26c2c525940bb4819a58743c3",
+    "1d4e3b97--bm25-standard.json": "3ffe6ff4083d4322c4de79716b86f5ffd40cbc0331e6de89a1bad750835af636",
+    "1d4e3b97--dense-standard.json": "cfa3944719068dee1ec63fb8df2be4ff16ebcfa81334077a58d84ee3fa286a05",
+    "b320f3f8--full-oracle.json": "abe1ad9328bbf5b903bf937cc2ab8389611975c715cece6d5d828ce3231186fb",
+    "b320f3f8--bm25-standard.json": "f55481ed70ee1c2523860d5b7a29cd30fb8a8c7b9237b03aa9cc007eba8ed7ca",
+    "b320f3f8--dense-standard.json": "87453765168627fdba40dea655e024b508cc495984ff9e0350e87c3db39d29f7",
+    "08e075c7--full-oracle.json": "c3652545846fff947184ecb20c14fe02fff766aa92b4f59ef8b4f607a40763bf",
+    "08e075c7--bm25-standard.json": "51106374e79b336624dcfbbdd793d2f15fb2a166de2e151332f8bf4cedb14733",
+    "08e075c7--dense-standard.json": "ee5da8c4aa91b7d9152521d5caf9ce74f19f2f08ef1c8b5a55e5180ef8c0c8e6",
+    "1cea1afa--full-oracle.json": "5875b7f5523788a6bfd7b0cea2d704bcd3a763e9fcae7c58cb0481401cff94a2",
+    "1cea1afa--bm25-standard.json": "a9fe4be3bc708a6ed9371d7b5b47b9d9bae8a0030d90f9f10f319a9930e75290",
+    "1cea1afa--dense-standard.json": "9f3dca4b612d49d6734f8ef3c2f81e18f2920b9ed154241399e1ccd388dfce94",
+    "7405e8b1--full-oracle.json": "4a72c0d8c739d71c62885a391ddcc2a276f44737b70824d5516ef75a3a18b3cd",
+    "7405e8b1--bm25-standard.json": "8f83b7116fca1a854f8d1fa41846bf395ba11b2f60db03ad68fb6dd1ac5fa9c1",
+    "7405e8b1--dense-standard.json": "a80feb62fe1d4f4e1056dac1027d1d3652c8fa97de303c2ed9c11e942f422ea2",
+    "ccb36322--full-oracle.json": "dc27212bf994c5276c76a64e5a4d047127c11784b76c771b783a99e617e9e390",
+    "ccb36322--bm25-standard.json": "0c61d4ab27e476d2f7e5e9c9f892cc2d0dee783a758858caaaf9781adcfecaa5",
+    "ccb36322--dense-standard.json": "80629ded28726147f724f8f41741b0ceb9f587765566413c81dbff066040fffc",
+    "720133ac--full-oracle.json": "89d8545ce362d479cc222af2e2c08fd2162d9f9b15b2c0492461efa679aef4bf",
+    "720133ac--bm25-standard.json": "9f318d660f3cc0953be56f281155235f5e57bcf20d0f69971fdc2de4a0f9faf3",
+    "720133ac--dense-standard.json": "b55464e2bf7e3314f9724a8fade3c4dcf2ae4bb9fb6372863e9bfbe82c664ecb",
+    "09d032c9--full-oracle.json": "a5833fbee183d0cc1dc9f7032d333cfcb0736fe6c175bb69f937407a68684318",
+    "09d032c9--bm25-standard.json": "06d29bc9847ffbc36a24f4928dc2339f90f04a33be48d375399d26cf9969a5b9",
+    "09d032c9--dense-standard.json": "ff77c56b15942da2a16eb1e591b66ac149dbb2d4b16b4860bf64e9e05b2ade69",
+    "cc06de0d--full-oracle.json": "cdece3be859197b7ef8f6d4ccd37516a95b4b6cdaf2ae43d22b76a701e3dea3d",
+    "cc06de0d--bm25-standard.json": "fe3f507a3f6788107274a3330790f82cb1bd913bc81bb08395c1b0dd15d25639",
+    "cc06de0d--dense-standard.json": "2215beffc68bb01488f9f05be6054b2b49bc8e46741ac6ed84c78df59e1c08c6",
+    "982b5123_abs--full-oracle.json": "11684e8c8e88046d4843919d1dfc39e91d4a021435badf0016d38f278767c96c",
+    "982b5123_abs--bm25-standard.json": "ff80406c7383e5e8ac610446af722e6ae052011a0d37c520d098c6ea463bd9eb",
+    "982b5123_abs--dense-standard.json": "b32b91e0bb244981712226da69c01512e879a7ab186fcd16b456b05a1aa18d3f",
+    "8e9d538c--full-oracle.json": "1d0a53d1516e04349b3cdb674e5a924c2aca4f86daea2e9d9a70c3aff77b7b70",
+    "8e9d538c--bm25-standard.json": "41ad96754063f157ac1e248447bc584dfaee6ffe2eca9d3903b703d72a8ccec9",
+    "8e9d538c--dense-standard.json": "b961a2be1c642433c55000c1441a291d4d972350376afacb1ef057a43cb54a04",
+    "488d3006--full-oracle.json": "3eb86b30e855b51a59b3785084ecc0564f33a90f4d03705001fae864a5c7b88b",
+    "488d3006--bm25-standard.json": "9cd054e1b9449f1d30d50fa44e9806018f2e45b7b7e38e37e3f1d0fe3d61fa9e",
+    "488d3006--dense-standard.json": "cb1ddc324c3ad3e92a893021f768c367f4339d6f4e355df4d74d6e1c52acb35f",
+    "77eafa52--full-oracle.json": "1ece4af940aa54891fecf5a8e43dd86bebd498f98b2bf565d7eaf14e5c3521fd",
+    "77eafa52--bm25-standard.json": "30d328087d0bf52c49edf3a2d27abb6436c84e071226d072954272cce74efd32",
+    "77eafa52--dense-standard.json": "d7efb234ced43652ee191885073e355fae28e5b9e078b1ca241093e4c00264c2",
+    "1de5cff2--full-oracle.json": "bf9a5298bf08ac9017ddb63921c5c42dfb20daa6076af9cc15cbba25ef162f0e",
+    "1de5cff2--bm25-standard.json": "30b3c10f2a3d5a47ab79b1eff118d879faf744c314577e9a82ca3f9371949690",
+    "1de5cff2--dense-standard.json": "7c558725063e2da6cdd4782ee9edc01bc790d7c788a23040f0a348200488a391",
+    "gpt4_6dc9b45b--full-oracle.json": "7fc37bd7af6138aaf5234f337945b31d405fcc507cb91c938dc6864f42512f78",
+    "gpt4_6dc9b45b--bm25-standard.json": "ed0b84bed05db4c5e8bb6ef935f9214ab45f8ea7173d00aa909f0ab908ac93a0",
+    "gpt4_6dc9b45b--dense-standard.json": "052d147581d65aadf557e3a4df083d3433669967b1bf5a87f916816466ecf667",
+    "bcbe585f--full-oracle.json": "a6a8eefcf22145411c8d32bba03f56b884268ee9b74dcc6df850b59ed250c022",
+    "bcbe585f--bm25-standard.json": "25c08654c920d48cc2fdd96836822fc0d049b0cc2226c742b75fec4273497153",
+    "bcbe585f--dense-standard.json": "909d3385e6b5b4dd578b3862a8246f3de0629649bd04af4d112337a34de8f985",
+    "8a137a7f--full-oracle.json": "cd4017325897d55f279c94f843d40b55381f22e75541a6624664cd4272cad563",
+    "8a137a7f--bm25-standard.json": "aeebcfff49ce406cd44889cfdfe7160c62d3877b8d286b13457679798a769718",
+    "8a137a7f--dense-standard.json": "6ce740b534ab780fb6455ecb8e9eba2ae9727f6d558049aec1804576272d3624",
+    "85fa3a3f--full-oracle.json": "a4f25bbef3f6534dadc29ffb6f12355ac9e2a7b587f54e2f5f097b3ea3d239e3",
+    "85fa3a3f--bm25-standard.json": "2c6b969d1e075825d0a2c506b6ef21fd56bcf3bf4d9bffd327abee387d1f9558",
+    "85fa3a3f--dense-standard.json": "c85cf823b2a0870b458cd023df6d042f50a5e35bd064568678219eaac95aa163",
+    "982b5123--full-oracle.json": "9e32e32a801fbd1e171527f6d6063a347b2888feae99f017d9f79a6ac7a3d5f6",
+    "982b5123--bm25-standard.json": "8cf3fde498195292462ccf5d3d9987fd3258586c35c2858043f23a9366bd0db6",
+    "982b5123--dense-standard.json": "46bbf83b3e06608e270b073931a47815065465a39ee3c70999af14c241e191e0",
+    "gpt4_fe651585--full-oracle.json": "de6a640e3c8cd7e658813764c51fb4556184567ef9349edf151de381bd4b5d84",
+    "gpt4_fe651585--bm25-standard.json": "59bc75e749177dec98788701b893278f688b6d36fc12906ad3eb8f7505149877",
+    "gpt4_fe651585--dense-standard.json": "b5174484adb45c9d406701c5f262858b9beb6986cd85b16d3b59e887d79d511f",
+    "2a1811e2--full-oracle.json": "2ad35eef785d15827bcc8398aa325b3edcee0161951f33685259a196cbc6870a",
+    "2a1811e2--bm25-standard.json": "2e32767f5ae9f8a97a1e30df983a133e942aadfcb9d534c7263bc6705212f263",
+    "2a1811e2--dense-standard.json": "19448d6bbc46d6791b32c60d3a9eac03fa84122af779e4a7c66070757184face",
+    "8cf51dda--full-oracle.json": "d2e4d1f19ca5f9ee6253e9e50208b817bdcdb2f417658c439432d40cfd1cb447",
+    "8cf51dda--bm25-standard.json": "437b5776b9ec450762180f18bcd6437e7b043cd644d0d2596375d4935f9cab4d",
+    "8cf51dda--dense-standard.json": "d34d9a065cb531450aeea5c2c6ab88656fceb16319fd31078ea095b39ed1b392",
+    "1903aded--full-oracle.json": "a9d21013141d61488f7277f2e68c12d29121894c03b9804b6ffaa7b129172c27",
+    "1903aded--bm25-standard.json": "c3376edec1d31fe09f8e1b2b6122db87010c66dbb70cb4531f622921a57ac068",
+    "1903aded--dense-standard.json": "51cee34c121103a3f32e407c4aae9ac8c1d48ebc003c1f06ad813bec887b2d45",
+    "eace081b--full-oracle.json": "95434b351177a799655ca4702502da9f5a5ea3c3e35d3db137a1bea37ad1056e",
+    "eace081b--bm25-standard.json": "1dae57ea83c72cb5cb02034ee5f796e415c63f0dcb6dbba082400cffe328d46c",
+    "eace081b--dense-standard.json": "8ae6637773693960ac2489bcf8776c33b765f97fb690ec255e510c1f72dbd55b",
+    "edced276_abs--full-oracle.json": "a80fe9199bc0e07aa696f86653fe0a78629454a463ea72d641861f670f6316a9",
+    "edced276_abs--bm25-standard.json": "ccad90eaf38657aeaf3f15deb7636fc170b3a353049611069ab43373bf157a23",
+    "edced276_abs--dense-standard.json": "99abfe3515eedb0dd3d6c871d0d58243aff2b6310b8050d48fa7916972c0be12",
+    "ad7109d1--full-oracle.json": "3f2e70ed047a8c5fc236d9b280b525f644dc30bd0d4a9ad37a4232871d9cb8ac",
+    "ad7109d1--bm25-standard.json": "2ccd166bb4d22257a5e21fb3d0c9b8acb1cea5cfecd47712b8921c96b9014370",
+    "ad7109d1--dense-standard.json": "be42823272656ed7d6d4fc7d97f83dcdb05c9adbc9f0fe703025b80b65395516",
+    "affe2881--full-oracle.json": "20fda14a066e4ed34b9430c25637a285e57ca423440db3877263e1bcee3ef8d7",
+    "affe2881--bm25-standard.json": "05f86d5f4522c9500d8ea75ea44d9059b317de4f3e1d4073f9614dac6d5209df",
+    "affe2881--dense-standard.json": "26f1bbbab70a9821419408e8a83fb96a7f3b998d46c7c550a10a718a328f9649",
+    "2ebe6c90--full-oracle.json": "f031071368d114c2592524e20410126a8441eccebc5fbf5df0cc4848a2585417",
+    "2ebe6c90--bm25-standard.json": "fdb9643601e57ad0985527b571ea2647769a6acb77fddf520c14594225e05545",
+    "2ebe6c90--dense-standard.json": "98a286d1143f3b2a6de4f5e77f1a8fc5617c493679a1c0481494697a0748cf89",
+    "2698e78f--full-oracle.json": "39fc1c1dad7a4693fffa8bbc6fa1cc860ec5f99f4665b5641680ecf7d5682472",
+    "2698e78f--bm25-standard.json": "0e964bd4b33732b87b29406a4b0d9037b1d06ffaf35e21c9217938c9638c7cfd",
+    "2698e78f--dense-standard.json": "6e2fdd92af7063701e4798ba8b57f21343dc6d2f222f8372fac66db827493272",
+    "ac031881--full-oracle.json": "03882cffc513f939471511644030fd01cc070bafd9edd958b5a5f6c9f035a7b8",
+    "ac031881--bm25-standard.json": "9a919bfdd9c6235cb23e7146afcd78ce57675c405f34dcc8e67e5455cf0d929a",
+    "ac031881--dense-standard.json": "de7ff04272e68f2afe3a9997aa68e7d3fcd7bb3c162e29ad032c4006d8c829ab",
+    "f523d9fe--full-oracle.json": "14d2f7890cd82fb99a4b607cba6744d2efa5ded22c5e6c0d67a929c009aace96",
+    "f523d9fe--bm25-standard.json": "cf6c2be65d27c6b941256cf73245bc3d689b35c7d67b3996637b514306a0acea",
+    "f523d9fe--dense-standard.json": "f86643db2df189c4577b73acdb096977b33070ff5380f63fbc64613e43d597f6",
+    "gpt4_7de946e7--full-oracle.json": "a7dbe58aa8f39f9f7676fced01de99bb0b24e6490b4ac6a51953b6afae5c0ab3",
+    "gpt4_7de946e7--bm25-standard.json": "674a8857d305948fa6804b5bd194c0bedd7ba5a09a200da136e26d9b411629e6",
+    "gpt4_7de946e7--dense-standard.json": "0ded3677bb99b58d6b67a22da4724d6064b8ab9c5333e2b38be5f9dffa50d94a",
+    "gpt4_2f584639--full-oracle.json": "efaa6666546e5f15b10e9aa37439e9dbb12968fda67670cc0dcc857c0ce8e422",
+    "gpt4_2f584639--bm25-standard.json": "687e797bc1821e63a641c0a3d7bbda1d47b8abca1e1ea60bc365cfba4fee730e",
+    "gpt4_2f584639--dense-standard.json": "ce81e6efa1a0b9f976607db07a808c06192dc439dbfab2eb4cf0995d7686ce4f",
+    "gpt4_7ddcf75f--full-oracle.json": "118cd06c5c51e21dc2431573ded33262616d1f20c97db3538fc96f8059970588",
+    "gpt4_7ddcf75f--bm25-standard.json": "d0218cc28e07054c0fb2761fb48f3f5799e7cadfbec583191a7e91ac85d93ba7",
+    "gpt4_7ddcf75f--dense-standard.json": "500cd435b1508f20aab115ae91f70a801195bdbe7009e19d271088f0211bc044",
+    "07741c44--full-oracle.json": "664c389d2a81e839cb463025325bd1d346bd2f81134d1a52666ce11b2a8f2e67",
+    "07741c44--bm25-standard.json": "3980043de5a017ae43c8cfeb30de2e57723905a2774d1955ddf38e01969f446b",
+    "07741c44--dense-standard.json": "587a079ffad014dcaf23c48ffbcbd73e50d12096e3ffe312369671e54e1f9039",
+    "ef9cf60a--full-oracle.json": "0aee182362226ea6de2f297b66940872a5708db1e50048a1e5ab77ff96598106",
+    "ef9cf60a--bm25-standard.json": "8209c3d926ea0d7c3acf61365f05f2118428853eff0d5d0591bcc2260b359f95",
+    "ef9cf60a--dense-standard.json": "72b81ae7864f916465a1291d26888161a17a61aa3b065c89206a14083128c1ba",
+    "a96c20ee_abs--full-oracle.json": "3e2d8cdf50b4c66af268e2d9aaadb7727f4a851209b0d3fead0c26455e4490eb",
+    "a96c20ee_abs--bm25-standard.json": "2a571833aa4d77677c7c5c9bd95afb507887c924087eaac9b05d0248ea38d773",
+    "a96c20ee_abs--dense-standard.json": "485f56a1ef5021f41fd7d9c1cd6ec91b97b5deacd3df8f570132b3f0a1ab5e87",
+    "4dfccbf8--full-oracle.json": "c8453fac7e9c35e059da48eecec590f1a4ea2b393866da63c187174fa724c272",
+    "4dfccbf8--bm25-standard.json": "5dea9a2e71866cea7d2e6d87ade7bdf7d8ddefdb49d4bf8d4f8c60e45a208ebf",
+    "4dfccbf8--dense-standard.json": "6a20c0572b0297159b654520501da61dc59a58033a95dfb2eda856f61952f84b",
+    "58470ed2--full-oracle.json": "6bbb90ad7df2b3b88f44622265aa1660d8080cec513aac7d38626f372e6378da",
+    "58470ed2--bm25-standard.json": "8b9d8c0b75671dc0ecc6002775c87caa2694272f931cb392b7481907f9b2789d",
+    "58470ed2--dense-standard.json": "082f5fd9969ccb676e09e18321615559a5601382581180642fd33252a76ea59a",
+    "d3ab962e--full-oracle.json": "12e794522270ff89e99816764384097cba099820afc7fc7cef83e72b9fba805c",
+    "d3ab962e--bm25-standard.json": "e0b08002d41058668569b59231e2fe619d52023c5ec9dbabe7559bde9d938e59",
+    "d3ab962e--dense-standard.json": "41f016b5f06bc0eedea40144491d6c42d86f682d2cdb42ac987370d062f4d221",
+    "0862e8bf_abs--full-oracle.json": "69dd2aaf680bb44dac4c6029f960ca90dd161670f10267c0b7f5a017850d58eb",
+    "0862e8bf_abs--bm25-standard.json": "75869a73cafad8aa73e4fb7ba17d484683bc0ca2f1ec80e077258ac497ad48b7",
+    "0862e8bf_abs--dense-standard.json": "fbc6aea7e8fc02c903c1afe4f10260f135c9d09c615fdbc3b143ad50afdb832f",
+    "gpt4_2c50253f--full-oracle.json": "d159accdc5acd160707a8ad4850f4413f213bef0fea7d2b61681c8c5ca04cd93",
+    "gpt4_2c50253f--bm25-standard.json": "a6d1cc060891e26e4ff03928cddd318e9ecd2849f07de80e06b8f9a31488a8ee",
+    "gpt4_2c50253f--dense-standard.json": "4e73e6a91204b984ecb5ef67a862cecf63fb05170f22ea8547fb5ba09aeddd95",
+    "ce6d2d27--full-oracle.json": "db7d7f7d118c32fd158473b0a6b92869152ae9a2e5213ecc551e8c97bec3d83b",
+    "ce6d2d27--bm25-standard.json": "b6d23fe7dc149381ff4bf96f32ef8d70d568a0d8c8b1e3b841ac6de30b6203c1",
+    "ce6d2d27--dense-standard.json": "b365445b8867694221394f0ddf493c2c02c71d0739f36dd4585ea0eb80304e89",
+    "830ce83f--full-oracle.json": "4ed39878aee3c03773bd2c683379b0a7a36dbc6332a9bfbfb78226a3c17d1210",
+    "830ce83f--bm25-standard.json": "6badeb985e48a0c32cd2dc1db231d68d935eb10c185de47872df7eb07f1f4802",
+    "830ce83f--dense-standard.json": "2b1253bc53e805fb050d5de1c5cbc413445a5ae9fd6d083a792e37f77de09f93",
+    "0a34ad58--full-oracle.json": "6f79fc087e6a9f1026b28b18e6c64fbb1a999129254a9a20a0e8a86d0d416371",
+    "0a34ad58--bm25-standard.json": "a581f13aefe90fd6d0062ba1e1321cd692d6cddce31c223e75ce03ac09fab9c1",
+    "0a34ad58--dense-standard.json": "2c7884e7cce531615d448c90b53604a841f8a90f93f86d606bad7563d24297cc",
+    "bc8a6e93--full-oracle.json": "c6793d50addc958769a8f385a0501cddac72300a5c8df0af84880910947c8aa2",
+    "bc8a6e93--bm25-standard.json": "c6715cac864a4ef9d0b3a6fd3803c0b1f1d717042435c9cf39eae2ca511d8ec4",
+    "bc8a6e93--dense-standard.json": "269efd95fc5303bde0f22b34dbb38485cb1fe25add2ab8028aee7db13b9bb735",
+    "gpt4_fa19884d--full-oracle.json": "7999e871372228c06d7c8cd1a108779b1f0818000953dffb555cfb42f3a1cb7e",
+    "gpt4_fa19884d--bm25-standard.json": "9435c8b38fa209f40d1f29cf268b03fa97acced0e8148649f199cca5e4b136fe",
+    "gpt4_fa19884d--dense-standard.json": "7ddbff08c11642d832b1eab8f1da49281dfe1f6c914880607f8f892c5b919d69",
+    "gpt4_e072b769--full-oracle.json": "b9cb5919b85b65095313980f1a38faf26bdfab3bfdc58373d1a9d9cdf5e46ef2",
+    "gpt4_e072b769--bm25-standard.json": "43b89a6c8f57dbef7d91be5bf52a7bf032170563164b20f7414930c5f6c32c0c",
+    "gpt4_e072b769--dense-standard.json": "89b101b62529855b73dc5cb8f1d5e879de19e1ec9ee16a793118c2f81fe60213",
+    "gpt4_7bc6cf22--full-oracle.json": "53ca09f4654383387d0593105a3bd66930b173d24daa6f2b4fe8b86652c10679",
+    "gpt4_7bc6cf22--bm25-standard.json": "3edfbf76dae7e51d78b17b02339a73a3a64f24ad203aeec72e98f680db8c6903",
+    "gpt4_7bc6cf22--dense-standard.json": "49965286abc88d1bf5173853bc2426b52faaa7a432459bb1b014c6dece1ff3a4",
+    "d6062bb9--full-oracle.json": "e381a0ff5cd7e828bfcc212cf999ddd12a9ad468e4714ed1edc3d041c8ef976f",
+    "d6062bb9--bm25-standard.json": "0d2af447d43ac3e5627acb63a4a1a06479cdd7363b07425020d048ca89d0245c",
+    "d6062bb9--dense-standard.json": "2d811a36e1374ec6d5c1f540b513668cf61534bf20694d5f0910b2d617fe0e0d",
+    "c6853660--full-oracle.json": "1c2e30d03dc3deabe2488bcf0326947bf581a5f503789d5615cd9ceb22c60733",
+    "c6853660--bm25-standard.json": "f5e4275f74e9e780873cb652d79b0c50a03bffecab78d6a84fbcd37121c3cfc7",
+    "c6853660--dense-standard.json": "cedddc67f0a72398f15cd61650dd493c98d0d7ca911c2a1d07526bb92adf9bbb",
+    "26bdc477--full-oracle.json": "49d6e5f38bacca3224165ff7a112382d6b453b9315f613ad7987622297a44f05",
+    "26bdc477--bm25-standard.json": "953e325f93ae253d21475fb70471976962eb4cc1e41acf0b7a0e82345edba399",
+    "26bdc477--dense-standard.json": "63515570b36ef69f72eb9643ee45441641c4e0fa871ae981d8ff084b01d8a083",
+    "eaca4986--full-oracle.json": "9e59db7b43d5ab44c6ad6d8b8f1c61e17c2c9404d452365edccf2767fb1cdcf0",
+    "eaca4986--bm25-standard.json": "1ec957d768094b7793d8e27e8864ac7a055331e2e567582da07d2c8a2baed88c",
+    "eaca4986--dense-standard.json": "7ad06f54a667e67c8954a1df017ccd658c280f3732c677cfb3a18031c4483e92",
+    "a96c20ee--full-oracle.json": "73c854a563b8ff47a320c1ca608c9b42a21a0a7ecba412bdf7f3b8876c1204ca",
+    "a96c20ee--bm25-standard.json": "cfb3270e2c23f88cb12006aeacd3a226f0e14679565af4e96aae3c2c7863ac1b",
+    "a96c20ee--dense-standard.json": "470e2b91da55ca2c673d19e8849520cf7e808a5015b2f1f47fbbcae7b4c826d9",
+    "d905b33f--full-oracle.json": "c283a45937e8f02d4faa9dfb4fc08a9865706bf974c481af5c984ed0c2244794",
+    "d905b33f--bm25-standard.json": "616054f44df2014201a7bd270546183f4078e9c9bd0b506bdaeea7a2ebcee0e5",
+    "d905b33f--dense-standard.json": "782193513d7afa031d0548633d68c5767755fb1f84c00cf571709072043d8159",
+    "fca762bc--full-oracle.json": "135bb377064a443d7e103a50f88b0bf48d983e5f2a8732de0a2fc9d3400c3224",
+    "fca762bc--bm25-standard.json": "b75173919c5488015649b49c6774bda681cda47abadf4eb5cf5e222ee9def148",
+    "fca762bc--dense-standard.json": "e0029394a01ba1105d4585656906ce65326a7b96fe81aba2c0b6cb0400fc47e3",
+    "a3332713--full-oracle.json": "05d081aa5218dcce0056bc07f61c2ce65dad49fa20a998ced628422a83fb6a78",
+    "a3332713--bm25-standard.json": "ffdc62040f440cba8cd724531aa1310321767ab780c0d5635d44deb7e5ca1da2",
+    "a3332713--dense-standard.json": "117e5ea83f0c36f36ee41efb7f68985eafd1375876c966d2251c921d9a7eaa90",
+    "gpt4_93159ced--full-oracle.json": "a44a3d4691343764fc7c6003185cebdf1a5a65b65f8f2baf3d377e92981122a3",
+    "gpt4_93159ced--bm25-standard.json": "b60b87d1bb6ad9316565d1b3cad620a30371c739763360bf4022c67a5e3f5017",
+    "gpt4_93159ced--dense-standard.json": "d9a37b136bff48223624788f7c02de0056ad64bec78b8fa33203d3262af7c211",
+    "b6025781--full-oracle.json": "0cd54cc40ba9d2c90b311c11129926acf61b7f29bb0c362f615236b2259f4ce6",
+    "b6025781--bm25-standard.json": "981acbb1a4ed5356580de6aeb639dfd6d724441b38e97bee08bc45fb3a1222e5",
+    "b6025781--dense-standard.json": "5a933b708c9f86eb1ba5c6f717c4d873dc51969017da91e4a32babc750b98a57",
+    "gpt4_68e94287--full-oracle.json": "963a62708c2195d3fc99ca6e791f51a267b77378a200ef2335033381d9a929d7",
+    "gpt4_68e94287--bm25-standard.json": "bde2edd0171d9c9ef7b9df644f9f1f8d9115d6f544c012f075160cc0f30f5c37",
+    "gpt4_68e94287--dense-standard.json": "79357275420cb73b38cf5f9c5944c2bec54ebd769df59fb7e7e41692a93821e1",
+    "51b23612--full-oracle.json": "568c8115f2228bc3afc534f3319dd1dbe393e47fb0f305b472c72ed9962e88f4",
+    "51b23612--bm25-standard.json": "5682ed34cb8c524b8b6efac49f2c7d5d8f48bc569387dde1a32ec12c9591e796",
+    "51b23612--dense-standard.json": "e6e6e91c8ccf026bb2839c255d1f9ddf7180ba77d42cb7289dd3072ad8ac61ff",
+    "55241a1f--full-oracle.json": "a1d4a93fa94fcac9a89f80e6402491a0d642ef358d5cc0129b89deef3d7b08fd",
+    "55241a1f--bm25-standard.json": "be57355abb9b6adbfb867104370347e5a1dcd30e14eabab9baaf63021ceb1091",
+    "55241a1f--dense-standard.json": "7d0e89350d5c9dc10201e9e8b226662ad26e8606fff4c0086cc6f0aaf72a6590",
+    "bc8a6e93_abs--full-oracle.json": "bbf1c28fbd8fd627d2c0c342f2b451d6d93afa5746bbe9a948a11ea98198ff7d",
+    "bc8a6e93_abs--bm25-standard.json": "bb2a64c151021d8f1b7665206df291802435a2e4df422e8fdd281ada1da09b6d",
+    "bc8a6e93_abs--dense-standard.json": "3b13c1301310563e8cd34df86fad74ff33475c38bcaed40cdce2ffc15cf899b3",
+    "61f8c8f8--full-oracle.json": "611464c55909560fe8e1cdb99fdf1fb8e6a153c07a79ea75aff9eb110654c78c",
+    "61f8c8f8--bm25-standard.json": "9aae36b5cb9f982c2106201cabc5f831222175576cf7794230e92bc7a3f62dc2",
+    "61f8c8f8--dense-standard.json": "387c38ed94d01910cf195ac7b654c4178cd24cf3e36dec8d1e728443747f6971",
+    "c7cf7dfd--full-oracle.json": "a6d283dc06895a7ee94a733edddb0891505daf0fa70d21e6360b4e1db6368a1b",
+    "c7cf7dfd--bm25-standard.json": "5fc6c3b680edd4feb3191124c51b2f9f4f184a6b29a393ceb59f391ef96b21bb",
+    "c7cf7dfd--dense-standard.json": "4837b3fc9572828f547c38e1612d11f37404d9f78edf8f95cc30bd5c48565c1e",
+    "3f1e9474--full-oracle.json": "0658c6868df7408143d8524edab226265d448fc2d214fa982031c20ca7bdc6b2",
+    "3f1e9474--bm25-standard.json": "9c9dfd9d116c9670215002d1407f7859cccd3b03b14974fa98ffbc8a132ca247",
+    "3f1e9474--dense-standard.json": "e8590b435c243332f2f2afdb9b8da4590175f1f6889427fd4b99cdf03a3c8a80",
+    "d596882b--full-oracle.json": "5f6d8655db27ff438ab515dd4f91f63915457edffcc92dc21ecbd4986c64873f",
+    "d596882b--bm25-standard.json": "58a884563f27609ced2ec66dc604b5bec6df006f2b13e301300f84f3c0529e89",
+    "d596882b--dense-standard.json": "6beca99da9bd445bd7a335910f65f2899bf3d51d28fdd715ed850557cf6888e2",
+    "e61a7584--full-oracle.json": "aa20b865ffc32fd8edb8b6432d5978d8b4c0f13d49c2ecfd273f1279c8923d9c",
+    "e61a7584--bm25-standard.json": "b2591e455d5646d7b048f85248d6ba2e9076f1d2417c8d70441e7ed6f2848a9e",
+    "e61a7584--dense-standard.json": "e90c99da00205391e3440a05696b7b3874a6ee9f25afd70b82840e966c14bd95",
+    "7e00a6cb--full-oracle.json": "768f8548fbe91343427eee4bf56c2d3d1f72f82c3a85b44041534433742fbf29",
+    "7e00a6cb--bm25-standard.json": "a40b2302491a68c345467b354b1b22f53d485d3b79989bcf53fed1a6de0db825",
+    "7e00a6cb--dense-standard.json": "0e6f54e567324f864871e9e39169283ed784dcf35765ed1ee69dec15f99afc83",
+    "618f13b2--full-oracle.json": "36cbce8179131e0b362d107bc8f4498eabd1bda56f93648004b4b47d4479af7a",
+    "618f13b2--bm25-standard.json": "38de735da3be4f79453d863b646968fe87f041695bf1ce365231ec0d017516ba",
+    "618f13b2--dense-standard.json": "906871b388cf796ef18cecef2ea8277fb2b98647238189905e90fc1a439e1b22",
+    "06f04340--full-oracle.json": "1b78667e363dd8ccb3a421bb9e8cab91ef0fc0d97367b24c2ebc78d393f5be18",
+    "06f04340--bm25-standard.json": "50ce424028dca1a4578f7be1755d15b19e092929359592808ec988ab5f498af9",
+    "06f04340--dense-standard.json": "3e43ec0cca6d7a79a8b5f49474d6a284d762819e96494b9fdd97a709ae4bc0b9",
+    "e982271f--full-oracle.json": "c57ec3aadaf32f6173a4a37b18d97d4b68ce9aa7871bbea9614e2f9396c4a5d4",
+    "e982271f--bm25-standard.json": "9c21a75150075899941cf5de98eb6b8f3edd56f4bb24a9a3470bd1e05a0db472",
+    "e982271f--dense-standard.json": "4deea32380dda0dd5738e19ef5f5275242331a07e5754f6dc49b763836ea0c8f",
+    "35a27287--full-oracle.json": "a999241d3a7fb8e2310007fcdd0a423e750dcba3b490596a1fa449429df12353",
+    "35a27287--bm25-standard.json": "bf14584a3db385a2d0ed3044b9cdd71aab4a576ca86276771b46eb98e4088d47",
+    "35a27287--dense-standard.json": "be54256ec3ddb32f09353b2f29728b89318d0dc3887cf4c47304a1cbf90646da",
+    "6456829e_abs--full-oracle.json": "2cffe87cff8e6dd7337f5ab30d1297cd47646a110ddc9c1b976197a9b2b207af",
+    "6456829e_abs--bm25-standard.json": "c756be66cded94e69d827503b149aed919f868f81a50046efbb20ddbdf8d7d08",
+    "6456829e_abs--dense-standard.json": "c3213d7b7b1837ac34027d6e6f49f731c87c9e8fbd438fc183f296ba42ed8d62",
+    "078150f1--full-oracle.json": "e57e31c7b90fad243fe0e075d74d60346651a60607d5661c9e7d4948e1fef287",
+    "078150f1--bm25-standard.json": "bd7c7f81e4cd3dae4937d7b2684485d3b1cb212daba981d38a074dcdcdb68410",
+    "078150f1--dense-standard.json": "55ab7961cc5c1df8e03c2cc3434320d39f22e98584a213ef2b7bb03454411919",
+    "2133c1b5--full-oracle.json": "6c250d8fb028f23c93b634b3251aee1c241ccd16b77e2f8c03c6027af74ebd06",
+    "2133c1b5--bm25-standard.json": "33e20ac67c1c814133c4bc96fdde60304c59bb426047dc73e389cf72edce6967",
+    "2133c1b5--dense-standard.json": "2e7abfbd333f2e0bba26b087ac00694690ab70a4075cb0a280366c0e5d38707b",
+    "5809eb10--full-oracle.json": "53406e37bc4d590e56a1d78511cd21e4df6e62044ac01bbee9f5ac605b5c7b75",
+    "5809eb10--bm25-standard.json": "0757586cbf156d32a8c5d8577b17f8afb2d8f254bc47495917d4ba6f55aa6e36",
+    "5809eb10--dense-standard.json": "f7e23c70a1f09a520e915a70b355cb1ae61f513ef0b8617135594b0b7024768a",
+    "d24813b1--full-oracle.json": "298789f8487ec723b7f1529cd67d6c8fc01aeb444d6fc4830602215a68026338",
+    "d24813b1--bm25-standard.json": "9fa18d1ef6d1cbca39090099b578481f3592f38816f320d7434b2df420ab7980",
+    "d24813b1--dense-standard.json": "90e701cf7efcb5c37326c59ed8af4e009d5f323514f8e5a40adf32f1f9d28e02",
+    "311778f1--full-oracle.json": "53118db4dfade01081c380f5fdf9ba4610654bc6eefa25b2e34314ee8e337d0d",
+    "311778f1--bm25-standard.json": "4a8f9353935ec8bdc8ef272b3473607dc5977149a67d41c3eaac3b6d229e66c6",
+    "311778f1--dense-standard.json": "bc85e4387919a4b181a6c5ce400b342267082df71b36dacbf4aca37e73330f09",
+    "8550ddae--full-oracle.json": "1d0c644261d7253e81540ea1fbf325ce40b94078d9c9979adcf66579243e9038",
+    "8550ddae--bm25-standard.json": "8201d235615ee47b2cd57a298bdabd7319ffbd59f24c55ddccde37c3eaa2e412",
+    "8550ddae--dense-standard.json": "82095d3d3af598e8e74450519da36bf90f621eec31fb8cd03d9e75334374064a",
+    "21d02d0d--full-oracle.json": "e2de77c6fc061be81e4abe3ee09d296414fa30144e1db8905d1845e894880565",
+    "21d02d0d--bm25-standard.json": "415fe5b295eb0e4c06c4053872c116a8f845121c5175c9c3e93a9b970f5f456a",
+    "21d02d0d--dense-standard.json": "fc3cb459b4b8f6c69dd4c1ec27053c2851d202a911c7937e235a95e51745fdc5",
+    "gpt4_483dd43c--full-oracle.json": "5e05084ca61e2779377ef6d9dc1b04aef79a304ef43bf0eef2b47d4e7fac9407",
+    "gpt4_483dd43c--bm25-standard.json": "59c808cdf3b60e067ac5a3b75fe3145372f25d037cbe7bd4fd4d865073dc9df0",
+    "gpt4_483dd43c--dense-standard.json": "099a02006c29dce3c0115b255fa8f0e11d074a075b3dc4a26cbb3e274c7cb545",
+    "a40e080f--full-oracle.json": "5650885d7c5c9a59b8653edf7f7b0c8ca145b43ac46f0d3cba590ed2707fde80",
+    "a40e080f--bm25-standard.json": "a516cd442782b5db4edd1ba5f09a498b541202ec167a1a1fc73dc48272d8295e",
+    "a40e080f--dense-standard.json": "7802b227133f9c4fff15cd53e5e1059bdbd20c942c2fa1db2cb87f0793e35bf6",
+    "853b0a1d--full-oracle.json": "fdc81c3d318a8dda9528f9e116a262e457f48e53d995142ff7c1f5dfad1826a6",
+    "853b0a1d--bm25-standard.json": "12adbfdfb069fb426156cb0b5adc39358e07332603e762ea0e9b8f51dd2fe9c1",
+    "853b0a1d--dense-standard.json": "ee71fe9d5b8167a43b1c3731f4d9690e6a17abed2a02679e5b724274cde9dd45",
+    "c8f1aeed--full-oracle.json": "c7da70c4355a8bbbcd95c4bde84e129e1fc6aabf8460cf46c923753042696e01",
+    "c8f1aeed--bm25-standard.json": "30325ffc2d765d72a0822794cfa5d0682cdc12ff09f37485aa247dfcdb4b7a2f",
+    "c8f1aeed--dense-standard.json": "3f781ab9814dae7ca679597bc43f38d894604184cee9f0c829ea4f9158a17fbe",
+    "1f2b8d4f--full-oracle.json": "17bfd86cd7534444e7078c575677dc0d56e7c960c52d88a432d31bc2c73b0512",
+    "1f2b8d4f--bm25-standard.json": "a125fc5a741a4224a9aa5acd1310936d3369c002e6af4dc1556aab7223a28096",
+    "1f2b8d4f--dense-standard.json": "c15589707e12c032b2078aa868aa91177113896e634c8f661526bccab91b59da",
+    "75832dbd--full-oracle.json": "8f0eee5bb860bdd4e096480321dcc325170486c3cf1118595de7712240c84ff9",
+    "75832dbd--bm25-standard.json": "6aa7c2ae266209fd94e6261fbffd28012745e30a44d536115a1d991d93e2af62",
+    "75832dbd--dense-standard.json": "84a63fcd31aaf1ed2ac23323a125bd08114023d03508f8cc7ac4e66d618df340",
+    "3d86fd0a--full-oracle.json": "d9ab4dd8c7453de5198df62e2ae88169b4bdb2fa73d7863504978ccb3b560d4d",
+    "3d86fd0a--bm25-standard.json": "71a021765431f3fdef07ac891c840381cdf2261fdae0bf655dd3dc0d42c64fec",
+    "3d86fd0a--dense-standard.json": "89e4f8bc7e0d39e71270fa32c252daa3f992ea9e3cfe94877e6844f1b4971ccd",
+    "60d45044--full-oracle.json": "11d5987f78d49c2fea6e2998923b3a4ff7c7c83208d3377a9a0db920de5c8ee2",
+    "60d45044--bm25-standard.json": "f368e409374058459a06ce640b5c74e68c7afd554c10d6d19e25e1f085a38257",
+    "60d45044--dense-standard.json": "238857d7648f13e1ff6b6a554fb66804b5aa3b33dd0ca70578f54fab32db6a1b",
+    "6aeb4375_abs--full-oracle.json": "8b82f6ffd9b0f955ad05ecbe02bd477ee89122527dffd8faa74ba887afeb99c8",
+    "6aeb4375_abs--bm25-standard.json": "4321aab276cd115aaff2a4c848980e824562c57d4c149d163032fee5a814a364",
+    "6aeb4375_abs--dense-standard.json": "97d4763f91003fe2fbd1b12cdea529cce11d6e03184efee1cc93f7f450451c1b",
+    "bbf86515--full-oracle.json": "6aa7060cd78d9add93184658f6dfd1b8457ae3b67fe6596d1062ea02861ee103",
+    "bbf86515--bm25-standard.json": "9cf19776e1a08fb69b3de12e83741d7449b551c4ea05cf0e7796d080ecf0ca06",
+    "bbf86515--dense-standard.json": "77fe37448e7ad4a9a8e6914956c99dfa55e0d620660574b35a8faea5136a8808",
+    "7401057b--full-oracle.json": "3ad4b6e91f7cf6c41c74a60224d530725fbcbe7cf575ddb86deff772a8d23b10",
+    "7401057b--bm25-standard.json": "a27950a06da924c0b7474c643a402baccbe70ff134c599f2ab9cd9aabea17d20",
+    "7401057b--dense-standard.json": "b936446476a2d547bf524091f7550ed5a89202c6c0293f08e9fa20a0874c0e23",
+    "4388e9dd--full-oracle.json": "44185ceffa008b9df14d4ad6b23fcfcbfdda127391e447efd22c383db34da206",
+    "4388e9dd--bm25-standard.json": "b628ac5bf3f25168a7e168761d72aa14ff38f4bd3d397a8f139bfb9308a91c51",
+    "4388e9dd--dense-standard.json": "948faaa45faf9ab520357db0ea5cd494f46cdaa95fd7c0e2a3d869a556fa48cd",
+    "c4ea545c--full-oracle.json": "718198d8530e1e625527507e2477e8d3cedc13f076838364794c62920cab9685",
+    "c4ea545c--bm25-standard.json": "7f0ab89e462857d9b840c51b30f9484f88aa7f7f14aa1e4091237d4181df296b",
+    "c4ea545c--dense-standard.json": "f93a4197bf11a5815d29eaaf48e172c9ad47303cbb17d24f5926e0f0d59b0c3b",
+    "51a45a95--full-oracle.json": "20c3f3c72f6011785b2e1eb42a2354c9f40483b053f2a1923902a9616ff4c585",
+    "51a45a95--bm25-standard.json": "d6d28605557be8813b070dc3d133e334dd89768127bb5266193b4eff068fb423",
+    "51a45a95--dense-standard.json": "e136cb86ab330a02d460596bb3f085f0cfc70f6337f75ca6dc8c3a194024555e",
+    "001be529--full-oracle.json": "77731510cdb9911dfaebd9fecb6bcd22859d8e5e8c46a640047715e3bafaf42a",
+    "001be529--bm25-standard.json": "0ba7ba5ea21db1fed1f7ecfa91469f349e720dcd9612610a533d13c48b8bf43c",
+    "001be529--dense-standard.json": "0edb944ebdb1d3e32c7aaf54c94224998714ca95a1064945e37a9fb63dcba80a",
+    "gpt4_8279ba02--full-oracle.json": "90703d7d6bee9398ea81e6ed98775b8f2ad41d068907f900ff3623810ead44ee",
+    "gpt4_8279ba02--bm25-standard.json": "cd856eae0f0fc42c8ccc433dc0bb250e396259365981ca235575f79c077f8d7a",
+    "gpt4_8279ba02--dense-standard.json": "f16b6d7c213b4cd02992b25c8160a0095be57d3b1dabead0e7d77779f7c6183a",
+    "b01defab--full-oracle.json": "3a292791f3d608666671169273abd21bcaff453f3be1e908f78d3cb6d9f53d22",
+    "b01defab--bm25-standard.json": "24eb7ef8a30428ecad971a31ccb29fdf9b2f9294eef4e70bc9be55408692d2ab",
+    "b01defab--dense-standard.json": "bdc34099821f55edf9b9be61dad8eba5309a18544be23e9c2e842e4723a5dfcb",
+    "41275add--full-oracle.json": "0fa12c4936979c0063ad605422426d047724f70fd08c514c4da035c3bff6ad72",
+    "41275add--bm25-standard.json": "e741d685f0f7f655c06d1509be860f1986b90ec2bd0aa4bf392ae8f856f4be57",
+    "41275add--dense-standard.json": "85a23c1c4b55cadef69f29fc49437867aade04361674cd9de5e20788ef454760",
+    "fca70973--full-oracle.json": "de1d07f082fd20e93d7ac2f5aa051f25f45c66b92178e1ed0e31d72efe570b2b",
+    "fca70973--bm25-standard.json": "e0dabf25f744731a47a15d513ed6c93bdf7d556052f3006b43bf8d1dfe5d0d83",
+    "fca70973--dense-standard.json": "2a599a6ec02cc8e0aa7a7a9d662fd22ba878fe478b9a0e3b8e8c1d0e99f255f8",
+    "a346bb18--full-oracle.json": "5538fd2121088d61e4c40caa8cd127277d317be7894ebe7f567d8c3ec39961b1",
+    "a346bb18--bm25-standard.json": "d66299e9264fd1732db67cdbbecc8af5a03d3468f8fb82fd469fe1c32563bdf9",
+    "a346bb18--dense-standard.json": "7f3cbd29e1d16db596f2ce201b5ddf05e203d24b4fc1c987b7de51b4d8a1471d",
+    "0e4e4c46--full-oracle.json": "37b572709865189f89cbc9da8326365561326dce18407901703c00f222840860",
+    "0e4e4c46--bm25-standard.json": "cbb0ad9664ad1d75eb8deb8c43c3004af850de789e80a007fdc9540c40c901d3",
+    "0e4e4c46--dense-standard.json": "99c426235d311ed408db56de04ca128c210258b2ee1b61f1fbecb203c1ed89ce",
+    "gpt4_78cf46a3--full-oracle.json": "fd826620e96e03487cfaeac735bfeb27188ed97a7f9e618a09baa1a005b36188",
+    "gpt4_78cf46a3--bm25-standard.json": "e02086733dc2f6d3cc96277644a4a91e3fc779f5b61de2fa812b3b7f8293575c",
+    "gpt4_78cf46a3--dense-standard.json": "06bc86b6dafcc41d2f6bc2f5f6d81c399b12a67c7280365dd0b19f3dbb9ab0b1",
+    "b29f3365--full-oracle.json": "33394f1113a8ef6614f57e37954fe1cd29cea0a5040162619a73ea3efbc2822b",
+    "b29f3365--bm25-standard.json": "79b3c88d3bea2a501beb6cf96ccdd0410fd0e689d09c2c5d381f55398119b3a1",
+    "b29f3365--dense-standard.json": "80aaf06f3b14c4ebbf4ebda359f7f77963f75d3773a33fe6039b53e936796064",
+    "71a3fd6b--full-oracle.json": "8c04ee7acdb3b53abdf680cfe7528998b92e52c078fb9c7b67fdfa5d8e551ddc",
+    "71a3fd6b--bm25-standard.json": "cf888e3e37a87ad13cd8eb67f48fb67fe79adc3f0111a127bc6ad705a5897ba3",
+    "71a3fd6b--dense-standard.json": "af2a9d0ba8c008ebbe41710a6df0c5b6aecab443eb2cf1d11aa7dce7df21993b",
+    "gpt4_8c8961ae--full-oracle.json": "4679d6ccf50cd4959d2fa3ee3781d92076ace9bf1cd6760b264d4f802384ee3c",
+    "gpt4_8c8961ae--bm25-standard.json": "23a8d0ebfb926b2f588fcbefe7fcd64cf1469bd7b407e4dd5d4f15c4527f0cbb",
+    "gpt4_8c8961ae--dense-standard.json": "e717c1b7865531ab96fbf016a2d0a438100702ea43266d64d88206f938bc9aaa",
+    "c9f37c46--full-oracle.json": "7224a0967d71f4eb5514094e5e25ccc82bbb5df3cf435e9189c3d759ba7a39b9",
+    "c9f37c46--bm25-standard.json": "cbd46d18912a42c840ac4231c06c94edb7298b0e4b38f091f57f86d14448dada",
+    "c9f37c46--dense-standard.json": "4016997c59eeed939ca6a513c78d2b9e6ba39157991a360881c7b5e128a38054",
+    "945e3d21--full-oracle.json": "f07c4274e859a1916429a2ebbee3cd23ae5ff021277ec22549c0a41dba3da9e2",
+    "945e3d21--bm25-standard.json": "6eca8d185b4bdaa17c6636e59036f1c529b32eab7339119ca02fedbb749406c9",
+    "945e3d21--dense-standard.json": "cbdad80c06d63951fa484f8691e05bb74b874d2bf318ce10fea4fdc9bd100225",
+    "3fdac837--full-oracle.json": "a0b9c749f6f72b501fa7da65deaa5333750c492a68515ecafe53b106eef974c9",
+    "3fdac837--bm25-standard.json": "a37f99f60f30c42ee64d5aa3c37abcbcc9b5b303ee0b4a0a88720148f6f8d898",
+    "3fdac837--dense-standard.json": "da18772b4928b6846575ab9ae06facbdf1edc275aeb76e5453731d7f8c35f932",
+    "4d6b87c8--full-oracle.json": "b56f428f6da95f237c6a2febb322ea55c6a2ece06db7c16469474002bffcc8e6",
+    "4d6b87c8--bm25-standard.json": "6873fbc43d44bb07b19f8ae4023cc02709bd16e44e7639ddd51370f5d3d79b82",
+    "4d6b87c8--dense-standard.json": "b472d4955b622781682c24b935aabcbf1bf865b1d7bee42ee5603cfe07a3b497",
+    "fea54f57--full-oracle.json": "f14be6b0ed53f71d371ae979f01bddb2ddff6002d5d416cdcc3ae5b703a5f3d5",
+    "fea54f57--bm25-standard.json": "f8949b9eea09eada85868313bebcbb8e1057cdb9228672c0a7109ab68ad239e0",
+    "fea54f57--dense-standard.json": "d925e3f035d73c357dc0d98365c9b6312dbc161f96dcca03c6351638f737ec1b",
+    "a82c026e--full-oracle.json": "048070fa3c652ae7bdc4ddda75f674afc530e76a531f0c71053602e9423fb093",
+    "a82c026e--bm25-standard.json": "932fa0c024215c592e89c9df075765d3ead278f8e24ac2a4f0873c4a0243ce26",
+    "a82c026e--dense-standard.json": "351fc57118eb54de4d88c321ac48dc6d30520ef72d8a4691c8e45af95e39aed9",
+    "e9327a54--full-oracle.json": "7b58490376361f3fe1f33360350a898206899a21ecfc06ee0b438ef3ecb95ace",
+    "e9327a54--bm25-standard.json": "29a1c801e3e0168cd3eb6ecfcda059e99e197d1bb4b109a9f8e7f114b42f0385",
+    "e9327a54--dense-standard.json": "9019a67e5026575c43cb856290e326e0f3d53b3c725b003b7d45c95182b7fac7",
+    "d52b4f67--full-oracle.json": "738040fd0e84b14eb404108c506686b8217acfd56710243a4851a2fca5407626",
+    "d52b4f67--bm25-standard.json": "17f463ec034fc6989eaf937ac285f478f46620a0f489b1a5cad474b7a3d1d809",
+    "d52b4f67--dense-standard.json": "88a574152a653ff375d601dbd4141b1144a27ce81246763172538e60221b509c",
+    "561fabcd--full-oracle.json": "06702b7de0ddc211d846aa9dd8acc38f0309805d12f735c26c8a9a2ed07d4734",
+    "561fabcd--bm25-standard.json": "ef99ab9da22d6043599da222c7183d3ab6e803a1064403b751a19e1a9f2be4a7",
+    "561fabcd--dense-standard.json": "74013eadda4063d5c80a431d59ba841b22b55ad63370297999c65cae67ea67f1",
+    "94f70d80--full-oracle.json": "181919b46717200f3420a803ca0bbac38d639a3489cf611861b72f56ddc04e84",
+    "94f70d80--bm25-standard.json": "c8bfe75fce58bf883e0dae62e9d764d524312d1a6ed99f163257de611a1cc005",
+    "94f70d80--dense-standard.json": "1a440c8f237b6809a031d0002924ef579cefb8dd69af63a6f052670da18ef49e",
+    "e66b632c--full-oracle.json": "8eb352173ae5580035d0e043496d33cef29a930d1e0636b109193dd349891141",
+    "e66b632c--bm25-standard.json": "68e698047112a48d115083f9bb3a8d1fd46dfff872e5a1b451568f1695f138bb",
+    "e66b632c--dense-standard.json": "8a4c53ef36ef788d9c582f955c7d294158406f396268715e11edfc0b352312e0",
+    "75f70248--full-oracle.json": "9a0a11778b8847a05335295a60092e9be6adde2f12de7a37b4b9b8c446188da3",
+    "75f70248--bm25-standard.json": "76874131ce083e6ee989a69a54347b01648519b18907ae55afdd3ada8b533c31",
+    "75f70248--dense-standard.json": "d2c7b63e5c1ec611d9b475e3ea90865836a3c2852951e237efbc9a3d37e11060",
+    "gpt4_93159ced_abs--full-oracle.json": "8279184a17557be48051bdfc5286be17e5460640f65640eeee50e1bf34f76e8e",
+    "gpt4_93159ced_abs--bm25-standard.json": "3daf04f942090475ff04dfc04db86b2bd4b8fceed9ab332f39be1c29c837714a",
+    "gpt4_93159ced_abs--dense-standard.json": "1fb3374c80d2f7d23987c75dff6f79fac43dfb9046ea2f7562271f68a22d451d",
+    "gpt4_c27434e8--full-oracle.json": "19798ed75ba722f25e6c52e24bf588a574254e0c76d94bfeade2f66e47ec525b",
+    "gpt4_c27434e8--bm25-standard.json": "569fab63ff154c611a3107d9eef40337ebc655ffeb04185fb66cbd0a7536550a",
+    "gpt4_c27434e8--dense-standard.json": "aa3a84885305490c6d3e580d067a621399351d2a965000575a542d1bfde41bc3",
+    "e01b8e2f--full-oracle.json": "d96aa1e1f1975c8a8e8fdd0a1236ac1ce7ef223b9e7d5de3961c53e499386254",
+    "e01b8e2f--bm25-standard.json": "f79dff2de44e247222dcc8e49141a5e24c50b13a26bcfb1c8e1dfe6b148f7558",
+    "e01b8e2f--dense-standard.json": "ea8e97430f34d034c5e4107da7da0c8921e067fc0aa3162be3a0550ad5b926f9",
+    "5831f84d--full-oracle.json": "30d21450d0f870085cbbef642f8776a9bc87de7a564b9f356fb53b39587d40b6",
+    "5831f84d--bm25-standard.json": "0ea02a30d5913554aa86d835c27e54c193598f009c85c23529fdf91f241d9f0a",
+    "5831f84d--dense-standard.json": "a20a2ea1cfd3cb954423aceecb1bf5eb2627965a85571b211e12dd511f9c5790",
+    "031748ae_abs--full-oracle.json": "16a89630267aa434a4991130941c599c245ced0c1c8cb09b64bf990b3213a08f",
+    "031748ae_abs--bm25-standard.json": "c001e54cbe97009a7bee714bfdfd8854328a728836f810d8676642c9964adb3f",
+    "031748ae_abs--dense-standard.json": "b52c4869ca9ecf817e2b1ca73dbf0a5edb5fa29c4e7eca29d6a67d59a3cb67f1",
+    "06878be2--full-oracle.json": "4ca7075a36820d2f5c0319487e484d21fa826665e1639f90a968206992bd64b1",
+    "06878be2--bm25-standard.json": "0fb4c90143c34aa71ea592864115138d2aa87e9dbf503475a29a966b7812d241",
+    "06878be2--dense-standard.json": "33587a1c49463fddcb98212a845a7274876d3dcebb198f01c18ed075fe26f797",
+    "3b6f954b--full-oracle.json": "ecca8e70e5069c9f6f5c0e5320f6d88e38014a1af89fa13920461ec1d9fa1c54",
+    "3b6f954b--bm25-standard.json": "f912afc11bde5bb49c58a7ae789126637518d513d90e061232ba8d27646baf76",
+    "3b6f954b--dense-standard.json": "d8198dd77cffc09c405ed13e8f9ee60d4c0428462949c80d576abc25d61b7fd4",
+    "8077ef71--full-oracle.json": "e8dcfd6f6100aa10e8d9767cb147493b5bad063deb397ec78dd515cdfebe3d64",
+    "8077ef71--bm25-standard.json": "4ec4a90b8855bca617fc2e343a0b30bb4fd79eb278b5400607fc9c15576e0fa6",
+    "8077ef71--dense-standard.json": "f8b5d2151492e4d2bb2b4c90d38407992c9dd8a99fa65534c426f5ed9184b939",
+    "gpt4_b5700ca9--full-oracle.json": "49cc0574229af3caeb8afa68f1ab546b49e6a4bd4912a538818a68b8f14b974c",
+    "gpt4_b5700ca9--bm25-standard.json": "1c099466e560b44063304b3dea685f7125bdbad94e2df898b72d88c4b92e77e6",
+    "gpt4_b5700ca9--dense-standard.json": "c870deb153b8aabcfbe24fdf24387b43b07d3c65bd142be790c6411950b68332",
+    "gpt4_0b2f1d21--full-oracle.json": "51841a2e440e3f2e39ee6310daa4b7f948e05151c830f2dd99cb35182d54363f",
+    "gpt4_0b2f1d21--bm25-standard.json": "2061e8c538662320e6ea2ed19b251aa6e2e3ac71f44ba063a8e63487de0941a7",
+    "gpt4_0b2f1d21--dense-standard.json": "ad02dd33e6040b3ec013fe86299c577672f927aef838260a532654cd0e90957f",
+    "1faac195--full-oracle.json": "6b16115e9f89de4a6be582a0b16f7bd335b848c91cc0b1fa86bdd1be2955076c",
+    "1faac195--bm25-standard.json": "300acb8d44df76da86b7edaa314cb3241af1ac9a693b5fc5abdd8b32f9e80498",
+    "1faac195--dense-standard.json": "37fc8e2f983befbc7b7e3063116738970b6ab69f8e12a3a5418083ef2e58addc",
+    "dccbc061--full-oracle.json": "109cac5de69e05dfcc866577b9cf01e0f5400ea75865c73fb0793ab5e60e729d",
+    "dccbc061--bm25-standard.json": "b6dbeb6451cb14db241c8f67e4ede0e42616cde998e92ae3ce4a59918138bab6",
+    "dccbc061--dense-standard.json": "7cdb2e07e65b513ab90efc8b2a7d3048312cb8823baff468cf6c51bc4af88b85",
+    "7527f7e2--full-oracle.json": "46746c4093ece721e97dc2f1a3415ced81aa20387fea9543bde968ca9a8fd558",
+    "7527f7e2--bm25-standard.json": "64f3f76000b0e163759705c243912f233419133329d7ed19d9a780001f51d120",
+    "7527f7e2--dense-standard.json": "0b107107333ed05b98a2d96835675f5617326d24a6fe13f0cca172fcbd5538d8",
+    "8a2466db--full-oracle.json": "c37644d91b403185a87214066f2adee5eb16e13cb027e5523ddb5fde21c60565",
+    "8a2466db--bm25-standard.json": "3ce3525344185bda2fdf7cfcd0f8722e568548d7ebcf318ca34d817d54041cb3",
+    "8a2466db--dense-standard.json": "e7a0a531239fb5cda5f3814703fe8f545f4b77b5df0c7bdbbdfc1108167b1ea3",
+    "gpt4_68e94288--full-oracle.json": "dd41d80635dddbe65cbca5be7cb7d08f522c703279e0e763004a7d9586b76cb9",
+    "gpt4_68e94288--bm25-standard.json": "4b1ddde9484861374be340d1ed1b1c4865dead89a847c8f4566808af4f662e79",
+    "gpt4_68e94288--dense-standard.json": "1e90ef5610e6f76578d2c2a1f256219eff3365759b431a5bf1aeea7fb7d2c7d3",
+    "8979f9ec--full-oracle.json": "0deec2552e06b5b0c403857d1027142f2734efeb587bab838d744efb14f513ef",
+    "8979f9ec--bm25-standard.json": "8ca6fde02c84a02a2c035dbf1971c047fe1644e7c4a407938d32a7104b976b8c",
+    "8979f9ec--dense-standard.json": "51f3e7f25ff59ec7c059b3fa217e4c734be9ac80263bf1b7666054efc7f01df5",
+    "6cb6f249--full-oracle.json": "93025fecbb2d14594ad69ccfa696f6b9a059782c0027461a68fe84840cb4dd96",
+    "6cb6f249--bm25-standard.json": "d29735a42a7b694a46813da4852190fd08bfa98bf7cf81c7a287a527928d77a4",
+    "6cb6f249--dense-standard.json": "33f7ccca28baa74119886ef4def4d17dce9a13680e03b46781f83f0a4f2d013a",
+    "faba32e5--full-oracle.json": "678b2d091074019d51e7e13cd9848a5c2470ef50f161d59f2329dd7ce4081a4f",
+    "faba32e5--bm25-standard.json": "0db2f51056da812656b126ef61e448c70a5cfe5c0541b6b6a9407c04c952ae5c",
+    "faba32e5--dense-standard.json": "64661a73a9e5b455da57bb6cf9c9953f115272ec204f266226ba00c4a2574306",
+    "gpt4_d9af6064--full-oracle.json": "e03e35c7126949d1f0dac0f2f307fd9cf96f154e03356e584b7868792b3a675a",
+    "gpt4_d9af6064--bm25-standard.json": "a920aeeb37ac5ab0580e83ba8488b49cda93eb2796ba0b79a9c32f47466ce80a",
+    "gpt4_d9af6064--dense-standard.json": "50b1cac2ad1d1125c2fd293a50cb61e75eae45f75000649ff98650251a89b2bc",
+    "eeda8a6d--full-oracle.json": "13ec7c13d1be5854dbb5d9d901d4b6b6db80de1c7bc426a31ca250e2fbe0c54e",
+    "eeda8a6d--bm25-standard.json": "6018b07c7bba3d7f6e2a0d2d6572bc0f55cae79e1386fb80a2d56122607a638c",
+    "eeda8a6d--dense-standard.json": "b1ba98e9b0e1c5b16d2aea831d4a9f3ebcc4ae34b8ad35abe0bcf3d0f5620ff4"
+  }
+}

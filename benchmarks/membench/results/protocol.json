@@ -1,0 +1,39 @@
+{
+  "reader": "Qwen2.5-14B-Instruct Q4_K_M",
+  "weight_revision": "05244aa5d871c661c80082a15d3bce44714d068d",
+  "weight_sha256": "e47ad95dad6ff848b431053b375adb5d39321290ea2c638682577dafca87c008",
+  "server": "llama.cpp build 12359, commit b1b770d90",
+  "hardware": {
+    "model_serving": "Apple M3 Ultra, 96 GB",
+    "all_other_computation": "32-thread x86 CPU"
+  },
+  "native_slots": 1,
+  "context_tokens": 131072,
+  "rope_scaling": "YaRN, scale 4, original context 32768",
+  "kv_cache": "q8_0 keys and values",
+  "flash_attention": true,
+  "temperature": 0,
+  "seed": 20261122,
+  "generation_initial_max_tokens": 192,
+  "judge_initial_max_tokens": 256,
+  "embedder": "all-MiniLM-L6-v2, CPU, 384 dimensions",
+  "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "embedding_input_limit_wordpieces": 256,
+  "chunk_words": 100,
+  "chunk_stride_words": 80,
+  "retrieval_top_k": 20,
+  "retrieved_context_order": "original source order",
+  "mab_metric": "official EventQA case-insensitive all-reference-element substring recall",
+  "halu_metric": "local Qwen judge, Correct/Hallucination/Omission; first valid JSON, up to three format attempts; not a majority vote",
+  "performance_scope": "150 EventQA items and 150 HaluMem QA items, same items across all three methods",
+  "not_measured": [
+    "memory extraction",
+    "memory updating",
+    "LIGHT gains",
+    "CMB code editing",
+    "STATE reliability",
+    "MemoryArena action completion"
+  ],
+  "shared_host_load": "uncontrolled; timings are operational, not comparative performance claims",
+  "privacy_export": "after scoring, original response hashes retained; decisions unchanged"
+}

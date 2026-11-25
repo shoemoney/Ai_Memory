@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7931634419fe34f413410985cc929ef58504099b35aa8b0243f72cfbb6b04775",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-fce37a06-b5f1-40dd-a56a-ed2e41a18093",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Denver\", \"summary\": \"A city in Colorado, USA. Noted for its skyline and landmarks such as the Denver International Airport and the Denver Union Station. Known for its diverse cultural events and festivals.\"}, {\"name\": \"Lockheed Martin\", \"summary\": \"A major defense contractor and aerospace manufacturer. Noted for its involvement in various military and civilian projects, including the F-35 Lightning II and the Joint Strike Fighter.\"}, {\"name\": \"Belmont Arts Center\", \"summary\": \"A cultural hub in Denver, Colorado. Noted for hosting various art exhibitions, theater productions, and music concerts. Collaborates with local artists and organizations to promote arts education and community engagement.\"}, {\"name\": \"Riverside Park\", \"summary\": \"A public park in Denver, Colorado. Noted for its recreational facilities, including playgrounds, sports fields, and picnic areas. Often hosts community events and festivals.\"}, {\"name\": \"Trigger\", \"summary\": \"A software tool used for game development. Noted for its role in creating and managing game assets, particularly in the GameCube platform.\"}, {\"name\": \"Mustang\", \"summary\": \"A Ford brand vehicle. Noted for its performance and reliability. Often featured in various automotive magazines and car shows.\"}, {\"name\": \"cracked windshield\", \"summary\": \"A damaged windshield on a vehicle. Noted for its impact on visibility and safety during driving.\"}, {\"name\": \"red and purple lighting\", \"summary\": \"A specific color scheme used in various events and performances. Noted for its festive and celebratory atmosphere.\"}, {\"name\": \"Gamecube\", \"summary\": \"A video game console. Noted for its role in the GameCube era of gaming, featuring popular games such as 'Super Smash Bros.' and 'The Legend of Zelda: Ocarina of Time.'\"}, {\"name\": \"game\", \"summary\": \"A video game. Noted for its role in the GameCube era of gaming, featuring popular games such as 'Super Smash Bros.' and 'The Legend of Zelda: Ocarina of Time.'\"}, {\"name\": \"event\", \"summary\": \"A cultural or sports event. Noted for its role in promoting community engagement and cultural diversity.\"}}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331218,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 472,
+      "prompt_tokens": 5381,
+      "total_tokens": 5853,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 2956
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Denver\", \"summary\": \"A city in Colorado, USA. Noted for its skyline and landmarks such as the Denver International Airport and the Denver Union Station. Known for its diverse cultural events and festivals.\"}, {\"name\": \"Lockheed Martin\", \"summary\": \"A major defense contractor and aerospace manufacturer. Noted for its involvement in various military and civilian projects, including the F-35 Lightning II and the Joint Strike Fighter.\"}, {\"name\": \"Belmont Arts Center\", \"summary\": \"A cultural hub in Denver, Colorado. Noted for hosting various art exhibitions, theater productions, and music concerts. Collaborates with local artists and organizations to promote arts education and community engagement.\"}, {\"name\": \"Riverside Park\", \"summary\": \"A public park in Denver, Colorado. Noted for its recreational facilities, including playgrounds, sports fields, and picnic areas. Often hosts community events and festivals.\"}, {\"name\": \"Trigger\", \"summary\": \"A software tool used for game development. Noted for its role in creating and managing game assets, particularly in the GameCube platform.\"}, {\"name\": \"Mustang\", \"summary\": \"A Ford brand vehicle. Noted for its performance and reliability. Often featured in various automotive magazines and car shows.\"}, {\"name\": \"cracked windshield\", \"summary\": \"A damaged windshield on a vehicle. Noted for its impact on visibility and safety during driving.\"}, {\"name\": \"red and purple lighting\", \"summary\": \"A specific color scheme used in various events and performances. Noted for its festive and celebratory atmosphere.\"}, {\"name\": \"Gamecube\", \"summary\": \"A video game console. Noted for its role in the GameCube era of gaming, featuring popular games such as 'Super Smash Bros.' and 'The Legend of Zelda: Ocarina of Time.'\"}, {\"name\": \"game\", \"summary\": \"A video game. Noted for its role in the GameCube era of gaming, featuring popular games such as 'Super Smash Bros.' and 'The Legend of Zelda: Ocarina of Time.'\"}, {\"name\": \"event\", \"summary\": \"A cultural or sports event. Noted for its role in promoting community engagement and cultural diversity.\"}}]}",
+  "seconds": 18.64083886600565,
+  "prompt_tokens_local_gemma_estimate": 5334
+}

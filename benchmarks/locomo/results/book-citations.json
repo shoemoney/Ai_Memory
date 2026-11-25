@@ -1,0 +1,67 @@
+[
+  {
+    "chapter": "17-security-eval-ops.html",
+    "quote": "LoCoMo (2024) Ten long conversations with question answering, event summarization and dialogue tasks. 19 Not a deletion or poisoning test. An external audit and a maintainer issue document wrong ground-truth answers. 20",
+    "original_paragraph_sha256": "6e351ec19451ab2be7558f059b4143a78d3732d27d9507e94ba8a2acef145f39"
+  },
+  {
+    "chapter": "17-security-eval-ops.html",
+    "quote": "Mem0's LoCoMo scores are vendor results. 26 In [study authors]'s independent testbed, Mem0, plain RAG and full context scored 77 to 81%, while the graph systems Graphiti and Cognee scored 55 to 56%, which the authors attribute to incomplete retrieval. 27",
+    "original_paragraph_sha256": "6e0596d576cae56bdf2fe8ea55ed495dd931a7d120f6b848a26f21928fac24ea"
+  },
+  {
+    "chapter": "17-security-eval-ops.html",
+    "quote": "One study found a Mem0-style system cheaper after about ten turns at 100,000-token context with caching, while long context was more accurate on LongMemEval and LoCoMo. 32 The crossover is specific to that workload. Budget for memory only when repeated read savings repay extraction, storage and maintenance.",
+    "original_paragraph_sha256": "1abc7ee3d4ab3da5b6bedfe29fff03787d27dad35ffb9d199ed4493dbac359f2"
+  },
+  {
+    "chapter": "14-knowledge-graphs.html",
+    "quote": "55 to 56% Graphiti and Cognee on LoCoMo in [study authors]'s independent testbed, against 77 to 81% for Mem0, RAG and full context. The authors blame incomplete retrieval, not weak reasoning. 20 Independent paper",
+    "original_paragraph_sha256": "0793b10a5166ad3cd6a6236a58a0e951a38490bcab2b9ff11d32051bdaaf40c0"
+  },
+  {
+    "chapter": "14-knowledge-graphs.html",
+    "quote": "75.14% Graphiti on LoCoMo in Zep's own counter-evaluation, as reported by the same paper. 20 Vendor claim",
+    "original_paragraph_sha256": "348deed7fe6e3cac471423e51514c870a26ef311de44a2b7e7d6ec63dc2b01a7"
+  },
+  {
+    "chapter": "14-knowledge-graphs.html",
+    "quote": "74.0% Letta Filesystem with gpt-4o-mini and grep-style tools on LoCoMo. 21 Vendor claim",
+    "original_paragraph_sha256": "ffd13d8c0ca52ea41a4ae6aed2dd62fd4f8768ffb031f762ec3a1a55cb325d7a"
+  },
+  {
+    "chapter": "14-knowledge-graphs.html",
+    "quote": "Zep and Mem0 dispute each other's scores, and LoCoMo itself has wrong ground-truth answers. 28 Rerun a benchmark on your own data before choosing a system. Chapter 17 covers these benchmarks and workload-specific evaluation.",
+    "original_paragraph_sha256": "b4ede067ea4a8c9b376481f4317ba92c09f296b84826237be83f1a0b7a58e7f7"
+  },
+  {
+    "chapter": "13-memory-frameworks.html",
+    "quote": "Mem0 reports LoCoMo 92.5 and LongMemEval 94.4 for its managed April 2026 stack, with a top-200 retrieval budget. These are vendor claims , not measurements of the open-source recipe. Its public harness defaults to GPT-4o for the answerer and the judge, while its separate OSS model-comparison table uses GPT-5 for both, so record the actual run configuration instead of assuming either default produced the headline scores. A score depends on retrieval depth, extraction model, answerer and judge, so none is a cross-vendor ranking. 5 , 7",
+    "original_paragraph_sha256": "8c7c031872c630300da9f1dc82ab0dd229543868d38c13bd56cf3802781f80f0"
+  },
+  {
+    "chapter": "18-choosing.html",
+    "quote": "Pick vectors when questions are local lookups and facts are short. An independent test scored Mem0, retrieval and full context at 77 to 81% on LoCoMo, and Graphiti and cognee at 55 to 56%. 10",
+    "original_paragraph_sha256": "f66df516b61c5c9c7250764504539d5571702091d6bce565a0dc34ee45e9826c"
+  },
+  {
+    "chapter": "18-choosing.html",
+    "quote": "Pick memory when history outgrows the window. The same study found memory cheaper after about ten turns at 100K context. 26 Chapter 20 measured the effect on a small fixture: 99 prompt tokens with no memory, 226 with recall and 560 with the full seed history.",
+    "original_paragraph_sha256": "d0a4d1d20b8cb6b7b7cc0e5b05e08bb3720ea2e001be45d4872fc3f3914f505b"
+  },
+  {
+    "chapter": "16-frontier.html",
+    "quote": "Almost every number here comes from the paper's own authors, on benchmarks they chose, often against baselines they ran. An October 2025 issue documents wrong ground-truth answers in LoCoMo, so a single score on it proves little until someone else reruns it (Chapter 17). 1",
+    "original_paragraph_sha256": "7db4d05c33500ae84af229e73d92fdb6220f1a8c6b75bb4dc7f91b2ff55219da"
+  },
+  {
+    "chapter": "16-frontier.html",
+    "quote": "Prototype MemOS and MemoryOS manage memory as schedulable tiers. Both report state-of-the-art LoCoMo results. 48 , 49 Mem0, the shipped library of the three, reported a 26% relative gain over OpenAI's memory in its 2025 paper (Chapter 13 has its current design). 50 All three are self-reported.",
+    "original_paragraph_sha256": "45f79cd1362d92449183898a7880595fa89e27afef6d309f89bd56fb1a71196c"
+  },
+  {
+    "chapter": "16-frontier.html",
+    "quote": "Saturated, self-reported benchmarks. LoCoMo has documented wrong answers (Chapter 17), few papers test on MemoryAgentBench and BEAM together, and one action suite is run by a memory vendor.",
+    "original_paragraph_sha256": "c3e670ef867d95f9f66b1dbbd2ae2e0edd2f457840712382cc49afba704e740a"
+  }
+]

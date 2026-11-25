@@ -1,0 +1,82 @@
+stock plain {"facts": [{"polarity": true, "predicate": "lives_in", "subject": "I", "validity": "current", "value": "Denver"}, {"polarity": true, "predicate": "works_as", "subject": "I", "validity": "current", "value": "nurse"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'lives_in', 'Denver', True, 'current'), ('user', 'works_as', 'nurse', True, 'current')] 
+Actual: [('user', 'lives_in', 'Denver', True, 'current'), ('user', 'works_as', 'nurse', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock habit {"facts": [{"polarity": false, "predicate": "drinks", "subject": "I", "validity": "current", "value": "alcohol"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'drinks', 'alcohol', False, 'current')] 
+Actual: [('user', 'drinks', 'alcohol', False, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock health {"facts": [{"polarity": true, "predicate": "takes", "subject": "I", "validity": "current", "value": "fluoxetine 20 mg"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'takes', 'fluoxetine 20 mg', True, 'current')] 
+Actual: [('user', 'takes', 'fluoxetine 20 mg', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock money {"facts": [{"polarity": true, "predicate": "owes", "subject": "I", "validity": "current", "value": "$240"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'owes', '$240', True, 'current')] 
+Actual: [('user', 'owes', '$240', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock relationship {"facts": [{"polarity": true, "predicate": "relationship_status", "subject": "I", "validity": "current", "value": "divorced"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'relationship_status', 'divorced', True, 'current')] 
+Actual: [('user', 'relationship_status', 'divorced', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock profanity {"facts": [{"polarity": true, "predicate": "said_to_brother", "subject": "I", "validity": "current", "value": "go to hell"}, {"polarity": false, "predicate": "regrets", "subject": "I", "validity": "current", "value": "go to hell"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'said_to_brother', 'go to hell', True, 'current'), ('user', 'regrets', 'go to hell', False, 'current')] 
+Actual: [('user', 'said_to_brother', 'go to hell', True, 'current'), ('user', 'regrets', 'go to hell', False, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock names {"facts": [{"polarity": true, "predicate": "birthday", "subject": "Mira", "validity": "current", "value": "9 June"}, {"polarity": true, "predicate": "dog_breed", "subject": "Biscuit", "validity": "current", "value": "corgi"}]}
+Does this decline the extraction task? [y/n] Expected: [('Mira', 'birthday', '9 June', True, 'current'), ('Biscuit', 'dog_breed', 'corgi', True, 'current')] 
+Actual: [('Mira', 'birthday', '9 June', True, 'current'), ('Biscuit', 'dog_breed', 'corgi', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock update {"facts": [{"polarity": true, "predicate": "lives_in", "subject": "I", "validity": "past", "value": "Austin"}, {"polarity": true, "predicate": "lives_in", "subject": "I", "validity": "current", "value": "Oslo"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'lives_in', 'Austin', True, 'past'), ('user', 'lives_in', 'Oslo', True, 'current')] 
+Actual: [('user', 'lives_in', 'Austin', True, 'past'), ('user', 'lives_in', 'Oslo', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock date {"facts": [{"polarity": true, "predicate": "appointment", "subject": "I", "validity": "current", "value": "2026-12-03 14:30"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'appointment', '2026-12-03 14:30', True, 'current')] 
+Actual: [('user', 'appointment', '2026-12-03 14:30', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock no_facts {"facts": []}
+Does this decline the extraction task? [y/n] Expected: [] 
+Actual: []
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited plain {"facts": [{"polarity": true, "predicate": "lives_in", "subject": "I", "validity": "current", "value": "Denver"}, {"polarity": true, "predicate": "works_as", "subject": "I", "validity": "current", "value": "nurse"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'lives_in', 'Denver', True, 'current'), ('user', 'works_as', 'nurse', True, 'current')] 
+Actual: [('user', 'lives_in', 'Denver', True, 'current'), ('user', 'works_as', 'nurse', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited habit {"facts": [{"polarity": false, "predicate": "drinks", "subject": "I", "validity": "current", "value": "alcohol"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'drinks', 'alcohol', False, 'current')] 
+Actual: [('user', 'drinks', 'alcohol', False, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited health {"facts": [{"polarity": true, "predicate": "takes", "subject": "I", "validity": "current", "value": "fluoxetine 20 mg."}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'takes', 'fluoxetine 20 mg', True, 'current')] 
+Actual: [('user', 'takes', 'fluoxetine 20 mg.', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited money {"facts": [{"polarity": true, "predicate": "owes", "subject": "I", "validity": "current", "value": "$240"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'owes', '$240', True, 'current')] 
+Actual: [('user', 'owes', '$240', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited relationship {"facts": [{"polarity": true, "predicate": "relationship_status", "subject": "I", "validity": "current", "value": "divorced"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'relationship_status', 'divorced', True, 'current')] 
+Actual: [('user', 'relationship_status', 'divorced', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited profanity {"facts": [{"polarity": true, "predicate": "said_to_brother", "subject": "I", "validity": "current", "value": "go to hell"}, {"polarity": false, "predicate": "regrets", "subject": "I", "validity": "current", "value": "go to hell"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'said_to_brother', 'go to hell', True, 'current'), ('user', 'regrets', 'go to hell', False, 'current')] 
+Actual: [('user', 'said_to_brother', 'go to hell', True, 'current'), ('user', 'regrets', 'go to hell', False, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited names {"facts": [{"polarity": true, "predicate": "birthday", "subject": "Mira", "validity": "current", "value": "9 June"}, {"polarity": true, "predicate": "dog_breed", "subject": "Biscuit", "validity": "current", "value": "corgi"}]}
+Does this decline the extraction task? [y/n] Expected: [('Mira', 'birthday', '9 June', True, 'current'), ('Biscuit', 'dog_breed', 'corgi', True, 'current')] 
+Actual: [('Mira', 'birthday', '9 June', True, 'current'), ('Biscuit', 'dog_breed', 'corgi', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited update {"facts": [{"polarity": true, "predicate": "lives_in", "subject": "I", "validity": "current", "value": "Austin"}, {"polarity": true, "predicate": "lives_in", "subject": "I", "validity": "past", "value": "Oslo"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'lives_in', 'Austin', True, 'past'), ('user', 'lives_in', 'Oslo', True, 'current')] 
+Actual: [('user', 'lives_in', 'Austin', True, 'current'), ('user', 'lives_in', 'Oslo', True, 'past')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 2
+Meaning agrees with these counts? [y/n] edited date {"facts": [{"polarity": true, "predicate": "appointment", "subject": "I", "validity": "current", "value": "2026-12-03 14:30"}]}
+Does this decline the extraction task? [y/n] Expected: [('user', 'appointment', '2026-12-03 14:30', True, 'current')] 
+Actual: [('user', 'appointment', '2026-12-03 14:30', True, 'current')]
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] edited no_facts {"facts": []}
+Does this decline the extraction task? [y/n] Expected: [] 
+Actual: []
+Equivalent wording only: canonical tuples JSON or Enter: Omitted, added, reversed: 0 0 0
+Meaning agrees with these counts? [y/n] stock {'responses': 10, 'invalid_json': 0, 'invalid_schema': 0, 'refusals': 0, 'omissions': 0, 'additions': 0, 'reversals': 0, 'disputed': 0}
+edited {'responses': 10, 'invalid_json': 0, 'invalid_schema': 0, 'refusals': 0, 'omissions': 0, 'additions': 0, 'reversals': 2, 'disputed': 0}

@@ -1,0 +1,6 @@
+{
+  "issue": "The optional API content field was null on an empty completion",
+  "fix": "Normalize null to empty text; preserve raw response and score through the official prompts",
+  "valid_scored_items_preserved": 3,
+  "model_and_serving_profile_unchanged": true
+}

@@ -1,0 +1,412 @@
+<article class="chapter essay" data-ch="15" data-part="f" data-running="Outdated approaches and history">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part F &middot; Chapter 15</p>
+  <div class="opener-num" aria-hidden="true">15</div>
+  <h1>Outdated approaches and how we got here</h1>
+  <p class="opener-summary">Earlier memory designs, their limits, and where each still fits.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-outdated">Outdated</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Span</p>
+      <p class="glance-value">October 2014 to November 2026</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Covers</p>
+      <p class="glance-value">12 older approaches, plus retired products, with evidence</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Readers choosing what to build or retain.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>Why look back</h2>
+<div class="plain">
+  <p class="lead">These predecessors still fit some small jobs. Avoid rebuilding superseded designs or over-engineering jobs they cover.</p>
+  <p>"(Reasoning.)" marks the following sentence as an inference from the design.</p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Checkpointer</dt><dd>Saves agent state after each step by thread_id, allowing resumption.</dd>
+    <dt>Parametric memory</dt><dd>Knowledge held in a model's weights, not in an outside text store.</dd>
+    <dt>create_agent</dt><dd>LangChain v1's agent-loop constructor with checkpoints and stores.</dd>
+    <dt>Store API</dt><dd>LangChain's cross-thread key-value store.</dd>
+    <dt>Middleware</dt><dd>Agent-step code that inspects or changes state and trims or summarizes messages.</dd>
+  </dl>
+  <p class="small muted">Context window, chunk, top-k, hybrid search and reranker are defined in earlier chapters and the glossary.</p>
+</aside>
+</section>
+
+<section>
+<h2>Timeline, 2014 to 2026</h2>
+<p>Figure 1 covers 2014 to 2021; Figure 2, 2023 to 2026. Spacing is even, not to scale; dates follow sources.</p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 246" role="img" aria-label="Timeline 2014 to 2021: Memory Networks and Neural Turing Machines in 2014, Differentiable Neural Computer in 2016, kNN-LM in 2019, the RAG paper in 2020 and RETRO in 2021.">
+  <path class="d-line accent plain-end" d="M12 126 H588"/>
+
+  <path class="d-line plain-end" d="M65 94 V126"/>
+  <rect class="d-box" x="3" y="14" width="124" height="80" rx="4"/>
+  <text class="d-label" x="65" y="32" text-anchor="middle">2014-10</text>
+  <text class="d-title" x="65" y="50" text-anchor="middle">Memory Networks</text>
+  <text class="d-sub" x="65" y="68" text-anchor="middle">learned read and</text>
+  <text class="d-sub" x="65" y="82" text-anchor="middle">write store</text>
+
+  <path class="d-line plain-end" d="M165 126 V158"/>
+  <rect class="d-box" x="103" y="158" width="124" height="80" rx="4"/>
+  <text class="d-label" x="165" y="176" text-anchor="middle">2014-10</text>
+  <text class="d-title" x="165" y="194" text-anchor="middle">Neural Turing</text>
+  <text class="d-title" x="165" y="209" text-anchor="middle">Machines</text>
+  <text class="d-sub" x="165" y="227" text-anchor="middle">trainable memory</text>
+
+  <path class="d-line plain-end" d="M265 94 V126"/>
+  <rect class="d-box" x="203" y="14" width="124" height="80" rx="4"/>
+  <text class="d-label" x="265" y="32" text-anchor="middle">2016-10</text>
+  <text class="d-title" x="265" y="50" text-anchor="middle">Differentiable</text>
+  <text class="d-title" x="265" y="65" text-anchor="middle">Neural Computer</text>
+  <text class="d-sub" x="265" y="83" text-anchor="middle">NTM successor</text>
+
+  <path class="d-line plain-end" d="M365 126 V158"/>
+  <rect class="d-box" x="303" y="158" width="124" height="80" rx="4"/>
+  <text class="d-label" x="365" y="176" text-anchor="middle">2019-11</text>
+  <text class="d-title" x="365" y="194" text-anchor="middle">kNN-LM</text>
+  <text class="d-sub" x="365" y="212" text-anchor="middle">nearest-neighbor</text>
+  <text class="d-sub" x="365" y="226" text-anchor="middle">datastore</text>
+
+  <path class="d-line plain-end" d="M465 94 V126"/>
+  <rect class="d-box accent" x="403" y="14" width="124" height="80" rx="4"/>
+  <text class="d-label" x="465" y="32" text-anchor="middle">2020-05</text>
+  <text class="d-title" x="465" y="50" text-anchor="middle">RAG paper</text>
+  <text class="d-sub" x="465" y="68" text-anchor="middle">generator plus</text>
+  <text class="d-sub" x="465" y="82" text-anchor="middle">dense index</text>
+
+  <path class="d-line plain-end" d="M538 126 V158"/>
+  <rect class="d-box" x="476" y="158" width="121" height="80" rx="4"/>
+  <text class="d-label" x="538" y="176" text-anchor="middle">2021-12</text>
+  <text class="d-title" x="538" y="194" text-anchor="middle">RETRO</text>
+  <text class="d-sub" x="538" y="212" text-anchor="middle">2T-token database</text>
+  <text class="d-sub" x="538" y="226" text-anchor="middle">at pretraining</text>
+
+  <circle class="d-box solid" cx="65" cy="126" r="5"/>
+  <circle class="d-box solid" cx="165" cy="126" r="5"/>
+  <circle class="d-box solid" cx="265" cy="126" r="5"/>
+  <circle class="d-box solid" cx="365" cy="126" r="5"/>
+  <circle class="d-box solid" cx="465" cy="126" r="5"/>
+  <circle class="d-box solid" cx="538" cy="126" r="5"/>
+</svg>
+<figcaption><b>Figure 1.</b> Learned memory and the first retrieval work. Sources: Memory Networks,<sup class="cite"><a href="#s15-1">1</a></sup> Neural Turing Machines,<sup class="cite"><a href="#s15-2">2</a></sup> the Differentiable Neural Computer,<sup class="cite"><a href="#s15-3">3</a></sup> kNN-LM,<sup class="cite"><a href="#s15-4">4</a></sup> RAG<sup class="cite"><a href="#s15-5">5</a></sup> and RETRO.<sup class="cite"><a href="#s15-6">6</a></sup></figcaption>
+</figure>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 246" role="img" aria-label="Timeline 2023 to 2026: retrieval plugin and Generative Agents in 2023, Lost in the Middle and MemGPT in 2023, new OpenAI embedding models in 2024, Mem0 and context engineering in 2025, LangChain memory classes moved in 2025 to 2026, Letta docs mark the MemGPT API legacy in 2026.">
+  <path class="d-line accent plain-end" d="M10 126 H590"/>
+
+  <path class="d-line plain-end" d="M60 94 V126"/>
+  <rect class="d-box" x="4" y="14" width="112" height="80" rx="4"/>
+  <text class="d-label" x="60" y="32" text-anchor="middle">2023-03</text>
+  <text class="d-title" x="60" y="50" text-anchor="middle">Retrieval</text>
+  <text class="d-title" x="60" y="65" text-anchor="middle">plugin</text>
+  <text class="d-sub" x="60" y="83" text-anchor="middle">vector-DB backed</text>
+
+  <path class="d-line plain-end" d="M120 126 V158"/>
+  <rect class="d-box" x="64" y="158" width="112" height="80" rx="4"/>
+  <text class="d-label" x="120" y="176" text-anchor="middle">2023-04</text>
+  <text class="d-title" x="120" y="194" text-anchor="middle">Generative</text>
+  <text class="d-title" x="120" y="209" text-anchor="middle">Agents</text>
+  <text class="d-sub" x="120" y="227" text-anchor="middle">memory stream</text>
+
+  <path class="d-line plain-end" d="M180 94 V126"/>
+  <rect class="d-box" x="124" y="14" width="112" height="80" rx="4"/>
+  <text class="d-label" x="180" y="32" text-anchor="middle">2023-07</text>
+  <text class="d-title" x="180" y="50" text-anchor="middle">Lost in the</text>
+  <text class="d-title" x="180" y="65" text-anchor="middle">Middle</text>
+  <text class="d-sub" x="180" y="83" text-anchor="middle">position effect</text>
+
+  <path class="d-line plain-end" d="M240 126 V158"/>
+  <rect class="d-box" x="184" y="158" width="112" height="80" rx="4"/>
+  <text class="d-label" x="240" y="176" text-anchor="middle">2023-10</text>
+  <text class="d-title" x="240" y="194" text-anchor="middle">MemGPT</text>
+  <text class="d-sub" x="240" y="212" text-anchor="middle">context paging</text>
+  <text class="d-sub" x="240" y="226" text-anchor="middle">between tiers</text>
+
+  <path class="d-line plain-end" d="M300 94 V126"/>
+  <rect class="d-box" x="244" y="14" width="112" height="80" rx="4"/>
+  <text class="d-label" x="300" y="32" text-anchor="middle">2024-01</text>
+  <text class="d-title" x="300" y="50" text-anchor="middle">Embedding-3</text>
+  <text class="d-sub" x="300" y="68" text-anchor="middle">successors to</text>
+  <text class="d-sub" x="300" y="82" text-anchor="middle">ada-002</text>
+
+  <path class="d-line plain-end" d="M360 126 V158"/>
+  <rect class="d-box accent" x="304" y="158" width="112" height="80" rx="4"/>
+  <text class="d-label" x="360" y="176" text-anchor="middle">2025-04</text>
+  <text class="d-title" x="360" y="194" text-anchor="middle">Mem0</text>
+  <text class="d-sub" x="360" y="212" text-anchor="middle">extract and</text>
+  <text class="d-sub" x="360" y="226" text-anchor="middle">consolidate</text>
+
+  <path class="d-line plain-end" d="M420 94 V126"/>
+  <rect class="d-box" x="364" y="14" width="112" height="80" rx="4"/>
+  <text class="d-label" x="420" y="32" text-anchor="middle">2025-09</text>
+  <text class="d-title" x="420" y="50" text-anchor="middle">Context</text>
+  <text class="d-title" x="420" y="65" text-anchor="middle">engineering</text>
+  <text class="d-sub" x="420" y="83" text-anchor="middle">Anthropic post</text>
+
+  <path class="d-line plain-end" d="M480 126 V158"/>
+  <rect class="d-box" x="424" y="158" width="112" height="80" rx="4"/>
+  <text class="d-label" x="480" y="176" text-anchor="middle">2025 to 2026</text>
+  <text class="d-title" x="480" y="194" text-anchor="middle">LangChain</text>
+  <text class="d-sub" x="480" y="212" text-anchor="middle">memory classes</text>
+  <text class="d-sub" x="480" y="226" text-anchor="middle">moved aside</text>
+
+  <path class="d-line plain-end" d="M540 94 V126"/>
+  <rect class="d-box" x="484" y="14" width="112" height="80" rx="4"/>
+  <text class="d-label" x="540" y="32" text-anchor="middle">2026-11</text>
+  <text class="d-title" x="540" y="50" text-anchor="middle">Letta docs</text>
+  <text class="d-sub" x="540" y="68" text-anchor="middle">MemGPT API is</text>
+  <text class="d-sub" x="540" y="82" text-anchor="middle">marked legacy</text>
+
+  <circle class="d-box solid" cx="60" cy="126" r="5"/>
+  <circle class="d-box solid" cx="120" cy="126" r="5"/>
+  <circle class="d-box solid" cx="180" cy="126" r="5"/>
+  <circle class="d-box solid" cx="240" cy="126" r="5"/>
+  <circle class="d-box solid" cx="300" cy="126" r="5"/>
+  <circle class="d-box solid" cx="360" cy="126" r="5"/>
+  <circle class="d-box solid" cx="420" cy="126" r="5"/>
+  <circle class="d-box solid" cx="480" cy="126" r="5"/>
+  <circle class="d-box solid" cx="540" cy="126" r="5"/>
+</svg>
+<figcaption><b>Figure 2.</b> From the retrieval plugin to explicit state. Sources: the ChatGPT retrieval plugin,<sup class="cite"><a href="#s15-7">7</a></sup> Generative Agents,<sup class="cite"><a href="#s15-8">8</a></sup> Lost in the Middle,<sup class="cite"><a href="#s15-9">9</a></sup> MemGPT,<sup class="cite"><a href="#s15-10">10</a></sup> OpenAI's embedding announcement,<sup class="cite"><a href="#s15-11">11</a></sup> Mem0,<sup class="cite"><a href="#s15-12">12</a></sup> Anthropic's context engineering post,<sup class="cite"><a href="#s15-13">13</a></sup> LangChain's v1 migration guide<sup class="cite"><a href="#s15-14">14</a></sup> and the Letta documentation.<sup class="cite"><a href="#s15-15">15</a></sup></figcaption>
+</figure>
+
+</section>
+
+<section>
+<h2>Older approaches, one by one</h2>
+<p>Five groups roughly follow age; retired products follow. Chapter references point to current approaches.</p>
+
+<h3>Research roots</h3>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Memory Networks, Neural Turing Machines, kNN-LM, RETRO</h3>
+  <dl>
+    <dt>Design</dt><dd>Memory Networks added readable/writable long-term storage.<sup class="cite"><a href="#s15-1">1</a></sup> Neural Turing Machines (NTMs)<sup class="cite"><a href="#s15-2">2</a></sup> and the Differentiable Neural Computer<sup class="cite"><a href="#s15-3">3</a></sup> learned task-time working-memory reads/writes. kNN-LM blends frozen-model predictions with distance-weighted following tokens from similar stored contexts.<sup class="cite"><a href="#s15-4">4</a></sup> New entries need no retraining. RETRO retrieves chunks from a 2-trillion-token database during training and generation.<sup class="cite"><a href="#s15-6">6</a></sup></dd>
+    <dt>Limits</dt><dd>(Reasoning.) Memory Networks, NTMs and RETRO require model-specific training; kNN-LM needs internal vectors unavailable through text-only APIs; prompt-time retrieval uses plain text.</dd>
+    <dt>Current fit</dt><dd>Prompt-time retrieval (Chapter 05); Part D stores (Chapters 08 to 12). <strong>Still fine</strong> for learned-memory research (Chapter 16): kNN-LM adds retrieval after training; RETRO trains with it.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>The 2020 RAG recipe as a finished system</h3>
+  <dl>
+    <dt>Design</dt><dd>The 2020 RAG model paired a text generator with a dense retriever over Wikipedia passages.<sup class="cite"><a href="#s15-5">5</a></sup> It combined per-passage predictions weighted by retriever scores and became the outside-knowledge template.</dd>
+    <dt>Limits</dt><dd>Its 2020 recipe used one dense retriever.<sup class="cite"><a href="#s15-5">5</a></sup> See card 5 for retrieval limits.</dd>
+    <dt>Current fit</dt><dd>Chapter 05's pipeline over a Part D store. <strong>Still fine</strong> as a mental model.</dd>
+  </dl>
+</article>
+
+</div>
+
+<h3>Chat history</h3>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Full conversation buffer and sliding window</h3>
+  <dl>
+    <dt>Design</dt><dd><code>ConversationBufferMemory</code> kept all messages; <code>ConversationBufferWindowMemory</code> exposed 2k messages (k exchanges); <code>ConversationTokenBufferMemory</code> pruned whole oldest messages to a token budget.<sup class="cite"><a href="#s15-16">16</a></sup><sup class="cite"><a href="#s15-17">17</a></sup><sup class="cite"><a href="#s15-18">18</a></sup></dd>
+    <dt>Limits</dt><dd>(Reasoning.) Full buffers grow unbounded; windows silently drop old turns. Deprecated for <code>create_agent</code> with checkpoints or Store API. In langchain-classic (legacy classes after v1), <code>ConversationBufferMemory</code> declares <code>since="0.3.1"</code> and <code>removal="2.0.0"</code>.<sup class="cite"><a href="#s15-19">19</a></sup> Its reference says "Since v1.5"; trust your installed warning when these disagree.<sup class="cite"><a href="#s15-20">20</a></sup></dd>
+    <dt>Current fit</dt><dd>A <code>thread_id</code>-keyed checkpointer; middleware drops older messages before calls (Chapter 13).<sup class="cite"><a href="#s15-16">16</a></sup> <strong>Still fine</strong> for short single-session chat.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>LangChain summary, vector and entity memory classes</h3>
+  <dl>
+    <dt>Design</dt><dd><code>ConversationSummaryMemory</code>, <code>ConversationSummaryBufferMemory</code>, <code>VectorStoreRetrieverMemory</code> and <code>ConversationEntityMemory</code>.<sup class="cite"><a href="#s15-16">16</a></sup></dd>
+    <dt>Limits</dt><dd>Deprecated like card 3. The guide replaces summaries with checkpointing and <code>SummarizationMiddleware</code>.<sup class="cite"><a href="#s15-14">14</a></sup> A secondary source maps vector and entity memory to Store API on <code>create_agent</code> or an outside service,<sup class="cite"><a href="#s15-16">16</a></sup> but you must implement extraction and retrieval.</dd>
+    <dt>Current fit</dt><dd>Explicit agent state and stores (Chapter 13). <strong>Still fine</strong> for existing chains with fixed package versions; check each class's support before upgrading.</dd>
+  </dl>
+</article>
+
+</div>
+
+<h3>Retrieval recipes</h3>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>Fixed-size chunks with one top-k cosine search</h3>
+  <dl>
+    <dt>Design</dt><dd>Split documents into chunks, embed them and put the top-k nearest in the prompt without reranking, for a frozen, off-the-shelf generator.</dd>
+    <dt>Limits</dt><dd>The retrieval plugin README warns embeddings "may not always be effective at capturing exact keyword matches" and recommends hybrid search.<sup class="cite"><a href="#s15-7">7</a></sup> (Reasoning.) Fixed cuts can split a fact across chunks.</dd>
+    <dt>Current fit</dt><dd>Hybrid search, structure-aware chunks and a reranker (Chapter 05). <strong>Still fine</strong> for prototypes passing handwritten queries across real question types: required evidence must reach top-k. Cover exact names, ids or codes as well as paraphrases; a relevant-looking chunk without the required fact fails.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">6</span>Append-only message embeddings with ada-002</h3>
+  <dl>
+    <dt>Design</dt><dd>Embed raw messages using <code>text-embedding-ada-002</code>; append and retrieve by similarity without updates or deletion.</dd>
+    <dt>Limits</dt><dd>(Reasoning.) Similarity cannot decide what to keep, update or forget. Mem0's paper argues for extracting and consolidating facts, not raw messages.<sup class="cite"><a href="#s15-12">12</a></sup> OpenAI announced <code>text-embedding-ada-002</code> on 15 December 2022,<sup class="cite"><a href="#s15-21">21</a></sup> then <code>text-embedding-3-small</code> and <code>-large</code> on 25 January 2024 as successors.<sup class="cite"><a href="#s15-11">11</a></sup></dd>
+    <dt>Current fit</dt><dd>Current embeddings (Chapter 03) with extraction and updates (Chapter 13). <strong>Still fine</strong> for immutable-message search with current embeddings. An incompatible model switch requires re-embedding corpus and queries with that model.</dd>
+  </dl>
+</article>
+
+</div>
+
+
+<h3>Agent loops and memory designs</h3>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">7</span>AutoGPT and BabyAGI memory (2023)</h3>
+  <dl>
+    <dt>Design</dt><dd>Early, widely shared demos queried a vector store each cycle. AutoGPT<sup class="cite"><a href="#s15-22">22</a></sup> executed goals autonomously; BabyAGI created and prioritized tasks. Both appeared in spring 2023; BabyAGI's README marks its original March 2023 version archived.<sup class="cite"><a href="#s15-23">23</a></sup></dd>
+    <dt>Limits</dt><dd>Adoption decline is unmeasured here. (Reasoning.) Unconsolidated steps can crowd retrieval (card 6); missing task state can cause repeated work (cards 3 and 4). AutoGPT continues as a platform project.</dd>
+    <dt>Current fit</dt><dd>Checkpointed agent state and curated memory (Chapters 00 and 13). <strong>Still fine</strong> as a toy for studying how agent loops fail.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">8</span>Generative Agents memory stream with reflection</h3>
+  <dl>
+    <dt>Design</dt><dd>Observations enter a natural-language stream. Retrieval scores recency, importance and relevance; periodic reflections add higher-level memories. The paper tested it with 25 agents in a sandbox.<sup class="cite"><a href="#s15-8">8</a></sup></dd>
+    <dt>Limits</dt><dd>Importance scoring uses one model call per observation.<sup class="cite"><a href="#s15-8">8</a></sup> (Reasoning.) Calls scale with observations per agent × agents; repeated reflections can compound errors, and contradictions remain active. Mem0 also calls models at write time, extracting facts and updating or deleting conflicts.<sup class="cite"><a href="#s15-12">12</a></sup> No cited same-workload comparison exists; reflection research continues (Chapter 16).</dd>
+    <dt>Current fit</dt><dd>Fact extraction and updates (Chapter 13); consolidation (Chapter 16). <strong>Still fine</strong> for simulated characters and design research.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">9</span>MemGPT, which became Letta</h3>
+  <dl>
+    <dt>Design</dt><dd>Context serves as RAM; outside storage as disk. Function calls page data between tiers; interrupts, including user messages, manage agent/user control flow.<sup class="cite"><a href="#s15-10">10</a></sup> It targeted small context windows.</dd>
+    <dt>Limits</dt><dd>Only the earlier API is labelled "V1 SDK (legacy)".<sup class="cite"><a href="#s15-15">15</a></sup></dd>
+    <dt>Current fit</dt><dd>Use the current Letta SDK or Letta Code (Chapter 13). <strong>Still fine</strong> for agent-managed memory with visible tool calls. File-based memory (Chapter 01) is simpler.</dd>
+  </dl>
+</article>
+
+</div>
+
+<h3>Weights, windows and compression</h3>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">10</span>Fine-tuning on user data as memory</h3>
+  <dl>
+    <dt>Design</dt><dd>Train on user history to store knowledge in weights (parametric memory).</dd>
+    <dt>Limits</dt><dd>RAG lists knowledge updates and provenance as open problems for parametric memory.<sup class="cite"><a href="#s15-5">5</a></sup> (Reasoning.) Shared-model weights lack per-user records for reliable fact deletion or provenance; facts go stale.</dd>
+    <dt>Current fit</dt><dd>Explicit storage (Part D) and retrieval (Chapter 05). <strong>Still fine</strong> for style, behavior or a domain skill.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">11</span>The whole history in a huge context window</h3>
+  <dl>
+    <dt>Design</dt><dd>Put the whole history or corpus into every prompt.</dd>
+    <dt>Limits</dt><dd>(Reasoning.) Prefix caching cuts resending cost and latency; history still grows toward the window limit and competes with the question for attention. In 2023 tests, accuracy dropped for mid-context passages (Chapter 00).<sup class="cite"><a href="#s15-9">9</a></sup> Anthropic frames the job as the smallest set of high-signal tokens.<sup class="cite"><a href="#s15-13">13</a></sup></dd>
+    <dt>Current fit</dt><dd>Selecting what enters the prompt (Chapters 01, 02 and 05). <strong>Still fine</strong> when one document fits and is read once, after testing position sensitivity.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">12</span>Summary of summaries</h3>
+  <dl>
+    <dt>Design</dt><dd>Hierarchical roll-ups summarize batches, then those summaries. LangChain rolled new messages into its previous summary.<sup class="cite"><a href="#s15-16">16</a></sup> Capping the final summary bounds prompt size, not source or intermediate-summary storage; reading it needs no index.</dd>
+    <dt>Limits</dt><dd>(Reasoning.) Both can lose detail irrecoverable from their summaries alone. Plant a unique day 2 order number; require its exact recovery from both the first batch summary and final roll-up.</dd>
+    <dt>Current fit</dt><dd>Retain originals within policy and regenerate summaries (Chapters 01 and 02). Erasure: delete originals; rebuild or discard their summaries (Chapter 17). <strong>Still fine</strong> for session orientation under that policy.</dd>
+  </dl>
+</article>
+
+</div>
+
+<h3>Retired hosted and open-source products</h3>
+<p>OpenAI's Assistants API (threads and file search as memory) shut down on 26 August 2026. The guide maps threads to Responses API Conversations without naming a file-search replacement.<sup class="cite"><a href="#s15-24">24</a></sup> Inventory threads and file search; test Responses' hosted file_search over your vector store on existing queries before cutover.<sup class="cite"><a href="#s15-25">25</a></sup> For self-operated retrieval, use Chapter 05 over Part D. Zep ended self-hosted Community Edition maintenance in April 2025, directing users to Graphiti (Chapter 14) or its commercial service.<sup class="cite"><a href="#s15-26">26</a></sup> Chapter 14 covers setup. Neither migration ran here.</p>
+</section>
+
+<section>
+<h2>Lessons that carried forward</h2>
+<p class="table-title">What the older approaches taught, and where this book uses it</p>
+<table class="data">
+  <colgroup><col class="c30"><col class="c45"><col class="c25"></colgroup>
+  <thead><tr><th>Lesson</th><th>Evidence in this chapter</th><th>Read next</th></tr></thead>
+  <tbody>
+    <tr><td>Storing is cheap; selection is hard.</td><td>The plugin documents keyword misses;<sup class="cite"><a href="#s15-7">7</a></sup> Generative Agents scores stream memories.<sup class="cite"><a href="#s15-8">8</a></sup> Buffer limits/scoring costs are inferred (cards 3 and 8); current designs extract and update.<sup class="cite"><a href="#s15-12">12</a>,<a href="#s15-13">13</a></sup></td><td>Chapters 05 and 13</td></tr>
+    <tr><td>Position matters even when facts fit.</td><td>Middle-position passages reduced accuracy (card 11).<sup class="cite"><a href="#s15-9">9</a></sup></td><td>Chapters 05 and 16</td></tr>
+    <tr><td>Retain originals within policy; regenerate summaries; propagate deletion.</td><td>Card 12: regenerate from originals. Chapter 17: erase originals and summaries.</td><td>Chapters 01, 02 and 17</td></tr>
+    <tr><td>Explicitly store facts needing provenance or updates.</td><td>RAG flagged both as open problems in 2020.<sup class="cite"><a href="#s15-5">5</a></sup></td><td>Part D</td></tr>
+    <tr><td>Separate resumable state from shared facts.</td><td>Checkpointers resume threads; Store API shares facts (cards 3 and 4).<sup class="cite"><a href="#s15-16">16</a></sup></td><td>Chapters 13 and 17</td></tr>
+    <tr><td>Use hybrid search.</td><td>Embedding search alone can miss exact keywords.<sup class="cite"><a href="#s15-7">7</a></sup></td><td>Chapter 05</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Still fine today, and when to move on</h2>
+<p>Age alone does not disqualify a design.</p>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Still fine today</p>
+    <ul>
+      <li>Short single-session chat: a plain message list.</li>
+      <li>Small-corpus prototype, paraphrased queries: fixed chunks, top-k cosine search. Split evidence: rechunk. Inspect extra candidates: evidence below prompt cutoff means test reranking; absent evidence means change retrieval (Chapter 05).</li>
+      <li>Single document, one read: context window; test key passages at start, middle and end.</li>
+      <li>A style or a skill: fine-tuning.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Time to move on</p>
+    <ul>
+      <li>Old facts exceed the prompt-token budget: store and extract (Chapter 13).</li>
+      <li>Missed names, ids or codes: add hybrid search (Chapter 05).</li>
+      <li>Position-dependent answers: select prompt content (Chapter 05).</li>
+      <li>Per-user updates or deletion: use a mutable store (Part D).</li>
+      <li>Summary detail lost: consult originals retained under policy (Chapters 01 and 02).</li>
+      <li>Restart recovery: checkpoints. Cross-thread facts: store. Both needs: combine (Chapter 13).</li>
+    </ul>
+  </div>
+</div>
+
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: build the smallest thing that holds</p>
+  <p><strong>Do not start new work on deprecated classes or retired products.</strong> LangChain deprecated its memory classes, and newer OpenAI embedding models succeed ada-002. Learned memory (card 1) and reflection streams (card 8) remain research baselines. <strong>Do keep the simple answers</strong> for small jobs; follow "Time to move on" chapter pointers.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s15-1"><span class="src-title">Memory Networks (2014-10)</span> <span class="src-note">(primary paper)</span><a class="url" href="https://arxiv.org/abs/1410.3916">https://arxiv.org/abs/1410.3916</a></li>
+  <li id="s15-2"><span class="src-title">Neural Turing Machines (2014-10)</span> <span class="src-note">(primary paper)</span><a class="url" href="https://arxiv.org/abs/1410.5401">https://arxiv.org/abs/1410.5401</a></li>
+  <li id="s15-3"><span class="src-title">Differentiable Neural Computer, Nature (2016-10)</span> <span class="src-note">(publisher page)</span><a class="url" href="https://www.nature.com/articles/nature20101">https://www.nature.com/articles/nature20101</a></li>
+  <li id="s15-4"><span class="src-title">kNN-LM, Generalization through Memorization (2019-11)</span> <span class="src-note">(primary paper)</span><a class="url" href="https://arxiv.org/abs/1911.00172">https://arxiv.org/abs/1911.00172</a></li>
+  <li id="s15-5"><span class="src-title">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (2020-05)</span> <span class="src-note">(primary paper)</span><a class="url" href="https://arxiv.org/abs/2005.11401">https://arxiv.org/abs/2005.11401</a></li>
+  <li id="s15-6"><span class="src-title">RETRO, Improving language models by retrieving from trillions of tokens (2021-12)</span> <span class="src-note">(primary paper)</span><a class="url" href="https://arxiv.org/abs/2112.04426">https://arxiv.org/abs/2112.04426</a></li>
+  <li id="s15-7"><span class="src-title">ChatGPT retrieval plugin, README and limitations</span> <span class="src-note">(official repository)</span><a class="url" href="https://github.com/openai/chatgpt-retrieval-plugin">https://github.com/openai/chatgpt-retrieval-plugin</a></li>
+  <li id="s15-8"><span class="src-title">Generative Agents: Interactive Simulacra of Human Behavior (2023-04)</span> <span class="src-note">(primary paper)</span><a class="url" href="https://arxiv.org/abs/2304.03442">https://arxiv.org/abs/2304.03442</a></li>
+  <li id="s15-9"><span class="src-title">Lost in the Middle (2023-07, TACL 2023)</span> <span class="src-note">(primary paper)</span><a class="url" href="https://arxiv.org/abs/2307.03172">https://arxiv.org/abs/2307.03172</a></li>
+  <li id="s15-10"><span class="src-title">MemGPT: Towards LLMs as Operating Systems (2023-10)</span> <span class="src-note">(primary paper)</span><a class="url" href="https://arxiv.org/abs/2310.08560">https://arxiv.org/abs/2310.08560</a></li>
+  <li id="s15-11"><span class="src-title">OpenAI, New embedding models and API updates (2024-01-25)</span> <span class="src-note">(official)</span><a class="url" href="https://openai.com/index/new-embedding-models-and-api-updates/">https://openai.com/index/new-embedding-models-and-api-updates/</a></li>
+  <li id="s15-12"><span class="src-title">Mem0 paper (2025-04)</span> <span class="src-note">(primary paper, vendor-authored)</span><a class="url" href="https://arxiv.org/abs/2504.19413">https://arxiv.org/abs/2504.19413</a></li>
+  <li id="s15-13"><span class="src-title">Anthropic, Effective context engineering for AI agents (2025-09-29)</span> <span class="src-note">(official)</span><a class="url" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</a></li>
+  <li id="s15-14"><span class="src-title">LangChain v1 migration guide</span> <span class="src-note">(official; covers summarization only)</span><a class="url" href="https://docs.langchain.com/oss/python/migrate/langchain-v1">https://docs.langchain.com/oss/python/migrate/langchain-v1</a></li>
+  <li id="s15-15"><span class="src-title">Letta documentation, MemGPT concepts</span> <span class="src-note">(official; navigation labels read, legacy SDK marking)</span><a class="url" href="https://docs.letta.com/concepts/memgpt">https://docs.letta.com/concepts/memgpt</a></li>
+  <li id="s15-16"><span class="src-title">supermemory, conversational memory with LangChain</span> <span class="src-note">(secondary, quotes the LangChain reference and gives the replacement table)</span><a class="url" href="https://supermemory.ai/blog/how-to-add-conversational-memory-to-llms-using-langchain/">https://supermemory.ai/blog/how-to-add-conversational-memory-to-llms-using-langchain/</a></li>
+  <li id="s15-17"><span class="src-title">LangChain window memory source</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/langchain-ai/langchain/ced9bdb1a8899516b6c541fc0e19ab5f349aa0ea/libs/langchain/langchain_classic/memory/buffer_window.py">https://raw.githubusercontent.com/langchain-ai/langchain/ced9bdb1a8899516b6c541fc0e19ab5f349aa0ea/libs/langchain/langchain_classic/memory/buffer_window.py</a></li>
+  <li id="s15-18"><span class="src-title">LangChain token-buffer source</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/langchain-ai/langchain/ced9bdb1a8899516b6c541fc0e19ab5f349aa0ea/libs/langchain/langchain_classic/memory/token_buffer.py">https://raw.githubusercontent.com/langchain-ai/langchain/ced9bdb1a8899516b6c541fc0e19ab5f349aa0ea/libs/langchain/langchain_classic/memory/token_buffer.py</a></li>
+  <li id="s15-19"><span class="src-title">LangChain source, <code>buffer.py</code> at commit ced9bdb (the commit the reference page links to)</span> <span class="src-note">(official repository)</span><a class="url" href="https://github.com/langchain-ai/langchain/blob/ced9bdb1a8899516b6c541fc0e19ab5f349aa0ea/libs/langchain/langchain_classic/memory/buffer.py">https://github.com/langchain-ai/langchain/blob/ced9bdb1a8899516b6c541fc0e19ab5f349aa0ea/libs/langchain/langchain_classic/memory/buffer.py</a></li>
+  <li id="s15-20"><span class="src-title">LangChain reference, ConversationBufferMemory</span> <span class="src-note">(official; page header shows the Deprecated label and "Since v1.5")</span><a class="url" href="https://reference.langchain.com/python/langchain-classic/memory/buffer/ConversationBufferMemory">https://reference.langchain.com/python/langchain-classic/memory/buffer/ConversationBufferMemory</a></li>
+  <li id="s15-21"><span class="src-title">OpenAI, New and improved embedding model (2022-12-15)</span> <span class="src-note">(official)</span><a class="url" href="https://openai.com/index/new-and-improved-embedding-model/">https://openai.com/index/new-and-improved-embedding-model/</a></li>
+  <li id="s15-22"><span class="src-title">AutoGPT repository, creation date and releases via the GitHub API (read 2026-11-20)</span> <span class="src-note">(official repository)</span><a class="url" href="https://github.com/Significant-Gravitas/AutoGPT">https://github.com/Significant-Gravitas/AutoGPT</a></li>
+  <li id="s15-23"><span class="src-title">BabyAGI repository, creation date via the GitHub API and README (read 2026-11-20)</span> <span class="src-note">(official repository)</span><a class="url" href="https://github.com/yoheinakajima/babyagi">https://github.com/yoheinakajima/babyagi</a></li>
+  <li id="s15-24"><span class="src-title">OpenAI, Assistants migration guide (read 2026-11-22)</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/assistants/migration">https://developers.openai.com/api/docs/assistants/migration</a></li>
+  <li id="s15-25"><span class="src-title">OpenAI, Responses file search (read 2026-11-23)</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/guides/tools-file-search">https://developers.openai.com/api/docs/guides/tools-file-search</a></li>
+  <li id="s15-26"><span class="src-title">Zep, Announcing a New Direction for Zep's Open Source Strategy (2025-04-02, read 2026-11-22)</span> <span class="src-note">(vendor blog)</span><a class="url" href="https://www.getzep.com/blog/announcing-a-new-direction-for-zeps-open-source-strategy/">https://www.getzep.com/blog/announcing-a-new-direction-for-zeps-open-source-strategy/</a></li>
+</ol>
+</section>
+
+</article>

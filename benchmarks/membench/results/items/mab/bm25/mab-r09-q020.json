@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q020",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "f28a290505c44bd0cab093e4ac596902b2907751975a4e8c726a61c32ae14838",
+  "reference_sha256": "9b2ad3d6d907812f11da02d71172f6a93a0306f282cc8df2231413a6b50c37b1",
+  "method": "bm25",
+  "answer": "Person441 Person361 arrived and called for Person323.",
+  "response": {
+    "text": "Person441 Person361 arrived and called for Person323.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3342,
+      "total_tokens": 3360,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.12812742999813,
+    "request_sha256": "a6a74d52a2bb15adc61cc13afe2ef1ed0acf5d0f466d2d9e1b9c4c84048427c4",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    116,
+    93,
+    102,
+    106,
+    33,
+    174,
+    120,
+    139,
+    89,
+    128,
+    111,
+    167,
+    169,
+    507,
+    193,
+    345,
+    144,
+    103,
+    91,
+    114
+  ],
+  "retrieval_scores": [
+    125.2465185073454,
+    122.22815014617187,
+    118.34025063591739,
+    113.65155777139543,
+    112.00828378777547,
+    110.26312832240576,
+    109.9360656370845,
+    108.66691288799018,
+    108.15566779726944,
+    107.71186577488075,
+    107.0479051082696,
+    106.49327500325738,
+    105.91469536023801,
+    104.49116199680606,
+    103.85971002504286,
+    103.52812431072857,
+    103.44792645437693,
+    103.39038700180778,
+    102.73776406007049,
+    102.23153729989258
+  ],
+  "retrieval_seconds": 0.012132970005040988,
+  "provided_context_sha256": "ba23d3eecc0840ec89020de6bb510296121b28d546c09d282fca65dbf6d5759d",
+  "provided_context_tokens": 2987,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "5b903aecb730af423158ba4a2a492ceab32e35882d421fc93a2e4bff393d2a36",
+    "raw_answer_sha256": "f674f9dcc7e2270f01ae5d2e640fa7d4f16e305de6915eab05f395ca52353368",
+    "answer_redacted": false
+  }
+}

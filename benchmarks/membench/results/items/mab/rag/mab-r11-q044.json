@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q044",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "6b9caad0b7be7803baf382f347d046a9e0360b0623d5ca73c490439049a601f9",
+  "reference_sha256": "1c08ba651a9de74573cea979681cd9cfd94c8940ca0deb280f3374b87d2b5991",
+  "method": "rag",
+  "answer": "Person642 Person539 ordered oysters for dinner.",
+  "response": {
+    "text": "Person642 Person539 ordered oysters for dinner.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 15,
+      "prompt_tokens": 3181,
+      "total_tokens": 3196,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.478673853998771,
+    "request_sha256": "d9713874a6dbc7aba14799d4806b943c42f2da953d02b2e9bb09670beaf5b95b",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    150,
+    581,
+    285,
+    225,
+    262,
+    376,
+    510,
+    372,
+    147,
+    151,
+    174,
+    596,
+    269,
+    375,
+    144,
+    394,
+    583,
+    511,
+    178,
+    273
+  ],
+  "retrieval_scores": [
+    0.47015154361724854,
+    0.46974456310272217,
+    0.4560243487358093,
+    0.4525880813598633,
+    0.44060590863227844,
+    0.43977153301239014,
+    0.4328039586544037,
+    0.43030452728271484,
+    0.4276929497718811,
+    0.42617273330688477,
+    0.4222462773323059,
+    0.4178912341594696,
+    0.41686081886291504,
+    0.41531404852867126,
+    0.40744635462760925,
+    0.403323769569397,
+    0.39954420924186707,
+    0.39835625886917114,
+    0.3974868059158325,
+    0.39705270528793335
+  ],
+  "retrieval_seconds": 0.026754435995826498,
+  "provided_context_sha256": "fea6f77cd265de6c7c3dc20fb03d385688fc6d973587420d1e7499ee1f8a1d33",
+  "provided_context_tokens": 2849,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "1329c66160ec63fe21451f12d5804b38b28c4f382bc70e8f092331105d95b3b2",
+    "raw_answer_sha256": "c570d4996fc81e45f3f92ba57d6afbd13e32000ef6f4e9e5e74e833fa49e922a",
+    "answer_redacted": false
+  }
+}

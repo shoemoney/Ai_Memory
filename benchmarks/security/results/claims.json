@@ -1,0 +1,205 @@
+[
+  {
+    "topic": "MINJA",
+    "chapter": "17-security-eval-ops.html",
+    "line": 53,
+    "printed": {
+      "injection_success": ">95%",
+      "attack_success": "70% (secondary restatement)"
+    },
+    "local_n": 100,
+    "primary": "https://arxiv.org/html/2503.03704v5",
+    "local_undefended": {
+      "family": "MINJA",
+      "measure": "final targeted search",
+      "arm": "undefended",
+      "successes": 0,
+      "n": 100,
+      "rate_pct": 0.0,
+      "wilson_95_pct": [
+        0.0,
+        3.7
+      ],
+      "truncated": 0,
+      "task_successes": 100,
+      "poison_retrievals": 0,
+      "task_rate_pct": 100.0,
+      "task_wilson_95_pct": [
+        96.3,
+        100
+      ]
+    },
+    "local_defended": {
+      "family": "MINJA",
+      "measure": "final targeted search",
+      "arm": "defended",
+      "successes": 0,
+      "n": 100,
+      "rate_pct": 0.0,
+      "wilson_95_pct": [
+        0.0,
+        3.7
+      ],
+      "truncated": 0,
+      "task_successes": 71,
+      "poison_retrievals": 0,
+      "task_rate_pct": 71.0,
+      "task_wilson_95_pct": [
+        61.46,
+        78.99
+      ]
+    },
+    "local": "model/summary.json"
+  },
+  {
+    "topic": "AgentPoison",
+    "chapter": "17-security-eval-ops.html",
+    "line": 54,
+    "printed": {
+      "attack_success": ">=80%",
+      "benign_impact": "about 1%"
+    },
+    "local_n": 100,
+    "primary": "https://arxiv.org/abs/2407.12784",
+    "local_undefended": {
+      "family": "AgentPoison",
+      "measure": "triggered targeted answer",
+      "arm": "undefended",
+      "successes": 99,
+      "n": 100,
+      "rate_pct": 99.0,
+      "wilson_95_pct": [
+        94.55,
+        99.82
+      ],
+      "truncated": 0,
+      "task_successes": 0,
+      "poison_retrievals": 100,
+      "task_rate_pct": 0.0,
+      "task_wilson_95_pct": [
+        0.0,
+        3.7
+      ]
+    },
+    "local_defended": {
+      "family": "AgentPoison",
+      "measure": "triggered targeted answer",
+      "arm": "defended",
+      "successes": 0,
+      "n": 100,
+      "rate_pct": 0.0,
+      "wilson_95_pct": [
+        0.0,
+        3.7
+      ],
+      "truncated": 0,
+      "task_successes": 94,
+      "poison_retrievals": 0,
+      "task_rate_pct": 94.0,
+      "task_wilson_95_pct": [
+        87.52,
+        97.22
+      ]
+    },
+    "local": "model/summary.json"
+  },
+  {
+    "topic": "InjecMEM",
+    "chapters": [
+      "16-frontier.html:283",
+      "17-security-eval-ops.html:61"
+    ],
+    "printed": "single interaction; no numerical ASR",
+    "local_n": 100,
+    "primary": "https://arxiv.org/html/2608.23471v1",
+    "local_undefended": {
+      "family": "InjecMEM",
+      "measure": "target joint targeted answer",
+      "arm": "undefended",
+      "successes": 0,
+      "n": 100,
+      "rate_pct": 0.0,
+      "wilson_95_pct": [
+        0.0,
+        3.7
+      ],
+      "truncated": 92,
+      "retrieval_successes": 0,
+      "retrieval_rate_pct": 0.0,
+      "conditional_successes": 0,
+      "conditional_n": 0,
+      "conditional_rate_pct": null,
+      "conditional_wilson_95_pct": null
+    },
+    "local_defended": {
+      "family": "InjecMEM",
+      "measure": "target joint targeted answer",
+      "arm": "defended",
+      "successes": 0,
+      "n": 100,
+      "rate_pct": 0.0,
+      "wilson_95_pct": [
+        0.0,
+        3.7
+      ],
+      "truncated": 6,
+      "retrieval_successes": 0,
+      "retrieval_rate_pct": 0.0,
+      "conditional_successes": 0,
+      "conditional_n": 0,
+      "conditional_rate_pct": null,
+      "conditional_wilson_95_pct": null
+    },
+    "local": "model/summary.json"
+  },
+  {
+    "topic": "embedding inversion",
+    "chapter": "17-security-eval-ops.html",
+    "line": 55,
+    "printed": "92% exact 32-token recovery, wording implies both encoders",
+    "correction": "92.0% GTR/Natural Questions; 60.9% hosted encoder/MSMARCO in Table 1",
+    "local_n": 100,
+    "primary": "https://arxiv.org/html/2310.06816v1",
+    "local_undefended": {
+      "family": "Embedding inversion",
+      "measure": "exact recovery step 5",
+      "arm": "undefended",
+      "successes": 0,
+      "n": 100,
+      "rate_pct": 0.0,
+      "wilson_95_pct": [
+        0.0,
+        3.7
+      ],
+      "truncated": 0,
+      "mean_word_f1": 0.724449287789191,
+      "attribute_recoveries": 287,
+      "attribute_opportunities": 300
+    },
+    "local_defended": {
+      "family": "Embedding inversion",
+      "measure": "exact recovery step 5",
+      "arm": "defended",
+      "successes": 0,
+      "n": 100,
+      "rate_pct": 0.0,
+      "wilson_95_pct": [
+        0.0,
+        3.7
+      ],
+      "truncated": 0,
+      "mean_word_f1": 0.0,
+      "attribute_recoveries": 0,
+      "attribute_opportunities": 300
+    },
+    "local": "model/summary.json"
+  },
+  {
+    "topic": "store tampering",
+    "chapter": "17-security-eval-ops.html",
+    "line": 74,
+    "printed": "15/15 edits accepted silently",
+    "primary": "https://api.crossref.org/works/10.2139/ssrn.7461118",
+    "local": "summary.json"
+  }
+]

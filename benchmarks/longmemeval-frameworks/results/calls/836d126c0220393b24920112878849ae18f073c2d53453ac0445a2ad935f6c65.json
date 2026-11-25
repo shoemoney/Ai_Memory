@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 63
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1d8ba7220e43c3cf4731745fa44f478309b54d11a15fd98b6503b2a3bb496536",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9ea3ea33-100c-4a1c-ba09-ef0eee6724d6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Planned trip to Miami for a friend's wedding in April\",\n    \"Considering booking flights now or waiting for sales or error fares\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357318,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 39,
+      "prompt_tokens": 2703,
+      "total_tokens": 2742,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 681
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Planned trip to Miami for a friend's wedding in April\",\n    \"Considering booking flights now or waiting for sales or error fares\"\n  ]\n}",
+  "seconds": 9.18205952399876,
+  "prompt_tokens_local": 2703
+}

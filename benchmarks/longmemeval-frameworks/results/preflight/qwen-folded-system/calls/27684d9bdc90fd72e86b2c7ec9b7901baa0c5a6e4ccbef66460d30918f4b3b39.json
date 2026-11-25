@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 24
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ba361b3a27dc6ede596110e63e983870c34f74149e8af8b4b67dc12952a0eaa4",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ccd7880f-b0fd-40fb-9160-1bc4e84a1fcf",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"considering visiting Patagonia as a solo traveler\", \"considering visiting the Galapagos Islands as a solo traveler\", \"interested in the Gringo Trail\", \"interested in the Brazilian Coast\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330283,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 45,
+      "prompt_tokens": 2497,
+      "total_tokens": 2542,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"considering visiting Patagonia as a solo traveler\", \"considering visiting the Galapagos Islands as a solo traveler\", \"interested in the Gringo Trail\", \"interested in the Brazilian Coast\"]}",
+  "seconds": 1.895911312996759,
+  "prompt_tokens_local_gemma_estimate": 2510
+}

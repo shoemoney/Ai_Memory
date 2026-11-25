@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 40
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "6572d9c95c315d16f2293b0c62cf7333f436c233587d017eeacdf790c9afa83c",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c93629da-49fe-45ce-bd23-82de58ee91d0",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Lockheed Martin\", \"relation_type\": \"WORKS_WITH\", \"fact\": \"Denver works with Lockheed Martin on various projects.\", \"valid_at\": \"2023-08-15T13:01:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363054,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 84,
+      "prompt_tokens": 8597,
+      "total_tokens": 8681,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Lockheed Martin\", \"relation_type\": \"WORKS_WITH\", \"fact\": \"Denver works with Lockheed Martin on various projects.\", \"valid_at\": \"2023-08-15T13:01:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 20.185762397013605,
+  "prompt_tokens_local": 8597
+}

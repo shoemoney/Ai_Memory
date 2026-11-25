@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 45
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d8afca6e5db5ddc6891e9d3dea9246fa51b1ce7511372eae6a2c1306e62276e0",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-7f3e84a3-cbf4-4bfa-a83b-80c15e455167",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Ancient civilizations had distinct artistic styles influenced by their cultural and social customs.\",\n        \"Ancient art provides insights into the beliefs, customs, and practices of ancient societies.\",\n        \"Ancient art has had a significant impact on modern art forms and cultural traditions.\",\n        \"Ancient art continues to have aesthetic value and inspires people today.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356532,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 79,
+      "prompt_tokens": 2075,
+      "total_tokens": 2154,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Ancient civilizations had distinct artistic styles influenced by their cultural and social customs.\",\n        \"Ancient art provides insights into the beliefs, customs, and practices of ancient societies.\",\n        \"Ancient art has had a significant impact on modern art forms and cultural traditions.\",\n        \"Ancient art continues to have aesthetic value and inspires people today.\"\n    ]\n}",
+  "seconds": 15.522229736001464,
+  "prompt_tokens_local": 2075
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 16
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e41d080c7b200d57fcc52a7cd7aecd649f2c9c576553342b57a1de77c439a140",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-351fefa8-05b2-4459-ae8a-1d08c24034ed",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Converse Chuck Taylor's\", \"summary\": \"Worn for a music festival on January 25th, 2023. Held up well despite being on your feet for hours. They are a classic festival staple and a great choice for comfort and style.\"}], \"summaries\": []}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795341409,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 71,
+      "prompt_tokens": 7496,
+      "total_tokens": 7567,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 476
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Converse Chuck Taylor's\", \"summary\": \"Worn for a music festival on January 25th, 2023. Held up well despite being on your feet for hours. They are a classic festival staple and a great choice for comfort and style.\"}], \"summaries\": []}",
+  "seconds": 85.14436961599858,
+  "prompt_tokens_local": 7496
+}

@@ -1,0 +1,51 @@
+{
+  "checked_utc": "2026-11-22T06:51:16.079249+00:00",
+  "checks": {
+    "task_containers": [],
+    "task_named_volumes": [],
+    "task_image_alias_present": false,
+    "task_tunnels": [],
+    "old_scratch_exists": false,
+    "new_scratch_exists": false,
+    "remote_task_directory_exists": false,
+    "remote_task_server_pid_present": false,
+    "remote_task_port_listeners": [],
+    "existing_model_service_pid_before": 93331,
+    "existing_model_service_pid_after": 93331,
+    "existing_model_service_unchanged": true
+  },
+  "disk_snapshots": {
+    "local_before": {
+      "size_gib": 915,
+      "used_gib": 843,
+      "available_gib": 26
+    },
+    "local_after": {
+      "size_gib": 915,
+      "used_gib": 683,
+      "available_gib": 186
+    },
+    "data_after": {
+      "size_tib": 1.5,
+      "available_tib": 1.4
+    },
+    "model_host_before": {
+      "size_gib": 926,
+      "used_gib": 680,
+      "available_gib": 214
+    },
+    "model_host_after": {
+      "size_gib": 926,
+      "used_gib": 680,
+      "available_gib": 212
+    }
+  },
+  "notes": [
+    "Disk and process listings were shown in command outputs; this file retains a sanitized summary.",
+    "Disk changes include other concurrent work and cannot be attributed to this benchmark.",
+    "The task image alias was removed; Docker reclaimed the then-unreferenced Python image. The preexisting Letta image remains.",
+    "No container volumes were created; all test databases were task-owned bind mounts or tmpfs.",
+    "Remote directory removal and absence of owned PID/listeners were checked over the already authorized model-host connection."
+  ],
+  "cleanup_confirmed": true
+}

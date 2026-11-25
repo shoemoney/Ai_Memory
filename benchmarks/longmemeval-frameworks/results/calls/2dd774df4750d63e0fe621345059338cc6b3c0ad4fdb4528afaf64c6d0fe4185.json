@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 39
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b8df3a39231b3c6c7664136bc81deaa4073412ed094816f97a0443bf9383aef5",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4fdd71e9-1ad6-4dcb-a065-118aecde60f3",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considering upgrading router to handle more devices and provide better coverage, looking for compatible routers with Comcast\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Netgear Nighthawk RAX80 recommended for tri-band router with 8 external antennas\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Asus RT-AX88U recommended for gamers and heavy internet users with 8 external antennas\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Linksys EA9500 recommended for handling up to 20 devices with 8 external antennas\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Netgear R7000 recommended for Comcast users with 3 external antennas\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"TP-Link Archer C9 recommended for budget-friendly option with 3 external antennas\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356303,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 264,
+      "prompt_tokens": 2063,
+      "total_tokens": 2327,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considering upgrading router to handle more devices and provide better coverage, looking for compatible routers with Comcast\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Netgear Nighthawk RAX80 recommended for tri-band router with 8 external antennas\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Asus RT-AX88U recommended for gamers and heavy internet users with 8 external antennas\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Linksys EA9500 recommended for handling up to 20 devices with 8 external antennas\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Netgear R7000 recommended for Comcast users with 3 external antennas\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"TP-Link Archer C9 recommended for budget-friendly option with 3 external antennas\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 39.25437307798711,
+  "prompt_tokens_local": 2063
+}

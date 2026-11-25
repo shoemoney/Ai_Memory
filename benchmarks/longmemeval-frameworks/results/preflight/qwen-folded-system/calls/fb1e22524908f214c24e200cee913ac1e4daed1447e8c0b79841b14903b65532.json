@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 48
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "732ddd8bab5b90fe5f786bd3b45f1dd0e4cb64bbbe67d2c2d10bd8f6bbf05f61",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-18ee3022-ddfd-4285-8e0a-b4ce87f6561f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Name is John\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Loves cheese pizza\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Loves to play cricket with friends\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Loves chicken pizza\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"create a sense of mystery and intrigue\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Amazon Cockatoo, a proposed reading comprehension app for children, has a bright future ahead. The app focuses on continuously improving and expanding its features, reaching a wider audience of parents and educators, and integrating into school curricula. Collaboration with schools and literacy organizations, gathering feedback from parents, educators, and children, and monitoring security measures are planned for the future. The long-term goal is to become the leading reading comprehension app for children, providing a valuable resource for parents and educators to help children succeed in reading.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330418,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 281,
+      "prompt_tokens": 1802,
+      "total_tokens": 2083,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Name is John\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Loves cheese pizza\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Loves to play cricket with friends\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Loves chicken pizza\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"create a sense of mystery and intrigue\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Amazon Cockatoo, a proposed reading comprehension app for children, has a bright future ahead. The app focuses on continuously improving and expanding its features, reaching a wider audience of parents and educators, and integrating into school curricula. Collaboration with schools and literacy organizations, gathering feedback from parents, educators, and children, and monitoring security measures are planned for the future. The long-term goal is to become the leading reading comprehension app for children, providing a valuable resource for parents and educators to help children succeed in reading.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 3.512536401001853,
+  "prompt_tokens_local_gemma_estimate": 1933
+}

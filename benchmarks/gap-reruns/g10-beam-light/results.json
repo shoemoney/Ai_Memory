@@ -1,0 +1,81 @@
+{
+ "n": 100,
+ "rag_mean": 0.34725,
+ "light_mean": 0.30948809523809523,
+ "diff_light_minus_rag": -0.03776190476190476,
+ "rag_ci": [
+  0.26533333333333337,
+  0.4321666666666667
+ ],
+ "light_ci": [
+  0.23273809523809524,
+  0.38772619047619045
+ ],
+ "diff_ci": [
+  -0.11525,
+  0.03475
+ ],
+ "light_wins": 18,
+ "rag_wins": 23,
+ "ties": 59,
+ "per_conversation_diff": {
+  "13": -0.17333333333333334,
+  "17": -0.012083333333333335,
+  "19": -0.05422619047619048,
+  "2": 0.015416666666666665,
+  "8": 0.035416666666666666
+ },
+ "relative_gain_percent_of_rag_mean": -10.874558606740031,
+ "per_ability": {
+  "abstention": {
+   "n": 10,
+   "rag": 0.4,
+   "light": 0.3
+  },
+  "contradiction_resolution": {
+   "n": 10,
+   "rag": 0.025,
+   "light": 0.05
+  },
+  "event_ordering": {
+   "n": 10,
+   "rag": 0.4216666666666667,
+   "light": 0.3823809523809524
+  },
+  "information_extraction": {
+   "n": 10,
+   "rag": 0.5083333333333333,
+   "light": 0.5458333333333333
+  },
+  "instruction_following": {
+   "n": 10,
+   "rag": 0.6,
+   "light": 0.4
+  },
+  "knowledge_update": {
+   "n": 10,
+   "rag": 0.45,
+   "light": 0.35
+  },
+  "multi_session_reasoning": {
+   "n": 10,
+   "rag": 0.225,
+   "light": 0.25833333333333336
+  },
+  "preference_following": {
+   "n": 10,
+   "rag": 0.625,
+   "light": 0.6
+  },
+  "summarization": {
+   "n": 10,
+   "rag": 0.11750000000000001,
+   "light": 0.20833333333333334
+  },
+  "temporal_reasoning": {
+   "n": 10,
+   "rag": 0.1,
+   "light": 0.0
+  }
+ }
+}

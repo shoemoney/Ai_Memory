@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 44
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ab138cb3f1bfa4aa16895544d89b15f2edd51959306d2904791be9229f57f16a",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-cbae94dc-ba41-4af9-9fde-081bd52832c7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Nisha\", \"target_entity_name\": \"Jordan\", \"relation_type\": \"IS_FRIENDS_WITH\", \"fact\": \"Nisha is friends with Jordan\", \"valid_at\": \"2023-08-15T13:02:00Z\"}, {\"source_entity_name\": \"Nisha\", \"target_entity_name\": \"Nisha's dad\", \"relation_type\": \"LIVES_IN\", \"fact\": \"Nisha lives in the same place as her dad\", \"valid_at\": \"2023-08-15T13:02:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363337,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 139,
+      "prompt_tokens": 6430,
+      "total_tokens": 6569,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Nisha\", \"target_entity_name\": \"Jordan\", \"relation_type\": \"IS_FRIENDS_WITH\", \"fact\": \"Nisha is friends with Jordan\", \"valid_at\": \"2023-08-15T13:02:00Z\"}, {\"source_entity_name\": \"Nisha\", \"target_entity_name\": \"Nisha's dad\", \"relation_type\": \"LIVES_IN\", \"fact\": \"Nisha lives in the same place as her dad\", \"valid_at\": \"2023-08-15T13:02:00Z\"}]}",
+  "seconds": 18.02860225600307,
+  "prompt_tokens_local": 6430
+}

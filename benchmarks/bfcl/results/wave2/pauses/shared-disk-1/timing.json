@@ -1,0 +1,13 @@
+{
+  "reason": "Shared system-disk shortage; explicit parent authorization to credit actual lost time.",
+  "pause_started": 1795328816.227591,
+  "resumed_worker_started": 1795329113.723975,
+  "pause_started_utc": "2026-11-22T06:26:56.227591+00:00",
+  "resumed_worker_started_utc": "2026-11-22T06:31:53.723975+00:00",
+  "credited_seconds": 297.49638390541077,
+  "sources": [
+    "systemd journal stop event",
+    "0.8B progress.started from resumed worker"
+  ],
+  "note": "The task had already resumed before the later coordination message; active inference time was not credited."
+}

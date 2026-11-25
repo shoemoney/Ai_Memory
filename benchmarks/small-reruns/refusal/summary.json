@@ -1,0 +1,66 @@
+{
+  "n": 100,
+  "prompt_set": "mlabonne/harmful_behaviors test[:100], revision 01cead01398926d81f7c52bdb790ee8cf77ebba7",
+  "published": {
+    "build_refusals": "6/100",
+    "original_refusals": "100/100"
+  },
+  "arms": {
+    "heretic": {
+      "keyword_rule_refusals": 14,
+      "keyword_rule_exact_95": [
+        0.07870540492696577,
+        0.22372798137056774
+      ],
+      "hand_label_refusals": 43,
+      "hand_label_exact_95": [
+        0.3313910166313832,
+        0.5328662616751536
+      ],
+      "keyword_flag_but_hand_answered": 8,
+      "no_keyword_but_hand_refused": 37,
+      "borderline_cells": 21,
+      "generation_seconds": 671.8233742320153,
+      "completion_token_cap_hits": 100
+    },
+    "stock": {
+      "keyword_rule_refusals": 98,
+      "keyword_rule_exact_95": [
+        0.9296160675289299,
+        0.9975686631760574
+      ],
+      "hand_label_refusals": 98,
+      "hand_label_exact_95": [
+        0.9296160675289299,
+        0.9975686631760574
+      ],
+      "keyword_flag_but_hand_answered": 0,
+      "no_keyword_but_hand_refused": 0,
+      "borderline_cells": 0,
+      "generation_seconds": 724.2379544550058,
+      "completion_token_cap_hits": 52
+    }
+  },
+  "paired_hand_stock_vs_heretic": {
+    "n": 100,
+    "gain": 0,
+    "loss": 55,
+    "difference": -0.55,
+    "difference_exact_conservative_95": [
+      -0.6627615466690315,
+      -0.39053583111835366
+    ],
+    "mcnemar_exact_p": 5.551115123125783e-17
+  },
+  "paired_keyword_stock_vs_heretic": {
+    "n": 100,
+    "gain": 0,
+    "loss": 84,
+    "difference": -0.84,
+    "difference_exact_conservative_95": [
+      -0.91305601172011,
+      -0.6975715217762002
+    ],
+    "mcnemar_exact_p": 1.0339757656912846e-25
+  }
+}

@@ -1,0 +1,517 @@
+{
+ "all": {
+  "contexts": 32,
+  "queries": 160,
+  "questions_per_context_mean": 5.0,
+  "cells": {
+   "base_v0": {
+    "acc": 0.2,
+    "tok": 9.06875,
+    "prompt_tok": 395.68125,
+    "sleep_per_q": 0.0,
+    "sleep_per_context": 0.0,
+    "qbar": 5.0,
+    "cost": 90.6875,
+    "acc_ci95": [
+     0.13125,
+     0.275
+    ]
+   },
+   "base_v2": {
+    "acc": 0.28125,
+    "tok": 60.7,
+    "prompt_tok": 393.68125,
+    "sleep_per_q": 0.0,
+    "sleep_per_context": 0.0,
+    "qbar": 5.0,
+    "cost": 607.0,
+    "acc_ci95": [
+     0.1875,
+     0.38125
+    ]
+   },
+   "base_v4": {
+    "acc": 0.5875,
+    "tok": 454.175,
+    "prompt_tok": 377.68125,
+    "sleep_per_q": 0.0,
+    "sleep_per_context": 0.0,
+    "qbar": 5.0,
+    "cost": 4541.75,
+    "acc_ci95": [
+     0.475,
+     0.69375
+    ]
+   },
+   "sleep_v0": {
+    "acc": 0.35625,
+    "tok": 10.58125,
+    "prompt_tok": 1045.80625,
+    "sleep_per_q": 129.225,
+    "sleep_per_context": 646.125,
+    "qbar": 5.0,
+    "cost": 235.0375,
+    "acc_ci95": [
+     0.25,
+     0.4625
+    ]
+   },
+   "sleep_v2": {
+    "acc": 0.3875,
+    "tok": 47.00625,
+    "prompt_tok": 1043.80625,
+    "sleep_per_q": 129.225,
+    "sleep_per_context": 646.125,
+    "qbar": 5.0,
+    "cost": 599.2875,
+    "acc_ci95": [
+     0.29375,
+     0.4875
+    ]
+   },
+   "sleep_v4": {
+    "acc": 0.48125,
+    "tok": 442.88125,
+    "prompt_tok": 1027.80625,
+    "sleep_per_q": 129.225,
+    "sleep_per_context": 646.125,
+    "qbar": 5.0,
+    "cost": 4558.0375,
+    "acc_ci95": [
+     0.35625,
+     0.6
+    ]
+   }
+  },
+  "paired": {
+   "acc_diff_sleep_minus_base_v0": {
+    "point": 0.15625,
+    "ci95": [
+     0.06874999999999998,
+     0.25
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "test_token_ratio_base_over_sleep_v0": {
+    "point": 0.857058476077968,
+    "ci95": [
+     0.8009922822491732,
+     0.9159609120521173
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "cost_ratio_base_over_sleep_v0": {
+    "point": 0.38584268467797694,
+    "ci95": [
+     0.3579148444176343,
+     0.41683106927456176
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_measured_v0": {
+    "point": 3.1992235281604002,
+    "ci95": [
+     3.0123519746161254,
+     3.366029302210082
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_10_modeled_v0": {
+    "point": 4.412131436115593,
+    "ci95": [
+     4.024754911238124,
+     4.779619181946403
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_base_tokens_v0": {
+    "point": 157.06122448979593,
+    "ci95": [
+     46.31346153846154,
+     263.66249999999997
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_cost_ratio_base_over_sleep_v0": {
+    "point": 6.682390022434545,
+    "ci95": [
+     1.9748944706557,
+     11.2583747568619
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "acc_diff_sleep_minus_base_v2": {
+    "point": 0.10625000000000001,
+    "ci95": [
+     0.006249999999999978,
+     0.20625000000000002
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "test_token_ratio_base_over_sleep_v2": {
+    "point": 1.2913176439303284,
+    "ci95": [
+     1.0720626021957487,
+     1.5404183154324476
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "cost_ratio_base_over_sleep_v2": {
+    "point": 1.0128694491375174,
+    "ci95": [
+     0.8499427734757639,
+     1.1929443060423088
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_measured_v2": {
+    "point": 1.8625242475439583,
+    "ci95": [
+     1.741901661056233,
+     1.9963416172574746
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_10_modeled_v2": {
+    "point": 2.0875999438911492,
+    "ci95": [
+     1.9199537726954778,
+     2.280341510861342
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_base_tokens_v2": {
+    "point": 197.2117346938776,
+    "ci95": [
+     71.96679687500001,
+     287.1216856060606
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_cost_ratio_base_over_sleep_v2": {
+    "point": 3.290770034313707,
+    "ci95": [
+     1.1463050096872405,
+     5.034573295912388
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "acc_diff_sleep_minus_base_v4": {
+    "point": -0.10625000000000001,
+    "ci95": [
+     -0.175,
+     -0.03749999999999998
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "test_token_ratio_base_over_sleep_v4": {
+    "point": 1.0255006279900085,
+    "ci95": [
+     0.9565923765882107,
+     1.1006431070899405
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "cost_ratio_base_over_sleep_v4": {
+    "point": 0.9964266419484262,
+    "ci95": [
+     0.9308866217050217,
+     1.0673746380726343
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_measured_v4": {
+    "point": 1.1134040691854772,
+    "ci95": [
+     1.0994744375607783,
+     1.1319985373358814
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_10_modeled_v4": {
+    "point": 1.1294140883624406,
+    "ci95": [
+     1.1133177699346117,
+     1.1509896562246797
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_base_tokens_v4": {
+    "point": 317.66326530612247,
+    "ci95": [
+     222.0182065217392,
+     401.71086065573763
+    ],
+    "share_of_resamples_defined": 0.9993
+   },
+   "matched_cost_ratio_base_over_sleep_v4": {
+    "point": 0.6969299074571511,
+    "ci95": [
+     0.47936190112813964,
+     0.8963855694401022
+    ],
+    "share_of_resamples_defined": 0.9993
+   }
+  }
+ },
+ "verified": {
+  "contexts": 32,
+  "queries": 68,
+  "questions_per_context_mean": 2.125,
+  "cells": {
+   "base_v0": {
+    "acc": 0.29411764705882354,
+    "tok": 9.573529411764707,
+    "prompt_tok": 399.52941176470586,
+    "sleep_per_q": 0.0,
+    "sleep_per_context": 0.0,
+    "qbar": 2.125,
+    "cost": 95.73529411764707,
+    "acc_ci95": [
+     0.18518518518518517,
+     0.4
+    ]
+   },
+   "base_v2": {
+    "acc": 0.3382352941176471,
+    "tok": 58.61764705882353,
+    "prompt_tok": 397.52941176470586,
+    "sleep_per_q": 0.0,
+    "sleep_per_context": 0.0,
+    "qbar": 2.125,
+    "cost": 586.1764705882352,
+    "acc_ci95": [
+     0.208955223880597,
+     0.45714285714285713
+    ]
+   },
+   "base_v4": {
+    "acc": 0.8088235294117647,
+    "tok": 460.0735294117647,
+    "prompt_tok": 381.52941176470586,
+    "sleep_per_q": 0.0,
+    "sleep_per_context": 0.0,
+    "qbar": 2.125,
+    "cost": 4600.735294117647,
+    "acc_ci95": [
+     0.6923076923076923,
+     0.9090909090909091
+    ]
+   },
+   "sleep_v0": {
+    "acc": 0.4264705882352941,
+    "tok": 10.514705882352942,
+    "prompt_tok": 1058.5588235294117,
+    "sleep_per_q": 304.05882352941177,
+    "sleep_per_context": 646.125,
+    "qbar": 2.125,
+    "cost": 409.2058823529412,
+    "acc_ci95": [
+     0.2909090909090909,
+     0.5441176470588235
+    ]
+   },
+   "sleep_v2": {
+    "acc": 0.47058823529411764,
+    "tok": 51.10294117647059,
+    "prompt_tok": 1056.5588235294117,
+    "sleep_per_q": 304.05882352941177,
+    "sleep_per_context": 646.125,
+    "qbar": 2.125,
+    "cost": 815.0882352941176,
+    "acc_ci95": [
+     0.3333333333333333,
+     0.5822784810126582
+    ]
+   },
+   "sleep_v4": {
+    "acc": 0.6176470588235294,
+    "tok": 440.75,
+    "prompt_tok": 1040.5588235294117,
+    "sleep_per_q": 304.05882352941177,
+    "sleep_per_context": 646.125,
+    "qbar": 2.125,
+    "cost": 4711.558823529412,
+    "acc_ci95": [
+     0.4745762711864407,
+     0.7352941176470589
+    ]
+   }
+  },
+  "paired": {
+   "acc_diff_sleep_minus_base_v0": {
+    "point": 0.13235294117647056,
+    "ci95": [
+     0.030303030303030304,
+     0.24285714285714288
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "test_token_ratio_base_over_sleep_v0": {
+    "point": 0.9104895104895104,
+    "ci95": [
+     0.8453105968331304,
+     0.9695652173913043
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "cost_ratio_base_over_sleep_v0": {
+    "point": 0.23395385610580033,
+    "ci95": [
+     0.19279497631376005,
+     0.27631229361976695
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_measured_v0": {
+    "point": 1.8359268310213468,
+    "ci95": [
+     1.554360971362229,
+     2.11415781644861
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_10_modeled_v0": {
+    "point": 4.425506663836829,
+    "ci95": [
+     4.056737760837107,
+     4.785791596969399
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_base_tokens_v0": {
+    "point": 133.89062499999997,
+    "ci95": [
+     43.229166666666664,
+     231.63983739837403
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_cost_ratio_base_over_sleep_v0": {
+    "point": 3.2719623733199157,
+    "ci95": [
+     1.0370669197911722,
+     5.773841926025272
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "acc_diff_sleep_minus_base_v2": {
+    "point": 0.13235294117647056,
+    "ci95": [
+     0.026666666666666727,
+     0.22972972972972971
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "test_token_ratio_base_over_sleep_v2": {
+    "point": 1.1470503597122301,
+    "ci95": [
+     0.8928359976317348,
+     1.4676313785224677
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "cost_ratio_base_over_sleep_v2": {
+    "point": 0.7191570742972613,
+    "ci95": [
+     0.5758901629450814,
+     0.8768506417945183
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_measured_v2": {
+    "point": 1.419667664994768,
+    "ci95": [
+     1.2745024996206307,
+     1.5701617875603906
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_10_modeled_v2": {
+    "point": 2.0101983335739004,
+    "ci95": [
+     1.7867609312964206,
+     2.2629975104407687
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_base_tokens_v2": {
+    "point": 171.5271139705882,
+    "ci95": [
+     82.76801705756932,
+     260.8102073365231
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_cost_ratio_base_over_sleep_v2": {
+    "point": 2.1043993342474647,
+    "ci95": [
+     0.9286096774561072,
+     3.4062804787941485
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "acc_diff_sleep_minus_base_v4": {
+    "point": -0.19117647058823528,
+    "ci95": [
+     -0.34328358208955223,
+     -0.059701492537313494
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "test_token_ratio_base_over_sleep_v4": {
+    "point": 1.0438423809682693,
+    "ci95": [
+     0.9780013461334089,
+     1.1136348203979087
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "cost_ratio_base_over_sleep_v4": {
+    "point": 0.9764783729626139,
+    "ci95": [
+     0.9136046715701135,
+     1.0417017455239377
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_measured_v4": {
+    "point": 1.072601486956359,
+    "ci95": [
+     1.0495728503228203,
+     1.0969806511480398
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "amortization_ratio_1_vs_10_modeled_v4": {
+    "point": 1.1300308299489334,
+    "ci95": [
+     1.1090740878620922,
+     1.1554825879827875
+    ],
+    "share_of_resamples_defined": 1.0
+   },
+   "matched_base_tokens_v4": {
+    "point": 296.9820772058823,
+    "ci95": [
+     199.00147058823524,
+     394.84615384615387
+    ],
+    "share_of_resamples_defined": 0.9983
+   },
+   "matched_cost_ratio_base_over_sleep_v4": {
+    "point": 0.630326582622212,
+    "ci95": [
+     0.4019680138890932,
+     0.8580165868287839
+    ],
+    "share_of_resamples_defined": 0.9983
+   }
+  }
+ },
+ "sleep_tokens_per_context_mean": 646.125,
+ "verifier": {
+  "generated_items": 128,
+  "verified": 36
+ }
+}

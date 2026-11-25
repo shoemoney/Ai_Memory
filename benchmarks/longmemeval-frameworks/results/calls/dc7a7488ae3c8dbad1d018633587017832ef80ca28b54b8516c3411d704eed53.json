@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 16
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "318fa66ecaddb465d66d32bf46b686f3d92ff19a718c4ef0e7ba551b9899abf0",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f8b61894-3f3c-4344-8c89-17ff65156d7c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 0,\n      \"name\": \"ceramics\",\n      \"duplicate_candidate_id\": -1\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Mustang\",\n      \"duplicate_candidate_id\": 1\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Belmont Arts Center\",\n      \"duplicate_candidate_id\": 2\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795360743,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 98,
+      "prompt_tokens": 9068,
+      "total_tokens": 9166,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 0,\n      \"name\": \"ceramics\",\n      \"duplicate_candidate_id\": -1\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Mustang\",\n      \"duplicate_candidate_id\": 1\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Belmont Arts Center\",\n      \"duplicate_candidate_id\": 2\n    }\n  ]\n}",
+  "seconds": 20.023169672000222,
+  "prompt_tokens_local": 9068
+}

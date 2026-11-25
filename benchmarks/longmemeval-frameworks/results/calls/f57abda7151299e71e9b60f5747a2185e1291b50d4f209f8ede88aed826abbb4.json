@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 36
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "73b09de13e8697863960f1ab8dab63bf670d59c2b50640e9a4444f98d2fb6099",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-2ac738a5-3530-475d-b668-ff074a93104d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Google Wifi\", \"summary\": \"Google Wifi is a mesh network system that's designed to provide a strong, reliable, and seamless Wi-Fi experience in your home. Its tri-band Wi-Fi, mesh network technology, and traffic prioritization features make it an excellent choice for homes with multiple devices and heavy internet usage. It handles multiple devices with ease and prioritizes critical applications like video streaming and online gaming. Google Wifi is a budget-friendly option that can handle up to 900 devices, and it's compatible with Comcast's internet service.\"}], \"summaries\": []}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795362907,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 125,
+      "prompt_tokens": 7874,
+      "total_tokens": 7999,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Google Wifi\", \"summary\": \"Google Wifi is a mesh network system that's designed to provide a strong, reliable, and seamless Wi-Fi experience in your home. Its tri-band Wi-Fi, mesh network technology, and traffic prioritization features make it an excellent choice for homes with multiple devices and heavy internet usage. It handles multiple devices with ease and prioritizes critical applications like video streaming and online gaming. Google Wifi is a budget-friendly option that can handle up to 900 devices, and it's compatible with Comcast's internet service.\"}], \"summaries\": []}",
+  "seconds": 22.82444234401919,
+  "prompt_tokens_local": 7874
+}

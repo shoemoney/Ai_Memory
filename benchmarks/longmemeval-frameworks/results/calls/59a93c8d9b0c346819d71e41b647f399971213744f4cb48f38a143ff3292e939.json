@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 22
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e89c3f01726be1b68a323ba514eabae37dc84405b4ae761dd223a0a68a0b08aa",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-da266671-ae52-4955-9283-6492af26d8a6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considering coworkers at Laugh Out Loud comedy club as character inspirations\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Interested in creating character impressions for stand-up comedy\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Wanted tips on crafting a compelling narrative for a stand-up comedy set\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Created a character impression based on a coworker at Laugh Out Loud comedy club\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Created a character impression based on a coworker at Laugh Out Club\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365843,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 176,
+      "prompt_tokens": 1724,
+      "total_tokens": 1900,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considering coworkers at Laugh Out Loud comedy club as character inspirations\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Interested in creating character impressions for stand-up comedy\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Wanted tips on crafting a compelling narrative for a stand-up comedy set\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Created a character impression based on a coworker at Laugh Out Loud comedy club\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Created a character impression based on a coworker at Laugh Out Club\"\n        }\n    ]\n}",
+  "seconds": 14.67938873800449,
+  "prompt_tokens_local": 1724
+}

@@ -1,0 +1,252 @@
+{
+  "id": "multiple_60",
+  "category": "multiple",
+  "result": [
+    {
+      "humidity_temperature_forecast": "{\"location\":\"New York City\",\"days\":7}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'What will be the humidity and temperature for New York City after 7 days?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "event_search",
+                "description": "Search for events happening in a specific location for a future date.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string",
+                      "description": "The city that you want to get the event information for."
+                    },
+                    "days": {
+                      "type": "integer",
+                      "description": "Number of future days for which to retrieve the event information."
+                    }
+                  },
+                  "required": [
+                    "location",
+                    "days"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "movie_showtimes",
+                "description": "Retrieve movie showtimes for a specific location and for a future date.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string",
+                      "description": "The city that you want to get the movie showtimes for."
+                    },
+                    "days": {
+                      "type": "integer",
+                      "description": "Number of future days for which to retrieve the showtimes."
+                    }
+                  },
+                  "required": [
+                    "location",
+                    "days"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "humidity_temperature_forecast",
+                "description": "Retrieve forecast of humidity and temperature for a specific location and for a future date.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string",
+                      "description": "The city that you want to get the humidity and temperature forecast for."
+                    },
+                    "days": {
+                      "type": "integer",
+                      "description": "Number of future days for which to retrieve the forecast."
+                    }
+                  },
+                  "required": [
+                    "location",
+                    "days"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 560,
+    "output_token_count": 152,
+    "latency": 3.7768822809957783
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What will be the humidity and temperature for New York City after 7 days?"
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "event_search",
+          "description": "Search for events happening in a specific location for a future date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city that you want to get the event information for."
+              },
+              "days": {
+                "type": "integer",
+                "description": "Number of future days for which to retrieve the event information."
+              }
+            },
+            "required": [
+              "location",
+              "days"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "movie_showtimes",
+          "description": "Retrieve movie showtimes for a specific location and for a future date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city that you want to get the movie showtimes for."
+              },
+              "days": {
+                "type": "integer",
+                "description": "Number of future days for which to retrieve the showtimes."
+              }
+            },
+            "required": [
+              "location",
+              "days"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "humidity_temperature_forecast",
+          "description": "Retrieve forecast of humidity and temperature for a specific location and for a future date.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city that you want to get the humidity and temperature forecast for."
+              },
+              "days": {
+                "type": "integer",
+                "description": "Number of future days for which to retrieve the forecast."
+              }
+            },
+            "required": [
+              "location",
+              "days"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-jSBj35IItrFfg3GgEM5RubKlUDPM7HN5",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "zePbSBtS2piu6I2Cw3S2xcidrJpDQYV1",
+              "function": {
+                "arguments": "{\"location\":\"New York City\",\"days\":7}",
+                "name": "humidity_temperature_forecast"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for humidity and temperature forecasts for New York City after 7 days. I can see there's a function called \"humidity_temperature_forecast\" that can help with this. Let me check the parameters:\n\n- location: The city that you want to get the humidity and temperature forecast for.\n- days: Number of future days for which to retrieve the forecast.\n\nThe user wants forecasts for 7 days, so I need to call this function with location=\"New York City\" and days=7."
+        }
+      }
+    ],
+    "created": 1795287724,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 152,
+      "prompt_tokens": 560,
+      "total_tokens": 712,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 558,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 558,
+      "prompt_n": 2,
+      "prompt_ms": 39.553,
+      "prompt_per_token_ms": 19.7765,
+      "prompt_per_second": 50.56506459687002,
+      "predicted_n": 152,
+      "predicted_ms": 3725.912,
+      "predicted_per_token_ms": 24.67491390728477,
+      "predicted_per_second": 40.526990438850945
+    }
+  },
+  "elapsed_seconds": 3.7773237059955136,
+  "score": {
+    "valid": true
+  }
+}

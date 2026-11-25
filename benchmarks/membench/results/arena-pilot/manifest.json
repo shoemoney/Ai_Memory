@@ -1,0 +1,54 @@
+{
+  "pilot_only": true,
+  "repository_revision": "6cd9de14b71915e39ac742a20dc33785e14b6aab",
+  "data_revision": "da1a37c8b19280e18627ca01cf368195a5e1d92e",
+  "dataset_license": "CC-BY-4.0 per official dataset card",
+  "code_license": "No top-level license in inspected repository; official files fetched to disposable scratch, not redistributed",
+  "seed": 20261122,
+  "sampling": "Uniform seeded choice among the three five-step math chains, before outcomes; complete selected chain",
+  "eligible_group_rows": [
+    0,
+    1,
+    7
+  ],
+  "selected_group_row": 7,
+  "selected_group_id": 7,
+  "steps": 5,
+  "methods": [
+    "full-history",
+    "no-memory"
+  ],
+  "source_files": {
+    "arena-math-env": {
+      "path": "env/env_systems/math_env.py",
+      "sha256": "c5d45b3354433ce188ada6d1e638d9cbb794f8c6e42de62c4d8cd1967f7e2d74"
+    },
+    "arena-base-env": {
+      "path": "env/env_systems/base_env.py",
+      "sha256": "3c7a2dcd6595f3ec39c06e1fefcaaf8903d0848fb17e8bdf56daaf35c46a6278"
+    },
+    "arena-math-agent": {
+      "path": "agent/math.py",
+      "sha256": "33faff8e13f7c12d69d375f319fa151102a8268b8a52d1795304a325e2e85141"
+    },
+    "arena-agent-base": {
+      "path": "agent/base.py",
+      "sha256": "3a7edf6b0f96e1793aef3d658e586c078ebc6a67b0ab0bc4239ba64370571b26"
+    },
+    "arena-base-agent": {
+      "path": "agent/base_agent.py",
+      "sha256": "61eac895f6e8d4bc347898898bb7c431d8a6f7ee2f37377ede747a9620a6e28c"
+    },
+    "arena-long-context": {
+      "path": "memory/memory_systems/long_context.py",
+      "sha256": "3e836759a650fd3dbe497ad5bc3c0962bf9fb1515407dbcd313eec5ab63ed5b6"
+    }
+  },
+  "differences": [
+    "Local Qwen2.5-14B reader and judge instead of published backbones",
+    "Official non-OpenAI reasoning branch; coding tool not used",
+    "One chain, not the full formal-reasoning benchmark or other environments",
+    "Frozen memory timestamps for repeatability",
+    "Official environment step does not forward question to its equivalence judge; unchanged here"
+  ]
+}

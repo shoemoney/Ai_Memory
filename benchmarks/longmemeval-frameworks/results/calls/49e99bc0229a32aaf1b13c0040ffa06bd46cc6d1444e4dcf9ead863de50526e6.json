@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 37
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f879593b2deeb25440f9b286ecf5e09a6c1ab7a8487305b73d5c0f5b67c3ef82",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-fc8f479c-6e1a-48eb-9e04-9b1d6fd3b15c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Favorite wood for smoking is cherry, which adds a sweet, fruity flavor\",\n        \"Used cherry wood for various meats including ribs and sausages\",\n        \"Interested in trying other types of wood chips or chunks for smoking\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366320,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 57,
+      "prompt_tokens": 2865,
+      "total_tokens": 2922,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Favorite wood for smoking is cherry, which adds a sweet, fruity flavor\",\n        \"Used cherry wood for various meats including ribs and sausages\",\n        \"Interested in trying other types of wood chips or chunks for smoking\"\n    ]\n}",
+  "seconds": 8.379126204992644,
+  "prompt_tokens_local": 2865
+}

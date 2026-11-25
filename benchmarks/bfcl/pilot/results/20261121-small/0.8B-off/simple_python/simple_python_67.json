@@ -1,0 +1,173 @@
+{
+  "id": "simple_python_67",
+  "category": "simple_python",
+  "result": [
+    {
+      "identify_bird": "{\"color\":\"green\",\"habitat\":\"forest\",\"size\":\"small\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Identify a small green bird in forest.'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "identify_bird",
+                "description": "Identify a bird species based on certain characteristics.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "color": {
+                      "type": "string",
+                      "description": "Color of the bird."
+                    },
+                    "habitat": {
+                      "type": "string",
+                      "description": "Habitat of the bird."
+                    },
+                    "size": {
+                      "type": "string",
+                      "enum": [
+                        "small",
+                        "medium",
+                        "large"
+                      ],
+                      "description": "Size of the bird. Default is 'small'"
+                    }
+                  },
+                  "required": [
+                    "color",
+                    "habitat"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 355,
+    "output_token_count": 51,
+    "latency": 0.6235868930016295
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Identify a small green bird in forest."
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "identify_bird",
+          "description": "Identify a bird species based on certain characteristics.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "color": {
+                "type": "string",
+                "description": "Color of the bird."
+              },
+              "habitat": {
+                "type": "string",
+                "description": "Habitat of the bird."
+              },
+              "size": {
+                "type": "string",
+                "enum": [
+                  "small",
+                  "medium",
+                  "large"
+                ],
+                "description": "Size of the bird. Default is 'small'"
+              }
+            },
+            "required": [
+              "color",
+              "habitat"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-3cCeXj2m2sJGdhdfO0cLwtRfhtRneDvO",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "gYZk4hyWiOd5fVWtYbYdgupJ9nqYEBFo",
+              "function": {
+                "arguments": "{\"color\":\"green\",\"habitat\":\"forest\",\"size\":\"small\"}",
+                "name": "identify_bird"
+              },
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ],
+    "created": 1795287438,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 51,
+      "prompt_tokens": 355,
+      "total_tokens": 406,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 355,
+      "prompt_ms": 181.901,
+      "prompt_per_token_ms": 0.5123971830985916,
+      "prompt_per_second": 1951.6110411707466,
+      "predicted_n": 51,
+      "predicted_ms": 432.44,
+      "predicted_per_token_ms": 8.6488,
+      "predicted_per_second": 115.62297659790954
+    }
+  },
+  "elapsed_seconds": 0.6238017590003437,
+  "score": {
+    "valid": true
+  }
+}

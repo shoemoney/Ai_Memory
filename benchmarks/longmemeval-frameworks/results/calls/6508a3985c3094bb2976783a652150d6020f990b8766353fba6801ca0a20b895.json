@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 50
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "cdefccf85dcee40b8e506253c4897f2831f55545dd686fbee2fe026e4a0ca906",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ce485f9a-2123-42b1-989e-ee0cc8000cc7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Interested in trying Green Chef service for healthy meals\",\n    \"Currently using classic pizza toppings of mushrooms, onions, and extra cheese\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356834,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 38,
+      "prompt_tokens": 1703,
+      "total_tokens": 1741,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Interested in trying Green Chef service for healthy meals\",\n    \"Currently using classic pizza toppings of mushrooms, onions, and extra cheese\"\n  ]\n}",
+  "seconds": 9.195832493001944,
+  "prompt_tokens_local": 1703
+}

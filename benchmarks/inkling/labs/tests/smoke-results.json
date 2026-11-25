@@ -1,0 +1,125 @@
+{
+  "longmemeval": {
+    "planned": 15,
+    "completed": 15,
+    "complete": true,
+    "systems": {
+      "mem0-raw-standard": {
+        "n": 3,
+        "correct": 3,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 1.0
+      },
+      "full-oracle": {
+        "n": 2,
+        "correct": 2,
+        "skipped": 1,
+        "length_stops": 0,
+        "accuracy": 1.0
+      },
+      "full-standard": {
+        "n": 0,
+        "correct": 0,
+        "skipped": 3,
+        "length_stops": 0,
+        "accuracy": null
+      },
+      "bm25-standard": {
+        "n": 3,
+        "correct": 3,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 1.0
+      },
+      "dense-standard": {
+        "n": 3,
+        "correct": 3,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 1.0
+      }
+    },
+    "output": "benchmarks/inkling/labs/tests/smoke-output/smoke/longmemeval",
+    "requests_raw": "benchmarks/inkling/labs/tests/smoke-output/smoke/longmemeval/raw"
+  },
+  "locomo": {
+    "planned": 15,
+    "completed": 15,
+    "complete": true,
+    "systems": {
+      "graphiti": {
+        "n": 3,
+        "correct": 3,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 1.0
+      },
+      "full-context": {
+        "n": 3,
+        "correct": 3,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 1.0
+      },
+      "cognee": {
+        "n": 3,
+        "correct": 3,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 1.0
+      },
+      "rag": {
+        "n": 3,
+        "correct": 3,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 1.0
+      },
+      "mem0": {
+        "n": 3,
+        "correct": 3,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 1.0
+      }
+    },
+    "output": "benchmarks/inkling/labs/tests/smoke-output/smoke/locomo",
+    "requests_raw": "benchmarks/inkling/labs/tests/smoke-output/smoke/locomo/raw"
+  },
+  "quality": {
+    "planned": 6,
+    "completed": 6,
+    "complete": true,
+    "systems": {
+      "mmlu-pro": {
+        "n": 3,
+        "correct": 0,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 0.0
+      },
+      "gsm8k": {
+        "n": 3,
+        "correct": 0,
+        "skipped": 0,
+        "length_stops": 0,
+        "accuracy": 0.0
+      }
+    },
+    "output": "benchmarks/inkling/labs/tests/smoke-output/smoke/quality",
+    "requests_raw": "benchmarks/inkling/labs/tests/smoke-output/smoke/quality/raw"
+  },
+  "stub_requests": 110,
+  "note": "Offline canned completions; no model-quality claim. Quality smoke uses the real pinned test items.",
+  "offline_tests": {
+    "passed": 9,
+    "command": "benchmarks/inkling/labs/.venv/bin/python -m pytest -q benchmarks/inkling/labs/tests"
+  },
+  "archived_longmemeval_prompts_verified": 1112,
+  "endpoints_at_verification": {
+    "reader_39850": "unavailable",
+    "gemma_judge_39711": "unavailable",
+    "qwen_judge_39700": "unavailable"
+  }
+}

@@ -1,0 +1,699 @@
+<article class="chapter" data-ch="05" data-part="b" data-running="Retrieval techniques">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part B &middot; Chapter 05</p>
+  <div class="opener-num" aria-hidden="true">05</div>
+  <h1>Retrieval techniques</h1>
+  <p class="opener-summary">Retrieval turns a question into a short ranked list of stored notes: scope, search two ways, merge, rerank, then measure.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Anyone whose memory store is too big for the prompt.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">Retrieval picks the few saved notes that fit an assistant's prompt from thousands stored.</p>
+  <p>Each search returns n; merging yields N distinct candidates; a reranker orders them and the top k enter the prompt. Anthropic uses N=150 and k=20.<sup class="cite"><a href="#s05-1">1</a></sup> Set k from the context budget; those figures illustrate one operating point.</p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Candidate pool</dt><dd>Distinct first-stage results; N cannot exceed summed search limits: 2n for two searches of n each.</dd>
+    <dt>Reranker (cross-encoder)</dt><dd>Scores question and chunk jointly, per pair at query time, unlike stored-vector comparison. Apply it only to the pool; sorting scores is reranking.</dd>
+    <dt>Recall@k</dt><dd>The share of known-correct notes in the top k results.</dd>
+    <dt>MRR</dt><dd>Mean reciprocal rank: average 1/rank of each question's first correct result; 0 for no hit within the evaluated list.</dd>
+    <dt>RRF</dt><dd>Reciprocal Rank Fusion. Merges lists by rank alone.</dd>
+    <dt>MMR</dt><dd>Maximal Marginal Relevance. Balances relevance against similarity to chosen results.</dd>
+    <dt>HyDE</dt><dd>Hypothetical Document Embeddings. An LLM drafts a plausible answer, which is embedded and searched instead of, or alongside, the question.</dd>
+    <dt>Average precision</dt><dd>Sum precision at correct results' ranks, divide by the known-correct count, then average across questions for mean average precision (MAP). Early hits score higher.</dd>
+  </dl>
+  <p class="small muted">BM25 (keyword ranking) is defined in Chapter 00/glossary. Agentic search is iterative, model-directed retrieval through tools.</p>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+
+
+<figure class="diagram">
+<svg viewBox="0 0 600 270" role="img" aria-label="Diagram: authorization, metadata and time scope constrain keyword and meaning searches before rank fusion and reranking; diversity trims duplicates before the model reads the results.">
+  <text class="d-label" x="10" y="26">Find and merge</text>
+  <rect class="d-box" x="10" y="40" width="140" height="74" rx="4"/>
+  <text class="d-title" x="80" y="64" text-anchor="middle">Query</text>
+  <text class="d-sub" x="80" y="82" text-anchor="middle">authorized user, project,</text>
+  <text class="d-sub" x="80" y="96" text-anchor="middle">metadata and time scope</text>
+
+  <rect class="d-box accent" x="205" y="40" width="190" height="74" rx="4"/>
+  <text class="d-title" x="300" y="64" text-anchor="middle">Keyword + meaning search</text>
+  <text class="d-sub" x="300" y="82" text-anchor="middle">scope inside BOTH searches</text>
+  <text class="d-sub" x="300" y="96" text-anchor="middle">then select their top N</text>
+
+  <rect class="d-box" x="450" y="40" width="140" height="74" rx="4"/>
+  <text class="d-title" x="520" y="64" text-anchor="middle">RRF merge</text>
+  <text class="d-sub" x="520" y="82" text-anchor="middle">adds 1/(60 + rank)</text>
+  <text class="d-sub" x="520" y="96" text-anchor="middle">from each list</text>
+
+  <text class="d-label" x="10" y="166">Narrow and read</text>
+  <rect class="d-box dark" x="10" y="180" width="140" height="74" rx="4"/>
+  <text class="d-title d-on-dark" x="80" y="204" text-anchor="middle">Model</text>
+  <text class="d-sub d-on-dark" x="80" y="222" text-anchor="middle">reads the final</text>
+  <text class="d-sub d-on-dark" x="80" y="236" text-anchor="middle">short list</text>
+
+  <rect class="d-box" x="205" y="180" width="190" height="74" rx="4"/>
+  <text class="d-title" x="300" y="204" text-anchor="middle">Diversity / MMR</text>
+  <text class="d-sub" x="300" y="222" text-anchor="middle">optional pass to</text>
+  <text class="d-sub" x="300" y="236" text-anchor="middle">drop near-duplicates</text>
+
+  <rect class="d-box accent" x="450" y="180" width="140" height="74" rx="4"/>
+  <text class="d-title" x="520" y="204" text-anchor="middle">Reranker</text>
+  <text class="d-sub" x="520" y="222" text-anchor="middle">rescores each pair,</text>
+  <text class="d-sub" x="520" y="236" text-anchor="middle">keeps the best few</text>
+
+  <path class="d-line" d="M150 77 H203"/>
+  <path class="d-line" d="M395 77 H448"/>
+  <path class="d-line" d="M520 114 V178"/>
+  <path class="d-line" d="M450 217 H397"/>
+  <path class="d-line" d="M205 217 H152"/>
+</svg>
+<figcaption><b>Figure 1.</b> Filters limit both first-stage searches. RRF merges their lists, and optional reranking and diversity choose which notes enter the LLM context.</figcaption>
+</figure>
+
+<h3>Build the golden set</h3>
+<p>A golden set pairs questions with answering note IDs. Test exact IDs, semantic matching through paraphrases sharing no words, and multi-answer recall through two-note questions. Compare identical questions:</p>
+<ul>
+  <li><code>recall@k</code>, measured on the pool as well as the final list. Pool recall is the share found among all candidates; it caps later stages and shows whether reranking can help.</li>
+  <li><code>MRR</code>, which rewards putting one right answer first.</li>
+  <li>Mean average precision (MAP), used in Numbers, rewards finding several right answers early.</li>
+</ul>
+<p>With 20 equally weighted questions, one moves mean recall by up to 0.05; smaller gaps need more examples.</p>
+
+<h3>Techniques at a glance</h3>
+<p class="table-title">Scope is mandatory before search limits (Scope before the limit). Match other failures below; RAPTOR and soft forgetting follow.</p>
+<table class="data">
+  <colgroup><col class="c18"><col class="c27"><col class="c27"><col class="c28"></colgroup>
+  <thead><tr><th>Technique</th><th>Fixes</th><th>Costs</th><th>Add it when</th></tr></thead>
+  <tbody>
+    <tr><td>BM25 keyword search</td><td>Exact IDs, error codes, file names.</td><td>An index updated on every write. No model.</td><td>Start here; keep it if it helps.</td></tr>
+    <tr><td>Dense search</td><td>Questions worded differently from the notes.</td><td>An embedding call per write and per query, plus a vector index.</td><td>Users paraphrase.</td></tr>
+    <tr><td>Hybrid with RRF</td><td>Either list missing what the other finds.</td><td>Two searches and a short merge function.</td><td>Both IDs and paraphrases occur.</td></tr>
+    <tr><td>Learned sparse</td><td>BM25 missing synonyms.</td><td>A special model at write and query time.</td><td>BM25 is close but misses synonyms.</td></tr>
+    <tr><td>Late interaction</td><td>One vector per chunk blurring detail.</td><td>Grows with tokens per chunk: about 200 vectors for a 200-token chunk, roughly an order of magnitude more space uncompressed.<sup class="cite"><a href="#s05-2">2</a></sup></td><td>Single vectors plateau and disk is cheap.</td></tr>
+    <tr><td>Reranker</td><td>Right note in the pool, wrong order.</td><td>One pair score per candidate. Pairs can be batched.</td><td>Pool recall is high but top results are noisy.</td></tr>
+    <tr><td>Heading-aware chunking</td><td>Answers cut in half or cut off from their subject.</td><td>A parser for your formats.</td><td>Documents have headings or turns.</td></tr>
+    <tr><td>Contextual Retrieval</td><td>Chunks that mean nothing outside their document.<sup class="cite"><a href="#s05-1">1</a></sup></td><td>One LLM call per chunk, once, at write time.</td><td>Long documents with many similar sections.</td></tr>
+    <tr><td>HyDE</td><td>Short questions against long notes.<sup class="cite"><a href="#s05-3">3</a></sup></td><td>One LLM call per query before the search.</td><td>Questions look nothing like the notes. The draft can invent details; skip it for ID lookups.</td></tr>
+    <tr><td>Query rewriting</td><td>Follow-ups such as "and the other one?".</td><td>One LLM call per query.</td><td>Queries depend on earlier turns; skip rewriting self-contained questions and preserve IDs.</td></tr>
+    <tr><td>Metadata and time filters</td><td>Stale or irrelevant results.</td><td>Fields stored with each note. Filters can empty the pool.</td><td>Freshness or relevance preferences are known; authorization is mandatory.</td></tr>
+    <tr><td>Recency and importance</td><td>Old trivia outranking fresh facts.<sup class="cite"><a href="#s05-4">4</a></sup></td><td>Weights to tune, and a score to assign at write time.</td><td>Chat logs and agent journals.</td></tr>
+    <tr><td>MMR</td><td>Five copies of one note in the top five.<sup class="cite"><a href="#s05-5">5</a></sup></td><td>Pairwise candidate similarity (vectors for keyword-only hits too, or token overlap) and lambda, the relevance-versus-diversity weight, to tune.</td><td>The pool holds near-duplicates; tune lambda against recall@k.</td></tr>
+    <tr><td>Repository map</td><td>Missing cross-file code structure.<sup class="cite"><a href="#s05-25">25</a></sup></td><td>Symbol parsing, dependency ranking and a token budget.</td><td>Signatures can guide which files to read.</td></tr>
+    <tr><td>Agentic search</td><td>Questions needing iterative tool lookups.</td><td>Several tool turns and tokens per question.</td><td>Code, or a corpus small enough to scan.</td></tr>
+  </tbody>
+</table>
+
+
+<h3>Scope before the limit</h3>
+<p><strong>Rule: scope every search before its limit.</strong> Apply trusted user/project checks and metadata/time filters inside each search, before external rerankers see text. Recency, importance and MMR rank results; they never replace access controls.<sup class="cite"><a href="#s05-4">4</a>,<a href="#s05-5">5</a></sup> If filtering leaves fewer than k candidates, log and return fewer. Widen only a documented freshness preference, never an explicit date range, retention rule or user or project scope. Chapter 22 shows this for one patient per search.</p>
+
+<h3>Ranking without mixing score scales</h3>
+<p>Keyword/vector scales differ; RRF merges by rank. SQLite FTS5 returns BM25 scores where smaller means more relevant, so an ascending <code>ORDER BY bm25(fts)</code> puts better matches first.<sup class="cite"><a href="#s05-6">6</a></sup> PostgreSQL uses its own full-text ranks, not BM25.<sup class="cite"><a href="#s05-7">7</a></sup> RRF discards score magnitudes, giving even a weak match full credit for its rank. It sums <code>1 / (60 + rank)</code> across lists. Second in both scores 0.03226; first in only one scores 0.01639.<sup class="cite"><a href="#s05-8">8</a></sup></p>
+<h3>Preserve the meaning of each chunk</h3>
+<p>Keep headings with sections, questions with replies and paths with functions. Contextual Retrieval prepends 50 to 100 LLM-written tokens to each chunk before embedding and keyword indexing.<sup class="cite"><a href="#s05-1">1</a></sup> Late chunking embeds the whole document first, then pools token vectors into chunks.<sup class="cite"><a href="#s05-9">9</a></sup></p>
+<h3>First-stage variants</h3>
+<p>Learned sparse retrieval, such as SPLADE, has a model output weighted vocabulary terms for an inverted index. Late interaction (also called multi-vector retrieval) keeps one vector per token and matches each query token to its best document token: ColBERTv2 is the reference model and PLAID its fast index. BGE-M3 produces dense, sparse and late-interaction outputs from one model.<sup class="cite"><a href="#s05-10">10</a>,<a href="#s05-2">2</a>,<a href="#s05-11">11</a>,<a href="#s05-12">12</a></sup></p>
+<h3>Rerankers</h3>
+<p>Raise n until pool recall levels off or reranking reaches budget. Each candidate costs one pair score; benchmark end-to-end p95 at realistic chunk lengths, batching and concurrency. Three options:</p>
+<ul>
+  <li>Qwen3-Reranker-0.6B: Apache-2.0, 0.6B parameters, 32K tokens, runs on your hardware.<sup class="cite"><a href="#s05-13">13</a></sup></li>
+  <li>Jina reranker v3.5: CC-BY-NC-4.0 (non-commercial), 0.6B parameters, 131K tokens, runs on your hardware or Jina's API.<sup class="cite"><a href="#s05-14">14</a></sup></li>
+  <li>Cohere Rerank 5: managed service when hosting is impractical; text leaves the machine. Its listed context window is 32,768 tokens.<sup class="cite"><a href="#s05-15">15</a></sup></li>
+</ul>
+
+<h3>Agentic search and repository maps</h3>
+<p>For changing code, an agent can read the current checkout or query an existing index. Claude Code's creator reports better results than RAG on his own code (Chapter 01).<sup class="cite"><a href="#s05-16">16</a></sup></p>
+<p>A repository map supplies paths and symbol signatures before full-file reads. Aider's 22 October 2023 design uses tree-sitter definitions and references instead of ctags, ranking a file-dependency graph to fit signatures into a token budget.<sup class="cite"><a href="#s05-25">25</a></sup> A language server can supply symbols, definitions, references and call hierarchies through the Language Server Protocol (LSP).<sup class="cite"><a href="#s05-26">26</a></sup> (From docs, not run.) Prefer a map for whole-repo structure; add LSP for precise definitions or call hierarchies when a server is available.</p>
+<p>Refresh symbols after edits; generated code and dynamic calls can leave gaps. Use grep for exact text and embeddings for paraphrases, then read current source before editing. Compare file recall and prompt tokens; no comparison was measured here.</p>
+
+<h3 id="raptor-summary-tree">Hierarchical summary-tree retrieval (RAPTOR)</h3>
+<p>RAPTOR builds a hierarchy of summaries at write time: it embeds leaf chunks, clusters related ones, has a language model summarize each cluster, embeds the summaries and repeats for higher levels.<sup class="cite"><a href="#s05-17">17</a></sup> At query time the <strong>collapsed tree</strong> flattens all levels into one list, searching chunks and summaries together by similarity within a token budget. This costs one query embedding and no summary call.<sup class="cite"><a href="#s05-17">17</a></sup> Writing costs one summarization call per cluster at every level plus one embedding per leaf and summary; corpus-dependent cluster counts make per-document cost variable.<sup class="cite"><a href="#s05-18">18</a></sup></p>
+<p>The checked implementation rebuilds on additions, with no incremental update or deletion route. Track dependencies: replacing leaves requires refreshing summaries and embeddings, possibly reclustering. Deleting only leaves retains their information in summaries; rebuild or invalidate before serving. The implementation stores child-node IDs; add source document, version and page or chunk IDs and verify answers against the leaves, since a summary is not a quotation.<sup class="cite"><a href="#s05-17">17</a>,<a href="#s05-18">18</a></sup> The paper reports gains over flat retrieval on long-document questions, including QASPER research papers, but no comparison with entity graphs (Chapter 14). Test it where flat top-k retrieval cannot synthesize across passages, and compare answer quality, source coverage and rebuild cost on your golden set. Late chunking keeps context without summary levels.<sup class="cite"><a href="#s05-17">17</a>,<a href="#s05-9">9</a></sup></p>
+
+<h3 id="soft-forgetting">Soft forgetting: lower retrieval strength without erasing</h3>
+<p>Unused memories can lose ranking weight while retaining evidence. The Generative Agents paper (April 2023, section 4.1) scores recency as <code>recency = 0.995^h</code>, where <code>h</code> is sandbox game hours since the memory was last retrieved, and retrieval refreshes that clock; the final score also combines normalized relevance and importance.<sup class="cite"><a href="#s05-4">4</a></sup></p>
+<p>The released code differs: the August 2023 repository snapshot computes <code>recency_decay^i</code> over positions <code>i</code> in a list sorted by last access, not over elapsed hours.<sup class="cite"><a href="#s05-19">19</a></sup> A policy proposed here (not from the paper): refresh strength on verified use, not retrieval alone; pin confirmed enduring preferences; keep strength separate from authorization and retention, since hard expiry or required erasure must remove the memory from live reads whatever its score (Chapters 10 and 17). No gain was measured.</p>
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>A memory store too large to put in the prompt whole.</li>
+      <li>Mixed questions: exact IDs and codes next to paraphrases.</li>
+      <li>A store you can test with 20 real questions, keeping only the steps the numbers support.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>If authorized notes fit the context and cost budget, compare loading that scoped set whole; Anthropic suggests caching below about 200,000 tokens. Reuse cached contents only while authorized and current.<sup class="cite"><a href="#s05-1">1</a></sup></li>
+      <li>Source code that changes all day without index refreshes. Use current-file search or refresh the symbol map.</li>
+      <li>Fixing duplicates or contradictions, which needs write-time rules, not a better ranker. Supersede contradictory notes when writing them (Chapters 13 and 14).</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Small personal corpus</h3>
+  <dl>
+    <dt>Situation</dt><dd>One person keeps about 5,000 prose, ticket and config notes. Dense search misses ticket numbers; keyword search misses paraphrases.</dd>
+    <dt>Why it fits</dt><dd>BM25 catches exact tokens and a small embedding model catches paraphrases. RRF merges the lists with one constant and no score tuning.<sup class="cite"><a href="#s05-8">8</a></sup> </dd>
+    <dt>Pair with</dt><dd>Chapter 12 for the SQLite setup. Add a reranker only if the top five are noisy.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Code in a repository</h3>
+  <dl>
+    <dt>Situation</dt><dd>An agent works in a large, hourly-changing repository with exact function names, flags and paths.</dd>
+    <dt>Why it fits</dt><dd>Agentic search runs <code>grep</code> and <code>glob</code> on current files, seeing the current checkout.<sup class="cite"><a href="#s05-16">16</a></sup> Saved code notes need repository, path, symbol and commit metadata to flag or suppress stale notes; ClickHouse's Loom, an agent-memory product, documents one vendor implementation.<sup class="cite"><a href="#s05-20">20</a></sup></dd>
+    <dt>Pair with</dt><dd>Chapter 01 for notes beside the code and its freshness policy for stale ones.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Chat history</h3>
+  <dl>
+    <dt>Situation</dt><dd>An assistant keeps months of chat and must answer "what did I say about the router last week" and "what was that error code".</dd>
+    <dt>Why it fits</dt><dd>Use indexed-field equality for exact codes, FTS5 for words/token phrases. Filter to the requested week before ranking; dense handles paraphrases and recency favors recent turns.<sup class="cite"><a href="#s05-4">4</a></sup></dd>
+    <dt>Pair with</dt><dd>Index each complete turn with its preceding turn's ID. After retrieval, fetch the preceding turn for context and include each turn only once.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>Long documents</h3>
+  <dl>
+    <dt>Situation</dt><dd>A team indexes 400-page manuals whose sections repeat headings like "Overview" and say "this setting" without naming it.</dd>
+    <dt>Why it fits</dt><dd>Anthropic reports Contextual Retrieval cut top-20 failures by 49%, and by 67% with reranking; Numbers checks the full pipeline locally; keyword search and reranking may explain its gain.<sup class="cite"><a href="#s05-1">1</a></sup> For text that fits a long-context embedder's input window, late chunking is a cheaper route.<sup class="cite"><a href="#s05-9">9</a></sup></dd>
+    <dt>Pair with</dt><dd>Hybrid search, then rerank the top 150 down to 20.<sup class="cite"><a href="#s05-1">1</a></sup></dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>A corpus that changes daily</h3>
+  <dl>
+    <dt>Situation</dt><dd>A support team edits notes daily. Old answers must not outrank today's; nightly re-embedding of everything is wasteful.</dd>
+    <dt>Why it fits</dt><dd>Keyword indexes update cheaply on write. Hash each chunk's embedding input, headings and prefixes included, and re-embed only changes, plus chunks whose prefix depends on a changed document. Mark replaced versions inactive on write and exclude them in both searches before the limit; use recency only to order eligible notes.</dd>
+    <dt>Pair with</dt><dd>Write-time supersede rules in Chapters 13 and 14. For files that change within a session, fall back to agentic search.</dd>
+  </dl>
+</article>
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p class="table-title">Vendor measurements and published specifications</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>5.7%</td><td>Anthropic: retrieval failure rate, 1 minus recall@20 over the top 20 chunks, with embeddings alone.<sup class="cite"><a href="#s05-1">1</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>3.7%, 2.9%, 1.9%</td><td>The same failure rate with contextual embeddings, then contextual BM25 added, then reranking added. These are 35%, 49% and 67% fewer failures.<sup class="cite"><a href="#s05-1">1</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>$1.02 per 1M document tokens</td><td>One-time cost of writing the context for each chunk, with prompt caching.<sup class="cite"><a href="#s05-1">1</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>150 in, 20 out</td><td>Candidates sent to the reranker and chunks passed to the model.<sup class="cite"><a href="#s05-1">1</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>60</td><td>The RRF constant added to each rank, fixed in a pilot investigation.<sup class="cite"><a href="#s05-8">8</a></sup></td><td class="src"><span class="pill official">Paper</span></td></tr>
+    <tr><td>4 to 5%</td><td>Average gain of RRF over the best single system in the RRF paper.<sup class="cite"><a href="#s05-8">8</a></sup></td><td class="src"><span class="pill official">Paper</span></td></tr>
+    <tr><td>0.6B, 131K tokens</td><td>Parameters and input length of Jina reranker v3.5. License CC-BY-NC-4.0.<sup class="cite"><a href="#s05-14">14</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+  </tbody>
+</table>
+<p><strong>Tested locally</strong> (companion repository, benchmarks/retrieval-methods). Qwen3.5 wrote context; different data/models cannot validate vendor percentages. Pipeline rows compare contextual hybrid/reranking against embeddings alone. Models: all-MiniLM-L6-v2 embeddings and ms-marco-MiniLM-L-6-v2 reranking, versus the walkthrough's TinyBERT. The three options above were unmeasured. SciFact holds scientific abstracts; LoCoMo, multi-session chats. Failure averages the share of required source texts absent from the top 20: answer-set recall over abstracts/sessions, not chunks. Paired 95% intervals resample shared queries. Failure changes use percentage points; MAP changes use percentages relative to BM25. The paper's 4 to 5% uses a different benchmark.</p>
+<table class="data compact">
+  <thead><tr><th>Comparison</th><th>Corpus</th><th>Baseline</th><th>Variant</th><th>Change (95% interval)</th></tr></thead>
+  <tbody>
+    <tr><td>Answer-set failure, full contextual pipeline</td><td>SciFact abstracts (300 queries)</td><td>14.53%, embeddings alone</td><td>13.76% (10.11 to 17.72)</td><td>-0.78 points (-4.50 to 3.00), inconclusive</td></tr>
+    <tr><td>Same measure</td><td>LoCoMo chats (150 questions, 10 conversations)</td><td>5.96%, embeddings alone</td><td>0.63% (0.00 to 1.57)</td><td>-5.32 points (-9.10 to -2.04), question-level interval</td></tr>
+    <tr><td>MAP at 150 results, RRF</td><td>SciFact</td><td>BM25, 0.60</td><td>RRF, 0.63</td><td>Up 5.3% relative (0.22 to 8.60)</td></tr>
+    <tr><td>Same measure</td><td>LoCoMo</td><td>BM25, 0.74</td><td>RRF, 0.69</td><td>Down 7.3% relative (-14.07 to -0.74)</td></tr>
+  </tbody>
+</table>
+<p>Without contextual prefixes, hybrid plus reranking had 12.81% SciFact failure and 0.72% LoCoMo failure, versus the contextual rates above. Question-level intervals cannot establish stability across conversations. MAP's paired 95% intervals exclude zero in opposite directions. If RRF loses on your golden set, ship the better retriever or rerank both lists.</p>
+<p><strong>Tested locally:</strong> on 300 LongMemEval conversational-memory questions, BM25 answered 191/300 correctly (63.7%) against dense retrieval's 165/300 (55.0%), an 8.7-point gap (exact form of McNemar's test for paired binary outcomes, p = 0.006). These answer accuracies use MiniLM and a local Gemma 2 9B reader. BM25 was strong on single-session facts and knowledge updates, weak on multi-session reasoning and preferences. Intervals and the full table are in Chapter 17.</p>
+<h3>Cost and scale</h3>
+<ul>
+  <li><strong>Writes and reads:</strong> one embedding per chunk and query; keyword indexing and RRF need no model. Reranking scores at most 2n pairs for two first stages of n, even with batching.</li>
+  <li><strong>Storage and scans:</strong> 384-dimension float32 vectors take 1,536 bytes each: 153.6 MB for 100,000 chunks or 1.536 GB for one million, before text and indexes (Chapter 00). Exact search scans every vector per query: ten concurrent uncached queries at one million rows read roughly 15.36 GB before reranking. Embedding and scoring add time; latency was not measured.</li>
+  <li><strong>What to do:</strong> more users multiply rows and more agents multiply queries, so measure p95 retrieval time and pool recall under load. If scans exceed the latency budget, move to indexed pgvector (Chapter 08) or a dedicated store (Chapter 11). If concurrent writes stall, move to PostgreSQL (Chapter 08).</li>
+</ul>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Build SQLite keyword/vector indexes, score four pipelines, then load vectors into PostgreSQL. Save complete files at their named paths; long blocks print as pointers. dataset.py supplies 24 notes and 20 questions. This single-user plumbing fixture measures neither production quality nor speed and lacks tenant authorization. Add user/project conditions inside both SQLite queries before LIMIT and k (Chapter 12), never by filtering returned IDs.</p>
+<p>Walkthrough scripts/output verified after the 22 November research cutoff: 23 November 2026, Ubuntu x86-64, AMD Ryzen 9 8945HX (32 hardware threads, four used here), CPU only: Python 3.14.4, SQLite 3.51.3, torch 2.15.0+cpu, sentence-transformers 6.3.0, transformers 5.23.0 and sqlite-vec 0.1.9. PostgreSQL 18.7 and pgvector 0.8.7 ran under Docker 29.1.3. You need Python with venv support, curl, tar, a C compiler, make, timeout, coreutils and a running Docker Engine, but no model API key.</p>
+<p>Save named files together outside the lab; run <code>bash lab.sh</code>, for all steps in one process; do not run excerpts separately. Preflight refusals leave existing resources alone. After creation, an exit trap checks each resource independently and removes only resources carrying this run's ownership token.</p>
+<div class="codeblock" data-listing-note="Runs the isolated retrieval lab and its ownership-checked cleanup."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">lab.sh</span><span class="code-tag tested">Tested</span></div><pre>#!/usr/bin/env bash
+set -euo pipefail
+ATTACHMENTS=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &amp;&amp; pwd)
+unset LAB_TOKEN LAB_REAL
+finish() {
+  rc=$?
+  trap - EXIT
+  if [ -n "${LAB_TOKEN:-}" ]; then
+    source "$ATTACHMENTS/cleanup.sh" || rc=1
+  fi
+  exit "$rc"
+}
+trap finish EXIT
+source "$ATTACHMENTS/setup.sh"
+for file in dataset.py config.py index.py search.py eval.py hybrid.sql; do
+  cp -- "$ATTACHMENTS/$file" "$LAB/$file"
+done
+venv/bin/python dataset.py
+sha256sum notes.tsv golden.jsonl
+venv/bin/python index.py
+venv/bin/python eval.py
+source "$ATTACHMENTS/postgres.sh"</pre></div>
+<ol class="steps">
+<li class="step-long"><p class="step-title">Create an isolated environment</p><p>Public model weights download on first use, revisions pinned in config.py. setup.sh builds pinned SQLite 3.51.3 with FTS5 for reproducibility. It includes Chapter 12's WAL-reset fix; this lab uses rollback journaling.<sup class="cite"><a href="#s05-24">24</a></sup></p>
+<div class="codeblock splittable" data-listing-note="Refuses an existing path, records lab ownership and installs the pinned CPU environment."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">setup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+LAB=/var/tmp/memlab-05/run
+if [ -e "$LAB" ] || [ -L "$LAB" ]; then
+  echo "STOP: $LAB already exists" &gt;&amp;2
+  exit 1
+fi
+if docker container inspect memlab-05-pg &gt;/dev/null 2&gt;&amp;1; then
+  echo "STOP: memlab-05-pg already exists" &gt;&amp;2
+  exit 1
+fi
+mkdir -p /var/tmp/memlab-05
+mkdir "$LAB"
+LAB_TOKEN=$(cat /proc/sys/kernel/random/uuid)
+LAB_REAL=$(realpath -e -- "$LAB")
+printf '%s\n' "$LAB_TOKEN" &gt; "$LAB/.owner"
+printf '%s\n' "$LAB_REAL" &gt; "$LAB/.path"
+cd "$LAB"
+export HF_HOME=/var/tmp/memlab-05/run/hf
+export PIP_CACHE_DIR=/var/tmp/memlab-05/run/pip-cache
+export CUDA_VISIBLE_DEVICES=''
+export OMP_NUM_THREADS=4
+export TOKENIZERS_PARALLELISM=false
+curl -fsSLO https://sqlite.org/2026/sqlite-autoconf-3510300.tar.gz
+tar -xzf sqlite-autoconf-3510300.tar.gz
+cd sqlite-autoconf-3510300
+./configure --prefix=/var/tmp/memlab-05/run/sqlite-fixed \
+  --disable-static --enable-fts5
+make -j4
+make install
+cd ..
+export LD_LIBRARY_PATH=/var/tmp/memlab-05/run/sqlite-fixed/lib
+python3 -m venv venv
+venv/bin/python -c 'import sqlite3; print(sqlite3.sqlite_version)'
+venv/bin/pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0
+venv/bin/pip install sentence-transformers==6.3.0 sqlite-vec==0.1.9 \
+  transformers==5.23.0 tokenizers==0.23.3 huggingface-hub==2.4.0 numpy==2.5.5</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Write the entire fixture</p><p>dataset.py writes UTF-8 notes.tsv and golden.jsonl with all relevance labels. The first question asks for E-4417's meaning (n01) and remedy (n21), so retrieving either alone earns 0.5 recall.</p>
+<div class="codeblock splittable" data-listing-note="Writes all 24 notes and 20 labelled questions for the retrieval comparison."><div class="code-head"><span class="code-lang">python</span><span class="code-file">dataset.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import json
+from pathlib import Path
+
+notes = [
+    ('n01', 'Backup error E-4417 means the destination disk is full.'),
+    ('n02', 'Photo backups run at 02:30 and keep 14 daily snapshots.'),
+    ('n03', 'The office router admin page is available only over the VPN.'),
+    ('n04', 'The guest Wi-Fi password changes on the first Monday each month.'),
+    ('n05', 'The API rate limit is 120 requests per minute per account.'),
+    ('n06', 'Rotate the staging API token every 30 days.'),
+    ('n07', 'The team standup moved from 09:00 to 09:30 in October.'),
+    ('n08', 'Release approval requires two reviewers and a green test suite.'),
+    ('n09', 'TS-999 was a TLS certificate expiry incident; renew the certificate.'),
+    ('n10', 'A power outage restarts the lab switch after electricity returns.'),
+    ('n11', 'The laptop battery lasts six hours when browsing documents.'),
+    ('n12', 'The database restore drill runs on the last Friday of each month.'),
+    ('n13', 'We survive a deploy failure by reverting to the previous image.'),
+    ('n14', 'The invoice export is a CSV with date, customer and amount columns.'),
+    ('n15', 'A blackout curtain keeps sunlight off the conference room screen.'),
+    ('n16', 'UPS battery backup powers office equipment for 25 minutes '
+            'during outages.'),
+    ('n17', 'The support queue escalation goes to the on-call engineer.'),
+    ('n18', 'Retention for audit events is 90 days; then delete them.'),
+    ('n19', 'The documentation search uses English stemming and a keyword index.'),
+    ('n20', 'Expense receipts must be submitted within 10 working days.'),
+    ('n21', 'For E-4417, delete expired snapshots and rerun the backup job.'),
+    ('n22', 'The deployment freeze starts at noon on Fridays.'),
+    ('n23', 'A spare battery for the wireless keyboard is in the desk drawer.'),
+    ('n24', 'A disaster recovery exercise checks how long services survive.'),
+]
+questions = [
+    ('What does E-4417 mean, and how do I fix it?', ['n01', 'n21']),
+    ('What was TS-999?', ['n09']),
+    ('When do photo backups run?', ['n02']),
+    ('How can I open the router admin page?', ['n03']),
+    ('When does the guest Wi-Fi password change?', ['n04']),
+    ('How many API requests can an account send per minute?', ['n05']),
+    ('How often must the staging token be replaced?', ['n06']),
+    ('What time is standup now?', ['n07']),
+    ('What is required to approve a release?', ['n08']),
+    ('How long do we survive a blackout?', ['n16']),
+    ('How long can the laptop run without a charger?', ['n11']),
+    ('When do we rehearse database recovery?', ['n12']),
+    ('How do we recover from a failed deployment?', ['n13']),
+    ('What fields are in the invoice export?', ['n14']),
+    ('Who gets an escalated support ticket?', ['n17']),
+    ('When are audit events deleted?', ['n18']),
+    ('How does documentation keyword search normalize words?', ['n19']),
+    ('How soon must I file an expense receipt?', ['n20']),
+    ('When does the deployment freeze begin?', ['n22']),
+    ('Where is the spare keyboard battery?', ['n23']),
+]
+Path('notes.tsv').write_text(
+    ''.join(f'{nid}\t{body}\n' for nid, body in notes), encoding='utf-8')
+Path('golden.jsonl').write_text(''.join(
+    json.dumps({'q': q, 'relevant': ids}) + '\n' for q, ids in questions),
+    encoding='utf-8')
+print(len(notes), 'notes;', len(questions), 'questions written')</pre></div>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file"></span><span class="code-tag tested">Tested</span></div>
+<pre>venv/bin/python dataset.py
+sha256sum notes.tsv golden.jsonl</pre></div><div class="codeblock splittable"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>24 notes; 20 questions written
+46964bc0146ec36c3397699866f13b718b4ebe04041f24109041537bdef2ddd5  notes.tsv
+0521c4035416e72df528e151c4d33604523ca5577242984af41e8b0e4dd2d218  golden.jsonl</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Generate vectors and both database inputs</p><p>Save config.py and index.py. The loader embeds each note into 384 normalized numbers and inserts matching IDs into both indexes. The same model yields the SQLite rows, the PostgreSQL INSERT statements and the query vector. It rebuilds only the tutorial tables.<sup class="cite"><a href="#s05-21">21</a>,<a href="#s05-22">22</a></sup></p>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">python</span><span class="code-file">config.py</span><span class="code-tag tested">Tested</span></div>
+<pre>from sentence_transformers import SentenceTransformer, CrossEncoder
+
+model = SentenceTransformer(
+    'sentence-transformers/all-MiniLM-L6-v2', device='cpu',
+    revision='1110a243fdf4706b3f48f1d95db1a4f5529b4d41')
+
+def load_reranker():
+    return CrossEncoder('cross-encoder/ms-marco-TinyBERT-L2-v2', device='cpu',
+                        revision='81d1926f67cb8eee2c2be17ca9f793c7c3bd20cc')</pre></div>
+<div class="codeblock splittable" data-listing-note="Embeds the notes, commits the SQLite indexes and writes matching PostgreSQL inputs."><div class="code-head"><span class="code-lang">python</span><span class="code-file">index.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import sqlite3, struct, sqlite_vec
+from pathlib import Path
+from config import model
+
+notes = [line.split('\t', 1) for line in
+         Path('notes.tsv').read_text(encoding='utf-8').splitlines()]
+db = sqlite3.connect('memory.db')
+assert sqlite3.sqlite_version_info >= (3, 51, 3)
+db.enable_load_extension(True)
+sqlite_vec.load(db)
+db.enable_load_extension(False)
+db.executescript('''
+DROP TABLE IF EXISTS notes;
+DROP TABLE IF EXISTS fts;
+DROP TABLE IF EXISTS vec;
+CREATE TABLE notes(rowid INTEGER PRIMARY KEY, id TEXT UNIQUE, body TEXT);
+CREATE VIRTUAL TABLE fts USING fts5(body);
+CREATE VIRTUAL TABLE vec USING vec0(embedding float[384]);
+''')
+vectors = model.encode([b for _, b in notes], normalize_embeddings=True)
+pg = ['''CREATE EXTENSION IF NOT EXISTS vector;
+DROP TABLE IF EXISTS memories;
+CREATE TABLE memories(id text PRIMARY KEY, content text, created_at date,
+ tsv tsvector GENERATED ALWAYS AS (to_tsvector('english', content)) STORED,
+ embedding vector(384));
+CREATE INDEX ON memories USING gin(tsv);
+CREATE INDEX ON memories USING hnsw(embedding vector_cosine_ops);
+''']
+def sql(text):
+    return "'" + text.replace("'", "''") + "'"
+
+for i, ((nid, body), v) in enumerate(zip(notes, vectors), 1):
+    db.execute('INSERT INTO notes VALUES(?,?,?)', (i, nid, body))
+    db.execute('INSERT INTO fts(rowid,body) VALUES(?,?)', (i, body))
+    db.execute('INSERT INTO vec(rowid,embedding) VALUES(?,?)',
+               (i, struct.pack('&lt;384f', *v)))
+    vec = '[' + ','.join(str(float(x)) for x in v) + ']'
+    date = f'2026-10-{i:02d}'
+    pg.append('INSERT INTO memories(id,content,created_at,embedding) VALUES('
+              + ','.join(map(sql, [nid, body, date, vec])) + ');\n')
+db.commit()
+assert db.execute('SELECT count(*) FROM notes').fetchone()[0] == 24
+db.close()
+Path('load.sql').write_text(''.join(pg), encoding='utf-8')
+q = model.encode('How long do we survive a blackout?', normalize_embeddings=True)
+vec = '[' + ','.join(str(float(x)) for x in q) + ']'
+Path('query-vector.sql').write_text('\\set qv ' + sql(vec) + '\n')
+print(len(notes), 'notes indexed; PostgreSQL inputs written')</pre></div>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file"></span><span class="code-tag tested">Tested</span></div>
+<pre>venv/bin/python index.py</pre></div><div class="codeblock splittable"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>24 notes indexed; PostgreSQL inputs written</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Search, merge and rerank</p><p>Save as search.py. Keyword search quotes tokens to avoid FTS syntax errors; it splits TS-999 into OR-ed TS and 999. BM25 ties break by rowid; dense has no secondary tie order. Fusion and reranking ties break by note ID. Each stage returns five candidates (n; sqlite-vec calls it k), giving up to ten pooled. In <code>rrf</code>, rrf_c=60 is the RRF constant. Smaller pinned TinyBERT keeps the fixture fast, scoring only that pool; it is not a recommendation.<sup class="cite"><a href="#s05-23">23</a></sup></p>
+<div class="codeblock splittable" data-listing-note="Runs keyword and dense search, merges ranks with RRF and reranks the candidate pool."><div class="code-head"><span class="code-lang">python</span><span class="code-file">search.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import re, sqlite3, struct, sqlite_vec
+from config import model, load_reranker
+
+db = sqlite3.connect('memory.db')
+assert sqlite3.sqlite_version_info &gt;= (3, 51, 3)
+db.enable_load_extension(True)
+sqlite_vec.load(db)
+db.enable_load_extension(False)
+reranker = load_reranker()
+
+def ids(rows):
+    return [db.execute('SELECT id FROM notes WHERE rowid=?', (r,)).fetchone()[0]
+            for r, in rows]
+
+def bm25(q, n=5):
+    words = re.findall(r'\w+', q)
+    if not words:
+        return []
+    match = ' OR '.join('"%s"' % w for w in words)
+    return ids(db.execute('SELECT rowid FROM fts WHERE fts MATCH ? '
+                          'ORDER BY bm25(fts), rowid LIMIT ?', (match, n)))
+
+def dense(q, n=5):
+    v = struct.pack('&lt;384f', *model.encode(q, normalize_embeddings=True))
+    return ids(db.execute('SELECT rowid FROM vec '
+                          'WHERE embedding MATCH ? AND k=? '
+                          'ORDER BY distance', (v, n)))
+
+def rrf(rankings, rrf_c=60):
+    scores = {}
+    for ranking in rankings:
+        for rank, doc in enumerate(ranking, 1):
+            scores[doc] = scores.get(doc, 0.0) + 1 / (rrf_c + rank)
+    return sorted(scores, key=lambda d: (-scores[d], d))
+
+def hybrid(q, n=5):
+    return rrf([bm25(q, n), dense(q, n)])
+
+def rerank(q, pool):
+    if not pool:
+        return []
+    bodies = [db.execute('SELECT body FROM notes WHERE id=?', (d,)).fetchone()[0]
+              for d in pool]
+    scores = reranker.predict([(q, b) for b in bodies])
+    return [d for _, d in sorted(zip(scores, pool), key=lambda x: (-x[0], x[1]))]
+
+def hybrid_rerank(q, n=5):
+    return rerank(q, hybrid(q, n))</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Run the complete evaluation</p><p>Run eval.py. Pool recall uses every candidate; recall@3 and MRR@3 use the same top-three cutoff in all pipelines. eval.py averages across questions and checks row count, integrity, TS-999 and empty inputs.</p>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">python</span><span class="code-file">eval.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import json
+from search import db
+from search import bm25, dense, hybrid, hybrid_rerank, rerank
+
+def recall(ranked, relevant, k):
+    return len(set(ranked[:k]) &amp; set(relevant)) / len(relevant)
+
+def mrr(ranked, relevant):
+    return next((1 / i for i, d in enumerate(ranked, 1) if d in relevant), 0)
+
+assert db.execute('SELECT count(*) FROM notes').fetchone()[0] == 24
+assert db.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
+rows = [json.loads(line) for line in open('golden.jsonl', encoding='utf-8')]
+for name, fn in [('bm25', bm25), ('dense', dense), ('hybrid_rrf', hybrid),
+                 ('hybrid+rerank', hybrid_rerank)]:
+    runs = [fn(r['q']) for r in rows]
+    r3 = sum(recall(x, r['relevant'], 3) for x, r in zip(runs, rows)) / len(rows)
+    pool = sum(recall(x, r['relevant'], len(x))
+               for x, r in zip(runs, rows)) / len(rows)
+    m = sum(mrr(x[:3], r['relevant']) for x, r in zip(runs, rows)) / len(rows)
+    print('%-14s pool=%.2f  recall@3=%.2f  MRR@3=%.2f' % (name, pool, r3, m))
+q = 'How long do we survive a blackout?'
+for name, pool in [('BM25', bm25(q, 5)), ('dense', dense(q, 5)),
+                   ('hybrid', hybrid(q, 5))]:
+    print(name, 'pool:', pool)
+    print(name, 'reranked:', rerank(q, pool))
+print('TS-999 dense:', dense('What was TS-999?', 3))
+assert 'n09' in dense('What was TS-999?', 3)
+assert bm25('') == [] and rerank('', []) == []</pre></div>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file"></span><span class="code-tag tested">Tested</span></div>
+<pre>venv/bin/python eval.py</pre></div>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>bm25           pool=0.95  recall@3=0.90  MRR@3=0.85
+dense          pool=1.00  recall@3=1.00  MRR@3=0.97
+hybrid_rrf     pool=1.00  recall@3=0.95  MRR@3=0.93
+hybrid+rerank  pool=1.00  recall@3=0.95  MRR@3=0.95
+BM25 pool: ['n24', 'n13', 'n15', 'n08', 'n10']
+BM25 reranked: ['n24', 'n15', 'n13', 'n10', 'n08']
+dense pool: ['n24', 'n16', 'n10', 'n22', 'n15']
+dense reranked: ['n24', 'n15', 'n16', 'n22', 'n10']
+hybrid pool: ['n24', 'n10', 'n15', 'n13', 'n16', 'n08', 'n22']
+hybrid reranked: ['n24', 'n15', 'n13', 'n16', 'n22', 'n10', 'n08']
+TS-999 dense: ['n09', 'n21', 'n23']</pre></div><p>Dense has the highest recall here. For the blackout question, n13 and n16 each occur at rank two in only one first-stage list. Their RRF scores tie; ID order puts n13 first, leaving n16 fifth. TinyBERT moves n16 to fourth, still outside recall@3. Reranking preserves pool recall and raises aggregate MRR@3. Dense finds n09 here; reliable identifier lookup among similar incident notes remains untested.</p></li>
+<li class="step-long"><p class="step-title">Read the same data back from PostgreSQL</p><p>Save hybrid.sql. Its ts_rank_cd ranking is not BM25, so results need not match SQLite's. Both lists date-filter and sort before LIMIT, then RRF-merge. On 24 rows PostgreSQL may scan the table. HNSW (approximate nearest-neighbor indexing) can visit too few date-eligible candidates to fill five slots despite enough eligible rows (Chapter 08). SQL sorts rounded RRF scores; close scores can tie, letting ID decide. Sort unrounded sums in production.</p>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">sql</span><span class="code-file">hybrid.sql</span><span class="code-tag tested">Tested</span></div>
+<pre>WITH v AS (
+ SELECT id, row_number() OVER (ORDER BY embedding &lt;=&gt; :'qv'::vector, id) AS r
+ FROM memories WHERE created_at &gt;= :'since'::date
+ ORDER BY embedding &lt;=&gt; :'qv'::vector, id LIMIT 5),
+f AS (
+ SELECT id, row_number() OVER (ORDER BY ts_rank_cd(tsv,q) DESC, id) AS r
+ FROM memories, to_tsquery('english', 'long | survive | blackout | battery') q
+ WHERE tsv @@ q AND created_at &gt;= :'since'::date
+ ORDER BY ts_rank_cd(tsv,q) DESC, id LIMIT 5)
+SELECT id, v.r AS vec_rank, f.r AS kw_rank,
+ round((coalesce(1.0/(60+v.r),0) + coalesce(1.0/(60+f.r),0))::numeric,5) AS rrf
+FROM v FULL JOIN f USING(id)
+ORDER BY rrf DESC, id LIMIT 5;</pre></div>
+<p>This illustrative tsquery adds battery manually for n16; do not compare ranks with SQLite's. Never pass raw text to to_tsquery. websearch_to_tsquery accepts it but ANDs terms, often missing natural questions. For OR queries, drop stopwords first; reserve LLM keyword extraction for pipelines already rewriting queries. Check keyword recall on the golden set.</p>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">postgres.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+PG_IMAGE=pgvector/pgvector@sha256:
+PG_IMAGE+=38681dc6eaf55308e2a4c6de392d131652dcfac70e1263e35cd9b5ea3fe39782
+docker run -d --name memlab-05-pg --cpus=2 --label "memfix.owner=$LAB_TOKEN" \
+  --memory=2g --tmpfs /var/lib/postgresql -p 127.0.0.1:39050:5432 \
+  -e POSTGRES_PASSWORD=memfix-local "$PG_IMAGE" &gt;/dev/null
+ready=0
+for attempt in {1..60}; do
+  if timeout 5 docker exec memlab-05-pg \
+    pg_isready -h 127.0.0.1 -U postgres -t 2 &gt;/dev/null 2&gt;&amp;1; then
+    ready=1
+    break
+  fi
+  sleep 1
+done
+if [ "$ready" != 1 ]; then
+  echo "STOP: PostgreSQL readiness timed out" &gt;&amp;2
+  docker logs memlab-05-pg &gt;&amp;2
+  exit 1
+fi
+echo "Ready: PostgreSQL TCP accepts connections"
+docker exec -i memlab-05-pg psql -U postgres -v ON_ERROR_STOP=1 &lt; load.sql
+for SINCE in 2026-10-01 2026-10-15; do
+  echo "since=$SINCE"
+  cat query-vector.sql hybrid.sql | docker exec -i memlab-05-pg \
+    psql -U postgres -v ON_ERROR_STOP=1 -v since="$SINCE"
+done</pre></div>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>Ready: PostgreSQL TCP accepts connections
+since=2026-10-01
+ id  | vec_rank | kw_rank |   rrf
+-----+----------+---------+---------
+ n24 |        1 |       1 | 0.03279
+ n16 |        2 |       5 | 0.03151
+ n15 |        5 |       4 | 0.03101
+ n11 |          |       2 | 0.01613
+ n10 |        3 |         | 0.01587
+(5 rows)
+
+since=2026-10-15
+ id  | vec_rank | kw_rank |   rrf
+-----+----------+---------+---------
+ n24 |        1 |       1 | 0.03279
+ n16 |        2 |       3 | 0.03200
+ n15 |        4 |       2 | 0.03175
+ n22 |        3 |         | 0.01587
+ n23 |          |       4 | 0.01563
+(5 rows)</pre></div><p>Both return five rows. index.py assigns synthetic 2026-10-NN dates to nNN; the 15 October cutoff drops n01 to n14, including n10 and n11. RRF puts n24 first though n16 answers the question: agreement between retrievers does not prove the answer.</p></li>
+<li><p class="step-title">Remove the tutorial resources</p><p>Remove exercise-only images after the container: docker image rm with postgres.sh's full PG_IMAGE digest. Cleanup removes database, weights and caches, leaving /var/tmp/memlab-05; remove the empty parent with rmdir.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">cleanup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+cleanup_lab() {
+  local failed=0 owner
+  if docker container inspect memlab-05-pg &gt;/dev/null 2&gt;&amp;1; then
+    owner=$(docker inspect -f '{{ index .Config.Labels "memfix.owner" }}' memlab-05-pg)
+    if [ -n "${LAB_TOKEN:-}" ] &amp;&amp; [ "$owner" = "$LAB_TOKEN" ]; then
+      docker rm -fv memlab-05-pg || failed=1
+    else
+      echo "STOP: container ownership check failed" &gt;&amp;2
+      failed=1
+    fi
+  fi
+  if [ -e "${LAB:-}" ] || [ -L "${LAB:-}" ]; then
+    if [ "${LAB:-}" = /var/tmp/memlab-05/run ] &amp;&amp; [ ! -L "$LAB" ] &amp;&amp;
+       [ -f "$LAB/.owner" ] &amp;&amp; [ ! -L "$LAB/.owner" ] &amp;&amp;
+       [ -f "$LAB/.path" ] &amp;&amp; [ ! -L "$LAB/.path" ] &amp;&amp;
+       [ -n "${LAB_TOKEN:-}" ] &amp;&amp; [ -n "${LAB_REAL:-}" ] &amp;&amp;
+       [ "$(cat "$LAB/.owner")" = "$LAB_TOKEN" ] &amp;&amp;
+       [ "$(cat "$LAB/.path")" = "$LAB_REAL" ] &amp;&amp;
+       [ "$(realpath -e -- "$LAB")" = /var/tmp/memlab-05/run ] &amp;&amp;
+       [ "$LAB_REAL" = /var/tmp/memlab-05/run ]; then
+      cd /var/tmp
+      rm -rf -- "$LAB" || failed=1
+    else
+      echo "STOP: lab ownership check failed" &gt;&amp;2
+      failed=1
+    fi
+  fi
+  if [ "$failed" = 0 ]; then
+    echo "Cleanup verified: lab and container removed"
+  fi
+  return "$failed"
+}
+cleanup_lab</pre></div>
+<p>Selected output: the first two lines are refusal tests; a normal run prints only the last.</p>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>STOP: /var/tmp/memlab-05/run already exists
+STOP: lab ownership check failed
+Cleanup verified: lab and container removed</pre></div>
+</li>
+</ol>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: a reranker cannot fix a pool miss</p>
+  <p>In the walkthrough the five-candidate BM25 pool misses n16, so reranking cannot recover n16. If pool recall is low, improve the first stage with a better chunk, a rewritten query or a second search.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: FTS5 query syntax breaks on hyphens</p>
+  <p>Unquoted <code>agent-memory</code> in <code>MATCH</code> fails with "no such column: memory", because the unquoted hyphen is query syntax, not part of a literal phrase. A parameterized query does not help: the query language lives inside the parameter. Quoting each word, as the <code>bm25</code> function in search.py does, avoids the error but splits the ID into OR-ed tokens. Quote the whole ID to require adjacent tokens in order. For literal identifier lookup, index the ID in a separate column and use equality.</p>
+</aside>
+
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: build the golden set first</p>
+  <p><strong>Write 20 real questions first.</strong> Then compare BM25, one dense model and their RRF merge on a store you already run. Test reranking when pool recall meets your target but recall@k or MRR@k lags at serving cutoff k. Set targets from missed-answer costs. With 20 questions, one or two misses signal only that the set must grow. If correct notes rarely enter the pool, fix retrieval first. Test heading-aware chunks or Contextual Retrieval for lost context. Failure was lower on these 150 LoCoMo questions and inconclusive on SciFact; keyword search and reranking may explain the gain.</p>
+  <p>Before shipping, freeze both pipelines and compare fresh labeled questions at the same context budget.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list"><li id="s05-1"><span class="src-title">Anthropic, Contextual Retrieval (2024-09-19)</span> <span class="src-note">(official)</span><a class="url" href="https://www.anthropic.com/research/contextual-retrieval">https://www.anthropic.com/research/contextual-retrieval</a></li><li id="s05-2"><span class="src-title">ColBERTv2, arXiv:2112.01488</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2112.01488">https://arxiv.org/abs/2112.01488</a></li><li id="s05-3"><span class="src-title">HyDE, arXiv:2212.10496 (2022-12)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2212.10496">https://arxiv.org/abs/2212.10496</a></li><li id="s05-4"><span class="src-title">Generative Agents, arXiv:2304.03442</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2304.03442">https://arxiv.org/abs/2304.03442</a></li><li id="s05-5"><span class="src-title">Carbonell and Goldstein, MMR (SIGIR 1998)</span> <span class="src-note">(paper)</span><a class="url" href="https://dl.acm.org/doi/10.1145/290941.291025">https://dl.acm.org/doi/10.1145/290941.291025</a></li><li id="s05-6"><span class="src-title">SQLite FTS5 documentation</span> <span class="src-note">(official)</span><a class="url" href="https://sqlite.org/fts5.html">https://sqlite.org/fts5.html</a></li><li id="s05-7"><span class="src-title">PostgreSQL documentation, controlling text search</span> <span class="src-note">(official)</span><a class="url" href="https://www.postgresql.org/docs/current/textsearch-controls.html">https://www.postgresql.org/docs/current/textsearch-controls.html</a></li><li id="s05-8"><span class="src-title">Cormack, Clarke and Büttcher, Reciprocal Rank Fusion (SIGIR 2009)</span> <span class="src-note">(paper)</span><a class="url" href="https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf">https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf</a></li><li id="s05-9"><span class="src-title">Late chunking, arXiv:2409.04701</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2409.04701">https://arxiv.org/abs/2409.04701</a></li><li id="s05-10"><span class="src-title">SPLADE, arXiv:2109.10086 (2021-09)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2109.10086">https://arxiv.org/abs/2109.10086</a></li><li id="s05-11"><span class="src-title">PLAID, arXiv:2205.09707 (2022-05)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2205.09707">https://arxiv.org/abs/2205.09707</a></li><li id="s05-12"><span class="src-title">BGE-M3 model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/BAAI/bge-m3">https://huggingface.co/BAAI/bge-m3</a></li><li id="s05-13"><span class="src-title">Qwen3-Reranker-0.6B model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/Qwen/Qwen3-Reranker-0.6B">https://huggingface.co/Qwen/Qwen3-Reranker-0.6B</a></li><li id="s05-14"><span class="src-title">Jina reranker v3.5 (released 2026-07-27)</span> <span class="src-note">(official)</span><a class="url" href="https://jina.ai/models/jina-reranker-v3.5/">https://jina.ai/models/jina-reranker-v3.5/</a></li><li id="s05-15"><span class="src-title">Cohere models overview</span> <span class="src-note">(official)</span><a class="url" href="https://cohere.com/models-overview">https://cohere.com/models-overview</a></li><li id="s05-16"><span class="src-title">Claude Code creator, public comment (2025-02-24)</span> <span class="src-note">(primary, workload-specific report)</span><a class="url" href="https://news.ycombinator.com/item?id=43164253">https://news.ycombinator.com/item?id=43164253</a></li><li id="s05-17"><span class="src-title">Sarthi et al., RAPTOR, arXiv:2401.18059v1 (2024-01-31), sections 3–4 and appendices A, E</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/html/2401.18059v1">https://arxiv.org/html/2401.18059v1</a></li><li id="s05-18"><span class="src-title">RAPTOR authors' implementation, commit 7da1d48 (2024-09-03; read 2026-11-20)</span> <span class="src-note">(official source code)</span><a class="url" href="https://github.com/parthsarthi03/raptor/tree/7da1d48a7e1d7dec61a63c9d9aae84e2dfaa5767">https://github.com/parthsarthi03/raptor/tree/7da1d48a7e1d7dec61a63c9d9aae84e2dfaa5767</a></li><li id="s05-19"><span class="src-title">Generative Agents, retrieve.py, commit fe05a71 (2023-08-11; read 2026-11-20)</span> <span class="src-note">(official source code)</span><a class="url" href="https://github.com/joonspk-research/generative_agents/blob/fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4/reverie/backend_server/persona/cognitive_modules/retrieve.py">https://github.com/joonspk-research/generative_agents/blob/fe05a71d3e4ed7d10bf68aa4eda6dd995ec070f4/reverie/backend_server/persona/cognitive_modules/retrieve.py</a></li><li id="s05-20"><span class="src-title">ClickHouse, Introducing Loom (2026-11-13)</span> <span class="src-note">(vendor)</span><a class="url" href="https://clickhouse.com/blog/introducing-loom-agent-memory-that-keeps-up-with-your-code">https://clickhouse.com/blog/introducing-loom-agent-memory-that-keeps-up-with-your-code</a></li><li id="s05-21"><span class="src-title">MiniLM model card and pinned weights</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2">https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2</a></li><li id="s05-22"><span class="src-title">sqlite-vec nearest-neighbor query documentation</span> <span class="src-note">(official)</span><a class="url" href="https://alexgarcia.xyz/sqlite-vec/features/knn.html">https://alexgarcia.xyz/sqlite-vec/features/knn.html</a></li><li id="s05-23"><span class="src-title">TinyBERT cross-encoder model card and weights</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/cross-encoder/ms-marco-TinyBERT-L2-v2">https://huggingface.co/cross-encoder/ms-marco-TinyBERT-L2-v2</a></li><li id="s05-24"><span class="src-title">SQLite WAL-reset bug, section 11 (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://sqlite.org/wal.html#the_wal_reset_bug">https://sqlite.org/wal.html#the_wal_reset_bug</a></li><li id="s05-25"><span class="src-title">Aider, Building a better repository map with tree sitter (2023-10-22)</span> <span class="src-note">(maintainer blog)</span><a class="url" href="https://aider.chat/2023/10/22/repomap.html">https://aider.chat/2023/10/22/repomap.html</a></li><li id="s05-26"><span class="src-title">Language Server Protocol specification 3.17 (read 2026-11-21)</span> <span class="src-note">(official)</span><a class="url" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/">https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/</a></li></ol>
+</section>
+
+</article>

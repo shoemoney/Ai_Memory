@@ -1,0 +1,51 @@
+{
+  "model": "Qwen2.5-3B-Instruct Q4_K_M",
+  "n": 100,
+  "arms": {
+    "direct": {
+      "correct": 2,
+      "n": 100,
+      "rate": 0.02,
+      "exact_95": [
+        0.0024313368239425423,
+        0.07038393247107011
+      ],
+      "finish_reasons": {
+        "stop": 100
+      },
+      "generation_seconds": 118.82058949198108
+    },
+    "dc_cumulative": {
+      "correct": 5,
+      "n": 100,
+      "rate": 0.05,
+      "exact_95": [
+        0.016431879182052155,
+        0.11283491110546275
+      ],
+      "finish_reasons": {
+        "stop": 18,
+        "length": 82
+      },
+      "generation_seconds": 4796.729730441977
+    }
+  },
+  "paired": {
+    "n": 100,
+    "gain": 5,
+    "loss": 2,
+    "difference": 0.03,
+    "difference_exact_conservative_95": [
+      -0.0650563765750986,
+      0.12108834132543997
+    ],
+    "mcnemar_exact_p": 0.453125
+  },
+  "curation_finish_reasons": {
+    "stop": 83,
+    "length": 17
+  },
+  "curation_seconds": 2151.1050622699695,
+  "python_execution_items": 8,
+  "empty_memory_states": 0
+}

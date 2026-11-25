@@ -1,0 +1,288 @@
+<article class="chapter essay" data-ch="00" data-part="a" data-running="Memory basics">
+
+<header class="opener">
+  <p class="opener-eyebrow">Basics &middot; Chapter 00</p>
+  <div class="opener-num" aria-hidden="true">00</div>
+  <h1>Memory basics: four kinds, one loop</h1>
+  <p class="opener-summary">Memory supplies context, saves facts during or after a turn, or changes model weights.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Reading time</p>
+      <p class="glance-value">About 20 minutes</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Assumes</p>
+      <p class="glance-value">You have called a chat model API</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">You get</p>
+      <p class="glance-value">A shared vocabulary, three design questions, a quick-pick table and sizing formulas</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Anyone choosing a design.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>Why a model needs memory</h2>
+<div class="plain">
+  <p class="lead">The context window limits input and output per request: text and, on some models, images or audio. Fixed weights retain training knowledge, but recalling a past conversation requires the harness (the program running the model) to supply it again.</p>
+  <p>Memory supplies information or preserves what a turn produced, during it or afterwards: text, records or weight changes. Anthropic calls curating the tokens available at inference time context engineering;<sup class="cite"><a href="#s00-1">1</a></sup> in this book's terms that is mostly the read path. Claude Code loads instruction files "at the start of every conversation".<sup class="cite"><a href="#s00-2">2</a></sup></p>
+</div>
+<p>This book judges each design by what reaches the window, its cost in calls, tokens and time, and how it scales with users, memories and concurrent agents.</p>
+<p>A bigger window does not replace memory. A 2023 study found lower accuracy for facts in mid-context, even on long-input models.<sup class="cite"><a href="#s00-3">3</a></sup> Chroma tested 18 models in 2025 and found reliability falls as input grows, even on trivial tasks.<sup class="cite"><a href="#s00-4">4</a></sup> Sending more input at a fixed token rate costs more, even with prompt caching (discounted reuse of a repeated prefix).<sup class="cite"><a href="#s00-5">5</a></sup></p>
+</section>
+
+<section>
+<h2>The four kinds of memory</h2>
+<p>The CoALA paper splits a language agent's memory into working, episodic, semantic and procedural kinds.<sup class="cite"><a href="#s00-6">6</a></sup> The "Usually held in" column is this book's mapping.</p>
+
+<p class="table-title">The four kinds: examples, usual homes and lifetimes</p>
+<table class="data">
+  <colgroup><col class="c15"><col class="c35"><col class="c30"><col class="c20"></colgroup>
+  <thead><tr><th>Kind</th><th>What it holds, with an example</th><th>Usually held in</th><th>Lasts</th></tr></thead>
+  <tbody>
+    <tr><td>Working</td><td>The live conversation, tool results or scratchpad. Example: the three files a coding agent opened to fix a bug.</td><td>The context window itself, plus a checkpoint, a saved snapshot of the run.</td><td>One task or thread.</td></tr>
+    <tr><td>Episodic</td><td>What happened, in order, with times. Example: On 14 March the user said, "For this repository, please send small patches."</td><td>A source-of-truth JSONL log or event table beside summaries; normally appended to, rewritten only for recorded deletions.</td><td>Until a retention rule or user request deletes it.</td></tr>
+    <tr><td>Semantic</td><td>Facts and preferences distilled from experience, not tied to one event. Example: "For this repository, the user prefers small patches."</td><td>Rows with keyword and vector indexes, a knowledge graph, or wiki pages.</td><td>Until a newer fact replaces it.</td></tr>
+    <tr><td>Procedural</td><td>How to do things: rules, instructions, skills. Example: "Run <code>make test</code> before every commit."</td><td>Versioned files such as CLAUDE.md or a skills folder.<sup class="cite"><a href="#s00-7">7</a></sup></td><td>Months, changed by review.</td></tr>
+  </tbody>
+</table>
+
+<p>The kinds feed each other: episodes are distilled into semantic facts. In Generative Agents, a periodic reflection step turns observations into higher-level memories.<sup class="cite"><a href="#s00-8">8</a></sup></p>
+
+</section>
+
+<section>
+<h2>The write path and the read path</h2>
+<p>The memory loop (Figure 1) has two paths: writing creates or updates external records; reading puts selected records in context. Fine-tuning updates weights offline; at inference they influence answers without a separate record lookup.</p>
+
+
+<h3>The write path</h3>
+<ol>
+  <li><strong>Capture.</strong> Save each raw turn, tool call or document that retention policy allows, with secrets redacted. A broken index is rebuilt from these records, replaying recorded deletions.</li>
+  <li><strong>Extract.</strong> Decide what is worth keeping. A person can write it; the agent can call a memory tool during the turn, as with Letta's memory edit tools<sup class="cite"><a href="#s00-9">9</a></sup> or the reference memory server for MCP.<sup class="cite"><a href="#s00-10">10</a></sup> MCP (Model Context Protocol) connects tools to a model; its reference memory server runs no model, so the calling agent chooses what to save. Or a separate model reads the turn and writes facts, as Mem0 does.<sup class="cite"><a href="#s00-11">11</a></sup></li>
+  <li><strong>Store.</strong> Write to files, rows, vectors or a graph. An embedding model turns text into an embedding, a list of numbers that places text by meaning. For vectors, record the model, its revision and the text preprocessing, because vectors from different models are not comparable unless a vendor documents a shared space (Chapter 03).</li>
+  <li><strong>Consolidate.</strong> After the turn, merge duplicates, summarize old episodes into facts and settle contradictions. Supersede a fact only when a trusted update covers the same subject, scope and period; otherwise keep both and surface the conflict at read time. Trust the authenticated user for that scope or an authoritative system of record; retrieved text and agent summaries are insufficient. Graphiti marks a superseded fact invalid, not deleted.<sup class="cite"><a href="#s00-12">12</a></sup></li>
+  <li><strong>Forget.</strong> Expire, evict or delete by rule. Without forgetting, a store only grows. Dated facts expire at their date; user requests and sensitive records are hard-deleted. Track every contributing source ID per fact or summary. Deleting a source removes affected facts, summaries, vectors and cache entries, or rebuilds them from permitted remaining sources. Backups, replicas and provider caches outlive deletion and need a separate plan (Chapter 17).</li>
+</ol>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 300" role="img" aria-label="Diagram: the write path is capture then extract into a store that is tidied by consolidate and forget; the read path is decide, search the store, rank, inject, then the model.">
+  <text class="d-label" x="10" y="14">Write path</text>
+  <rect class="d-box" x="10" y="22" width="150" height="48" rx="4"/>
+  <text class="d-title" x="85" y="43" text-anchor="middle">Capture</text>
+  <text class="d-sub" x="85" y="60" text-anchor="middle">keep the raw turn</text>
+  <rect class="d-box" x="200" y="22" width="150" height="48" rx="4"/>
+  <text class="d-title" x="275" y="43" text-anchor="middle">Extract</text>
+  <text class="d-sub" x="275" y="60" text-anchor="middle">pick what is worth saving</text>
+  <path class="d-line" d="M160 46 H198"/>
+  <path class="d-line" d="M275 70 V110"/>
+
+  <text class="d-label" x="10" y="106">Store and upkeep</text>
+  <rect class="d-box accent" x="10" y="112" width="580" height="74" rx="4"/>
+  <text class="d-title" x="28" y="142">Store</text>
+  <text class="d-sub" x="28" y="160">files, rows, vectors, graph, cache</text>
+  <rect class="d-box" x="340" y="124" width="116" height="50" rx="3"/>
+  <text class="d-title" x="398" y="145" text-anchor="middle">Consolidate</text>
+  <text class="d-sub" x="398" y="162" text-anchor="middle">merge, summarize</text>
+  <rect class="d-box" x="474" y="124" width="104" height="50" rx="3"/>
+  <text class="d-title" x="526" y="145" text-anchor="middle">Forget</text>
+  <text class="d-sub" x="526" y="162" text-anchor="middle">expire, delete</text>
+
+  <text class="d-label" x="10" y="222">Read path</text>
+  <rect class="d-box" x="10" y="228" width="84" height="62" rx="4"/>
+  <text class="d-title" x="52" y="248" text-anchor="middle">Decide</text>
+  <text class="d-sub" x="52" y="265" text-anchor="middle">whether to</text>
+  <text class="d-sub" x="52" y="279" text-anchor="middle">look up</text>
+  <rect class="d-box" x="134" y="228" width="84" height="62" rx="4"/>
+  <text class="d-title" x="176" y="248" text-anchor="middle">Search</text>
+  <text class="d-sub" x="176" y="265" text-anchor="middle">keyword,</text>
+  <text class="d-sub" x="176" y="279" text-anchor="middle">vector, graph</text>
+  <rect class="d-box" x="258" y="228" width="84" height="62" rx="4"/>
+  <text class="d-title" x="300" y="248" text-anchor="middle">Rank</text>
+  <text class="d-sub" x="300" y="265" text-anchor="middle">best first,</text>
+  <text class="d-sub" x="300" y="279" text-anchor="middle">drop the rest</text>
+  <rect class="d-box accent" x="382" y="228" width="84" height="62" rx="4"/>
+  <text class="d-title" x="424" y="248" text-anchor="middle">Inject</text>
+  <text class="d-sub" x="424" y="265" text-anchor="middle">add top few</text>
+  <text class="d-sub" x="424" y="279" text-anchor="middle">to window</text>
+  <rect class="d-box dark" x="506" y="228" width="84" height="62" rx="4"/>
+  <text class="d-title d-on-dark" x="548" y="248" text-anchor="middle">Model</text>
+  <text class="d-sub d-on-dark" x="548" y="265" text-anchor="middle">reads the</text>
+  <text class="d-sub d-on-dark" x="548" y="279" text-anchor="middle">window</text>
+
+  <path class="d-line" d="M94 259 H132"/>
+  <path class="d-line accent dash" d="M176 186 V226"/>
+  <path class="d-line" d="M218 259 H256"/>
+  <path class="d-line" d="M342 259 H380"/>
+  <path class="d-line" d="M466 259 H504"/>
+</svg>
+<figcaption><b>Figure 1.</b> The write path (top) fills the store, and consolidation and forgetting tidy it. The read path (bottom) searches the store and injects only the best results.</figcaption>
+</figure>
+
+<h3>The read path</h3>
+<ol>
+  <li><strong>Trigger.</strong> Memory arrives in one of four ways; loading a file skips Search and Rank.
+    <ul>
+      <li>Session start: the harness loads the file.<sup class="cite"><a href="#s00-2">2</a></sup></li>
+      <li>Agent request: requested records enter context when the memory tool returns them. Claude "automatically checks its memory directory before starting a task", but that is still a tool call.<sup class="cite"><a href="#s00-13">13</a></sup> It can search files by exact text (for example with grep) or call a search service.</li>
+      <li>Every turn: the harness searches with the new message as the query, as in RAG (retrieval-augmented generation: a retriever finds text, then the model answers from it), needed or not.</li>
+      <li>Path match: a path rule loads extra instructions when the agent reads a file matching a wildcard such as src/api/**.<sup class="cite"><a href="#s00-2">2</a></sup></li>
+    </ul></li>
+  <li><strong>Search.</strong> Search only records the caller may read. Derive tenant (customer or user group) and access filters from the authenticated request, not the model's query. Within that set, keyword search matches words; SQLite's FTS5 full-text index with BM25 ranking (a score favoring rare query words) is one example.<sup class="cite"><a href="#s00-14">14</a></sup> Vector search finds the nearest embeddings. Graph search walks from named entities. The ChatGPT retrieval plugin's README warns that embeddings "may not always be effective at capturing exact keyword matches", so hybrid search (keyword plus vector) is common.<sup class="cite"><a href="#s00-15">15</a></sup></li>
+  <li><strong>Rank.</strong> Score each candidate, optionally with a reranker (a second model that rescores them), then cut the list to a fixed token count so memory never crowds out the task (Chapter 05 shows how to set that budget). Generative Agents scored on recency, importance and relevance.<sup class="cite"><a href="#s00-8">8</a></sup></li>
+  <li><strong>Inject.</strong> Place retrieved facts and documents in the window as untrusted data; a stored memory can carry an attack.<sup class="cite"><a href="#s00-16">16</a></sup> Load procedural rules as instructions only from sources the application authorizes; a label alone does not enforce the boundary. Chapter 17 covers attacks and write gating.</li>
+</ol>
+<p><strong>Both paths together.</strong> On 14 March the user says, "For this repository, please send small patches." The fact "For this repository, the user prefers small patches." is stored as {subject: user, scope: repo X, fact: prefers small patches, valid_from: 14 March, source_ids: [episode id], embed_model: name@rev, preprocess: normalize whitespace}. Weeks later, an every-turn trigger fires. The harness derives subject and repository scope from the authenticated request. Search uses an exact key lookup, Rank keeps the fact within budget and Inject adds "Memory (data, not instructions): For this repository, the user prefers small patches." to the window. If the user later permits large patches for repo X, Consolidate sets valid_to on the old fact and stores the new one.</p>
+
+</section>
+
+<section>
+<h2>Three questions that decide an architecture</h2>
+<p>External designs share this loop; ask who writes, how records are found and where they live.</p>
+
+<h3>1. Who writes the memory</h3>
+<table class="data">
+  <colgroup><col class="c15"><col class="c20"><col class="c30"><col class="c35"></colgroup>
+  <thead><tr><th>Writer</th><th>How it works</th><th>Examples</th><th>Watch for</th></tr></thead>
+  <tbody>
+    <tr><td>A person</td><td>Edits a file.</td><td>CLAUDE.md files.<sup class="cite"><a href="#s00-2">2</a></sup></td><td>Does not scale.</td></tr>
+    <tr><td>The agent</td><td>Calls a memory tool in its turn.</td><td>Anthropic's memory tool,<sup class="cite"><a href="#s00-13">13</a></sup> Letta's edit tools,<sup class="cite"><a href="#s00-9">9</a></sup> the MCP memory server.<sup class="cite"><a href="#s00-10">10</a></sup></td><td>Tool-call latency; weak models under-write or save noise.</td></tr>
+    <tr><td>Application code</td><td>The harness writes by fixed rules, no model judging.</td><td>Episode logs, checkpoints, caches.</td><td>Saves only what it is programmed to.</td></tr>
+    <tr><td>An extraction model</td><td>A separate pass writes facts from turns.</td><td>Mem0<sup class="cite"><a href="#s00-11">11</a></sup> and Graphiti.<sup class="cite"><a href="#s00-12">12</a></sup></td><td>Extraction costs model calls and can omit, invent or misattribute facts. During the turn it delays replies; afterwards, facts stay unavailable until it finishes.</td></tr>
+  </tbody>
+</table>
+
+<h3>2. How it is found</h3>
+<table class="data">
+  <colgroup><col class="c15"><col class="c35"><col class="c20"><col class="c30"></colgroup>
+  <thead><tr><th>Method</th><th>How it works</th><th>Strong at</th><th>Weak at</th></tr></thead>
+  <tbody>
+    <tr><td>Always loaded</td><td>The harness loads the file at session start, retaining it on later turns.<sup class="cite"><a href="#s00-2">2</a></sup></td><td>No lookup.</td><td>Loaded text takes window space every session (limits: Chapter 01).</td></tr>
+    <tr><td>Keyword</td><td>Matches words with BM25 or grep.</td><td>Names, codes, exact phrases.</td><td>Paraphrases.</td></tr>
+    <tr><td>Vector</td><td>Finds the nearest embeddings to the query.</td><td>Paraphrases.</td><td>Exact terms. Re-embed when the model changes (Chapter 03).</td></tr>
+    <tr><td>Graph</td><td>Walks entities and their relations.</td><td>Multi-step, time-aware questions.</td><td>Graphs built from free text depend on extraction quality; one independent test scored graph memory below plain retrieval on answer accuracy (Chapter 14).<sup class="cite"><a href="#s00-17">17</a></sup></td></tr>
+    <tr><td>Exact key or SQL lookup</td><td>Fetches a record by key or query.</td><td>Known identifiers, dates, filters.</td><td>Needs the key or query shape.</td></tr>
+  </tbody>
+</table>
+<p>Hybrid search combines the Keyword and Vector rows: exact terms and paraphrases, at the price of two indexes and a merge to tune.</p>
+
+<h3>3. Where it lives</h3>
+<table class="data">
+  <colgroup><col class="c15"><col class="c25"><col class="c30"><col class="c30"></colgroup>
+  <thead><tr><th>Home</th><th>What it is</th><th>Strong at</th><th>Limit</th></tr></thead>
+  <tbody>
+    <tr><td>Files</td><td>Markdown, JSONL, git.</td><td>Readable, editable, diffable.</td><td>Without locking or merging, concurrent writers overwrite each other.</td></tr>
+    <tr><td>A database</td><td>SQLite, PostgreSQL, a vector store, Redis or Valkey with persistence.</td><td>Indexes, transactions; many writers on a server database (SQLite: one).</td><td>Server upkeep (except SQLite); often pgvector or sqlite-vec for vectors; backups required.</td></tr>
+    <tr><td>A cache</td><td>Memcached, or Redis used as a cache.</td><td>Speed, with expiry.</td><td>Entries are evicted under memory pressure and lost on restart (Redis keeps them only with persistence), so a cache must never hold the only copy (Chapter 10).<sup class="cite"><a href="#s00-18">18</a></sup></td></tr>
+    <tr><td>Learned state</td><td>Not external: modules that update model state, or internal caches trained offline.</td><td>Smaller serving footprint in papers.<sup class="cite"><a href="#s00-19">19</a></sup></td><td>Research as of November 2026 (Chapter 16).<sup class="cite"><a href="#s00-20">20</a></sup></td></tr>
+    <tr><td>Weights</td><td>Not external: fine-tuning changes the model's parameters.</td><td>Nothing to retrieve at read time.</td><td>Slow, costly updates; facts hard to trace or edit (below).</td></tr>
+  </tbody>
+</table>
+
+<p>A Cartridge is an internal cache trained for one document: its authors report 38.6 times smaller serving memory than prompting with that text at matched quality. This book's small test kept the saving, not the quality (Chapter 16). Weights lack fact-level provenance and are hard to edit;<sup class="cite"><a href="#s00-21">21</a></sup> this book infers similar risks for learned state.</p>
+
+<p>Most systems combine answers. CLAUDE.md is the pure case: person-written, always loaded, in files.<sup class="cite"><a href="#s00-2">2</a></sup> Mem0 has an extraction model write to a database, found by hybrid search (Chapter 13).<sup class="cite"><a href="#s00-11">11</a>,<a href="#s00-22">22</a></sup> Letta mixes always-in-context blocks with an agent that searches archival memory.<sup class="cite"><a href="#s00-9">9</a></sup></p>
+</section>
+
+<section>
+<h2>Quick pick: a starting stack for seven situations</h2>
+<p>For tasks confined to one session, a window plus checkpoint suffices. Otherwise exclude stacks that fail deployment, isolation or audit needs, then pick below. Rows combine; Chapter 18 has the full flow.</p>
+<table class="data">
+  <colgroup><col class="c35"><col class="c40"><col class="c25"></colgroup>
+  <thead><tr><th>Your situation</th><th>Start with</th><th>Read</th></tr></thead>
+  <tbody>
+    <tr><td>A coding agent that forgets build and naming rules, or loses its plan when the context resets.</td><td>Plain files under version control: a short CLAUDE.md for build and naming rules<sup class="cite"><a href="#s00-2">2</a></sup> and a task file with the plan and next action, reloaded on resume. For shared work, add a task graph recording dependencies between work items (Chapter 01).</td><td>01, then 17</td></tr>
+    <tr><td>A personal assistant that should remember one user's preferences for months.</td><td>Load a small preference file as data. With known scope, fetch rows by user and scope. Consider extraction for free-form turns and semantic search when the lookup key is unknown.</td><td>13, 03, 05</td></tr>
+    <tr><td>A support bot with many customers, facts that change over time, and a need to audit.</td><td>Start with PostgreSQL: dated fact rows and per-tenant isolation (Chapter 08). Move to a temporal graph such as Graphiti or Zep only if questions span several entities and you can afford a strong extraction model (Chapter 14).<sup class="cite"><a href="#s00-12">12</a></sup></td><td>08, 17, then 14</td></tr>
+    <tr><td>Everything must run on one machine, nothing sent out.</td><td>SQLite with FTS5 and sqlite-vec (a separately installed vector extension), plus small local models for embedding and extraction.<sup class="cite"><a href="#s00-14">14</a></sup></td><td>12, 06, 03</td></tr>
+    <tr><td>Research notes or a large document tree to browse.</td><td>An LLM-maintained wiki (Markdown pages a model keeps current), or a file tree with a model-written summary per folder (Chapter 02).</td><td>02, 05</td></tr>
+    <tr><td>A team on a major cloud that will not run a store.</td><td>A managed cloud memory service, such as Google Memory Bank or Amazon Bedrock AgentCore Memory: the vendor extracts, stores and searches. Check data residency and export first.</td><td>13, 17</td></tr>
+    <tr><td>Many agents or users write at once.</td><td>PostgreSQL or another transactional server database: check versions on update (optimistic locking); re-read and retry within a bound on conflict, then surface persistent conflicts. Separately test concurrent updates to one fact and refusal of cross-tenant reads.</td><td>08, 17; 11 if the store supports conditional updates</td></tr>
+  </tbody>
+</table>
+<p>Prompt caching and answer caching (reusing a stored answer when request, permissions and state all match; Chapter 10) cut cost but do not track changing user facts; both complement a memory store.</p>
+</section>
+
+<section>
+<h2 id="sizing-reference">Sizing reference: bytes, index overhead and calls</h2>
+<p>Estimate storage and model requests; chapters give measurements. Decimal units: 1 GB = one billion bytes.</p>
+<table class="data">
+  <colgroup><col class="c25"><col class="c20"><col class="c55"></colgroup>
+  <thead><tr><th>Format</th><th>Size per scalar</th><th>Bytes per vector (d dimensions)</th></tr></thead>
+  <tbody>
+    <tr><td>float32</td><td>4 bytes</td><td>d x 4. A vector of 1,024 scalars takes 4,096 bytes (Chapter 03), and one of 1,536 scalars takes 6,144 bytes.</td></tr>
+    <tr><td>float16, bfloat16</td><td>2 bytes</td><td>d x 2, half of float32 (used for multimodal page embeddings in Chapter 04).</td></tr>
+    <tr><td>int8</td><td>1 byte</td><td>d x 1, 4 times smaller than float32 (Chapter 03).</td></tr>
+    <tr><td>binary</td><td>1 bit</td><td>ceil(d / 8), 32 times smaller than float32 (Chapter 03).</td></tr>
+  </tbody>
+</table>
+<p>Raw bytes = vectors x dimensions x bytes/scalar. At float32: 1,000,000 x 768 x 4 = 3.072 GB (Chapter 13); 100,000 x 384 x 4 = 153.6 MB (Chapter 05). In PostgreSQL, pgvector vector(d) takes d x 4 + 8 bytes: 1,544 at 384 dimensions.<sup class="cite"><a href="#s00-23">23</a></sup> Add text, rows, replicas and indexes to these vector sizes.</p>
+<p><strong>Index overhead.</strong> Overhead varies across stores (Chapter 09 measures one case). Load a sample; measure memory and disk before and after indexing, then divide by vector count. Repeat at several times that size: overhead shifts with index parameters, page fill and fragmentation.</p>
+<ul>
+  <li><strong>Model requests per write</strong> = embedding + chat-model requests. Editing an unembedded file needs none (Chapter 01). Count extraction and consolidation per batch, plus triggered embeddings (Chapter 06).</li>
+  <li><strong>Model requests per read</strong> = uncached query embeddings + rewriting/search-loop model requests + reranker requests. Count answer generation separately per turn. Exact lookups need none (Chapters 09 and 10; known-entity graph walks in Chapter 14).</li>
+  <li><strong>Tokens</strong> = calls x tokens per call, input and output separately. Example: 2,000 chat input, 200 chat output and 200 embedding tokens, tracked separately. See Chapters 13 and 22.</li>
+  <li><strong>Cost</strong>, with separate per-million input, output and embedding rates, = (2,000 x input rate + 200 x output rate + 200 x embedding rate) / 1,000,000. Hypothetical rates of $1, $5 and $0.02 per million respectively give $0.003004. Check current prices (Chapters 03 and 10).<sup class="cite"><a href="#s00-24">24</a>,<a href="#s00-25">25</a></sup></li>
+  <li><strong>Time per read</strong> = latency along the sequential critical path; parallel calls contribute their slowest latency. Measure p50 and p95 (median and 95th percentile).</li>
+</ul>
+</section>
+
+<section>
+<h2>Map of this book</h2>
+<p>The table maps architectures to the three questions. Components: text embeddings (03), multimodal embeddings (04), retrieval/ranking (05), extraction (06–07: small local or refusal-removed models). Chapters 15 to 18 cover history, research, security, operations and choosing across designs. Chapters 21 to 23 cover a painter, doctor's office and homebuilder.</p>
+<p>Most chapters end with documented-behavior use cases, not deployment reports. File navigation in 02 and 19 sits outside the search labels; 01 uses task-graph lookups for unblocked work.</p>
+<table class="data">
+  <colgroup><col class="c30"><col class="c25"><col class="c25"><col class="c20"></colgroup>
+  <thead><tr><th>Chapter</th><th>Who writes</th><th>How found</th><th>Where it lives</th></tr></thead>
+  <tbody>
+    <tr><td>01 Flat-file markdown memory</td><td>Person or agent</td><td>Always loaded, Keyword, Exact key or SQL lookup</td><td>Files</td></tr>
+    <tr><td>02 The LLM-maintained wiki</td><td>Agent, from raw sources</td><td>Index, page reads or summaries</td><td>Files</td></tr>
+    <tr><td>08 PostgreSQL and pgvector</td><td>Any writer</td><td>Exact key or SQL lookup, Keyword, Vector</td><td>A database</td></tr>
+    <tr><td>09 Redis and Valkey</td><td>Any writer</td><td>Exact key or SQL lookup, Vector</td><td>A database (in-memory)</td></tr>
+    <tr><td>10 Memcached and the cache layer</td><td>Application code</td><td>Exact key or SQL lookup</td><td>A cache</td></tr>
+    <tr><td>11 Dedicated vector stores</td><td>Any writer</td><td>Vector, Hybrid</td><td>A database</td></tr>
+    <tr><td>12 SQLite and other stores</td><td>Any writer</td><td>Keyword, Vector</td><td>A database</td></tr>
+    <tr><td>13 Memory frameworks</td><td>Extraction model or agent</td><td>Hybrid, sometimes Graph</td><td>A database (service or vendor cloud)</td></tr>
+    <tr><td>14 Knowledge-graph memory</td><td>Extraction model</td><td>Graph</td><td>A database or Files</td></tr>
+    <tr><td>19 Field report: four memory systems</td><td>Person, agent, extraction model</td><td>Keyword, wiki index, Hybrid</td><td>Files, A database</td></tr>
+    <tr><td>20 One assistant, six memory stages</td><td>Agent and extraction model</td><td>Always loaded, Vector, Exact key or SQL lookup</td><td>Files, A database, A cache</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s00-1"><span class="src-title">Anthropic, Effective context engineering for AI agents (2025-09-29)</span> <span class="src-note">(official)</span><a class="url" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</a></li>
+  <li id="s00-2"><span class="src-title">Claude Code memory documentation</span> <span class="src-note">(official)</span><a class="url" href="https://code.claude.com/docs/en/memory">https://code.claude.com/docs/en/memory</a></li>
+  <li id="s00-3"><span class="src-title">Lost in the Middle, arXiv 2307.03172 (2023-07)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2307.03172">https://arxiv.org/abs/2307.03172</a></li>
+  <li id="s00-4"><span class="src-title">Chroma, Context Rot technical report (2025-07-14)</span> <span class="src-note">(vendor technical report)</span><a class="url" href="https://www.trychroma.com/research/context-rot">https://www.trychroma.com/research/context-rot</a></li>
+  <li id="s00-5"><span class="src-title">Beyond the Context Window, cost analysis, arXiv 2603.04814 (2026-03)</span> <span class="src-note">(paper, independent of the memory vendors)</span><a class="url" href="https://arxiv.org/abs/2603.04814">https://arxiv.org/abs/2603.04814</a></li>
+  <li id="s00-6"><span class="src-title">CoALA, Cognitive Architectures for Language Agents, arXiv 2309.02427</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2309.02427">https://arxiv.org/abs/2309.02427</a></li>
+  <li id="s00-7"><span class="src-title">Anthropic, Equipping agents with Agent Skills (2025-10-16)</span> <span class="src-note">(official)</span><a class="url" href="https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills">https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills</a></li>
+  <li id="s00-8"><span class="src-title">Generative Agents, arXiv 2304.03442 (2023-04)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2304.03442">https://arxiv.org/abs/2304.03442</a></li>
+  <li id="s00-9"><span class="src-title">Letta memory blocks documentation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.letta.com/v1-sdk/memory/memory-blocks/">https://docs.letta.com/v1-sdk/memory/memory-blocks/</a></li>
+  <li id="s00-10"><span class="src-title">MCP reference memory server</span> <span class="src-note">(maintainer repository)</span><a class="url" href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory">https://github.com/modelcontextprotocol/servers/tree/main/src/memory</a></li>
+  <li id="s00-11"><span class="src-title">Mem0, arXiv 2504.19413 (2025-04-28)</span> <span class="src-note">(paper, authors' own results)</span><a class="url" href="https://arxiv.org/abs/2504.19413">https://arxiv.org/abs/2504.19413</a></li>
+  <li id="s00-12"><span class="src-title">Graphiti README</span> <span class="src-note">(maintainer repository)</span><a class="url" href="https://github.com/getzep/graphiti">https://github.com/getzep/graphiti</a></li>
+  <li id="s00-13"><span class="src-title">Anthropic memory tool documentation</span> <span class="src-note">(official)</span><a class="url" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool">https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool</a></li>
+  <li id="s00-14"><span class="src-title">SQLite FTS5 documentation</span> <span class="src-note">(official)</span><a class="url" href="https://sqlite.org/fts5.html">https://sqlite.org/fts5.html</a></li>
+  <li id="s00-15"><span class="src-title">ChatGPT retrieval plugin README, Limitations section</span> <span class="src-note">(maintainer repository)</span><a class="url" href="https://github.com/openai/chatgpt-retrieval-plugin">https://github.com/openai/chatgpt-retrieval-plugin</a></li>
+  <li id="s00-16"><span class="src-title">MINJA, arXiv 2503.03704 (2025-03-05)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2503.03704">https://arxiv.org/abs/2503.03704</a></li>
+  <li id="s00-17"><span class="src-title">Wolff and Bennati, Cost and Accuracy of Long-Term Memory in Distributed Multi-Agent Systems Based on Large Language Models, arXiv 2601.07978 (2026-01-12)</span> <span class="src-note">(paper, one group's measurement)</span><a class="url" href="https://arxiv.org/abs/2601.07978">https://arxiv.org/abs/2601.07978</a></li>
+  <li id="s00-18"><span class="src-title">memcached README</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/memcached/memcached/master/README.md">https://raw.githubusercontent.com/memcached/memcached/master/README.md</a></li>
+  <li id="s00-19"><span class="src-title">Cartridges, arXiv 2506.06266 (2025-06-06)</span> <span class="src-note">(paper, self-reported results)</span><a class="url" href="https://arxiv.org/abs/2506.06266">https://arxiv.org/abs/2506.06266</a></li>
+  <li id="s00-20"><span class="src-title">Titans, arXiv 2501.00663 (2024-12-31)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2501.00663">https://arxiv.org/abs/2501.00663</a></li>
+  <li id="s00-21"><span class="src-title">Retrieval-Augmented Generation, arXiv 2005.11401 (2020-05)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2005.11401">https://arxiv.org/abs/2005.11401</a></li>
+  <li id="s00-22"><span class="src-title">Mem0 README, retrieval and installation notes</span> <span class="src-note">(maintainer repository)</span><a class="url" href="https://github.com/mem0ai/mem0">https://github.com/mem0ai/mem0</a></li>
+  <li id="s00-23"><span class="src-title">pgvector README (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/pgvector/pgvector/v0.8.7/README.md">https://raw.githubusercontent.com/pgvector/pgvector/v0.8.7/README.md</a></li>
+  <li id="s00-24"><span class="src-title">OpenAI text-embedding-3-small model page</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/models/text-embedding-3-small">https://developers.openai.com/api/docs/models/text-embedding-3-small</a></li>
+  <li id="s00-25"><span class="src-title">Anthropic model pricing</span> <span class="src-note">(official)</span><a class="url" href="https://platform.claude.com/docs/en/about-claude/pricing">https://platform.claude.com/docs/en/about-claude/pricing</a></li>
+</ol>
+</section>
+
+</article>

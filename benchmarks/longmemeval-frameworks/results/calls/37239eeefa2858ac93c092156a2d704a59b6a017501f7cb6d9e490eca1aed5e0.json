@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "22cb0580b8f26bed244972958dafb4f26a09aa9e77a9a9098f28c8b1a730808f",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0b64a544-3618-4b1c-9dd0-896a8e3a6310",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Macy's\", \"summary\": \"Macy's often runs promotions and sales on winter coats, especially during this time of year. You can check their website, sign up for email newsletters, follow their social media accounts, or visit a store to find deals on winter coats.\"}, {\"name\": \"user\", \"summary\": \"\"}, {\"name\": \"assistant\", \"summary\": \"\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795358230,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 89,
+      "prompt_tokens": 6704,
+      "total_tokens": 6793,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4080
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Macy's\", \"summary\": \"Macy's often runs promotions and sales on winter coats, especially during this time of year. You can check their website, sign up for email newsletters, follow their social media accounts, or visit a store to find deals on winter coats.\"}, {\"name\": \"user\", \"summary\": \"\"}, {\"name\": \"assistant\", \"summary\": \"\"}]}",
+  "seconds": 57.138720498012844,
+  "prompt_tokens_local": 6704
+}

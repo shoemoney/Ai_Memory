@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 44
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d0332682f3cac59510360fa5e9ef49565047c630d6cbe57dd671fa8a049e77a3",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6f5d8d45-6a68-4489-848d-e3f966a24500",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in starting a small business and incorporating sustainability initiatives\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Aware of consumers' growing interest in sustainability and their willingness to pay more for sustainable products\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Interested in developing a sustainability plan for the business\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Interested in considering the sustainability of the supply chain\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Interested in promoting sustainable behavior among employees and customers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Interested in measuring and sharing progress towards sustainability goals\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366445,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 217,
+      "prompt_tokens": 2233,
+      "total_tokens": 2450,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in starting a small business and incorporating sustainability initiatives\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Aware of consumers' growing interest in sustainability and their willingness to pay more for sustainable products\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Interested in developing a sustainability plan for the business\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Interested in considering the sustainability of the supply chain\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Interested in promoting sustainable behavior among employees and customers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Interested in measuring and sharing progress towards sustainability goals\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 24.348656079993816,
+  "prompt_tokens_local": 2233
+}

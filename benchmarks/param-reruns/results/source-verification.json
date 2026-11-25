@@ -1,0 +1,96 @@
+{
+  "time": 1795348691.7481792,
+  "book": {
+    "build/chapters/16-frontier.html": {
+      "sha256": "918a01cadaf29514c484e1ccf09492a5a2d04d22b6dd90541e6b52b29bf16149",
+      "matching_paragraphs": [
+        "Prototype Rather than putting a large corpus in the prompt every time, train a small KV cache (the attention state a model builds from text) for it once. Self-study generates synthetic conversations about the corpus and trains the cache with a context-distillation loss. Plain next-token training was not competitive with in-context learning.12 The Stanford authors match in-context quality on long-context benchmarks with 38.6 times less memory.12 It pays off only with many queries against one stable corpus and an open-weight model you can train. Open code exists.",
+        "Prototype A reinforcement-learned trigger watches the model's reasoning and decides when a second module inserts latent tokens, which are internal vectors and not words. The authors report gains of up to 38.22% over two external-memory systems and up to 13.44% over a GRPO-trained baseline on eight benchmarks.13 Memory arrives as latent tokens instead of prompt text, at the price of training an added module. The official implementation publishes Weaver and Trigger training, evaluation scripts and Qwen2.5-1.5B-Instruct and SmolLM3-3B checkpoints for KodCode, GSM8K and TriviaQA, with no production support.14"
+      ],
+      "contains_cartridges": true
+    },
+    "build/chapters/00-front.html": {
+      "sha256": "5bc0e03c0164cd690cdc9b36a9c3c759791fc008a9f95c95e4662d54bbd637ce",
+      "matching_paragraphs": [],
+      "contains_cartridges": false
+    }
+  },
+  "primary_papers": {
+    "memgen": {
+      "url": "https://arxiv.org/html/2509.24704",
+      "sha256": "d33b15d962132170dbb8e50126e36ce8e5ca8eac52d2d6516eb5888263df89eb"
+    },
+    "cartridges": {
+      "url": "https://arxiv.org/html/2506.06266v3",
+      "sha256": "da99fcbfa9a48db91a8c8b0dd767d1c24cb95657ccce974e7473c7436f8ff27d"
+    }
+  },
+  "search_index": {
+    "source": "https://huggingface.co/api/datasets/PeterJinGo/wiki-18-e5-index/tree/main",
+    "parts": {
+      "part_aa": 42949672960,
+      "part_ab": 21609402413
+    },
+    "total_bytes": 64559075373
+  },
+  "failures": [
+    {
+      "stage": "initial preparation",
+      "status": "process exited 143, retry completed"
+    },
+    {
+      "stage": "loader smoke",
+      "status": "fixed assertion lookup for tied lm_head weight using full state_dict"
+    },
+    {
+      "stage": "64-token CPU smoke",
+      "status": "own worker terminated after more than 31 GB disk reads without a completed item; eight-token smoke substituted"
+    },
+    {
+      "stage": "Cartridges CPU smoke full-context evaluation",
+      "status": "exit 137 after synthesis, teacher distribution and cache training succeeded; changed to 256-token chunked prefill without truncating context"
+    },
+    {
+      "stage": "Cartridges CPU chunked full-context smoke",
+      "status": "kernel confirmed global OOM, own worker exit 137, anonymous RSS 3238800 KiB, OOM score adjustment 800; no code exception; full-context CPU retries stopped",
+      "action": "CPU execution smoke now explicitly limited to first 768 document tokens; scored experiment retains full documents"
+    },
+    {
+      "stage": "pre-score loader review",
+      "status": "PEFT default LoRA float32 differed from authors evaluation runner casting all modules to bfloat16; corrected before any scored run and both dataset smokes passed"
+    }
+  ],
+  "cpu_smoke_before_anonymous_copy": {
+    "gsm8k_items": 2,
+    "tokens_per_output": 8,
+    "systems": [
+      "base",
+      "memgen"
+    ],
+    "times_seconds": [
+      92.20550282300974,
+      77.14461693399062,
+      68.57843079901068,
+      71.42781246900267
+    ]
+  },
+  "longhealth_policy_sources": {
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/kbressem/LongHealth/479922279ce8fa528fe2cd87d854c6a2f8365d21/LICENSE",
+      "sha256": "3497b03f07aeccf64b5735c952febe03c7a0e82f189d67cd10c749e6f9b8bdc2"
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/kbressem/LongHealth/479922279ce8fa528fe2cd87d854c6a2f8365d21/README.md",
+      "sha256": "54f7b9af1b6c6c09deb4bf863c96f31b55c885c5411a7d7a72fd2abd7d2c67ad"
+    }
+  },
+  "longhealth_training_export": "Only hashes and timings retained; text omitted from deliverable in response to dataset README request.",
+  "shared_uv_cache_policy": {
+    "source": "https://docs.astral.sh/uv/concepts/cache/#cache-safety",
+    "decision": "Preserve shared tool cache; remove owned private cache through supported uv cache clean."
+  },
+  "final_book_hashes": {
+    "build/chapters/00-front.html": "5bc0e03c0164cd690cdc9b36a9c3c759791fc008a9f95c95e4662d54bbd637ce",
+    "build/chapters/16-frontier.html": "6452c41d6cb88342b48a15f820813e2317735d1c817438b7ae9cf6560556d2ae"
+  }
+}

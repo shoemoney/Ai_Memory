@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 34
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "107909570fdc9a39f1b41d3a758e7f5a91f92d949b804043ce4ee0acaaedd59f",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-baad89fb-073d-4720-a480-7552c499ee1b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Pet food nutritional values are determined by a combination of laboratory analysis and feeding trials.\", \"Feeding trials involve feeding the pet food to animals and monitoring their health and well-being.\", \"Pet food companies, including Pedigree, conduct feeding trials to ensure the quality of their products.\", \"High-quality pet food brands include hill's science diet, royal canin, orijen, acana, blue buffalo, wellness, and taste of the wild.\", \"Consultation with a veterinarian is recommended to determine the specific nutritional needs of the pet.\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330329,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 114,
+      "prompt_tokens": 1565,
+      "total_tokens": 1679,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Pet food nutritional values are determined by a combination of laboratory analysis and feeding trials.\", \"Feeding trials involve feeding the pet food to animals and monitoring their health and well-being.\", \"Pet food companies, including Pedigree, conduct feeding trials to ensure the quality of their products.\", \"High-quality pet food brands include hill's science diet, royal canin, orijen, acana, blue buffalo, wellness, and taste of the wild.\", \"Consultation with a veterinarian is recommended to determine the specific nutritional needs of the pet.\"]}",
+  "seconds": 1.8954335059970617,
+  "prompt_tokens_local_gemma_estimate": 1592
+}

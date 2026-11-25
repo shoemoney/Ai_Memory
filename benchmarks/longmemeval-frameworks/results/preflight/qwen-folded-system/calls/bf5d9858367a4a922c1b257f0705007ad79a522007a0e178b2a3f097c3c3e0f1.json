@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 33
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "21b34195996ae58afe86c70a626b55e85c89b05fba2919bd4ba71f670530957b",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-7e3906fc-9db6-4ac5-9000-e6049eb33aa7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Ibanez basses are recommended for rock music\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Ibanez basses are recommended for rock music\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Considered SR300, SR505, BTB740, and GIO GSR200 as popular options for rock music\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Considered SR300, SR505, BTB740, and GIO GSR200 as popular options for rock music\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Factors to consider include neck type, body wood, pickups, and electronics\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Factors to consider include neck type, body wood, pickups, and electronics\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330326,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 215,
+      "prompt_tokens": 1814,
+      "total_tokens": 2029,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Ibanez basses are recommended for rock music\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Ibanez basses are recommended for rock music\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Considered SR300, SR505, BTB740, and GIO GSR200 as popular options for rock music\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Considered SR300, SR505, BTB740, and GIO GSR200 as popular options for rock music\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Factors to consider include neck type, body wood, pickups, and electronics\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Factors to consider include neck type, body wood, pickups, and electronics\"\n        }\n    ]\n}",
+  "seconds": 3.0004905090027023,
+  "prompt_tokens_local_gemma_estimate": 1934
+}

@@ -1,0 +1,345 @@
+{
+ "checker": "the tester (an AI agent), not an independent human; each answer read against its rubric items and the question",
+ "sample": "20 questions drawn with seed 5 from the 100, both systems each (40 judged answers)",
+ "agree": 35,
+ "n": 40,
+ "agree_rate": 0.875,
+ "clopper_pearson_95": [
+  0.7319670826382796,
+  0.9581403738613833
+ ],
+ "disagreements_all_judge_too_lenient": true,
+ "disagreements_by_system": {
+  "rag": [
+   8,
+   32
+  ],
+  "light": [
+   7,
+   9,
+   31
+  ]
+ },
+ "items": [
+  {
+   "index": 0,
+   "key": "2|temporal_reasoning|1",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 1,
+   "key": "2|temporal_reasoning|1",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 2,
+   "key": "17|multi_session_reasoning|0",
+   "system": "rag",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 3,
+   "key": "17|multi_session_reasoning|0",
+   "system": "light",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 4,
+   "key": "8|preference_following|0",
+   "system": "rag",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 5,
+   "key": "8|preference_following|0",
+   "system": "light",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 6,
+   "key": "19|event_ordering|1",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 7,
+   "key": "19|event_ordering|1",
+   "system": "light",
+   "judge_score": 0.8571428571428571,
+   "tester_agrees": false,
+   "note": "judge 0.857 too generous: response lists unrelated or out-of-order items against a 7-item ordering rubric"
+  },
+  {
+   "index": 8,
+   "key": "8|instruction_following|0",
+   "system": "rag",
+   "judge_score": 1.0,
+   "tester_agrees": false,
+   "note": "rubric asks for a list with bullet points; the response is prose that mentions bullet points"
+  },
+  {
+   "index": 9,
+   "key": "8|instruction_following|0",
+   "system": "light",
+   "judge_score": 1.0,
+   "tester_agrees": false,
+   "note": "same as item 8"
+  },
+  {
+   "index": 10,
+   "key": "8|contradiction_resolution|1",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 11,
+   "key": "8|contradiction_resolution|1",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 12,
+   "key": "2|information_extraction|1",
+   "system": "rag",
+   "judge_score": 0.3333333333333333,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 13,
+   "key": "2|information_extraction|1",
+   "system": "light",
+   "judge_score": 0.8333333333333334,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 14,
+   "key": "13|contradiction_resolution|1",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 15,
+   "key": "13|contradiction_resolution|1",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 16,
+   "key": "19|temporal_reasoning|1",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 17,
+   "key": "19|temporal_reasoning|1",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 18,
+   "key": "8|temporal_reasoning|1",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 19,
+   "key": "8|temporal_reasoning|1",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 20,
+   "key": "17|knowledge_update|1",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 21,
+   "key": "17|knowledge_update|1",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 22,
+   "key": "13|information_extraction|0",
+   "system": "rag",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 23,
+   "key": "13|information_extraction|0",
+   "system": "light",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 24,
+   "key": "17|abstention|0",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 25,
+   "key": "17|abstention|0",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 26,
+   "key": "13|preference_following|0",
+   "system": "rag",
+   "judge_score": 0.5,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 27,
+   "key": "13|preference_following|0",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 28,
+   "key": "19|information_extraction|1",
+   "system": "rag",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 29,
+   "key": "19|information_extraction|1",
+   "system": "light",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 30,
+   "key": "2|abstention|0",
+   "system": "rag",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 31,
+   "key": "2|abstention|0",
+   "system": "light",
+   "judge_score": 1.0,
+   "tester_agrees": false,
+   "note": "abstention question: the response invents ESLint rules instead of abstaining, judge gave 1.0"
+  },
+  {
+   "index": 32,
+   "key": "19|instruction_following|0",
+   "system": "rag",
+   "judge_score": 1.0,
+   "tester_agrees": false,
+   "note": "rubric asks for explanations of legal terms; the response lists items without explaining terms"
+  },
+  {
+   "index": 33,
+   "key": "19|instruction_following|0",
+   "system": "light",
+   "judge_score": 0.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 34,
+   "key": "2|instruction_following|1",
+   "system": "rag",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 35,
+   "key": "2|instruction_following|1",
+   "system": "light",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 36,
+   "key": "13|multi_session_reasoning|1",
+   "system": "rag",
+   "judge_score": 0.25,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 37,
+   "key": "13|multi_session_reasoning|1",
+   "system": "light",
+   "judge_score": 0.25,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 38,
+   "key": "2|multi_session_reasoning|1",
+   "system": "rag",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  },
+  {
+   "index": 39,
+   "key": "2|multi_session_reasoning|1",
+   "system": "light",
+   "judge_score": 1.0,
+   "tester_agrees": true,
+   "note": ""
+  }
+ ]
+}

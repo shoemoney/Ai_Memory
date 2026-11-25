@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2919afc2542a3987f2133c52f54c769b7e08c88c94821a5e0621b5e5971c8805",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-69c8db95-9975-4ef1-a6d1-9d80b8b89efb",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_OWNER_OF\", \"fact\": \"Nisha's dad owns Trigger.\", \"valid_at\": \"2023-05-20T06:17:00Z\"}, {\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"dog leash\", \"relation_type\": \"OWNS\", \"fact\": \"Nisha's dad owns a dog leash.\", \"valid_at\": \"2023-05-20T06:17:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367402,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 137,
+      "prompt_tokens": 6969,
+      "total_tokens": 7106,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 160
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_OWNER_OF\", \"fact\": \"Nisha's dad owns Trigger.\", \"valid_at\": \"2023-05-20T06:17:00Z\"}, {\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"dog leash\", \"relation_type\": \"OWNS\", \"fact\": \"Nisha's dad owns a dog leash.\", \"valid_at\": \"2023-05-20T06:17:00Z\"}]}",
+  "seconds": 59.704119846981484,
+  "prompt_tokens_local": 6969
+}

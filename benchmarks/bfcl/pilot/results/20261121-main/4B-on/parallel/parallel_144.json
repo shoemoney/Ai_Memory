@@ -1,0 +1,179 @@
+{
+  "id": "parallel_144",
+  "category": "parallel",
+  "result": [
+    {
+      "math_factorial": "{\"number\":5}"
+    },
+    {
+      "math_factorial": "{\"number\":3}"
+    },
+    {
+      "math_factorial": "{\"number\":4}"
+    },
+    {
+      "math_factorial": "{\"number\":2}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'What is the result if you calculate the factorial of 5, the factorial of 3, then  the factorial of 4 and finally the factorial of 2?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "math_factorial",
+                "description": "Calculate the factorial of a given number.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "number": {
+                      "type": "integer",
+                      "description": "The number to compute factorial."
+                    }
+                  },
+                  "required": [
+                    "number"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 314,
+    "output_token_count": 200,
+    "latency": 5.797268178001104
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the result if you calculate the factorial of 5, the factorial of 3, then  the factorial of 4 and finally the factorial of 2?"
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "math_factorial",
+          "description": "Calculate the factorial of a given number.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "integer",
+                "description": "The number to compute factorial."
+              }
+            },
+            "required": [
+              "number"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-Rg5XeSSDw3FS2lwEmlHCoXRmLKDxr5Wf",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "MU9FydxnKvp2YOO4q8NpsrrMh5L4U8wW",
+              "function": {
+                "arguments": "{\"number\":5}",
+                "name": "math_factorial"
+              },
+              "type": "function"
+            },
+            {
+              "id": "ijTaulPfjeMlqC5HqrETKAkTTNGEB9er",
+              "function": {
+                "arguments": "{\"number\":3}",
+                "name": "math_factorial"
+              },
+              "type": "function"
+            },
+            {
+              "id": "Zv0UNfx68Dqvk60lB9xrObaLIxYciLWD",
+              "function": {
+                "arguments": "{\"number\":4}",
+                "name": "math_factorial"
+              },
+              "type": "function"
+            },
+            {
+              "id": "1h0Xho91lQSBazspNDG6raxpeUceSrmi",
+              "function": {
+                "arguments": "{\"number\":2}",
+                "name": "math_factorial"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking me to calculate factorials of several numbers: 5, 3, 4, and 2. I need to use the math_factorial function for each of these numbers.\n\nLet me calculate each factorial:\n- factorial of 5\n- factorial of 3\n- factorial of 4\n- factorial of 2\n\nI'll make multiple function calls to get all these results."
+        }
+      }
+    ],
+    "created": 1795287187,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 200,
+      "prompt_tokens": 314,
+      "total_tokens": 514,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 314,
+      "prompt_ms": 447.687,
+      "prompt_per_token_ms": 1.4257547770700638,
+      "prompt_per_second": 701.3828858108456,
+      "predicted_n": 200,
+      "predicted_ms": 5340.801,
+      "predicted_per_token_ms": 26.8381959798995,
+      "predicted_per_second": 37.260328553713194
+    }
+  },
+  "elapsed_seconds": 5.797397098998772,
+  "score": {
+    "valid": true
+  }
+}

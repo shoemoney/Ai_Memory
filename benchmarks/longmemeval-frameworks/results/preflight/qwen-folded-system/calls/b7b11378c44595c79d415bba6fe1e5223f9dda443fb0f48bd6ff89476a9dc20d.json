@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 33
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f81274ed46962405f9adb2ccb2791559e48eb9014d44bee46d5de82877a18245",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-3e3f6b13-68c5-410a-a961-a5d64353bb31",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Ibanez basses are recommended for rock music\", \"Considered SR300, SR505, BTB740, and GIO GSR200 as popular options for rock music\", \"Factors to consider include neck type, body wood, pickups, and electronics\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330325,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 66,
+      "prompt_tokens": 1306,
+      "total_tokens": 1372,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Ibanez basses are recommended for rock music\", \"Considered SR300, SR505, BTB740, and GIO GSR200 as popular options for rock music\", \"Factors to consider include neck type, body wood, pickups, and electronics\"]}",
+  "seconds": 1.3287697639898397,
+  "prompt_tokens_local_gemma_estimate": 1305
+}

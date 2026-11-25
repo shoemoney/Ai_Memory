@@ -1,0 +1,52 @@
+{
+  "item": {
+    "question_id": "prerequisite",
+    "system": "graphiti"
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "abe8ed1ef5de7a828bbe7c72e84fdda27765bf89e66352deffe1729383b710cb",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a2cbcaf8-f251-4044-be1b-7ba8ed83e993",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"blue\", \"summary\": \"user: My favorite color is blue. I work at ExampleCo.\"}, {\"name\": \"ExampleCo\", \"summary\": \"user: My favorite color is blue. I work at ExampleCo.\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795329869,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 57,
+      "prompt_tokens": 913,
+      "total_tokens": 970,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 28
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"blue\", \"summary\": \"user: My favorite color is blue. I work at ExampleCo.\"}, {\"name\": \"ExampleCo\", \"summary\": \"user: My favorite color is blue. I work at ExampleCo.\"}]}",
+  "seconds": 1.9632923309982289,
+  "prompt_tokens_local": 904
+}

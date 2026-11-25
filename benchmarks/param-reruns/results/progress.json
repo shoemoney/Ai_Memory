@@ -1,0 +1,24 @@
+{
+  "phase": "complete; shared UV tool cache preserved",
+  "time": 1795356607.7550266,
+  "gpu_wait_started_epoch": 1795348835.6186085,
+  "gpu_wait_deadline_epoch": 1795384835.6186085,
+  "queue_pid": null,
+  "cpu_models_running": false,
+  "cpu_execution_smokes": "MemGen both datasets and reduced Cartridges passed",
+  "batch4_smoke": "passed GSM8K, both arms",
+  "batch8_smoke": "deferred twice by shared CPU memory guard; not a numeric result",
+  "main_scored_cells_completed": 3,
+  "next_steps": [],
+  "gpu_wait_timeout": "Reassess largest CPU-feasible version after ten-hour queue timeout",
+  "notes": [
+    "Full TriviaQA search index does not fit host; closed-book diagnostic is explicitly reduced",
+    "Two initial full-context CPU smoke workers were global-OOM killed; later guard stops own worker before critical pressure",
+    "No main scored results exist yet; never present eight-token smoke scores as benchmark figures"
+  ],
+  "gpu_admitted_epoch": 1795353636.0704262,
+  "gpu_admitted_free_mib": 6395,
+  "gpu_models_running": false,
+  "cleanup_confirmed_for_assigned_scratch": true,
+  "shared_uv_cache_preserved": true
+}

@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 31
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1382483895d7903ca78c72e60e605811845b2f038a3f09ab9a76c915a8c0873b",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-906c4061-77a9-4630-a86c-cd08c75cdb0c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Thinking of selling Taylor GS Mini acoustic guitar\",\n    \"Thinking of buying used Ibanez bass guitar\",\n    \"Interested in finding good deals on used bass guitars online\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332475,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 46,
+      "prompt_tokens": 2263,
+      "total_tokens": 2309,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Thinking of selling Taylor GS Mini acoustic guitar\",\n    \"Thinking of buying used Ibanez bass guitar\",\n    \"Interested in finding good deals on used bass guitars online\"\n  ]\n}",
+  "seconds": 3.457123853993835,
+  "prompt_tokens_local": 2263,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 68
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7568ae0908fa577f239c162aa0c4c2df4b45d7cdc147d073c9b77da5a18fbc17",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ac414fb6-db02-411b-bdbe-dc4d87178932",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_FRIENDS_WITH\", \"fact\": \"Nisha's dad is friends with Trigger\", \"valid_at\": \"2023-05-28T23:25:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354092,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 8860,
+      "total_tokens": 8946,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_FRIENDS_WITH\", \"fact\": \"Nisha's dad is friends with Trigger\", \"valid_at\": \"2023-05-28T23:25:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 19.382234588993015,
+  "prompt_tokens_local": 8860
+}

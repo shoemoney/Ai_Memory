@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 31
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ae6af12f1819b9672fa6785214b5591187c10a48ab3c5b8cc5261cce9a92bdc7",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c48381a6-1186-4150-8890-777c0ca304c3",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Attended the 'Yoga for Foreigners' class at Yoga Tree Shimokitazawa\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Class level is for beginners to intermediate practitioners\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Class style is Hatha Yoga\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Class language is English\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Class duration is 60 minutes\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Class schedule is usually on weekends, but might change, so it's best to check the studio's website or contact them directly to confirm the schedule\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Atmosphere is relaxed and serene\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"International community of other foreigners living in Tokyo, including expats, students, and travelers\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366134,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 346,
+      "prompt_tokens": 2240,
+      "total_tokens": 2586,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Attended the 'Yoga for Foreigners' class at Yoga Tree Shimokitazawa\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Class level is for beginners to intermediate practitioners\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Class style is Hatha Yoga\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Class language is English\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Class duration is 60 minutes\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Class schedule is usually on weekends, but might change, so it's best to check the studio's website or contact them directly to confirm the schedule\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Atmosphere is relaxed and serene\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"International community of other foreigners living in Tokyo, including expats, students, and travelers\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        }\n    ]\n}",
+  "seconds": 29.571288406004896,
+  "prompt_tokens_local": 2240
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 3
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "87418100a664c28714245207188c15027787ffaf780ca8fee7d67727929434be",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-16bc3f9d-13ff-4cae-88bc-2805ffd3a0d0",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Asked for tips on selecting a display case for an antique brooch\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Celebrating heritage\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Zodiac Experience\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Unity and diversity\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"5 more phygital experiences with an emphasis on Chinese culture\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the display will be visually appealing and meaningful. The display will include the vinyl record and other items that share a similar style or era. The display will tell a story or evoke a certain mood, such as the era or style of the album.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the display will be visually appealing and meaningful. The display will include the vinyl record and other items that share a similar style or era. The display will tell a story or evoke a certain mood, such as the era or style of the album.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331912,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 329,
+      "prompt_tokens": 1742,
+      "total_tokens": 2071,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Asked for tips on selecting a display case for an antique brooch\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Celebrating heritage\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Zodiac Experience\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Unity and diversity\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"5 more phygital experiences with an emphasis on Chinese culture\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the display will be visually appealing and meaningful. The display will include the vinyl record and other items that share a similar style or era. The display will tell a story or evoke a certain mood, such as the era or style of the album.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the display will be visually appealing and meaningful. The display will include the vinyl record and other items that share a similar style or era. The display will tell a story or evoke a certain mood, such as the era or style of the album.\"\n        }\n    ]\n}",
+  "seconds": 4.073173033000785,
+  "prompt_tokens_local": 1742,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

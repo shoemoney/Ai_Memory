@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q051",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "76f3a620f9718d2403db03ed8f7532eb84b58cea1ff619557afcb505124ed9e8",
+  "reference_sha256": "23e3875c507053c234d762c2771620b68acd297b827f986c4fbde4f7b8b20e45",
+  "method": "rag",
+  "answer": "Person009 informed the commissary that he had read the letter and agreed with the arrest of Person441 Person361.",
+  "response": {
+    "text": "Person009 informed the commissary that he had read the letter and agreed with the arrest of Person441 Person361.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 31,
+      "prompt_tokens": 3387,
+      "total_tokens": 3418,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.580353957993793,
+    "request_sha256": "eb48c9065f004ecec6eec0a10ce583a9e38c9f21ce3b347736319fe74c06aae7",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    140,
+    363,
+    214,
+    295,
+    303,
+    273,
+    308,
+    199,
+    527,
+    263,
+    237,
+    262,
+    288,
+    255,
+    204,
+    275,
+    201,
+    304,
+    427,
+    307
+  ],
+  "retrieval_scores": [
+    0.6153005361557007,
+    0.6131653785705566,
+    0.6082628965377808,
+    0.6079443097114563,
+    0.597957193851471,
+    0.5889877080917358,
+    0.5833312273025513,
+    0.5813506245613098,
+    0.576924741268158,
+    0.5646380186080933,
+    0.5620706081390381,
+    0.5584434270858765,
+    0.5578808784484863,
+    0.5535346269607544,
+    0.5514600276947021,
+    0.5483936071395874,
+    0.5477957725524902,
+    0.5450878143310547,
+    0.5369420051574707,
+    0.5345618724822998
+  ],
+  "retrieval_seconds": 0.0303365690051578,
+  "provided_context_sha256": "c2ad8e97d638c9b568dbb05e1ad1ef9f72939ef2ec91534297ba36857526b1ba",
+  "provided_context_tokens": 2988,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "c0928064c2f2cef54cf5a3cee1f09f00274ff14ed410cb76a59f7c86f96741bc",
+    "raw_answer_sha256": "3dd1debc628e4ed6318ddf2b5c5390ae9242ecb5f02a7e670c5edfbee896ea80",
+    "answer_redacted": false
+  }
+}

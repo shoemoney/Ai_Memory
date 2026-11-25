@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 40
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "466d4ca2acd9f7a7c4fc0b973f60dd657a569288d233de86ee1609863f99eeda",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6d176fba-bc9b-478f-a071-5bbe9e41469a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"OWNS\", \"fact\": \"user owns a Mustang with a cracked windshield.\", \"valid_at\": \"2023-05-28T14:44:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795350059,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 82,
+      "prompt_tokens": 8797,
+      "total_tokens": 8879,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 160
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"OWNS\", \"fact\": \"user owns a Mustang with a cracked windshield.\", \"valid_at\": \"2023-05-28T14:44:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 73.73096106600133,
+  "prompt_tokens_local": 8797
+}

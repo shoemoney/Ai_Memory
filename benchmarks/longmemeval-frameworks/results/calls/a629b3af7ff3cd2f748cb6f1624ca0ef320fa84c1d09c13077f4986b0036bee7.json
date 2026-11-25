@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 39
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "684d2a7f8965570e2c65e8511eff088c5b23a75683f04a19361d6754832774cc",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f8ff7f13-e888-4686-b56a-ba69543904d2",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Considering upgrading router to handle more devices and provide better coverage, looking for compatible routers with Comcast\",\n        \"Netgear Nighthawk RAX80 recommended for tri-band router with 8 external antennas\",\n        \"Asus RT-AX88U recommended for gamers and heavy internet users with 8 external antennas\",\n        \"Linksys EA9500 recommended for handling up to 20 devices with 8 external antennas\",\n        \"Netgear R7000 recommended for Comcast users with 3 external antennas\",\n        \"TP-Link Archer C9 recommended for budget-friendly option with 3 external antennas\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356279,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 138,
+      "prompt_tokens": 2608,
+      "total_tokens": 2746,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Considering upgrading router to handle more devices and provide better coverage, looking for compatible routers with Comcast\",\n        \"Netgear Nighthawk RAX80 recommended for tri-band router with 8 external antennas\",\n        \"Asus RT-AX88U recommended for gamers and heavy internet users with 8 external antennas\",\n        \"Linksys EA9500 recommended for handling up to 20 devices with 8 external antennas\",\n        \"Netgear R7000 recommended for Comcast users with 3 external antennas\",\n        \"TP-Link Archer C9 recommended for budget-friendly option with 3 external antennas\"\n    ]\n}",
+  "seconds": 23.14689304700005,
+  "prompt_tokens_local": 2608
+}

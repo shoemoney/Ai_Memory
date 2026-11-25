@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 2
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2e2c09ac253a621353b4ed49aaf0d844521ad37d0105f39e49a18d65954c4329",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-80a240b2-60ca-4320-893d-3f43f8e8da3a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\"favorite_style\": \"casual to dressier\", \"favorite_brand\": \"Levi's\", \"favorite_jeans\": \"new pair of Levi's jeans\", \"favorite_way_to_style\": \"various tops, from casual tees to dressier button-downs\"}\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354470,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 67,
+      "prompt_tokens": 1512,
+      "total_tokens": 1579,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\"favorite_style\": \"casual to dressier\", \"favorite_brand\": \"Levi's\", \"favorite_jeans\": \"new pair of Levi's jeans\", \"favorite_way_to_style\": \"various tops, from casual tees to dressier button-downs\"}\n  ]\n}",
+  "seconds": 10.654538585004047,
+  "prompt_tokens_local": 1512
+}

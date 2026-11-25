@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 48
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "fadd0b28cb250fe3ad4542e1d42acaaf11b93aff56c343d919759b2e9803fcf1",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-124c51c2-7cd0-4732-a2c0-dc5c74369b7b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Quizizz\", \"target_entity_name\": \"Amazon Cockatoo\", \"relation_type\": \"INFLUENCES\", \"fact\": \"The use of the game-based learning platform Quizizz led to higher student engagement and performance compared to traditional instruction methods.\", \"valid_at\": \"2023-05-28T15:59:00Z\"}, {\"source_entity_name\": \"Amazon Cockatoo\", \"target_entity_name\": \"Amazon Cockatoo\", \"relation_type\": \"CONTINUES_TO_IMPROVE\", \"fact\": \"We will continuously improve and expand the app's features to become the leading reading comprehension app for children.\", \"valid_at\": \"2023-05-28T15:59:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795352303,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 173,
+      "prompt_tokens": 6969,
+      "total_tokens": 7142,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 160
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Quizizz\", \"target_entity_name\": \"Amazon Cockatoo\", \"relation_type\": \"INFLUENCES\", \"fact\": \"The use of the game-based learning platform Quizizz led to higher student engagement and performance compared to traditional instruction methods.\", \"valid_at\": \"2023-05-28T15:59:00Z\"}, {\"source_entity_name\": \"Amazon Cockatoo\", \"target_entity_name\": \"Amazon Cockatoo\", \"relation_type\": \"CONTINUES_TO_IMPROVE\", \"fact\": \"We will continuously improve and expand the app's features to become the leading reading comprehension app for children.\", \"valid_at\": \"2023-05-28T15:59:00Z\"}]}",
+  "seconds": 103.94614291400649,
+  "prompt_tokens_local": 6969
+}

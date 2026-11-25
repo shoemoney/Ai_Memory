@@ -1,0 +1,7 @@
+{
+  "version": "speaker-bound-v2",
+  "frozen_before_actual_semantic_scoring": true,
+  "change": "Coverage receives only written claims and the supplied speaker identifier binding. No original conversation text or reference facts are added to its premise. Explicit other subject identifiers and plural groups remain distinct.",
+  "reason": "Manual review found first-person and generic speaker aliases ambiguous without the input identifier. Writer prompt, schema, generations and judge instruction prompt are unchanged.",
+  "selection": "Same 60 legacy-hash-selected pairs retained; identity context updated before their local judge decisions."
+}

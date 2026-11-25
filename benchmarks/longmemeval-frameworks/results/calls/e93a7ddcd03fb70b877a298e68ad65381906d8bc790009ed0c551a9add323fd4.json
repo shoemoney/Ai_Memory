@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b3293d121fd6db7578ac954c6879c391e2341c2c207686a335339be58447c389",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e0531421-b441-4196-92e0-10dc841398a4",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Legacy Space\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Gallery\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Resting Space\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Journal\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Vault\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Space Connect\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"55+\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"32-47\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Space\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Gallery\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Resting Space\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Journal\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Vault\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"55+\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"32-47\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795358742,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 348,
+      "prompt_tokens": 6958,
+      "total_tokens": 7306,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 711
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Legacy Space\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Gallery\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Resting Space\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Journal\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Vault\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Space Connect\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"55+\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"32-47\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Space\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Gallery\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Resting Space\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Journal\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Legacy Vault\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"55+\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"32-47\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+  "seconds": 96.41787324700272,
+  "prompt_tokens_local": 6958
+}

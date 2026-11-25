@@ -1,0 +1,480 @@
+{
+  "points": {
+    "stock@256": {
+      "correct": 91,
+      "n": 360,
+      "accuracy": 0.25277777777777777,
+      "wilson_low": 0.21065435521338757,
+      "wilson_high": 0.30012176274563634,
+      "mean_tokens": 237.51111111111112,
+      "parse_clean": 0.25555555555555554
+    },
+    "stock@512": {
+      "correct": 230,
+      "n": 360,
+      "accuracy": 0.6388888888888888,
+      "wilson_low": 0.5880454496704685,
+      "wilson_high": 0.6867994278806416,
+      "mean_tokens": 369.7,
+      "parse_clean": 0.6416666666666667
+    },
+    "stock@1024": {
+      "correct": 317,
+      "n": 360,
+      "accuracy": 0.8805555555555555,
+      "wilson_low": 0.8429718004230137,
+      "wilson_high": 0.9101031640670282,
+      "mean_tokens": 489.2527777777778,
+      "parse_clean": 0.8805555555555555
+    },
+    "stock@2048": {
+      "correct": 358,
+      "n": 360,
+      "accuracy": 0.9944444444444445,
+      "wilson_low": 0.9799725903182546,
+      "wilson_high": 0.9984751737636977,
+      "mean_tokens": 495.76666666666665,
+      "parse_clean": 0.9944444444444445
+    },
+    "R@256": {
+      "correct": 116,
+      "n": 360,
+      "accuracy": 0.32222222222222224,
+      "wilson_low": 0.2760427005288873,
+      "wilson_high": 0.37215585620569175,
+      "mean_tokens": 234.06944444444446,
+      "parse_clean": 0.32222222222222224
+    },
+    "R@512": {
+      "correct": 247,
+      "n": 360,
+      "accuracy": 0.6861111111111111,
+      "wilson_low": 0.636420233925523,
+      "wilson_high": 0.7318719019929646,
+      "mean_tokens": 355.4,
+      "parse_clean": 0.6888888888888889
+    },
+    "R@1024": {
+      "correct": 327,
+      "n": 360,
+      "accuracy": 0.9083333333333333,
+      "wilson_low": 0.8740599157191836,
+      "wilson_high": 0.9339840242810803,
+      "mean_tokens": 450.9638888888889,
+      "parse_clean": 0.9166666666666666
+    },
+    "R@2048": {
+      "correct": 355,
+      "n": 360,
+      "accuracy": 0.9861111111111112,
+      "wilson_low": 0.9679036894336124,
+      "wilson_high": 0.9940533819952733,
+      "mean_tokens": 506.8666666666667,
+      "parse_clean": 0.9916666666666667
+    },
+    "S@256": {
+      "correct": 187,
+      "n": 360,
+      "accuracy": 0.5194444444444445,
+      "wilson_low": 0.467900458642175,
+      "wilson_high": 0.5705778242149805,
+      "mean_tokens": 7.466666666666667,
+      "parse_clean": 1.0
+    },
+    "S@512": {
+      "correct": 200,
+      "n": 360,
+      "accuracy": 0.5555555555555556,
+      "wilson_low": 0.503906596992823,
+      "wilson_high": 0.6060313540276211,
+      "mean_tokens": 7.466666666666667,
+      "parse_clean": 1.0
+    },
+    "S@1024": {
+      "correct": 195,
+      "n": 360,
+      "accuracy": 0.5416666666666666,
+      "wilson_low": 0.4900264081921028,
+      "wilson_high": 0.59242705507323,
+      "mean_tokens": 7.558333333333334,
+      "parse_clean": 1.0
+    },
+    "S@2048": {
+      "correct": 192,
+      "n": 360,
+      "accuracy": 0.5333333333333333,
+      "wilson_low": 0.48171733873830913,
+      "wilson_high": 0.5842454318739574,
+      "mean_tokens": 7.458333333333333,
+      "parse_clean": 1.0
+    },
+    "K@256": {
+      "correct": 126,
+      "n": 360,
+      "accuracy": 0.35,
+      "wilson_low": 0.302547518297233,
+      "wilson_high": 0.400620013947568,
+      "mean_tokens": 230.75277777777777,
+      "parse_clean": 0.35
+    },
+    "K@512": {
+      "correct": 253,
+      "n": 360,
+      "accuracy": 0.7027777777777777,
+      "wilson_low": 0.6536256613323942,
+      "wilson_high": 0.7476478598922266,
+      "mean_tokens": 348.7888888888889,
+      "parse_clean": 0.7027777777777777
+    },
+    "K@1024": {
+      "correct": 334,
+      "n": 360,
+      "accuracy": 0.9277777777777778,
+      "wilson_low": 0.8962818418844536,
+      "wilson_high": 0.9502403809729658,
+      "mean_tokens": 440.0027777777778,
+      "parse_clean": 0.9305555555555556
+    },
+    "K@2048": {
+      "correct": 356,
+      "n": 360,
+      "accuracy": 0.9888888888888889,
+      "wilson_low": 0.9717830423066295,
+      "wilson_high": 0.9956709266732783,
+      "mean_tokens": 458.52777777777777,
+      "parse_clean": 0.9972222222222222
+    }
+  },
+  "bootstrap": {
+    "R minus S @256": {
+      "difference": -0.19722222222222224,
+      "low": -0.25833333333333336,
+      "high": -0.1361111111111111,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus S tokens @256": {
+      "difference": 226.6027777777778,
+      "low": 222.35555555555555,
+      "high": 230.69166666666666,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus stock @256": {
+      "difference": 0.06944444444444448,
+      "low": 0.025,
+      "high": 0.11388888888888889,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus stock tokens @256": {
+      "difference": -3.441666666666663,
+      "low": -6.808333333333334,
+      "high": -0.06666666666666667,
+      "draws": 10000,
+      "seed": 0
+    },
+    "S minus stock @256": {
+      "difference": 0.2666666666666667,
+      "low": 0.20555555555555555,
+      "high": 0.3277777777777778,
+      "draws": 10000,
+      "seed": 0
+    },
+    "S minus stock tokens @256": {
+      "difference": -230.04444444444445,
+      "low": -233.98611111111111,
+      "high": -225.89444444444445,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus R @256": {
+      "difference": 0.027777777777777735,
+      "low": -0.011111111111111112,
+      "high": 0.06666666666666667,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus R tokens @256": {
+      "difference": -3.3166666666666913,
+      "low": -6.688888888888889,
+      "high": -0.11388888888888889,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus stock @256": {
+      "difference": 0.09722222222222221,
+      "low": 0.058333333333333334,
+      "high": 0.1361111111111111,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus stock tokens @256": {
+      "difference": -6.758333333333354,
+      "low": -10.316666666666666,
+      "high": -3.2083333333333335,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus S @512": {
+      "difference": 0.13055555555555554,
+      "low": 0.07777777777777778,
+      "high": 0.18055555555555555,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus S tokens @512": {
+      "difference": 347.93333333333334,
+      "low": 333.31111111111113,
+      "high": 362.275,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus stock @512": {
+      "difference": 0.047222222222222276,
+      "low": 0.011111111111111112,
+      "high": 0.08611111111111111,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus stock tokens @512": {
+      "difference": -14.300000000000011,
+      "low": -21.716666666666665,
+      "high": -7.011111111111111,
+      "draws": 10000,
+      "seed": 0
+    },
+    "S minus stock @512": {
+      "difference": -0.08333333333333326,
+      "low": -0.1388888888888889,
+      "high": -0.027777777777777776,
+      "draws": 10000,
+      "seed": 0
+    },
+    "S minus stock tokens @512": {
+      "difference": -362.23333333333335,
+      "low": -376.2416666666667,
+      "high": -347.64444444444445,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus R @512": {
+      "difference": 0.016666666666666607,
+      "low": -0.016666666666666666,
+      "high": 0.05,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus R tokens @512": {
+      "difference": -6.611111111111086,
+      "low": -14.319444444444445,
+      "high": 0.8416666666666667,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus stock @512": {
+      "difference": 0.06388888888888888,
+      "low": 0.027777777777777776,
+      "high": 0.10277777777777777,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus stock tokens @512": {
+      "difference": -20.911111111111097,
+      "low": -28.480555555555554,
+      "high": -13.602777777777778,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus S @1024": {
+      "difference": 0.3666666666666667,
+      "low": 0.3138888888888889,
+      "high": 0.41944444444444445,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus S tokens @1024": {
+      "difference": 443.40555555555557,
+      "low": 414.6388888888889,
+      "high": 473.05555555555554,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus stock @1024": {
+      "difference": 0.02777777777777779,
+      "low": -0.002777777777777778,
+      "high": 0.06111111111111111,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus stock tokens @1024": {
+      "difference": -38.28888888888889,
+      "low": -57.18611111111111,
+      "high": -20.13888888888889,
+      "draws": 10000,
+      "seed": 0
+    },
+    "S minus stock @1024": {
+      "difference": -0.3388888888888889,
+      "low": -0.39166666666666666,
+      "high": -0.2861111111111111,
+      "draws": 10000,
+      "seed": 0
+    },
+    "S minus stock tokens @1024": {
+      "difference": -481.69444444444446,
+      "low": -511.76666666666665,
+      "high": -452.35,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus R @1024": {
+      "difference": 0.019444444444444486,
+      "low": -0.011111111111111112,
+      "high": 0.05,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus R tokens @1024": {
+      "difference": -10.961111111111109,
+      "low": -26.63888888888889,
+      "high": 4.647222222222222,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus stock @1024": {
+      "difference": 0.047222222222222276,
+      "low": 0.016666666666666666,
+      "high": 0.07777777777777778,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus stock tokens @1024": {
+      "difference": -49.25,
+      "low": -67.33333333333333,
+      "high": -31.633333333333333,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus S @2048": {
+      "difference": 0.45277777777777783,
+      "low": 0.4,
+      "high": 0.5055555555555555,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus S tokens @2048": {
+      "difference": 499.40833333333336,
+      "low": 459.6972222222222,
+      "high": 540.1861111111111,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus stock @2048": {
+      "difference": -0.008333333333333304,
+      "low": -0.022222222222222223,
+      "high": 0.002777777777777778,
+      "draws": 10000,
+      "seed": 0
+    },
+    "R minus stock tokens @2048": {
+      "difference": 11.100000000000023,
+      "low": -16.46388888888889,
+      "high": 40.52777777777778,
+      "draws": 10000,
+      "seed": 0
+    },
+    "S minus stock @2048": {
+      "difference": -0.46111111111111114,
+      "low": -0.5138888888888888,
+      "high": -0.4083333333333333,
+      "draws": 10000,
+      "seed": 0
+    },
+    "S minus stock tokens @2048": {
+      "difference": -488.30833333333334,
+      "low": -526.0638888888889,
+      "high": -452.15555555555557,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus R @2048": {
+      "difference": 0.002777777777777768,
+      "low": -0.013888888888888888,
+      "high": 0.019444444444444445,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus R tokens @2048": {
+      "difference": -48.3388888888889,
+      "low": -78.73611111111111,
+      "high": -19.033333333333335,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus stock @2048": {
+      "difference": -0.005555555555555536,
+      "low": -0.016666666666666666,
+      "high": 0.005555555555555556,
+      "draws": 10000,
+      "seed": 0
+    },
+    "K minus stock tokens @2048": {
+      "difference": -37.23888888888888,
+      "low": -60.875,
+      "high": -14.311111111111112,
+      "draws": 10000,
+      "seed": 0
+    }
+  },
+  "primary": {
+    "required_accuracy": 0.9444444444444444,
+    "max_mean_tokens": 247.88333333333333,
+    "R": {
+      "256": {
+        "accuracy_ok": false,
+        "tokens_ok": true,
+        "passes": false
+      },
+      "512": {
+        "accuracy_ok": false,
+        "tokens_ok": false,
+        "passes": false
+      },
+      "1024": {
+        "accuracy_ok": false,
+        "tokens_ok": false,
+        "passes": false
+      },
+      "2048": {
+        "accuracy_ok": true,
+        "tokens_ok": false,
+        "passes": false
+      },
+      "passes_at_any_cap": false
+    },
+    "K": {
+      "256": {
+        "accuracy_ok": false,
+        "tokens_ok": true,
+        "passes": false
+      },
+      "512": {
+        "accuracy_ok": false,
+        "tokens_ok": false,
+        "passes": false
+      },
+      "1024": {
+        "accuracy_ok": false,
+        "tokens_ok": false,
+        "passes": false
+      },
+      "2048": {
+        "accuracy_ok": true,
+        "tokens_ok": false,
+        "passes": false
+      },
+      "passes_at_any_cap": false
+    }
+  }
+}

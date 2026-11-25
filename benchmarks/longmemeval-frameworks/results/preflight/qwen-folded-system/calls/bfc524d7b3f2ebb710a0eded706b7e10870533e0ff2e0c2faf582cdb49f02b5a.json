@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 23
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1013ddb75751d9331f4e1bb9d2848ebf2d07794bb0387692309377a0b497144e",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9fe82234-b1a9-4188-b271-916752dac6cb",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Looking for hiking trails in San Francisco\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Think of setting up a cozy atmosphere similar to a movie marathon\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Considering volunteering at an animal shelter\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Manfrotto Academy offers tutorials, workshops, and webinars\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Community forum for users to connect and share experiences\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"cultural exchange programs\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"enjoyed the recommendations for entrepreneurship and business\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Consider visiting Machu Picchu, Cusco, and the Sacred Valley in Peru, Santiago and Valparaíso in Chile, Buenos Aires and Iguazú Falls in Argentina, and Rio de Janeiro and Salvador in Brazil for solo travel experiences\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Looking for hiking trails in San Francisco\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Look for hostels with social areas and group tours that cater to solo travelers\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Looking for hiking trails in San Francisco\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Join Facebook groups or online forums for solo travel and meetups in South America\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Looking for hiking trails in San Francisco\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330278,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 432,
+      "prompt_tokens": 1807,
+      "total_tokens": 2239,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Looking for hiking trails in San Francisco\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Think of setting up a cozy atmosphere similar to a movie marathon\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Considering volunteering at an animal shelter\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Manfrotto Academy offers tutorials, workshops, and webinars\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Community forum for users to connect and share experiences\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"cultural exchange programs\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"enjoyed the recommendations for entrepreneurship and business\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Consider visiting Machu Picchu, Cusco, and the Sacred Valley in Peru, Santiago and Valparaíso in Chile, Buenos Aires and Iguazú Falls in Argentina, and Rio de Janeiro and Salvador in Brazil for solo travel experiences\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Looking for hiking trails in San Francisco\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Look for hostels with social areas and group tours that cater to solo travelers\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Looking for hiking trails in San Francisco\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Join Facebook groups or online forums for solo travel and meetups in South America\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Looking for hiking trails in San Francisco\"\n        }\n    ]\n}",
+  "seconds": 4.820650817011483,
+  "prompt_tokens_local_gemma_estimate": 1928
+}

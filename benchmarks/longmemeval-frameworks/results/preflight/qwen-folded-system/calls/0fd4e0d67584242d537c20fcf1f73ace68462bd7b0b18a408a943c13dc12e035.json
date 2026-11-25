@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ca72fd71be854d88a674864c7bce00f890f3e21b36e0cab458303b14412db99e",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-72d1caac-eefe-4944-86be-aa77f50ad34d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Lockheed Martin\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Denver works at Lockheed Martin.\", \"valid_at\": \"2023-05-28T00:47:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"LOCATED_IN\", \"fact\": \"Denver is located in Belmont Arts Center.\", \"valid_at\": \"2023-05-28T00:47:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"LOCATED_IN\", \"fact\": \"Denver is located in Riverside Park.\", \"valid_at\": \"2023-05-28T00:47:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331300,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 238,
+      "prompt_tokens": 6601,
+      "total_tokens": 6839,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 162
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Lockheed Martin\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Denver works at Lockheed Martin.\", \"valid_at\": \"2023-05-28T00:47:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"LOCATED_IN\", \"fact\": \"Denver is located in Belmont Arts Center.\", \"valid_at\": \"2023-05-28T00:47:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"LOCATED_IN\", \"fact\": \"Denver is located in Riverside Park.\", \"valid_at\": \"2023-05-28T00:47:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 11.551436290988931,
+  "prompt_tokens_local_gemma_estimate": 6711
+}

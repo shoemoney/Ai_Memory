@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 36
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "99d753dbd1b622f2d32b7250f91f328f3b862b2eeb824f8e9759035cd7d35c49",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-44b976a1-3b87-4a67-96b0-5a4f5245aa44",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Belmont Arts Center is sited in Trigger.\", \"valid_at\": \"2023-05-24T02:39:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Trigger is sited in Riverside Park.\", \"valid_at\": \"2023-05-24T02:39:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795370076,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 167,
+      "prompt_tokens": 7156,
+      "total_tokens": 7323,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Belmont Arts Center is sited in Trigger.\", \"valid_at\": \"2023-05-24T02:39:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Trigger is sited in Riverside Park.\", \"valid_at\": \"2023-05-24T02:39:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 23.23111990300822,
+  "prompt_tokens_local": 7156
+}

@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 16
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "6561b3c70cb69d6336c4793938fb860e9b3927cc809aab18e66c3d3e4fb062eb",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-8b246f01-0fcc-4ff8-a83e-deafb7c0d4b2",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"different understandings of truth can lead to misunderstandings and conflicts between different societies or cultures\", \"promote cultural awareness and sensitivity\", \"promote open communication and dialogue\", \"cultural exchange programs\", \"mindset of cultural relativism\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331992,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 53,
+      "prompt_tokens": 1712,
+      "total_tokens": 1765,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"different understandings of truth can lead to misunderstandings and conflicts between different societies or cultures\", \"promote cultural awareness and sensitivity\", \"promote open communication and dialogue\", \"cultural exchange programs\", \"mindset of cultural relativism\"]}",
+  "seconds": 1.8632302800106118,
+  "prompt_tokens_local": 1712,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

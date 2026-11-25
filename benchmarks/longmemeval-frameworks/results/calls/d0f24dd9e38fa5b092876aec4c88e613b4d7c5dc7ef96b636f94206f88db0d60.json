@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 56
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2d9759d15181a1019b020e91453032a8d6f1cd6f057af920be184309e53aa1e9",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-cfe9a9ba-09e9-4278-a308-71947f137877",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Riverside Park\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Nisha's dad\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Trigger\", \"entity_type_id\": 0, \"episode_indices\": [2]}, {\"name\": \"dog leash\", \"entity_type_id\": 0, \"episode_indices\": [2]}, {\"name\": \"wool coat\", \"entity_type_id\": 0, \"episode_indices\": [2]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [3]}]}]",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795371897,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 235,
+      "prompt_tokens": 6784,
+      "total_tokens": 7019,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 708
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Riverside Park\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Nisha's dad\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"Trigger\", \"entity_type_id\": 0, \"episode_indices\": [2]}, {\"name\": \"dog leash\", \"entity_type_id\": 0, \"episode_indices\": [2]}, {\"name\": \"wool coat\", \"entity_type_id\": 0, \"episode_indices\": [2]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [3]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [3]}]}]",
+  "seconds": 37.366655246994924,
+  "prompt_tokens_local": 6784
+}

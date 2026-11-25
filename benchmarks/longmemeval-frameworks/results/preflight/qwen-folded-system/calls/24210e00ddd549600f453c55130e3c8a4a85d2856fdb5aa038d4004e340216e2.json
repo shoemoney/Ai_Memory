@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 10
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d40acd00be8c1cdbb5bc2e65e6995e066dcd82e0b2a2986e0a56e46e97696c04",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-49432be5-28fd-4c3b-9577-2ce8c80d936f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Manfrotto MT057CXPRO4 Carbon Fiber Tripod\", \"Warranty is 6 years from the date of purchase\", \"Customer support can be contacted by phone, email, or through authorized service centers\", \"Manfrotto Academy offers tutorials, workshops, and webinars\", \"Community forum for users to connect and share experiences\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330218,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 77,
+      "prompt_tokens": 2670,
+      "total_tokens": 2747,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 680
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Manfrotto MT057CXPRO4 Carbon Fiber Tripod\", \"Warranty is 6 years from the date of purchase\", \"Customer support can be contacted by phone, email, or through authorized service centers\", \"Manfrotto Academy offers tutorials, workshops, and webinars\", \"Community forum for users to connect and share experiences\"]}",
+  "seconds": 3.6590721829998074,
+  "prompt_tokens_local_gemma_estimate": 2711
+}

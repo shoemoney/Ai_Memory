@@ -1,0 +1,12 @@
+{
+  "n_paired_inputs": 32,
+  "hardware": "Apple M3 Ultra, 96 GB",
+  "reference": "Official MTEB PyTorch wrapper, bfloat16",
+  "candidate": "MLX, bfloat16, identical original model revision",
+  "sampling": "The first 16 queries and 16 documents after the pre-existing SciFact transport length sort; exact cached RPC hashes matched; no labels or quality scores used",
+  "minimum_embedding_cosine": 0.999770998954773,
+  "mean_embedding_cosine": 0.999850869178772,
+  "required_minimum": 0.995,
+  "max_normalized_coordinate_difference": 0.00283610075712204,
+  "status": "pass"
+}

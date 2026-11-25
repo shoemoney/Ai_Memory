@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 76
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "fd313ee3b60eb4c0c73faa0c6a14fed25ed64e561638d861642048ac69b971e7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-426e6735-8d06-4496-a85e-7ef2d791486b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Halloween Horror Nights\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Universal Studios Hollywood\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"VIP Experience's Gourmet Buffet\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365260,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 104,
+      "prompt_tokens": 8298,
+      "total_tokens": 8402,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Halloween Horror Nights\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Universal Studios Hollywood\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"VIP Experience's Gourmet Buffet\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+  "seconds": 15.791132038022624,
+  "prompt_tokens_local": 8298
+}

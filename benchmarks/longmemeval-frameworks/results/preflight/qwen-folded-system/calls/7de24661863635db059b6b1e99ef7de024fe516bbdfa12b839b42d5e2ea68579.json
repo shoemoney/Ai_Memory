@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 51
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9ca40e6f853b9537fd0fce1a2dc015183120c100daa861e3185c52eff9b08921",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0e26557d-5959-463e-ba9d-dd279523b2b1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Got a good understanding of adding Amano shrimp and live brine shrimp to the tank\", \"Considered upgrading the filter for better water quality and algae control\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330427,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 38,
+      "prompt_tokens": 2297,
+      "total_tokens": 2335,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 680
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Got a good understanding of adding Amano shrimp and live brine shrimp to the tank\", \"Considered upgrading the filter for better water quality and algae control\"]}",
+  "seconds": 1.3489242320065387,
+  "prompt_tokens_local_gemma_estimate": 2305
+}

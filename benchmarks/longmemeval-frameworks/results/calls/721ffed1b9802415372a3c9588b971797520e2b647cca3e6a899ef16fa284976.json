@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5a147f28099d28fda9b3c0b26522236254fa0a69fe7ba7e99bea3117062b2848",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4e89d23e-3c91-4bb6-be66-957aeaf9de66",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"ISpoweredBY\", \"fact\": \"The Mustang is powered by the Trigger, a powerful engine that enhances the performance of the vehicle.\", \"valid_at\": \"2023-08-15T09:37:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795361355,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 93,
+      "prompt_tokens": 7779,
+      "total_tokens": 7872,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 162
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"ISpoweredBY\", \"fact\": \"The Mustang is powered by the Trigger, a powerful engine that enhances the performance of the vehicle.\", \"valid_at\": \"2023-08-15T09:37:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 457.11359888501465,
+  "prompt_tokens_local": 7779
+}

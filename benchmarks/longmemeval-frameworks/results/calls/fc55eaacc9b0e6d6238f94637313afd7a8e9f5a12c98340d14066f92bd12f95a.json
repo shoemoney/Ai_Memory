@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 20
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b8ab4bd057175b980ff4cbd1d9857e9a70053d3b1253921f9c2791058571dd87",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9394334b-f14b-4b50-a1bd-9e41e3915466",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Engaging the core is essential for maintaining proper alignment and preventing injury in yoga poses.\",\n        \"To ensure core engagement, focus on keeping the spine neutral and engaging the muscles between the ribs and pelvis.\",\n        \"In Hanumanasana (monkey pose), engage the core to maintain control and balance, especially when the knee is bent.\",\n        \"In Gomukhasana (cow face pose), engage the core to maintain control and balance, especially when the knee is bent.\",\n        \"Use a strap or towel to deepen the stretch or maintain proper alignment, if needed.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355157,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 128,
+      "prompt_tokens": 2650,
+      "total_tokens": 2778,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Engaging the core is essential for maintaining proper alignment and preventing injury in yoga poses.\",\n        \"To ensure core engagement, focus on keeping the spine neutral and engaging the muscles between the ribs and pelvis.\",\n        \"In Hanumanasana (monkey pose), engage the core to maintain control and balance, especially when the knee is bent.\",\n        \"In Gomukhasana (cow face pose), engage the core to maintain control and balance, especially when the knee is bent.\",\n        \"Use a strap or towel to deepen the stretch or maintain proper alignment, if needed.\"\n    ]\n}",
+  "seconds": 23.440775378010585,
+  "prompt_tokens_local": 2650
+}

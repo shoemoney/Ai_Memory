@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "177c7e8f3dc38c448782086b79092311f2a3e1302c8fb35ca8b34b7d2adadf78",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-57063851-281f-49ab-92c9-f0c8dd223996",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Taylor GS Mini\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Fender Champion 20\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Ibanez\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Taylor GS Mini\",\n            \"duplicate_candidate_id\": 0\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Fender Champion 20\",\n            \"duplicate_candidate_id\": 1\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Ibanez\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795344531,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 192,
+      "prompt_tokens": 8482,
+      "total_tokens": 8674,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 107
+      }
+    }
+  },
+  "text": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Taylor GS Mini\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Fender Champion 20\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Ibanez\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Taylor GS Mini\",\n            \"duplicate_candidate_id\": 0\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Fender Champion 20\",\n            \"duplicate_candidate_id\": 1\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Ibanez\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+  "seconds": 177.0895314859954,
+  "prompt_tokens_local": 8482
+}

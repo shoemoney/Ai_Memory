@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 59
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "26a530c52a0453d5a2076cdde37d94a5cecffc8af0579344341ee266109543c8",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f4127d23-4e9d-4c77-83ac-66931976437e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Interested in learning more about how brands can leverage social media personalities to reach their target audience, like the case studies mentioned by the speaker at the Digital Marketing Expo seminar\",\n    \"Interested in understanding the specific strategies and tactics that brands can use to effectively collaborate with influencers in their industry\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330461,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 68,
+      "prompt_tokens": 2885,
+      "total_tokens": 2953,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Interested in learning more about how brands can leverage social media personalities to reach their target audience, like the case studies mentioned by the speaker at the Digital Marketing Expo seminar\",\n    \"Interested in understanding the specific strategies and tactics that brands can use to effectively collaborate with influencers in their industry\"\n  ]\n}",
+  "seconds": 2.3734915249951882,
+  "prompt_tokens_local_gemma_estimate": 2945
+}

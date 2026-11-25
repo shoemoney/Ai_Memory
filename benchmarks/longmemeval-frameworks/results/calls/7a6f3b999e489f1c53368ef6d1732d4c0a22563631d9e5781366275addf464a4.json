@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 67
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "bd84cbde0b7660863bb7c831a43b45cdf637c3c228e6d52ba952f8e674d3d935",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9e80f607-5106-4477-bb20-f7a4875c64f2",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        [\"Interested in trying out Protini Polypeptide Cream and C-Firma Day Serum\", [\"T.L.C. Sukari Babyfacial\"]],\n        [\"T.L.C. Sukari Babyfacial should be used once or twice a week\", [\"Morning or night\"]],\n        [\"Interested in the VIB Sale\", [\"Interested in Drunk Elephant products\"]]\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367027,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 82,
+      "prompt_tokens": 2570,
+      "total_tokens": 2652,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        [\"Interested in trying out Protini Polypeptide Cream and C-Firma Day Serum\", [\"T.L.C. Sukari Babyfacial\"]],\n        [\"T.L.C. Sukari Babyfacial should be used once or twice a week\", [\"Morning or night\"]],\n        [\"Interested in the VIB Sale\", [\"Interested in Drunk Elephant products\"]]\n    ]\n}",
+  "seconds": 13.173196363000898,
+  "prompt_tokens_local": 2570
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 20
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "10bb3c2874f312fe2fd03fa5d8c757ba7770619d2c47ed71f8b74bd49eaa5e95",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-048dafcf-705e-482e-8d0f-114da5c52807",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Belmont Arts Center is sited in Trigger.\", \"valid_at\": \"2023-08-15T08:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Trigger is sited in Mustang.\", \"valid_at\": \"2023-08-15T08:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"Mustang has a cracked windshield.\", \"valid_at\": \"2023-08-15T08:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795360955,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 241,
+      "prompt_tokens": 8976,
+      "total_tokens": 9217,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Belmont Arts Center is sited in Trigger.\", \"valid_at\": \"2023-08-15T08:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Trigger is sited in Mustang.\", \"valid_at\": \"2023-08-15T08:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"Mustang has a cracked windshield.\", \"valid_at\": \"2023-08-15T08:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 91.6401614480128,
+  "prompt_tokens_local": 8976
+}

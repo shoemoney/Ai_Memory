@@ -1,0 +1,34 @@
+{
+  "episodes_per_arm": 400,
+  "tool_episodes": 280,
+  "tool_accuracy": {
+    "A": 0.9964285714285714,
+    "B": 0.6178571428571429,
+    "C": 0.05714285714285714
+  },
+  "final_accuracy": {
+    "A": 0.9825,
+    "B": 0.375,
+    "C": 0.2475
+  },
+  "no_tool_specificity": {
+    "A": 1.0,
+    "B": 0.975,
+    "C": 0.925
+  },
+  "A_minus_B_tool_accuracy": 0.37857142857142856,
+  "paired_bootstrap_95pct_interval": [
+    0.32142857142857145,
+    0.4357142857142857
+  ],
+  "one_sided_95pct_lower_bound": 0.33214285714285713,
+  "prompt_tokens": {
+    "A": 72789,
+    "B": 2402941,
+    "C": 128009
+  },
+  "A_over_B_prompt_ratio": 0.030291630131576264,
+  "success": true,
+  "bootstrap_draws": 10000,
+  "seed": 0
+}

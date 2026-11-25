@@ -1,0 +1,193 @@
+{
+  "id": "parallel_89",
+  "category": "parallel",
+  "result": [
+    {
+      "get_directions": "{\"start_location\":\"San Francisco\",\"end_location\":\"Palo Alto\",\"route_type\":\"fastest\"}"
+    },
+    {
+      "get_directions": "{\"start_location\":\"Palo Alto\",\"end_location\":\"Golden Gate Bridge, San Francisco\",\"route_type\":\"scenic\"}"
+    },
+    {
+      "get_directions": "{\"start_location\":\"Golden Gate Bridge, San Francisco\",\"end_location\":\"San Francisco\",\"route_type\":\"fastest\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Can you provide me with the fastest route from my home in San Francisco to my office in Palo Alto and then a scenic route from Palo Alto to the Golden Gate Bridge in San Francisco, and finally the fastest route back to my home from the Golden Gate Bridge?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "get_directions",
+                "description": "Retrieve directions from one location to another.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "start_location": {
+                      "type": "string",
+                      "description": "The starting point of the journey."
+                    },
+                    "end_location": {
+                      "type": "string",
+                      "description": "The destination point of the journey."
+                    },
+                    "route_type": {
+                      "type": "string",
+                      "description": "Type of route to use (e.g., fastest, scenic). Default is fastest.",
+                      "enum": [
+                        "fastest",
+                        "scenic"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "start_location",
+                    "end_location"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 406,
+    "output_token_count": 175,
+    "latency": 3.889953707999666
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you provide me with the fastest route from my home in San Francisco to my office in Palo Alto and then a scenic route from Palo Alto to the Golden Gate Bridge in San Francisco, and finally the fastest route back to my home from the Golden Gate Bridge?"
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_directions",
+          "description": "Retrieve directions from one location to another.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_location": {
+                "type": "string",
+                "description": "The starting point of the journey."
+              },
+              "end_location": {
+                "type": "string",
+                "description": "The destination point of the journey."
+              },
+              "route_type": {
+                "type": "string",
+                "description": "Type of route to use (e.g., fastest, scenic). Default is fastest.",
+                "enum": [
+                  "fastest",
+                  "scenic"
+                ]
+              }
+            },
+            "required": [
+              "start_location",
+              "end_location"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-FKTYrhkADerOjAExy8G92v99EiPO4W4n",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "CAOuAAANGn1t9SNEjC2UA6tThJPz6fib",
+              "function": {
+                "arguments": "{\"start_location\":\"San Francisco\",\"end_location\":\"Palo Alto\",\"route_type\":\"fastest\"}",
+                "name": "get_directions"
+              },
+              "type": "function"
+            },
+            {
+              "id": "bE0uVK3Wvm6mJJgRjOQ712oyvJxeAjnN",
+              "function": {
+                "arguments": "{\"start_location\":\"Palo Alto\",\"end_location\":\"Golden Gate Bridge, San Francisco\",\"route_type\":\"scenic\"}",
+                "name": "get_directions"
+              },
+              "type": "function"
+            },
+            {
+              "id": "naBvnVE0AUiVk1oVRvB3aYcV6Vm6YcUR",
+              "function": {
+                "arguments": "{\"start_location\":\"Golden Gate Bridge, San Francisco\",\"end_location\":\"San Francisco\",\"route_type\":\"fastest\"}",
+                "name": "get_directions"
+              },
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ],
+    "created": 1795286945,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 175,
+      "prompt_tokens": 406,
+      "total_tokens": 581,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 406,
+      "prompt_ms": 616.304,
+      "prompt_per_token_ms": 1.5179901477832511,
+      "prompt_per_second": 658.7658038889899,
+      "predicted_n": 175,
+      "predicted_ms": 3265.517,
+      "predicted_per_token_ms": 18.76733908045977,
+      "predicted_per_second": 53.284058848874466
+    }
+  },
+  "elapsed_seconds": 3.890042289996927,
+  "score": {
+    "valid": true
+  }
+}

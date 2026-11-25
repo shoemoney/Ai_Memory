@@ -1,0 +1,27 @@
+{
+  "basis": "Conditional arithmetic using prices quoted by the chapter, not verified provider billing",
+  "rates_usd_per_million": {
+    "uncached": 4.0,
+    "write_5m": 5.0,
+    "write_1h": 8.0,
+    "read": 0.2
+  },
+  "rows": [
+    {
+      "reads": 1,
+      "uncached": 8.0,
+      "cached5m": 5.2,
+      "cached1h": 8.2
+    },
+    {
+      "reads": 2,
+      "uncached": 12.0,
+      "cached5m": 5.4,
+      "cached1h": 8.4
+    }
+  ],
+  "spaced_10min": {
+    "two_5min_writes": 10,
+    "one_1hour_write_one_read": 8.2
+  }
+}

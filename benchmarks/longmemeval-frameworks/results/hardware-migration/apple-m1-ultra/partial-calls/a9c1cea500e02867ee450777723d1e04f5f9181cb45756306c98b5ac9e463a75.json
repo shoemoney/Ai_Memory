@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "prerequisite",
+    "system": "graphiti"
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "edea85e18a516083ed4b0e417b1366d6ff3a79b3cac941c35ff76be4c04313d8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6e3ae8b4-8ca0-445e-bcaf-59afd3ab4a17",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"ExampleCo\", \"summary\": \"The user works at ExampleCo and prefers the color blue.\"}]}}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331890,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 30,
+      "prompt_tokens": 798,
+      "total_tokens": 828,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"ExampleCo\", \"summary\": \"The user works at ExampleCo and prefers the color blue.\"}]}}",
+  "seconds": 0.8334740150021389,
+  "prompt_tokens_local": 798,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

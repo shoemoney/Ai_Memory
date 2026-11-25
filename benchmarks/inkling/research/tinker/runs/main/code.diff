@@ -1,0 +1,35 @@
+### repo: $COOKBOOK_DIR @ 5ec13af3fe5c27585da65d13115cf98973373d6a
+modules: tinker_cookbook
+-- repo-wide (vs HEAD, staged+unstaged) --
+diff --git a/tinker_cookbook/recipes/agent_memory/README.md b/tinker_cookbook/recipes/agent_memory/README.md
+index ce30943..25edd8a 100644
+--- a/tinker_cookbook/recipes/agent_memory/README.md
++++ b/tinker_cookbook/recipes/agent_memory/README.md
+@@ -4,13 +4,15 @@ Fine-tune `thinkingmachines/Inkling-2-Mini` with LoRA on six memory skills: hist
+ 
+ ## Installation and Setup
+ 
+-Use the cookbook's development setup, plus W&B for tracking:
++Use the cookbook's development setup:
+ 
+ ```bash
+-uv sync --extra dev --extra wandb
++uv sync --extra dev
+ ```
+ 
+-Set `TINKER_API_KEY` and authenticate with `wandb login` before training.
++Set `TINKER_API_KEY` before training. W&B is optional: install the `wandb` extra,
++run `wandb login`, and pass `wandb_project` and `wandb_name` to enable it.
++Without those arguments, metrics and transcripts are still saved locally.
+ 
+ ## Dataset
+ 
+@@ -46,7 +48,7 @@ python -m tinker_cookbook.recipes.agent_memory.train \
+     model_name=thinkingmachines/Inkling-2-Mini \
+     batch_size=32 num_epochs=1 lora_rank=32 effort=0.0 \
+     max_length=8192 max_tokens=512 eval_every=50 save_every=50 \
+-    budget_usd=100 wandb_project=agent_memory wandb_name=inkling-2-mini-memory
++    budget_usd=40
+ ```
+ 
+ The shared supervised trainer uses AdamW and linear LR decay. An omitted `learning_rate` uses `hyperparam_utils.get_lr(model_name)`, a starting point for tuning rather than an established optimum. Sweep nearby LRs on validation before selecting a main run. `seed` controls dataset ordering; it does not guarantee deterministic service sampling or adapter initialization. Each run starts from the post-trained model with a fresh optimizer; this launcher does not resume checkpoints.

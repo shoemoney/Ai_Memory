@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 71
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "fe4b655feb93bc38051789f35005a6088505a4cffcc0e0b437c50859c7763c16",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-fee9411d-5c3c-4f68-9976-32b7cac2940c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Optimizing influencer marketing strategy based on analytics data from AspireIQ and Grin\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Identify top-performing influencers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Optimize content types\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Refine audience targeting\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Improve influencer collaboration timing\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Enhance influencer relationships\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Adjust budget allocation\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Experiment with new influencer types\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Monitor and adapt to trends\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795333051,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 283,
+      "prompt_tokens": 2011,
+      "total_tokens": 2294,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Optimizing influencer marketing strategy based on analytics data from AspireIQ and Grin\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Identify top-performing influencers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Optimize content types\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Refine audience targeting\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Improve influencer collaboration timing\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Enhance influencer relationships\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Adjust budget allocation\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Experiment with new influencer types\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Monitor and adapt to trends\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 6.784381224002573,
+  "prompt_tokens_local": 2011,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

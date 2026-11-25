@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q082",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "41161e52042daa148f6fe66400cf1b59e8f28360305d3f22bf961198414b376e",
+  "reference_sha256": "86a3c838d54deaef407ac71477ed5fb0bb8b6a7c7074c7e93ee4bafcdcc6e003",
+  "method": "bm25",
+  "answer": "Person153 stated her intention to move Person711 downstairs and mentioned the need to hang up blinds.",
+  "response": {
+    "text": "Person153 stated her intention to move Person711 downstairs and mentioned the need to hang up blinds.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 24,
+      "prompt_tokens": 3274,
+      "total_tokens": 3298,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 10.210695132002002,
+    "request_sha256": "41920ea2605f87612808a5620e14e46b8ee635d0c56a6a5b80637c3d09f93da8",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    596,
+    387,
+    512,
+    371,
+    349,
+    352,
+    345,
+    516,
+    372,
+    375,
+    393,
+    561,
+    390,
+    346,
+    527,
+    358,
+    8,
+    386,
+    354,
+    350
+  ],
+  "retrieval_scores": [
+    210.80671719235465,
+    209.75582642413158,
+    209.69407064041604,
+    207.65489960739848,
+    207.1307357286275,
+    204.66414682080782,
+    202.9099921006819,
+    201.69764763422634,
+    198.5090750674943,
+    196.81228006038614,
+    195.9249493792034,
+    194.3599245506884,
+    193.47959357359304,
+    192.98234659867313,
+    192.3241720351463,
+    191.59793830248637,
+    191.17323443259806,
+    189.88749343827473,
+    188.85033811828228,
+    188.83151603669418
+  ],
+  "retrieval_seconds": 0.04086872798507102,
+  "provided_context_sha256": "27f9ef6e484992383c3a0c93071b35d97a19d69e53c1b7955211f9f84dc472a5",
+  "provided_context_tokens": 2893,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "2f3e9bb95d98a421e43f31f8fb05b4da8132a74888312dc24b53eafadf07a683",
+    "raw_answer_sha256": "1c9e1fa16aeab58236fd223e4ee92e9163e368aa517b2d5732bfaf7aa2f27c18",
+    "answer_redacted": false
+  }
+}

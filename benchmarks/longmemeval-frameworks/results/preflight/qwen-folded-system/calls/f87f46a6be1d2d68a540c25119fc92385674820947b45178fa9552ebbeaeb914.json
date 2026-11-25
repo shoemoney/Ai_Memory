@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 26
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d01f90211be9c57a46216465ae6725b6b49717f94fa703e578c85ca94991cff9",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-90090093-2f5f-421b-b9b9-9c706a1209c1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Considered joining a painting group to get feedback on their work\", \"Asked for feedback on a specific aspect (color palette) at the first meeting\", \"Asked the group for tips on photographing artwork for online platforms\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330293,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 49,
+      "prompt_tokens": 2095,
+      "total_tokens": 2144,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Considered joining a painting group to get feedback on their work\", \"Asked for feedback on a specific aspect (color palette) at the first meeting\", \"Asked the group for tips on photographing artwork for online platforms\"]}",
+  "seconds": 1.7118936460028635,
+  "prompt_tokens_local_gemma_estimate": 2179
+}

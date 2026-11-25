@@ -1,0 +1,99 @@
+{
+  "failures": [
+    {
+      "phase": "source_download",
+      "reason": "BEIR archive host connection timed out",
+      "resolution": "Pinned official BEIR Hugging Face parquet and qrels mirrors, hashes retained."
+    },
+    {
+      "phase": "environment_setup",
+      "reason": "Shared root filesystem approached capacity",
+      "resolution": "Paused own processes; moved own scratch to ignored .scratch in territory and symlinked authorized scratch path; resumed."
+    },
+    {
+      "phase": "prepare",
+      "reason": "Repeating full session context in each serialized memory chunk inflated temporary serialization memory on a busy system",
+      "resolution": "Store source session context once per document and stream JSON writes. Restart preparation before any experiment results."
+    },
+    {
+      "phase": "scratch_relocation",
+      "reason": "Coordinator assigned canonical data-disk scratch path",
+      "resolution": "Stopped own queued process before relocation, moved inactive scratch to assigned folder and preserved old virtualenv path with compatibility symlink. A cross-device rename was unavailable, so the stopped files were copied then removed."
+    },
+    {
+      "phase": "prefix-pilot-server",
+      "reason": "Local connections closed and server exited without a final error in the log. Log showed repeated prompt-state cache allocations; default cache limit is 8192 MiB. Exact exit cause not confirmed.",
+      "resolution": "Disable RAM prompt caching and idle-slot checkpoint caching for the final run. Preserve pilot outputs, and restart all measured prefixes under one fixed configuration."
+    }
+  ],
+  "changes_to_other_processes": false,
+  "runtime_choices": [
+    {
+      "phase": "prefix-throughput-pilot",
+      "initial_parallel_requests": 4,
+      "final_parallel_requests": 8,
+      "pilot_items": 63,
+      "pilot_raw": "pilot-prefixes-parallel4.jsonl",
+      "reason": "Eight slots improve batching within 8 GB. Same model, prompts, seed and temperature. Restarted measured prefix run; no pilot prefix reused in final indexes."
+    },
+    {
+      "phase": "Mac capacity adjustment",
+      "previous_slots": 4,
+      "previous_context_per_slot": 8192,
+      "requested_slots": 8,
+      "context_per_slot": 4096,
+      "reason": "Capacity audit over every fixed prompt plus generation cap and chat margin proves all fit; total context allocation stays 32768 tokens. No prompt, model, seed, temperature or query selection changes. Supervisor halves server slots after a kernel-pressure warning."
+    }
+  ],
+  "hardware_migrations": [
+    {
+      "from": "8 GB NVIDIA GPU",
+      "to": "Apple M1 Ultra, 64 GB",
+      "reason": "Shared graphics jobs left insufficient GPU memory. Prior throughput pilot is retained separately and not indexed."
+    },
+    {
+      "from": "Apple M1 Ultra, 64 GB",
+      "to": "Apple M3 Ultra, 96 GB",
+      "reason": "Sustained kernel warning while own model was unloaded. M1 scratch and own server/tunnel removed. Development GPU recheck did not meet two-slot free-memory requirement. Successful prefixes are retained and individually labeled with hardware class."
+    },
+    {
+      "from": "Apple M3 Ultra, 96 GB",
+      "to": "8 GB NVIDIA RTX 3070 Ti GPU",
+      "reason": "Validated all prompts plus completion fit 3072 tokens; two-slot CUDA load passed actual budget check with 3300 MiB owned and 1724 MiB free. Mac model and tunnel stopped at checkpoint; Mac scratch retained temporarily only for authorized fallback."
+    },
+    {
+      "from": "8 GB NVIDIA RTX 3070 Ti GPU",
+      "to": "Apple M3 Ultra, 96 GB",
+      "reason": "At 5800 completed SciFact prefixes, the shared GPU reported zero free memory. The owned one-slot server stopped automatically at its budget guard; no other process was touched. Resumed from checkpoint on the authorized fallback after observing 40% system-wide free memory and normal kernel pressure; four 3072-token slots limit memory."
+    },
+    {
+      "from": "Apple M3 Ultra, 96 GB",
+      "to": "8 GB NVIDIA RTX 3070 Ti GPU",
+      "reason": "The authorized fallback passed load pressure checks, but shared serving contention threatened the fixed wall budget. Stopped only the owned client, helper, server, and tunnel at the prefix checkpoint. GPU headroom returned; resumed one slot with context reduced from 3072 to 3008, still exceeding the 2968-token conservative maximum input-plus-generation requirement."
+    }
+  ],
+  "resource_adjustments": [
+    {
+      "checkpoint_scifact": 7400,
+      "reason": "Free GPU headroom fell to 928 MiB, triggering the guard. Context reduced to 2976 (conservative full-prompt maximum 2968); GPU offload reduced to 28 layers to leave additional room for unrelated graphics. Model weights, prompts, seed, and selected items are unchanged. Preload checks 4096 MiB free plus the unchanged actual postload 1 GiB free guard."
+    },
+    {
+      "checkpoint_scifact": 7400,
+      "reason": "A short 28-layer GPU offload trial saved GPU memory but could not finish within the wall budget. Its completed prefixes remain labeled with CPU offload. Stopped own job and returned to full GPU with the smaller 2976-token context, waiting for 4608 MiB free before loading. All interruptions to date were protective free-headroom guards rather than a CUDA allocation error."
+    },
+    {
+      "reason": "Full GPU resumed after the CPU-offload trial. Reduced logical/physical prefill batch from llama.cpp defaults 2048/512 to 128/64 to reduce compute-buffer memory; retained one slot and 2976-token context. Resource choice only, with fixed model, prompts, labels, seed, and generation cap."
+    },
+    {
+      "checkpoint_nfcorpus": 3381,
+      "reason": "Unrelated graphics allocations reduced free memory below 1024 MiB. Interrupted owned client and waited for its server to exit. The guard now checks every ten prefixes; a distinct free-headroom interruption unloads and resumes from checkpoints after availability returns, reducing slots when possible. This is distinguished from an actual CUDA allocation error, which retains the size-reduction/fail behavior. New loads wait for at least 5120 MiB free; model weights, context 2976, one slot, and prefill batch 128/64 are fixed."
+    }
+  ],
+  "execution_interruptions": [
+    {
+      "checkpoint_nfcorpus": 1213,
+      "completed_scifact": 10066,
+      "event": "Prefix client received SIGTERM at approximately one hour of its command session; server also exited shortly afterwards. Checkpoint JSON and unique IDs validated. Resumed with a separately monitored process session to avoid command-session lifetime interruption; no query, model, or scoring change."
+    }
+  ]
+}

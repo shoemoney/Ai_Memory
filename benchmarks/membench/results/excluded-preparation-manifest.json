@@ -1,0 +1,2549 @@
+{
+  "seed": 20261122,
+  "n": 300,
+  "sources": {
+    "mab": {
+      "dataset": "ai-hyz/MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "file": "data/Accurate_Retrieval-00000-of-00001.parquet",
+      "local": "mab-ar",
+      "sha256": "56c3cd80fb6731a3e53cd1a6be3148f54df60ff2d290ee50e28f8acebf9655c1",
+      "license": "MIT",
+      "code_revision": "538026089d1a8a8eff05121d0db89b388f360eba"
+    },
+    "halu": {
+      "dataset": "IAAR-Shanghai/HaluMem",
+      "revision": "cb04336aa1b732d4b24f5186c552456b4099806e",
+      "file": "HaluMem-Medium.jsonl",
+      "local": "halu-medium",
+      "sha256": "486fbc130a5c8781a2af27ffa508a1d7855245137aa449c193ac4d29c45634e7",
+      "license": "CC-BY-NC-ND-4.0",
+      "code_revision": "d653749586bfc7d13f5b68e8851f52155b5b1650"
+    }
+  },
+  "sampling": {
+    "mab": "30 questions sampled uniformly without replacement from each of all five eventqa_65536 contexts",
+    "halu": "25 questions per six question types; seeded round robin across users, using only sessions 0 through 29 and their cumulative real dialogue histories"
+  },
+  "pseudonymization": "spaCy en_core_web_sm 3.8.0 PERSON candidate words, filtered to non-stopwords capitalized in at least 80% of occurrences, mapped to compact PersonNNN aliases in word-hash order before indexing and inference",
+  "items": [
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q002",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "4168e3b015bc29d24373b7b83a5ba5bc0a4ed4d91891e8a074b4c8b07a0c1d57",
+      "reference_sha256": "97b94e2ab059146d4e94995b501e320be85a6a4223268efaf7c5815cb101c9ff"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q004",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "fa08d584f2e0d8f6fb14f77234219ab2063b253d3b247e411d9e449cd14ca3da",
+      "reference_sha256": "a0a5822a3ab7c24dd1afd78d5f4f8032f3439684e9f16a8b7fd7e3c81302c985"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q007",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "31e6db6d27a61cc9820280c722833f54d8f54a1957709a71ecd0a9773d4419af",
+      "reference_sha256": "9a010bd23f2039dae6016d4a7bb6c4b3509ecfaf7a23e97a5a6612787a52c199"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q017",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "f2bba775a58baae1ec431a1a6414fc8cb3fb09d297a25d30c13ab36b455cc47f",
+      "reference_sha256": "650944ca7cf93b087d485246c0127c9b4870fb906e510e92f160b2b83b4f8e61"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q021",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "cc8c36bbc80004e0ec33fd356d1e564d00a559e3dbe1263a0f63e7d2bb154a1d",
+      "reference_sha256": "a2e1958fc778d3d1052d1be2574fce3de14c1fb61d30f803a607db62e4f4ec4c"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q029",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "704a5b85cbd7d36b18104286e9d098629ac48e6a593d6aefa8ebfb60ca75e04a",
+      "reference_sha256": "f9d661eb54670a1110c8d8da65f47b2d7466ef5868217a9f93b9af4c9dd179dc"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q030",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "94dae609f5c29c2f6276b24b420d36e891305637f14cf0200e8a23b389bb7f0f",
+      "reference_sha256": "7325228443413435a852a83b7ed95bc82908b979035cdf5435606f5f6fa082da"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q033",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "fadf8f60071b8e08082bb4fc3c049c6e06d4244d86ab5c5839ee124b5515a6c5",
+      "reference_sha256": "28c2d4a0f22f9d6493e760b88ef28b2d5a42bb7a2be02ffd30d559b66bbdfd82"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q036",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "bbcf13f884b362a504e305cb073f899070cea13fe4e4e4d582d2019c55241bc0",
+      "reference_sha256": "dfc8aad73499b28ce2a44473eb1dcb19ff7108de043dd2b7291ffee4cbc82ea7"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q038",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "4284496e630fbc39d3dbea063d15c3b32b272517d6126a5d379428cd32eef709",
+      "reference_sha256": "c96031de6c4e68f38cee9deefa78f66a56a8a95b10081dd506a9c0b054dc3ddf"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q043",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "dd38b3e549009748c98231010eaeeab6849a134810ff2514a4ed2505cc104dc3",
+      "reference_sha256": "f57355f0e42588401fbf75acbdfc191f91156fd8ee902c998817e33ebc9afb10"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q046",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "402f9d1680f95b74be31828b41cd703791b2718bf4c00202fef13c4265c9e190",
+      "reference_sha256": "d06b491e8ba17134f0096849a152a3b098e68f712147658eea724541cc45d9f3"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q049",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "ef5c00aca51723fc09edc4f3fee7c2a3af455c42ae2f7ebe7a857e8289a04ba1",
+      "reference_sha256": "aac00cd63da02c5d9f93c656fa3fa9e9a53f4a662c1c3f571db7167a547610f0"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q050",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "2081b34218ff51584c87832d53fb873ea2f64491baa7b7dfe60a2fec359146f5",
+      "reference_sha256": "ae5d6d38b188268a82d2ff370d0a2881d3f007dde9a2a902c27adf68ff5fe10b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q051",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "0af227b2cec038218dfad38de64e8f5d3004413a732fb82d903b13bd0a6ee9c1",
+      "reference_sha256": "eab68a34ff9c321c3a08d67d57142f8ae6cc86d4e861e5fa9ba93e03a2647f6a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q055",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "76574d11f303790a20e84c1c8018f6753f99c024874e76751474a9b734552dec",
+      "reference_sha256": "f9299360a1af5cbec1ef3a17f8d306a77e4443052d2578d347cb3b06606de1cd"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q060",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "f29f179434c1c681bbc3825fa1d7e15098e22be65d6cff9b37e9a1eddb60b940",
+      "reference_sha256": "cf54feba9020ae655813124643ec8629ea6d9aa3dc8c52d033240569f73be237"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q063",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "940ea06fef777f4deb4f8f6a62f8db6ddae794405c40f4c1c2bb7b54e0bf1806",
+      "reference_sha256": "095414d79f1beacd3b47d7fef35bfc2b4c9d7ad1f94165a7127ae478c0523a5d"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q064",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "7801e1e012a1120817d991ffcde8adadf7b95ed48552920009cc4ac381ba6f01",
+      "reference_sha256": "5acbf873e4a7a84a4c3fb06a8d7e127bd1a19d2c869c88bd1784ce2d20bda45e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q066",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "b326c9f37b2f8d35e96643d8c28bbf96b4421867d7ecf9f2b44a09d6562b2c5c",
+      "reference_sha256": "0d4cb7cab7f3b7fadcfdbe09200eaf0e2862c850b481fb65274b92f062ef3b42"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q067",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "d84b78e0ff702935afdb0b37d445b13bfe097d029b9f23ff5c89a70734253047",
+      "reference_sha256": "dd762ac35501b32e3db7a408ceb482339efe9a633dbff4d30caccc4b66751c9c"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q072",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "ea1ad62668ae1d44a2bad322f6ae36e5e96fc154c649506b6251960d70ba8b62",
+      "reference_sha256": "5603812e03f1883d52d3fb3220a59d5f6d0bfbedebc5afdde0ba70d4959591c1"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q076",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "32e7a1d7e554d244c6691edf2edb68a0e008a33f00322cc3e1e66075a2ef5120",
+      "reference_sha256": "31c20ac2efc7df14c9760997c21b264c754b484b10cecdb1ea8f1fb46a9532d1"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q078",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "5dae44a98697f482aa981a4fcf01b3640c28f758393c5673faf4750a6aa30712",
+      "reference_sha256": "b80b776a8ec58ae6b40981d17a1d6a3369c83d3b4c6cad55ba6193267502f9b5"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q080",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "22aa51c80ab555a5d4896a9f684b1612902c18467aed814b557a0cbfcd798597",
+      "reference_sha256": "057ccb3885ced12d27e852acf1f2415ad662680e10f6e0671e94eedbd908337a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q085",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "fc51463e018d5951ac92a4d55c1cf17b429f6ba6b36cf81ca41907370c7fb3aa",
+      "reference_sha256": "e1f9525adf7ed1342280bd4f5e190fdfccd36277e9f6c34f682eebf8d52be33b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q090",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "5722ea36af7ba561fee9da91890e76eb6e41e347aff99fd7048131ec1dbcfab1",
+      "reference_sha256": "91d932cfd0b54513da0f3d6afae06f16036205c76047e2196483021b2ef97091"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q094",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "05a81da0aede03d39aebecf11f0e01ba4ae3d1a337e0be17f29e03caf1cfa1ac",
+      "reference_sha256": "82ad915bde7c72b0c81d659d9af283099f2fe8e0b57639dee9433432645df44e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q095",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "9450c0f8f75a10a3fa07430a331b49c30f37d1d718994b97ec50dfe14f0e2e9a",
+      "reference_sha256": "86365b5a8e6abdfd487dc56d1d7b331875ccecc808899c1d255b200f9d69f60e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r07-q096",
+      "context": "mab-r07",
+      "kind": "eventqa_65536",
+      "question_sha256": "e3e95c7c4a331bee6fde44f116869e5225690ca5c970075491914873876d6448",
+      "reference_sha256": "24ed775f060570dbc640676a70f0271fba34ab39ba41d81e6d653234ce93518a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q007",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "60ab3d28d03bdd7f3c56e3d137b64fea8d5860fda1c6a6b0463013dc2741109e",
+      "reference_sha256": "e04c221ef0e28eb40887055bf98a90383f01c796e0ed5cfb1beb70f473e0c4af"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q012",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "ccab38321e935b97c7ef21a388d0c96ac37cb01464f0684da5c41b450dc44000",
+      "reference_sha256": "920c2fafbf9b6b2384c0e43cfc0326dde2c952840fdd2eb3e7dd3c6c9a5f8592"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q016",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "62fb6a3c22f00381933f91e44457043e5687e6090f48e1c7cdfd24130b3b4e90",
+      "reference_sha256": "aa1f3cfa32c0610e9c887f71e27193a9a0e1da88c8147a43b200f24255980d0c"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q023",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "2a60f4802633c3da10b41da81526dd9914fbdb037ab3f94c869b6a80f3d8905a",
+      "reference_sha256": "d42e94f5f43fe775a2a74711fdb0628034d6958d0d9360bc4924938fbc5eb46e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q027",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "fed4d509e91e865df6c579d11b4ba802a066ac9d1a41bf7ff4bd0da1380fb754",
+      "reference_sha256": "efb987b0604f0bc6e4a12b08330605cb83d854ed77aecd3ea39f46eba05b1112"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q028",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "30d6fef1919b56be1a898689b562df0b2326bb6c21aa784ff630233e5853b522",
+      "reference_sha256": "04746daa8d3e8bf73ad4f2ac7994ca624f36a43c2a18b29b1ed0f2c9e5c087fd"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q033",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "f53ebf830cd160241cb7a0526dc7e1f542f37823315d25286a64663611bdbb2e",
+      "reference_sha256": "a5b6b44695499b00ce2090f1e96d048c06528218511660e86ba8a4e17d103739"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q035",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "4f01729bdef581a1f6b12e0fcf090a85de0d6eb48344fa3256014fbda98974b9",
+      "reference_sha256": "7b0ee697d21c3dbc35b9bd487c0bc10433b6770382bc37ca57f577dd1ac9550b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q038",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "68dac2e9f89c216aec308442fa0cad6d2914faad6fe2505a5062d8d396cd60a2",
+      "reference_sha256": "5c0e041fdd4bd1619958cfb10b1a953740b6e947102524e423559aef2da8f33e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q044",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "83e15c5552b8a19bbf02faa6491c6f0c01c37e53f9ead08b79384346e64d7035",
+      "reference_sha256": "f68a22c953a357bf341519826dc488e3f18cfd6a1f27e60c230ff288e0340fb1"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q047",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "e20ecb487506086ea50296298202048ea6e94baa58e86046c25ec1e20bde518e",
+      "reference_sha256": "a01be33c0f73227818f58dcd3381f83b5325d3c6762abc89c30f5372793ea7b3"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q050",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "74e74881cf0dc66e234bffbcfc3422053027bd775970c3354be2b343abc1a740",
+      "reference_sha256": "424dffe4173611da22670838e41b42bfa3bf93efe76178b1ffaf66049948cb29"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q051",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "017f68e47d9d3bd7bead6f1118ed64b759aa88ddb53fca17a3ec3b85a2bf23aa",
+      "reference_sha256": "e3077bf2d60e7adfcbecf50806ceaa7ada0524e9d466e49840c62cbb47dc8c4e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q055",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "124b0f9c9f08d5c0453e79a4e126f73ee147d8dd17ddbd39699342ece99c2147",
+      "reference_sha256": "3471e1cc602cfd4e4867b1ba37a4827b298567cde25034ea3f63bea682514048"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q057",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "e924f204692e2ec5ca9ad75325d4654f2872cee7ee089835c96206e92df02ab0",
+      "reference_sha256": "d077332bddb952eca9c0089e5732054820c6049c7de4aae342cbce5a6ec5df52"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q058",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "5c176f0fe00a7965f5bd25c0976f6d3d8ddae983c05e3f1188427e6f9cc750c8",
+      "reference_sha256": "c96887cee42536d22113aa6c6f2da0a54be5bdab87c15efbee5792910a4a390e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q063",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "af6240712a54b8dc9493596b701adc728c99c8722e43012dbbd1c357ccdb99ab",
+      "reference_sha256": "a058677a675d491a71a5805924d9bbfe643abd7513c2eeb6ff7417fc1c697a1a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q068",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "2f607d5e162d1c1e52bb22c35c073f881d2d7490d6ae691158a7de7969b8720b",
+      "reference_sha256": "bc90d9c506c593307f48edf90d7bd0e1f60b9653cc868b4614ef66cbdc3bef96"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q070",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "8dabfb274a694324d123df0de68d559741ccdabb63c27d584573ec7a5dbd2b56",
+      "reference_sha256": "5f9d830dde2ebd97e529f1c0f8633947e9c63deb0da0b6472618df87612bc95a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q074",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "a929c65b5cf96903a5896174ece092793bbeff7e4ab021199147756489a1c7e0",
+      "reference_sha256": "327b08c5f70a45e5f39f482d4f133d8076d714f818571d1d1b6c8bbf4f131e14"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q076",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "b22f63df5379089a5b7f48767a9444fee21058ea75f22f738b1002c5b00df7bb",
+      "reference_sha256": "739573b5b1eeb920d55d1778f61507c87856bc4aac008dab6da4653907ce8eef"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q077",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "bda750149c4631eafe098f8a6a617097297269580422e614bd4bdd240230d1dc",
+      "reference_sha256": "71566c3666becf5faef2f8aa7df74b06a83c8b0d837d7516b9409673e553dc53"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q078",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "eae04ad36129ebffe1f5cf34d31720f7b31f113fcac073379cccc9499121dd66",
+      "reference_sha256": "0bf98d890dc6ceab403c5af51c2e4f07e1bcdd33d626fc805de989c9ec648430"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q081",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "e587e1d6fcec96f47d3cfe8903ea6640f1862d6abb918dd37546b90142b8a817",
+      "reference_sha256": "7ff55b9f33ed4991ac5358f5bf763e6e180d2ddd45e340e54aea44a5398bbf4d"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q084",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "90e4a1711386257059e67619550fe3203eee056fbfe93af42d9d407bbc80b804",
+      "reference_sha256": "df0af9744490f5ffa9dfd4fecb5071bb1d2547f298ba573b5a4d0548e54063fd"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q086",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "01cf25ef81930fa92aa936eb2409b1e614c3092e16cc78828334ad808adb4ece",
+      "reference_sha256": "9935806a3ec777e27c854a43726bb11f4ca3a8b5298e70387fd835319ff6a841"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q088",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "fb836e527d65bc949b3899fa7e2982733e094f0a29e6fd2950dd1c0639d6203a",
+      "reference_sha256": "a032d137c7e0e2e26201a7e4ce8fe9f457145b12f9de32e8ca78fc085daf052a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q092",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "4fd047d3bcab706ad7ab8d9b4b7705c933a522d30168bab263f878399c6e2d53",
+      "reference_sha256": "77a12a387a3d89993aaf3b771ba868b22aa02458603932a83d910f843071fdc0"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q094",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "e026237e812fa53a6b7b28f09e4fa47e5819c35482cff457927f4663174ee817",
+      "reference_sha256": "5baafbd68e7465a70426af48cf9de80452131ba3280b470a59c976849a6a5bec"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r08-q098",
+      "context": "mab-r08",
+      "kind": "eventqa_65536",
+      "question_sha256": "d8741fe75ff0d437fadf367cdc8030f4471a8dd34f1ac7b616246541338827df",
+      "reference_sha256": "1abac92f6a0ebe610a5eac408230ca89e0ca09b9e46baa44719bb6a4edd9b2fc"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q002",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "ca6c4b1a217ac213f4d48655ec28cd87a28868060b2dabe49265272eee4263b5",
+      "reference_sha256": "2a1424f2eb0f3353f50c75bb94027d813dc627b9ebe517207dc23dd6e499b8de"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q010",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "0f944e96578b868b870b56103f8602489693e94ef7b11b9fb23b665160221b05",
+      "reference_sha256": "0ec580bfd74f438a515808ce7842a1aae89bb0eb162b4d766cf6c63629e22466"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q012",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "0c71a73e7eca1d1ad5dbe1fbbb70e9694161e869ec13ba53da2b294f777674fd",
+      "reference_sha256": "d3f2b1253beb7a138c478961858d6359809fa634b00f0698d520ae243b8d69f2"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q015",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "68304f87b2acc2872fb993528e8fe18a8fea6354b2b97febf946064d06ee3109",
+      "reference_sha256": "f1431c75ad5a76ca47005d734a802ee8f245721cc6ddde9d21883337d52fb9c4"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q017",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "7b292bd53c7d214bcd55348db204a8d0fad0c254496d8fcdd183611571f00be4",
+      "reference_sha256": "1b1ad3d36f6f550b3320440e34563ac1ec5d64e9acb5af1e04ee9473a92307fc"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q020",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "cb7e0083f3ec956232fd4ab308107bda3a4f126aef09fcd2508d8674adc3690e",
+      "reference_sha256": "9681ab38b3bfafe806443e9e8c7c4dbb5c8a99044e8b95d430075dc0fff9427a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q023",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "a3bca62fa9ed2757be3cdb8898c243535cec241b110349ec36e4efaccb9b862d",
+      "reference_sha256": "adc1c8366c5aed1225feafd5a432a3ef5d5eca22b346a794e6860c8b6ff59f2a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q027",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "73447386490478c059df7590697119b4b9cafb47d8b724c2b2a868e9aa36bdf7",
+      "reference_sha256": "62d0e1b966d877f5871123d3e16e6273f7bd2ee98902eb599c047559b587bb39"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q035",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "37206d47be81ea5b4e294cae436c40511d019af9ac5bd3c46fab0bf97f8dc69a",
+      "reference_sha256": "a5d8af3e5e9cc1bebc9fce1e278c25a1138a804a7a27af911e81cb8051663397"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q036",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "c8f9311af9d453b4a22f9222f873c2899a7402743d4ca1982507ce1217d38c9e",
+      "reference_sha256": "8f7eba4b44edc95faee20dd2b901aee12973084fbc68ccc02aa2a4c2aae91805"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q041",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "24794686ee96dd1a095f29b2bb649d30ab9920a85a815d7a0d5370a70f8ccd1a",
+      "reference_sha256": "29e99131e334bca44b59707b85922d7f25b7a64538795a2ade083a13cad584a5"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q043",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "5305733a2701415b98eaa9b1a0c35a7bfab454f95f6adbe11cc6845d012c39e7",
+      "reference_sha256": "7f8683c02ba767feb7285ce7b5c4bb0a6bef63611117336d42414b1cfce30d20"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q046",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "c841a10e8f2105154c4c2c4a9cef04a17e88137a4698a375dadf96bc32ab9370",
+      "reference_sha256": "07af9523cbd420c602e0a259c9a2ccf7d086f615f0dd8560094bc91fa5756de4"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q047",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "f180685e9c72897e214f0d40d18009e609fad96202d1a4d96a5f9c0f50dc1f7a",
+      "reference_sha256": "6b86376c5e4690f3a6064e4a16936e3cc123b21bc8fc0932b82ea112116817e7"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q048",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "7661236f241583571c10b1d97178b7bcae435c5a15a75914639ef4a3998c21af",
+      "reference_sha256": "0ba8411a46fd8e58184e0c8c741d3cc532db8b11382676a7554506fe0a65c72c"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q051",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "f93e5ce8f92387c2e5643db9dd3c313df847ef6e572aa0f7ffaae79425410d7f",
+      "reference_sha256": "9de41ab7081b9aaf32972a9e451608df5a3c87c5b4ec3f610556515646e6086b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q052",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "9118a9ef828a6b13deebff6b8c7ccb205bf0eb0a75b2c0aa17da13d6f5f8af30",
+      "reference_sha256": "47b6de57e13bc9cfe7f8a64b59935c1edaf033f4c3f20d8ceda98c13b76df7f3"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q053",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "612ce5c9088b1796da00498c0bf4e1b72bac129150b8701a2bd485842a909473",
+      "reference_sha256": "884d5522001bb159318f3cd50285447a42bcc76b6d616548b7e979a5dbf88980"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q054",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "0248b2222e4e7e800b2f1e31d51751760a6e9620036f8043fbddd3537555578b",
+      "reference_sha256": "8b9fcea13f75c13f664ca4f138e49b7bec50bb5891ef5f28a60d0cdc49686cd1"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q055",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "59fb77d313f552014af07c06dc5c5793e7afc461d670694f248c7358c1f8f710",
+      "reference_sha256": "5810640375f75a937175996b43f96458ab3bcd08d0c315da8f45f62adfa478a3"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q057",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "8cb55e343be48fcd1863189bd1f9db206d1f276d5f27b1aa778f651274c6f954",
+      "reference_sha256": "e1904b666e3f0139794d28548d4dce92629fbaa12e88e3cd8c484d4052153d0b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q058",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "2c9349aa0af55e50148e046f756d82662aa01e74392f669e615f71b09b775f19",
+      "reference_sha256": "a4757358f1768fcd00ef62a9a698c2fd9226259d67e0e4a46029326e07022d75"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q072",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "12b3b4b2b53ef75b23759bf083aad0c68f5dcb059fcf960ee4911a02e51352cb",
+      "reference_sha256": "de69acb34b8c1241e5f27d32ba317c0eb51cd00ba76636d3c11b7deffc93dd8a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q073",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "a66c3a1ff3df3fcb9bec0a76f4de8499abfa2f97e2f87326455bc2722fa36a7e",
+      "reference_sha256": "885b49b6003e071267efac049449bf11e0b110afed01b1d78a7440bb23750cc4"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q076",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "6e5d78f17e8e5bdbfea99ea7351933c6add858d7aee14b88f429ca5ab2b6a6e9",
+      "reference_sha256": "a30c6f94753be5c494ce111f45ac1541a4e53cf07c44ddac1106bc4729f293b4"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q083",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "e4cf3fcf3f01542459f7a1f5e9f41149752f70804683a9388c8b1644b5e24f0f",
+      "reference_sha256": "6e33feb2c4aa0b1a0f14b845701088bc7ee4830cd95d7c0aca3af3b955cbd415"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q089",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "c5665caae1dba771b11e784306a361526d09cf42ae5efd41c8c43ec4f1fbdea5",
+      "reference_sha256": "b9e947d94168a29b7f703b2939e900581c83dfc06397cf977fbcae98f47da080"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q093",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "ed3cacbb8aae7511aeaef7f4945a0f1e2606a7b857f42d8663eb59e4b2ecf5fd",
+      "reference_sha256": "0dbe770adc3a1e0aa9e00ea09b51150c152e52b3ea12fbd1faebfc514aa49fb0"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q096",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "eb22edc848a4d4620c6ef59f1b2d981e16d252e281016be60bf4d4acc1810ad2",
+      "reference_sha256": "c22e62b3206091c041a7f477b6c22390585dfa5a783c346482421f0dfe184bdb"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r09-q097",
+      "context": "mab-r09",
+      "kind": "eventqa_65536",
+      "question_sha256": "6efe09b0f022cba0a8ed5d19e1d610959dfa021c4bd7094129e388576537c2c8",
+      "reference_sha256": "b0da32e22857646cb9dbb24309cd9279ffef568c3731c1f80f02429ad83b4d49"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q009",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "3d19ff2f4abe4a419f62f1a2faea247bc799b9e88d269083e3a5ade7583756b3",
+      "reference_sha256": "7566dd8479e1eeed83df449b6e1e49a599836f2987c4163825fddf592b443324"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q010",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "5d250275850624ecb108069dc9f3c0ea85e3180b5a80cc1a15ff6196a29db22c",
+      "reference_sha256": "c2eb4436d7428392aabcd1390c7eeeebdf5240b98bd3e750cd3d262afd96d96a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q011",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "06667ef3d3947e2c8085a58084b4f90611c6cd4a22415ee4cb0d4a38e51d02cd",
+      "reference_sha256": "4a3e95aac931a37311892e7f23431aefb7c15a684f4c00a9406cedb914ca8ff8"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q014",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "fd1e7f89efe433a2aa69e1be4ee721a4ba8e1358a03006ac25c3a9d675aba9c6",
+      "reference_sha256": "d4464d6bbdc3a37c72476f5e81bc9a9ff6d83e0d2bc8281d56b1c41ffa64765e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q015",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "747290cca759d2547eb36c4ce2495c3997414f9d567117e812f19cbb7b3ed7bd",
+      "reference_sha256": "abfa4ef9a1595a6a948d4f7ec124721ec90bb8522bfc6b8943ab4373614e642b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q017",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "150982e383b04f25378bfc5fc7f64caec4882469bbf4d1f4f9b7d4120712e857",
+      "reference_sha256": "9c1cdff8b708dfdcc08c3edbcedff1f5e3b8f8417492323bb9699b4f0c553681"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q019",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "bc9f8356d3b1b1f7735c00cdf6f322671d0a212e3bbab89efd6fc49752ce0c3e",
+      "reference_sha256": "bf79fe75a23e5d4c1442036541dba9ed7adf09192165c66c8e882b0b892960f6"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q021",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "b4736a50b18af0b1bc78c8630b590a50d478396c0c9876a575e4acfdad7763f6",
+      "reference_sha256": "14653e8787fade12d3ca2f9318d7e5d833aeab35fd4e456f8050af22b720fcbd"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q023",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "b104b27f5366d17726d341e2cf57cbc08a3fad944a654077e664d008a4ed24a8",
+      "reference_sha256": "ea7eb698f8b0443a8bfbcb8a01eb0b484a2241085959c7f323e67425286c22f9"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q026",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "960cec612c91251177bb15d2d40be7241a2ff689104b47d2331bc0949d729208",
+      "reference_sha256": "6c68ef30e6ee7b0f8bdb68acac215765de62147ed048bff144b6650b75da6149"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q027",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "a92aed5e89bbda66f75f36449ddc6277dd8887973f4bf481e50f5b6531ebbc4e",
+      "reference_sha256": "0948e21454723627e9ed1cc5ede0647e48516b5ccaddbb78bcf14fc54666b28b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q028",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "f34c73a474ed3566359e0bf2cae8ad53c1bd3b6a495dba999117f9840ea52ed3",
+      "reference_sha256": "13d92ca8a1ec13a50d64a88a67eed932e77f0b247e3de62f1549937afd3440e6"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q030",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "cec7dc294b1467199b28bcaca170472ead75f62967e268088a53909cb3d62444",
+      "reference_sha256": "63aa71adfeb595c3e1ee8182e7755cd4dd4f8663c140728dadb35559033bae6f"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q031",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "f58bcbc9a46195869f24ffb3cfc8185943a05feedee9ddc336749bc5cc814250",
+      "reference_sha256": "cb95c4ac6693df520500b113cf4c3167dc5a9310b754202dbb7716cd971f42f5"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q035",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "ba7c7db8d9dcc140ed18d5cfbd01259b0552565fe6faf7506696b697c65ee0ab",
+      "reference_sha256": "c3b18c4ed350fadcde307c8dfb8e6faf65d7e2a594c0ba7e74e592a6a79ebdf1"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q036",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "09df25c8897a81d62f59ed80b953afac1609fca6e87c225e7a481dd4f760c51f",
+      "reference_sha256": "9b11cb4d16dd3a79fdaefe890e2b1e157b2e53b13eff45f248507692e561c6ad"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q041",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "fa6fb36781bc3ae34f052bf22b442d34f429ef7726cb498da4a5d87a714565a8",
+      "reference_sha256": "8a522acc88291196809d66ec2c87104c1f3fc6ecd77f05c6ce2fac7b8aa9cca1"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q049",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "7c3204c145e3fff8fa7b3af8cfe93b3e1e5896812d31c7b2e91cb4b2d3b8782b",
+      "reference_sha256": "d229e794975aec1e781ec780bc133d202d39ad2ee4f7816383793f6754c6e48f"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q051",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "05f118ffa266ca9d3bbaace20a1863ef72e1bf061c0f6524001814d91f20cbfa",
+      "reference_sha256": "2d1daabeca477471c5340f71a05d5781d3ca122bdbbbc4b06e5778a6522de3d5"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q054",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "4f3647e21749733badb97015cd8d17e4d7c6862a9654a021167833f01e6d7a95",
+      "reference_sha256": "35d97a2c8a338c7801daa6294429549a62f2ab91b90e5eb754a0f2f59f897ac2"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q059",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "fff1667ba82760ce93ff475ef83a5055b4411dfae3a1bee3f33eb9b51b559dad",
+      "reference_sha256": "3a8265e791b5a2b2367e353fdb38dd9e8521c0c36bdf96063542c506f2516a9b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q061",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "82941b2d0f6433943b8a66b4118007635c8f19dab8e7f6e27284c99b9ca10060",
+      "reference_sha256": "a23558f144926ca721d241a1306c481241007dbeec4e1c4f3c62135794b73213"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q062",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "00260e580198463f2a90212d05261032e53ab994b6894e5a4b0317213b7386a6",
+      "reference_sha256": "e662e81212ddb15c639748134e41a7291b7a5ab87e88f209a32fed3c23c9acf8"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q072",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "142b9f7eba0138e367a8b45f42ba6965bb0a723744847f6f7e2ab5f2bcf0a833",
+      "reference_sha256": "ba648e733bf5d24b1eb94bfec7cd76a4f107ec22bccc0da78e74c69cf247201a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q079",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "db55e17ac9de16edd79cb7a88395f05e5cef72a22446efadac872e6140555cd6",
+      "reference_sha256": "62920593f8c550315d2c1da3090d316c35906f2d3d71503f1b4003f1c45e9371"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q084",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "ac33631c4c5f80bf35332fb22d87a214022b0f90155ec9d86aab7301cb854d23",
+      "reference_sha256": "374b1b63fb3742a7b044a48e47db2b000c0a3bf66f939b298efea159a3195242"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q088",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "74bc6eeacac140f0a753c524d841127678f5df6fba0c0327d1c1dd4af0fb8997",
+      "reference_sha256": "719d0970300391ef27bf2f232385c21b2b416f62981eb0067e0463ff2d8204e9"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q089",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "598aa4428129ff03046c264ff6ebb550a132a20627321f53945b551660d4a8bb",
+      "reference_sha256": "99324845961829194ef8ded1421283404206a9463eababf240fcd05a12a2b60d"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q096",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "c199951ee4505cf0e8b012408dcfc28821f1d2b2b7116f2c6b01c5e84f6d512c",
+      "reference_sha256": "e3027d93de9e25fbc47904e3b1ce60456874a3b70059dd686f7382daa92e5675"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r10-q098",
+      "context": "mab-r10",
+      "kind": "eventqa_65536",
+      "question_sha256": "829037fe9e55c1c9cc5c8b07538fdba0d8aa9a391bd3f6085538db25b6ee0803",
+      "reference_sha256": "95e170e3b5a0b41a6666c9cac2e421f6a32550543ae97379ab30ff4e3c28fc11"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q002",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "90d9a388f69261e100e31f7a0a547c76419f2398db55c0f527a656e274e3d3e3",
+      "reference_sha256": "8d8e9a9dce7954dde56559cd566dca8376acfaf83115e8a60adf75b109d158dc"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q007",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "c64d758132248f61989c2f0fe6a709512a784e2828355fc8d6ccaebd792d3935",
+      "reference_sha256": "954a8a01ba7b0e30d526e1851e5fe81f578ad4c9c01d4f091e85efdc5f244c1e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q008",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "125bc76e23263352ff26d2c8c4527f3b7484fcfd1bf6e9ea971ecd3e4cdafae7",
+      "reference_sha256": "bf22437b6aee3a3920bb904425a10c98285e693a4f07213700aa0cfba8b88b2c"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q021",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "41815c6cdb9c90afe1f7b7101c9daf9fd05e04bbdf5c3264e4f7dc6c47b0e776",
+      "reference_sha256": "56c9d165b1df396213a3e26295bb34fe981feee8f8d578f0b43197c3b5823e6b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q026",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "d70735ff6495e5943df4695d695fad876987f46e2565c061321b748266d346b9",
+      "reference_sha256": "b97533572922130a21ec9b00bbdc58ea6eb952fa2318f0a0701b6139b3312060"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q029",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "2695fb008980ce70852d0a6ab56f7d136a395ef18e5795fd6ca9ca717acec231",
+      "reference_sha256": "4d25084108e54ddfa5aabf037bcbede1892e730cf3968f38df8b1d3d08fbb10e"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q031",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "f56dc1b01ac9be868ceb4374299d1f6e10516361b32927e7a491098e1563db30",
+      "reference_sha256": "ac4b348de8511ef2087d25e62a7219835102c291da392cd3db7b7ab35339eacf"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q035",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "7ee6926a2dc3e3acabf5c3b03c99af5c488185a3cf220d0f3b38d9bfa5e753db",
+      "reference_sha256": "f52a0f10a2966ac9d3b65910fa6199d850a292eb7ca1ca14c505e03b0e010e41"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q040",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "1faf0678fc39973fe870c6577be68e5c930e1d589d9a7c0737c425b2ccbf5441",
+      "reference_sha256": "e106f1d739148ff8bea451a1cfbf871be74be0fc2ec868fce726447fca14a95f"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q042",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "398a0b00df5a288741d9317f43d262d67eec2598916f79a6593a74b00417e155",
+      "reference_sha256": "ed0d1979c10b17e3605cb8e77bf495b8e20ae129d3e1a891ae31b1bab90dbed8"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q044",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "6a4d5389963d26295d868c16158f501887a0421c4837b6c10949e6fdb41004e2",
+      "reference_sha256": "f49b7e13c28e86c55cdfcf5139c94e96721aa59bce8b3e798ac0e786f32046d5"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q052",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "d938a0d14b2a400fb52de4b871811f8e69c9ded9bccd3017d056133b42f22cdd",
+      "reference_sha256": "ff3a66d87fe295afb4acfa57d4527d2ea2462a57898897858a8dcb8fdc2adacf"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q054",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "38f04010ff1a3c4b541e7b69cd4bd1f8607c01378eb822fb6a5be8fbd4512daa",
+      "reference_sha256": "3f7ba09938fab7b1fb13c1caed0317ec79805ebe8e282829dbafd4fd51efe67b"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q058",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "7422b61d678e5008fd0d8b1c9391e74d28c2ac45cb43cb2712355ce14f3f356d",
+      "reference_sha256": "25559226daf3967526ca251bec86ef1e2ae587ef4517c96325ae1742b6741200"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q060",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "e80b5f5214034b77ada1c973701802cc1814955b309141aacb68c5acfc3b2dd2",
+      "reference_sha256": "77672c9784557044b7e52de1db9fe50f82fbb256d070cfb565bc7eb898c88fe8"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q061",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "2ee8b3d7028cf4d3f4c4dbd7a5ae4b8b20782a21ddd894d45c421d2e409338f2",
+      "reference_sha256": "e54d726902cbeb81863705b840873064de0b2fe0c506d1d66193cf4e40f6fe61"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q068",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "01c3782805053c068cdba0cb575d7f2fde3593b92a500559e7ac6f6fa13720cb",
+      "reference_sha256": "4fe1d1a27e2939284da03daecee06486388a928d2f5b27f39152590c212b1f8d"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q075",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "7a41964e75af8390e33f6ae7aedb2ab8ef3287e020f722ad88e5332c520df987",
+      "reference_sha256": "29ddea65e441eccd6797a9b343cb62fbc0dbfc1ad40e2f49f7d2770fad534903"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q076",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "2394766119426a72a3bf1546d217bd0277f9d84f4c89aff483627ce2b7183ead",
+      "reference_sha256": "09f2312d106a2fd5cfb42d8e138fcac0853e712fb118f45cb65c820a319edad2"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q078",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "fddbe26e4635501258db1536b5cda579c267951c8f43f9fa9929d4adade82c80",
+      "reference_sha256": "17691c88caecc66e1c418fe8a4754f8a68a792b694c1cfbda5fa3d19d3bcf8a3"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q079",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "a95d1b769f526434e34e021f52b78e9a7778d1acc0d49919f8b732a7e9893ae5",
+      "reference_sha256": "49fdee5831544410a8e2393ad80484d193420a87c5b81fea5517f27aa5fea69a"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q081",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "b205a816f227654c0c110b67126c9f6d80aeea0ac90e7b614059435d410cb2d5",
+      "reference_sha256": "0e30a872402415c7ed5baca6584ecebc92cd159732a0e66baf2eb6f2c66734a3"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q082",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "6400bb8ac0e3a39c75118a48777da2004711ef069449d70ec28f1fdcca4520af",
+      "reference_sha256": "6a0e23531d08299627403e42abeb7fbe93bbe97b19520b5b1cd6e734e13339a6"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q083",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "89d6c076523a307cefde371df0ab10d10b644563c34c7778ae980ddcb4071dde",
+      "reference_sha256": "c6212832c7ecdc574d7e6755bdd25c6bf76bb1673569aadd2e72fd365de1ac40"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q084",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "de11bde9fe9933987f40a24600245a048a43b1e144a5ed7acc693dc6f4a3a7c4",
+      "reference_sha256": "42f3ee31745a8ffa4d5f45fb25d8e7147f9c0831aaabf12e34e9022914778801"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q087",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "ef4838d21e768cb4c37b98326a3453c81bac712eab03cea5ffc275b43686cfbd",
+      "reference_sha256": "62b4e7fcfec933d148f46ea99d827e830e45b5eaa2b8e2104b6365c404317183"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q089",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "65cc9b5bbd417198d2ed54202efbca7a0a0bc3937dd4c5e05c584c14c565f4f6",
+      "reference_sha256": "65347c2c82bc582f67324d4924e50e28fbf9727c6ac9e6a5e5d308cf384a11dd"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q090",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "ff9056e8d4cb836f137549af4a593ec51ed5fc4271c4a8c09de2f3cf3cd87365",
+      "reference_sha256": "98f23cc88ec6dd3f05f7daf090834286cfe0fd91d8d4e46fda9d80e4501ee0ca"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q094",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "4c06408746466dfa2964d4ce3a09930b108b77ccb70f23d226ba755aa4431297",
+      "reference_sha256": "38d5c5835433061f409b6593c29bcb3d147764752c4672c269131307c57ad16c"
+    },
+    {
+      "benchmark": "mab",
+      "item_id": "mab-r11-q096",
+      "context": "mab-r11",
+      "kind": "eventqa_65536",
+      "question_sha256": "f0108046676ac8288fb6fd621de4138b6673321d79b7d84e9411926d9bbd65ee",
+      "reference_sha256": "5aaac920881d375b2f127032ed578fecd66e72c943b65e0cae5231fe24ef85ad"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u14-s28-q01",
+      "context": "halu-u14-s28",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "2039e49bc31708fb4d4e2227fe21958be14eab13594a801f8367a0181e41fe6b",
+      "reference_sha256": "5ffe9ea3580d84041e6ff1e24ee2f5d9763bde88694bd5dbb69d971027b77db7"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u03-s19-q00",
+      "context": "halu-u03-s19",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "116927f656a9ad6516152cfa1775d999c392a950afc8a99929f9f2954b15e8b1",
+      "reference_sha256": "9995a5e06161f5d1bd6c54f59cb4168683da2f0d0f5573c81533a31c39f78283"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s27-q02",
+      "context": "halu-u15-s27",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "3033121acc6e7b0fd033baaeb76c16fb2796e8dab68c5f83483a4f0c952fa292",
+      "reference_sha256": "0d332c0b91198cd3bfa4e7abd4202b3c3b1cae0a8982e035fa2f37bbec50357b"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u04-s01-q01",
+      "context": "halu-u04-s01",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "494d7caf6689a7fbe57553c872c14b90851dc42789f38b3a946d590edb207f2b",
+      "reference_sha256": "5ca93a67025b73e3e0620531af5f8d6fdc3e4e208e636e14c4b35354ae823320"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s09-q02",
+      "context": "halu-u19-s09",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "2367b349b6985efefb2a8726886c7b14491f6a8af77c636a36d9229c0778fbcf",
+      "reference_sha256": "8d44a8e5d9d40d0d2ab19213b7a54f9b8bac1dae4aeb99671df965a121f467d4"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u10-s16-q04",
+      "context": "halu-u10-s16",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "44f9b418119f03a2296a7074cae4b394248d1f8f1bc35a7936447a1c4e0bcb27",
+      "reference_sha256": "3731f229b4723138dba58a63c38a48a837396de285bd67fd1456a13da6e43519"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u05-s29-q00",
+      "context": "halu-u05-s29",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "26d960824402c07c8076e24509bff9acf2e104c8ec659d9d08a885da3c042437",
+      "reference_sha256": "8a60bdd2f0202264935ac21d3035de66a67618683ceeb9ef9ff882a623a09117"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u16-s01-q02",
+      "context": "halu-u16-s01",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "a087c20b3ab4757315072589ee8086734e68615df21f52ffb6bae27823e99f4d",
+      "reference_sha256": "a9dfef0a92059cea2ee16da558a512af8c2c5734fd829cef0e2d28f3ced7211c"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s01-q02",
+      "context": "halu-u00-s01",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "9416a6e0e299d0a6a25fc0b06a3182f2cdc03506b7d7daac7a37cb7faf2d08db",
+      "reference_sha256": "1fff10df806c5a5b1a2b464ae1dd06e51eeb199173c95c41df2272b343c2d964"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s22-q01",
+      "context": "halu-u11-s22",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "856d2c4507ebaeeb736a12e8a31cf68e9ae51aca6affa3cf6f03fca196405a23",
+      "reference_sha256": "0f1f9953f737789039119c1a54427a594bc55e2d5bc615b72c75f4e29b396520"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s10-q02",
+      "context": "halu-u02-s10",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "2bdf790b6bd45ee9c9b6bfd4a0472174b9eeed22c26c3f166ee50046ec14e911",
+      "reference_sha256": "50a1922ad888a7b6314c72924483850d111dfceea656544058cb3a24bca38fb7"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s14-q03",
+      "context": "halu-u18-s14",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "79691fdfd47600fa461cbdfbff66f78f570e7a6043fac76e797eeb0a4fa24940",
+      "reference_sha256": "9a44c112b4558ee79723e0ad89749b1cbac024eab42b808e8c05f64b1c39b109"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s27-q01",
+      "context": "halu-u08-s27",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "a506c7ef6661f450dde4cc137025266807f2a3df899c62ffc0f0dbfa927ce2fa",
+      "reference_sha256": "dda1a8267a8f4d9022bedfababdb84176aa44781bd9c1c451555442ebcf8eeb9"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u09-s01-q02",
+      "context": "halu-u09-s01",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "6678825dcb5efc4c73ba15701461bf4a3eb176a016d79e66dd7229a2fce67f28",
+      "reference_sha256": "9a254fe41c3b8f5bed69aae8213f1e4a7a1197991373f4d4a86a9990fbd6e470"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u06-s26-q00",
+      "context": "halu-u06-s26",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "a11d5327d5e95972cfe9d05e19839aaf6ea11346d821ef8c45224061237f61db",
+      "reference_sha256": "a32346189d5daf1be766e784f91e6adc9ead4f2cd1dbd980981511f9f833b7ba"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u01-s01-q01",
+      "context": "halu-u01-s01",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "72003fc90f2ad5d0c388b54c8e6b23075a69157634dcb404dcde34737b8a2113",
+      "reference_sha256": "f8e1f4ad835c01a018560f64d3ecb053246f936047ad8e316263f156ce0241de"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u12-s02-q01",
+      "context": "halu-u12-s02",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "a59f704c98506c1174c3ccaef97987a3c18677b745fe8d4ab951aca47ef65e0f",
+      "reference_sha256": "42daaf8703a68b5902ed1cd34d628b8320288907f2de48348697340ed3b1af02"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u07-s18-q02",
+      "context": "halu-u07-s18",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "56122a3d8c17e226bd29c5ba1d76eb1986b9baadf516cb2ad96d496b1d409c23",
+      "reference_sha256": "5c3bb0958dd896daa2c1cfff155de51469986241b5d3a23f9224686a3dd3684c"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u13-s16-q00",
+      "context": "halu-u13-s16",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "00a931ad60875398036378800cc8a52c4ef36e546bd8a9774acde0aa02e574aa",
+      "reference_sha256": "728d0e50e253d59c19a982bc5b6636fd4782b3a1b27a18e0b93b207c3f1945db"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u17-s16-q00",
+      "context": "halu-u17-s16",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "c8b46c0dfd8127e2be53577249f7968b0d55d4bd2f7e50feb8e7593f4c7e22a0",
+      "reference_sha256": "54b1fb6e5f15dbda55bb8fe4331d71cdc39409750c3fcd5e0e663585ef8369ac"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u14-s00-q02",
+      "context": "halu-u14-s00",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "2944b960521616bd1d5b93ff26d3db550fd476363bec910e60d9bd0fb55cc7b7",
+      "reference_sha256": "60ac88866c63f2663398814e6d4c723bc1a73c554c34205634a34a94dfdc0da9"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u03-s22-q00",
+      "context": "halu-u03-s22",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "2de32cf16a73bdd86dcf3d4db3b6e42fa804e5f93521a82811cbc8ff1eee1557",
+      "reference_sha256": "ee7e1f864e4df5950d207d04c9c90337415a47ee2b92919fc1ee2ca73e09d7b2"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s19-q01",
+      "context": "halu-u15-s19",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "1ec02f1e5db6f958f614c9e64333e1b859ee3e0f4beaeb50a0b8fb0627c24144",
+      "reference_sha256": "2f5b0ce439584ed99f561a5f43405a1ff4dfea32414872e57ede6fe54cac164f"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u04-s00-q01",
+      "context": "halu-u04-s00",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "43664bdf966a4bf0795cc3f295d35d4bc0e166388685692a020a90c0db472672",
+      "reference_sha256": "10bd749a8e657228ad8ded79eaec7bd3155891d774c95ae0652d69bcb5e5ef3a"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s20-q02",
+      "context": "halu-u19-s20",
+      "kind": "Basic Fact Recall",
+      "question_sha256": "be4278ba185edd3515d07479d818384bdc3e4bdb7e865bca1c5ec6717486e5b7",
+      "reference_sha256": "4b81585b8fdda98c4d35768e1420c00ec942dd965cb750244d4fde386f667fae"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u05-s07-q00",
+      "context": "halu-u05-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "370f8631c6c6e32ad3d51de0986e1f99ced935c567e062f9743e60aadf3cce48",
+      "reference_sha256": "696ef84b5b6b4baac8738901fc99e0b18024efb86be987104915ff55503f3f68"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s29-q06",
+      "context": "halu-u00-s29",
+      "kind": "Dynamic Update",
+      "question_sha256": "ed51e7694cf6fe16eb5a73897de693daba6e56d7cadd89c6749667571615f463",
+      "reference_sha256": "2352e22a425594b8e2f96b589fd4f1045d671c02300adbbedb1a6cbd495072a6"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s25-q02",
+      "context": "halu-u15-s25",
+      "kind": "Dynamic Update",
+      "question_sha256": "57f25d1000e89b2671403120d358b3bc2152d327dba55a1255f26f4beec1997d",
+      "reference_sha256": "e21c268824e8247add1e01226b2ba4f6a63b10bb3cb3d4db2b5ff6d281a35246"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s07-q08",
+      "context": "halu-u02-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "281280287a1fc0cb4c52198d57f89b07972e938ef7c43c947e604763d1117b33",
+      "reference_sha256": "197fae25d959e979bcbe345b5128d3cbfb34408bdec5ded248eb1cf22b365fbf"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u17-s05-q01",
+      "context": "halu-u17-s05",
+      "kind": "Dynamic Update",
+      "question_sha256": "322c16e170db1dd42e0c523699fa5b101292a702567528ea5861482dad999b63",
+      "reference_sha256": "2f0faaeb233ab76a7e63d772e436cda87c4cd2858177f6db78398348fa5a989a"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s06-q04",
+      "context": "halu-u08-s06",
+      "kind": "Dynamic Update",
+      "question_sha256": "63fab94c93ba1b9580e8b42336d83dc682973257c7accb915e0a9ac540f5a80f",
+      "reference_sha256": "097b1e539fac6825076193a5012e927910f31e042763f05d1a92c2b2f7d2500e"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u06-s06-q07",
+      "context": "halu-u06-s06",
+      "kind": "Dynamic Update",
+      "question_sha256": "df37b207a40bc9f7c16e475b9ca1d8be28011cc6c89221e08857f516bf7bccba",
+      "reference_sha256": "b48ce8ab821947177035c9b6132e6d3e5f41cb628487a9558ebca64c20eb7635"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s07-q01",
+      "context": "halu-u19-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "e6898314575d83665ebc56c869a3127d306c91262b08207a98660beb334e9a4a",
+      "reference_sha256": "b653f6343f2b7ac2518a37cd8c77cbcf0834f19f6311b6600fcabd6b08cb3657"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u07-s11-q02",
+      "context": "halu-u07-s11",
+      "kind": "Dynamic Update",
+      "question_sha256": "131f8f22bba866d787a79e7ec5482f5ec00e2d293f4257dead696e183fbc5dfc",
+      "reference_sha256": "7ac9df09b00f3524068c32ddbae784a0a07536a330e265114258febac25b2c18"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s22-q03",
+      "context": "halu-u11-s22",
+      "kind": "Dynamic Update",
+      "question_sha256": "bc51aab02fc2b7a393c3baab89933628c9a585b7d103b58905c80b4c2ba250da",
+      "reference_sha256": "07d1f0cec35112fdd7404fc057df83d7d57745deb95c88b97d0aa1beedc20ea1"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u03-s24-q05",
+      "context": "halu-u03-s24",
+      "kind": "Dynamic Update",
+      "question_sha256": "373b82e89adad8f0bb7680ef6f60d47f799a79f630647c7525ad0b46a448598e",
+      "reference_sha256": "b49a14cdf0a566165b827ef1be00c0d1bfb506bb95fbf8ca60f63887b004bc12"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u16-s28-q02",
+      "context": "halu-u16-s28",
+      "kind": "Dynamic Update",
+      "question_sha256": "978b8562a78e7270352b9f702e44f681063daa041a1951e2a0fa1251ff3a11c1",
+      "reference_sha256": "406505089130c937e15dd17c63ef158aa744a168bb72199a38185e29666de7b4"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s07-q04",
+      "context": "halu-u18-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "e4999a4e7b633a66294431fb4a94d70425b7f9490a04bc57bab4a9e45d6b6cd4",
+      "reference_sha256": "6118ebd23fb10cd62f70468ab647255650270e866fe056c5aaf7967fec634057"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u04-s07-q06",
+      "context": "halu-u04-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "7ae3560673699dcc7b5a7d295f3d659f009c9c16ceac40145bf6f2bd28a02d96",
+      "reference_sha256": "86539fd4f880856968b444873ecac5a5a8f9d186f926b6b41dddb9b39fd96a13"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u10-s07-q07",
+      "context": "halu-u10-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "fd634ca2b3ff3068d784ac9994d12db9db5f7cb01a9c05935d2905e83e317109",
+      "reference_sha256": "76eb993661344c5c2084efbefc801974aa519e738c22cbfb9cfba12dbd5f7667"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u14-s17-q05",
+      "context": "halu-u14-s17",
+      "kind": "Dynamic Update",
+      "question_sha256": "ab82296c26c67efb5354832b287e2e1cab0c92506b43e9fe8257639e7c624e59",
+      "reference_sha256": "5649c93069bfa6709df77b5a86203763cea7b44deec444863014c188dc3202ed"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u05-s13-q01",
+      "context": "halu-u05-s13",
+      "kind": "Dynamic Update",
+      "question_sha256": "d373f572f87c5b3c89a8bf1d64af8e34a3c099d192c3ef6c816b9d92c885ea59",
+      "reference_sha256": "5bb8ab4c04edd04764196ec3b6dae83c100f0e2b3869dd3fd756d1d47c099b48"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s29-q07",
+      "context": "halu-u00-s29",
+      "kind": "Dynamic Update",
+      "question_sha256": "646e201c30e90292981d2b2fe8f91a7ad648b87a81fece9d50328f823e19dbca",
+      "reference_sha256": "59b067890a10f6b05f158daf7f739399a845cc8367dcd89e475196147d3d455c"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s09-q02",
+      "context": "halu-u15-s09",
+      "kind": "Dynamic Update",
+      "question_sha256": "060739afb8db0c9abbe82670b803f8cba6bc00d7c8a4ec86236b271661a01e0e",
+      "reference_sha256": "0564c4c30485d76403cfc2b4486f2afd109a2c63447d132bc7f6e7dd4d61068a"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s07-q09",
+      "context": "halu-u02-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "9810d27c54f2ddf95305e0ec8df0e5de4113587a8f90354553a06a7ff261c37b",
+      "reference_sha256": "23b554d3fb92f7b0120e4a9de0534afb38f2d6cbe61a09b7f6106dcbc4a1a5cd"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u17-s14-q10",
+      "context": "halu-u17-s14",
+      "kind": "Dynamic Update",
+      "question_sha256": "7dc545f8c15606937aa10ae003c271b7544f1ecd6907cbdab3d7a03d9dd00a7b",
+      "reference_sha256": "ea67196a58d043624120cc25540033a43de120575840807fba12d4996b9af259"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u06-s15-q02",
+      "context": "halu-u06-s15",
+      "kind": "Dynamic Update",
+      "question_sha256": "f3d73139ab4822ad57a78bf2562681299e6f24218b1c98401185af5180b55a67",
+      "reference_sha256": "6c08ee49c9bca728af2b32dbf51d0a65bc0f4283015848d0f84ca8f591b755db"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s07-q02",
+      "context": "halu-u19-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "1aba4306e149b95a81cafe7f6e661e4cce15fbe60bcb15d956c93d443a16f70d",
+      "reference_sha256": "e1943b8e2b60c41a44fa3a0167f73cd8057e443f56e4c4e8022034f5e2f8081f"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u07-s11-q08",
+      "context": "halu-u07-s11",
+      "kind": "Dynamic Update",
+      "question_sha256": "472e726c29997649eaa53c70e203fa8f6aebd7543548968607588ed0a449c1b6",
+      "reference_sha256": "858f04a11d98b833097dd79d12bf644102779466a64f5ccb7d0bd8b46b81174f"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s07-q02",
+      "context": "halu-u11-s07",
+      "kind": "Dynamic Update",
+      "question_sha256": "9ad73641ebc5fcb29a09ddfa49c4970f6e6273d0df85a12b625512861578bf32",
+      "reference_sha256": "3455860868928512d8ec1b5652a5b949e47e8db7501b57efa7279292f093eff7"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s08-q00",
+      "context": "halu-u18-s08",
+      "kind": "Generalization & Application",
+      "question_sha256": "a3574faa8c30762aa690a101419bb552d1520336e880bc8a0c78746d07481229",
+      "reference_sha256": "8ec486d92862254d5522991c53eb75242e8cb0264559bd88181de643affdb3f6"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u07-s09-q02",
+      "context": "halu-u07-s09",
+      "kind": "Generalization & Application",
+      "question_sha256": "2b728d3d9df20bcd80943692ec619650adc10c0c68a2ba096c3421d3bc2d4ed8",
+      "reference_sha256": "7256d611282cc833899ff1e3c9c659e421c31b7796422ab15378bfd38c7f20c1"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s13-q00",
+      "context": "halu-u00-s13",
+      "kind": "Generalization & Application",
+      "question_sha256": "875cbfdbda8caa04b2078647944f259da35ab4f4fb1aa4f6d9450fcd9e276af9",
+      "reference_sha256": "907cf85ea1652f056d89994ad7dbbf05d4817c69143f7d46762abcacb297c96a"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s07-q01",
+      "context": "halu-u11-s07",
+      "kind": "Generalization & Application",
+      "question_sha256": "70baceb806f25a7498e9047b4e439bcc50d5f1e5535377aa881ed7221a1f5a97",
+      "reference_sha256": "012466c9b7eb3bb50684bc21a86c806ebf88594bd3f7462d05e8e822135a2790"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u12-s06-q05",
+      "context": "halu-u12-s06",
+      "kind": "Generalization & Application",
+      "question_sha256": "7b22b5d333945b04b852670134fb89e3108829448918efbd03a2f9a257b1bad9",
+      "reference_sha256": "6be2f7df22ed72ba422a03f5275dc81baa6f06d8b075e0bd6af5b605d8ae4484"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s08-q00",
+      "context": "halu-u19-s08",
+      "kind": "Generalization & Application",
+      "question_sha256": "52b20ed5fdf153aaa46135b8633f81e334fa32ae5d50411695e41e10c9d76515",
+      "reference_sha256": "895a80967fcf2a785ef3161dc31ea398f23213ae23fb85be6193600437d34724"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s27-q05",
+      "context": "halu-u08-s27",
+      "kind": "Generalization & Application",
+      "question_sha256": "01db4e2c1039d5b0b1b71d6b16c4c70bdc32bfe92392f86f671aff5617f6ef2f",
+      "reference_sha256": "55519a2584ec06e61201ac5fcbd23bef3a38753918911303aaf9b7748a8b6cdf"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u16-s17-q10",
+      "context": "halu-u16-s17",
+      "kind": "Generalization & Application",
+      "question_sha256": "5c7dc136855f678c8eda01d3c2511fec134a260c345c69619a49a99b769c4c4f",
+      "reference_sha256": "1fae2c219114ae770230a4309c1723a2ac4064201194d94171971a1308f8cebe"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u04-s10-q01",
+      "context": "halu-u04-s10",
+      "kind": "Generalization & Application",
+      "question_sha256": "9bf3efa7c39a674556542cd4b567fd265607866f556c3d56f910837e706cf439",
+      "reference_sha256": "07f2c48ec9bc0435300250155a4ed1370ec6728ab8d1ddab7300588268efa83a"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u06-s16-q02",
+      "context": "halu-u06-s16",
+      "kind": "Generalization & Application",
+      "question_sha256": "ca9f104bd285b126572dcf0460cd058dff61d2f35729c5cc2b942e9a35ee9d3a",
+      "reference_sha256": "b0144eb3de511bd554857ee11edb078ae5a2bae7f9ca33c609460cf7409a50fc"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s16-q02",
+      "context": "halu-u15-s16",
+      "kind": "Generalization & Application",
+      "question_sha256": "fbf7f9ef9115e58a8dbfe15851a65c5ac73e18b6874a4950f379c6ae6a4f6fbd",
+      "reference_sha256": "053aabdb45ef194e042fcbe5ce43d486e20c2cd2e7318ef6996588ed47f00411"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u05-s13-q05",
+      "context": "halu-u05-s13",
+      "kind": "Generalization & Application",
+      "question_sha256": "b35f607873a3fbac297348931c66d3e20f4dbad9030dc4e081cd69e0e2f6bba4",
+      "reference_sha256": "a742a946d39ecb927bfd87356505c9eafa19a90c4ae46afce518832b87470ebd"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u13-s18-q02",
+      "context": "halu-u13-s18",
+      "kind": "Generalization & Application",
+      "question_sha256": "b96b4a3af3e637d514ab09f9c3428a80d6222188bfabed92fe582081745e2954",
+      "reference_sha256": "2d411774564b1f7ec25a00216a5619a02455df668cb011b6b39e4143c0aa3c81"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s08-q00",
+      "context": "halu-u02-s08",
+      "kind": "Generalization & Application",
+      "question_sha256": "4ddacd08ce87fc0d02facf32cc0981a301859278aa60de36a4577571d22a7e3b",
+      "reference_sha256": "7103938afa2ff7a1eef04b17fcf16173f09a0385fe5b97d9acaf5afe03311b58"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u09-s23-q00",
+      "context": "halu-u09-s23",
+      "kind": "Generalization & Application",
+      "question_sha256": "8547d389d1648ba5e635f213c17ecec54ddba683bf38c670dcaeb7438c6990c4",
+      "reference_sha256": "b8395cae6854e38fad40ae4e61a2d9d8a88505d2f58863ad5fd4b892230134f8"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u17-s18-q02",
+      "context": "halu-u17-s18",
+      "kind": "Generalization & Application",
+      "question_sha256": "4b202ae46fe19693920c8d3022c69ee6e05ddb42b2542ce85212e993de4193ca",
+      "reference_sha256": "14d74b11d44d082e97e10f471f2c0ec9ae87ac01d4136197e6e22ad2bb4db1eb"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u14-s28-q00",
+      "context": "halu-u14-s28",
+      "kind": "Generalization & Application",
+      "question_sha256": "1f5e874acb0e6374f368c800db8bc930590f00f85c23354a61d9f594cc2e538c",
+      "reference_sha256": "889e6c0669e953beb0ba32db2dad659649ea19aaba09f227d8bfa23477546dad"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u10-s15-q00",
+      "context": "halu-u10-s15",
+      "kind": "Generalization & Application",
+      "question_sha256": "a8dba6ffe80aa85e6875df96a5b7aad2eea47de598f1254879efa6ddab76fd5e",
+      "reference_sha256": "9cc9858bc4791e86d6f5ddf204b7721401fa0ae73188377092ca009c1e4f6eca"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u03-s18-q00",
+      "context": "halu-u03-s18",
+      "kind": "Generalization & Application",
+      "question_sha256": "31f8a9c9c7a5bf12e8cc9b384c39f97224ae75f39c50bfbf6317685fe55ddb25",
+      "reference_sha256": "c1d1afbca7965f319362576ff17dca7687278d2f4794e09feb6ab1aabffe0389"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u01-s09-q02",
+      "context": "halu-u01-s09",
+      "kind": "Generalization & Application",
+      "question_sha256": "4cbc84e6a60ffcc764052e971a3d49831c8ff26538eeb77e04501466ce7dd71a",
+      "reference_sha256": "e3c56dc776f4076eb489f09eb634f6e8054f6c116a6aaec4ab3cfa717f5f8eda"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s08-q01",
+      "context": "halu-u18-s08",
+      "kind": "Generalization & Application",
+      "question_sha256": "c4f94f545b512ec1947d9695be4d8444ab35de7fecead7708a26e6dfb7772a95",
+      "reference_sha256": "73da11eb20573f4ad72fcc2662f3b9137b19f3b8038cd3b5ff6afa3c18f46449"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u07-s18-q01",
+      "context": "halu-u07-s18",
+      "kind": "Generalization & Application",
+      "question_sha256": "8b56d42c546808ee51338fe65c93faf018bff025ae71fa9d5449d474f0761b4d",
+      "reference_sha256": "0807cbadba9b5282d93b17805882df3c2a4da3a6e2fd4b4f6aabac2d4abd73a0"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s09-q00",
+      "context": "halu-u00-s09",
+      "kind": "Generalization & Application",
+      "question_sha256": "5e77e54f7471fc1c9a2e4cf2fd63061b3ceeac04ef2bb8e810cbc3b816330dcb",
+      "reference_sha256": "c31a2b072a7c16c697839410d21ac7fce607b5f1996b18aafba7f0922f64026a"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s18-q00",
+      "context": "halu-u11-s18",
+      "kind": "Generalization & Application",
+      "question_sha256": "b3ee78d41031eb8a958c9c516565378dec58c62c03740c269bb3d499f8cc0483",
+      "reference_sha256": "61cb7823bb87bac9adc8f3f4ed4194a18274fd5583c8c3ad8006cd3b1aa24b0e"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u12-s17-q07",
+      "context": "halu-u12-s17",
+      "kind": "Generalization & Application",
+      "question_sha256": "3b84a7b366d26d9b2f354499c299a04f6cd17630b9611384b961b6f0dc4036da",
+      "reference_sha256": "c98e2748236572fec579c01f42bed440c61a18dbd644a4a0a7b9df5131bb8842"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s29-q00",
+      "context": "halu-u18-s29",
+      "kind": "Memory Boundary",
+      "question_sha256": "5f64ae828530446762c67a9b2c3981c1f78c3319675b48bcdc9cb0b9112cb06b",
+      "reference_sha256": "3f657bdd3de655e44bff948b3e12379849fc8efa6477174527b2491de6298df3"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u17-s14-q06",
+      "context": "halu-u17-s14",
+      "kind": "Memory Boundary",
+      "question_sha256": "b7b5d23ccc4ea9027bca93f8a39484240fac27baea6eabfe9a0a1fd474f5b5ce",
+      "reference_sha256": "20f89e45fe3907705ae154438a7632ea69f3d75e63d219ef3c83dd4d132e7f32"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s21-q01",
+      "context": "halu-u08-s21",
+      "kind": "Memory Boundary",
+      "question_sha256": "87f5e089d71f10fb5509d4dfb1bca8e3629ffa2906fddd919c0a3f466bc3a9fb",
+      "reference_sha256": "650029760e1504295078e5f6333a0a4303a1ddaf50f92de9c18954a00ea850da"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u05-s20-q01",
+      "context": "halu-u05-s20",
+      "kind": "Memory Boundary",
+      "question_sha256": "fc93fd807c9e7cf068dac3bd99a98364aa8305278b4c7c8f8140ca3cc4d9a3f6",
+      "reference_sha256": "b1f86d4bd39d743c03fd7e40cab685412a3b098b0ce4bfa322996768804d04a9"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s25-q02",
+      "context": "halu-u02-s25",
+      "kind": "Memory Boundary",
+      "question_sha256": "ef899ba3b780a31d1adec321fc79e8cc01c4350db67da2a0b1ca7dbcc804885f",
+      "reference_sha256": "3f657bdd3de655e44bff948b3e12379849fc8efa6477174527b2491de6298df3"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u10-s10-q02",
+      "context": "halu-u10-s10",
+      "kind": "Memory Boundary",
+      "question_sha256": "bace7711b97381db6e18257a2db0ad5be0d642ec9a3417a8ad129360403664aa",
+      "reference_sha256": "3f657bdd3de655e44bff948b3e12379849fc8efa6477174527b2491de6298df3"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u04-s13-q01",
+      "context": "halu-u04-s13",
+      "kind": "Memory Boundary",
+      "question_sha256": "d0baf52f8c017b5b2fe2bb46d81d3005b23297f7519a4b0a0efdc896a834f736",
+      "reference_sha256": "264be80291727ff0039804bdea8df741cf21c777c67ccf1a51ebb35eacdd6d96"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u16-s00-q02",
+      "context": "halu-u16-s00",
+      "kind": "Memory Boundary",
+      "question_sha256": "9d9b65fc3904b86e5a93c9deb3a889d0291a4d587ca9dc934d7f647264997e9a",
+      "reference_sha256": "aa33e6ea4788f9c88c34df1949be614759d699833c92104c8b999c637e12c80f"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u06-s15-q05",
+      "context": "halu-u06-s15",
+      "kind": "Memory Boundary",
+      "question_sha256": "c1dea8b2983bcbdaa2519f56f63e0b600d3668263f3a7db83f91c0f172917b1b",
+      "reference_sha256": "d846d314b8e776c893b5a22d570a7878f8265409bfd0f82c28a81a4f6bbb0b84"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u09-s05-q02",
+      "context": "halu-u09-s05",
+      "kind": "Memory Boundary",
+      "question_sha256": "b796127337ac3c3354fff63ab0fdf4fc6fa30c4f383ccb2cf9774230e37c3756",
+      "reference_sha256": "650029760e1504295078e5f6333a0a4303a1ddaf50f92de9c18954a00ea850da"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s13-q00",
+      "context": "halu-u15-s13",
+      "kind": "Memory Boundary",
+      "question_sha256": "2d4813bcea96c69a8992f3b127355054ca285f17469721636f2510fe794d6364",
+      "reference_sha256": "3194997e74497aea13eaca102469a917716dfd7ccd2b9ddf5abd398ddcf94652"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s15-q00",
+      "context": "halu-u11-s15",
+      "kind": "Memory Boundary",
+      "question_sha256": "7dc0eeb290613402f39404c91469fc67e71d64f1a930403eb62e9d3c44072205",
+      "reference_sha256": "3f657bdd3de655e44bff948b3e12379849fc8efa6477174527b2491de6298df3"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u13-s24-q00",
+      "context": "halu-u13-s24",
+      "kind": "Memory Boundary",
+      "question_sha256": "8d2156babef4bcef4dbe662a529ce39d2223d526a3261b6c0f376580bdc13dae",
+      "reference_sha256": "20f89e45fe3907705ae154438a7632ea69f3d75e63d219ef3c83dd4d132e7f32"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s07-q03",
+      "context": "halu-u19-s07",
+      "kind": "Memory Boundary",
+      "question_sha256": "4d431ac6d13c2e8d27227b14d6340032cf578bd1f0e13ab1cc3d94791e4d3e99",
+      "reference_sha256": "9856abadf2e841403d490b9c8b21cb3518c5c5159dfe076b1ef6c689a2761cfd"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u03-s07-q06",
+      "context": "halu-u03-s07",
+      "kind": "Memory Boundary",
+      "question_sha256": "aca6ba1a990956edb82bd8a82f9dc1d90d08cf7da648f9c0763538077d2be3b2",
+      "reference_sha256": "e08fdd5c67cb84f94b7bf35e1b48ad04b300c82172d46e2a8ae39e7f7651f38a"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u14-s00-q00",
+      "context": "halu-u14-s00",
+      "kind": "Memory Boundary",
+      "question_sha256": "2c695ac266b71e9c96f258adbcfb63b7974988b2ab45a851ab0f391b159d3bbf",
+      "reference_sha256": "7b24d60484f27d0c7b16319ebd3f0c93aeb41d058dba82bf7e5a85afe84718bd"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u01-s24-q01",
+      "context": "halu-u01-s24",
+      "kind": "Memory Boundary",
+      "question_sha256": "6bd88211f0d3e8db772790c5975c69f4f8e622351929de5872330b9cc9d09ca2",
+      "reference_sha256": "650029760e1504295078e5f6333a0a4303a1ddaf50f92de9c18954a00ea850da"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s04-q01",
+      "context": "halu-u00-s04",
+      "kind": "Memory Boundary",
+      "question_sha256": "c13c4c51c9c8091d388cf4672a5a06e69dde0fecdd381832a08a767d845e9c2c",
+      "reference_sha256": "8fd010ca88e4769772d877d96a8f541996fbe597eeea738762e7ffcc66377df3"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u07-s02-q02",
+      "context": "halu-u07-s02",
+      "kind": "Memory Boundary",
+      "question_sha256": "495e435f466fb8c66a54cfa4768ef620ff989344c36f57a8e466e59af7791e81",
+      "reference_sha256": "0534788eadc6c6e40dc2e654d639dd16126605b0204589c2d5ff402433d2bbde"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u12-s24-q01",
+      "context": "halu-u12-s24",
+      "kind": "Memory Boundary",
+      "question_sha256": "6af4a86a417897056ecca91cb1fc6f9b716a1e30089f480acb72310e5a33a3aa",
+      "reference_sha256": "cad7661055a1ccf60ef4b17398d14321b26ffef18f2f89fbf72bfb67cdd1fa56"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s22-q07",
+      "context": "halu-u18-s22",
+      "kind": "Memory Boundary",
+      "question_sha256": "226edbb045baf1e73c1f83874376db17b10b69063a0799d7742b507716ebf173",
+      "reference_sha256": "3f657bdd3de655e44bff948b3e12379849fc8efa6477174527b2491de6298df3"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u17-s06-q02",
+      "context": "halu-u17-s06",
+      "kind": "Memory Boundary",
+      "question_sha256": "26d88d12796975c3c4a6dbc6affa8454894c4810ffa3779f300eb7c4dabf2d83",
+      "reference_sha256": "244f3530cf64fe996dbc2c2f10dd287aa535166cf467d81209921c6a9e25e06f"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s29-q02",
+      "context": "halu-u08-s29",
+      "kind": "Memory Boundary",
+      "question_sha256": "96a0ef70bae2f88df123f45bb3cc093f6d385b639f6060197ad6d7fc4820b62a",
+      "reference_sha256": "650029760e1504295078e5f6333a0a4303a1ddaf50f92de9c18954a00ea850da"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u05-s28-q01",
+      "context": "halu-u05-s28",
+      "kind": "Memory Boundary",
+      "question_sha256": "c4092071ecdefdf3b2c09bf6d65cc6735647dcd6cb36f1bf0c8b6d21f70f6f68",
+      "reference_sha256": "95655d428e13acdb9694c1e39e96be9cef7970827076cb918c67a5c9698fba0b"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s23-q01",
+      "context": "halu-u02-s23",
+      "kind": "Memory Boundary",
+      "question_sha256": "ef899ba3b780a31d1adec321fc79e8cc01c4350db67da2a0b1ca7dbcc804885f",
+      "reference_sha256": "650029760e1504295078e5f6333a0a4303a1ddaf50f92de9c18954a00ea850da"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u01-s24-q00",
+      "context": "halu-u01-s24",
+      "kind": "Memory Conflict",
+      "question_sha256": "a89193606f9cddd3777dae1e456bd3ff558088d6daceb0e0fab759ff8b4870c9",
+      "reference_sha256": "e4c7f73cb6c75e14d76a61ed4a69fc6647590d6c149b211e17cd32c0598bfa2f"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u10-s27-q00",
+      "context": "halu-u10-s27",
+      "kind": "Memory Conflict",
+      "question_sha256": "2ca7820dadc99f9f65adc83989dcf27f9399b0a9ff211e82e018774e1f740d68",
+      "reference_sha256": "a294e338b96c8a2e6acf9322afdee473790bf95121baf4f69d0d2cf3d681a901"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s15-q01",
+      "context": "halu-u18-s15",
+      "kind": "Memory Conflict",
+      "question_sha256": "b31ca9604ec5f3051e4a25d0acad3c52b6a57dce6bb6af8464d3803f36093bd3",
+      "reference_sha256": "42f9dc3960c1488442ef282c45e44005c0a916447d64e5d992e74f0127e671b1"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s20-q01",
+      "context": "halu-u08-s20",
+      "kind": "Memory Conflict",
+      "question_sha256": "f806bb2daff430a91900a28e76a71262bc142b9987753acf487469a1d01e8d83",
+      "reference_sha256": "59f3756fefa4b64f6520d713120f374425690c563ea7b75003f2c1793dff8621"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u12-s17-q01",
+      "context": "halu-u12-s17",
+      "kind": "Memory Conflict",
+      "question_sha256": "4355282b5c20684e25a8b615e3a8f6c857152957103ae3fd61f39ccc98930d05",
+      "reference_sha256": "ffa60f2e2cc483967e6589a3b4768d5f0c7879692c598f0b526cedf15220e4a4"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u05-s07-q04",
+      "context": "halu-u05-s07",
+      "kind": "Memory Conflict",
+      "question_sha256": "d39df46c5e04b409266de6a66c9d2e71a0dfbd873f7ec39e40d71f994ceb003f",
+      "reference_sha256": "36c65056c1dfa891e91fab54ffbe5dd824ddaf88971e525d7fa73c0d8edc4e1a"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s02-q00",
+      "context": "halu-u15-s02",
+      "kind": "Memory Conflict",
+      "question_sha256": "51007e5087e43fe0477358be0905ff43acfd0a70f4cef71041bdf2d82fa7d983",
+      "reference_sha256": "c0cdbdc1f8526660979fa8787046e7d8d2c6479fb1053ce7b536e39921570c93"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u16-s26-q02",
+      "context": "halu-u16-s26",
+      "kind": "Memory Conflict",
+      "question_sha256": "0b1667535190d48ae32f4ae8ad308453206e1e3344d26dc8fa4aa445a7d58805",
+      "reference_sha256": "8d1c57d53c2f165641397c8869cac599a058ec95c776aa8bdc21cb4051a8a594"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u13-s09-q11",
+      "context": "halu-u13-s09",
+      "kind": "Memory Conflict",
+      "question_sha256": "b869c7656f4668489e53ab64411f507107f0cfcf9d20b39a379e6877bc1007d2",
+      "reference_sha256": "7f7425d037ac71a882c94f23b2e8f51d6b04aaba325cfb0c71799537e53ced66"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u07-s11-q11",
+      "context": "halu-u07-s11",
+      "kind": "Memory Conflict",
+      "question_sha256": "57160673da73deacc66b82750b97edfe0b8826a8f01e3d0b00a6ce6d4c923d2b",
+      "reference_sha256": "d3812ffdfd5e3905a1059392e420a7e2bcfe4d1819b85ee0394f6a57f0f32984"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u17-s00-q02",
+      "context": "halu-u17-s00",
+      "kind": "Memory Conflict",
+      "question_sha256": "dea2578ee1f6986a5e1d8ca2d02ded5991d6cfd92bee27b08f1a5d10dbfc973d",
+      "reference_sha256": "ba9a4fa402ac82dccd37f12503b921aeec2c3cc6af3063a4b27afc51a83ec0bb"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u03-s26-q01",
+      "context": "halu-u03-s26",
+      "kind": "Memory Conflict",
+      "question_sha256": "a7db8e13a1a849641123da812c4ec4ca99249c2495e62cee5045989d97b86aa1",
+      "reference_sha256": "afc133434477ae8fc51eb3558d6cd572a55f83310ffeb0cdb8272c70bf6779a6"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u09-s02-q00",
+      "context": "halu-u09-s02",
+      "kind": "Memory Conflict",
+      "question_sha256": "f39edaf2ca5ddd9b7e1764083838c71c716f830afaa5389ec400b43da58c73d2",
+      "reference_sha256": "1851cbe07a56b28e5078e9b5ac515453ad0d33ab59ca7e64ac05c8fa23454403"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u04-s02-q01",
+      "context": "halu-u04-s02",
+      "kind": "Memory Conflict",
+      "question_sha256": "332fd87451a531dd6bcde5045fceee74e3f8b676f4f8fddeaa8a637d587a0317",
+      "reference_sha256": "d06e4a962851e6599727e86ef4f2c976d755a4f8d1f7b141bdc6abfe4d5bb0a6"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s29-q05",
+      "context": "halu-u00-s29",
+      "kind": "Memory Conflict",
+      "question_sha256": "d63570e40967dc66e63e3bd9980d516fbb0ee0d96554092b4a4158a9ba583b8f",
+      "reference_sha256": "e2d4986083ed3fc3cfd8b542570d10092089c381b5db9877f2cd28aa69d360dd"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s22-q05",
+      "context": "halu-u11-s22",
+      "kind": "Memory Conflict",
+      "question_sha256": "2102099df884d9ec78a3e03171107de3e7f1abc22373babd76db9b1968aae9d7",
+      "reference_sha256": "2c71ae782c4bf64303ed756934e8410c69980ed4302bbc27ae66fdb124a88f24"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u06-s15-q06",
+      "context": "halu-u06-s15",
+      "kind": "Memory Conflict",
+      "question_sha256": "d8e06007fe1075cb7d3e7fb1f996baead54ed6c02508fdfc3ac26e1621885504",
+      "reference_sha256": "5df9f0a9c884b5d1a18705629b181fa3de319cf0ddd163d3c75e8b1f41b6b1a2"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s02-q00",
+      "context": "halu-u19-s02",
+      "kind": "Memory Conflict",
+      "question_sha256": "3e9ece092eb6c7c1b2fab415761bc8444758043a172a5e190c62bce98e9cd8fd",
+      "reference_sha256": "1c368c81f65edf183afb8309b36b61957df04d73940858bc6b415e177ed50835"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s23-q02",
+      "context": "halu-u02-s23",
+      "kind": "Memory Conflict",
+      "question_sha256": "51ae27f88142b7f3527320bddc881b2220e1ab468e8d309017b48e102e6b7e04",
+      "reference_sha256": "d0cd0ecc990eb0c6e55b8d1facafbfc63e5063d0f7462103d17192355d1bd27b"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u14-s08-q00",
+      "context": "halu-u14-s08",
+      "kind": "Memory Conflict",
+      "question_sha256": "acab893d16b11b3474f23ddb1a1ca16768fed314c1da8454be0c2c11486e3af4",
+      "reference_sha256": "4505a5012d9669d23c3c8f13fa06cf251f0c0824d71261f1eda5b3db955796d0"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u01-s08-q01",
+      "context": "halu-u01-s08",
+      "kind": "Memory Conflict",
+      "question_sha256": "f86578f1e3ba71f60b1b340bad6c653a5cec85c69366c5a911089230592a9f93",
+      "reference_sha256": "30d2ecb46d180db16a781eccc2f0d8b3cbb5b5369dff7936688428732719284e"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u10-s16-q01",
+      "context": "halu-u10-s16",
+      "kind": "Memory Conflict",
+      "question_sha256": "ce54a753ede1a8d860b10bfa3539e8b99bb5a7a79e5cfd9cbf6426849926d93a",
+      "reference_sha256": "74ac0832ce2b4454ce8cd4b80294962de7effc9204e2dbc87b7540588d9305b1"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s06-q01",
+      "context": "halu-u18-s06",
+      "kind": "Memory Conflict",
+      "question_sha256": "7cb87ed8087b47b984032536b0f8dc27b2c3d85c249e44ba8f0e689114f50013",
+      "reference_sha256": "983894e20c349754df46253e91e0d4446a3a151c0680705dc73d38578cfa1e71"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s09-q01",
+      "context": "halu-u08-s09",
+      "kind": "Memory Conflict",
+      "question_sha256": "e751e3f5d43cebb6b84f6da77689a788692c64db7210102fe69c729043b4016c",
+      "reference_sha256": "82ffd711ede31d77b3973d0d8e71a3c28db94ba24fe9ecae5e79963ab11cc41b"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u12-s06-q07",
+      "context": "halu-u12-s06",
+      "kind": "Memory Conflict",
+      "question_sha256": "2b852fe585cc23ec6bc13f919014fdeb5f15d58a7c8e7d36069a9d2cd59b2853",
+      "reference_sha256": "4a9c4f856fa5d4c38dca421a7ae6fed682cf0e515d40d1b3ab2c98acba76c7d1"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u14-s27-q05",
+      "context": "halu-u14-s27",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "3b76fc6dadb5299bd070efb54d68869671c1b8b7aa18422ad6a5e2e9fdec27b2",
+      "reference_sha256": "bd6423b4f43a8f26d89ad761054312a3bfdd5636f60974cc9161516a6b66a0f0"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s17-q03",
+      "context": "halu-u19-s17",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "c9f1be33caaca08323c76fcb493bb09451c1a82412eed0b942ead8f45ec96706",
+      "reference_sha256": "1042d6336f9ac66d607c837c7bb3f3849301cfaaa1734d0cda15208cda0154d8"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u03-s07-q04",
+      "context": "halu-u03-s07",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "b728bd5f1ce45d3e72e919ecc9fa3d0fc0f727e1c7d22499aa16d1c5bc370654",
+      "reference_sha256": "2d0cc94105dc1b7340a57b115a9929fbbadf550c02f8eeefe061294a9da8d670"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s07-q01",
+      "context": "halu-u18-s07",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "3f501f2e740a3d937d7e37e5b05fbed575cc86c65b3229a1122fea42204c70ec",
+      "reference_sha256": "b742450494d9f1e6d24547d48423f1b1433535066de12a9d8e5b4dd10ad241a9"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u10-s07-q00",
+      "context": "halu-u10-s07",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "fed68cb35bae75c80d7ca6307a5ea2927b380d83eaa0cbdb6db202ba3d323d4f",
+      "reference_sha256": "0dbe5bbfb6c4384ff6d715bddab3be7130f73f2e0757f3fd8a3f96bbff64cae8"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s16-q00",
+      "context": "halu-u08-s16",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "61c243bc00999fbb7b20615370769385401225a0e98245cc7e6874a90ecc2d9e",
+      "reference_sha256": "36bed1c6599d007ae7ccbbc43c9f64ab5328b36b8f6fb5641043b35ac3450bd9"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u09-s08-q03",
+      "context": "halu-u09-s08",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "6cb01415e11d5f51735ee629d5398307e6a5682d4590c100b3a42a84d47475c4",
+      "reference_sha256": "6bb429b6f11c381b260784d56028f393f4bc010059fdbaf29b9a9c3b1d970152"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u16-s17-q02",
+      "context": "halu-u16-s17",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "cc69e797df041b436355cb9778c160eba0a01d0562b28ad02432371b73d9f0fb",
+      "reference_sha256": "cbfd1d901d6fc654659281a7785b1ea8cfe85322174a7e6388f84edec34abaa5"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s20-q09",
+      "context": "halu-u15-s20",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "7ab0cf3e6e0af187cdf352372f9206eb2d3b2a600df29dad2605056e4e82e13f",
+      "reference_sha256": "c241c19d57d738e365d192e3d282ca38eda19c9f3290361e6196823e95e4795b"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s21-q04",
+      "context": "halu-u00-s21",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "e6cc9e13cc35fdaa7d3b337f991a93b70cb56b93cf395d5ed14d426ca2509bbf",
+      "reference_sha256": "b55c6f158d67182a2b92d2a7fee96856afd1b06f80e6a2c846f36e6d805c9422"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s13-q01",
+      "context": "halu-u11-s13",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "c0619227e44a3694a0af5b6ff99af03e7d2e6f00215100378280d1dc4729dc9a",
+      "reference_sha256": "08d202788714446ca37b25d3485aca796e267ca1b2c01058d5374943e7080a25"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s19-q02",
+      "context": "halu-u02-s19",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "b323e11f09f00c59aced80315b82e71f37c73e97ee180ff7044a6cf6a8b63361",
+      "reference_sha256": "81130dd7fe621aab892ace66f9908d4618d81ab8b23f1fc32651d84d680c5e16"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u04-s07-q01",
+      "context": "halu-u04-s07",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "f572834a73baf22f98a9f966701543430cc796748f59dfce39947bfb0ad243a7",
+      "reference_sha256": "87570103e43601fbf5a611a018f230cb3d2b07ed4215ebd4499470b3c4e4c5dd"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u01-s21-q01",
+      "context": "halu-u01-s21",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "a4ef71423ac0fcca918b7c7fb8066f3612460af4bf82ced0519a7a0fccd7492f",
+      "reference_sha256": "572d503439057df9f8bbb3633809e0a60ea9f8f4323863eae4c4647f62d35757"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u14-s17-q06",
+      "context": "halu-u14-s17",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "3f5fc73e10625423e9bd3908d931bdbeedaae1b1cf0346c6302538073ade034c",
+      "reference_sha256": "f0e88f59712910ceae20f41a18bdf2b49d6e1a80c72acba761619d06405455a7"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u19-s17-q02",
+      "context": "halu-u19-s17",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "6977c51ee3e85ffa9c625d629726bb318d2edf694933e34aa852dd084b77cfb6",
+      "reference_sha256": "a07982e26831a8bd3f02c74fd3b3977fe8d7231fdfec8d595ef22d95930750da"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u03-s07-q02",
+      "context": "halu-u03-s07",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "ff27c4bb7b62f87cd8f311bed23d8b19d785e9edc35c54205cf37b4e7493f3ab",
+      "reference_sha256": "ba8fb380a3db5765d864f56e67c0378f91cd7c38df92ba4f59bd32c70b3511f3"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u18-s22-q03",
+      "context": "halu-u18-s22",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "2350941db07ea780c1eba117148e9137df67dbe34da2bb52c2c529389f044604",
+      "reference_sha256": "6fd07e04238b838b8a7bb182107f7154fa93d6ebeaf28ed3fe37808486f58c3f"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u08-s16-q01",
+      "context": "halu-u08-s16",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "cded982788cb8218f7817d0b7ea22bf31f71c61b5581da487b59c64d71c0ce6e",
+      "reference_sha256": "133d43811c29b60265952d22046966e14979df5f9f811263ae4f4bdedf350855"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u09-s08-q01",
+      "context": "halu-u09-s08",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "396381de3c09df62c235561505426a8570e6896b8e8546a8945a6dd1487d2fb8",
+      "reference_sha256": "bb2c322c5408357689462bd90c231d9388a5a5287d8329d03adc85b23b27df24"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u16-s17-q01",
+      "context": "halu-u16-s17",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "12d3821a8c753779a886599d874ba89e13e76d69afb69bc2cc8939dbc82065ec",
+      "reference_sha256": "42077a34ea136ec604fd94024fd74c872d34bcbcc2ebe60e3957472724763e12"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u15-s20-q06",
+      "context": "halu-u15-s20",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "fab23f20766a4b442f72f430dd7e94eefa34fb7718f18b1284189bd9ae61cb4e",
+      "reference_sha256": "cac8468bb3713a85500bc665bf29432f40e51c53fba212a0818ecdebbbdebb18"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u00-s07-q05",
+      "context": "halu-u00-s07",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "c4635acb468d0d5f33643f4f8a249f15fb9064f02d52eba3f152afe0831e9541",
+      "reference_sha256": "0f8c33f1823bfc03f1c32f8ee935785fe9568b5d08bdce1019145b739d7623f8"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u11-s13-q02",
+      "context": "halu-u11-s13",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "ee05c05cac9adc1e14cdd92a36c9bb4eed74e089ee17177498b2000aebce0f18",
+      "reference_sha256": "3453f933c254cb75c430773fb2f325419e0dc546a1efafaa3356d74626d346c4"
+    },
+    {
+      "benchmark": "halu",
+      "item_id": "halu-u02-s19-q01",
+      "context": "halu-u02-s19",
+      "kind": "Multi-hop Inference",
+      "question_sha256": "e0825373d8c428747a6562971755ad6809701b1b57c8772c3ba9169553c9afd5",
+      "reference_sha256": "011ec9eaf04988bf7caaa38e3014bfda7ef3abda32310cfa38e782c9e570874b"
+    }
+  ],
+  "context_sha256": {
+    "mab-r07": "34eb6333296040c5dd9c33d6c5311774431904666229806b1b0aefe7a37b3f1d",
+    "mab-r08": "82d2ae9ee5d261447c5b20528b1fc3a05a4f32a05ddbf9092a6fb84ea0016c0d",
+    "mab-r09": "d87354191b0ea01c121c773d2ba07ac8fb10e28ea4f2f74ee432a7f770d38f30",
+    "mab-r10": "100c172aac34774e46267961b0d599b3b4b567a9e605ffbf9d98b3c5d949cce0",
+    "mab-r11": "10154649f01fb998e2fc1facabab5dad12c314358cb0b4a6199a289985723ee2",
+    "halu-u00-s01": "dabefe19c1f3380dffaf0a0c7400d8280e670c0d79136710d6df989d6960fe09",
+    "halu-u00-s04": "84870111baa41877e938c2c4c2f753fdb19091dfda9edf0f0b75bc56c2ebead2",
+    "halu-u00-s07": "242197f80190b026412f38b8f359f163bb1e0aa27ed6d52fc0e59ee908d441a1",
+    "halu-u00-s09": "95f9e25ffe96db2d37fd801552264f1a9ba2bbdd8c089d322b3bdf47c08836f4",
+    "halu-u00-s13": "57801aca1fad4181687af9342cc73e03b83585d25de093f6536ad988daf2dc3e",
+    "halu-u00-s21": "5b67ebc73650adbe04a8f158366d6d88d67b729454521000525c9a517a382abd",
+    "halu-u00-s29": "94a1e6accbfb0dc72bff406c90cb6295fbbfc7b26367cc92179fbd6ddd1bec61",
+    "halu-u01-s01": "971d218f4a7537480fc1a266ba6e5aee6fa235c09a8ccbe2af682edab81367d6",
+    "halu-u01-s08": "754b1d08b304e5c8e61ad57ea2bb890c5dcb34eac118a8a5fab27fc5b43d3054",
+    "halu-u01-s09": "d3d1a0e96d0df3112a1c486aae92e4f2e233658e86819b0c677697cee42fc9cb",
+    "halu-u01-s21": "fa00cc90134311de8f25ebbaf52bc977cbd2957f321b470cf5b9514a33a0678a",
+    "halu-u01-s24": "5640a3c23a3d19f811ee5935ce9928edc9fd1209589caffc2c4cebb2217a10a3",
+    "halu-u02-s07": "baa6b45b7afeef0532c2a19bfbb06ff31ae589d4fc2bf14b448e852a8b6ab5f4",
+    "halu-u02-s08": "ac220bc3a69d8c7afd64104d00e058935943b015c8a6b89d6ddd2c28507df43e",
+    "halu-u02-s10": "e5b98b60631b9bffc0b4439411637184c5aabe0cb1dd75cdb1d4478fe2e692bb",
+    "halu-u02-s19": "3a81272d32511b37de91c8ad54f1fe8cf7e58db99ba40ddf80be99e4f3704b43",
+    "halu-u02-s23": "556de71bfbd5741f385389e466b91e2a278f64025c7549bd63d0c97fbf0cd189",
+    "halu-u02-s25": "4abcef6ee9c1af973c8cca18fc3bad80e41a3a6a1c5b79f2039ed5ddde5ebf24",
+    "halu-u03-s07": "0e1fee512ac145e011724f66dc36c31c45817ea4693bdca5081d61eef4807176",
+    "halu-u03-s18": "86b59a0a49645105f7b8f6720a4a990c0ad9a7ef6e1df4b7b0009d00ca03b3c9",
+    "halu-u03-s19": "c7191544cd61831acf6ef1ea6818eaaad3e4ad2ea106df3f05e5bbc35ef720a8",
+    "halu-u03-s22": "af1e154837826db6fb75f5ed46ae35ed14b7821ad7d8ce3aa24d9d0096c1d6a1",
+    "halu-u03-s24": "76881f8880246438192ab23ffe3234351a7ff01f332ce7406a9de2e1273b4576",
+    "halu-u03-s26": "64be71eb80723f82c4a4467eb82f74fbb72203b13631418b2503fa126e8997d2",
+    "halu-u04-s00": "5ef7df523746a00c17558abd8cd5be2637416719636be7a74cb3b09c074e5378",
+    "halu-u04-s01": "11423504171678be32ef6c8f579d9b5c85ee990f5158896d337276a0dc88744c",
+    "halu-u04-s02": "16856867b9439d971ca418bbe4d683bcfc57772fe5189be37898d2289aae547c",
+    "halu-u04-s07": "922d7f106dfad44bba1f20ef50efe866ef44b8a7427ead234fbcf409cd4ce198",
+    "halu-u04-s10": "6875d9d8cba195e2a4d2e17752c5bd43c79cdd057e01f95a9a4679b3bacf8bfc",
+    "halu-u04-s13": "3c1f0f574037812fe33c8c8cc57b50c50d53bae3790477a48f6fa81cc9e449c1",
+    "halu-u05-s07": "e298d54ef0686de2622bdcce066f88ad176cb5d1803d864768ef8a55f7a4b7ec",
+    "halu-u05-s13": "ecc53937464395b04d8b3858c017dc906e0205e26fe735afd2444a334d1c9745",
+    "halu-u05-s20": "59f2379e393b6fa9b1ea934379776ccee93d86fc99c60bde1f2b2dc28c2c26ab",
+    "halu-u05-s28": "2b4fc900e70fc1df88b1594cdede0b4a5c342571b098d2b52ee8960fc0b70fd8",
+    "halu-u05-s29": "a50bee9172e843ebc35c47ff8580beb389a4309c3de8860476693d3225e21a28",
+    "halu-u06-s06": "b1af91ab5cfef71f761eaced215c6ef61277307cc366db836b0c25208ccc326d",
+    "halu-u06-s15": "826aabb77a99ab691dc5c695402e8d5e3c8e91b2df3be4ab3277549eae32500c",
+    "halu-u06-s16": "a6c6f7bc9c047a764a27d51738e9193db84e8ff5a171e2e8487d7ac25ec47bf1",
+    "halu-u06-s26": "5d24133bbf4b815c999e09cfbc16f6ebb208edc2940dbaa56fb4b43e6813ce63",
+    "halu-u07-s02": "23d0d38f3b09be8465fc79b5830ffabd0c4381ccfa4e554494995fab48b1dc81",
+    "halu-u07-s09": "593eb8f0a8bdaeefe26106b3a2a9ba5d767512a02bb035acbdc3b62a3174da14",
+    "halu-u07-s11": "7604b321c3d4dacb0bc1b203c3bd67fddc1aabae87fab76ce8ba584b188db903",
+    "halu-u07-s18": "01848408659950de81ad0b7950ee246fee48374b5c18fe28df684ee8b3f6436e",
+    "halu-u08-s06": "97ca299f4e5076d0271c3a196a37599f9302ddbc192f640283d121ca7edb018a",
+    "halu-u08-s09": "5048b919071123a2b18f4db76d295e72eda17f15cc176b04187c08e198b1f8e0",
+    "halu-u08-s16": "bf27bb7cecf0fb4a52789a7179c862f382bbd5e42d4bfc71fc975011a2ff9b5f",
+    "halu-u08-s20": "89556ca71de5fef1db26f79a4422dc6b4594de9b5e88cfaf627ab7dfa1d00aad",
+    "halu-u08-s21": "ebe011cddf8288dceaffe4555ea5a19981d82888ffc7d0bb003d74c4196bb767",
+    "halu-u08-s27": "ce621e8d848afb6c8e81aa57b9e2208fedd07d928644d83eaa41d8b22b8965bd",
+    "halu-u08-s29": "d8d67d8f29ddd34711b41e8c857395ada25c70ec5e17dafff4f5e35202a3e0b4",
+    "halu-u09-s01": "3ed4dc4ecfa22230aa43e9f2eec26e01dcd5e28a451a193e0da1ca0891325235",
+    "halu-u09-s02": "83707b2be717631a3a9d54513b7ee9acdc9f6cd4b4efd89c65b347ce9b43ec17",
+    "halu-u09-s05": "8a583aea46d0e73b3f48f6ca3b7d20f3d42ca96b8ba5a04cef2499f36cf19315",
+    "halu-u09-s08": "95f5663dd449930c611bb3bc01f4b79b71e5170d70f99c59b4d236873989b7be",
+    "halu-u09-s23": "080f2894a11bf31966eda5ed36ed089eef07ef12d48b8758f471d015751575fe",
+    "halu-u10-s07": "66fd4fde6c0e3bc166eabc089f5df800214a9770b56a4e026685a917b66aec75",
+    "halu-u10-s10": "b965261c99028fe50986793e93266310b7373121177318cbc162e5972d5b8abc",
+    "halu-u10-s15": "fd4fd1ec2f614aa200b0dac12b9c7063310522c33f9f3113fdc6e40d6759fa45",
+    "halu-u10-s16": "14e6c3c405085fc3e2befbb4d2413576c701904036fbc261de71647852c68fdc",
+    "halu-u10-s27": "959caa0d495f13692bd0c461843c12575b334afe9b32b34c11fa6820385adc6c",
+    "halu-u11-s07": "9c9c1b7aee31f2f20dbf353a2acde06acdf8587b26e53f3aa6898ae304b2424c",
+    "halu-u11-s13": "82bed93cad1582fad53d6fd0194552bf6932ac77ba4417583895e88501a9f5d1",
+    "halu-u11-s15": "70d9195cc9df28c2eba03cd423f038393e046a883e2b3782907bfc8c223c07d1",
+    "halu-u11-s18": "5b152d8e3fd3f987b203f87d3a749fb1321ba8dee8d5eede23ce96bac39a63d6",
+    "halu-u11-s22": "e15b271c54be7ce02162b2b5a179107d190c31d67db07c2d59f06b0dd779091f",
+    "halu-u12-s02": "f0c3e2837f21a0c073ac4b10474a08b33b7d955553c7eb69e93342ead611b6e8",
+    "halu-u12-s06": "91b036dd2cc607f1c332bf644ffc6beae2cff90652c80325c8744868776ba505",
+    "halu-u12-s17": "fab781e42b4e37b04cae795f8f43a83c0dc7558e10c0c1816dee66a77a6488ab",
+    "halu-u12-s24": "5b7771e9262b866c1db190a8387658239716e74022914e0ed5616cef3ec892b6",
+    "halu-u13-s09": "bef94485a2738bc35552bd80eb41dc0645c3d883e6685c274626ecf3eb6644c8",
+    "halu-u13-s16": "08777bc2f5ad8d67a9535e9a21c8d6b8ca694540726b888e1ef276f59bc90826",
+    "halu-u13-s18": "ca1d88f77052a44fa0dd3c9a80e9d463dbf07a5149d7d1c0becbe8a7d6fd2f14",
+    "halu-u13-s24": "f1bff6cbb4a036660f06e37f135bf491ae2d497e16c0bcdded94633adf9b271f",
+    "halu-u14-s00": "282fbdfbb76ea2b287f3be7215c60096432c39d60957dfd3ed57c56b972a4928",
+    "halu-u14-s08": "354eee10b66b2fee5ccf428f5e0b8f339bc7b2d112fa0111f0190d93e4d5751e",
+    "halu-u14-s17": "7159e54c0b2a22dda205fa94736e74807efc80462702429d29695ec661cc7eeb",
+    "halu-u14-s27": "f52867292e7cc016ac37b41a7408d65d9e00f63f827587484e4ba2629662af36",
+    "halu-u14-s28": "fa9abc25c4739cff82be1fda80b02b52967ca9bbc5bb04ea97e1019b80be23b3",
+    "halu-u15-s02": "f689a3abfbec9f3fd29e7f16f39d912a746d5386990d4097fc8fde422b23045d",
+    "halu-u15-s09": "edff8756f45435443b8191ae4cd622ed5253aaf0742f112ef17f86fb71c3cf44",
+    "halu-u15-s13": "7de979a050bc7544f2a7ceff69ff267c09b1b6f59afb7f40fcce9df40befe49f",
+    "halu-u15-s16": "5227844587b2f6035145f45501697cb63f6c9f91ec072e3f34d56d36ff7f66aa",
+    "halu-u15-s19": "889d6d7e8b98e118b164471a648f08a46875686979e8408a0d47e641669c2e34",
+    "halu-u15-s20": "5c7a7a3050b7915ee62b18a98efdfd5350dde5e31c710c91b43f54471ea0ac28",
+    "halu-u15-s25": "0746aacd8d39f0a5925b5693d09c24a4b334156e70c875e3c89cc7a5a89fc46d",
+    "halu-u15-s27": "1a7a75ea465952b55f7eefaeed9fd6e4ffca81029e34ccf6a3a2a663e30c0071",
+    "halu-u16-s00": "53068302a9d9eb5ee3965fb16555db2bcf63424db69c414f50c63707919a24f7",
+    "halu-u16-s01": "c656f6eb61124c5e161e8a864b066ad17ba37a0e3b130d3c760e61a3799e07e9",
+    "halu-u16-s17": "5a6eb13ab653d84fa235088b210365965876fa6b306940c15c6ef56ccaa88a66",
+    "halu-u16-s26": "efdea3105ed634676c090243f0a0d931586c89186d52558303c1e0c51ead34fb",
+    "halu-u16-s28": "5296020bc637557e90be5bd5b59bd0ba9c57deb08417badf5df7d1dab3a2b32b",
+    "halu-u17-s00": "994112106d4a4e9c1e69ee47665883f5b03236997f7ee5c66cc7b341f757e873",
+    "halu-u17-s05": "d1ad1ff9852334c83e004a35b483292e2d973e0d8a1c91ae7509bf7acd47b006",
+    "halu-u17-s06": "618e21d2fc09f7f2a72f4eac6f12a84abd6e228f8a3d7e622d79bc7d6882e45a",
+    "halu-u17-s14": "621c8072c54a04bdb30cb9d8f95a6362be13acedaea16bad850219890f5fd405",
+    "halu-u17-s16": "d4880d4ea2352bd9e55f91c9cd3496a9c20afa7e1071b99144527d3dbfea528a",
+    "halu-u17-s18": "8e9d6a52896dd481bf9e8c9e5c4ecc3707fba5e4ef41c7d650dde0f5b5b5191c",
+    "halu-u18-s06": "525b0df3bf5fa4b6165a7dcdcb6134cd672ea80d42550552f1f2fee32e965a92",
+    "halu-u18-s07": "80206022fa3898332834773df19f53ca1aa42cd400a833eae4c61853962442fc",
+    "halu-u18-s08": "7fccfc00f430efbc56a8b1295aaf6575e18c8c3d38bb54c25beec85aba2db07a",
+    "halu-u18-s14": "033a718f34e784617b99f745e6b72218d34b08eeb6f4ed23face8ce78ad038d7",
+    "halu-u18-s15": "a7b5be0aa0256307e688ee7e831138c8a995adb16b3a0064a658e43d9c19a4be",
+    "halu-u18-s22": "4759cfffb8c6791b201a874efe3a3c4571585a28a3e23613898fa30ae086ce77",
+    "halu-u18-s29": "ca65367700af9d3066d996be9319dc132ab03de0f9990c664abc14f5772a2fd6",
+    "halu-u19-s02": "6e05e0e89bf974dd7c34f714b2c5c9da55b189de471140b6db12c09eee46381e",
+    "halu-u19-s07": "49b08a551d4075c3d6f82d44a7e1bdde398e8a34bcb16287d31754676cd9a133",
+    "halu-u19-s08": "bcfe7d658ff3141c755c2eae7172c73c5c0d5f7525c6c9954ad2dda7fc5c1669",
+    "halu-u19-s09": "d20a53ba0b84a0702b74a9c74167723639963ab31fcd7622cafc4e08d1e1f84f",
+    "halu-u19-s17": "32b7cd542119b8397e74aca615735da2282f3a1c480f23a3192e9cbb88b74de0",
+    "halu-u19-s20": "44f4634aa0b1db75026e0ca7f6190bf35fe1298a88023e2c1e03ab407724df0b"
+  },
+  "embed_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+}

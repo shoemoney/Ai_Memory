@@ -1,0 +1,30 @@
+{
+  "unavailable_domains": {
+    "memory_kv": [],
+    "memory_vector": [
+      "finance"
+    ],
+    "memory_rec_sum": [
+      "finance"
+    ]
+  },
+  "causes": [
+    {
+      "size": "0.8B",
+      "mode": "off",
+      "category": "memory_vector",
+      "scenario": "finance",
+      "prerequisite": "memory_vector_prereq_17-finance-2",
+      "failure_type": "ToolCallParseFailure"
+    },
+    {
+      "size": "0.8B",
+      "mode": "on",
+      "category": "memory_rec_sum",
+      "scenario": "finance",
+      "prerequisite": "memory_rec_sum_prereq_18-finance-3",
+      "failure_type": "ToolCallParseFailure"
+    }
+  ],
+  "rule": "A permanent failed unscored prerequisite in any cell makes its category/domain unavailable to the all-eight-cell comparison. Preserve all planned IDs and existing outputs; prioritize common-feasible domains, never score invented answers. This availability restriction can bias the conditional comparison."
+}

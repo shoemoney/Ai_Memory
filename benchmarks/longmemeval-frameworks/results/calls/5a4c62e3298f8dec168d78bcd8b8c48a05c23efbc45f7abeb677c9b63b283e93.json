@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 55
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "552f6d0eb5d8b1ee5d256ec2b21b5e8029cbf82a5867fe2232c0a42a82e50c42",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a1f00a01-c457-461b-a78a-5b8f5b4d8efb",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Pablo Picasso's style used for visual guides\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Planning ahead for transportation from Heathrow Airport\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Planning a trip to London and visiting family in London\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Considering booking round-trip or one-way tickets to London\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Westworld的使用闪回和时间线来创造一种困惑和神秘感，使观众更加投入。\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Thinking of attending professional events in London\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Created a personalized social media strategy\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"There are specific initiatives and programs in the Czech Republic aimed at promoting diversity and inclusion among the younger generation\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"specific examples from Garibaldi's travel writings that demonstrate the lessons mentioned\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"recommend other travel writers whose work is similar to Garibaldi's in terms of exploring personal growth and political activism\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332911,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 378,
+      "prompt_tokens": 1805,
+      "total_tokens": 2183,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Pablo Picasso's style used for visual guides\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Planning ahead for transportation from Heathrow Airport\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Planning a trip to London and visiting family in London\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Considering booking round-trip or one-way tickets to London\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Westworld的使用闪回和时间线来创造一种困惑和神秘感，使观众更加投入。\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Thinking of attending professional events in London\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Created a personalized social media strategy\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"There are specific initiatives and programs in the Czech Republic aimed at promoting diversity and inclusion among the younger generation\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"specific examples from Garibaldi's travel writings that demonstrate the lessons mentioned\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"recommend other travel writers whose work is similar to Garibaldi's in terms of exploring personal growth and political activism\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 9.13225197698921,
+  "prompt_tokens_local": 1805,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "bc7901697e954f63d59423c0953d78d7949c688007cd63cde1b6a26b071ccd93",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-18ad6d2c-444d-4a31-a2fd-e12947994343",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "```json\n{\n  \"summaries\": [\n    {\n      \"name\": \"Nisha's dad\",\n      \"summary\": \"\"\n    },\n    {\n      \"name\": \"dog leash\",\n      \"summary\": \"\"\n    },\n    {\n      \"name\": \"wool coat\",\n      \"summary\": \"The wool coat is a durable, warm garment made from wool, a natural fiber that keeps you cozy in cold weather. It is typically worn over other clothes for added insulation. The wool coat is often associated with a traditional look and is a popular choice for outdoor activities and casual wear.\"\n    }\n  ]\n}\n```",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795335784,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 126,
+      "prompt_tokens": 354,
+      "total_tokens": 480,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "```json\n{\n  \"summaries\": [\n    {\n      \"name\": \"Nisha's dad\",\n      \"summary\": \"\"\n    },\n    {\n      \"name\": \"dog leash\",\n      \"summary\": \"\"\n    },\n    {\n      \"name\": \"wool coat\",\n      \"summary\": \"The wool coat is a durable, warm garment made from wool, a natural fiber that keeps you cozy in cold weather. It is typically worn over other clothes for added insulation. The wool coat is often associated with a traditional look and is a popular choice for outdoor activities and casual wear.\"\n    }\n  ]\n}\n```",
+  "seconds": 29.263010151000344,
+  "prompt_tokens_local": 354
+}

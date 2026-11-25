@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 16
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "664bfb66b10442eaf37606a3fc7e20f5c224cbc51c4ac9faf6567ae5234f6344",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a91f0323-7985-4dee-bfcb-6a8d27d810bb",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_FRIENDS_WITH\", \"fact\": \"Nisha's dad is friends with Trigger\", \"valid_at\": \"2023-05-22T00:09:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795368847,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 7062,
+      "total_tokens": 7148,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_FRIENDS_WITH\", \"fact\": \"Nisha's dad is friends with Trigger\", \"valid_at\": \"2023-05-22T00:09:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 18.082559999020305,
+  "prompt_tokens_local": 7062
+}

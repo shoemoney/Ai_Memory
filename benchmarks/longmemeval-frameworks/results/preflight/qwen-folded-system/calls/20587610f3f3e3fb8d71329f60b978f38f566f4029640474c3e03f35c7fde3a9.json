@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 27
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "082d3064467d1a43a5166c40a2d7428df47d8d84971abbd50e2114a16671ae5e",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-fadd5492-54da-4bcd-8931-2f7b440c2093",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"different types of bourbon produced in Frankfort\", \"recommendation for sweeter bourbon\", \"tours and tastings offered by Four Roses Distillery\", \"gift shop available for purchasing bourbons\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330297,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 44,
+      "prompt_tokens": 1832,
+      "total_tokens": 1876,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"different types of bourbon produced in Frankfort\", \"recommendation for sweeter bourbon\", \"tours and tastings offered by Four Roses Distillery\", \"gift shop available for purchasing bourbons\"]}",
+  "seconds": 1.5047574960044585,
+  "prompt_tokens_local_gemma_estimate": 1828
+}

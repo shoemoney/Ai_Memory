@@ -1,0 +1,39 @@
+[
+  {
+    "model": "BAAI/bge-small-en-v1.5",
+    "returncode": 0,
+    "elapsed_seconds": 10.365707169003144
+  },
+  {
+    "model": "Qwen/Qwen3-Embedding-0.6B",
+    "returncode": 0,
+    "elapsed_seconds": 318.3174855289981
+  },
+  {
+    "model": "microsoft/harrier-oss-v1-270m",
+    "returncode": 0,
+    "elapsed_seconds": 127.18312318500102
+  },
+  {
+    "model": "microsoft/harrier-oss-v1-0.6b",
+    "returncode": 0,
+    "elapsed_seconds": 313.9780112799999
+  },
+  {
+    "model": "BAAI/bge-m3",
+    "returncode": 0,
+    "elapsed_seconds": 208.64472039300017
+  },
+  {
+    "model": "jinaai/jina-embeddings-v5-text-small",
+    "returncode": 1,
+    "elapsed_seconds": 10.629364733998955,
+    "error_tail": "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"<benchmark>/run.py\", line 115, in <module>\n    main()\n  File \"<benchmark>/run.py\", line 54, in main\n    model = meta.load_model(device=args.device, **kwargs)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<scratch>/venv/lib/python3.12/site-packages/mteb/models/model_meta.py\", line 560, in load_model\n    model: MTEBModels = loader(\n                        ^^^^^^^\n  File \"<scratch>/venv/lib/python3.12/site-packages/mteb/models/model_implementations/jina_models.py\", line 785, in __init__\n    super().__init__(\n  File \"<scratch>/venv/lib/python3.12/site-packages/mteb/models/sentence_transformer_wrapper.py\", line 418, in __init__\n    self.model = SentenceTransformer(\n                 ^^^^^^^^^^^^^^^^^^^^\n  File \"<scratch>/venv/lib/python3.12/site-packages/sentence_transformers/util/decorators.py\", line 46, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"<scratch>/venv/lib/python3.12/site-packages/sentence_transformers/sentence_transformer/model.py\", line 207, in __init__\n    super().__init__(\n  File \"<scratch>/venv/lib/python3.12/site-packages/sentence_transformers/base/model.py\", line 290, in __init__\n    modules, self.module_kwargs = self._load_modules(\n                                  ^^^^^^^^^^^^^^^^^^^\n  File \"<scratch>/venv/lib/python3.12/site-packages/sentence_transformers/base/model.py\", line 1253, in _load_modules\n    return self._load_config_modules(model_name_or_path, **load_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<scratch>/venv/lib/python3.12/site-packages/sentence_transformers/base/model.py\", line 1446, in _load_config_modules\n    module = module_class(model_name_or_path, **init_kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<scratch>/modules/transformers_modules/jinaai/jina_hyphen_embeddings_hyphen_v5_hyphen_text_hyphen_small/46ed7da5b47e4bca710b756313fafaf4110c6bd1/custom_st.py\", line 32, in __init__\n    self.config = AutoConfig.from_pretrained(\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: transformers.models.auto.configuration_auto.AutoConfig.from_pretrained() got multiple values for keyword argument 'cache_dir'\n"
+  },
+  {
+    "model": "google/embeddinggemma-2",
+    "returncode": 1,
+    "elapsed_seconds": 4.7045359299954725,
+    "error_tail": "Traceback (most recent call last):\n  File \"<benchmark>/run.py\", line 115, in <module>\n    main()\n  File \"<benchmark>/run.py\", line 54, in main\n    model = meta.load_model(device=args.device, **kwargs)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<scratch>/venv/lib/python3.12/site-packages/mteb/models/model_meta.py\", line 509, in load_model\n    self._check_requirements()\n  File \"<scratch>/venv/lib/python3.12/site-packages/mteb/models/model_meta.py\", line 590, in _check_requirements\n    raise ImportError(\nImportError: Model google/embeddinggemma-2 is missing required dependencies: torchaudio; extra == \"audio\", torchcodec; extra == \"video\".\nYou can install it with `pip install mteb[embeddinggemma,image,audio,video]`.\nAlternatively, set the environment variable `MTEB_AUTO_INSTALL_EXTRAS=1` to let mteb install them automatically.\n"
+  }
+]

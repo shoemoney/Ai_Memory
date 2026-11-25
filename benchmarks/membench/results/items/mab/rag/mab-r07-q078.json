@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q078",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "3f76a85045f8456bca36dd1dc2afdb1264870ccca533c315b659a4c88cf3fd18",
+  "reference_sha256": "47bf87ba695c62d40d948e0e7e74f6eb43f4d60e76bcc023764d5218606b3c06",
+  "method": "rag",
+  "answer": "Person021's third child, Person659, was born.",
+  "response": {
+    "text": "Person021's third child, Person659, was born.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 3310,
+      "total_tokens": 3327,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 14.947984528000234,
+    "request_sha256": "d1af61c8bd3ecc43500f6525f56867cf570636bfac366dfa78deb2948671f5c1",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    475,
+    270,
+    416,
+    256,
+    306,
+    200,
+    201,
+    405,
+    507,
+    281,
+    303,
+    305,
+    102,
+    152,
+    144,
+    154,
+    100,
+    436,
+    266,
+    32
+  ],
+  "retrieval_scores": [
+    0.5890771150588989,
+    0.5401225686073303,
+    0.5399901270866394,
+    0.5213971138000488,
+    0.5196322798728943,
+    0.5186494588851929,
+    0.5145694017410278,
+    0.5130854845046997,
+    0.5010128021240234,
+    0.49680691957473755,
+    0.4932272434234619,
+    0.49123072624206543,
+    0.4896349012851715,
+    0.48868095874786377,
+    0.4875308871269226,
+    0.4868389964103699,
+    0.4851889908313751,
+    0.4787432551383972,
+    0.47682279348373413,
+    0.47660332918167114
+  ],
+  "retrieval_seconds": 0.05348949298786465,
+  "provided_context_sha256": "eb1c0c1227269f74af533f0414098ceb862d2ef9a2fa57d96991c1679b84f908",
+  "provided_context_tokens": 2951,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "d4f18b4d856dde76a3ae68026559bae583448af0e91815fb6a614d3aa7de97d8",
+    "raw_answer_sha256": "51dc9eed29e0a0c5962d0bbe5fefdc570858045b26d245af8bca9f3dc450a992",
+    "answer_redacted": false
+  }
+}

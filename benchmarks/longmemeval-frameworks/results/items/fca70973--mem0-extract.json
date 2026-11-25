@@ -1,0 +1,122 @@
+{
+  "question_id": "fca70973",
+  "system": "mem0-extract",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "ingestion_hardware_class": "Apple M3 Ultra, 96 GB",
+  "reader_hardware_class": "Apple M3 Ultra, 96 GB",
+  "judge_hardware_class": "Apple M3 Ultra, 96 GB",
+  "stratum": "single-session-preference",
+  "question_type": "single-session-preference",
+  "question": "I am planning another theme park weekend; do you have any suggestions?",
+  "reference": "The user would prefer theme park suggestions that cater to their interest in both thrill rides and special events, utilizing their previous experiences at Disneyland, Knott's Berry Farm, Six Flags Magic Mountain, and Universal Studios Hollywood as a reference point. They would also appreciate recommendations that highlight unique food experiences and nighttime shows. The user might not prefer suggestions that focus solely on one aspect of theme parks, such as only thrill rides or only family-friendly attractions, and may not be interested in parks that lack special events or unique dining options.",
+  "hypothesis": "Based on the conversation history, you expressed interest in the Universal Studios Hollywood VIP Experience's Gourmet Buffet and Behind-the-Scenes Tour.  You also mentioned planning a trip to Miami for a friend's wedding in April. \n\n\nDo you want to explore theme park options near you or in Miami?",
+  "context": [
+    {
+      "text": "Interested in Universal Studios Hollywood VIP Experience's Gourmet Buffet and Behind-the-Scenes Tour",
+      "score": 0.43858871617684014,
+      "metadata": {
+        "session_id": "answer_a1e169b1",
+        "date": "2023/08/15 (Tue) 23:49"
+      }
+    },
+    {
+      "text": "Interested in the VIP Experience's Gourmet Buffet at Halloween Horror Nights",
+      "score": 0.38762244719886907,
+      "metadata": {
+        "session_id": "answer_a1e169b1",
+        "date": "2023/08/15 (Tue) 23:49"
+      }
+    },
+    {
+      "text": "Vancouver offers many free or low-cost activities, such as hiking, visiting museums, or attending outdoor events. However, you may want to budget for occasional concerts, movies, or sporting events.",
+      "score": 0.3844335913110854,
+      "metadata": {
+        "session_id": "83ea6306_1",
+        "date": "2023/08/15 (Tue) 08:46"
+      }
+    },
+    {
+      "text": "Considering visiting San Francisco and Monterey on the way to Yosemite",
+      "score": 0.34958092904202853,
+      "metadata": {
+        "session_id": "f504b269",
+        "date": "2023/08/15 (Tue) 19:40"
+      }
+    },
+    {
+      "text": "Interested in urban excitement and seafood in San Francisco",
+      "score": 0.3423524177061197,
+      "metadata": {
+        "session_id": "f504b269",
+        "date": "2023/08/15 (Tue) 19:40"
+      }
+    },
+    {
+      "text": "Interested in exploring more indie rock bands that are similar to Arctic Monkeys",
+      "score": 0.3357886417224567,
+      "metadata": {
+        "session_id": "99b061c5_1",
+        "date": "2023/08/15 (Tue) 23:16"
+      }
+    },
+    {
+      "text": "Interested in a more laid-back, coastal vibe with marine life and scenic drives in Monterey",
+      "score": 0.2936701684061147,
+      "metadata": {
+        "session_id": "f504b269",
+        "date": "2023/08/15 (Tue) 19:40"
+      }
+    },
+    {
+      "text": "Planning to travel",
+      "score": 0.2900732913702946,
+      "metadata": {
+        "session_id": "fc005760",
+        "date": "2023/08/15 (Tue) 23:12"
+      }
+    },
+    {
+      "text": "Biking is a bike-friendly option in Vancouver, and you can purchase a used bike or rent one for a few hours or days.",
+      "score": 0.28036832050981947,
+      "metadata": {
+        "session_id": "83ea6306_1",
+        "date": "2023/08/15 (Tue) 08:46"
+      }
+    },
+    {
+      "text": "Planned trip to Miami for a friend's wedding in April",
+      "score": 0.24512152161652875,
+      "metadata": {
+        "session_id": "5d5e80c5_1",
+        "date": "2023/08/15 (Tue) 20:28"
+      }
+    }
+  ],
+  "correct": false,
+  "judge": {
+    "correct": false,
+    "votes": [
+      false,
+      false,
+      false
+    ],
+    "calls": [
+      "86663cbcb91cdc1f1a418ba498ac9704e77f423fbb2aa76ab3e07ede303c8598",
+      "37ff24fb9fa29f451b4e81493f4b52a09720c5741e4a10b5a22b9bce6f73973d",
+      "e7cae92d6bef7fd25f0ddc3ddfeae86149213a275e5af125e9aad6836be08e69"
+    ]
+  },
+  "status": "scored",
+  "ingestion_seconds": 3506.7868728637695,
+  "ingestion_usage": {
+    "prompt_tokens": 299102,
+    "completion_tokens": 20633,
+    "model_calls": 146,
+    "model_seconds": 3383.1853753609466
+  },
+  "source_sessions": 45,
+  "source_parts": 78,
+  "attempted_parts": 78,
+  "ingested_parts": 72,
+  "ingestion_failed_parts": 6
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 72
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e80e51c4c3e6d255b0e76d9563008bff8fbff23676879c7df3fba81f0c2c7423",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-fc6a79a5-4145-4cc0-b6fe-38db96f497b5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"The 1975\", \"target_entity_name\": \"user\", \"relation_type\": \"ENJOYS\", \"fact\": \"user enjoys The 1975's music, particularly their newer songs like 'Give Yourself a Try' and 'It's Not Living (If It's Not with You)'\", \"valid_at\": \"2023-08-15T23:16:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795364991,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 102,
+      "prompt_tokens": 8413,
+      "total_tokens": 8515,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 160
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"The 1975\", \"target_entity_name\": \"user\", \"relation_type\": \"ENJOYS\", \"fact\": \"user enjoys The 1975's music, particularly their newer songs like 'Give Yourself a Try' and 'It's Not Living (If It's Not with You)'\", \"valid_at\": \"2023-08-15T23:16:00Z\"}]}",
+  "seconds": 61.307560106011806,
+  "prompt_tokens_local": 8413
+}

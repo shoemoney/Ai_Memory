@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 48
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f2c25aa2d673012173ac18e9e63c5f6d4a47bf6bb48a6a1ba8a411a26fe5fb92",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4a0e7102-e74a-495b-8876-10f8d08c2155",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"The values are not the same for all angles indicate that the leaf area index (LAI) is not constant across all angles of observation.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"The difference between the two sets of measurements indicates that there is a difference in the leaf area index (LAI) between the two measurements.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"The chart shows that the LAI varies between the two sets of measurements, suggesting differences in the leaf area or orientation.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366537,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 159,
+      "prompt_tokens": 1993,
+      "total_tokens": 2152,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"The values are not the same for all angles indicate that the leaf area index (LAI) is not constant across all angles of observation.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"The difference between the two sets of measurements indicates that there is a difference in the leaf area index (LAI) between the two measurements.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"The chart shows that the LAI varies between the two sets of measurements, suggesting differences in the leaf area or orientation.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 18.754585064016283,
+  "prompt_tokens_local": 1993
+}

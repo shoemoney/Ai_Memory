@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 56
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0db872514205b85b540126cb6b9636e41cf49dfb5f538e81e9c0c3213d3cb1ab",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-73ef7806-f928-4236-bdb9-b81f2860e7e1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Requested a top 40 music producer to create a chord progression and lyrics for a song about feeling comfortable while alone\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330448,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 29,
+      "prompt_tokens": 1377,
+      "total_tokens": 1406,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 700
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Requested a top 40 music producer to create a chord progression and lyrics for a song about feeling comfortable while alone\"]}",
+  "seconds": 1.2517531369958306,
+  "prompt_tokens_local_gemma_estimate": 1432
+}

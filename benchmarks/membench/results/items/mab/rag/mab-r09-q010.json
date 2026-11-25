@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q010",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "50f9df2044df79010618dd18539c0c945bc2c2bea1a34ec71d1635771c10f626",
+  "reference_sha256": "cb175b45733f91efe7a17619a21ab2d9b85b2b79971bfbfdc31452b4f5d36749",
+  "method": "rag",
+  "answer": "Person361 traversed La Canebiere and took the Person077 de Noailles.",
+  "response": {
+    "text": "Person361 traversed La Canebiere and took the Person077 de Noailles.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 23,
+      "prompt_tokens": 3273,
+      "total_tokens": 3296,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.014707832000568,
+    "request_sha256": "7fd6df281870cce7a71e9fc1ea193bf923d68dca6fd9ff6706b38ce640bb8d83",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    37,
+    17,
+    323,
+    376,
+    324,
+    40,
+    22,
+    38,
+    204,
+    39,
+    217,
+    362,
+    15,
+    23,
+    406,
+    0,
+    1,
+    465,
+    326,
+    10
+  ],
+  "retrieval_scores": [
+    0.5751802325248718,
+    0.5661405324935913,
+    0.5534465312957764,
+    0.5362710952758789,
+    0.5304073691368103,
+    0.5299484729766846,
+    0.5297757387161255,
+    0.5272663235664368,
+    0.5248355269432068,
+    0.5246279835700989,
+    0.5225861072540283,
+    0.5198288559913635,
+    0.5158104300498962,
+    0.5075806379318237,
+    0.5061753392219543,
+    0.5058910250663757,
+    0.4998547434806824,
+    0.4992291331291199,
+    0.49845248460769653,
+    0.49769851565361023
+  ],
+  "retrieval_seconds": 0.02955197800474707,
+  "provided_context_sha256": "da9ae30403205e040f796fbf6284f60d3492a7869760be345f5bc11dd35892e8",
+  "provided_context_tokens": 2898,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "16f68699337e9afe0dccb81150a64d4835b682af3a7beffb0004b1bc24cc3cb6",
+    "raw_answer_sha256": "49713e51ac19b560d1b6fe46800656a86d23c93ac0c082dbf78f3183c78f8883",
+    "answer_redacted": false
+  }
+}

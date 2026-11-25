@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 49
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "92d134f1976c5b9a9b11f456f09b3dc3ea54ad770bea2557a3cb672acb3b9cfb",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-07853796-a332-4474-b209-870af6e3df38",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\"Rated 'The Hating Game' 4 stars\"},\n    {\"Started 'The Silent Patient' on February 15th\"},\n    {\"Currently reading 'The Silent Patient' on daily commute\"},\n    {\"Commute helps get into reading zone\"},\n    {\"'The Silent Patient' is a slow read but enjoyable\"},\n    {\"'The Silent Patient' is intriguing mystery\"},\n    {\"'The Silent Patient' characters keep me invested\"}\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332853,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 98,
+      "prompt_tokens": 2805,
+      "total_tokens": 2903,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\"Rated 'The Hating Game' 4 stars\"},\n    {\"Started 'The Silent Patient' on February 15th\"},\n    {\"Currently reading 'The Silent Patient' on daily commute\"},\n    {\"Commute helps get into reading zone\"},\n    {\"'The Silent Patient' is a slow read but enjoyable\"},\n    {\"'The Silent Patient' is intriguing mystery\"},\n    {\"'The Silent Patient' characters keep me invested\"}\n  ]\n}",
+  "seconds": 5.397454960009782,
+  "prompt_tokens_local": 2805,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

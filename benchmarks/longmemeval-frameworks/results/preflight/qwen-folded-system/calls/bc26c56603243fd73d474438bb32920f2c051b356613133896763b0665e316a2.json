@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 47
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "bbea68b7bb263f691a821ae06391628bc23f13be0312ac13f0f60220fad529d3",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-346cc7fa-2624-4f19-b8b5-91c203225648",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Thinking of adding plants to the room\", \"Thinking of adding a floor lamp to the room\", \"Thinking of adding accessories to the room\", \"Gray rug from IKEA\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330412,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 40,
+      "prompt_tokens": 2520,
+      "total_tokens": 2560,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Thinking of adding plants to the room\", \"Thinking of adding a floor lamp to the room\", \"Thinking of adding accessories to the room\", \"Gray rug from IKEA\"]}",
+  "seconds": 1.86906736799574,
+  "prompt_tokens_local_gemma_estimate": 2514
+}

@@ -1,0 +1,25 @@
+{
+  "pilot_only": true,
+  "model": "qwen2.5-14b-instruct",
+  "methods": {
+    "full-history": {
+      "n": 5,
+      "correct": 4,
+      "rate": 0.8,
+      "wilson95": [
+        0.3755346297625348,
+        0.9637758913675682
+      ]
+    },
+    "no-memory": {
+      "n": 5,
+      "correct": 3,
+      "rate": 0.6,
+      "wilson95": [
+        0.23072428127601946,
+        0.8823792257673482
+      ]
+    }
+  },
+  "interpretation": "One five-step reasoning chain, not an action-suite replication; cannot establish cross-benchmark saturation or general memory benefit."
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q089",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "619c6e3e28fa765c08f3b99ada4476e539aa3f80b0ab00cf9b5a9248bcefb2ad",
+  "reference_sha256": "cea49341df9e9efb72c7ea75d9b082cf8de8fa1821f4b28dce62fba573a7d9f2",
+  "method": "rag",
+  "answer": "Person613 obtained a recommendation from Person268 to a Spanish merchant.",
+  "response": {
+    "text": "Person613 obtained a recommendation from Person268 to a Spanish merchant.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3420,
+      "total_tokens": 3438,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 10.64281632300117,
+    "request_sha256": "aa9f9fc306f1f68eea50ade635bf38510527353e9102879d2d648a5485ac673c",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    284,
+    115,
+    503,
+    406,
+    501,
+    504,
+    485,
+    376,
+    217,
+    264,
+    370,
+    307,
+    39,
+    275,
+    502,
+    494,
+    140,
+    204,
+    120,
+    528
+  ],
+  "retrieval_scores": [
+    0.5465493202209473,
+    0.5442606210708618,
+    0.510680079460144,
+    0.5085110664367676,
+    0.5082448720932007,
+    0.4992595314979553,
+    0.4984596073627472,
+    0.49438512325286865,
+    0.49348700046539307,
+    0.4854137897491455,
+    0.48321568965911865,
+    0.47503340244293213,
+    0.47404152154922485,
+    0.4724935293197632,
+    0.4710919260978699,
+    0.4657013714313507,
+    0.46096453070640564,
+    0.45828986167907715,
+    0.45690295100212097,
+    0.45403897762298584
+  ],
+  "retrieval_seconds": 0.031001959010609426,
+  "provided_context_sha256": "4411a40f0780d3ca9715e3052bb7390fa65f99ba3205c9d4bd7abd9397d89f88",
+  "provided_context_tokens": 3060,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "56af6afc2ecab048df3dc506ef1f53a7e3404583dfdd9210793f7de68e8d76fd",
+    "raw_answer_sha256": "7fb3dbf73b65c9f89dd666a565d053eb76de85b8e8583401127cc989b520379a",
+    "answer_redacted": false
+  }
+}

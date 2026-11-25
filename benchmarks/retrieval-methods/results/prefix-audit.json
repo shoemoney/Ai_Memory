@@ -1,0 +1,106 @@
+{
+  "scifact": {
+    "hardware_classes": {
+      "Apple M1 Ultra, 64 GB": 460,
+      "Apple M3 Ultra, 96 GB": 779,
+      "8 GB NVIDIA RTX 3070 Ti GPU": 8822,
+      "8 GB NVIDIA RTX 3070 Ti GPU with CPU offload": 5
+    },
+    "parallel_request_counts": {
+      "4": 1150,
+      "8": 89,
+      "2": 2472,
+      "1": 6355
+    },
+    "context_limit_recording_note": "Early Mac rows lack a per-row token limit; deployment history records four 8192-token slots for those initial phases. All fixed prompts fit 2976 tokens.",
+    "context_token_limits": {
+      "None": 1139,
+      "4096": 89,
+      "3072": 4583,
+      "3008": 1589,
+      "2976": 2666
+    },
+    "gpu_layer_counts": {
+      "runtime default": 7400,
+      "28": 5,
+      "99": 2661
+    },
+    "prefill_batch_tokens": {
+      "runtime default": 7459,
+      "128": 2607
+    },
+    "physical_prefill_batch_tokens": {
+      "runtime default": 7459,
+      "64": 2607
+    },
+    "n": 10066,
+    "completion_tokens": 789916,
+    "median_completion_tokens": 78.0,
+    "outside_requested_50_100_tokens": 2313,
+    "finish_reasons": {
+      "stop": 9711,
+      "length": 355
+    },
+    "interpretation": "Request timings remain raw operational records and are not compared across hardware. Context text is generated, not a relevance judgment."
+  },
+  "nfcorpus": {
+    "hardware_classes": {
+      "8 GB NVIDIA RTX 3070 Ti GPU": 7349
+    },
+    "parallel_request_counts": {
+      "1": 7349
+    },
+    "context_limit_recording_note": "Per-row context limits are complete; every fixed prompt fits 2976 tokens.",
+    "context_token_limits": {
+      "2976": 7349
+    },
+    "gpu_layer_counts": {
+      "99": 7349
+    },
+    "prefill_batch_tokens": {
+      "128": 7349
+    },
+    "physical_prefill_batch_tokens": {
+      "64": 7349
+    },
+    "n": 7349,
+    "completion_tokens": 543467,
+    "median_completion_tokens": 73,
+    "outside_requested_50_100_tokens": 1674,
+    "finish_reasons": {
+      "stop": 7189,
+      "length": 160
+    },
+    "interpretation": "Request timings remain raw operational records and are not compared across hardware. Context text is generated, not a relevance judgment."
+  },
+  "locomo": {
+    "hardware_classes": {
+      "8 GB NVIDIA RTX 3070 Ti GPU": 1204
+    },
+    "parallel_request_counts": {
+      "1": 1204
+    },
+    "context_limit_recording_note": "Per-row context limits are complete; every fixed prompt fits 2976 tokens.",
+    "context_token_limits": {
+      "2976": 1204
+    },
+    "gpu_layer_counts": {
+      "99": 1204
+    },
+    "prefill_batch_tokens": {
+      "128": 1204
+    },
+    "physical_prefill_batch_tokens": {
+      "64": 1204
+    },
+    "n": 1204,
+    "completion_tokens": 90712,
+    "median_completion_tokens": 75.0,
+    "outside_requested_50_100_tokens": 94,
+    "finish_reasons": {
+      "stop": 1199,
+      "length": 5
+    },
+    "interpretation": "Request timings remain raw operational records and are not compared across hardware. Context text is generated, not a relevance judgment."
+  }
+}

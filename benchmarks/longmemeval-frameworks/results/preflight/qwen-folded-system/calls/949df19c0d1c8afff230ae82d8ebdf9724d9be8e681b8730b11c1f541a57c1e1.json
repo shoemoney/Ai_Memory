@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 5
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b7f7247f1e6d86a600a93a00297045a56fc3747d338e65eafb24014411cf2fc0",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-70e48d16-1df7-4e89-bd41-cb3bc9aea2f6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"shared interest in trying Anatolian cuisine\", \"asked for restaurant and market recommendations\", \"asked about cultural events celebrating Anatolian cuisine\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795329903,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 33,
+      "prompt_tokens": 2980,
+      "total_tokens": 3013,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"shared interest in trying Anatolian cuisine\", \"asked for restaurant and market recommendations\", \"asked about cultural events celebrating Anatolian cuisine\"]}",
+  "seconds": 2.200861639008508,
+  "prompt_tokens_local": 3009
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 41
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "cd1bf3de93a92ca1ce2bc0caf07459a942988adb61fd96fa95bbb4a2a3f0f0c0",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9b017fcd-1a76-4062-b56a-85f1f7968482",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Kari kambing and Mamak are dishes from Malaysia and Singapore\", \"Can make kari kambing and Mamak dishes at home\", \"Can find Mamak dishes in Mamak stalls in Malaysia and Singapore\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366377,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 50,
+      "prompt_tokens": 1482,
+      "total_tokens": 1532,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Kari kambing and Mamak are dishes from Malaysia and Singapore\", \"Can make kari kambing and Mamak dishes at home\", \"Can find Mamak dishes in Mamak stalls in Malaysia and Singapore\"]}",
+  "seconds": 3.5222850239952095,
+  "prompt_tokens_local": 1482
+}

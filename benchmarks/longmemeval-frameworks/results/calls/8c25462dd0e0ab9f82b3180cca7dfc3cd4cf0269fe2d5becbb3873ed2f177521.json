@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 47
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0d3f8061531114b860e6f964f6e33132947c9eee9f69bd08894dbe2626092b18",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ffad8d3c-6615-488f-8b7c-2490ff1fa9bd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Considering getting an Instant Pot, but unsure if it's better than a basic rice cooker\",\n    \"An Instant Pot is a multi-cooker with features like pressure cooking, slow cooking, and yogurt making\",\n    \"A basic rice cooker is simpler and more limited in its functions compared to an Instant Pot\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356641,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 73,
+      "prompt_tokens": 1899,
+      "total_tokens": 1972,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Considering getting an Instant Pot, but unsure if it's better than a basic rice cooker\",\n    \"An Instant Pot is a multi-cooker with features like pressure cooking, slow cooking, and yogurt making\",\n    \"A basic rice cooker is simpler and more limited in its functions compared to an Instant Pot\"\n  ]\n}",
+  "seconds": 13.493450355992536,
+  "prompt_tokens_local": 1899
+}

@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 40
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5b15b8a063662ddc0c09c8f6d91add229c8e69a4ddc3aeb4ae38e12d069754b4",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-bc7cd471-ec7d-41dd-a7ea-610a800eee0e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Provided guidelines for a well-balanced meal\", \"Offered portion size guidelines for a meal\", \"Shared tips for meal prep and easy recipes\", \"Recommended healthy snacks for between meals\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332544,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 43,
+      "prompt_tokens": 2021,
+      "total_tokens": 2064,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 680
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Provided guidelines for a well-balanced meal\", \"Offered portion size guidelines for a meal\", \"Shared tips for meal prep and easy recipes\", \"Recommended healthy snacks for between meals\"]}",
+  "seconds": 8.721203216991853,
+  "prompt_tokens_local": 2021,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

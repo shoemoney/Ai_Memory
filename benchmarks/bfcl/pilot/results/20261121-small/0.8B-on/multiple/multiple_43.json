@@ -1,0 +1,270 @@
+{
+  "id": "multiple_43",
+  "category": "multiple",
+  "result": [
+    {
+      "biological_calc_energy": "{\"mols\":5,\"substance\":\"C6H12O6\",\"joules_per_mol\":2800}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'What is the energy produced by 5 mol of glucose (C6H12O6)?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "biological_calc_biomass",
+                "description": "Calculate the biomass from the energy given the energy conversion efficiency.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "energy": {
+                      "type": "number",
+                      "description": "The total energy produced. This is a float type value.",
+                      "format": "float"
+                    },
+                    "efficiency": {
+                      "type": "number",
+                      "description": "The conversion efficiency, default value is 10%. This is a float type value.",
+                      "default": 0.1,
+                      "format": "float"
+                    }
+                  },
+                  "required": [
+                    "energy"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "biological_calc_energy",
+                "description": "Calculate energy from amount of substance based on its molecular composition.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "mols": {
+                      "type": "integer",
+                      "description": "Amount of substance in moles."
+                    },
+                    "substance": {
+                      "type": "string",
+                      "description": "The chemical formula of the substance."
+                    },
+                    "joules_per_mol": {
+                      "type": "integer",
+                      "description": "The energy produced or required for the reaction, default value for glucose is 2800 kJ/mol",
+                      "default": 2800
+                    }
+                  },
+                  "required": [
+                    "mols",
+                    "substance"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "physical_calc_work",
+                "description": "Calculate the work from energy.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "energy": {
+                      "type": "number",
+                      "description": "The total energy produced. This is a float type value.",
+                      "format": "float"
+                    },
+                    "distance": {
+                      "type": "number",
+                      "description": "The distance over which the work is done. This is a float type value.",
+                      "format": "float"
+                    }
+                  },
+                  "required": [
+                    "energy",
+                    "distance"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 634,
+    "output_token_count": 272,
+    "latency": 2.085191639002005
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the energy produced by 5 mol of glucose (C6H12O6)?"
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "biological_calc_biomass",
+          "description": "Calculate the biomass from the energy given the energy conversion efficiency.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "energy": {
+                "type": "number",
+                "description": "The total energy produced. This is a float type value.",
+                "format": "float"
+              },
+              "efficiency": {
+                "type": "number",
+                "description": "The conversion efficiency, default value is 10%. This is a float type value.",
+                "default": 0.1,
+                "format": "float"
+              }
+            },
+            "required": [
+              "energy"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "biological_calc_energy",
+          "description": "Calculate energy from amount of substance based on its molecular composition.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "mols": {
+                "type": "integer",
+                "description": "Amount of substance in moles."
+              },
+              "substance": {
+                "type": "string",
+                "description": "The chemical formula of the substance."
+              },
+              "joules_per_mol": {
+                "type": "integer",
+                "description": "The energy produced or required for the reaction, default value for glucose is 2800 kJ/mol",
+                "default": 2800
+              }
+            },
+            "required": [
+              "mols",
+              "substance"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "physical_calc_work",
+          "description": "Calculate the work from energy.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "energy": {
+                "type": "number",
+                "description": "The total energy produced. This is a float type value.",
+                "format": "float"
+              },
+              "distance": {
+                "type": "number",
+                "description": "The distance over which the work is done. This is a float type value.",
+                "format": "float"
+              }
+            },
+            "required": [
+              "energy",
+              "distance"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-jIvg7DF4bP16xvLTLZoCBoSoR7GSnRwa",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "fipQusnP2Lu8tmctOtx0UVqxvFulApJM",
+              "function": {
+                "arguments": "{\"mols\":5,\"substance\":\"C6H12O6\",\"joules_per_mol\":2800}",
+                "name": "biological_calc_energy"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for the energy produced by 5 mol of glucose (C6H12O6). I need to use the biological_calc_energy function to calculate the energy from the amount of substance.\n\nLooking at the function parameters:\n- mols: Amount of substance in moles (required)\n- substance: The chemical formula of the substance (required)\n- joules_per_mol: The energy produced or required for the reaction, default value for glucose is 2800 kJ/mol (optional)\n\nFor glucose (C6H12O6), the molecular formula is C6H12O6. The default value for glucose is 2800 kJ/mol.\n\nSo I need to call biological_calc_energy with:\n- mols: 5\n- substance: C6H12O6\n- joules_per_mol: 2800 (default value for glucose)\n\nLet me make this call."
+        }
+      }
+    ],
+    "created": 1795287729,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 272,
+      "prompt_tokens": 634,
+      "total_tokens": 906,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 632,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 632,
+      "prompt_n": 2,
+      "prompt_ms": 11.071,
+      "prompt_per_token_ms": 5.5355,
+      "prompt_per_second": 180.65215427693977,
+      "predicted_n": 272,
+      "predicted_ms": 2051.866,
+      "predicted_per_token_ms": 7.571461254612546,
+      "predicted_per_second": 132.07490157739346
+    }
+  },
+  "elapsed_seconds": 2.0858066310029244,
+  "score": {
+    "valid": true
+  }
+}

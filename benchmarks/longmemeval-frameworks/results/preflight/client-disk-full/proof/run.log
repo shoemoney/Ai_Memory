@@ -1,0 +1,329 @@
+/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/driver/search_interface/search_interface.py:22: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/
+  class SearchInterface(BaseModel):
+{"dataset_bytes_downloaded": 4194304}
+{"dataset_bytes_downloaded": 8388608}
+{"dataset_bytes_downloaded": 12582912}
+{"dataset_bytes_downloaded": 16777216}
+{"dataset_bytes_downloaded": 20971520}
+{"dataset_bytes_downloaded": 25165824}
+{"dataset_bytes_downloaded": 29360128}
+{"dataset_bytes_downloaded": 33554432}
+{"dataset_bytes_downloaded": 37748736}
+{"dataset_bytes_downloaded": 41943040}
+{"dataset_bytes_downloaded": 46137344}
+{"dataset_bytes_downloaded": 50331648}
+{"dataset_bytes_downloaded": 54525952}
+{"dataset_bytes_downloaded": 58720256}
+{"dataset_bytes_downloaded": 62914560}
+{"dataset_bytes_downloaded": 67108864}
+{"dataset_bytes_downloaded": 71303168}
+{"dataset_bytes_downloaded": 75497472}
+{"dataset_bytes_downloaded": 79691776}
+{"dataset_bytes_downloaded": 83886080}
+{"dataset_bytes_downloaded": 88080384}
+{"dataset_bytes_downloaded": 92274688}
+{"dataset_bytes_downloaded": 96468992}
+{"dataset_bytes_downloaded": 100663296}
+{"dataset_bytes_downloaded": 104857600}
+{"dataset_bytes_downloaded": 109051904}
+{"dataset_bytes_downloaded": 113246208}
+{"dataset_bytes_downloaded": 117440512}
+{"dataset_bytes_downloaded": 121634816}
+{"dataset_bytes_downloaded": 125829120}
+{"dataset_bytes_downloaded": 130023424}
+{"dataset_bytes_downloaded": 134217728}
+{"dataset_bytes_downloaded": 138412032}
+{"dataset_bytes_downloaded": 142606336}
+{"dataset_bytes_downloaded": 146800640}
+{"dataset_bytes_downloaded": 150994944}
+{"dataset_bytes_downloaded": 155189248}
+{"dataset_bytes_downloaded": 159383552}
+{"dataset_bytes_downloaded": 163577856}
+{"dataset_bytes_downloaded": 167772160}
+{"dataset_bytes_downloaded": 171966464}
+{"dataset_bytes_downloaded": 176160768}
+{"dataset_bytes_downloaded": 180355072}
+{"dataset_bytes_downloaded": 184549376}
+{"dataset_bytes_downloaded": 188743680}
+{"dataset_bytes_downloaded": 192937984}
+{"dataset_bytes_downloaded": 197132288}
+{"dataset_bytes_downloaded": 201326592}
+{"dataset_bytes_downloaded": 205520896}
+{"dataset_bytes_downloaded": 209715200}
+{"dataset_bytes_downloaded": 213909504}
+{"dataset_bytes_downloaded": 218103808}
+{"dataset_bytes_downloaded": 222298112}
+{"dataset_bytes_downloaded": 226492416}
+{"dataset_bytes_downloaded": 230686720}
+{"dataset_bytes_downloaded": 234881024}
+{"dataset_bytes_downloaded": 239075328}
+{"dataset_bytes_downloaded": 243269632}
+{"dataset_bytes_downloaded": 247463936}
+{"dataset_bytes_downloaded": 251658240}
+{"dataset_bytes_downloaded": 255852544}
+{"dataset_bytes_downloaded": 260046848}
+{"dataset_bytes_downloaded": 264241152}
+{"dataset_bytes_downloaded": 268435456}
+{"dataset_bytes_downloaded": 272629760}
+{"dataset_bytes_downloaded": 276824064}
+{"dataset_bytes_downloaded": 277383467}
+
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  7.14it/s]/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/huggingface_hub/file_download.py:1723: DeprecationWarning: hf_xet.download_files() is deprecated. Use XetSession().new_file_download_group().start_download_file() instead.
+  xet_get(
+
+Fetching 4 files: 100%|██████████| 4/4 [00:01<00:00,  3.35it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:01<00:00,  3.35it/s]
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files:  53%|█████▎    | 8/15 [00:00<00:00, 47.83it/s]
+Fetching 15 files:  60%|██████    | 9/15 [00:00<00:00, 53.67it/s]
+Fetching 15 files: 100%|██████████| 15/15 [00:03<00:00,  4.03it/s]
+benchmarks/longmemeval-frameworks/run.py:74: DeprecationWarning: The Kuzu backend is deprecated and will be removed in a future release — the upstream Kuzu project is no longer maintained. Migrate to Neo4j or FalkorDB.
+  super().__init__(*args,**kwargs)
+Retrying _generate_response_with_retry after 2 attempts...
+Retrying _generate_response_with_retry after 3 attempts...
+Retrying _generate_response_with_retry after 4 attempts...
+Traceback (most recent call last):
+  File "benchmarks/longmemeval-frameworks/run.py", line 229, in <module>
+    try:asyncio.run(main())
+        ~~~~~~~~~~~^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/base_events.py", line 726, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "benchmarks/longmemeval-frameworks/run.py", line 213, in main
+    r=await g.add_episode(name='control',episode_body='user: My favorite color is blue. I work at ExampleCo.',source_description='synthetic prerequisite',reference_time=datetime(2023,1,1,tzinfo=timezone.utc),group_id='control',previous_episode_uuids=[])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/graphiti.py", line 1586, in add_episode
+    raise e
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/graphiti.py", line 1471, in add_episode
+    extracted_nodes, node_episode_index_map = await extract_nodes(
+                                              ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/utils/maintenance/node_operations.py", line 140, in extract_nodes
+    extracted_entities = await _extract_nodes_single(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/utils/maintenance/node_operations.py", line 294, in _extract_nodes_single
+    llm_response = await _call_extraction_llm(llm_client, episode, context, clients=clients)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/utils/maintenance/node_operations.py", line 321, in _call_extraction_llm
+    return await generate_prompt_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/graphiti_types.py", line 162, in generate_prompt_response
+    return await llm_client.generate_response(legacy_prompt(context), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/llm_client/client.py", line 266, in generate_response
+    response = await self._generate_response_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/tenacity/asyncio/__init__.py", line 232, in async_wrapped
+    return await copy(fn, *args, **kwargs)  # type: ignore[type-var]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/tenacity/asyncio/__init__.py", line 126, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/tenacity/asyncio/__init__.py", line 171, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/tenacity/_utils.py", line 130, in inner
+    return call(*args, **kwargs)
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/tenacity/__init__.py", line 482, in exc_check
+    retry_exc.reraise()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/tenacity/__init__.py", line 216, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+    raise self._exception
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/tenacity/asyncio/__init__.py", line 130, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/llm_client/client.py", line 146, in _generate_response_with_retry
+    return await self._generate_response(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        messages, response_model, max_tokens, model_size, **overrides
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "benchmarks/longmemeval-frameworks/run.py", line 83, in _generate_response
+    d=json_response([{'role':m.role,'content':m.content} for m in messages],'graphiti-json')
+  File "benchmarks/longmemeval-frameworks/run.py", line 69, in json_response
+    result=json.loads(text)
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/json/decoder.py", line 348, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 897 (char 896)
+/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/driver/search_interface/search_interface.py:22: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/
+  class SearchInterface(BaseModel):
+
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 1779.32it/s]
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 3846.34it/s]
+benchmarks/longmemeval-frameworks/run.py:74: DeprecationWarning: The Kuzu backend is deprecated and will be removed in a future release — the upstream Kuzu project is no longer maintained. Migrate to Neo4j or FalkorDB.
+  super().__init__(*args,**kwargs)
+Materialized 1 dangling edge endpoint node(s) for group_id=control
+Error executing Kuzu query: Binder exception: Table RelatesToNode_ doesn't have an index with name edge_name_and_fact.
+CALL QUERY_FTS_INDEX('RelatesToNode_', 'edge_name_and_fact', cast($query AS STRING), TOP := $limit)
+        YIELD node, score
+        MATCH (n:Entity)-[:RELATES_TO]->(e:RelatesToNode_ {uuid: node.uuid})-[:RELATES_TO]->(m:Entity)
+         WHERE n.uuid IN $edge_source_node_uuids AND m.uuid IN $edge_target_node_uuids AND e.group_id IN $group_ids
+            WITH e, score, n, m
+            RETURN
+            
+        e.uuid AS uuid,
+        n.uuid AS source_node_uuid,
+        m.uuid AS target_node_uuid,
+        e.group_id AS group_id,
+        e.created_at AS created_at,
+        e.name AS name,
+        e.fact AS fact,
+        e.episodes AS episodes,
+        e.expired_at AS expired_at,
+        e.valid_at AS valid_at,
+        e.invalid_at AS invalid_at,
+        e.reference_time AS reference_time,
+        e.attributes AS attributes
+    
+            ORDER BY score DESC
+            LIMIT $limit
+            
+{'query': 'The user prefers blue.', 'limit': 20, 'edge_source_node_uuids': ['9409c690-1971-4270-b6e0-5163c69de3d3', 'c719630d-a680-498f-8024-38c7cdddef71'], 'edge_target_node_uuids': ['9409c690-1971-4270-b6e0-5163c69de3d3', 'c719630d-a680-498f-8024-38c7cdddef71'], 'group_ids': ['control']}
+/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py:71: RuntimeWarning: coroutine 'edge_similarity_search' was never awaited
+  _cancel_all_tasks(loop)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py:71: RuntimeWarning: coroutine 'community_search' was never awaited
+  _cancel_all_tasks(loop)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py:71: RuntimeWarning: coroutine 'episode_search' was never awaited
+  _cancel_all_tasks(loop)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py:71: RuntimeWarning: coroutine 'node_search' was never awaited
+  _cancel_all_tasks(loop)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+Traceback (most recent call last):
+  File "benchmarks/longmemeval-frameworks/run.py", line 229, in <module>
+    try:asyncio.run(main())
+        ~~~~~~~~~~~^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/base_events.py", line 726, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "benchmarks/longmemeval-frameworks/run.py", line 213, in main
+    r=await g.add_episode(name='control',episode_body='user: My favorite color is blue. I work at ExampleCo.',source_description='synthetic prerequisite',reference_time=datetime(2023,1,1,tzinfo=timezone.utc),group_id='control',previous_episode_uuids=[])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/graphiti.py", line 1586, in add_episode
+    raise e
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/graphiti.py", line 1493, in add_episode
+    ) = await self._extract_and_resolve_edges(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/graphiti.py", line 973, in _extract_and_resolve_edges
+    resolved_edges, invalidated_edges, new_edges = await resolve_extracted_edges(
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/utils/maintenance/edge_operations.py", line 526, in resolve_extracted_edges
+    related_edges_results: list[SearchResults] = await semaphore_gather(
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<12 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/helpers.py", line 142, in semaphore_gather
+    return await asyncio.gather(*(_wrap_coroutine(coroutine) for coroutine in coroutines))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/helpers.py", line 140, in _wrap_coroutine
+    return await coroutine
+           ^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/search/search.py", line 174, in search
+    ) = await semaphore_gather(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<56 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/helpers.py", line 142, in semaphore_gather
+    return await asyncio.gather(*(_wrap_coroutine(coroutine) for coroutine in coroutines))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/helpers.py", line 140, in _wrap_coroutine
+    return await coroutine
+           ^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/search/search.py", line 332, in edge_search
+    await semaphore_gather(*search_tasks, max_coroutines=max_coroutines)
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/helpers.py", line 142, in semaphore_gather
+    return await asyncio.gather(*(_wrap_coroutine(coroutine) for coroutine in coroutines))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/helpers.py", line 140, in _wrap_coroutine
+    return await coroutine
+           ^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/search/search_utils.py", line 287, in edge_fulltext_search
+    records, _, _ = await driver.execute_query(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/driver/kuzu_driver.py", line 227, in execute_query
+    results = await self.client.execute(cypher_query_, parameters=params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/kuzu/async_connection.py", line 171, in execute
+    return await loop.run_in_executor(self.executor, conn.execute, query, parameters)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/kuzu/connection.py", line 134, in execute
+    query_result_internal = self._connection.execute(prepared_statement._prepared_statement, parameters)
+RuntimeError: Binder exception: Table RelatesToNode_ doesn't have an index with name edge_name_and_fact.
+/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/driver/search_interface/search_interface.py:22: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/
+  class SearchInterface(BaseModel):
+
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 1627.28it/s]
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 6042.50it/s]
+benchmarks/longmemeval-frameworks/run.py:74: DeprecationWarning: The Kuzu backend is deprecated and will be removed in a future release — the upstream Kuzu project is no longer maintained. Migrate to Neo4j or FalkorDB.
+  super().__init__(*args,**kwargs)
+Materialized 1 dangling edge endpoint node(s) for group_id=control
+{"question_id": "gpt4_8c8961ae", "system": "mem0-extract", "episode": 1, "total": 76, "seconds": 49.0}
+{"question_id": "gpt4_8c8961ae", "system": "mem0-extract", "episode": 2, "total": 76, "seconds": 2.6}
+{"question_id": "gpt4_8c8961ae", "system": "mem0-extract", "episode": 3, "total": 76, "seconds": 18.9}
+/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/driver/search_interface/search_interface.py:22: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/
+  class SearchInterface(BaseModel):
+
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 409.08it/s]
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 557.51it/s]
+benchmarks/longmemeval-frameworks/run.py:74: DeprecationWarning: The Kuzu backend is deprecated and will be removed in a future release — the upstream Kuzu project is no longer maintained. Migrate to Neo4j or FalkorDB.
+  super().__init__(*args,**kwargs)
+Materialized 1 dangling edge endpoint node(s) for group_id=control

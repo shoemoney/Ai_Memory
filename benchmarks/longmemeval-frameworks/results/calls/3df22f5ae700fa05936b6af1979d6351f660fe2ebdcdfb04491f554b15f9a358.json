@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 29
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ec352ccb327d6d4d58d39f95c58501833eedb8a03297559b184093869f5473b0",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-621369cf-678f-47f7-bd20-0e44c611e412",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Created a whitepaper titled 'AppreciCoin and ApologiCoin: Revolutionizing Gratitude and Apology through Blockchain Technology'\", \"Developed a cryptocurrency token system for expressing gratitude and apologies\", \"Leveraged blockchain technology and smart contracts for security and transparency\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366085,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 58,
+      "prompt_tokens": 1583,
+      "total_tokens": 1641,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Created a whitepaper titled 'AppreciCoin and ApologiCoin: Revolutionizing Gratitude and Apology through Blockchain Technology'\", \"Developed a cryptocurrency token system for expressing gratitude and apologies\", \"Leveraged blockchain technology and smart contracts for security and transparency\"]}",
+  "seconds": 7.264620361995185,
+  "prompt_tokens_local": 1583
+}

@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 1
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e67182697ed110ab9c47d7e93283a5c341d3e39ce7fa2eac8b48be920aca32d7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-8825c899-c5dd-4284-9638-fb46702f45b9",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"5 more phygital experiences with an emphasis on Chinese culture\", \"Lantern Garden\", \"Chinese Calligraphy Wall\", \"Chinese Tea Ceremony\", \"Zodiac Experience\", \"Chinese Knot Tying\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331899,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 46,
+      "prompt_tokens": 1229,
+      "total_tokens": 1275,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"5 more phygital experiences with an emphasis on Chinese culture\", \"Lantern Garden\", \"Chinese Calligraphy Wall\", \"Chinese Tea Ceremony\", \"Zodiac Experience\", \"Chinese Knot Tying\"]}",
+  "seconds": 1.1701011499972083,
+  "prompt_tokens_local": 1229,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

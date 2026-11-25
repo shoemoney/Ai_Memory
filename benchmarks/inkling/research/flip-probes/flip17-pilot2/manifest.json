@@ -1,0 +1,35 @@
+{
+  "protocol": "flip17-v1",
+  "model": "$HOME/inkling-lab/models/TML-d24-varloop-research",
+  "config_sha256": "32a0abdfa3deb7bf6da7f411570cb7828dca4db569205d6ec04e52ce97fd9c9f",
+  "prompts_sha256": "e2f4f289af94abc0924a9d37ecfb7ba54abd204136dfa96a1d4e2083eaf59993",
+  "layers": [
+    6,
+    11,
+    17
+  ],
+  "max_tokens": 32,
+  "raw": false,
+  "reasoning_effort": "none",
+  "planned": 8,
+  "completed": 8,
+  "feature_timing": "residual: pass1; message: boundary1->2; gate: receiving pass2",
+  "gate_norm_scope": "RMS gain over all core layers and q/k/v/mlp channels; raw vectors saved at selected layers",
+  "kl_direction": "KL(P2||P1), KL(P3||P2)",
+  "sources_sha256": {
+    "synthetic.py": "1713f6b49d7f0ae01bf9179418f780654e26ba9c0175f2d631eece4a02d9bfa0",
+    "controller.py": "2a87d3b45446c3b1ed678bb70e7f961a0e98966526d13da7d934a838b53d5b5a",
+    "prompts.py": "a517ace9900358afda4076f017ab6fc81167cf15830e5350ddb336ac7db48550",
+    "capture.py": "510a05147a9208c3bf6dbaeb8a7f2ebc9ed509dba10f47e6940ea92e4a9e0ff5",
+    "plots.py": "9479fc2a29a6f1cdfcc36de75a0f244e21185d49194cda994b8ecd5496813bb9",
+    "flips.py": "e1e93e30f961d9ef42fdb6e59a1e9f597d1cad8473714b9a4c4fb324642cdffa",
+    "probes.py": "634358ac494861a26c49ec89d19f90b7c30429130f9d8e109a83e11e4f83c04b"
+  },
+  "model_source_sha256": "66676f0e6aeb30a07fb3b37b9b272b2e1ca701be1a7566fe647da30d14f8646b",
+  "tokenizer_sha256": {
+    "tokenizer_config.json": "bf09342d285139fd37ce10c70878af1d52cb390e9901e10248654293a80ee636",
+    "special_tokens_map.json": "c16f44b3594563d82743ddb0417a2be1bfe3e2000dfad2da4b8f32554593e1a0",
+    "tokenizer.json": "7f332727f9a3f093dd452a39cc978e6757627e5dad1b0673aa4e75174f236dd6"
+  },
+  "elapsed_seconds": 574.4868148340611
+}

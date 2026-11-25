@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q016",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "06fc25209661ab894c73db822caba3a2982ab7f82a70d32e2b7a5ee861d6475d",
+  "reference_sha256": "aa1f3cfa32c0610e9c887f71e27193a9a0e1da88c8147a43b200f24255980d0c",
+  "method": "rag",
+  "answer": "The man picked up his knapsack and departed from the inn.",
+  "response": {
+    "text": "The man picked up his knapsack and departed from the inn.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 15,
+      "prompt_tokens": 3066,
+      "total_tokens": 3081,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 19.45639929700701,
+    "request_sha256": "28fa6d2ac2a28d669ba0a48e936a6caf5de32bcd500b060612b33530833946a4",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    315,
+    356,
+    310,
+    518,
+    327,
+    335,
+    314,
+    440,
+    396,
+    317,
+    532,
+    307,
+    530,
+    318,
+    424,
+    355,
+    312,
+    531,
+    351,
+    336
+  ],
+  "retrieval_scores": [
+    0.573900580406189,
+    0.5735890865325928,
+    0.5722410082817078,
+    0.5401806831359863,
+    0.523513913154602,
+    0.5117605924606323,
+    0.5089114904403687,
+    0.5072258710861206,
+    0.5054031610488892,
+    0.5033794641494751,
+    0.49072861671447754,
+    0.4903198480606079,
+    0.4827907681465149,
+    0.4819853603839874,
+    0.47819459438323975,
+    0.4732118248939514,
+    0.4726794958114624,
+    0.4720498323440552,
+    0.469206303358078,
+    0.4689343571662903
+  ],
+  "retrieval_seconds": 0.04557548199954908,
+  "provided_context_sha256": "e2e51582be3b71e170343b71a24515ca68c4ab28fa296faa75674117896783e0",
+  "provided_context_tokens": 2769,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "d9c741e177f5c2df20d9eba9bedc849ef5df811ba247d6df430ce0d8e2b63800",
+    "raw_answer_sha256": "09eefddfb07f15331bc2900c474b904f27b1205e3d0ebec202218e80a54973e2",
+    "answer_redacted": false
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 56
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "16a4ed5384ad3281df0254dff5e1874eea84c72dbda5693b76a7808ff2d016d8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-af151103-97c4-4615-aecd-0eb6006a7307",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Fashionoscope\", \"target_entity_name\": \"Stiloni\", \"relation_type\": \"OWNS\", \"fact\": \"Fashionoscope owns Stiloni\", \"valid_at\": \"2023-08-15T19:12:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363925,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 69,
+      "prompt_tokens": 7862,
+      "total_tokens": 7931,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Fashionoscope\", \"target_entity_name\": \"Stiloni\", \"relation_type\": \"OWNS\", \"fact\": \"Fashionoscope owns Stiloni\", \"valid_at\": \"2023-08-15T19:12:00Z\"}]}",
+  "seconds": 9.75576234899927,
+  "prompt_tokens_local": 7862
+}

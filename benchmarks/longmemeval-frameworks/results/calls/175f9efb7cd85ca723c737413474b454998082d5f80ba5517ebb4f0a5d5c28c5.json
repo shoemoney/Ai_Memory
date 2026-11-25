@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 1
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5ab2ea3ede817fb945574cdb595f40d7e6bb5cabd3bbddd88cffa93606155c8b",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a9a23a56-d9ea-4e10-989c-4394d953e19b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Celebrating heritage\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Wellness and mental health\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Unity and diversity\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Technology and innovation\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Community building\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"5 more phygital experiences with an emphasis on Chinese culture\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"6\",\n            \"text\" : \"Lantern Garden\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"7\",\n            \"text\" : \"Chinese Calligraphy Wall\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"8\",\n            \"text\" : \"Chinese Tea Ceremony\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"9\",\n            \"text\" : \"Zodiac Experience\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"10\",\n            \"text\" : \"Chinese Knot Tying\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331900,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 355,
+      "prompt_tokens": 1697,
+      "total_tokens": 2052,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Celebrating heritage\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Wellness and mental health\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Unity and diversity\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Technology and innovation\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Community building\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"5 more phygital experiences with an emphasis on Chinese culture\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"6\",\n            \"text\" : \"Lantern Garden\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"7\",\n            \"text\" : \"Chinese Calligraphy Wall\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"8\",\n            \"text\" : \"Chinese Tea Ceremony\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"9\",\n            \"text\" : \"Zodiac Experience\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"10\",\n            \"text\" : \"Chinese Knot Tying\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+  "seconds": 4.144583357992815,
+  "prompt_tokens_local": 1697,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

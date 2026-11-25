@@ -1,0 +1,30 @@
+{
+  "model": "Qwen/Qwen3-VL-Embedding-8B",
+  "revision": "2c4565515e0f265c6511776e7193b22c0968ddc7",
+  "execution": {
+    "engine": "MLX",
+    "compute_dtype": "bfloat16",
+    "bits": 4,
+    "group_size": 64,
+    "quantization": {
+      "method": "MLX affine, streaming CPU conversion, no calibration",
+      "vision": "bfloat16; not quantized"
+    },
+    "mlx_embeddings_version": "0.1.0",
+    "mlx_version": "0.32.4",
+    "quantizer_sha256": "c6eccbf503e0452d04ee4b3505a7334853d36e1e4958953556f2f6f40d1920f1",
+    "backend_sha256": "ee16bdc49a39e06055599bbaeedc983187f4eab840f7ec14073fbf1bafd3997b",
+    "backbone": "Qwen3 VL embedding backbone; unused language-model output head omitted",
+    "instructions_sha256": "73a24aac2ac7d2fa4839b5898019acbebd6af1b0c843cc809271c1cfe94cd05f"
+  },
+  "synthetic_requests": 4,
+  "synthetic_embeddings": 6,
+  "quality_labels_used": false,
+  "scope": "Independent-request, padding and ordering invariant; not full-precision backend equivalence",
+  "required_minimum_cosine": 0.995,
+  "padding_short_cosine": 0.9985795617103577,
+  "order_short_cosine": 1.0,
+  "order_long_cosine": 1.0000001192092896,
+  "repeat_short_cosine": 1.0,
+  "status": "pass"
+}

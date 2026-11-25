@@ -1,0 +1,34 @@
+
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  9.61it/s]/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/huggingface_hub/file_download.py:1723: DeprecationWarning: hf_xet.download_files() is deprecated. Use XetSession().new_file_download_group().start_download_file() instead.
+  xet_get(
+
+Fetching 4 files: 100%|██████████| 4/4 [00:01<00:00,  3.35it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:01<00:00,  3.35it/s]
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files:  53%|█████▎    | 8/15 [00:00<00:00, 56.78it/s]/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/huggingface_hub/file_download.py:1723: DeprecationWarning: hf_xet.download_files() is deprecated. Use XetSession().new_file_download_group().start_download_file() instead.
+  xet_get(
+
+Fetching 15 files: 100%|██████████| 15/15 [00:02<00:00,  5.02it/s]
+{"question_id": "72e3ee87", "method": "full-standard"}
+{"question_id": "72e3ee87", "method": "bm25-standard"}
+{"question_id": "72e3ee87", "method": "dense-standard"}
+{"question_id": "72e3ee87", "method": "mem0-raw-standard"}
+/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/mem0/vector_stores/qdrant.py:112: UserWarning: Payload indexes have no effect in the local Qdrant, except text indexes with `scoring`, which enable text queries. Please use server Qdrant if you need payload indexes.
+  self.client.create_payload_index(
+[PostHog] Multiple active PostHog clients detected for the same project API key and host. Reuse one Posthog instance per app or process when possible to avoid competing background queues and missed shutdown flushes. Multiple clients are supported when intentional.
+{"question_id": "72e3ee87", "method": "full-oracle"}
+Traceback (most recent call last):
+  File "benchmarks/longmemeval/large.py", line 232, in <module>
+    try:main()
+        ~~~~^^
+  File "benchmarks/longmemeval/large.py", line 224, in main
+    answer=request([{'role':'user','content':p}],512,'answer')
+  File "benchmarks/longmemeval/large.py", line 79, in request
+    raw=response.model_dump();raw_text=response.choices[0].message.content;text=clean(raw_text)
+                                                                                ~~~~~^^^^^^^^^^
+  File "benchmarks/longmemeval/large.py", line 33, in clean
+    return text.split('<end_of_turn>',1)[0].strip()
+           ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'

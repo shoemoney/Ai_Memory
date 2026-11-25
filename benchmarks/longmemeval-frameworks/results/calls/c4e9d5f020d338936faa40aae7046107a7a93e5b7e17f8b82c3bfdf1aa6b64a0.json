@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 42
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f79c8844668a898ba813fef00c638b39de0e639ce45f6e160528fea4ab7a6ac3",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-746c73ed-6812-423c-8bb5-a80ca1e29b61",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Paradise is the central and eternal home of the Universal Father, the goal of destiny for all spirit personalities, and the perfect abode of the Universal Father.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Paradise is unique in that it is the realm of primal origin and the final goal of destiny for all spirit personalities.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Paradise is not part of the universal creation, not even a real part of the eternal Havona universe.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Paradise is an eternal and exclusive existence, and the source of all energies and the place of primal origin of all personalities.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Paradise is the center of all creation and the universal headquarters of all personality activities.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332753,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 280,
+      "prompt_tokens": 1687,
+      "total_tokens": 1967,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Paradise is the central and eternal home of the Universal Father, the goal of destiny for all spirit personalities, and the perfect abode of the Universal Father.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Paradise is unique in that it is the realm of primal origin and the final goal of destiny for all spirit personalities.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Paradise is not part of the universal creation, not even a real part of the eternal Havona universe.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Paradise is an eternal and exclusive existence, and the source of all energies and the place of primal origin of all personalities.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Paradise is the center of all creation and the universal headquarters of all personality activities.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        }\n    ]\n}",
+  "seconds": 6.896039084997028,
+  "prompt_tokens_local": 1687,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

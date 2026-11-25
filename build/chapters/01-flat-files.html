@@ -1,0 +1,586 @@
+<article class="chapter" data-ch="01" data-part="a" data-running="Flat-file Markdown memory">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part A &middot; Chapter 01</p>
+  <div class="opener-num" aria-hidden="true">01</div>
+  <h1>Flat-file Markdown memory</h1>
+  <p class="opener-summary">The agent's memory is a folder of plain text files that it reads at session start or opens when needed.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">1 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">1 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">One developer or a small team with short, stable facts worth a human reading.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">Flat-file memory is a notes folder for an AI agent. A developer writes the build command and naming rules into a repository Markdown file, and the agent reads it instead of being told each session.</p>
+  <p>No database or embedding model is needed. Anthropic's memory tool documentation describes its storage as "a directory of memory files" that your application stores as it likes.<sup class="cite"><a href="#s01-1">1</a></sup> Anyone can edit or delete a file; Letta, an agent framework, calls them "simple, universal primitives that both humans and agents can work with using familiar tools".<sup class="cite"><a href="#s01-2">2</a></sup></p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Frontmatter</dt><dd>A block of settings between two <code>---</code> lines at the top of a Markdown file.</dd>
+    <dt>Hook</dt><dd>A script the harness or git runs on an event such as session end or commit.</dd>
+    <dt>Worktree</dt><dd>A git feature that checks out a branch in its own folder, so agents can work in parallel.</dd>
+    <dt>Item (Beads)</dt><dd>One entry in the Beads task graph: title, status, owner and links to the items blocking it.</dd>
+    <dt>Dolt</dt><dd>A SQL database with git-style commits, branches and remotes.</dd>
+  </dl>
+  <p class="small muted">System prompt and RAG are defined in the terms box of Chapter 00, and harness in its first paragraph.</p>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p>Two loading models cover almost every tool. In the first, the harness <strong>loads the file at session start</strong>. Claude Code delivers CLAUDE.md as a user message after the system prompt, loading it "at the start of every conversation".<sup class="cite"><a href="#s01-3">3</a></sup></p>
+<p>In the second, the agent <strong>reads files when needed</strong>: only an index or file tree stays in view. Anthropic's memory tool works this way: "Claude automatically checks its memory directory before starting a task", then views files under <code>/memories</code>.<sup class="cite"><a href="#s01-1">1</a></sup></p>
+<p>Letta's Context Repositories combine both: the file tree is always in the system prompt, each file has a frontmatter description, and <code>system/</code> files always load fully.<sup class="cite"><a href="#s01-2">2</a></sup></p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 262" role="img" aria-label="Diagram: files on disk reach the model context through two paths, always loaded by the harness or fetched on demand by the agent.">
+  <text class="d-label" x="20" y="24">On disk</text>
+  <rect class="d-box soft" x="20" y="34" width="150" height="212" rx="4"/>
+  <rect class="d-box" x="32" y="48" width="126" height="46" rx="3"/>
+  <text class="d-mono" x="95" y="68" text-anchor="middle">CLAUDE.md</text>
+  <text class="d-sub" x="95" y="84" text-anchor="middle">team instructions</text>
+  <rect class="d-box" x="32" y="102" width="126" height="46" rx="3"/>
+  <text class="d-mono" x="95" y="122" text-anchor="middle">.claude/rules/</text>
+  <text class="d-sub" x="95" y="138" text-anchor="middle">topic rules</text>
+  <rect class="d-box" x="32" y="156" width="126" height="46" rx="3"/>
+  <text class="d-mono" x="95" y="176" text-anchor="middle">docs/memory/</text>
+  <text class="d-sub" x="95" y="192" text-anchor="middle">notes and INDEX.md</text>
+  <text class="d-sub" x="95" y="228" text-anchor="middle">plain Markdown</text>
+
+  <text class="d-label" x="232" y="24">Path 1</text>
+  <rect class="d-box accent" x="232" y="34" width="190" height="76" rx="4"/>
+  <text class="d-title" x="327" y="58" text-anchor="middle">Always in context</text>
+  <text class="d-sub" x="327" y="77" text-anchor="middle">Harness copies the file into</text>
+  <text class="d-sub" x="327" y="91" text-anchor="middle">the model context each session</text>
+
+  <text class="d-label" x="232" y="146">Path 2</text>
+  <rect class="d-box accent" x="232" y="156" width="190" height="76" rx="4"/>
+  <text class="d-title" x="327" y="180" text-anchor="middle">On demand</text>
+  <text class="d-sub" x="327" y="199" text-anchor="middle">Agent runs grep, glob or a</text>
+  <text class="d-sub" x="327" y="213" text-anchor="middle">read tool when it needs a note</text>
+
+  <rect class="d-box dark" x="474" y="34" width="106" height="198" rx="4"/>
+  <text class="d-title d-on-dark" x="527" y="124" text-anchor="middle">Model context</text>
+  <text class="d-sub d-on-dark" x="527" y="142" text-anchor="middle">what the model</text>
+  <text class="d-sub d-on-dark" x="527" y="156" text-anchor="middle">can see now</text>
+
+  <path class="d-line" d="M170 72 H230"/>
+  <path class="d-line" d="M422 72 H472"/>
+  <path class="d-line accent dash" d="M472 194 H424"/>
+  <path class="d-line accent dash" d="M230 194 H172"/>
+</svg>
+<figcaption><b>Figure 1.</b> Two loading models. Path 1 puts the file in every prompt. In path 2 the agent asks for a note and its text joins the context.</figcaption>
+</figure>
+
+<h3>Variants and tools</h3>
+<table class="data">
+  <colgroup><col class="c25"><col class="c45"><col class="c30"></colgroup>
+  <thead><tr><th>Variant</th><th>What it is</th><th>Loading</th></tr></thead>
+  <tbody>
+    <tr><td>CLAUDE.md and CLAUDE.local.md</td><td>Hand-written instructions at project, user and organization scope.<sup class="cite"><a href="#s01-3">3</a></sup></td><td>Current directory and ancestors: at launch. Subdirectories: on demand.</td></tr>
+    <tr><td><code>.claude/rules/*.md</code></td><td>Topic files. An optional <code>paths:</code> frontmatter field limits a rule to matching files.<sup class="cite"><a href="#s01-3">3</a></sup></td><td>Always, or when a matching file is read.</td></tr>
+    <tr><td>Claude Code auto memory</td><td>Claude Code writes a <code>MEMORY.md</code> index and topic files under <code>~/.claude/projects/&lt;project&gt;/memory/</code>, shared by all worktrees of a repository. Separate from the Anthropic memory tool below.<sup class="cite"><a href="#s01-3">3</a></sup></td><td>First 200 lines or 25KB of the index, every session.</td></tr>
+    <tr><td>AGENTS.md</td><td>An open format across tools, described as "a README for agents".<sup class="cite"><a href="#s01-4">4</a></sup></td><td>Read by tools that support the format.</td></tr>
+    <tr><td>Anthropic memory tool</td><td>An API tool named <code>memory_20250818</code> and a <code>/memories</code> directory.<sup class="cite"><a href="#s01-1">1</a></sup></td><td>On demand.</td></tr>
+    <tr><td>Cursor rules</td><td><code>.cursor/rules/*.mdc</code> with <code>alwaysApply</code>, <code>globs</code>, <code>description</code>.<sup class="cite"><a href="#s01-5">5</a></sup></td><td>Always, on a path match, model-picked, or @-mention.</td></tr>
+    <tr><td>Devin Local rules (formerly Windsurf)</td><td>Reads <code>.devin/rules/*.md</code> and still imports <code>.windsurf/rules/</code>.<sup class="cite"><a href="#s01-6">6</a></sup></td><td>Always On, Glob, Model Decision or Manual.</td></tr>
+    <tr><td>Letta memory blocks</td><td>Labeled, size-limited core memory kept in context.<sup class="cite"><a href="#s01-7">7</a></sup></td><td>Always in context. The agent edits blocks through tools.</td></tr>
+    <tr><td>Letta Context Repositories</td><td>A git-backed memory repository cloned locally.<sup class="cite"><a href="#s01-2">2</a></sup></td><td>Tree always visible. <code>system/</code> always loaded.</td></tr>
+    <tr><td>Beads (<code>bd</code>)</td><td>A task graph rather than notes. MIT license, version 1.3.4 released 4 November 2026.<sup class="cite"><a href="#s01-8">8</a>,<a href="#s01-9">9</a></sup></td><td>On demand through <code>bd</code>; <code>bd prime</code> at session start.<sup class="cite"><a href="#s01-8">8</a></sup></td></tr>
+  </tbody>
+</table>
+
+<h3>Also in this space</h3>
+<p>These neighboring tools were not run; documentation and licenses were checked on 20 November 2026 (OpenClaw on 22 November 2026). Hook-based tools that use SQLite or Redis are in Chapter 13.</p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c30"><col class="c20"><col class="c30"></colgroup>
+  <thead><tr><th>Tool</th><th>What it stores</th><th>Hosting and license</th><th>When to pick it</th></tr></thead>
+  <tbody>
+    <tr><td>MEX 0.9.0-beta.1.1</td><td>Local notes and databases; code checks hold back stale notes. Shared notes become reviewed Markdown in git.<sup class="cite"><a href="#s01-10">10</a>,<a href="#s01-11">11</a></sup></td><td>Self-run CLI, no hosted service; MIT.<sup class="cite"><a href="#s01-10">10</a>,<a href="#s01-12">12</a></sup></td><td>Code-linked notes across Claude Code and Codex. Beta, not run; sends anonymous usage telemetry unless you disable it.</td></tr>
+    <tr><td>OpenClaw</td><td>Plain Markdown in the agent workspace: <code>MEMORY.md</code> for long-term facts, optional <code>USER.md</code>, dated notes in <code>memory/</code>. <code>MEMORY.md</code> loads at session start; today's and yesterday's notes load on a new session.<sup class="cite"><a href="#s01-13">13</a></sup></td><td>Self-run agent gateway; MIT.<sup class="cite"><a href="#s01-14">14</a></sup></td><td>Flat files for a personal assistant.</td></tr>
+    <tr><td>GitHub Copilot Memory</td><td>Facts the agent writes, not files in your repository. Repository facts are shared and cite code; user preferences follow a person.</td><td>Hosted by GitHub; paid plans.<sup class="cite"><a href="#s01-15">15</a></sup></td><td>Hosted, code-cited memory; not if memory must live in your repository.</td></tr>
+  </tbody>
+</table>
+
+<h3>Where flat files stop: task state for coding agents</h3>
+<p>Shared task state, notes about changing code and reusable procedures need extensions to plain notes.</p>
+<p>A coding agent needs to know what is left, what blocks what and who has taken which item. A Markdown list can record owners and blockers; a task graph computes ready items and lets an agent claim one atomically. Beads calls itself memory for coding agents that "replaces messy markdown plans with a dependency-aware graph".<sup class="cite"><a href="#s01-8">8</a></sup></p>
+<p>Items occupy a Dolt database under <code>.beads/</code>, with hash-based ids like <code>tasks-dvc</code> (project prefix plus a short hash) that avoid merge collisions. A link says one item blocks another.<sup class="cite"><a href="#s01-8">8</a></sup> Claims assign work atomically; expired leases need explicit reclaim. Part 3 shows how another session or machine continues the plan.</p>
+<p>A framework checkpoint (LangGraph, Chapter 13) saves a run for resumption.<sup class="cite"><a href="#s01-16">16</a></sup> Beads keeps the plan outside runs for continuation by any agent, anywhere.</p>
+
+<h3>Code-linked freshness: notes about code that notice the code changed</h3>
+<p>“send() never retries” becomes wrong when retries are added, yet the model trusts it. Record the file, symbol and commit supporting each fact; check before use. GitHub Copilot Memory cites code locations for each fact and checks them against the current branch before use; GitHub reports no significant added latency in testing; its docs warn the check can err.<sup class="cite"><a href="#s01-15">15</a>,<a href="#s01-17">17</a></sup> Loom (vendor claim, not checked), an Apache-2.0 ClickHouse tool announced on 13 November 2026, follows a renamed function, flags a note when the function is rewritten, and never rewrites a note itself.<sup class="cite"><a href="#s01-18">18</a></sup></p>
+<p>MEX's README says its code checks cannot tell whether a note still means the right thing; meaning-based checks are future work.<sup class="cite"><a href="#s01-10">10</a></sup></p>
+<p>In plain files, put three frontmatter fields: <code>file</code> and <code>commit</code> are required, and <code>symbol</code> helps whoever reviews a flag. Part 1 step 3 flags notes whose cited file changed since the recorded commit (committed, staged or unstaged),<sup class="cite"><a href="#s01-19">19</a></sup> or when the file or the commit is missing. Unlike MEX, it only reports. It skips notes without code-link fields, such as repository conventions; review those on a schedule. A rename shows as stale, and any edit to a cited file triggers review. For a valid code link, silence means git found no difference in the index or working tree. It does not validate the fact: retry behavior might have moved into a dependency. Before trusting a flagged note, test the cited behavior and inspect its dependencies; update the fields or delete the note.</p>
+
+<h3>Skills: who writes the procedure</h3>
+<p>A skill is a Markdown file of instructions. Only its description stays in context and the body loads when the skill is invoked, so write the description as a trigger; long procedures cost little until used.<sup class="cite"><a href="#s01-20">20</a></sup></p>
+<table class="data">
+  <colgroup><col class="c25"><col class="c45"><col class="c30"></colgroup>
+  <thead><tr><th>Kind</th><th>Example</th><th>Control point</th></tr></thead>
+  <tbody>
+    <tr><td>Human-written</td><td>A person writes <code>SKILL.md</code> in Claude Code.<sup class="cite"><a href="#s01-20">20</a></sup></td><td>The author, in version control.</td></tr>
+    <tr><td>Agent-written, reviewed</td><td>The agent proposes; a person or test approves. A pattern, no product checked.</td><td>Approval, versions, revocation.</td></tr>
+    <tr><td>Agent-written, automatic</td><td>memU 0.11.0-beta.3. The agent chooses to do nothing, patch a skill or create one, and memU indexes it for any connected agent.<sup class="cite"><a href="#s01-21">21</a></sup></td><td>No approval step in the README. Beta, not run.</td></tr>
+  </tbody>
+</table>
+<p>Automatic reuse is the riskiest row: a bad or poisoned procedure is reused unseen (Chapter 17). Default to human-written skills in version control; allow agent-written ones only behind a review or test gate.</p>
+
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<h3>Why teams start with flat files</h3>
+<ul>
+  <li><strong>Grep is a real retriever.</strong> The Pragmatic Engineer's write-up of an interview with Boris Cherny, who created Claude Code, reports that local vector databases and recursive model-based indexing lost to model-driven glob and grep.<sup class="cite"><a href="#s01-22">22</a></sup> A newsletter anecdote, not a benchmark.</li>
+  <li><strong>Git history comes free.</strong> Letta's repositories "are git-backed, so every change to memory is automatically versioned".<sup class="cite"><a href="#s01-2">2</a></sup></li>
+</ul>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>One developer or one small team, working in one repository or with one agent.</li>
+      <li>Short, stable facts people will read: build commands, conventions, preferences.</li>
+      <li>Portability: AGENTS.md is read by several tools, and Markdown notes move between tools with little rework.</li>
+      <li>A few thousand lines across on-demand notes (a rule of thumb, not measured; the lab chooses a separate 200-note threshold); always-loaded files near 200 lines; the <code>MEMORY.md</code> index within its 200-line, 25KB cap.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>Many users or agents writing at once and needing isolation. Use a database with access controls.</li>
+      <li>Facts that change over time ("was true until March") or need contradiction handling (Chapter 14).</li>
+      <li>Memory that an index plus grep can no longer navigate reliably.</li>
+      <li>Semantic search over large collections. Letta's archival memory, described as “semantically searchable”, is an alternative.<sup class="cite"><a href="#s01-23">23</a></sup></li>
+      <li>Task state that several agents claim and resume. Use a task graph such as Beads (in server mode; embedded mode has one writer, see Gotchas).</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Solo developer, one repository</h3>
+  <dl>
+    <dt>Situation</dt><dd>A developer retypes build/test commands and naming rules into each Claude Code session. The API rules matter only when the agent edits <code>src/api</code>.</dd>
+    <dt>Why it fits</dt><dd>CLAUDE.md loads at the start of every conversation, so facts arrive with no retrieval step.<sup class="cite"><a href="#s01-3">3</a></sup> A rule in <code>.claude/rules/</code> with a <code>paths:</code> field loads only when a matching file is read.<sup class="cite"><a href="#s01-3">3</a></sup></dd>
+    <dt>Pair with</dt><dd>Git for history, an untracked CLAUDE.local.md for personal preferences,<sup class="cite"><a href="#s01-3">3</a></sup> and <code>/context all</code> to see what loaded.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Team that mixes coding tools</h3>
+  <dl>
+    <dt>Situation</dt><dd>A small team shares one repository. Some use Claude Code and some Cursor, and conventions drift as each tool reads its own file.</dd>
+    <dt>Why it fits</dt><dd>AGENTS.md is an open format, and its site reports 60k+ open-source projects using it (vendor claim, not checked).<sup class="cite"><a href="#s01-4">4</a></sup></dd>
+    <dt>Pair with</dt><dd>Share conventions in AGENTS.md; keep tool-specific files. Add @AGENTS.md to CLAUDE.md (Claude Code @path import syntax) to load the same file.<sup class="cite"><a href="#s01-3">3</a></sup></dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Your own agent with a notebook between sessions</h3>
+  <dl>
+    <dt>Situation</dt><dd>You are building an agent on the Anthropic API and want findings to carry between runs, with no database.</dd>
+    <dt>Why it fits</dt><dd>The memory tool gives the model a <code>/memories</code> directory it checks before a task; your code picks the storage. The Python SDK ships <code>BetaLocalFilesystemMemoryTool</code> for a local folder (Part 2).<sup class="cite"><a href="#s01-1">1</a></sup></dd>
+    <dt>Pair with</dt><dd>A request handler that rejects paths outside <code>/memories</code>.<sup class="cite"><a href="#s01-1">1</a></sup></dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>Coding agent that resumes on another machine</h3>
+  <dl>
+    <dt>Situation</dt><dd>A developer switches between laptop and desktop mid-feature; the next session needs completed, blocked and pending work.</dd>
+    <dt>Why it fits</dt><dd>Beads keeps the plan as a dependency graph and syncs it through the git remote.<sup class="cite"><a href="#s01-8">8</a></sup> Tested in Part 3: after <code>bd dolt push</code> to a local bare remote, a clone running <code>bd bootstrap</code> reported only “Write login tests” in <code>bd ready</code>.</dd>
+    <dt>Pair with</dt><dd>CLAUDE.md for conventions, and one writer per database in embedded mode (see Gotchas).<sup class="cite"><a href="#s01-8">8</a></sup></dd>
+  </dl>
+</article>
+
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p class="table-title">Limits, sizes and reported effects. None of these figures was reproduced here.</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>200 lines or 25KB</td><td>Claude Code documents this session-start load cap for the <code>MEMORY.md</code> index.<sup class="cite"><a href="#s01-3">3</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>200 lines</td><td>Anthropic recommends this CLAUDE.md length; longer files "reduce adherence".<sup class="cite"><a href="#s01-3">3</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>500 lines</td><td>Cursor advises rules under 500 lines.<sup class="cite"><a href="#s01-5">5</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>413 files vs 10 files</td><td>Anthropic ran two Claude models once each on Pokemon. About 10,000 steps in, the one with a 10-file folder had 4 badges (progress markers); the one with 413 mostly redundant files had 1. Different models, single runs: an illustration, not proof.<sup class="cite"><a href="#s01-24">24</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>7 percentage points (83% to 90%, about 8.4% relative)</td><td>GitHub reports this rise in Copilot coding-agent pull request merge rate with memory enabled.<sup class="cite"><a href="#s01-17">17</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>90 days</td><td>GitHub documents this default Copilot memory expiry without reinforcement. Admins set 7 to 180 days for repository facts.<sup class="cite"><a href="#s01-15">15</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>0.655 to 0.838</td><td>Anthropic reports this mean reward (0 to 1 scale) for Claude Opus 5.5 (API model <code>claude-opus-5-5</code>) on a database question task, without and with a memory directory.<sup class="cite"><a href="#s01-24">24</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+  </tbody>
+</table>
+
+<h3>Scope and scale</h3>
+<table class="data">
+  <colgroup><col class="c25"><col class="c75"></colgroup>
+  <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+  <tbody>
+    <tr><td>Cost per write</td><td>A hand edit needs no model call. In the API loop, the client runs the requested operations; continuing after their results takes another model turn.<sup class="cite"><a href="#s01-1">1</a></sup> Storage is kilobytes.</td></tr>
+    <tr><td>Cost per read</td><td>Always-loaded files cost input tokens on every model turn. For ASCII English, assuming roughly four characters per token and decimal KB, 25KB is about 6,250 tokens; the line limit may bind first, so count your own index. An on-demand read adds a tool call and the file's tokens afterward.</td></tr>
+    <tr><td>What breaks first</td><td>For Claude Code auto memory, the index load cap: about 200 one-line entries fit.<sup class="cite"><a href="#s01-3">3</a></sup> Other tools hit their own context or navigation limits. With several writers there is no isolation or locking (see Gotchas).</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Parts 1 and 2 share a terminal and LAB; Part 3 uses another terminal. Tests ran on 20 and 21 November 2026; Part 3 sync and lease tests and supporting reruns ran on 23 November, after the research cutoff. Ubuntu Linux versions: git 2.53.0, Bash 5.3.9, Python 3.14.4, <code>anthropic</code> 2.12.0, Node 24.22.3, npm 11.19.1, bd 1.3.4. “From docs, not run” blocks need Claude Code or an API key.</p>
+<p>Run this in a new terminal for Parts 1 and 2.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>export LAB="$(mktemp -d)"
+mkdir "$LAB/repo" &amp;&amp; cd "$LAB/repo" &amp;&amp; git init -q -b main
+git config user.name "Memory Lab"
+git config user.email "lab@example.invalid"</pre></div>
+
+<h3>Part 1. Flat files for Claude Code</h3>
+<ol class="steps">
+  <li class="step-long">
+    <p class="step-title">Create the files (in <code>$LAB/repo</code>)</p>
+    <p>Keep CLAUDE.md short. <code>docs/memory/INDEX.md</code> is a project index, not the auto memory <code>MEMORY.md</code>. The <code>paths:</code> list limits a rule to matching files, and a rule file without it is always loaded.<sup class="cite"><a href="#s01-3">3</a></sup> INDEX.md link text tells the agent when to open each note.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>mkdir -p .claude/rules docs/memory/decisions
+echo "CLAUDE.local.md" &gt;&gt; .gitignore
+cat &gt; CLAUDE.md &lt;&lt;'EOF'
+## Memory
+Before a design decision, read docs/memory/INDEX.md and grep docs/memory for the topic.
+EOF
+cat &gt; .claude/rules/api.md &lt;&lt;'EOF'
+---
+paths:
+  - "src/api/**/*.ts"
+---
+
+# API rules
+- All endpoints validate input.
+- Error shape: { "code": string, "message": string }.
+EOF
+cat &gt; docs/memory/decisions/2026-11-20-flat-files.md &lt;&lt;'EOF'
+---
+type: decision
+---
+
+Decision: flat files until &gt;200 stable notes or &gt;1 writer.
+Reason: one person keeps these notes and INDEX.md finds each by name.
+Revisit if notes are missed.
+EOF
+cat &gt; docs/memory/INDEX.md &lt;&lt;'EOF'
+- [flat files](decisions/2026-11-20-flat-files.md) - why files, not a DB
+EOF</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Check what loaded, then commit</p>
+    <p>Start <code>claude</code> in <code>$LAB/repo</code> and type these. <code>/context all</code> lists the loaded files under <b>Memory files</b>, and <code>/doctor prompt-audit</code> looks for stale or conflicting lines.<sup class="cite"><a href="#s01-3">3</a></sup> Acceptance check (unofficial, not run): ask a fresh session "Should this project add a vector database? Cite the decision note." It should open the linked note.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">claude code</span><span class="code-tag docs">From docs, not run</span></div>
+<pre>/context all
+/doctor prompt-audit</pre></div>
+    <p>Commit memory like code, using commit messages as a changelog, as Letta does automatically.<sup class="cite"><a href="#s01-2">2</a></sup></p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>git add CLAUDE.md .claude .gitignore docs/memory
+git commit -m "docs: record flat-file memory decision"</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Check a code-linked note</p>
+    <p>Add a source file and a note recording its file, symbol and commit.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>mkdir -p src/net &amp;&amp; echo "export function send() {}" &gt; src/net/send.ts
+git add src &amp;&amp; git commit -qm "feat: add send"
+cat &gt; docs/memory/send-retries.md &lt;&lt;EOF
+---
+file: src/net/send.ts
+symbol: send
+commit: $(git rev-parse HEAD)
+---
+send() never retries
+EOF</pre></div>
+    <p>Save this as <code>check_notes.sh</code> and run <code>bash check_notes.sh</code> from the repository root or a session-start hook. Use unquoted values between opening and closing <code>---</code> lines at the top.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">check_notes.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+shopt -s nullglob globstar
+for note in docs/memory/**/*.md; do
+  fm=$(awk '{sub(/\r$/, "")}
+            NR==1 &amp;&amp; /^---$/ {p=1; next}
+            p &amp;&amp; /^---$/ {ok=1; exit}
+            p {b=b $0 ORS}
+            END {if (ok) printf "%s", b; else if (p) print "!malformed"}' "$note")
+  if [ "$fm" = "!malformed" ]; then
+    echo "STALE $note: unclosed frontmatter"
+    continue
+  fi
+  n=$(printf '%s\n' "$fm" | grep -Ec '^(file|commit|symbol):' || true)
+  [ "$n" -gt 0 ] || continue
+  field() {
+    printf '%s\n' "$fm" | sed -n "/^$1:/ {s/^$1:[[:space:]]*//;
+      s/[[:space:]]*$//; p; q;}"
+  }
+  f=$(field file)
+  c=$(field commit)
+  if [ -z "$f" ] || [ -z "$c" ]; then
+    echo "STALE $note: missing file or commit field"
+  elif ! git rev-parse --verify --quiet "$c^{commit}" &gt;/dev/null; then
+    echo "STALE $note: commit unavailable"
+  elif [ "$(git cat-file -t "$c:$f" 2&gt;/dev/null)" != blob ]; then
+    echo "STALE $note: path absent at recorded commit"
+  elif [ ! -f "$f" ]; then
+    echo "STALE $note: path missing from working tree"
+  elif ! git diff --quiet "$c" -- "$f" ||
+       ! git diff --cached --quiet "$c" -- "$f"; then
+    echo "STALE $note: changed since recorded commit"
+  fi
+done</pre></div>
+    <p>The clean note prints nothing; changing <code>src/net/send.ts</code> adds a STALE line:</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested output</span></div>
+<pre>$ bash check_notes.sh
+$ echo "// retry" &gt;&gt; src/net/send.ts &amp;&amp; bash check_notes.sh
+STALE docs/memory/send-retries.md: changed since recorded commit</pre></div>
+    <p>STALE is a report, not an exit status. For CI, use <code>flags=$(bash check_notes.sh) &amp;&amp; [ -z "$flags" ]</code>: script errors or flags fail the job.</p>
+    <p>Inspect and test flagged code. If the note remains true, commit the code, record that hash in the note and rerun. If reverting the code, rerun; the flag should clear. Commit the note separately. Keep cited commits reachable; amend, rebase or squash can invalidate them in clones.</p>
+    <p class="small muted">Separate edge-case suite, not walkthrough files: rerun 23 November 2026, one note per case. Clean notes, omitted/body-only symbol, CRLF, trailing spaces, duplicate keys and empty folders printed nothing.</p>
+    <table class="data">
+      <thead><tr><th>Case</th><th>STALE message</th></tr></thead>
+      <tbody>
+        <tr><td>Blank file, missing commit, symbol only</td><td>missing file or commit field</td></tr>
+        <tr><td>Unavailable commit</td><td>commit unavailable</td></tr>
+        <tr><td>Missing path or directory at commit</td><td>path absent at recorded commit</td></tr>
+        <tr><td>Renamed file</td><td>path missing from working tree</td></tr>
+        <tr><td>Committed, nested, staged, unstaged; staged then reverted in working tree</td><td>changed since recorded commit</td></tr>
+        <tr><td>Unclosed frontmatter</td><td>unclosed frontmatter</td></tr>
+      </tbody>
+    </table>
+    <p>Restore the example source, link the note, then commit the checker and memory together:</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>git restore src/net/send.ts
+cat &gt;&gt; docs/memory/INDEX.md &lt;&lt;'EOF'
+- [send retries](send-retries.md) - retry behavior and code reference
+EOF
+bash check_notes.sh
+git add docs/memory check_notes.sh
+git commit -qm "docs: link retry note and checker"</pre></div>
+  </li>
+</ol>
+
+<h3>Part 2. The memory tool from your own code</h3>
+<p>The tool is client-side: Claude asks for a file operation, your code runs it and returns a <code>tool_result</code>, and the loop repeats until Claude stops.<sup class="cite"><a href="#s01-1">1</a></sup> The SDK's <code>tool_runner</code> runs that loop, and <code>BetaLocalFilesystemMemoryTool</code> stores the files.<sup class="cite"><a href="#s01-1">1</a></sup> Both are beta names; pin the version. Add file-count and byte quotas, and prompt the model to update or delete existing notes. Work in <code>$LAB/part2</code>.</p>
+<ol class="steps">
+  <li class="step-long">
+    <p class="step-title">Install the SDK and test the storage handler without an API key</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>mkdir "$LAB/part2" &amp;&amp; cd "$LAB/part2"
+python3 -m venv .venv
+.venv/bin/pip install anthropic==2.12.0</pre></div>
+    <p>The script writes or reads one note; two runs represent two sessions. A path outside <code>/memories</code> must be refused or the script fails; files land in <code>./memory/memories/</code>.</p>
+    <div class="codeblock splittable"><div class="code-head"><span class="code-lang">python</span><span class="code-file">memory_test.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import sys
+from anthropic.tools import BetaLocalFilesystemMemoryTool, ToolError
+
+memory = BetaLocalFilesystemMemoryTool(base_path="./memory")
+if sys.argv[1] == "write":
+    note = "Acme Corp prefers email follow-ups.\n"
+    print(memory.call({"command": "create", "path": "/memories/acme.md",
+                       "file_text": note}))
+    try:
+        memory.call({"command": "view", "path": "/memories/../secrets"})
+    except ToolError as err:
+        assert "escape" in str(err), err
+        print(type(err).__name__ + ": " + str(err))
+    else:
+        raise AssertionError("a path outside /memories was not refused")
+else:
+    print(memory.call({"command": "view", "path": "/memories"}))
+    print(memory.call({"command": "view", "path": "/memories/acme.md"}))</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>.venv/bin/python memory_test.py write
+.venv/bin/python memory_test.py read</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested output</span></div>
+<pre>File created successfully at: /memories/acme.md
+ToolError: Path /memories/../secrets would escape /memories directory
+Here're the files and directories up to 2 levels deep in /memories, excluding hidden items:
+4K	/memories
+36B	/memories/acme.md
+Here's the content of /memories/acme.md with line numbers:
+     1	Acme Corp prefers email follow-ups.
+     2	</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Hand the tool to a model (not run)</p>
+    <p>The documentation passes this object as <code>tools=[memory]</code> to the tool runner; this copy uses a command-line prompt and fresh folder, excluding the offline note. It needs <code>ANTHROPIC_API_KEY</code> and paid API calls, so it was not run. Acceptance check (unofficial, not run): run it with "Remember: Acme prefers email.", check that <code>./model_memory/memories/</code> holds the preference, then ask a new process "How does Acme prefer to be contacted?". It should view that note and answer email.<sup class="cite"><a href="#s01-1">1</a></sup></p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">model_test.py</span><span class="code-tag docs">From docs, not run</span></div>
+<pre>import sys
+import anthropic
+from anthropic.tools import BetaLocalFilesystemMemoryTool
+
+client = anthropic.Anthropic()
+memory = BetaLocalFilesystemMemoryTool(base_path="./model_memory")
+runner = client.beta.messages.tool_runner(
+    model="claude-opus-5-5", max_tokens=1024, tools=[memory],
+    messages=[{"role": "user", "content": sys.argv[1]}])
+print(runner.until_done().content)</pre></div>
+  </li>
+</ol>
+
+<h3>Part 3. Optional: when notes become shared task state</h3>
+<p>Install Beads once per machine.<sup class="cite"><a href="#s01-25">25</a></sup> Here it goes into <code>$LAB/npm</code>, so nothing global changes. Beads and Dolt also write settings under the home directory, so use a new terminal and a throwaway home.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>export LAB="$(mktemp -d)"
+export HOME="$LAB/home" &amp;&amp; mkdir "$HOME"
+git config --global user.name "Memory Lab"
+git config --global user.email "lab@example.invalid"
+git config --global init.defaultBranch main</pre></div>
+<ol class="steps">
+  <li class="step-long">
+    <p class="step-title">Install the pinned version and create a project</p>
+    <p>In this test, <code>bd init</code> created a commit, installed git hooks and printed a notice that <code>bd</code> sends anonymous usage metrics; <code>bd metrics off</code> disables them. <code>--skip-agents</code> skips AGENTS.md and the Claude Code, Codex and Cursor integrations.<sup class="cite"><a href="#s01-8">8</a></sup> Try it in a scratch repository, and review the new commit and hooks before pushing a real one.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>npm install -g @beads/bd@1.3.4 --prefix "$LAB/npm"
+export PATH="$LAB/npm/bin:$PATH"
+bd version
+mkdir "$LAB/tasks" &amp;&amp; cd "$LAB/tasks" &amp;&amp; git init -q
+bd init --skip-agents
+bd metrics off</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Create two linked items, claim one, close it</p>
+    <p>The second item depends on the first and becomes ready when it closes. Save this as <code>run.sh</code> and run <code>bash run.sh</code> inside the project. <code>bd dep add</code> takes the dependent item first, so the tests depend on the API item. Your ids will differ from <code>tasks-7gc</code> below.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">run.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -e
+list() { bd ready --brief --json | grep '"title"'; }
+API=$(bd create "Add login endpoint" -p 1 --silent)
+TESTS=$(bd create "Write login tests" -p 2 --silent)
+bd dep add "$TESTS" "$API" &gt;/dev/null
+echo "== ready before any work"; list
+echo "== claim"
+bd update "$API" --claim &gt;/dev/null
+bd show "$API" | head -1
+echo "== close the first item"
+bd close "$API" --reason "endpoint merged" &gt;/dev/null
+echo "== ready after close"; list
+bd remember "login tokens expire after 15 minutes" &gt;/dev/null
+echo "== what a new session is told"
+bd prime | grep -A1 "^### login"</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested output</span></div>
+<pre>== ready before any work
+    "title": "Add login endpoint",
+== claim
+◐ tasks-7gc · Add login endpoint   [P1 · IN_PROGRESS]
+== close the first item
+== ready after close
+    "title": "Write login tests",
+== what a new session is told
+### login-tokens-expire-after-15-minutes
+login tokens expire after 15 minutes</pre></div>
+    <p class="small muted">Tested separately on 23 November: a claim granted a five-minute lease. Before expiry, <code>bd reclaim --older-than 0s</code> found none; a second worker could not claim it. After expiry, reclaim reported “Reclaimed 1 stale-lease issue(s)”; the second worker then claimed it. Expired claims remain in progress until reclaimed in the database where claimed. By default reclaim waits ten minutes after expiry; <code>--older-than 0s</code> removes that grace period.</p>
+    <p>Save as <code>sync.sh</code>; run <code>bash sync.sh</code> here. It uses a local bare git remote. <code>--yes</code> consents to publishing the item history there; use a reviewed remote in real work. After bootstrap, <code>bd ready</code> reports only “Write login tests” (stdout below; notices use stderr).</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">sync.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -e
+git init -q --bare "$LAB/remote.git"
+git remote add origin "$LAB/remote.git"
+git push -q -u origin main
+bd dolt push --yes &gt; /dev/null
+git clone -q "$LAB/remote.git" "$LAB/clone"
+cd "$LAB/clone"
+bd bootstrap &gt; /dev/null
+bd ready --brief --json | grep '"title"'</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested output</span></div>
+<pre>    "title": "Write login tests",</pre></div>
+  </li>
+</ol>
+<p><strong>Clean up.</strong> This removes the walkthrough files. Run it in each terminal you used, then close the Part 3 terminal: its HOME and PATH point into deleted folders.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>cd / &amp;&amp; rm -rf -- "${LAB:?}"</pre></div>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: caps truncate and conflicts persist</p>
+  <p>Auto memory loads only the "first 200 lines or 25KB" of its index. If the index is over the limit, the write succeeds, but Claude Code returns an error telling Claude to rewrite it.<sup class="cite"><a href="#s01-3">3</a></sup> Put detail in topic files. Contradictions persist too: "If two instructions contradict each other, Claude may pick one arbitrarily."<sup class="cite"><a href="#s01-3">3</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: two writers can lose data</p>
+  <p>Tested: this book reproduced a lost update when two writers read the same old file and replaced it without locking. A controlled schedule proves possibility, not frequency; the test is in the companion repository, benchmarks/stores. Inside the repository, use one writer per checkout, or one branch and worktree each, commit edits and review the merge; git cannot recover an uncommitted edit overwritten in a shared checkout. Auto memory is not protected this way: all worktrees share one folder outside the repository, so run one writing session per repository at a time or turn it off in parallel worktrees. Have every cooperating writer lock the same lock file before reading and hold it through replacement; that prevents lost updates. Write a temporary file beside the target and rename it over the target so readers see no partial file. Neither prevents contradictions.</p>
+  <p>Beads' default embedded mode (the database runs inside <code>bd</code>) has one writer; several agents need server mode (a separate Dolt server; documented, not tested).<sup class="cite"><a href="#s01-8">8</a></sup> Divergent pushes were not tested: run <code>bd dolt pull</code> before each session, <code>bd dolt push</code> after it, and do not work on both machines between syncs.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: cloned memory is untrusted input</p>
+  <p>Before the first run, review the instructions your harness can load from a cloned repository, including imports and path-scoped rules, as you would a build script (Chapter 17: memory poisoning).</p>
+</aside>
+
+<aside class="callout unverified">
+  <p class="callout-label">Open questions</p>
+  <ul>
+    <li>Letta's default block <code>limit</code>: the documentation gives the unit (characters) and examples, not a default.<sup class="cite"><a href="#s01-7">7</a></sup></li>
+    <li>Devin Local per-file size caps: the official page states none.<sup class="cite"><a href="#s01-6">6</a></sup></li>
+  </ul>
+</aside>
+
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: start here</p>
+  <p>A few Markdown files, a short index and git give memory that people can read, review and move between tools, with no service to run.<sup class="cite"><a href="#s01-1">1</a>,<a href="#s01-2">2</a></sup> Keep CLAUDE.md to 200 lines or fewer and the auto memory index within its 200-line, 25KB cap. Add a task graph such as Beads to share a plan across sessions or machines (run <code>bd reclaim</code> to recover expired claims), and code-linked fields for notes about code that changes.</p>
+  <p>Move on when several users or writers need isolation (Chapter 08), facts need dates or contradiction handling (Chapter 14), you would rather have the model maintain cross-linked pages than curate by hand (Chapter 02), or an index plus grep misses paraphrased facts (Chapter 05, with embeddings from Chapter 03). Worked example: Chapter 21 keeps a painter's owner-edited procedures as Markdown files beside one SQLite file.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s01-1"><span class="src-title">Anthropic memory tool documentation</span> <span class="src-note">(official)</span><a class="url" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool">https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool</a></li>
+  <li id="s01-2"><span class="src-title">Letta, Context Repositories (2026-02-12)</span> <span class="src-note">(maintainer blog)</span><a class="url" href="https://www.letta.com/blog/context-repositories/">https://www.letta.com/blog/context-repositories/</a></li>
+  <li id="s01-3"><span class="src-title">Claude Code memory documentation, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://code.claude.com/docs/en/memory">https://code.claude.com/docs/en/memory</a></li>
+  <li id="s01-4"><span class="src-title">AGENTS.md</span> <span class="src-note">(project site)</span><a class="url" href="https://agents.md/">https://agents.md/</a></li>
+  <li id="s01-5"><span class="src-title">Cursor rules documentation</span> <span class="src-note">(official)</span><a class="url" href="https://cursor.com/docs/rules">https://cursor.com/docs/rules</a></li>
+  <li id="s01-6"><span class="src-title">Devin Local (formerly Windsurf) rules, hosted under Windsurf docs</span> <span class="src-note">(official)</span><a class="url" href="https://docs.windsurf.com/windsurf/cascade/memories">https://docs.windsurf.com/windsurf/cascade/memories</a></li>
+  <li id="s01-7"><span class="src-title">Letta memory blocks documentation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.letta.com/v1-sdk/memory/memory-blocks/">https://docs.letta.com/v1-sdk/memory/memory-blocks/</a></li>
+  <li id="s01-8"><span class="src-title">Beads README (gastownhall/beads)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/gastownhall/beads">https://github.com/gastownhall/beads</a></li>
+  <li id="s01-9"><span class="src-title">Beads release v1.3.4 (2026-11-04)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/gastownhall/beads/releases/tag/v1.3.4">https://github.com/gastownhall/beads/releases/tag/v1.3.4</a></li>
+  <li id="s01-10"><span class="src-title">MEX README, 0.9 beta, read 2026-11-20</span> <span class="src-note">(maintainer, not run)</span><a class="url" href="https://github.com/mex-memory/mex">https://github.com/mex-memory/mex</a></li>
+  <li id="s01-11"><span class="src-title">MEX package.json, 0.9.0-beta.1.1, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/mex-memory/mex/blob/main/package.json">https://github.com/mex-memory/mex/blob/main/package.json</a></li>
+  <li id="s01-12"><span class="src-title">MEX MIT license, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/mex-memory/mex/blob/main/LICENSE">https://github.com/mex-memory/mex/blob/main/LICENSE</a></li>
+  <li id="s01-13"><span class="src-title">OpenClaw documentation, Memory overview, read 2026-11-22</span> <span class="src-note">(official)</span><a class="url" href="https://docs.openclaw.ai/concepts/memory">https://docs.openclaw.ai/concepts/memory</a></li>
+  <li id="s01-14"><span class="src-title">OpenClaw MIT license, read 2026-11-22</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/openclaw/openclaw/blob/main/LICENSE">https://github.com/openclaw/openclaw/blob/main/LICENSE</a></li>
+  <li id="s01-15"><span class="src-title">GitHub Docs, Copilot Memory, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://docs.github.com/en/copilot/concepts/agents/copilot-memory">https://docs.github.com/en/copilot/concepts/agents/copilot-memory</a></li>
+  <li id="s01-16"><span class="src-title">LangGraph persistence documentation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.langchain.com/oss/python/langgraph/persistence">https://docs.langchain.com/oss/python/langgraph/persistence</a></li>
+  <li id="s01-17"><span class="src-title">GitHub blog, An agentic memory system for Copilot (2026-01-15, updated 2026-11-12)</span> <span class="src-note">(vendor post, own measurements)</span><a class="url" href="https://github.blog/ai-and-ml/github-copilot/building-an-agentic-memory-system-for-github-copilot/">https://github.blog/ai-and-ml/github-copilot/building-an-agentic-memory-system-for-github-copilot/</a></li>
+  <li id="s01-18"><span class="src-title">ClickHouse, Introducing Loom (2026-11-13); Apache-2.0</span> <span class="src-note">(vendor claim, not checked)</span><a class="url" href="https://clickhouse.com/blog/introducing-loom-agent-memory-that-keeps-up-with-your-code">https://clickhouse.com/blog/introducing-loom-agent-memory-that-keeps-up-with-your-code</a></li>
+  <li id="s01-19"><span class="src-title">Git diff documentation, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a></li>
+  <li id="s01-20"><span class="src-title">Claude Code skills documentation, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://code.claude.com/docs/en/skills">https://code.claude.com/docs/en/skills</a></li>
+  <li id="s01-21"><span class="src-title">memU README and pyproject.toml (0.11.0-beta.3), read 2026-11-20</span> <span class="src-note">(maintainer, not run)</span><a class="url" href="https://github.com/NevaMind-AI/memU">https://github.com/NevaMind-AI/memU</a></li>
+  <li id="s01-22"><span class="src-title">Pragmatic Engineer, Building Claude Code with Boris Cherny (2026-03-04)</span> <span class="src-note">(secondary, newsletter summary)</span><a class="url" href="https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny">https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny</a></li>
+  <li id="s01-23"><span class="src-title">Letta archival memory documentation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.letta.com/v1-sdk/memory/archival-memory/">https://docs.letta.com/v1-sdk/memory/archival-memory/</a></li>
+  <li id="s01-24"><span class="src-title">Anthropic, The components of agent memory (2026-11-06)</span> <span class="src-note">(official, own measurements)</span><a class="url" href="https://www.anthropic.com/research/components-of-agent-memory">https://www.anthropic.com/research/components-of-agent-memory</a></li>
+  <li id="s01-25"><span class="src-title">Beads installation guide</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/gastownhall/beads/blob/main/docs/getting-started/installation.md">https://github.com/gastownhall/beads/blob/main/docs/getting-started/installation.md</a></li>
+</ol>
+</section>
+
+</article>

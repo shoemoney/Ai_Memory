@@ -1,0 +1,25 @@
+    # --- stats ---
+    state.stats.cycles += 1
+    if copy_cycle:
+        state.stats.copy_cycles += 1
+        state.stats.copy_drafted += k
+        state.stats.copy_accepted += m
+        state.context_copy.observe(m, k)
+    else:
+        # A batch policy can lower state.depth below the drafts a row holds.
+        depth = max(state.depth, k)
+        if len(state.stats.depth_drafted) < depth:
+            pad = depth - len(state.stats.depth_drafted)
+            state.stats.depth_drafted.extend([0] * pad)
+            state.stats.depth_accepted.extend([0] * pad)
+        for j in range(k):
+            state.stats.depth_drafted[j] += 1
+            if j < m:
+                state.stats.depth_accepted[j] += 1
+            else:
+                break
+        state.stats.accepts += m
+    if m < k:
+        state.stats.rejects += 1
+    state.stats.sample_ms += (time.perf_counter() - t0) * 1000
+

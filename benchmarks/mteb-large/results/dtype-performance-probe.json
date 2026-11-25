@@ -1,0 +1,33 @@
+{
+  "hardware": "Apple M3 Ultra, 96 GB",
+  "shape_M_N_K": [
+    4096,
+    4096,
+    4096
+  ],
+  "quantization": "MLX affine Q4, group 64",
+  "shared_machine": true,
+  "model_or_quality_data_used": false,
+  "paired_alternating_order": true,
+  "seconds": {
+    "bfloat16": [
+      0.033293250016868114,
+      0.024546457978431135,
+      0.0360331250121817,
+      0.043426666990853846,
+      0.0366850410355255
+    ],
+    "float16": [
+      0.03248916700249538,
+      0.037012250046245754,
+      0.03754066600231454,
+      0.04869116598274559,
+      0.026575083029456437
+    ]
+  },
+  "median_seconds": {
+    "bfloat16": 0.0360331250121817,
+    "float16": 0.037012250046245754
+  },
+  "decision": "Keep bfloat16; this synthetic shared-machine probe did not show a float16 speed advantage. No embedding model was loaded or changed."
+}

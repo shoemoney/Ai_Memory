@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 14
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9bafce87b656b9fa26333570dda57999ef3e893f733a0535f5b5bee10f4e7f34",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-eee9431c-b8cf-401c-a8d1-d99cc42c342b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Looking for specific Avengers figures\",\n        \"Interested in particular characters like Iron Man, Captain America, Black Widow, or Thor\",\n        \"Interested in specific variants like comic-con exclusive, retailer exclusive, or limited edition figures\",\n        \"Interested in rare or hard-to-find figures like variant with specific accessory or unique paint application\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354999,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 2196,
+      "total_tokens": 2272,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Looking for specific Avengers figures\",\n        \"Interested in particular characters like Iron Man, Captain America, Black Widow, or Thor\",\n        \"Interested in specific variants like comic-con exclusive, retailer exclusive, or limited edition figures\",\n        \"Interested in rare or hard-to-find figures like variant with specific accessory or unique paint application\"\n    ]\n}",
+  "seconds": 14.715716464997968,
+  "prompt_tokens_local": 2196
+}

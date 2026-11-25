@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 6
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "43351cb25451d86557f15da63994a12481cc8f7ae768b24de222f66fa6400cb1",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-036f61dd-1fad-4f31-9993-83353c1b704c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Pregnancy at twenty-seven weeks brings an array of physical and emotional changes.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"A growing belly is the most noticeable physical change during this stage.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"Increased vaginal discharge, swollen hands and feet, leg cramps, varicose veins, stretch marks are other physical changes.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"The twenty-seventh week of pregnancy may bring emotional ups and downs, mood swings, anxiety, and irritability.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"Prenatal exercises like yoga or swimming can help with backaches and improve overall well-being.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"Eating smaller meals throughout the day, avoiding spicy or fatty foods, and propping up pillows for support may alleviate heartburn.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"Staying hydrated and engaging in regular physical activity can also help combat constipation.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354616,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 309,
+      "prompt_tokens": 1863,
+      "total_tokens": 2172,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Pregnancy at twenty-seven weeks brings an array of physical and emotional changes.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"A growing belly is the most noticeable physical change during this stage.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"Increased vaginal discharge, swollen hands and feet, leg cramps, varicose veins, stretch marks are other physical changes.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"The twenty-seventh week of pregnancy may bring emotional ups and downs, mood swings, anxiety, and irritability.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"Prenatal exercises like yoga or swimming can help with backaches and improve overall well-being.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"Eating smaller meals throughout the day, avoiding spicy or fatty foods, and propping up pillows for support may alleviate heartburn.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"0\",\n            \"text\": \"Staying hydrated and engaging in regular physical activity can also help combat constipation.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 46.966210714992485,
+  "prompt_tokens_local": 1863
+}

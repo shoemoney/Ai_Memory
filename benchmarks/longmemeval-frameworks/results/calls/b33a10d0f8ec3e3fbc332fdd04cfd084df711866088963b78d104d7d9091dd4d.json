@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2a88083fec20eff9f3c9f87a1b50aa27cbc9f087d797cad53cab4a8ecf3185a6",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4918b30d-7406-4e64-9e59-384c49939fe1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"DRIVES\", \"fact\": \"Trigger drives a Mustang.\", \"valid_at\": \"2023-05-23T21:06:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795369811,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 8677,
+      "total_tokens": 8755,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 159
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"DRIVES\", \"fact\": \"Trigger drives a Mustang.\", \"valid_at\": \"2023-05-23T21:06:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 56.48044115898665,
+  "prompt_tokens_local": 8677
+}

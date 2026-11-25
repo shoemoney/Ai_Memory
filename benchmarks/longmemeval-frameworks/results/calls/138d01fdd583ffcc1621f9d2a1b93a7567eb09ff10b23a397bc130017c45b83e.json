@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 32
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f705fce8dabc91ae66ce0791d575b5cd3db55157b1c756ad8c08d89d43c1cd9d",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5fdaf5ee-038c-4af4-a9a6-191ff7dce469",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Badgers are affected by droughts and may move to new areas in search of resources\",\n        \"Badgers are adaptable animals and can adjust to changes in their environment\",\n        \"Badgers are primarily nocturnal animals, but they can come out during the day if needed\",\n        \"Badgers have natural predators such as wolves, coyotes, mountain lions, and birds of prey\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366164,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 89,
+      "prompt_tokens": 2393,
+      "total_tokens": 2482,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Badgers are affected by droughts and may move to new areas in search of resources\",\n        \"Badgers are adaptable animals and can adjust to changes in their environment\",\n        \"Badgers are primarily nocturnal animals, but they can come out during the day if needed\",\n        \"Badgers have natural predators such as wolves, coyotes, mountain lions, and birds of prey\"\n    ]\n}",
+  "seconds": 8.825095608975971,
+  "prompt_tokens_local": 2393
+}

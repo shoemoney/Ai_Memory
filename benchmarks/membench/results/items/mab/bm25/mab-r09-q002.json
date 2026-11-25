@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q002",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "092c52b7005aee0fb7e17f9e0ae4828781b47a3e043c47d74d774258382cdfcb",
+  "reference_sha256": "7056d4f9432db4a4fc6a9afec43cc7736726958ab069ffe1fadad7d161f72870",
+  "method": "bm25",
+  "answer": "Person361 explained to Person268 how Captain Person267 died.",
+  "response": {
+    "text": "Person361 explained to Person268 how Captain Person267 died.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 19,
+      "prompt_tokens": 3212,
+      "total_tokens": 3231,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 8.664235880001797,
+    "request_sha256": "81e75f0300cec04f7b62dc873675cdd323cb521d7697880b3ca13b348fe4f7cd",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    5,
+    159,
+    151,
+    206,
+    491,
+    12,
+    504,
+    14,
+    263,
+    16,
+    501,
+    283,
+    502,
+    300,
+    428,
+    15,
+    4,
+    496,
+    11,
+    492
+  ],
+  "retrieval_scores": [
+    159.32220583614566,
+    139.1054185391239,
+    133.7956806547933,
+    133.76178151943225,
+    132.8505909697723,
+    132.47146075956496,
+    132.28600870673176,
+    131.5879562924346,
+    131.5547259523928,
+    130.9298547261963,
+    130.8641059940612,
+    129.6424271045629,
+    128.9099072399308,
+    128.07738930221552,
+    127.24870890225418,
+    127.17941994584223,
+    126.94453561159189,
+    126.33419028684085,
+    126.24645022819905,
+    125.72515854442972
+  ],
+  "retrieval_seconds": 0.03210530699288938,
+  "provided_context_sha256": "59e503edfe13c2b9dd9d3df6f542336d40b60101c15183d4ed8cb0543801e57e",
+  "provided_context_tokens": 2914,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "c9a12f83c06f2f53bc7b40a0a049d0d800e9f7c5874fdcf6a9fab434ed159159",
+    "raw_answer_sha256": "e3e71561e940176479d2a3aae663f88bd6d5e7951c5dcbefeb8aaee9bd37ca05",
+    "answer_redacted": false
+  }
+}

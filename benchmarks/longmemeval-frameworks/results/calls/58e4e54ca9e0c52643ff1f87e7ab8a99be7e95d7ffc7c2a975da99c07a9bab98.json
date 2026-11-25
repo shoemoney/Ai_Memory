@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "25233d5198aa7a1c38d41cb4d1d0abe413a17207b5a1160c4e24c4886acf7ca8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-932180b2-8b6d-4d4d-86ae-51cd39459abd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"The Mustang is a model of the Trigger vehicle.\", \"valid_at\": \"2023-05-21T12:43:00Z\"}, {\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"LOCATED_IN\", \"fact\": \"Belmont Arts Center is located in Riverside Park.\", \"valid_at\": \"2023-05-21T12:43:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795368012,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 142,
+      "prompt_tokens": 9885,
+      "total_tokens": 10027,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"The Mustang is a model of the Trigger vehicle.\", \"valid_at\": \"2023-05-21T12:43:00Z\"}, {\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"LOCATED_IN\", \"fact\": \"Belmont Arts Center is located in Riverside Park.\", \"valid_at\": \"2023-05-21T12:43:00Z\"}]}",
+  "seconds": 29.420654572022613,
+  "prompt_tokens_local": 9885
+}

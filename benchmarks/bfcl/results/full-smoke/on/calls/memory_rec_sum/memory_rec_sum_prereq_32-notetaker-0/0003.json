@@ -1,0 +1,249 @@
+{
+  "request_sha256": "312f0e9be856cfba97f8c4faf833d81f11820d1f3db47b9339da22b2fe4d9a08",
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a personal organization assistant. Capture key information from conversations, like tasks, deadlines, and preferences, and use it to give reliable reminders and answers in future sessions.\n\nYou have access to an advanced memory system, which is persistent across multiple conversations with the user, and can be accessed in a later interactions. You should actively manage your memory data to keep track of important information, ensure that it is up-to-date and easy to retrieve to provide personalized responses to the user later.\n\nHere is the content of your memory system from previous interactions:\nThere is no content in the memory at this point.\n"
+      },
+      {
+        "role": "user",
+        "content": "Monday: Team meeting ran over by 30 minutes. Need to finalize Q1 budget report before Friday. IT updated security protocols—change passwords ASAP. Client call with Jacob—delayed till Wednesday."
+      },
+      {
+        "content": "",
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "id": "qsgzfbb386bhpaLQq9C6AXNpTKf10KGa",
+            "function": {
+              "arguments": "{\"text\":\"Monday: Team meeting ran over by 30 minutes. Need to finalize Q1 budget report before Friday. IT updated security protocols—change passwords ASAP. Client call with Jacob—delayed till Wednesday.\"}",
+              "name": "memory_append"
+            },
+            "type": "function"
+          }
+        ],
+        "reasoning_content": "The user is sharing important information about their Monday's activities:\n1. Team meeting ran over by 30 minutes\n2. Need to finalize Q1 budget report before Friday\n3. IT updated security protocols - change passwords ASAP\n4. Client call with Jacob - delayed till Wednesday\n\nThis is important information that should be captured for future sessions. I should append this to memory to keep track of important tasks and deadlines.\n\nLet me append this information to memory."
+      },
+      {
+        "role": "tool",
+        "content": "{\"status\": \"Memory appended.\"}",
+        "tool_call_id": "qsgzfbb386bhpaLQq9C6AXNpTKf10KGa"
+      },
+      {
+        "content": "I've captured the important information from Monday's meeting. Here's what I've noted:\n\n**Key Tasks & Deadlines:**\n- **Q1 Budget Report:** Must be finalized before Friday\n- **Security:** Passwords need to be changed ASAP (IT updated protocols)\n- **Client Call:** With Jacob, delayed until Wednesday\n\n**Important Reminder:** Please prioritize the Q1 budget report before Friday, and ensure your passwords are updated immediately after the security update.",
+        "role": "assistant",
+        "reasoning_content": "Good, I've successfully appended the important information to memory. Now I should provide a summary of what I've captured and remind the user about the key tasks and deadlines."
+      },
+      {
+        "role": "user",
+        "content": "Tuesday: System downtime from 10 AM - 12 PM, slowed down workflow. HR sent updated benefits package—review before next month’s deadline. Sent follow-up emails to vendors, waiting on response."
+      }
+    ],
+    "model": "membench-bfcl-Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_append",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Append a new text to the end of the memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The text to append to the memory. "
+              }
+            },
+            "required": [
+              "text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_clear",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Clear all content in the memory, including any from previous interactions. This operation is irreversible. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_replace",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Replace a specific text in the memory with new text. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "old_text": {
+                "type": "string",
+                "description": "The text to be replaced in the memory."
+              },
+              "new_text": {
+                "type": "string",
+                "description": "The new text to replace the old text."
+              }
+            },
+            "required": [
+              "old_text",
+              "new_text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_retrieve",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Retrieve the current content of the memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "memory_content": {
+                "type": "string",
+                "description": "The current content of the memory."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "memory_update",
+          "description": "This tool belongs to the memory suite, which provides APIs to manage memory data via recursive summarization. Tool description: Update the memory with new text. This will replace the existing memory content. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The new text to set as the memory. "
+              }
+            },
+            "required": [
+              "text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      }
+    ],
+    "max_tokens": 16384,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-cSbACNB2rALK6vvyQADgtIRceZmIOKNw",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "B7MrcKZErzyHxNwQiiTLvypULjUiIyq8",
+              "function": {
+                "arguments": "{\"text\":\"Tuesday: System downtime from 10 AM - 12 PM, slowed down workflow. HR sent updated benefits package—review before next month's deadline. Sent follow-up emails to vendors, waiting on response.\"}",
+                "name": "memory_append"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is sharing information about Tuesday's events. I need to capture this information for future sessions. Let me append this to memory."
+        }
+      }
+    ],
+    "created": 1795292688,
+    "model": "membench-bfcl-Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 98,
+      "prompt_tokens": 1147,
+      "total_tokens": 1245,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 908,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 908,
+      "prompt_n": 239,
+      "prompt_ms": 151.073,
+      "prompt_per_token_ms": 0.6321046025104603,
+      "prompt_per_second": 1582.0166409616543,
+      "predicted_n": 98,
+      "predicted_ms": 1230.98,
+      "predicted_per_token_ms": 12.690515463917526,
+      "predicted_per_second": 78.79900567027896
+    }
+  },
+  "seconds": 1.3949623210064601,
+  "completed_at": 1795292688.449988
+}

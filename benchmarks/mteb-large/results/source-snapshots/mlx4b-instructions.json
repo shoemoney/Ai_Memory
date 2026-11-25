@@ -1,0 +1,45 @@
+{
+  "mteb_version": "2.27.20",
+  "instructions": {
+    "SciFact": {
+      "text": {
+        "query": "Instruct: Given a scientific claim, retrieve documents that support or refute the claim\nQuery:",
+        "document": ""
+      },
+      "vl": {
+        "query": "Given a scientific claim, retrieve documents that support or refute the claim.",
+        "document": "Represent the user's input."
+      }
+    },
+    "NFCorpus": {
+      "text": {
+        "query": "Instruct: Given a question, retrieve relevant documents that best answer the question\nQuery:",
+        "document": ""
+      },
+      "vl": {
+        "query": "Given a question, retrieve relevant documents that best answer the question.",
+        "document": "Represent the user's input."
+      }
+    },
+    "ArguAna": {
+      "text": {
+        "query": "Instruct: Given a claim, find documents that refute the claim\nQuery:",
+        "document": ""
+      },
+      "vl": {
+        "query": "Given a claim, find documents that refute the claim.",
+        "document": "Represent the user's input."
+      }
+    },
+    "Vidore3HrRetrieval": {
+      "text": {
+        "query": "Instruct: Find a screenshot that is relevant to the user's question.\nQuery:",
+        "document": ""
+      },
+      "vl": {
+        "query": "Find a screenshot that is relevant to the user's question.",
+        "document": "Represent the user's input."
+      }
+    }
+  }
+}

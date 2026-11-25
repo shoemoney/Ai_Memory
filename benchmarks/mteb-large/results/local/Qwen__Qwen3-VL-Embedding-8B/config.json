@@ -1,0 +1,37 @@
+{
+  "model": "Qwen/Qwen3-VL-Embedding-8B",
+  "revision": "2c4565515e0f265c6511776e7193b22c0968ddc7",
+  "device": "mlx",
+  "max_length": 512,
+  "batch_size": 32,
+  "transport_batching": "global character-length sort; restore original order",
+  "dimension": null,
+  "seed": 20261121,
+  "threads": 4,
+  "dtype": "torch.bfloat16",
+  "execution": {
+    "engine": "MLX",
+    "compute_dtype": "bfloat16",
+    "bits": 4,
+    "group_size": 64,
+    "quantization": {
+      "method": "MLX affine, streaming CPU conversion, no calibration",
+      "vision": "bfloat16; not quantized"
+    },
+    "mlx_embeddings_version": "0.1.0",
+    "mlx_version": "0.32.4",
+    "quantizer_sha256": "c6eccbf503e0452d04ee4b3505a7334853d36e1e4958953556f2f6f40d1920f1",
+    "backend_sha256": "ee16bdc49a39e06055599bbaeedc983187f4eab840f7ec14073fbf1bafd3997b",
+    "backbone": "Qwen3 VL embedding backbone; unused language-model output head omitted",
+    "instructions_sha256": "73a24aac2ac7d2fa4839b5898019acbebd6af1b0c843cc809271c1cfe94cd05f"
+  },
+  "versions": {
+    "mteb": "2.27.20",
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "sentence-transformers": "6.3.0",
+    "datasets": "5.2.0",
+    "numpy": "2.5.5",
+    "pytrec-eval-terrier": "0.5.11"
+  }
+}

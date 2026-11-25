@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q030",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "41438f28d4e872714b40c900005e772c64b86822833d785126b847270b17ae4c",
+  "reference_sha256": "3aba859db0dc22f097fd9f5c88131dada7d6e61e6c9b5a26a59389d3631efa55",
+  "method": "bm25",
+  "answer": "Person646 revealed that Person716 was at Twelve Oaks.",
+  "response": {
+    "text": "Person646 revealed that Person716 was at Twelve Oaks.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 16,
+      "prompt_tokens": 3142,
+      "total_tokens": 3158,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 18.704289018001873,
+    "request_sha256": "11a0a650b3067fa982773950f36146d364508e017fe24843c5898e825d0d88d0",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    149,
+    173,
+    407,
+    154,
+    150,
+    236,
+    143,
+    112,
+    187,
+    324,
+    151,
+    471,
+    170,
+    249,
+    360,
+    114,
+    186,
+    330,
+    261,
+    113
+  ],
+  "retrieval_scores": [
+    107.36377000770385,
+    101.14032950888537,
+    99.49486705262639,
+    97.70404434985993,
+    97.06208351151993,
+    95.45283664028426,
+    93.02517982201184,
+    93.02115702940408,
+    92.7601017502059,
+    92.4054658039769,
+    92.15187592934754,
+    91.8637888121695,
+    91.36352861978726,
+    91.15811503669269,
+    90.89398760695906,
+    90.7012214163324,
+    89.74543716998863,
+    89.54344698709266,
+    88.95147429539702,
+    88.92716503290274
+  ],
+  "retrieval_seconds": 0.04231008999340702,
+  "provided_context_sha256": "f7042b29fa5b0a138fae6153d187eb7d0d00e97482796a96ca2daaaa1c5743cd",
+  "provided_context_tokens": 2811,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "fcae8a556baa406a73df2040e1f7066794ad1e33b0140e2106d704d735faaa6d",
+    "raw_answer_sha256": "f50d9039d587012dfa7ee531c74af56e97e6d0cd75d5cb41bffe921ef4ed1f3f",
+    "answer_redacted": false
+  }
+}

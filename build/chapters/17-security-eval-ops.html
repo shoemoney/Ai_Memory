@@ -1,0 +1,569 @@
+<article class="chapter essay" data-ch="17" data-part="f" data-running="Security, evaluation and operations">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part F &middot; Chapter 17</p>
+  <div class="opener-num" aria-hidden="true">17</div>
+  <h1>Security, evaluation and operations</h1>
+  <p class="opener-summary">Memory attacks, deletion, evaluation and operating costs.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Kind</p>
+      <p class="glance-value">Essay</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Covers</p>
+      <p class="glance-value">Threats, deletion, evaluation, operations</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Tested here</p>
+      <p class="glance-value">The write protocol and benchmarks</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Teams making prototype memory dependable.</p>
+    </div>
+  </div>
+</header>
+
+
+
+<section>
+<h2>Threats</h2>
+<div class="plain">
+  <p class="lead">Memory carries text into later prompts, making every writer a potential attacker.</p>
+  <p>OWASP calls this ASI06, Memory and Context Poisoning.<sup class="cite"><a href="#s17-1">1</a></sup> An OWASP co-lead treats memory, hooks (automatic harness-event scripts) and configuration as trusted environment; edits give attackers standing access.<sup class="cite"><a href="#s17-2">2</a></sup></p>
+</div>
+
+
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Memory poisoning</dt><dd>False or hostile text saved for later sessions.</dd>
+  </dl>
+</aside>
+
+<h3>Where untrusted text enters and where it comes back</h3>
+<figure class="diagram">
+<svg viewBox="0 0 600 290" role="img" aria-label="Diagram: untrusted text enters a write step and is saved to the memory store. Retrieval returns it into the prompt, and the model's tool output feeds back in as more untrusted text.">
+  <text class="d-label" x="20" y="18">Write path</text>
+  <rect class="d-box soft" x="20" y="28" width="150" height="86" rx="4"/>
+  <text class="d-title" x="95" y="52" text-anchor="middle">Untrusted text</text>
+  <text class="d-sub" x="95" y="72" text-anchor="middle">web pages, tool output</text>
+  <text class="d-sub" x="95" y="88" text-anchor="middle">repo files, uploads</text>
+  <text class="d-sub" x="95" y="104" text-anchor="middle">other users' messages</text>
+
+  <rect class="d-box accent" x="225" y="28" width="150" height="86" rx="4"/>
+  <text class="d-title" x="300" y="52" text-anchor="middle">Write step</text>
+  <text class="d-sub" x="300" y="72" text-anchor="middle">extractor or agent</text>
+  <text class="d-sub" x="300" y="88" text-anchor="middle">checks source, redacts,</text>
+  <text class="d-sub" x="300" y="104" text-anchor="middle">tags trust level</text>
+
+  <rect class="d-box accent" x="430" y="28" width="150" height="86" rx="4"/>
+  <text class="d-title" x="505" y="52" text-anchor="middle">Memory store</text>
+  <text class="d-sub" x="505" y="72" text-anchor="middle">files, vectors, graph</text>
+  <text class="d-sub" x="505" y="88" text-anchor="middle">tagged with tenant,</text>
+  <text class="d-sub" x="505" y="104" text-anchor="middle">source and trust level</text>
+
+  <text class="d-label" x="20" y="176">Read path</text>
+  <rect class="d-box dark" x="20" y="186" width="150" height="86" rx="4"/>
+  <text class="d-title d-on-dark" x="95" y="210" text-anchor="middle">Model</text>
+  <text class="d-sub d-on-dark" x="95" y="230" text-anchor="middle">reads the prompt</text>
+  <text class="d-sub d-on-dark" x="95" y="246" text-anchor="middle">and may call tools</text>
+
+  <rect class="d-box" x="225" y="186" width="150" height="86" rx="4"/>
+  <text class="d-title" x="300" y="210" text-anchor="middle">Prompt assembly</text>
+  <text class="d-sub" x="300" y="230" text-anchor="middle">recalled text goes in as</text>
+  <text class="d-sub" x="300" y="246" text-anchor="middle">quoted data with its label</text>
+
+  <rect class="d-box" x="430" y="186" width="150" height="86" rx="4"/>
+  <text class="d-title" x="505" y="210" text-anchor="middle">Retrieval</text>
+  <text class="d-sub" x="505" y="230" text-anchor="middle">tenant filter first,</text>
+  <text class="d-sub" x="505" y="246" text-anchor="middle">then rank, log every read</text>
+
+  <path class="d-line" d="M170 71 H223"/>
+  <path class="d-line" d="M375 71 H428"/>
+  <path class="d-line accent" d="M505 114 V184"/>
+  <path class="d-line" d="M428 229 H377"/>
+  <path class="d-line" d="M223 229 H172"/>
+  <path class="d-line accent dash" d="M95 184 V116"/>
+
+  <rect class="d-box solid" x="188" y="46" width="18" height="18" rx="9"/>
+  <text class="d-title d-on-dark" x="197" y="59" text-anchor="middle">1</text>
+  <rect class="d-box solid" x="516" y="140" width="18" height="18" rx="9"/>
+  <text class="d-title d-on-dark" x="525" y="153" text-anchor="middle">2</text>
+  <rect class="d-box solid" x="188" y="198" width="18" height="18" rx="9"/>
+  <text class="d-title d-on-dark" x="197" y="211" text-anchor="middle">3</text>
+  <rect class="d-box solid" x="105" y="140" width="18" height="18" rx="9"/>
+  <text class="d-title d-on-dark" x="114" y="153" text-anchor="middle">4</text>
+</svg>
+<figcaption><b>Figure 1.</b> Marker 1: poisoned text is saved. Marker 2: a filter bug returns another tenant's memory. Marker 3: retrieved text is obeyed as an instruction. Marker 4: tool output from a poisoned run re-enters as new untrusted text.</figcaption>
+</figure>
+
+<aside class="callout tip">
+  <p class="callout-label">Rule: retrieved memory is data, never instructions</p>
+  <p>Quote retrieved text with application-controlled source/trust labels (provenance and review state). Block edits to hooks, configuration, system prompts and tool allowlists. Review tool/web content before writes; test every release, including benign writes against reviewers (Release gate).</p>
+</aside>
+
+<h3>Published attacks and reduced labs</h3>
+<p>MINJA plants memories through normal queries and outputs, without store write access.<sup class="cite"><a href="#s17-3">3</a></sup> AgentPoison optimizes a query trigger to retrieve poisoned memory or knowledge-base entries.<sup class="cite"><a href="#s17-4">4</a></sup></p>
+<p>Published figures were not reproduced. Reduced poisoning labs follow; inversion is discussed below.</p>
+<p class="table-title">Reported figures (as of 20 November 2026)</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>95.6% and 98.5%</td><td>MINJA injection success (record stored) on two GPT-4 EHRAgent (clinical-records agent) datasets, with attack success (the agent then acts on it) of 57.0% and 90.0%.<sup class="cite"><a href="#s17-3">3</a>,<a href="#s17-5">5</a></sup></td><td class="src"><span class="pill secondary">Paper, restated</span></td></tr>
+    <tr><td>Above 80%</td><td>AgentPoison attack success at a poison rate below 0.1%, with less than 1% effect on normal task performance.<sup class="cite"><a href="#s17-4">4</a></sup></td><td class="src"><span class="pill official">Authors' paper</span></td></tr>
+    <tr><td>92%</td><td>Exact recovery of 32-token passages (Natural Questions dataset) from the open GTR-base embedding model; a commercial embedding API, not run here, reached 60.9% on MSMARCO.<sup class="cite"><a href="#s17-6">6</a></sup></td><td class="src"><span class="pill official">Authors' paper</span></td></tr>
+  </tbody>
+</table>
+<p>Local MINJA and AgentPoison labs used Qwen2.5-3B-Instruct Q4_K_M, 100 trials per arm (companion repository, benchmarks/security; revision pinned in manifest). Defenses ran together: the same model reviewing writes, a recall filter accepting only records the application labels trusted/reviewed, and retrieved text quoted with source labels. MINJA exposed shopping actions without reasoning traces; 0/100 searches redirected with or without defenses, measuring only defense costs. AgentPoison used arithmetic and a weaker trigger search: attack success was 99/100 undefended and 0/100 defended, but review rejected 100/100 harmless writes. These rates are not comparable with the papers'. This unusable reviewer needs calibration on private benign/hostile writes.</p>
+<p>Combined defenses cannot reveal which blocked attacks or reduced accuracy. Separate costs were measured: harmless-write rejection and ordinary-answer accuracy on existing records. MINJA answer accuracy fell from 100/100 to 71/100 with defenses. AgentPoison accuracy was 91/100 clean, 90/100 poisoned and 77/100 under attack with defenses. Poisoning cost one percentage point (95% interval 0.0 to 3.0 percentage points), too imprecise to confirm or refute the paper's less-than-1% claim. High recall can coexist with poison; include poisoning regression probes.</p>
+
+<h3>A single interaction can persist</h3>
+<p>InjecMEM crafts a message the agent stores and retrieves for a targeted topic, without store access. Released write/retrieval classifiers offer no guarantees. Test targeted topics and unrelated benign queries.<sup class="cite"><a href="#s17-7">7</a></sup></p>
+<p>A reduced lab directly inserted the released 7B-family-optimized payload, skipping extraction, compaction, fresh optimization and full MemoryOS tiered memory management. Payload retrieval and attack success were each 0/100; conditional success is undefined without retrievals. This cannot assess the paper's attack.</p>
+
+<p>Persistent injections have reached ChatGPT memory through untrusted content and Claude Code memory and hooks through a cloned repository; both were fixed.<sup class="cite"><a href="#s17-8">8</a></sup><sup class="cite"><a href="#s17-9">9</a></sup></p>
+
+<h3>Poisoned learned skills</h3>
+<p>SkillJack disguises malicious experiences as durable skills surviving source deletion.<sup class="cite"><a href="#s17-10">10</a></sup> Controls to try:</p>
+<ul>
+<li>Link skills to source experiences.</li>
+<li>Require review plus benign and hostile activation tests before promotion.</li>
+<li>Revoke skills with their sources; test deletion across layers.</li>
+</ul>
+
+<h3>Detecting direct store tampering</h3>
+<p>A September 2026 preprint tested store edits in LangGraph's SQLite checkpointer 3.1.1, Letta 0.16.8 and Mem0 2.0.20. All 15 edits reportedly passed silently, including forged insertions. The attacker has storage access; results cover only these pinned versions.<sup class="cite"><a href="#s17-11">11</a></sup></p>
+<p>Locally, the five edit classes, forged insertions included, were accepted in all 1,500 trials on those three releases (15 edit and release cells, 100 repeats each). Per-store keyed hash chains, keys/latest hashes held externally, caught all 1,500 storage-only attacks. Key management, concurrent writers and performance were not tested. Controls to try:</p>
+<ul>
+<li>An append-only audit log whose entries hash the previous entry.</li>
+<li>Signed writes, with signing keys kept outside the store.</li>
+<li>An independently retained signed log head detecting truncation.</li>
+<li>Check chains/signatures on every read/restore; audit access/failures. On failure, quarantine, stop serving and alert; recover from an independently verified log head. Never re-sign suspect state.</li>
+</ul>
+<p>OWASP recommends tamper detection, read-only log copies and monitored log access.<sup class="cite"><a href="#s17-12">12</a></sup></p>
+
+<h3>Cross-user leakage</h3>
+<p>Shared vector databases can leak memories across users. OWASP's LLM08 entry recommends permission-aware stores, logical partitioning, source validation and immutable retrieval logs.<sup class="cite"><a href="#s17-13">13</a></sup> Use store-enforced row policies or credentials restricted to a tenant partition. With shared credentials spanning partitions, isolation depends on the trusted retrieval service.<sup class="cite"><a href="#s17-14">14</a></sup> Bind namespaces to authenticated identity; probe cross-user IDs in vector/keyword search, graph expansion, summaries, caches and restored indexes.</p>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: checkpoint stores have had real CVEs</p>
+  <p>Check installed langgraph-checkpoint and langgraph-checkpoint-sqlite. The SQLite checkpointer saves per-step thread state; langgraph-checkpoint-sqlite 3.0.1 fixes CVE-2025-67644, a SQL injection in its metadata filter.<sup class="cite"><a href="#s17-15">15</a></sup> CVE-2025-64439, a deserialization flaw, is fixed in langgraph-checkpoint 3.0.0. Check Point reports the two chain to reach code execution.<sup class="cite"><a href="#s17-16">16</a></sup> Never let end users control checkpoint history filters, and delete checkpoints with the thread as personal data.</p>
+</aside>
+
+<h3>Inversion, secrets and personal data</h3>
+<p>Embeddings can reveal source text, so a vector index is not anonymized.<sup class="cite"><a href="#s17-6">6</a></sup> A reduced local attack on 4-bit GTR-base and Vec2Text models (five correction rounds, where the paper uses 50 plus a wider search) exactly recovered 0/100 synthetic 32-token texts, though the output shared most of its words with the original (word overlap 0.724); it does not match the published 92%. Exclude secrets at write time; reference them by ID. The lab embedded bare opaque references and vaulted text separately, removing semantic matching for those records; retrieval utility was unmeasured.</p>
+
+
+
+
+</section>
+
+<section>
+<h2>Privacy and deletion</h2>
+<p>Delete across the source records and everything derived from them. Engines differ: PostgreSQL retains dead rows until vacuum makes space reusable, usually without returning it to the operating system.<sup class="cite"><a href="#s17-17">17</a></sup> Check logical invisibility, disk reclamation and backup erasure separately.</p>
+
+<p class="table-title">What "delete" leaves behind, by store type</p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c36"><col class="c44"></colgroup>
+  <thead><tr><th>Store</th><th>Copies to account for</th><th>Action and check</th></tr></thead>
+  <tbody>
+    <tr><td>Files (Markdown, JSON)</td><td>Version history, editor backups and sync copies.</td><td>Rewrite files; purge history and backups.</td></tr>
+    <tr><td>Vector index</td><td>Derived vectors, index files, replicas and snapshots. Graph indexes such as HNSW usually mark deletes and reclaim only at vacuum, compaction or rebuild (Chapters 08 and 11).</td><td>Remove searchable records and verify with queries. Follow the engine's reclamation policy; expire affected backups.</td></tr>
+    <tr><td>Graph</td><td>Derived edges, summaries and community nodes.</td><td>Link every derived item to its source; delete both, then query by source ID: expect nothing.</td></tr>
+    <tr><td>Caches</td><td>Embeddings of summaries, cached answers, saved model KV-cache files (attention state for resuming prompts) and prompt caches.</td><td>Invalidate every cache keyed to the source. Persisted KV state is sensitive derived data.</td></tr>
+    <tr><td>Model weights</td><td>Learned parameters are unaffected by a source-row delete.</td><td>Do not promise erasure from weights through a database delete. Exclude personal memory from training by default.</td></tr>
+    <tr><td>Backups and logs</td><td>Full copies of all the above, plus logs that name the memory.</td><td>Schedule backup expiry, or use per-tenant keys so destroying the key makes the copies unreadable.</td></tr>
+  </tbody>
+</table>
+
+<p>Crypto-shredding destroys encryption keys to make data unreadable. Every copy must use that key, without recoverable key copies. Volume encryption cannot selectively erase one tenant while preserving others. Inventory plaintext exports/logs and derived data surviving key destruction.</p>
+<p>Inventory source/derived copies, erasure/retention deadlines and completion records. Scope retention exceptions, restrict access, set expiry and test absence across layers. Agree requirements with your privacy team; this is no legal-compliance determination.<sup class="cite"><a href="#s17-18">18</a></sup></p>
+
+</section>
+
+<section>
+<h2>Evaluation</h2>
+<p>Public benchmarks compare ideas; private tests check your data. Separate reported scores from replications.</p>
+
+<h3>Public benchmarks and their limits</h3>
+<p class="table-title">Six benchmarks used for memory systems</p>
+<table class="data">
+  <colgroup><col class="c22"><col class="c40"><col class="c38"></colgroup>
+  <thead><tr><th>Benchmark</th><th>What it tests</th><th>Known limit</th></tr></thead>
+  <tbody>
+    <tr><td>LoCoMo (2024)</td><td>Ten long conversations test answers, event summaries and dialogue.<sup class="cite"><a href="#s17-19">19</a></sup></td><td>It tests neither deletion nor poisoning. An independent audit found incorrect answers; the official issue thread records inconsistent judging and maintainers' acknowledgment of data-quality concerns.<sup class="cite"><a href="#s17-20">20</a></sup></td></tr>
+    <tr><td>LongMemEval (ICLR 2025)</td><td>500 chat-history questions test extraction, multi-session and temporal reasoning, updates and abstention.<sup class="cite"><a href="#s17-21">21</a></sup></td><td>It tests chat answers, not poisoning or deletion.</td></tr>
+    <tr><td>MemoryAgentBench (2025, v4 June 2026)</td><td>Multi-turn tasks test retrieval, test-time learning, long-range understanding and selective forgetting.<sup class="cite"><a href="#s17-22">22</a></sup></td><td>Selective forgetting, not erasure or poisoning.</td></tr>
+    <tr><td>MemoryArena (2026)</td><td>Interdependent tasks across sessions: navigation, planning, search and reasoning.<sup class="cite"><a href="#s17-23">23</a></sup></td><td>Covers only its designed environments.</td></tr>
+    <tr><td>DolphinBench (2026)</td><td>600 knowledge-work tasks, scored on completion, total cost and latency.<sup class="cite"><a href="#s17-24">24</a></sup></td><td>Three personas; no poisoning or erasure test.</td></tr>
+    <tr><td>HaluMem (EMNLP 2026)</td><td>It tests hallucinations during extraction, updates and answers.<sup class="cite"><a href="#s17-25">25</a></sup></td><td>Its dialogue datasets still need security tests.</td></tr>
+  </tbody>
+</table>
+
+<p>MemoryAgentBench, MemoryArena and HaluMem descriptions use public releases, without published scores. Using a local Qwen2.5-14B-Instruct Q4_K_M reader, 150 paired questions per method, MemoryAgentBench's EventQA split scored 95.3% with full context, 86.0% with BM25 RAG (keyword ranking, Chapter 05) and 76.7% with dense RAG. HaluMem QA scored 41.3%, 41.3% and 32.7%, respectively. A five-step MemoryArena pilot showed only that the pipeline runs. These do not measure all four MemoryAgentBench competencies, HaluMem extraction/updates or MemoryArena action completion (intervals: benchmarks/membench).</p>
+
+<p>Local LoCoMo, 22 November 2026: 123 matched questions, four of ten conversations, Qwen2.5-14B on an Apple M3 Ultra, 96 GB, CPU MiniLM embeddings, up to 20 retrieved items, and the same model judging by three-vote majority (harness: benchmarks/locomo). Mem0's LoCoMo scores are vendor results;<sup class="cite"><a href="#s17-26">26</a></sup> the published column is Wolff and Bennati's, with different settings, unreproduced here; graph shortfalls were attributed to incomplete retrieval.<sup class="cite"><a href="#s17-27">27</a></sup></p>
+<p class="table-title">LoCoMo: local and published scores under different settings</p>
+<table class="data">
+  <colgroup><col class="c30"><col class="c25"><col class="c25"><col class="c20"></colgroup>
+  <thead><tr><th>System</th><th>Local score</th><th>95% interval</th><th>Published (%)</th></tr></thead>
+  <tbody>
+    <tr><td>Full context</td><td>71/123, 57.7%</td><td>48.9% to 66.1%</td><td>77.16</td></tr>
+    <tr><td>Mem0 open source</td><td>66/123, 53.7%</td><td>44.9% to 62.2%</td><td>81.08</td></tr>
+    <tr><td>Dense RAG (MiniLM; published as plain RAG)</td><td>62/123, 50.4%</td><td>41.7% to 59.1%</td><td>78.31</td></tr>
+    <tr><td>Graphiti</td><td>44/123, 35.8%</td><td>27.9% to 44.6%</td><td>56.03</td></tr>
+    <tr><td>Cognee (partial, not ranked)</td><td>39/67, 58.2%</td><td>46.3% to 69.3%</td><td>55.27</td></tr>
+  </tbody>
+</table>
+<p>Full context led four complete local runs (71/123); Mem0 led those four published results (81.08%). Among those four, Graphiti scored lowest in both columns (44/123 here). These 123 questions do not establish between-system differences. Cognee's incomparable 67-question result is unranked. Different settings and Graphiti extraction retries preclude graph/vector ranking.</p>
+<p>On a seeded 300-question LongMemEval sample, retrieving up to ten chunks, BM25 scored 191/300 (63.7%, 95% interval 58.1% to 68.9%) against MiniLM dense retrieval (Chapter 03) at 165/300 (55.0%, 49.3% to 60.5%), a paired difference of 8.7 points (95% interval 2.7 to 14.7 percentage points). The reader and three-vote judge were Gemma 2 9B at 4-bit on an Apple M1 Ultra, 64 GB (harness: benchmarks/longmemeval). Full context could not run: every history exceeded the 8,192-token window. BM25 was strong on user facts and knowledge updates, weak on multi-session reasoning and preferences.</p>
+<p>An implementation agent checked 40 random judgments per benchmark against questions, answers and references, blinded to machine labels: agreement was 32/40 on LoCoMo, 37/40 on LongMemEval. Without independent human validation, treat small LoCoMo gaps cautiously.</p>
+<p>LongMemEval documents an evaluation-only runner, not run here, at revision <code>9e0b455</code> with <code>requirements-lite.txt</code> and downloaded data. From <code>src/evaluation</code>, supply <code>answers.jsonl</code>, one line per question: <code>{&quot;question_id&quot;:&quot;&lt;ID&gt;&quot;,&quot;hypothesis&quot;:&quot;&lt;your answer&gt;&quot;}</code>. The judge needs an authorized OpenAI key; calls are paid; gpt-4o selects gpt-4o-2024-08-06.<sup class="cite"><a href="#s17-28">28</a></sup></p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag docs">From docs, not run</span></div>
+<pre>python3 evaluate_qa.py gpt-4o answers.jsonl ../../data/longmemeval_oracle.json</pre></div>
+<h3>A private regression set</h3>
+<p>Test scrubbed interactions on every change.</p>
+<ul>
+<li><strong>Contents:</strong> labeled questions on expected facts, supporting IDs, updates and abstentions, plus poisoning cases, cross-tenant probes and correction and deletion races.</li>
+<li><strong>Versioning:</strong> store the model, extractor, chunking and judge settings with the dataset.</li>
+<li><strong>Metrics:</strong> recall@k (fraction of expected supporting IDs in the top k, averaged over questions with at least one; score abstentions separately), answer accuracy, stale answers, conflicting facts, durable write precision (accepted writes still correct once built) and invalid outputs. Report poisoning and tenant leaks separately, check judge decisions by hand and keep every failure.</li>
+</ul>
+<p>Periodically sample records per tenant; label accurate, stale or junk, and delete or re-extract stale/junk items. One user judged 9,911 of 10,134 entries junk; that self-report was not checked here and is not an expected rate.<sup class="cite"><a href="#s17-29">29</a></sup></p>
+</section>
+
+<section>
+<h2>Cost, consistent writes and operations</h2>
+<h3>Calls and tokens per write and per read</h3>
+
+<p>Flat files need no embeddings. Vector retrieval embeds writes and queries (Chapter 03). Extraction adds fact/update decisions; graphs add entity resolution/invalidation.<sup class="cite"><a href="#s17-30">30</a></sup><sup class="cite"><a href="#s17-31">31</a></sup> Count retries and added prompt tokens.</p>
+<p>Mem0 reports 91% lower p95 latency and over 90% fewer tokens than full context for one workload.<sup class="cite"><a href="#s17-26">26</a></sup> Wolff and Bennati report plain RAG with comparable accuracy at 8.4 times lower total cost than Mem0; not reproduced here.<sup class="cite"><a href="#s17-27">27</a></sup> On 123 matched LoCoMo questions across four histories, Mem0 used 97.8% fewer read-path input and output tokens combined than full context but only 27.2% fewer on the same basis including ingestion. Its p95 answer latency was higher (11.41 versus 5.82 seconds). Possible explanations include short histories, local 4-bit inference and uncontrolled prefix-cache reuse speeding full context. Measure locally. Counting LLM input/output tokens (extraction included, embedding omitted), Mem0 cost 11.6 to 20.8 times as much as dense RAG across the four histories.</p>
+
+<h3>Break-even between full context and memory</h3>
+<p>One study reports Mem0-style memory cheaper after about ten turns at 100,000 cached tokens; long context was more accurate on LongMemEval and LoCoMo.<sup class="cite"><a href="#s17-32">32</a></sup> At $0.15, $0.075 and $0.60 per million uncached input, cached input and output tokens (GPT-4o mini list rates checked 22 November 2026; full-context prefix cached after the first question), one 34-question history cost $0.1010 to ingest, saving $0.00435 on question one (uncached input) and $0.002125 thereafter. Projected payback is 1 + ceil((0.10095 − 0.00435) / 0.002125) = 47 questions. Pooled payback projects 49 questions for Mem0 and 51 for Graphiti, beyond the observed 24 to 34. Their 95% bootstrap intervals, resampling four whole histories, were 48 to 51 and 45 to 63, respectively; Mem0 per-history estimates ranged from 47 to 52. These extrapolations assume read-only questions after ingestion. Per-turn writes delay break-even. Ignoring price and caching, Mem0 uses 27.2% fewer tokens at the observed mean of about 31 questions per history; cheaper cached input delays dollar payback. Uncosted storage, embedding and maintenance must also be repaid by repeated reads. If full context cannot fit or suffice, compare the cheapest capable baseline.</p>
+
+<h3>A consistency protocol for asynchronous writes</h3>
+<aside class="terms"><p class="terms-title">Protocol terms</p><dl>
+    <dt>Outbox</dt><dd>Work committed atomically with source changes; a worker builds the projection later.</dd>
+    <dt>Projection</dt><dd>The searchable copy built from a source record.</dd>
+    <dt>Tombstone</dt><dd>A deletion record (Chapter 12) preventing resurrection during rebuilds.</dd>
+</dl></aside>
+<p>The store commits saves/deletes before workers build projections. Figure 2 includes idempotent retries/dead letters. The worker checkpoint, separate from thread state, advances after every event through its sequence finishes or dead-letters. Gaps block advancement; restarted workers resume after it.<sup class="cite"><a href="#s17-33">33</a></sup> This proposed protocol is not standardized.</p>
+<figure class="diagram">
+<svg viewBox="0 0 600 120" role="img" aria-label="Accept source and work atomically, then materialize or retry, then checkpoint; delete markers also govern rebuilds.">
+<rect class="d-box" x="10" y="15" width="160" height="65" rx="4"/>
+<text class="d-title" x="90" y="40" text-anchor="middle">Accept</text>
+<text class="d-sub" x="90" y="60" text-anchor="middle">source + outbox</text>
+<path class="d-line" d="M170 48 H220"/>
+<rect class="d-box accent" x="225" y="15" width="160" height="65" rx="4"/>
+<text class="d-title" x="305" y="40" text-anchor="middle">Materialize</text>
+<text class="d-sub" x="305" y="60" text-anchor="middle">retry or dead-letter</text>
+<path class="d-line" d="M385 48 H425"/>
+<rect class="d-box" x="430" y="15" width="160" height="65" rx="4"/>
+<text class="d-title" x="510" y="40" text-anchor="middle">Checkpoint</text>
+<text class="d-sub" x="510" y="60" text-anchor="middle">durable receipt</text>
+<text class="d-sub" x="300" y="105" text-anchor="middle">Delete markers constrain every read and rebuild.</text>
+</svg>
+<figcaption><b>Figure 2.</b> A receipt confirms acceptance; prompts admit only current projections.</figcaption>
+</figure>
+<ol>
+<li><strong>Accept.</strong> Authenticate the tenant; atomically commit the new source version and outbox entry. Store an HMAC of tenant, memory ID, operation and payload under each tenant-scoped event ID. Retries return the original receipt; changed payloads are rejected.</li>
+<li><strong>Materialize.</strong> Publish only current source versions so slow jobs cannot overwrite newer data. Tag derived items with tenant, extractor revision and all contributing source IDs/versions. Hide items with deleted, superseded or unauthorized dependencies; rebuild from authorized sources before serving. Commit the projection update and its delivery row (in the delivery table) together if possible.</li>
+<li><strong>Retry.</strong> Retry with bounded backoff/jitter; then flag a dead letter for an operator: terminal for checkpointing but unsuccessful, automatic delivery stopped. Record attempts/redacted errors, alert on queue age/dead letters, and retry the same event ID after repair.</li>
+<li><strong>Checkpoint.</strong> Advance only past terminal events, including dead letters; never skip gaps.</li>
+<li><strong>Delete.</strong> Commit a versioned tombstone, remove source text, hide stale reads immediately and delete derived items. Use a new memory ID for replacements to prevent stale-write resurrection.</li>
+<li><strong>Rebuild.</strong> Rebuild from authorized sources and tombstones. Erasure-safe restores need a separately recoverable tombstone ledger covering every restorable snapshot. Current-state restores also replay committed updates to a verified position before serving. If later updates are lost, declare the recovery-point objective (maximum tolerable data loss). Probe a corrected, never-deleted record after restore.</li>
+</ol>
+<p>Remote indexes retain text-free versioned tombstones until workers finish and retention expires. Write only newer versions before recording delivery locally; crash redelivery safely repeats writes. Without conditional writes, process one memory ID at a time and compare index against source. Retrieve candidate IDs, then hydrate/filter against current authorized sources before prompting. Version equality hides the entire record during lag, indefinitely on dead letters. For read-after-write, await materialization or read source. See also Chapter 13, <a href="#forked-planning">Forked planning: draft locally, promote explicitly</a>.</p>
+
+<h3>Runnable consistency check</h3>
+<p>Post-cutoff lab verification: 23 November 2026 (research cutoff: 22 November 2026), CPU only, containers capped at two CPUs; Docker 29.1.3, CPython 3.14.4, SQLite 3.51.3. The demo checks local conflict, tenant isolation, retries, reordering, dead letters, deletion and rebuilds; remote indexes/power loss are excluded.<sup class="cite"><a href="#s17-34">34</a></sup></p>
+<p>With Docker/curl, download SQLite as <code>sqlite.zip</code>; save attached ch17/Dockerfile and <code>demo.py</code> alongside it. This compiles SQLite 3.51.3, fixing the WAL-reset bug (Chapter 12),<sup class="cite"><a href="#s17-35">35</a></sup> without touching the host installation.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>mkdir /var/tmp/memlab-17
+cd /var/tmp/memlab-17
+curl -LfsS https://sqlite.org/2026/sqlite-amalgamation-3510300.zip -o sqlite.zip</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-file">Dockerfile</span><span class="code-tag tested">Tested</span></div>
+<pre>FROM python:3.14.4-slim@sha256:2ca02f32b4d9d893863367ce07ec1972819f476dd38d8612f2a9cb6a41cbb727
+RUN apt-get update -qq &amp;&amp; apt-get install -y -qq gcc libc6-dev \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+COPY sqlite.zip /tmp/sqlite.zip
+RUN python -m zipfile -e /tmp/sqlite.zip /tmp
+RUN gcc -shared -fPIC -O2 -DSQLITE_THREADSAFE=1 \
+    /tmp/sqlite-amalgamation-3510300/sqlite3.c \
+    -o /usr/local/lib/libsqlite3.so.0 -lm -ldl
+ENV LD_LIBRARY_PATH=/usr/local/lib
+WORKDIR /work
+</pre></div>
+<p><code>demo.py</code> HMACs requests in <code>enqueue</code>, checks source versions in <code>deliver</code> and asserts retry, deletion and source-only rebuild.</p>
+<div class="codeblock splittable" data-listing-note="This file tests request identity, versioned delivery, deletion and source rebuild in SQLite."><div class="code-head"><span class="code-lang">python</span><span class="code-file">demo.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import hashlib
+import hmac
+import os
+from pathlib import Path
+import json
+import sqlite3
+import sys
+import subprocess
+
+keyfile = Path(&#x27;request.key&#x27;)
+if not keyfile.exists():
+    with keyfile.open(&#x27;xb&#x27;) as f:
+        os.chmod(keyfile, 0o600)
+        f.write(os.urandom(32))
+secret = keyfile.read_bytes()
+assert len(secret) == 32
+
+assert sys.version_info[:3] == (3, 14, 4)
+db = sqlite3.connect(&#x27;memory.db&#x27;)
+db.execute(&#x27;PRAGMA journal_mode=WAL&#x27;)
+db.execute(&#x27;PRAGMA synchronous=FULL&#x27;)
+assert sqlite3.sqlite_version_info == (3, 51, 3)
+if sys.argv[1:] == [&#x27;verify&#x27;]:
+    assert db.execute(&#x27;SELECT n FROM checkpoint&#x27;).fetchone() == (5,)
+    assert db.execute(&#x27;SELECT text FROM source WHERE gone=0 ORDER BY text&#x27;).fetchall() == [
+        (&#x27;retained&#x27;,), (&#x27;tenant-only&#x27;,)]
+    assert db.execute(&#x27;SELECT text FROM projection WHERE gone=0 ORDER BY text&#x27;).fetchall() == [
+        (&#x27;retained&#x27;,), (&#x27;tenant-only&#x27;,)]
+    print(&#x27;fresh process: authorized sources only; checkpoint 5&#x27;)
+    db.close()
+    sys.exit()
+db.executescript(&#x27;&#x27;&#x27;
+CREATE TABLE source(id TEXT PRIMARY KEY, v INT, gone INT, text TEXT);
+CREATE TABLE outbox(seq INTEGER PRIMARY KEY AUTOINCREMENT, tenant TEXT, eid TEXT,
+  mid TEXT, v INT, gone INT, request_hash TEXT, attempts INT DEFAULT 0,
+  state TEXT DEFAULT &#x27;pending&#x27;, UNIQUE(tenant,eid));
+CREATE TABLE projection(id TEXT PRIMARY KEY, v INT, gone INT, text TEXT);
+CREATE TABLE delivery(tenant TEXT, eid TEXT, PRIMARY KEY(tenant,eid));
+CREATE TABLE checkpoint(n INT);
+INSERT INTO checkpoint VALUES(0);
+&#x27;&#x27;&#x27;)
+
+def key(tenant, mid):
+    return json.dumps([tenant, mid], separators=(&#x27;,&#x27;, &#x27;:&#x27;))
+
+def enqueue(eid, mid, text=None, tenant=&#x27;demo&#x27;):
+    operation = &#x27;delete&#x27; if text is None else &#x27;put&#x27;
+    request = json.dumps([tenant, mid, operation, text],
+                         ensure_ascii=False, separators=(&#x27;,&#x27;, &#x27;:&#x27;))
+    digest = hmac.new(secret, request.encode(&#x27;utf-8&#x27;), hashlib.sha256).hexdigest()
+    mid = key(tenant, mid)
+    with db:
+        db.execute(&#x27;BEGIN IMMEDIATE&#x27;)
+        prior = db.execute(&#x27;&#x27;&#x27;
+          SELECT request_hash,seq,v FROM outbox WHERE tenant=? AND eid=?
+        &#x27;&#x27;&#x27;, (tenant, eid)).fetchone()
+        if prior:
+            if prior[0] != digest:
+                raise ValueError(&#x27;event ID reused with a different request&#x27;)
+            return prior[1:]  # original acceptance receipt, even after deletion
+        row = db.execute(&#x27;SELECT v,gone FROM source WHERE id=?&#x27;,
+                         (mid,)).fetchone()
+        if row and row[1] and text is not None:
+            raise ValueError(&#x27;deleted ID; create a new memory ID&#x27;)
+        v = row[0] + 1 if row else 1
+        gone = int(text is None)
+        db.execute(&#x27;INSERT OR REPLACE INTO source VALUES(?,?,?,?)&#x27;,
+                   (mid, v, gone, text))
+        result = db.execute(&#x27;&#x27;&#x27;
+          INSERT INTO outbox(tenant,eid,mid,v,gone,request_hash) VALUES(?,?,?,?,?,?)
+        &#x27;&#x27;&#x27;, (tenant, eid, mid, v, gone, digest))
+        return (result.lastrowid, v)
+
+def deliver(eid, fail=False, tenant=&#x27;demo&#x27;):
+    with db:
+        db.execute(&#x27;BEGIN IMMEDIATE&#x27;)
+        if db.execute(&#x27;SELECT 1 FROM delivery WHERE tenant=? AND eid=?&#x27;,
+                      (tenant, eid)).fetchone():
+            return
+        seq, mid, v, gone, attempts = db.execute(&#x27;&#x27;&#x27;
+          SELECT seq,mid,v,gone,attempts FROM outbox WHERE tenant=? AND eid=?
+        &#x27;&#x27;&#x27;, (tenant, eid)).fetchone()
+        if fail:
+            attempts += 1
+            db.execute(&#x27;UPDATE outbox SET attempts=?,state=? WHERE tenant=? AND eid=?&#x27;,
+                       (attempts, &#x27;dead&#x27; if attempts &gt;= 3 else &#x27;pending&#x27;, tenant, eid))
+        else:
+            current = db.execute(&#x27;SELECT v,gone,text FROM source WHERE id=?&#x27;,
+                                 (mid,)).fetchone()
+            if current[0] == v:
+                db.execute(&#x27;&#x27;&#x27;
+                  INSERT INTO projection VALUES(?,?,?,?)
+                  ON CONFLICT(id) DO UPDATE SET
+                    v=excluded.v,gone=excluded.gone,text=excluded.text
+                  WHERE excluded.v &gt; projection.v
+                &#x27;&#x27;&#x27;, (mid, v, gone, current[2]))
+            db.execute(&#x27;INSERT INTO delivery VALUES(?,?)&#x27;, (tenant, eid))
+            db.execute(&quot;UPDATE outbox SET state=&#x27;done&#x27; WHERE tenant=? AND eid=?&quot;,
+                       (tenant, eid))
+        n = db.execute(&#x27;SELECT n FROM checkpoint&#x27;).fetchone()[0]
+        while db.execute(&#x27;&#x27;&#x27;
+          SELECT 1 FROM outbox WHERE seq=? AND state IN (&#x27;done&#x27;,&#x27;dead&#x27;)
+        &#x27;&#x27;&#x27;, (n + 1,)).fetchone():
+            n += 1
+        db.execute(&#x27;UPDATE checkpoint SET n=?&#x27;, (n,))
+
+def read(mid, tenant=&#x27;demo&#x27;):
+    mid = key(tenant, mid)
+    return db.execute(&#x27;&#x27;&#x27;
+      SELECT p.text FROM projection p JOIN source s ON s.id=p.id
+      WHERE p.id=? AND s.gone=0 AND p.gone=0 AND p.v=s.v
+    &#x27;&#x27;&#x27;, (mid,)).fetchall()
+
+receipt = enqueue(&#x27;e1&#x27;, &#x27;note&#x27;, &#x27;old&#x27;)
+enqueue(&#x27;e2&#x27;, &#x27;note&#x27;, &#x27;corrected&#x27;)
+assert enqueue(&#x27;e1&#x27;, &#x27;note&#x27;, &#x27;old&#x27;) == receipt  # retry after correction
+before = tuple(db.iterdump())
+for mid, text, tenant in [(&#x27;note&#x27;, &#x27;DIFFERENT&#x27;, &#x27;demo&#x27;),
+                          (&#x27;other&#x27;, &#x27;old&#x27;, &#x27;demo&#x27;),
+                          (&#x27;note&#x27;, None, &#x27;demo&#x27;)]:
+    try:
+        enqueue(&#x27;e1&#x27;, mid, text, tenant)
+    except ValueError as error:
+        assert &#x27;event ID reused&#x27; in str(error)
+    else:
+        raise AssertionError(&#x27;conflicting retry accepted&#x27;)
+    assert tuple(db.iterdump()) == before
+print(&#x27;conflicting payload / memory / operation: rejected&#x27;)
+assert read(&#x27;note&#x27;) == []  # accepted, not yet materialized
+deliver(&#x27;e2&#x27;)  # newer extraction finishes first
+assert db.execute(&#x27;SELECT n FROM checkpoint&#x27;).fetchone() == (0,)
+deliver(&#x27;e1&#x27;)  # slow old result cannot overwrite it
+assert db.execute(&#x27;SELECT n FROM checkpoint&#x27;).fetchone() == (2,)
+deliver(&#x27;e2&#x27;)  # duplicate worker delivery
+assert read(&#x27;note&#x27;) == [(&#x27;corrected&#x27;,)]
+print(&#x27;reordered + duplicate:&#x27;, read(&#x27;note&#x27;))
+enqueue(&#x27;e3&#x27;, &#x27;other&#x27;, &#x27;retained&#x27;)
+for _ in range(3):
+    deliver(&#x27;e3&#x27;, fail=True)
+state = db.execute(&quot;SELECT state FROM outbox WHERE eid=&#x27;e3&#x27;&quot;).fetchone()
+assert state == (&#x27;dead&#x27;,)
+assert db.execute(&#x27;SELECT n FROM checkpoint&#x27;).fetchone() == (3,)
+print(&#x27;dead letters:&#x27;, db.execute(
+    &quot;SELECT eid,attempts FROM outbox WHERE state=&#x27;dead&#x27;&quot;).fetchall())
+deliver(&#x27;e3&#x27;)  # operator repairs cause and explicitly redrives same ID
+enqueue(&#x27;e4&#x27;, &#x27;note&#x27;)  # delete retains only version and deletion marker
+assert read(&#x27;note&#x27;) == []  # hidden before asynchronous delete finishes
+deliver(&#x27;e4&#x27;)
+try:
+    enqueue(&#x27;e5&#x27;, &#x27;note&#x27;, &#x27;revived&#x27;)
+except ValueError as error:
+    assert &#x27;deleted ID&#x27; in str(error)
+else:
+    raise AssertionError(&#x27;deleted ID accepted&#x27;)
+enqueue(&#x27;e1&#x27;, &#x27;note&#x27;, &#x27;tenant-only&#x27;, tenant=&#x27;other-tenant&#x27;)
+deliver(&#x27;e1&#x27;, tenant=&#x27;other-tenant&#x27;)
+assert read(&#x27;note&#x27;, tenant=&#x27;other-tenant&#x27;) == [(&#x27;tenant-only&#x27;,)]
+assert read(&#x27;note&#x27;) == []
+print(&#x27;enqueue after delete: rejected; tenant event ID: isolated&#x27;)
+db.close()
+db = sqlite3.connect(&#x27;memory.db&#x27;)  # restart from durable state
+assert db.execute(&#x27;SELECT n FROM checkpoint&#x27;).fetchone()[0] == 5
+deliver(&#x27;e1&#x27;)  # delayed pre-delete delivery before rebuild
+assert read(&#x27;note&#x27;) == []
+assert enqueue(&#x27;e1&#x27;, &#x27;note&#x27;, &#x27;old&#x27;) == receipt  # retry after deletion
+assert read(&#x27;other&#x27;) == [(&#x27;retained&#x27;,)]
+def rebuild():
+    with db:
+        db.execute(&#x27;DELETE FROM projection&#x27;)
+        db.execute(&#x27;INSERT INTO projection SELECT id,v,gone,text FROM source&#x27;)
+
+with db:  # replay rows unavailable; source includes deletion tombstones
+    db.execute(&#x27;DELETE FROM projection&#x27;)
+    db.execute(&#x27;DELETE FROM outbox&#x27;)
+    db.execute(&#x27;DELETE FROM delivery&#x27;)
+rebuild()
+assert db.execute(&#x27;SELECT * FROM projection ORDER BY id&#x27;).fetchall() == (
+    db.execute(&#x27;SELECT * FROM source ORDER BY id&#x27;).fetchall())
+assert read(&#x27;note&#x27;) == []
+assert read(&#x27;other&#x27;) == [(&#x27;retained&#x27;,)]
+print(&#x27;source/tombstone rebuild without outbox: matches source&#x27;)
+compiler = subprocess.check_output([&#x27;gcc&#x27;, &#x27;--version&#x27;], text=True).splitlines()[0]
+print(&#x27;versions:&#x27;, sys.version.split()[0], sqlite3.sqlite_version, &#x27;;&#x27;, compiler)
+db.close()</pre></div>
+<p>Before rerunning, reset exercise state: remove memory.db, memory.db-wal, memory.db-shm and request.key.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>cd /var/tmp/memlab-17
+docker build --tag memlab-17-sqlite .
+docker run --rm --name memlab-17-demo --network none --user "$(id -u):$(id -g)" \
+  --cpus 2 -v /var/tmp/memlab-17:/work memlab-17-sqlite python demo.py
+docker run --rm --name memlab-17-read --network none --user "$(id -u):$(id -g)" \
+  --cpus 2 -v /var/tmp/memlab-17:/work memlab-17-sqlite python demo.py verify</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>conflicting payload / memory / operation: rejected
+reordered + duplicate: [(&#x27;corrected&#x27;,)]
+dead letters: [(&#x27;e3&#x27;, 3)]
+enqueue after delete: rejected; tenant event ID: isolated
+source/tombstone rebuild without outbox: matches source
+versions: 3.14.4 3.51.3 ; gcc (Debian 14.2.0-19) 14.2.0
+fresh process: authorized sources only; checkpoint 5</pre></div>
+<p>A fresh process checks durability; rebuild needs no replay. Purging outbox rows loses receipts: retain a separate tenant-scoped receipt table through the retry window; test an original retry after correction/rebuild of a live record. Post-delete redelivery only checks the duplicate guard. Reset <code>memory.db</code> before reruns. HMACs use owner-only <code>request.key</code> outside SQLite; use a production secret store. Purge HMACs with tombstones. WAL/backups may retain deleted bytes; this tests logical non-resurrection, not physical erasure.</p>
+<p>Remove this exercise's directory and image:</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>rm -r /var/tmp/memlab-17
+docker image rm memlab-17-sqlite</pre></div>
+<h3>Harden the lab network</h3>
+<p>Docker publishes to all host interfaces by default; in the book's database and model-server labs, bind ports to 127.0.0.1, or publish none and use a private network.<sup class="cite"><a href="#s17-36">36</a></sup> Before LAN access, authenticate databases/model-server proxies; Ollama's API defaults to unauthenticated loopback access.<sup class="cite"><a href="#s17-37">37</a>,<a href="#s17-38">38</a></sup> Before Docker 28.0.0, localhost-published ports may be segment-reachable; upgrade or enforce firewall isolation.<sup class="cite"><a href="#s17-36">36</a></sup></p>
+<h3>Operate the memory path</h3>
+<p>Log tenant, source version, retrieval score and opaque record-version ID under access/retention controls. Correlate text via tenant-scoped HMACs, external keys and defined retention; never log plaintext. Back up sources/tombstones; test restores in quarantine. For embedding migration, build a shadow index (serving no reads), pin model revision and dual-write via outbox. Record the last committed sequence. Switch after its worker checkpoint reaches that sequence without dead letters, tenant/deletion probes pass, and private-regression recall@k and accuracy match the live index. Dual-write deletes while rollback remains possible. Consolidation (merging/summarizing memories) needs live-write version/deletion checks against resurrection.<sup class="cite"><a href="#s17-39">39</a></sup></p>
+</section>
+
+<section>
+<h2>Release gate</h2>
+<p>Check writes before launch and after model/prompt changes. Record release margins/budgets against current controls and workload requirements.</p>
+<ul>
+<li>Test cross-tenant retrieval, poisoning, correction races, delete, replay, restore (including corrected, never-deleted records) and source/tombstone rebuilds; require latest authorized versions on reads.</li>
+<li>Compare representative private tasks with no-memory/current-release controls; report completion, cost and latency. Add task-matched MemoryArena or DolphinBench comparisons. Fail on confirmed cross-tenant retrieval, action-changing poison, completion below the control by a preset margin, or cost/p95 latency over preset budgets.</li>
+<li>Commit labeled harmless facts/corrections, await materialization, query in a fresh session; require a preset share correct. Report hostile-write acceptance and benign-write rejection as counts/denominators; fail above either preset budget or the answer-accuracy-loss budget.</li>
+<li>Monitor queue age, retries, dead letters, stale-version skips and delete completion in every derived store.</li>
+</ul>
+<p class="small muted"><strong>Forward example.</strong> Chapter 22 applies these controls to a doctor's office: per-patient scoping, an append-only audit trail, tombstones that survive a restore.</p>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+<li id="s17-1"><span class="src-title">OWASP Top 10 for Agentic Applications for 2026 (published 2025-12-09)</span> <span class="src-note">(official)</span><a class="url" href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/">https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/</a></li>
+<li id="s17-2"><span class="src-title">OWASP GenAI: Memory is a feature, it is also an attack surface (2026-05-13)</span> <span class="src-note">(official)</span><a class="url" href="https://genai.owasp.org/2026/05/13/memory-is-a-feature-it-is-also-an-attack-surface/">https://genai.owasp.org/2026/05/13/memory-is-a-feature-it-is-also-an-attack-surface/</a></li>
+<li id="s17-3"><span class="src-title">MINJA: memory injection attack through queries alone, arXiv 2503.03704 (v5, 2026-02-12)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2503.03704">https://arxiv.org/abs/2503.03704</a></li>
+<li id="s17-4"><span class="src-title">AgentPoison, arXiv 2407.12784 (NeurIPS 2024)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2407.12784">https://arxiv.org/abs/2407.12784</a></li>
+<li id="s17-5"><span class="src-title">Memory poisoning attack and defense, arXiv 2601.05504 (restates MINJA figures)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2601.05504">https://arxiv.org/abs/2601.05504</a></li>
+<li id="s17-6"><span class="src-title">Text embeddings reveal (almost) as much as text, arXiv 2310.06816</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2310.06816">https://arxiv.org/abs/2310.06816</a></li>
+<li id="s17-7"><span class="src-title">InjecMEM paper and official implementation; defense README (2026)</span> <span class="src-note">(authors' repository)</span><a class="url" href="https://github.com/BlueBlood6/InjecMEM">https://github.com/BlueBlood6/InjecMEM</a><a class="url" href="https://github.com/BlueBlood6/InjecMEM/blob/main/Defense/README.md">https://github.com/BlueBlood6/InjecMEM/blob/main/Defense/README.md</a></li>
+<li id="s17-8"><span class="src-title">Rehberger, ChatGPT macOS app persistent data exfiltration (2024-09)</span> <span class="src-note">(secondary: researcher blog)</span><a class="url" href="https://embracethered.com/blog/posts/2024/chatgpt-macos-app-persistent-data-exfiltration/">https://embracethered.com/blog/posts/2024/chatgpt-macos-app-persistent-data-exfiltration/</a></li>
+<li id="s17-9"><span class="src-title">Cisco: identifying and remediating a persistent memory compromise in Claude Code (disclosed 2026-04)</span> <span class="src-note">(secondary: vendor research blog)</span><a class="url" href="https://blogs.cisco.com/ai/identifying-and-remediating-a-persistent-memory-compromise-in-claude-code">https://blogs.cisco.com/ai/identifying-and-remediating-a-persistent-memory-compromise-in-claude-code</a></li>
+<li id="s17-10"><span class="src-title">SkillJack: Persistent Skill Backdoors in Self-Evolving Agents (2026-08)</span> <span class="src-note">(authors' paper)</span><a class="url" href="https://arxiv.org/abs/2608.03509">https://arxiv.org/abs/2608.03509</a></li>
+<li id="s17-11"><span class="src-title">Tamper Evidence in AI Agent Memory Stores: A Conformance Suite and Three Measurements (publisher metadata deposited 2026-09-14)</span> <span class="src-note">(authors' preprint abstract, publisher-deposited Crossref record; the preprint's own runs were not rerun, its edit classes were repeated locally)</span><a class="url" href="https://doi.org/10.2139/ssrn.7461118">https://doi.org/10.2139/ssrn.7461118</a><a class="url" href="https://api.crossref.org/works/10.2139/ssrn.7461118">https://api.crossref.org/works/10.2139/ssrn.7461118</a></li>
+<li id="s17-12"><span class="src-title">OWASP Logging Cheat Sheet: protection and monitoring (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html</a></li>
+<li id="s17-13"><span class="src-title">OWASP LLM08:2025 Vector and Embedding Weaknesses</span> <span class="src-note">(official)</span><a class="url" href="https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/">https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/</a></li>
+<li id="s17-14"><span class="src-title">Vector database tenant isolation, arXiv 2605.03275</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/pdf/2605.03275">https://arxiv.org/pdf/2605.03275</a></li>
+<li id="s17-15"><span class="src-title">NVD entry for CVE-2025-67644</span> <span class="src-note">(official)</span><a class="url" href="https://nvd.nist.gov/vuln/detail/CVE-2025-67644">https://nvd.nist.gov/vuln/detail/CVE-2025-67644</a></li>
+<li id="s17-16"><span class="src-title">Check Point Research: from SQLi to RCE, exploiting LangGraph's checkpointer (2026-06-11)</span> <span class="src-note">(secondary: security research)</span><a class="url" href="https://research.checkpoint.com/2026/from-sqli-to-rce-exploiting-langgraphs-checkpointer/">https://research.checkpoint.com/2026/from-sqli-to-rce-exploiting-langgraphs-checkpointer/</a></li>
+<li id="s17-17"><span class="src-title">PostgreSQL 18: routine vacuuming</span> <span class="src-note">(official)</span><a class="url" href="https://www.postgresql.org/docs/18/routine-vacuuming.html">https://www.postgresql.org/docs/18/routine-vacuuming.html</a></li>
+<li id="s17-18"><span class="src-title">GDPR, Articles 5 and 17 (2016)</span> <span class="src-note">(official)</span><a class="url" href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng">https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng</a></li>
+<li id="s17-19"><span class="src-title">LoCoMo, arXiv 2402.17753</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2402.17753">https://arxiv.org/abs/2402.17753</a></li>
+<li id="s17-20"><span class="src-title">LoCoMo ground-truth audit repository</span> <span class="src-note">(secondary)</span><a class="url" href="https://github.com/dial481/locomo-audit">https://github.com/dial481/locomo-audit</a></li>
+<li id="s17-21"><span class="src-title">LongMemEval, arXiv 2410.10813 (ICLR 2025)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2410.10813">https://arxiv.org/abs/2410.10813</a></li>
+<li id="s17-22"><span class="src-title">MemoryAgentBench, arXiv 2507.05257 (v4, 2026-06-28)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2507.05257">https://arxiv.org/abs/2507.05257</a></li>
+<li id="s17-23"><span class="src-title">MemoryArena (2026-02)</span> <span class="src-note">(authors' paper)</span><a class="url" href="https://arxiv.org/abs/2602.16313">https://arxiv.org/abs/2602.16313</a></li>
+<li id="s17-24"><span class="src-title">DolphinBench (2026-09)</span> <span class="src-note">(authors' paper)</span><a class="url" href="https://arxiv.org/abs/2609.24971">https://arxiv.org/abs/2609.24971</a></li>
+<li id="s17-25"><span class="src-title">HaluMem: Evaluating Hallucinations in Memory Systems of Agents (EMNLP, October 2026)</span> <span class="src-note">(authors' paper)</span><a class="url" href="https://aclanthology.org/2026.emnlp-main.220/">https://aclanthology.org/2026.emnlp-main.220/</a></li>
+<li id="s17-26"><span class="src-title">Mem0 paper, arXiv 2504.19413</span> <span class="src-note">(vendor)</span><a class="url" href="https://arxiv.org/abs/2504.19413">https://arxiv.org/abs/2504.19413</a></li>
+<li id="s17-27"><span class="src-title">Wolff and Bennati: Cost and Accuracy of Long-Term Memory in Distributed Multi-Agent Systems Based on Large Language Models, arXiv 2601.07978</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2601.07978">https://arxiv.org/abs/2601.07978</a></li>
+<li id="s17-28"><span class="src-title">LongMemEval evaluation runner, revision 9e0b455 (read 2026-11-20)</span> <span class="src-note">(authors' repository)</span><a class="url" href="https://github.com/xiaowu0162/LongMemEval/tree/9e0b455f4ef0e2ab8f2e582289761153549043fc">https://github.com/xiaowu0162/LongMemEval/tree/9e0b455f4ef0e2ab8f2e582289761153549043fc</a></li>
+<li id="s17-29"><span class="src-title">mem0 issue 4573 (2026-03-27); full user audit report</span> <span class="src-note">(secondary: user report)</span><a class="url" href="https://github.com/mem0ai/mem0/issues/4573">https://github.com/mem0ai/mem0/issues/4573</a></li>
+<li id="s17-30"><span class="src-title">mem0 repository README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/mem0ai/mem0">https://github.com/mem0ai/mem0</a></li>
+<li id="s17-31"><span class="src-title">Graphiti repository README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/getzep/graphiti">https://github.com/getzep/graphiti</a></li>
+<li id="s17-32"><span class="src-title">Beyond the context window: cost analysis of memory versus long context, arXiv 2603.04814 (2026-03)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2603.04814">https://arxiv.org/abs/2603.04814</a></li>
+<li id="s17-33"><span class="src-title">Transactional outbox pattern</span> <span class="src-note">(pattern author)</span><a class="url" href="https://microservices.io/patterns/data/transactional-outbox.html">https://microservices.io/patterns/data/transactional-outbox.html</a></li>
+<li id="s17-34"><span class="src-title">SQLite UPSERT and atomic commit</span> <span class="src-note">(official)</span><a class="url" href="https://www.sqlite.org/lang_upsert.html">https://www.sqlite.org/lang_upsert.html</a></li>
+<li id="s17-35"><span class="src-title">SQLite WAL-reset bug, section 11 (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://sqlite.org/wal.html#walresetbug">https://sqlite.org/wal.html#walresetbug</a></li>
+<li id="s17-36"><span class="src-title">Docker Engine: port publishing and mapping (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.docker.com/engine/network/port-publishing/">https://docs.docker.com/engine/network/port-publishing/</a></li>
+<li id="s17-37"><span class="src-title">Ollama API: authentication (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.ollama.com/api/authentication">https://docs.ollama.com/api/authentication</a></li>
+<li id="s17-38"><span class="src-title">Ollama FAQ: network exposure and proxy configuration (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.ollama.com/faq">https://docs.ollama.com/faq</a></li>
+<li id="s17-39"><span class="src-title">Hindsight: agent memory consolidation (2026-05-21)</span> <span class="src-note">(vendor)</span><a class="url" href="https://hindsight.vectorize.io/blog/2026/05/21/agent-memory-consolidation">https://hindsight.vectorize.io/blog/2026/05/21/agent-memory-consolidation</a></li>
+</ol>
+</section>
+
+</article>

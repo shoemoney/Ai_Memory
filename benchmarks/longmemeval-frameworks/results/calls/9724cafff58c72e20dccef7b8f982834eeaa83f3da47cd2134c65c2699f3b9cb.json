@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 58
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f8ac35ffb532335bcbc4ebd92f18b3e032eadc41c484d2e6332b525c4cccf384",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a29dfbcd-b956-4c31-a17b-5069d820db37",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Fashionoscope ve Stiloni için değer önermeleri Türkçe olarak sunuldu\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Fashionoscope: Gelişmiş AI destekli kıyafet ve benzer ürün önerileri sunulan moda sektörüne özel modeller\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Stiloni: Benzer ürünleri bulmak için anında moda görsel arama sunulan e-ticaret platformlarıyla sorunsuz entegrasyon\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Fashionoscope: Kişiselleştirilmiş öneriler sunulan müşterilerin alışveriş deneyimini geliştirme\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Stiloni: Kullanıcıların stil tercihlerine göre kişiselleştirilmiş kıyafet önerileri sunulan e-ticaret platformlarıyla sorunsuz entegrasyon\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357158,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 275,
+      "prompt_tokens": 2030,
+      "total_tokens": 2305,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Fashionoscope ve Stiloni için değer önermeleri Türkçe olarak sunuldu\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Fashionoscope: Gelişmiş AI destekli kıyafet ve benzer ürün önerileri sunulan moda sektörüne özel modeller\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Stiloni: Benzer ürünleri bulmak için anında moda görsel arama sunulan e-ticaret platformlarıyla sorunsuz entegrasyon\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Fashionoscope: Kişiselleştirilmiş öneriler sunulan müşterilerin alışveriş deneyimini geliştirme\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Stiloni: Kullanıcıların stil tercihlerine göre kişiselleştirilmiş kıyafet önerileri sunulan e-ticaret platformlarıyla sorunsuz entegrasyon\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 43.720606722999946,
+  "prompt_tokens_local": 2030
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ec13ecbdbc79dd1d91b70004443a89e902ee10595780cd51b0fd53055d25f6b1",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b97e1358-9c47-49ea-9d34-f3c6f9e6e1df",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"user\",\n            \"summary\": \"The user has been working on a short story and experimenting with poetry. They are interested in exploring the connection between writing and personal growth, specifically how writing has helped them clarify their thoughts and feelings. The user has been writing for at least 30 minutes every morning, Monday to Friday, and finds this routine helpful for getting into a creative flow. The user has also tried writing with a fountain pen, finding it satisfying. The user is considering writing an essay on how writing has helped them clarify their thoughts and feelings.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367771,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 131,
+      "prompt_tokens": 8970,
+      "total_tokens": 9101,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 475
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"user\",\n            \"summary\": \"The user has been working on a short story and experimenting with poetry. They are interested in exploring the connection between writing and personal growth, specifically how writing has helped them clarify their thoughts and feelings. The user has been writing for at least 30 minutes every morning, Monday to Friday, and finds this routine helpful for getting into a creative flow. The user has also tried writing with a fountain pen, finding it satisfying. The user is considering writing an essay on how writing has helped them clarify their thoughts and feelings.\"\n        }\n    ]\n}",
+  "seconds": 56.31059714901494,
+  "prompt_tokens_local": 8970
+}

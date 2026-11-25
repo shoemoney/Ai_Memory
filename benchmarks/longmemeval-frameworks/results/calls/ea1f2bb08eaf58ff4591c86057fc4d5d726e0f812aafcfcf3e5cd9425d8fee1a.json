@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 42
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "724f302fb777e3a76078bfe1df476c039abc5a0ee714111dcb4713b075bfdd26",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-13d74338-cdb6-421c-a2db-ff21e54c6575",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in learning more about their Indian heritage and connecting with others who share similar backgrounds.\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Attended the 'Yoga for Foreigners' class at Yoga Tree Shimokitazawa\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Can find Mamak dishes in Mamak stalls in Malaysia and Singapore\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Yoga Studio Hana, Yoga Tree Shimokitazawa, Sattva Yoga Studio, and Yoga House Shimokitazawa offer classes in English or have English-speaking instructors\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Guided tour provided by Dr. Rodriguez with great historical context insights\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366393,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 680,
+      "prompt_tokens": 1804,
+      "total_tokens": 2484,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in learning more about their Indian heritage and connecting with others who share similar backgrounds.\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Attended the 'Yoga for Foreigners' class at Yoga Tree Shimokitazawa\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Can find Mamak dishes in Mamak stalls in Malaysia and Singapore\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Yoga Studio Hana, Yoga Tree Shimokitazawa, Sattva Yoga Studio, and Yoga House Shimokitazawa offer classes in English or have English-speaking instructors\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Guided tour provided by Dr. Rodriguez with great historical context insights\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 30.279366350005148,
+  "prompt_tokens_local": 1804
+}

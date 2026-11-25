@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q050",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "2b71c9e8e5acb32ffe784aeae72f575155fd8bc28f9804f496e47bdd6564ee9f",
+  "reference_sha256": "7bd096c21974cf094103b080d5e4267357d3e3f1260687fbc7f396d07be151af",
+  "method": "bm25",
+  "answer": "Person646 bought field hands and moved to Person187 to live.",
+  "response": {
+    "text": "Person646 bought field hands and moved to Person187 to live.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3032,
+      "total_tokens": 3050,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 19.28825165500166,
+    "request_sha256": "d3858b00bcf0c10b9488b40a887a9a98f439709937a271c6efecd389837213c5",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    223,
+    228,
+    219,
+    227,
+    214,
+    225,
+    224,
+    234,
+    245,
+    218,
+    145,
+    213,
+    215,
+    141,
+    235,
+    143,
+    231,
+    246,
+    210,
+    217
+  ],
+  "retrieval_scores": [
+    192.88266824994304,
+    174.3016687623492,
+    170.9553384278262,
+    168.95806707444802,
+    167.7307461256579,
+    163.73872652545924,
+    163.70198967086515,
+    158.68959039493146,
+    154.13260549506998,
+    153.7678249764176,
+    152.65150826715814,
+    151.46436727101667,
+    150.4064312727111,
+    149.88142343846326,
+    149.20809869591068,
+    148.66860732713658,
+    148.33041356734617,
+    148.3140992498192,
+    148.24875013762798,
+    148.21919335347891
+  ],
+  "retrieval_seconds": 0.05067882398725487,
+  "provided_context_sha256": "cdf3cce125babcf79a2ea667c354f153bf02b80f29195de9c57fcea4fe3e5b2d",
+  "provided_context_tokens": 2688,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "fd926ce375fe4396b160b1822c60373df0ba79eddae9523d7eebef112a3d9194",
+    "raw_answer_sha256": "e918f2b65bcda878621d239b830f77aab62dd6970c3fa6e3921f43a29fb78d93",
+    "answer_redacted": false
+  }
+}

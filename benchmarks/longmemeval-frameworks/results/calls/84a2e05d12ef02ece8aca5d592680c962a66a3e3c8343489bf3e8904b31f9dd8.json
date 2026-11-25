@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e81c8a2bd370ef69eba8f5ce44dfa261a6be55edf26af9a12e11337a8745760a",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-01e4f149-3b81-4209-a6c0-d442807171ef",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"County Cork\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"IrishCentral\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"The Irish Times\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"IrishGenealogy.ie\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Duchas.ie\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795368221,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 124,
+      "prompt_tokens": 8930,
+      "total_tokens": 9054,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5465
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"County Cork\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"IrishCentral\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"The Irish Times\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"IrishGenealogy.ie\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Duchas.ie\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+  "seconds": 60.00111920098425,
+  "prompt_tokens_local": 8930
+}

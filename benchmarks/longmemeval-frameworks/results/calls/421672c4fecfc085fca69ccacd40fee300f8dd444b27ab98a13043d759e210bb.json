@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 73
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e88d1a22aaa881eac2f48a1f6b5ddb00bcdeab6c4c8782172724c06a4407c6cd",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-93ad419a-f7dc-493e-95cd-9a58a04eaee8",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        {\"Brand considered for wood material\": \"Case-Mate\"},\n        {\"Brand considered for fabric material\": \"Tech21, Ringke, Casetify\"},\n        {\"Brand considered for carbon fiber material\": \"Mophie, Incipio\"}\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367170,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 61,
+      "prompt_tokens": 2879,
+      "total_tokens": 2940,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        {\"Brand considered for wood material\": \"Case-Mate\"},\n        {\"Brand considered for fabric material\": \"Tech21, Ringke, Casetify\"},\n        {\"Brand considered for carbon fiber material\": \"Mophie, Incipio\"}\n    ]\n}",
+  "seconds": 10.100377146998653,
+  "prompt_tokens_local": 2879
+}

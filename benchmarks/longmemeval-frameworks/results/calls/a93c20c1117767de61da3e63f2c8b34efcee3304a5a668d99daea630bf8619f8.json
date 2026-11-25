@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 35
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d4c18715371b548c5c12117a7c79d25e949455be07dd9b36a334c3bb3ff9a4fc",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-12f16dbd-22ac-4704-8bb5-ae7cf6052740",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Try mindful breathing\", \"Meditation can help reduce stress and improve focus\", \"Meditation should be practiced daily for at least 10-15 minutes\", \"Mindful breathing is an excellent choice for reducing stress\", \"Meditation can be practiced for a shorter duration if it is more comfortable\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332506,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 69,
+      "prompt_tokens": 1478,
+      "total_tokens": 1547,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Try mindful breathing\", \"Meditation can help reduce stress and improve focus\", \"Meditation should be practiced daily for at least 10-15 minutes\", \"Mindful breathing is an excellent choice for reducing stress\", \"Meditation can be practiced for a shorter duration if it is more comfortable\"]}",
+  "seconds": 3.4378113809943898,
+  "prompt_tokens_local": 1478,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

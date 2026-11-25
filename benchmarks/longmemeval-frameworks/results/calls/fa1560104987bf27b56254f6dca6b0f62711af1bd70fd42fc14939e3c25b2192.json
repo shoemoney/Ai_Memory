@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 13
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "a7498d9e9b63db45c1455ffecbd88703dd310fdb22f4f7840bef58f2e59a4ec7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-1a305f63-43b8-46ca-ab78-f64c3242e532",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"County Cork, the Rebel County\", \"Cork City is the capital of County Cork\", \"Cork is famous for its traditional Irish music\", \"Cork is famous for its delicious cuisine\", \"Cork is famous for its literature\", \"Cork is passionate about sports\", \"Start with the information you have about your grandmother's family\", \"Interview older family members to gather more information about your family's history\", \"Use online resources to access records and documents about your family's history\", \"Connect with other genealogists and researchers to get advice and share resources\", \"Plan a visit to County Cork to explore the places your ancestors lived, worked, and played\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365599,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 140,
+      "prompt_tokens": 1418,
+      "total_tokens": 1558,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"County Cork, the Rebel County\", \"Cork City is the capital of County Cork\", \"Cork is famous for its traditional Irish music\", \"Cork is famous for its delicious cuisine\", \"Cork is famous for its literature\", \"Cork is passionate about sports\", \"Start with the information you have about your grandmother's family\", \"Interview older family members to gather more information about your family's history\", \"Use online resources to access records and documents about your family's history\", \"Connect with other genealogists and researchers to get advice and share resources\", \"Plan a visit to County Cork to explore the places your ancestors lived, worked, and played\"]}",
+  "seconds": 10.224026070995023,
+  "prompt_tokens_local": 1418
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "99bb16c9e0def63689e39a027e21f3d03a60cd62a9ae5e1b66b40626e38fc701",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4479898d-a593-426b-90b3-71f1180883d4",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_PART_OF\", \"fact\": \"The Trigger is an interactive exhibit at the Belmont Arts Center.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\"}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"The Mustang is a model of the Trigger interactive exhibit.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\"}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"The Trigger interactive exhibit has a cracked windshield.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795334185,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 222,
+      "prompt_tokens": 6523,
+      "total_tokens": 6745,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_PART_OF\", \"fact\": \"The Trigger is an interactive exhibit at the Belmont Arts Center.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\"}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"The Mustang is a model of the Trigger interactive exhibit.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\"}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"The Trigger interactive exhibit has a cracked windshield.\", \"valid_at\": \"2023-05-28T00:05:00+00:00\"}]}",
+  "seconds": 7.9324345629866,
+  "prompt_tokens_local": 6523
+}

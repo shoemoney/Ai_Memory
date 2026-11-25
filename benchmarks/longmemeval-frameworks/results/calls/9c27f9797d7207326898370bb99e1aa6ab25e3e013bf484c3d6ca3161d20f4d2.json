@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "aaeeae9a7ede2d687e3382e5a273059a4902f27dcd1928f218312dfdbcd4295f",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-943ccd25-0477-461a-a2d9-cf496fe161cc",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"entity_resolutions\": [\n        {\"id\": 0, \"name\": \"Codenames\", \"duplicate_candidate_id\": 0},\n        {\"id\": 1, \"name\": \"user\", \"duplicate_candidate_id\": -1},\n        {\"id\": 2, \"name\": \"Wits & Wagers\", \"duplicate_candidate_id\": 0},\n        {\"id\": 3, \"name\": \"Jordan's cat\", \"duplicate_candidate_id\": -1},\n        {\"id\": 4, \"name\": \"Mysterium\", \"duplicate_candidate_id\": 4},\n        {\"id\": 5, \"name\": \"Forbidden Island\", \"duplicate_candidate_id\": 5},\n        {\"id\": 6, \"name\": \"Forbidden Desert\", \"duplicate_candidate_id\": 5},\n        {\"id\": 7, \"name\": \"Taboo\", \"duplicate_candidate_id\": 0},\n        {\"id\": 8, \"name\": \"Pictionary\", \"duplicate_candidate_id\": 0}\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795344531,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 214,
+      "prompt_tokens": 8843,
+      "total_tokens": 9057,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\n    \"entity_resolutions\": [\n        {\"id\": 0, \"name\": \"Codenames\", \"duplicate_candidate_id\": 0},\n        {\"id\": 1, \"name\": \"user\", \"duplicate_candidate_id\": -1},\n        {\"id\": 2, \"name\": \"Wits & Wagers\", \"duplicate_candidate_id\": 0},\n        {\"id\": 3, \"name\": \"Jordan's cat\", \"duplicate_candidate_id\": -1},\n        {\"id\": 4, \"name\": \"Mysterium\", \"duplicate_candidate_id\": 4},\n        {\"id\": 5, \"name\": \"Forbidden Island\", \"duplicate_candidate_id\": 5},\n        {\"id\": 6, \"name\": \"Forbidden Desert\", \"duplicate_candidate_id\": 5},\n        {\"id\": 7, \"name\": \"Taboo\", \"duplicate_candidate_id\": 0},\n        {\"id\": 8, \"name\": \"Pictionary\", \"duplicate_candidate_id\": 0}\n    ]\n}",
+  "seconds": 95.775778463998,
+  "prompt_tokens_local": 8843
+}

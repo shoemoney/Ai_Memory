@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 36
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b4eb47bef1282ce3f1f534a2ac58509c668fb895bb4cbc25416e5be19f3ccfb2",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-dc1c8189-20b3-4fc7-881c-299889121fee",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Considering upgrading to a faster internet plan (500 Mbps or 1 Gbps)\",\n        \"Current internet plan is 100 Mbps\",\n        \"Future-proofing the setup by upgrading to a faster plan\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332516,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 56,
+      "prompt_tokens": 2550,
+      "total_tokens": 2606,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Considering upgrading to a faster internet plan (500 Mbps or 1 Gbps)\",\n        \"Current internet plan is 100 Mbps\",\n        \"Future-proofing the setup by upgrading to a faster plan\"\n    ]\n}",
+  "seconds": 3.925339467008598,
+  "prompt_tokens_local": 2550,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 5
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f16e6f85175a667813b691243f345b8794769b4a2879c2d2d2eeec46eeeee3fc",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-12b027ad-c1b2-47d9-a8de-cd8797a9532b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Interested in trying Anatolian cuisine\",\n        \"Asked for recommendations on where to start in Anatolia\",\n        \"Asked for specific restaurants and markets to try Anatolian dishes\",\n        \"Asked about cultural events that celebrate Anatolian cuisine\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331919,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 58,
+      "prompt_tokens": 2960,
+      "total_tokens": 3018,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Interested in trying Anatolian cuisine\",\n        \"Asked for recommendations on where to start in Anatolia\",\n        \"Asked for specific restaurants and markets to try Anatolian dishes\",\n        \"Asked about cultural events that celebrate Anatolian cuisine\"\n    ]\n}",
+  "seconds": 2.359413233003579,
+  "prompt_tokens_local": 2960,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

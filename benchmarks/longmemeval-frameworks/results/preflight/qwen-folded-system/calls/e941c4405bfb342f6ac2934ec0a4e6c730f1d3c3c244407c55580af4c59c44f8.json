@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "840a9d86ae1d6d2c0d715cb17957d14d03377832691229aee82d4fa5ef2af225",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c29ad136-10b3-43c3-859b-521c2c5ed14e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Denver\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Belmont Arts Center is located in Denver.\", \"valid_at\": \"2023-05-28T00:05:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331184,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 6603,
+      "total_tokens": 6689,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Denver\", \"relation_type\": \"IS_SITED_IN\", \"fact\": \"Belmont Arts Center is located in Denver.\", \"valid_at\": \"2023-05-28T00:05:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 5.482836497001699,
+  "prompt_tokens_local_gemma_estimate": 6665
+}

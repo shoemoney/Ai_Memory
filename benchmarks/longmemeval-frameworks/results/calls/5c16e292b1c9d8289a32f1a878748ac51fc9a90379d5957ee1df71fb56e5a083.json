@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9459cb21319f102ab7c9b7deb4ab74e21d53efb3b8c8e115b48f53887d7ed470",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0a016e3b-4ccf-4db2-8189-b3466068b77d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"6/04/2022 29621\",\n            \"summary\": \"There were 29,621 calls containing the keyword 'Error' on 6/04/2022, indicating a significant increase in errors compared to previous months.\"\n        },\n        {\n            \"name\": \"6/07/2022 23077\",\n            \"summary\": \"There were 23,077 calls containing the keyword 'Error' on 6/07/2022, showing a gradual increase in errors from the previous month.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795362665,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 149,
+      "prompt_tokens": 5823,
+      "total_tokens": 5972,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"6/04/2022 29621\",\n            \"summary\": \"There were 29,621 calls containing the keyword 'Error' on 6/04/2022, indicating a significant increase in errors compared to previous months.\"\n        },\n        {\n            \"name\": \"6/07/2022 23077\",\n            \"summary\": \"There were 23,077 calls containing the keyword 'Error' on 6/07/2022, showing a gradual increase in errors from the previous month.\"\n        }\n    ]\n}",
+  "seconds": 22.326939806021983,
+  "prompt_tokens_local": 5823
+}

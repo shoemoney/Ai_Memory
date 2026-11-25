@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 44
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "31ed467accd131f4677665c041dc432e9054a5f1431c520372baf4859672756d",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e5871629-26d7-4669-b23f-68df6bc0fee7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"23\",\n            \"text\": \"Improve serves\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"24\",\n            \"text\": \"Forehand and backhand strokes\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"25\",\n            \"text\": \"Non-dominant foot stance\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"26\",\n            \"text\": \"Toss consistency\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"27\",\n            \"text\": \"Racquet angle\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"28\",\n            \"text\": \"Wrist snap\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"29\",\n            \"text\": \"Follow-through\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"30\",\n            \"text\": \"Practice variations\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"31\",\n            \"text\": \"Video analysis\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"32\",\n            \"text\": \"Drills and exercises\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356488,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 295,
+      "prompt_tokens": 2125,
+      "total_tokens": 2420,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"23\",\n            \"text\": \"Improve serves\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"24\",\n            \"text\": \"Forehand and backhand strokes\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"25\",\n            \"text\": \"Non-dominant foot stance\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"26\",\n            \"text\": \"Toss consistency\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"27\",\n            \"text\": \"Racquet angle\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"28\",\n            \"text\": \"Wrist snap\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"29\",\n            \"text\": \"Follow-through\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"30\",\n            \"text\": \"Practice variations\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"31\",\n            \"text\": \"Video analysis\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"32\",\n            \"text\": \"Drills and exercises\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 43.100344876002055,
+  "prompt_tokens_local": 2125
+}

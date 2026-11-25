@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract"
+  },
+  "phase": "answer",
+  "served_model": "membench-longmemeval-frameworks-tmp/model",
+  "prompt_sha256": "8c336c3f165aee82d61a24252de4fb002386c761a8a724ed8f424b11c2ef7322",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 512,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b1bee926-c345-4975-9103-fc4cc94d7d1c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "The provided conversation history does not mention any trips to Thailand. \n",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795333087,
+    "model": "membench-longmemeval-frameworks-tmp/model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 15,
+      "prompt_tokens": 930,
+      "total_tokens": 945,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "text": "The provided conversation history does not mention any trips to Thailand.",
+  "seconds": 5.401960846997099,
+  "prompt_tokens_local": 930,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

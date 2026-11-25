@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q036",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "58af834b278c6a54894506d7d81218b3f7239e973744527f8742cdd970af95ef",
+  "reference_sha256": "14d79a88c5a96cfd3a5b66d416f9ccce7ab4596507aabf8ad957ad920917dde8",
+  "method": "rag",
+  "answer": "Person021 informed Person646 about the illness at the Person156 house.",
+  "response": {
+    "text": "Person021 informed Person646 about the illness at the Person156 house.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 21,
+      "prompt_tokens": 3328,
+      "total_tokens": 3349,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 21.477061725003296,
+    "request_sha256": "8ca79437489ac4d5d03c289ad5768ec4b071d0ba7d4cd9ea9cd17e3e475cd399",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    152,
+    405,
+    99,
+    518,
+    305,
+    183,
+    475,
+    100,
+    324,
+    59,
+    126,
+    144,
+    335,
+    503,
+    360,
+    502,
+    571,
+    145,
+    270,
+    56
+  ],
+  "retrieval_scores": [
+    0.6557060480117798,
+    0.6110438704490662,
+    0.5766943693161011,
+    0.5765854120254517,
+    0.5758037567138672,
+    0.5734092593193054,
+    0.5731483697891235,
+    0.5721670389175415,
+    0.5699852705001831,
+    0.5679043531417847,
+    0.566364049911499,
+    0.5633172988891602,
+    0.5592052936553955,
+    0.5590800046920776,
+    0.5554197430610657,
+    0.5550419092178345,
+    0.554611325263977,
+    0.551500678062439,
+    0.5514174699783325,
+    0.5505421161651611
+  ],
+  "retrieval_seconds": 0.16827620399999432,
+  "provided_context_sha256": "c449a50e708d53792355589920c7fbc30a6460fd6c6da3043500a1157964ed3b",
+  "provided_context_tokens": 2968,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "341e7b73f563965fdb05fc08262ca9b5e00c60236695b1868edc5cc3acaacbfe",
+    "raw_answer_sha256": "78b47b71142e0a5392b2215d2a0607d9422040501e28343abd24fcc3b0fe8cd7",
+    "answer_redacted": false
+  }
+}

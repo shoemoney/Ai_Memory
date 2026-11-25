@@ -1,0 +1,20 @@
+{
+  "model": "google/embeddinggemma-2",
+  "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "device": "cuda",
+  "max_length": 512,
+  "batch_size": 8,
+  "dimension": 128,
+  "seed": 20261121,
+  "threads": 4,
+  "dtype": "torch.bfloat16",
+  "versions": {
+    "mteb": "2.27.20",
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "sentence-transformers": "6.3.0",
+    "datasets": "5.2.0",
+    "numpy": "2.5.5",
+    "pytrec-eval-terrier": "0.5.11"
+  }
+}

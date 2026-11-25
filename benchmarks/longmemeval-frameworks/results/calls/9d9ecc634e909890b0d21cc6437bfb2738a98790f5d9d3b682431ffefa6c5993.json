@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 44
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e97adcbfac6df39a48715d48d5c85cdd3b659ff7e6128cff9c0c0b294bfcf948",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-fc69d2da-5640-4998-a444-5513223fc11c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Lockheed Martin\", \"relation_type\": \"OWNS\", \"fact\": \"Denver owns a Lockheed Martin aircraft.\", \"valid_at\": \"2023-08-15T13:58:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"LOCATED_IN\", \"fact\": \"Belmont Arts Center is located in Riverside Park.\", \"valid_at\": \"2023-08-15T13:58:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363337,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 165,
+      "prompt_tokens": 7330,
+      "total_tokens": 7495,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Lockheed Martin\", \"relation_type\": \"OWNS\", \"fact\": \"Denver owns a Lockheed Martin aircraft.\", \"valid_at\": \"2023-08-15T13:58:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Belmont Arts Center\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"LOCATED_IN\", \"fact\": \"Belmont Arts Center is located in Riverside Park.\", \"valid_at\": \"2023-08-15T13:58:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 39.64260368200485,
+  "prompt_tokens_local": 7330
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "83224da91115efa6b58c42dee896d4c9a0823150863f0d273fdeb7504b797cf7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-91ad6771-a11f-466b-bc75-490a238d6fdc",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Wits & Wagers\", \"target_entity_name\": \"user\", \"relation_type\": \"ENJOYS\", \"fact\": \"user enjoys playing Wits & Wagers\", \"valid_at\": \"2023-05-28T09:02:00Z\"}, {\"source_entity_name\": \"Forbidden Island\", \"target_entity_name\": \"user\", \"relation_type\": \"ENJOYS\", \"fact\": \"user enjoys playing Forbidden Island\", \"valid_at\": \"2023-05-28T09:02:00Z\"}, {\"source_entity_name\": \"Forbidden Desert\", \"target_entity_name\": \"user\", \"relation_type\": \"ENJOYS\", \"fact\": \"user enjoys playing Forbidden Desert\", \"valid_at\": \"2023-05-28T09:02:00Z\"}, {\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Taboo\", \"relation_type\": \"IS_PARENT_OF\", \"fact\": \"Nisha's dad is the parent of Taboo\", \"valid_at\": \"2023-05-28T09:02:00Z\"}, {\"source_entity_name\": \"Jordan's cat\", \"target_entity_name\": \"Taboo\", \"relation_type\": \"HAS_ANIMAL\", \"fact\": \"Jordan's cat is an animal of Taboo\", \"valid_at\": \"2023-05-28T09:02:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795344122,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 335,
+      "prompt_tokens": 9462,
+      "total_tokens": 9797,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5169
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Wits & Wagers\", \"target_entity_name\": \"user\", \"relation_type\": \"ENJOYS\", \"fact\": \"user enjoys playing Wits & Wagers\", \"valid_at\": \"2023-05-28T09:02:00Z\"}, {\"source_entity_name\": \"Forbidden Island\", \"target_entity_name\": \"user\", \"relation_type\": \"ENJOYS\", \"fact\": \"user enjoys playing Forbidden Island\", \"valid_at\": \"2023-05-28T09:02:00Z\"}, {\"source_entity_name\": \"Forbidden Desert\", \"target_entity_name\": \"user\", \"relation_type\": \"ENJOYS\", \"fact\": \"user enjoys playing Forbidden Desert\", \"valid_at\": \"2023-05-28T09:02:00Z\"}, {\"source_entity_name\": \"Nisha's dad\", \"target_entity_name\": \"Taboo\", \"relation_type\": \"IS_PARENT_OF\", \"fact\": \"Nisha's dad is the parent of Taboo\", \"valid_at\": \"2023-05-28T09:02:00Z\"}, {\"source_entity_name\": \"Jordan's cat\", \"target_entity_name\": \"Taboo\", \"relation_type\": \"HAS_ANIMAL\", \"fact\": \"Jordan's cat is an animal of Taboo\", \"valid_at\": \"2023-05-28T09:02:00Z\"}]}",
+  "seconds": 404.8858256780077,
+  "prompt_tokens_local": 9462
+}

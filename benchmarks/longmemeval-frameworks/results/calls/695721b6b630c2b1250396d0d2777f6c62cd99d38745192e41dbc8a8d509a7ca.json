@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "abafdfb9905af8b59ca34cc38a682761e7ceabe438ae4d415efb4d9d6b4bffe7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6e8d006d-6859-4c96-8e20-6712e6d1998b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Taylor GS Mini\", \"summary\": \"Taylor GS Mini, a Taylor acoustic guitar, was cleaned and photographed for an online listing. The user received positive feedback on the photos and was advised to highlight the guitar's features and unique details. The user also received tips on how to take great photos of a guitar for online listings, including using good lighting, choosing a plain background, showing multiple angles, and editing the photos to make them look visually appealing. The user mentioned enjoying their new Fender Champion 20 amp, which was purchased from Guitar Center for $150, and recommended online platforms for selling musical instruments like Reverb, eBay, and Facebook Marketplace. The user also asked for tips on finding a good deal on a used bass guitar online.\"}], \"summaries\": []}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795344789,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 168,
+      "prompt_tokens": 7954,
+      "total_tokens": 8122,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 476
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Taylor GS Mini\", \"summary\": \"Taylor GS Mini, a Taylor acoustic guitar, was cleaned and photographed for an online listing. The user received positive feedback on the photos and was advised to highlight the guitar's features and unique details. The user also received tips on how to take great photos of a guitar for online listings, including using good lighting, choosing a plain background, showing multiple angles, and editing the photos to make them look visually appealing. The user mentioned enjoying their new Fender Champion 20 amp, which was purchased from Guitar Center for $150, and recommended online platforms for selling musical instruments like Reverb, eBay, and Facebook Marketplace. The user also asked for tips on finding a good deal on a used bass guitar online.\"}], \"summaries\": []}",
+  "seconds": 136.7342571439949,
+  "prompt_tokens_local": 7954
+}

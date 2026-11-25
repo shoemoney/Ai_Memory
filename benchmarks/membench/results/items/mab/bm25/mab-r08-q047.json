@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q047",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "4cc11b90074b8ddde76dc2bc3812422a66a9cbf788bab3beb988c821ec669368",
+  "reference_sha256": "8e8b5f012fb791a1cb1ee2f51416cad33b9cdd59e7f17a3a73453c814e14c951",
+  "method": "bm25",
+  "answer": "Person347 Person218 fell asleep on the bed.",
+  "response": {
+    "text": "Person347 Person218 fell asleep on the bed.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 15,
+      "prompt_tokens": 3257,
+      "total_tokens": 3272,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 14.996694215005846,
+    "request_sha256": "f25a06bce7e5405cc3bfddf68ba1bf40adf31eb92aaf1001d70509465be715e6",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    419,
+    543,
+    467,
+    552,
+    550,
+    430,
+    541,
+    581,
+    571,
+    542,
+    445,
+    572,
+    537,
+    398,
+    420,
+    427,
+    428,
+    401,
+    547,
+    477
+  ],
+  "retrieval_scores": [
+    152.9962085510898,
+    150.90660676319882,
+    147.50881517889266,
+    145.27612192119082,
+    145.0859959389503,
+    144.96135723546558,
+    144.25127051959436,
+    143.56275396883694,
+    141.9499068774509,
+    141.73454911724454,
+    141.67613564488127,
+    141.37547884430987,
+    139.79602813953238,
+    139.6504989608577,
+    137.73919323072502,
+    136.377301345482,
+    135.778691040646,
+    134.57306493373252,
+    134.20863011113414,
+    133.636115694274
+  ],
+  "retrieval_seconds": 0.012821827011066489,
+  "provided_context_sha256": "867304a0f8151a17b824c08a17b079042026221b70da1b78be5525f0fab5b355",
+  "provided_context_tokens": 2919,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "b8a85e2f90b726cdd87e131bdabf5720930b7e445b011790c6f514ae74910685",
+    "raw_answer_sha256": "ccdea19d2e211cc7591235efe493f1ddb8dce47097dafa4f7f2e241b87eb4f0e",
+    "answer_redacted": false
+  }
+}

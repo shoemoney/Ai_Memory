@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "fdd3ec1dc89a9f409648bd1302f11e0e34e79a3ef05e96b59536fb0c7e9ce203",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e47f0b2a-8262-4ab4-a90e-907b2f783b5f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Macy's\", \"target_entity_name\": \"user\", \"relation_type\": \"IS_SHOPPING_AT\", \"fact\": \"user is shopping at Macy's to find a winter coat\", \"valid_at\": \"2023-08-15T00:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"assistant\", \"relation_type\": \"ASKS_QUESTION\", \"fact\": \"assistant asks user if Macy's has any good deals on winter coats right now\", \"valid_at\": \"2023-08-15T00:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795358116,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 173,
+      "prompt_tokens": 7997,
+      "total_tokens": 8170,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 591
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Macy's\", \"target_entity_name\": \"user\", \"relation_type\": \"IS_SHOPPING_AT\", \"fact\": \"user is shopping at Macy's to find a winter coat\", \"valid_at\": \"2023-08-15T00:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"user\", \"target_entity_name\": \"assistant\", \"relation_type\": \"ASKS_QUESTION\", \"fact\": \"assistant asks user if Macy's has any good deals on winter coats right now\", \"valid_at\": \"2023-08-15T00:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 112.34858533600345,
+  "prompt_tokens_local": 7997
+}

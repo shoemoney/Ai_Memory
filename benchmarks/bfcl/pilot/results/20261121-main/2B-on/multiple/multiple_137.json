@@ -1,0 +1,310 @@
+{
+  "id": "multiple_137",
+  "category": "multiple",
+  "result": [
+    {
+      "lawsuit_search": "{\"company\":\"Google\",\"start_date\":\"2021-01-01\",\"location\":\"California\",\"status\":\"ongoing\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': \"Search for ongoing lawsuits related to the company 'Google' filed after January 1, 2021 in California.\"}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "lawsuit_search",
+                "description": "Search for lawsuits related to a specific company within a specific date range and location.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "company": {
+                      "type": "string",
+                      "description": "The company related to the lawsuit."
+                    },
+                    "start_date": {
+                      "type": "string",
+                      "description": "Start of the date range for when the lawsuit was filed."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "Location where the lawsuit was filed."
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "ongoing",
+                        "settled",
+                        "dismissed"
+                      ],
+                      "description": "The status of the lawsuit. Default is 'ongoing'."
+                    }
+                  },
+                  "required": [
+                    "company",
+                    "start_date",
+                    "location"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "walmart_check_price",
+                "description": "Calculate total price for given items and their quantities at Walmart.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "List of items to be priced."
+                    },
+                    "quantities": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      },
+                      "description": "Quantity of each item corresponding to the items list."
+                    },
+                    "store_location": {
+                      "type": "string",
+                      "description": "The store location for specific pricing (optional). Default is 'USA'."
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "quantities"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "event_finder_find_upcoming",
+                "description": "Find upcoming events of a specific genre in a given location.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string",
+                      "description": "The city and state where the search will take place, e.g. New York, NY."
+                    },
+                    "genre": {
+                      "type": "string",
+                      "description": "The genre of events."
+                    },
+                    "days_ahead": {
+                      "type": "integer",
+                      "description": "The number of days from now to include in the search.",
+                      "default": 7
+                    }
+                  },
+                  "required": [
+                    "location",
+                    "genre"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 706,
+    "output_token_count": 210,
+    "latency": 1.1008384809974814
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Search for ongoing lawsuits related to the company 'Google' filed after January 1, 2021 in California."
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "lawsuit_search",
+          "description": "Search for lawsuits related to a specific company within a specific date range and location.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "company": {
+                "type": "string",
+                "description": "The company related to the lawsuit."
+              },
+              "start_date": {
+                "type": "string",
+                "description": "Start of the date range for when the lawsuit was filed."
+              },
+              "location": {
+                "type": "string",
+                "description": "Location where the lawsuit was filed."
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ongoing",
+                  "settled",
+                  "dismissed"
+                ],
+                "description": "The status of the lawsuit. Default is 'ongoing'."
+              }
+            },
+            "required": [
+              "company",
+              "start_date",
+              "location"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "walmart_check_price",
+          "description": "Calculate total price for given items and their quantities at Walmart.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of items to be priced."
+              },
+              "quantities": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "description": "Quantity of each item corresponding to the items list."
+              },
+              "store_location": {
+                "type": "string",
+                "description": "The store location for specific pricing (optional). Default is 'USA'."
+              }
+            },
+            "required": [
+              "items",
+              "quantities"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "event_finder_find_upcoming",
+          "description": "Find upcoming events of a specific genre in a given location.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city and state where the search will take place, e.g. New York, NY."
+              },
+              "genre": {
+                "type": "string",
+                "description": "The genre of events."
+              },
+              "days_ahead": {
+                "type": "integer",
+                "description": "The number of days from now to include in the search.",
+                "default": 7
+              }
+            },
+            "required": [
+              "location",
+              "genre"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-jgf7aRhzCu3Oj6J3Y8QmfYKi31g3ydyX",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "0j0lwOjtPSudG3MPRuXtSFsAmY0WTD1h",
+              "function": {
+                "arguments": "{\"company\":\"Google\",\"start_date\":\"2021-01-01\",\"location\":\"California\",\"status\":\"ongoing\"}",
+                "name": "lawsuit_search"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking me to search for ongoing lawsuits related to Google that were filed after January 1, 2021 in California. I need to use the lawsuit_search function for this.\n\nLooking at the function parameters:\n- company: \"Google\" (required)\n- location: \"California\" (required)\n- start_date: \"2021-01-01\" (required) - This is the start of the date range for when the lawsuit was filed\n- status: \"ongoing\" (optional, default is \"ongoing\")\n\nAll required parameters are provided, so I can make this function call."
+        }
+      }
+    ],
+    "created": 1795286718,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 210,
+      "prompt_tokens": 706,
+      "total_tokens": 916,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 704,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 704,
+      "prompt_n": 2,
+      "prompt_ms": 9.097,
+      "prompt_per_token_ms": 4.5485,
+      "prompt_per_second": 219.85269869187644,
+      "predicted_n": 210,
+      "predicted_ms": 1080.244,
+      "predicted_per_token_ms": 5.168631578947368,
+      "predicted_per_second": 193.47480754348095
+    }
+  },
+  "elapsed_seconds": 1.1010612120007863,
+  "score": {
+    "valid": true
+  }
+}

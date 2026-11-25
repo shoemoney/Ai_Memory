@@ -1,0 +1,36 @@
+{
+  "dataset": "vidore/vidore_v3_hr_mteb_format",
+  "revision": "bc7d43d64815ed30f664168c8052106484aba7fd",
+  "license": "cc-by-4.0",
+  "configs": {
+    "queries": {
+      "n": 318,
+      "columns": [
+        "language",
+        "id",
+        "text"
+      ]
+    },
+    "qrels": {
+      "n": 10386,
+      "columns": [
+        "query-id",
+        "corpus-id",
+        "score"
+      ]
+    },
+    "corpus": {
+      "n": 1110,
+      "columns": [
+        "image",
+        "id"
+      ]
+    }
+  },
+  "english_qrels_checks": {
+    "selected_judgment_rows": 1731,
+    "distinct_judged_queries": 318,
+    "judged_documents_absent_from_corpus": 0,
+    "status": "pass"
+  }
+}

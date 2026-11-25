@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "cb53340bb2f28525acd64776781c6412b099e1a92130e7ca4ec997e684d9ccde",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-087024e4-ad8e-459b-b177-c28561f2c726",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Taylor GS Mini\", \"target_entity_name\": \"user\", \"relation_type\": \"SELLS\", \"fact\": \"user is selling their Taylor GS Mini acoustic guitar\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Fender Champion 20\", \"target_entity_name\": \"user\", \"relation_type\": \"USES\", \"fact\": \"user is using their Fender Champion 20 amp for practice sessions\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Ibanez\", \"target_entity_name\": \"user\", \"relation_type\": \"THINKING_OF_GETTING\", \"fact\": \"user is thinking of getting a used Ibanez bass guitar for the band's project\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795344122,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 261,
+      "prompt_tokens": 9303,
+      "total_tokens": 9564,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 160
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Taylor GS Mini\", \"target_entity_name\": \"user\", \"relation_type\": \"SELLS\", \"fact\": \"user is selling their Taylor GS Mini acoustic guitar\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Fender Champion 20\", \"target_entity_name\": \"user\", \"relation_type\": \"USES\", \"fact\": \"user is using their Fender Champion 20 amp for practice sessions\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Ibanez\", \"target_entity_name\": \"user\", \"relation_type\": \"THINKING_OF_GETTING\", \"fact\": \"user is thinking of getting a used Ibanez bass guitar for the band's project\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 175.1041544280015,
+  "prompt_tokens_local": 9303
+}

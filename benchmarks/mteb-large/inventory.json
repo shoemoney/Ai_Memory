@@ -1,0 +1,23 @@
+{
+  "text_score_models": [
+    {"model":"Qwen/Qwen3-Embedding-0.6B","published":64.33,"benchmark":"MMTEB","earlier_run":true},
+    {"model":"Qwen/Qwen3-Embedding-4B","published":69.45,"benchmark":"MMTEB","earlier_run":false},
+    {"model":"Qwen/Qwen3-Embedding-8B","published":70.58,"benchmark":"MMTEB","earlier_run":false},
+    {"model":"jinaai/jina-embeddings-v5-text-small","published":[71.7,67.7],"benchmark":["MTEB English v2","MMTEB"],"earlier_run":true},
+    {"model":"microsoft/harrier-oss-v1-270m","published":66.5,"benchmark":"MTEB multilingual v2","earlier_run":true},
+    {"model":"microsoft/harrier-oss-v1-0.6b","published":69.0,"benchmark":"MTEB multilingual v2","earlier_run":true},
+    {"model":"microsoft/harrier-oss-v1-27b","published":74.3,"benchmark":"MTEB multilingual v2","earlier_run":false},
+    {"model":"google/embeddinggemma-2","published":[61.36,68.46,67.78,65.68],"benchmark":["MTEB multilingual v2 at 768","MTEB English 768","MTEB English 256","MTEB English 128"],"earlier_run":true},
+    {"model":"BAAI/bge-m3","published":59.56,"benchmark":"MTEB multilingual, secondary guide","earlier_run":true},
+    {"model":"BAAI/bge-small-en-v1.5","published":62.17,"benchmark":"MTEB English mean","earlier_run":true},
+    {"model":"Qwen/Qwen3-VL-Embedding-2B","published":63.87,"benchmark":"MMTEB text only","earlier_run":true},
+    {"model":"Qwen/Qwen3-VL-Embedding-8B","published":67.88,"benchmark":"MMTEB text only","earlier_run":false}
+  ],
+  "visual_score_models":[
+    {"model":"Qwen/Qwen3-VL-Embedding-2B","published":73.2,"benchmark":"MMEB-V2, 78 tasks"},
+    {"model":"Qwen/Qwen3-VL-Embedding-8B","published":77.8,"benchmark":"MMEB-V2, 78 tasks"},
+    {"model":"nomic-ai/nomic-embed-multimodal-7b","published":58.8,"benchmark":"ViDoRe-v2 nDCG@5"}
+  ],
+  "no_published_score_in_book":["sentence-transformers/all-MiniLM-L6-v2","jinaai/jina-embeddings-v4","vidore/colqwen2-v1.0","vidore/colpali","facebook/imagebind-huge"],
+  "scope":"All embedding retrieval-quality scores in chapters 03, 04 and 18; dimensions, prices, storage arithmetic and reranker scores are not embedding retrieval-quality scores. Hosted embedding models have no quality scores in these chapters."
+}

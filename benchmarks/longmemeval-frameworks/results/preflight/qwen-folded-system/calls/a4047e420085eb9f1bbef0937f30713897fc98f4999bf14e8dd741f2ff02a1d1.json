@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 29
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "8cde88d7b36ac7c5f8d977132980f68cb600edcb15a8317009b70fad5965b4d1",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-dd58295f-f4d5-47dd-a44f-ec43e35a3595",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Recommended games for a group of 6-8 players include Wits & Wagers, Taboo, Codenames, and others. Hosted a successful game night with friends and family.\"}]",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330306,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 44,
+      "prompt_tokens": 2807,
+      "total_tokens": 2851,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Recommended games for a group of 6-8 players include Wits & Wagers, Taboo, Codenames, and others. Hosted a successful game night with friends and family.\"}]",
+  "seconds": 2.814898330005235,
+  "prompt_tokens_local_gemma_estimate": 2906
+}

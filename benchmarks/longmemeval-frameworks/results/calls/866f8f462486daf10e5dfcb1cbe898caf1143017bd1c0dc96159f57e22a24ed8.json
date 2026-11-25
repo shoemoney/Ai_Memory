@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 16
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "984c0b6cb8016ae4e9025e21c6412acf108b5b4d2790a784b3deb282ca6e306f",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b819e39b-30ef-4f8c-9eed-19cb9746a1e1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Created 15 video titles for creating tactical depth in a turn-based tactics game\",\n    \"Created 10 video titles for balancing the game in a turn-based tactics game\",\n    \"Created 10 video titles for creating unique unit abilities in a turn-based tactics game\",\n    \"Created 10 video titles for creating a dynamic battlefield in a turn-based tactics game\",\n    \"Created 10 video resources for learning more about creating tactical depth\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365689,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 104,
+      "prompt_tokens": 2786,
+      "total_tokens": 2890,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Created 15 video titles for creating tactical depth in a turn-based tactics game\",\n    \"Created 10 video titles for balancing the game in a turn-based tactics game\",\n    \"Created 10 video titles for creating unique unit abilities in a turn-based tactics game\",\n    \"Created 10 video titles for creating a dynamic battlefield in a turn-based tactics game\",\n    \"Created 10 video resources for learning more about creating tactical depth\"\n  ]\n}",
+  "seconds": 10.415836746018613,
+  "prompt_tokens_local": 2786
+}

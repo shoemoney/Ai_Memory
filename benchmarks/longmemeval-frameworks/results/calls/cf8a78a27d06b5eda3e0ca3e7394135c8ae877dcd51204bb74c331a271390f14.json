@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e637bec5f56d5fc9c89527a24e61648f88adbdb814f309382a49476f106c846b",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-40aac7af-3d04-4f50-8dab-0d0c70fe03dc",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"$defs\": {\"NodeDuplicate\": {\"properties\": {\"id\": {\"description\": \"integer id of the entity\", \"title\": \"Id\", \"type\": \"integer\"}, \"name\": {\"description\": \"Name of the entity. Should be the most complete and descriptive name of the entity. Do not include any JSON formatting in the Entity name such as {}.\", \"title\": \"Name\", \"type\": \"string\"}, \"duplicate_candidate_id\": {\"description\": \"candidate_id of the matching EXISTING ENTITY, or -1 if no duplicate exists.\", \"title\": \"Duplicate Candidate Id\", \"type\": \"integer\"}}, \"required\": [\"id\", \"name\", \"duplicate_candidate_id\"], \"title\": \"NodeDuplicate\", \"type\": \"object\"}}, \"properties\": {\"entity_resolutions\": {\"description\": \"List of resolved nodes\", \"items\": {\"$ref\": \"#/$defs/NodeDuplicate\"}, \"title\": \"Entity Resolutions\", \"type\": \"array\"}}, \"required\": [\"entity_resolutions\"], \"title\": \"NodeResolutions\", \"type\": \"object\"}}\n{\"entity_resolutions\": [{\"id\": 0, \"name\": \"6/04/2022 29621\", \"duplicate_candidate_id\": -1}, {\"id\": 1, \"name\": \"6/07/2022 23077\", \"duplicate_candidate_id\": -1}, {\"id\": 2, \"name\": \"6/04/2022 29621\", \"duplicate_candidate_id\": -1}, {\"id\": 3, \"name\": \"6/07/2022 23077\", \"duplicate_candidate_id\": -1}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795362539,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 367,
+      "prompt_tokens": 6075,
+      "total_tokens": 6442,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\"$defs\": {\"NodeDuplicate\": {\"properties\": {\"id\": {\"description\": \"integer id of the entity\", \"title\": \"Id\", \"type\": \"integer\"}, \"name\": {\"description\": \"Name of the entity. Should be the most complete and descriptive name of the entity. Do not include any JSON formatting in the Entity name such as {}.\", \"title\": \"Name\", \"type\": \"string\"}, \"duplicate_candidate_id\": {\"description\": \"candidate_id of the matching EXISTING ENTITY, or -1 if no duplicate exists.\", \"title\": \"Duplicate Candidate Id\", \"type\": \"integer\"}}, \"required\": [\"id\", \"name\", \"duplicate_candidate_id\"], \"title\": \"NodeDuplicate\", \"type\": \"object\"}}, \"properties\": {\"entity_resolutions\": {\"description\": \"List of resolved nodes\", \"items\": {\"$ref\": \"#/$defs/NodeDuplicate\"}, \"title\": \"Entity Resolutions\", \"type\": \"array\"}}, \"required\": [\"entity_resolutions\"], \"title\": \"NodeResolutions\", \"type\": \"object\"}}\n{\"entity_resolutions\": [{\"id\": 0, \"name\": \"6/04/2022 29621\", \"duplicate_candidate_id\": -1}, {\"id\": 1, \"name\": \"6/07/2022 23077\", \"duplicate_candidate_id\": -1}, {\"id\": 2, \"name\": \"6/04/2022 29621\", \"duplicate_candidate_id\": -1}, {\"id\": 3, \"name\": \"6/07/2022 23077\", \"duplicate_candidate_id\": -1}]}",
+  "seconds": 37.84788537598797,
+  "prompt_tokens_local": 6075
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7af260b9edb44edf5f01754bcdce8af4ec69ebbb700a2e7620aa8a3b95836ce0",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-bc8b1071-2c1c-43e5-a79f-2e40376a3a7c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Belmont Arts Center\", \"summary\": \"Belmont Arts Center is a venue known for hosting various events and performances. It has a history of hosting concerts, theater productions, and art exhibitions.\"}, {\"name\": \"Lockheed Martin\", \"summary\": \"Lockheed Martin is a major defense contractor and aerospace manufacturer. It has a significant presence in the defense industry and is known for its contributions to space exploration and military technology.\"}, {\"name\": \"Mustang\", \"summary\": \"Mustang refers to Ford's popular sports car model, known for its performance and reliability. It is often associated with American muscle cars and is a well-known brand in the automotive industry.\"}, {\"name\": \"Denver\", \"summary\": \"Denver, Colorado, is a major city known for its diverse economy and cultural attractions. It is home to the Denver Art Museum and the Denver Performing Arts Center.\"}, {\"name\": \"cracked windshield\", \"summary\": \"A cracked windshield is a common issue with vehicles, especially older ones. It can affect visibility and safety, and requires repair to prevent further damage.\"}, {\"name\": \"Riverside Park\", \"summary\": \"Riverside Park is a public recreational area known for its green spaces and community events. It hosts various activities and events throughout the year, including concerts and festivals.\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795358641,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 278,
+      "prompt_tokens": 6766,
+      "total_tokens": 7044,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 476
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Belmont Arts Center\", \"summary\": \"Belmont Arts Center is a venue known for hosting various events and performances. It has a history of hosting concerts, theater productions, and art exhibitions.\"}, {\"name\": \"Lockheed Martin\", \"summary\": \"Lockheed Martin is a major defense contractor and aerospace manufacturer. It has a significant presence in the defense industry and is known for its contributions to space exploration and military technology.\"}, {\"name\": \"Mustang\", \"summary\": \"Mustang refers to Ford's popular sports car model, known for its performance and reliability. It is often associated with American muscle cars and is a well-known brand in the automotive industry.\"}, {\"name\": \"Denver\", \"summary\": \"Denver, Colorado, is a major city known for its diverse economy and cultural attractions. It is home to the Denver Art Museum and the Denver Performing Arts Center.\"}, {\"name\": \"cracked windshield\", \"summary\": \"A cracked windshield is a common issue with vehicles, especially older ones. It can affect visibility and safety, and requires repair to prevent further damage.\"}, {\"name\": \"Riverside Park\", \"summary\": \"Riverside Park is a public recreational area known for its green spaces and community events. It hosts various activities and events throughout the year, including concerts and festivals.\"}]}",
+  "seconds": 77.15794798999559,
+  "prompt_tokens_local": 6766
+}

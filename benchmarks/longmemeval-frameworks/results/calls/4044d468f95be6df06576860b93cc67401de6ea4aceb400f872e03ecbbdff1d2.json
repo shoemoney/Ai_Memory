@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "45fd15bd7eabf9b3ed2be32a142b16b3205fc1321547965876ecf17d8426fbdd",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4877827d-5893-4e6f-b064-a2ccaff02eff",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Denver\", \"summary\": \"No specific information related to Denver was found in the provided messages. No summary content was generated for this entity.\"}, {\"name\": \"Lockheed Martin\", \"summary\": \"\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795339503,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 52,
+      "prompt_tokens": 6880,
+      "total_tokens": 6932,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 458
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Denver\", \"summary\": \"No specific information related to Denver was found in the provided messages. No summary content was generated for this entity.\"}, {\"name\": \"Lockheed Martin\", \"summary\": \"\"}]}",
+  "seconds": 87.94213092100108,
+  "prompt_tokens_local": 6880
+}

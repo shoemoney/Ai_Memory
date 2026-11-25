@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 48
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9a80ddffb32aaa8fc6b8012c6cf59d99a85ae2623869fdc5eabf38100adabb37",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-fd852f43-0c55-4523-b2b1-37002e8723c6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"funding issues\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"market access and trade barriers\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"swim caps can represent the swimmer's country or display personal style\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"An Instant Pot is a multi-cooker with features like pressure cooking, slow cooking, and yogurt making\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Interested in technology and innovation\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"training and technical assistance\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Noted recent mergers and acquisitions in the hospitality industry such as AccorHotels acquiring Orbis, IHG acquiring Six Senses Hotels Resorts Spas, Marriott International acquiring Elegant Hotels Group, and AccorHotels acquiring sbe Entertainment Group.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"flexibility\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"lack of infrastructure\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Growth and sustainability focus on tracking progress and success, scaling the business, and addressing additional needs or demographics.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"management practices\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"International Monetary Fund (IMF) is an organization that manages the global economy by providing financial assistance to countries experiencing economic and financial difficulties.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"12\",\n            \"text\": \"The IMF provides financial assistance to countries based on economic indicators and the country's ability to repay the loan.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"13\",\n            \"text\": \"The IMF requires countries to implement a range of structural reforms in exchange for financial assistance, such as fiscal reforms, monetary reforms, financial sector reforms, and structural reforms.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"14\",\n            \"text\": \"The IMF works with the country to tailor the reforms to its needs and ensures the reforms are targeted and effective.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356703,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 603,
+      "prompt_tokens": 1945,
+      "total_tokens": 2548,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"funding issues\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"market access and trade barriers\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"swim caps can represent the swimmer's country or display personal style\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"An Instant Pot is a multi-cooker with features like pressure cooking, slow cooking, and yogurt making\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Interested in technology and innovation\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"training and technical assistance\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Noted recent mergers and acquisitions in the hospitality industry such as AccorHotels acquiring Orbis, IHG acquiring Six Senses Hotels Resorts Spas, Marriott International acquiring Elegant Hotels Group, and AccorHotels acquiring sbe Entertainment Group.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"flexibility\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"lack of infrastructure\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Growth and sustainability focus on tracking progress and success, scaling the business, and addressing additional needs or demographics.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"management practices\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"International Monetary Fund (IMF) is an organization that manages the global economy by providing financial assistance to countries experiencing economic and financial difficulties.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"12\",\n            \"text\": \"The IMF provides financial assistance to countries based on economic indicators and the country's ability to repay the loan.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"13\",\n            \"text\": \"The IMF requires countries to implement a range of structural reforms in exchange for financial assistance, such as fiscal reforms, monetary reforms, financial sector reforms, and structural reforms.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"14\",\n            \"text\": \"The IMF works with the country to tailor the reforms to its needs and ensures the reforms are targeted and effective.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 85.25472695000644,
+  "prompt_tokens_local": 1945
+}

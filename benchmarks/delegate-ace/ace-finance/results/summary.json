@@ -1,0 +1,42 @@
+{
+ "n_items": 200,
+ "baseline": {
+  "correct": 93,
+  "acc": 0.465,
+  "wilson95": [
+   0.39718443070423204,
+   0.5341347897100506
+  ]
+ },
+ "ace": {
+  "correct": 114,
+  "acc": 0.57,
+  "wilson95": [
+   0.500703604055383,
+   0.636657955116052
+  ]
+ },
+ "paired_diff_points": 10.5,
+ "paired_diff_bootstrap95_points": [
+  3.5000000000000004,
+  18.0
+ ],
+ "gains": 38,
+ "losses": 17,
+ "mcnemar_exact_p": 0.006455803109956637,
+ "best_validation_accuracy": 0.6,
+ "validation_checkpoints": [
+  {
+   "step": 30,
+   "val_acc": 0.525,
+   "playbook_tokens": 1183
+  },
+  {
+   "step": 60,
+   "val_acc": 0.6,
+   "playbook_tokens": 2713
+  }
+ ],
+ "no_answer_baseline": 0,
+ "no_answer_ace": 0
+}

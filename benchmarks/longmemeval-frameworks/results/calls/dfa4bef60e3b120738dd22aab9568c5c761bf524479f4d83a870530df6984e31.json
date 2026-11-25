@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0c580704aca50742d098e8932ba90843fa68a9e00b0f48bb248d219f0fcba883",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-241fd7c9-567d-4a50-8abe-6c698f8d6bbd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Ibanez SR300\", \"target_entity_name\": \"Ibanez SR505\", \"relation_type\": \"IS_RECOMMENDED_FOR\", \"fact\": \"The Ibanez SR505 is a step up from the Ibanez SR300, offering a more aggressive sound with a stronger midrange presence.\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"episode_indices\": [0]}, {\"source_entity_name\": \"Ibanez SR300\", \"target_entity_name\": \"Ibanez SR505\", \"relation_type\": \"IS_RECOMMENDED_FOR\", \"fact\": \"The Ibanez SR505 is a step up from the Ibanez SR300, offering a more aggressive sound with a stronger midrange presence.\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"episode_indices\": [0]}, {\"source_entity_name\": \"Ibanez SR300\", \"target_entity_name\": \"Ibanez BTB740\", \"relation_type\": \"IS_RECOMMENDED_FOR\", \"fact\": \"The Ibanez BTB740 is a high-end bass that offers a complex, aggressive sound with a strong low-end response.\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"episode_indices\": [0]}, {\"source_entity_name\": \"Ibanez SR300\", \"target_entity_name\": \"Ibanez GIO GSR200\", \"relation_type\": \"IS_RECOMMENDED_FOR\", \"fact\": \"The Ibanez GIO GSR200 is a more affordable option that still delivers a great sound for rock music.\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795345377,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 435,
+      "prompt_tokens": 8515,
+      "total_tokens": 8950,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4511
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Ibanez SR300\", \"target_entity_name\": \"Ibanez SR505\", \"relation_type\": \"IS_RECOMMENDED_FOR\", \"fact\": \"The Ibanez SR505 is a step up from the Ibanez SR300, offering a more aggressive sound with a stronger midrange presence.\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"episode_indices\": [0]}, {\"source_entity_name\": \"Ibanez SR300\", \"target_entity_name\": \"Ibanez SR505\", \"relation_type\": \"IS_RECOMMENDED_FOR\", \"fact\": \"The Ibanez SR505 is a step up from the Ibanez SR300, offering a more aggressive sound with a stronger midrange presence.\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"episode_indices\": [0]}, {\"source_entity_name\": \"Ibanez SR300\", \"target_entity_name\": \"Ibanez BTB740\", \"relation_type\": \"IS_RECOMMENDED_FOR\", \"fact\": \"The Ibanez BTB740 is a high-end bass that offers a complex, aggressive sound with a strong low-end response.\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"episode_indices\": [0]}, {\"source_entity_name\": \"Ibanez SR300\", \"target_entity_name\": \"Ibanez GIO GSR200\", \"relation_type\": \"IS_RECOMMENDED_FOR\", \"fact\": \"The Ibanez GIO GSR200 is a more affordable option that still delivers a great sound for rock music.\", \"valid_at\": \"2023-05-28T10:06:00Z\", \"episode_indices\": [0]}]}",
+  "seconds": 211.5755147650052,
+  "prompt_tokens_local": 8515
+}

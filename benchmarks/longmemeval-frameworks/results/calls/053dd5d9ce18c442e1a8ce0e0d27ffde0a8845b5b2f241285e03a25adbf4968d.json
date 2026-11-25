@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 37
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5534f6a237b54eae69088f19a8948fd0981fba24ae3f08295ce51c15fd069143",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d8de0de3-d5f6-4b9b-bddd-7ec732be2b10",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        [\"Considered upgrading to a 500 Mbps or 1 Gbps internet plan\", \"Kept an eye on usage and usage habits\", \"Considered a portable power bank for the S22 Ultra\", \"Considered a phone case for the S22 Ultra\"]\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332525,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 68,
+      "prompt_tokens": 2523,
+      "total_tokens": 2591,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        [\"Considered upgrading to a 500 Mbps or 1 Gbps internet plan\", \"Kept an eye on usage and usage habits\", \"Considered a portable power bank for the S22 Ultra\", \"Considered a phone case for the S22 Ultra\"]\n    ]\n}",
+  "seconds": 3.981362022997928,
+  "prompt_tokens_local": 2523,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

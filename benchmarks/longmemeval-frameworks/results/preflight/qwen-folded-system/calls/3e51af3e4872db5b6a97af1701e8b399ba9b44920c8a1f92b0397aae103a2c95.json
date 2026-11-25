@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 8
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "8b8fd6b6dafa46754741088f1c8a21d70031fd25225e7b5724e783b3ef9e41a1",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-7b60a34d-3ed4-4a26-9adc-385c1fe37b3f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Excited to start commuting again on the bike\", \"Plan to celebrate the first day back on the bike with a nice coffee or breakfast\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330143,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 33,
+      "prompt_tokens": 1333,
+      "total_tokens": 1366,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 704
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Excited to start commuting again on the bike\", \"Plan to celebrate the first day back on the bike with a nice coffee or breakfast\"]}",
+  "seconds": 0.9923907530028373,
+  "prompt_tokens_local_gemma_estimate": 1370
+}

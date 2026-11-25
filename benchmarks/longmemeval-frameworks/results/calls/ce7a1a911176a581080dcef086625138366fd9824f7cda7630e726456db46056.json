@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 36
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "25d93dd770d5264ed5f06594367ee1d4024e7e1643a10cd24c19820f64be91c2",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ac8e9cc7-d169-407a-9d10-065ed0b53379",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Shakespeare\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"London\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795349540,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 67,
+      "prompt_tokens": 7030,
+      "total_tokens": 7097,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Shakespeare\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"London\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+  "seconds": 22.994014906988014,
+  "prompt_tokens_local": 7030
+}

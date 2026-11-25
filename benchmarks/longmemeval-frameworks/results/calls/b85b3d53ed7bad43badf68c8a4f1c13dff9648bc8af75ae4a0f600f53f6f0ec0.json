@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 54
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c84ceec04547651741dcd0b92b59a46a1f708cce6a0726578901280965f9ce81",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0f8e71a9-795d-4885-acc7-6e2e29760af8",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Young Czechs tend to have more positive perceptions and attitudes towards people from different ethnic backgrounds compared to older generations\",\n        \"There are specific initiatives and programs in the Czech Republic aimed at promoting diversity and inclusion among the younger generation\",\n        \"The Czech Diversity Charter is a voluntary commitment by companies and organizations in the Czech Republic to promote diversity and inclusion in the workplace\",\n        \"Multikulturní centrum Praha is a community center in Prague that promotes multiculturalism, diversity, and social inclusion through various educational and cultural activities\",\n        \"Nesehnuti is a non-governmental organization that works to eliminate prejudice and discrimination in Czech society through various initiatives and campaigns\",\n        \"International School of Prague is an international school in Prague that promotes diversity and inclusion through its curriculum and activities\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332896,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 170,
+      "prompt_tokens": 1553,
+      "total_tokens": 1723,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Young Czechs tend to have more positive perceptions and attitudes towards people from different ethnic backgrounds compared to older generations\",\n        \"There are specific initiatives and programs in the Czech Republic aimed at promoting diversity and inclusion among the younger generation\",\n        \"The Czech Diversity Charter is a voluntary commitment by companies and organizations in the Czech Republic to promote diversity and inclusion in the workplace\",\n        \"Multikulturní centrum Praha is a community center in Prague that promotes multiculturalism, diversity, and social inclusion through various educational and cultural activities\",\n        \"Nesehnuti is a non-governmental organization that works to eliminate prejudice and discrimination in Czech society through various initiatives and campaigns\",\n        \"International School of Prague is an international school in Prague that promotes diversity and inclusion through its curriculum and activities\"\n    ]\n}",
+  "seconds": 4.543417754000984,
+  "prompt_tokens_local": 1553,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

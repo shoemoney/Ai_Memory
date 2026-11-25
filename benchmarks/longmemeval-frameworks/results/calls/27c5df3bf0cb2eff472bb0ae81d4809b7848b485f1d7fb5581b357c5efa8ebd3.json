@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5b63eac89155a6fe5b3044ecab6af8d2ad0054c147e7dc7f4d3e0e065587161c",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-bc1cd672-d864-41c9-95bd-a0c61453541a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"user\", \"target_entity_name\": \"almond milk\", \"relation_type\": \"USES_FOR\", \"fact\": \"user uses almond milk for baking cookies\", \"valid_at\": \"2023-08-15T10:51:00Z\"}, {\"source_entity_name\": \"almond milk\", \"target_entity_name\": \"snickerdoodle cookies\", \"relation_type\": \"USES_FOR\", \"fact\": \"almond milk is used in snickerdoodle cookies\", \"valid_at\": \"2023-08-15T10:51:00Z\"}, {\"source_entity_name\": \"almond milk\", \"target_entity_name\": \"lemon rosemary shortbread cookies\", \"relation_type\": \"USES_FOR\", \"fact\": \"almond milk is used in lemon rosemary shortbread cookies\", \"valid_at\": \"2023-08-15T10:51:00Z\"}, {\"source_entity_name\": \"almond milk\", \"target_entity_name\": \"peanut butter cookies\", \"relation_type\": \"USES_FOR\", \"fact\": \"almond milk is used in peanut butter cookies\", \"valid_at\": \"2023-08-15T10:51:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795362467,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 285,
+      "prompt_tokens": 8561,
+      "total_tokens": 8846,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4292
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"user\", \"target_entity_name\": \"almond milk\", \"relation_type\": \"USES_FOR\", \"fact\": \"user uses almond milk for baking cookies\", \"valid_at\": \"2023-08-15T10:51:00Z\"}, {\"source_entity_name\": \"almond milk\", \"target_entity_name\": \"snickerdoodle cookies\", \"relation_type\": \"USES_FOR\", \"fact\": \"almond milk is used in snickerdoodle cookies\", \"valid_at\": \"2023-08-15T10:51:00Z\"}, {\"source_entity_name\": \"almond milk\", \"target_entity_name\": \"lemon rosemary shortbread cookies\", \"relation_type\": \"USES_FOR\", \"fact\": \"almond milk is used in lemon rosemary shortbread cookies\", \"valid_at\": \"2023-08-15T10:51:00Z\"}, {\"source_entity_name\": \"almond milk\", \"target_entity_name\": \"peanut butter cookies\", \"relation_type\": \"USES_FOR\", \"fact\": \"almond milk is used in peanut butter cookies\", \"valid_at\": \"2023-08-15T10:51:00Z\"}]}",
+  "seconds": 71.66763284400804,
+  "prompt_tokens_local": 8561
+}

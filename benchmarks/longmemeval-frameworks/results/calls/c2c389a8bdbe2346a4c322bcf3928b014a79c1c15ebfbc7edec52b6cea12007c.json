@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 68
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "acf05a3f6ce42b5b24dd768e85dec385a5a704ebac66f60614b536b88fd585df",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a7c6aa3a-f87a-4eea-adf9-da0b13349717",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Getting The Littles kit to try out other Drunk Elephant products\",\n        \"Getting full-size Protini Polypeptide Cream and C-Firma Day Serum\",\n        \"Plan to try out new products with The Littles kit and confirm favorites with full-size products\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367041,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 67,
+      "prompt_tokens": 2441,
+      "total_tokens": 2508,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 660
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Getting The Littles kit to try out other Drunk Elephant products\",\n        \"Getting full-size Protini Polypeptide Cream and C-Firma Day Serum\",\n        \"Plan to try out new products with The Littles kit and confirm favorites with full-size products\"\n    ]\n}",
+  "seconds": 8.42867300301441,
+  "prompt_tokens_local": 2441
+}

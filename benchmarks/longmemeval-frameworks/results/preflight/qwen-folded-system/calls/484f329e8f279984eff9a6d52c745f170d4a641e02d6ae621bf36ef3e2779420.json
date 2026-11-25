@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 27
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7292f832d76d000bd0fab85d14706aefc40aa6f2ad152c59e082c2a0b5d29833",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-90daf2ec-afae-4eb7-bbd0-56cf07ac96a9",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"14\",\n            \"text\": \"different types of bourbon produced in Frankfort\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"15\",\n            \"text\": \"recommendation for sweeter bourbon\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"16\",\n            \"text\": \"tours and tastings offered by Four Roses Distillery\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"17\",\n            \"text\": \"gift shop available for purchasing bourbons\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330299,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 142,
+      "prompt_tokens": 1958,
+      "total_tokens": 2100,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"14\",\n            \"text\": \"different types of bourbon produced in Frankfort\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"15\",\n            \"text\": \"recommendation for sweeter bourbon\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"16\",\n            \"text\": \"tours and tastings offered by Four Roses Distillery\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"17\",\n            \"text\": \"gift shop available for purchasing bourbons\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 3.1346390809922013,
+  "prompt_tokens_local_gemma_estimate": 2065
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 43
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "57f9430958e6c46073bb38f11e07622345a0c3d89c12549fd7d3e655492ad2ca",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a7d6d2cc-9ebb-4890-95fb-ce5dd10a6a8d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Westworld的使用闪回和时间线来创造一种困惑和神秘感，使观众更加投入。\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Lost使用闪回来深入探索角色的过去和动机，以创建更深层次的情感连接。\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"The Social Network的故事以非线性的方式讲述，通过展示Facebook是如何形成的，来创造一种悬念和紧迫感。\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Big Little Lies使用闪回来探索塑造角色的创伤事件，以创建更深层次的情感连接。\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Birdman的故事以似乎发生在现实时间的方式讲述，只有短暂的过去闪回，以创造一种紧迫感和强度。\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332798,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 253,
+      "prompt_tokens": 1885,
+      "total_tokens": 2138,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Westworld的使用闪回和时间线来创造一种困惑和神秘感，使观众更加投入。\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Lost使用闪回来深入探索角色的过去和动机，以创建更深层次的情感连接。\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"The Social Network的故事以非线性的方式讲述，通过展示Facebook是如何形成的，来创造一种悬念和紧迫感。\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Big Little Lies使用闪回来探索塑造角色的创伤事件，以创建更深层次的情感连接。\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Birdman的故事以似乎发生在现实时间的方式讲述，只有短暂的过去闪回，以创造一种紧迫感和强度。\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+  "seconds": 7.586447855996084,
+  "prompt_tokens_local": 1885,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q017",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "84713577a6e572fd323bad0325737646cb769b371293d117d35edeb00d9cb4b3",
+  "reference_sha256": "76432e1ae8c939ec6e396bd653dd7e6801b7a97b03c5701c81051ca40a405439",
+  "method": "bm25",
+  "answer": "Mr. Person324 revealed to Person513 that the baby was a boy.",
+  "response": {
+    "text": "Mr. Person324 revealed to Person513 that the baby was a boy.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 20,
+      "prompt_tokens": 3255,
+      "total_tokens": 3275,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.009414419997483,
+    "request_sha256": "41c1f6343505a61ea6987fcae36ce9497a425838bc19a51b9f98ec05b0796012",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    53,
+    54,
+    47,
+    70,
+    593,
+    598,
+    46,
+    48,
+    52,
+    45,
+    51,
+    594,
+    592,
+    197,
+    29,
+    498,
+    186,
+    589,
+    198,
+    363
+  ],
+  "retrieval_scores": [
+    166.70755866842177,
+    165.83458735411193,
+    160.38928660779058,
+    159.17819577898317,
+    154.53469250312963,
+    154.14549648280467,
+    153.98149833228777,
+    145.98465636536116,
+    139.8460555830831,
+    139.41856937829579,
+    139.39346079698316,
+    133.5180507035332,
+    131.02177951760788,
+    128.43813757682398,
+    127.5891695979279,
+    126.75972882206668,
+    122.4360656590808,
+    121.88621947060028,
+    121.56897458318066,
+    120.74376834475635
+  ],
+  "retrieval_seconds": 0.0126714640064165,
+  "provided_context_sha256": "1b1f557b660bcc6c7e24765272847e5d6755614e495fa8fab22af14e8424f404",
+  "provided_context_tokens": 2876,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "8dc235a7d63d0af3d8fe0eb3a4ca6884172b8755afaed623fb51572450a3a3db",
+    "raw_answer_sha256": "9b1834dbed2c28273b8ca1c4e831929cee87988df7857aa1aa6cd92eecdbe3be",
+    "answer_redacted": false
+  }
+}

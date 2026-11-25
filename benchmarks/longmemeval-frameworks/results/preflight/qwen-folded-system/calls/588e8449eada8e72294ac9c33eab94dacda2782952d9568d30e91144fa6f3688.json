@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 54
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "59aaafa6ce1d5843f975b3574e7abebb21803ee88245a33b4c11682515f89267",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-3b42f335-ad9e-4cc0-8b8e-c2a734f47a99",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Young Czechs have more positive perceptions and attitudes towards people from different ethnic backgrounds compared to older generations.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"There are specific initiatives and programs in the Czech Republic aimed at promoting diversity and inclusion among the younger generation.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"The Czech Diversity Charter, Multikulturní centrum Praha, Nesehnuti, and International School of Prague are examples of such initiatives.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"These initiatives have had a positive impact on the Czech Republic in promoting diversity and inclusion.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330441,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 192,
+      "prompt_tokens": 1835,
+      "total_tokens": 2027,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Young Czechs have more positive perceptions and attitudes towards people from different ethnic backgrounds compared to older generations.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"There are specific initiatives and programs in the Czech Republic aimed at promoting diversity and inclusion among the younger generation.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"The Czech Diversity Charter, Multikulturní centrum Praha, Nesehnuti, and International School of Prague are examples of such initiatives.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"These initiatives have had a positive impact on the Czech Republic in promoting diversity and inclusion.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 2.8918496620026417,
+  "prompt_tokens_local_gemma_estimate": 1958
+}

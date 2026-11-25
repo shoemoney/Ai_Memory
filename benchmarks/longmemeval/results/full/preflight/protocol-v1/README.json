@@ -1,0 +1,10 @@
+{
+  "status": "Retained protocol-debug run, excluded from the final large-run metrics",
+  "reason": "Gemma continued beyond end_of_turn; three hypotheses differed from the first assistant-turn prefix. Warning-pressure events occurred under the default allocator-cache policy.",
+  "correction": "Explicit end-of-turn stopping, first-turn-only parsing, process-local 512 MiB allocator cache limit, prefill steps of 256",
+  "selection_unchanged": true,
+  "seed_unchanged": true,
+  "model_weights_unchanged": true,
+  "no_selection_by_score": true,
+  "restart_policy": "Repeat all selected questions under one corrected serving profile, with no selection by score."
+}

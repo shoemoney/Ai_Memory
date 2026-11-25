@@ -1,0 +1,506 @@
+<article class="chapter essay" data-ch="18" data-part="f" data-running="Choosing an architecture">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part F &middot; Chapter 18</p>
+  <div class="opener-num" aria-hidden="true">18</div>
+  <h1>Choosing an architecture</h1>
+  <p class="opener-summary">Pick the smallest memory that fixes a failure you can see, then grow it by measured signals.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Compared</p>
+      <p class="glance-value">14 designs/components (Chapters 01 to 14), ten criteria; 3 further families, five criteria; 2 tools unrated.</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Answered</p>
+      <p class="glance-value">12 head-to-head selection questions.</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Routed</p>
+      <p class="glance-value">2 flowcharts from the kind of memory to a store.</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Built</p>
+      <p class="glance-value">7 reference stacks, 4-step scale path, regional rule and nearest case study (Chapters 21 to 23).</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<p><strong>The ratings are editorial judgments</strong>, not benchmarks. Start with “Start small” for capability gaps and the scale path for capacity limits; consult comparisons and stacks as needed.</p>
+
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: begin with files, and let evidence move you</p>
+  <p><strong>Single-user tools and prototypes start with flat files</strong> and git history, then keyword search and embeddings in one SQLite file. Use Postgres for cross-host writes, tenant isolation or excessive contention. Trial a note-taking model when verified chat facts repeatedly go missing from notes; keep it only if omissions fall without more false writes. Use a task graph for blocked, claimed or ready work; notes suffice for simple hand-offs. Managed services trade operation for payment. If stable material fits the window, see “Long context or any memory”.</p>
+</aside>
+</section>
+
+<section>
+<h2>Comparison matrices</h2>
+<p>Dots run from one to five; fewer means less effort/cost. Running cost is memory’s added expense; Write cost counts model calls per save. Matrix 1 setups work disconnected with models/services inside the deployment; Matrix 3 varies. Exact terms, Meaning and Changing facts rate retrieving literal strings, paraphrases and current facts after replacement. Scale ceiling rates data/load before replacing the design. Postgres + pgvector means PostgreSQL with the extension. Store rows include local embedding calls per vector write; note-taking models are small memory LLMs. Component rows (Chapters 03, 04, 05, 06, 07 and 10) include their tested stores. Read the reasons before deciding on one-dot differences.</p>
+
+<div>
+<p class="table-title keep-with-next">Matrix 1. Effort, cost and operation (editorial ratings)</p>
+<p class="matrix-legend keep-with-next"><span>Setup effort, Running cost, Write cost (dark dots): fewer is better.</span> <span>Human-readable (colored dots): more is better.</span></p>
+<table class="matrix">
+  <colgroup><col class="c40"><col class="c15"><col class="c15"><col class="c15"><col class="c15"></colgroup>
+  <thead><tr><th>Architecture</th><th>Setup effort</th><th>Running cost</th><th>Write cost</th><th>Human-readable</th></tr></thead>
+  <tbody>
+    <tr><td>Flat files (01)</td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r5" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>LLM wiki (02)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r5" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Text embeddings (03)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Multimodal embeddings (04)</td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Hybrid + rerank (05)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Note-taking models (06)</td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Uncensored LLMs (07)</td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Postgres + pgvector (08)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Redis, Valkey (09)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Memcached, caches (10)</td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Vector stores (11)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>SQLite, others (12)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Memory frameworks (13)</td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+    <tr><td>Knowledge graphs (14)</td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r5 ink" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="avoid-break">
+<p class="table-title">Matrix 2. What each one can find and how far it goes (editorial ratings)</p>
+<p class="matrix-legend"><span>Colored dots: more is better. Maturity badges are defined on the How to read page.</span></p>
+<table class="matrix">
+  <colgroup><col class="c25"><col class="c15"><col class="c15"><col class="c15"><col class="c15"><col class="c15"></colgroup>
+  <thead><tr><th>Architecture</th><th>Exact terms</th><th>Meaning</th><th>Changing facts</th><th>Scale ceiling</th><th>Maturity</th></tr></thead>
+  <tbody>
+    <tr><td>Flat files (01)</td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>LLM wiki (02)</td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-prototype">Prototype</span></td></tr>
+    <tr><td>Text embeddings (03)</td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r5" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Multimodal embeddings (04)</td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Hybrid + rerank (05)</td><td><span class="rating r5" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Note-taking models (06)</td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Uncensored LLMs (07)</td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-prototype">Prototype</span></td></tr>
+    <tr><td>Postgres + pgvector (08)</td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Redis, Valkey (09)</td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Memcached, caches (10)</td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Vector stores (11)</td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r5" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r5" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>SQLite, others (12)</td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Memory frameworks (13)</td><td><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Knowledge graphs (14)</td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r5" role="img" aria-label="5 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="badge badge-prototype">Prototype</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="avoid-break">
+<p>Matrix 3 omits retrieval/Scale ceiling: tasks hold no knowledge; other rows lack retrieval tests. Reasons cover Human-readable.</p>
+<p class="table-title">Matrix 3. Three further families and two tools not run (editorial ratings)</p>
+<p class="matrix-legend"><span>Setup effort, Running cost, Write cost (dark dots): fewer is better.</span> <span>Managed-services dots come from documentation, not a run; the family mixes generally available services and Foundry preview.</span></p>
+<table class="matrix">
+  <colgroup><col class="c25"><col class="c15"><col class="c15"><col class="c15"><col class="c15"><col class="c15"></colgroup>
+  <thead><tr><th>Family or tool</th><th>Setup effort</th><th>Running cost</th><th>Write cost</th><th>Works disconnected?</th><th>Maturity</th></tr></thead>
+  <tbody>
+    <tr><td>Task graph, Beads (01)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r1 ink" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td>Yes</td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+    <tr><td>Context database (02)</td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r3 ink" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td>Yes</td><td><span class="badge badge-prototype">Prototype</span></td></tr>
+    <tr><td>Managed services (13)</td><td><span class="rating r2 ink" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td><span class="rating r4 ink" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span></td><td>No</td><td><span class="badge badge-shipped">GA / Preview</span></td></tr>
+    <tr><td>MemPalace 3.12.0 (13)</td><td colspan="5" class="cell-note">Not rated: repository survey only; no operational evidence collected here.</td></tr>
+    <tr><td>EverOS (13)</td><td colspan="5" class="cell-note">Not rated: repository survey only; no operational evidence collected here.</td></tr>
+  </tbody>
+</table>
+</div>
+
+
+<p class="table-title">One line of reason for each row</p>
+<table class="data">
+  <colgroup><col class="c25"><col class="c75"></colgroup>
+  <thead><tr><th>Architecture</th><th>Why it is rated this way</th></tr></thead>
+  <tbody>
+    <tr><td>Flat files</td><td>Readable, no service/model calls. Claude Code loads a partial MEMORY.md index each session (Chapter 01).<sup class="cite"><a href="#s18-1">1</a></sup></td></tr>
+    <tr><td>LLM wiki</td><td>Ingest calls a model, which can flag conflicts; rewrites can damage unrelated pages.<sup class="cite"><a href="#s18-2">2</a>,<a href="#s18-3">3</a></sup></td></tr>
+    <tr><td>Text embeddings</td><td>One embedding call per item; unreadable, strong on paraphrase. Memory size and the write queue break first (Chapter 03).<sup class="cite"><a href="#s18-4">4</a></sup></td></tr>
+    <tr><td>Multimodal embeddings</td><td>Indexes slides and photos directly, but needs larger models; a text embedder scores higher on text.<sup class="cite"><a href="#s18-5">5</a></sup></td></tr>
+    <tr><td>Hybrid + rerank</td><td>One embedding call per written chunk; keyword indexing and fusion need no model, and the reranker runs on read. It changes retrieval, not storage; add only after measured misses. Chapter 05's 24-note test showed none: embeddings alone found the right note in every top-three result (recall@3 1.00), against 0.95 for hybrid. Test your set.</td></tr>
+    <tr><td>Note-taking models</td><td>Every write calls a model; slow on CPU, offline-capable (Chapter 06). In Chapter 06's one-input test a 2B model saved one fact and dropped the other.</td></tr>
+    <tr><td>Uncensored LLMs</td><td>Costs match a stock note-taking model. Chapter 07's small test: the uncensored (weight-edited) model reversed one correction (two reversed facts); the stock model did not.</td></tr>
+    <tr><td>Postgres + pgvector</td><td>Transactions, joins, row security and hybrid SQL in one store. Tuning is yours.<sup class="cite"><a href="#s18-6">6</a></sup></td></tr>
+    <tr><td>Redis, Valkey</td><td>Fast expiring state, all in RAM (about 16 GB per million 1,536-dimension vectors, hash plus index, versus about 6 GB raw float32, Chapter 09). Crashes can lose the last second with AOF fsync every second, more with snapshots.<sup class="cite"><a href="#s18-7">7</a></sup></td></tr>
+    <tr><td>Memcached, caches</td><td>A disposable key-value cache. It stores answers, not memory.</td></tr>
+    <tr><td>Vector stores</td><td>Best vector features and scale. In many, tenant isolation needs your metadata filter; check native namespaces (Chapter 11).<sup class="cite"><a href="#s18-8">8</a></sup></td></tr>
+    <tr><td>SQLite, others</td><td>One local keywords/vector file; serialized writes. Pin pre-v1 sqlite-vec. SQLite 3.51.3 or later fixes concurrent-write/checkpoint WAL corruption (Chapter 12).<sup class="cite"><a href="#s18-9">9</a></sup></td></tr>
+    <tr><td>Memory frameworks</td><td>Quick extraction/search costs extra model calls. Scores are vendor claims; Chapter 17 compares independently.<sup class="cite"><a href="#s18-10">10</a></sup></td></tr>
+    <tr><td>Knowledge graphs</td><td>Tracks sourced facts’ true/learned dates. Highest write cost, estimated: several calls/episode, varying with matching/retries. Chapter 14 ran offline on CPU. Setup: graph database, JSON-capable 7B note-taking model.<sup class="cite"><a href="#s18-11">11</a></sup></td></tr>
+    <tr><td>Task graph, Beads</td><td>Tasks, dependencies and claims; no write-time model call or knowledge-retrieval rating. Embedded mode: one writer/database.<sup class="cite"><a href="#s18-12">12</a></sup></td></tr>
+    <tr><td>Context database</td><td>Browsable files, model summaries, scoped vector search; one model call/directory imported. Gains are maintainer claims.<sup class="cite"><a href="#s18-13">13</a>,<a href="#s18-14">14</a></sup></td></tr>
+    <tr><td>Managed services</td><td>Extraction/storage/retrieval billed per use; enforce scopes. No servers, no offline use. Chapter 13 surveys, not runs: Google/AWS memory generally available (checked 2026-11-20), Microsoft Foundry memory in public preview.<sup class="cite"><a href="#s18-15">15</a>,<a href="#s18-16">16</a>,<a href="#s18-30">30</a></sup></td></tr>
+    <tr><td>MemPalace 3.12.0</td><td>Verbatim conversations: wings scope people/projects, rooms topics, drawers content. Local-first, MIT. Recall@5: fraction of relevant items in five results; with one, hit rate, not answer accuracy. Not run (Chapter 13).<sup class="cite"><a href="#s18-17">17</a></sup></td></tr>
+    <tr><td>EverOS</td><td>Readable Markdown source, SQLite/LanceDB indexes. Self-run, Apache-2.0. Scores are not comparable; session/user/agent deletion scopes differ. Not run (Chapter 13).<sup class="cite"><a href="#s18-18">18</a></sup></td></tr>
+  </tbody>
+</table>
+
+</section>
+
+<section>
+<h2>Decision flowcharts</h2>
+<figure class="diagram">
+<svg viewBox="0 0 600 262" role="img" aria-label="Flowchart: if everything fits in one prompt use long context with caching; else if people write short stable facts use flat files; else if one agent keeps notes on one topic use an LLM wiki; otherwise go to Figure 2.">
+  <rect class="d-start" x="14" y="6" width="330" height="30" rx="15"/>
+  <text class="d-title d-on-dark" x="179" y="26" text-anchor="middle">What are you remembering, and who writes it?</text>
+
+  <polygon class="d-decision" points="88,66 160,112 88,158 16,112"/>
+  <text class="d-title" x="88" y="109" text-anchor="middle">Does it all fit</text>
+  <text class="d-title" x="88" y="124" text-anchor="middle">in one prompt?</text>
+
+  <polygon class="d-decision" points="262,66 334,112 262,158 190,112"/>
+  <text class="d-title" x="262" y="109" text-anchor="middle">People write it,</text>
+  <text class="d-title" x="262" y="124" text-anchor="middle">short and stable?</text>
+
+  <polygon class="d-decision" points="436,66 508,112 436,158 364,112"/>
+  <text class="d-title" x="436" y="109" text-anchor="middle">Agent keeps notes</text>
+  <text class="d-title" x="436" y="124" text-anchor="middle">on one topic?</text>
+
+  <rect class="d-end" x="530" y="90" width="66" height="44" rx="4"/>
+  <text class="d-title d-on-dark" x="563" y="108" text-anchor="middle">Go to</text>
+  <text class="d-title d-on-dark" x="563" y="124" text-anchor="middle">Figure 2</text>
+
+  <rect class="d-box accent" x="13" y="200" width="150" height="48" rx="4"/>
+  <text class="d-title" x="88" y="221" text-anchor="middle">Long context</text>
+  <text class="d-sub" x="88" y="237" text-anchor="middle">with prompt caching</text>
+
+  <rect class="d-box accent" x="187" y="200" width="150" height="48" rx="4"/>
+  <text class="d-title" x="262" y="221" text-anchor="middle">Flat files</text>
+  <text class="d-sub" x="262" y="237" text-anchor="middle">Chapter 01</text>
+
+  <rect class="d-box accent" x="361" y="200" width="150" height="48" rx="4"/>
+  <text class="d-title" x="436" y="221" text-anchor="middle">LLM wiki</text>
+  <text class="d-sub" x="436" y="237" text-anchor="middle">Chapter 02</text>
+
+  <path class="d-line" d="M88 36 V64"/>
+  <path class="d-line" d="M160 112 H188"/>
+  <path class="d-line" d="M334 112 H362"/>
+  <path class="d-line" d="M508 112 H528"/>
+  <path class="d-line" d="M88 158 V198"/>
+  <path class="d-line" d="M262 158 V198"/>
+  <path class="d-line" d="M436 158 V198"/>
+  <text class="d-no" x="174" y="104" text-anchor="middle">NO</text>
+  <text class="d-no" x="348" y="104" text-anchor="middle">NO</text>
+  <text class="d-no" x="518" y="104" text-anchor="middle">NO</text>
+  <text class="d-yes" x="98" y="184">YES</text>
+  <text class="d-yes" x="272" y="184">YES</text>
+  <text class="d-yes" x="446" y="184">YES</text>
+</svg>
+<figcaption><b>Figure 1.</b> Choose the shape of the memory. Stop at the first YES. Task state with owners and dependencies goes to a task graph (Chapter 01) whatever the answers.</figcaption>
+</figure>
+<figure class="diagram">
+<svg viewBox="0 0 600 262" role="img" aria-label="Flowchart: if facts change or links matter use a knowledge graph or dated rows; else if the data is images or screenshots use multimodal vectors; else if several users or hosts write use Postgres with pgvector; otherwise use a SQLite file.">
+  <rect class="d-start" x="14" y="6" width="330" height="30" rx="15"/>
+  <text class="d-title d-on-dark" x="179" y="26" text-anchor="middle">Many facts from many sources: which store?</text>
+
+  <polygon class="d-decision" points="88,66 160,112 88,158 16,112"/>
+  <text class="d-title" x="88" y="109" text-anchor="middle">Facts change, or</text>
+  <text class="d-title" x="88" y="124" text-anchor="middle">links matter?</text>
+
+  <polygon class="d-decision" points="262,66 334,112 262,158 190,112"/>
+  <text class="d-title" x="262" y="109" text-anchor="middle">Images, slides or</text>
+  <text class="d-title" x="262" y="124" text-anchor="middle">screenshots?</text>
+
+  <polygon class="d-decision" points="436,66 508,112 436,158 364,112"/>
+  <text class="d-title" x="436" y="109" text-anchor="middle">Several users or</text>
+  <text class="d-title" x="436" y="124" text-anchor="middle">hosts write?</text>
+
+  <rect class="d-end" x="530" y="90" width="66" height="44" rx="4"/>
+  <text class="d-title d-on-dark" x="563" y="108" text-anchor="middle">SQLite</text>
+  <text class="d-sub d-on-dark" x="563" y="124" text-anchor="middle">Chapter 12</text>
+
+  <rect class="d-box accent" x="13" y="200" width="150" height="48" rx="4"/>
+  <text class="d-title" x="88" y="221" text-anchor="middle">Graph or dated rows</text>
+  <text class="d-sub" x="88" y="237" text-anchor="middle">Chapters 14 and 08</text>
+
+  <rect class="d-box accent" x="187" y="200" width="150" height="48" rx="4"/>
+  <text class="d-title" x="262" y="221" text-anchor="middle">Multimodal vectors</text>
+  <text class="d-sub" x="262" y="237" text-anchor="middle">Chapters 04 and 11</text>
+
+  <rect class="d-box accent" x="361" y="200" width="150" height="48" rx="4"/>
+  <text class="d-title" x="436" y="221" text-anchor="middle">Postgres + pgvector</text>
+  <text class="d-sub" x="436" y="237" text-anchor="middle">Chapter 08</text>
+
+  <path class="d-line" d="M88 36 V64"/>
+  <path class="d-line" d="M160 112 H188"/>
+  <path class="d-line" d="M334 112 H362"/>
+  <path class="d-line" d="M508 112 H528"/>
+  <path class="d-line" d="M88 158 V198"/>
+  <path class="d-line" d="M262 158 V198"/>
+  <path class="d-line" d="M436 158 V198"/>
+  <text class="d-no" x="174" y="104" text-anchor="middle">NO</text>
+  <text class="d-no" x="348" y="104" text-anchor="middle">NO</text>
+  <text class="d-no" x="518" y="104" text-anchor="middle">NO</text>
+  <text class="d-yes" x="98" y="184">YES</text>
+  <text class="d-yes" x="272" y="184">YES</text>
+  <text class="d-yes" x="446" y="184">YES</text>
+</svg>
+<figcaption><b>Figure 2.</b> Choose the store for a growing pile of facts, documents or chats. Chapters 03 and 05 then pick the embedder and add keyword search. Move to a dedicated store (Chapter 11) only when a tuned index cannot meet recall or latency targets. A big folder that grep cannot navigate suits a context database (Chapter 02). To rent the store, see managed services (Chapter 13).</figcaption>
+</figure>
+</section>
+
+
+<section>
+<h2>Head-to-head answers</h2>
+<h3>Flat files or an LLM wiki</h3>
+<ul>
+  <li><strong>Pick files when</strong> facts are short, stable and person-written. Keep them within the Chapter 01 limits.<sup class="cite"><a href="#s18-1">1</a></sup></li>
+  <li><strong>Pick a wiki when</strong> one agent maintains a few hundred pages on one topic, with diff review. Long rewrites corrupted 25% of content on average with three frontier models; this book's 7B run lost 71% in four edits.<sup class="cite"><a href="#s18-2">2</a>,<a href="#s18-3">3</a></sup></li>
+  <li><strong>Combine:</strong> store notes in the wiki; point a short file to its index. Retain raw sources.</li>
+</ul>
+<h3>Keyword search or embeddings</h3>
+<ul>
+  <li><strong>Pick keyword search when</strong> question and note share words: identifiers, error codes, names. Anthropic illustrates an embedding miss with error code TS-999, found by keyword ranking;<sup class="cite"><a href="#s18-4">4</a></sup> Chapter 05's 24-note embedder test found it. Test your corpus.</li>
+  <li><strong>Pick embeddings when</strong> labeled questions miss relevant notes because wording differs. For a pile too large to scan, try indexed keyword search first.<sup class="cite"><a href="#s18-4">4</a></sup></li>
+  <li><strong>Combine:</strong> index text with FTS5 and sqlite-vec in one SQLite database; fuse rankings (tested with sqlite-vec 0.1.9 on SQLite 3.51.3).<sup class="cite"><a href="#s18-9">9</a></sup></li>
+</ul>
+<h3>Text or multimodal embeddings</h3>
+<ul>
+  <li><strong>Pick text when</strong> the corpus is text. Qwen reports its 8B vision embedder averaging 67.88 on text, versus 70.58 for its 8B text model (not run here).<sup class="cite"><a href="#s18-5">5</a></sup></li>
+  <li><strong>Pick multimodal when</strong> you search screenshots, slides or photos directly. ViDoRe V3 reports visual retrievers beat textual ones on document pages.<sup class="cite"><a href="#s18-19">19</a></sup></li>
+  <li><strong>Combine:</strong> for a readable trail, embed image captions beside image vectors.</li>
+</ul>
+<h3>An embedding model or a note-taking model</h3>
+<ul>
+  <li><strong>Different jobs.</strong> Embedders index unchanged chunks by meaning; note-taking models extract facts from raw chat. Search unchanged chat when passages suffice.</li>
+  <li><strong>Pick the note-taking model when</strong> you need discrete facts and the baseline repeatedly misses them. Each write calls a model; false facts stick. In Chapter 06's CPU test, thinking mode raised one schema-checked extraction from 3.4 s to 96.9 s. Queue the write, turn thinking off and review it. Use a stock model unless it fails: Chapter 07's ten-prompt test retained every fact with a stock small model; an uncensored model reversed one correction.</li>
+  <li><strong>Combine:</strong> put a note-taking model before an embedder for semantic fact lookup. Mem0 packages this (see "A framework or building it yourself").</li>
+</ul>
+<h3>Redis, Memcached or Postgres</h3>
+<ul>
+  <li><strong>Pick Redis (or Valkey) when</strong> the data is the working layer (sessions, semantic cache, expiring keys, streams). It must fit RAM; crashes can lose the last second (AOF fsync every second, more with snapshots).<sup class="cite"><a href="#s18-7">7</a></sup></li>
+  <li><strong>Pick Memcached when</strong> you need a shared, disposable exact-key cache.</li>
+  <li><strong>Pick Postgres when</strong> the record must commit with business data and row security separates tenants.<sup class="cite"><a href="#s18-6">6</a></sup></li>
+  <li><strong>Combine:</strong> Postgres with Redis as a hot tier that rebuilds from it, or with Memcached as a versioned answer cache (Chapter 20).</li>
+</ul>
+<h3>An embedded file, pgvector or a dedicated vector store</h3>
+<ul>
+  <li><strong>Pick one SQLite file when</strong> writes stay on one host, contention meets your latency budget, and you want keywords and vectors without a server (Chapter 12).<sup class="cite"><a href="#s18-9">9</a></sup></li>
+  <li><strong>Pick Postgres + pgvector when</strong> you run Postgres and want joins, transactions and row security. pgvector defaults to exact nearest-neighbor search. Measure approximate versus exact results (index recall), then labeled fact retrieval (retrieval recall). The pgvector README gives no approximate-index row cutoff.<sup class="cite"><a href="#s18-6">6</a></sup></li>
+  <li><strong>Pick a dedicated vector store or managed service when</strong> a tuned index cannot meet recall at the required p95 latency (step 4 of the scale path below), or you search page images with several vectors per page (late interaction, Chapter 11).</li>
+  <li><strong>Combine:</strong> Postgres holds truth; rebuild the vector copy, recording each vector's model name/revision.</li>
+</ul>
+<h3>A framework or building it yourself</h3>
+<ul>
+  <li><strong>Pick a framework when</strong> you want extraction and search in few calls. Mem0 runs with Ollama and Qdrant.<sup class="cite"><a href="#s18-20">20</a></sup> It needs a separate keyword branch when exact identifiers matter (Chapter 13).</li>
+  <li><strong>Build it yourself when</strong> the schema is narrow, memory sits in your database, or you must audit writes. A plain retrieval baseline matched Mem0 at 8.4 times lower cost in one published comparison;<sup class="cite"><a href="#s18-10">10</a></sup> this book's local run found about 16 times lower generation-token cost (Chapter 17).</li>
+  <li><strong>Combine:</strong> a framework extracts and your store keeps the result. LangGraph has Postgres storage.<sup class="cite"><a href="#s18-21">21</a></sup></li>
+  <li><strong>Tested routes (Chapter 13):</strong> Hindsight, a self-hosted memory server, retained/recalled across restart; Letta Code passed scripted retention of explicitly saved information. Neither proves unprompted fact selection or minimum model/GPU requirements; measure yours.</li>
+  <li><strong>For the surveyed tools in Matrix 3,</strong> preserve source exports and verify deletion from source and derived stores.<sup class="cite"><a href="#s18-17">17</a>,<a href="#s18-18">18</a></sup></li>
+</ul>
+<h3>Self-run memory or a managed cloud service</h3>
+<ul>
+  <li><strong>Pick a managed service when</strong> you prefer per-use billing to operating extraction/storage and can enforce user scopes. Prices checked 2026-11-20; recheck: Google Memory Bank bills $0.30 per GiB-month plus model tokens. AWS AgentCore bills $0.75 per 1K records-month and $0.50 per 1K reads, so 100,000 records and 1M monthly reads cost about $575 ($75 storage plus $500 reads); at an assumed 2 KiB per record, Google storage alone is about 0.19 GiB, or $0.06 monthly. These subtotals are not comparable: price identical saves, reads and model-token volumes.<sup class="cite"><a href="#s18-22">22</a>,<a href="#s18-23">23</a></sup> Microsoft Foundry Agent Service Memory, public preview, has quotas, no virtual network integration and changing model-usage bills (Chapter 13).<sup class="cite"><a href="#s18-30">30</a></sup> AWS raw events expire within 365 days; delete derived records separately.<sup class="cite"><a href="#s18-24">24</a></sup></li>
+  <li><strong>Pick self-run when</strong> memory must stay on your hardware or every record must be inspectable.</li>
+  <li><strong>Combine:</strong> the service extracts/serves memories; export source conversations separately, since derived records are not backups (Chapter 13).</li>
+</ul>
+<h3>Vectors or a knowledge graph</h3>
+<ul>
+  <li><strong>Pick vectors when</strong> questions are local lookups and facts are short. An independent LoCoMo long-conversation test scored Mem0/retrieval/full context at 77 to 81% answer accuracy, Graphiti/Cognee at 55 to 56% (Chapter 17 reruns locally with different settings).<sup class="cite"><a href="#s18-10">10</a></sup></li>
+  <li><strong>Pick a graph when</strong> facts have dates and links. Graphiti invalidates a replaced fact instead of deleting it,<sup class="cite"><a href="#s18-11">11</a></sup> and keeps two timelines (Chapter 14).</li>
+  <li><strong>Check the note-taking model:</strong> use a model that returns valid JSON (7B and 0.6B passed ingestion/search smoke tests; an earlier 0.6B trial timed out); Chapter 14 has the gotchas and the acceptance test.<sup class="cite"><a href="#s18-11">11</a></sup></li>
+  <li><strong>Combine:</strong> lookups and dated links: vectors as the base, the graph on top.</li>
+</ul>
+<h3>A task graph or notes</h3>
+<ul>
+  <li><strong>Pick a task graph when</strong> sessions or agents must track blocked, claimed or ready work. Beads <code>bd ready</code> lists unblocked items; claims are atomic within one database. Across replicas, route claims through one writer (stack 7).<sup class="cite"><a href="#s18-12">12</a></sup></li>
+  <li><strong>Pick notes when</strong> the content is facts and conventions that stay true. An issue tracker suffices with ready-work selection and atomic claims (Chapter 01).</li>
+  <li><strong>Combine:</strong> Beads holds the plan and notes hold the conventions. A framework checkpoint (such as LangGraph's) resumes one run, replacing neither; rewind does not undo cross-thread store writes (see Chapter 13, <a href="#forked-planning">Forked planning</a>).</li>
+</ul>
+<h3>A context database, a wiki, a summary tree or plain search</h3>
+<ul>
+  <li><strong>Pick a context database when</strong> a folder has thousands of files and grep finds words but not the right directory. OpenViking generates per-directory L0 abstracts/L1 overviews for scoped vector search.<sup class="cite"><a href="#s18-13">13</a>,<a href="#s18-14">14</a></sup></li>
+  <li><strong>Pick a wiki when</strong> one person reviews every page, or plain search (SQLite FTS5 or the qmd markdown search tool) for ranked passages only (Chapter 02).</li>
+  <li><strong>Pick a summary tree when</strong> questions span themes across manuals/research corpora rather than passages or dated links. RAPTOR clusters chunks and summarizes them upward, at extra model calls per write (Chapter 05).<sup class="cite"><a href="#s18-25">25</a></sup></li>
+  <li><strong>Combine:</strong> the files stay your own and the database is a rebuildable index. Treat an abstract as a pointer: it is generated text.</li>
+</ul>
+<h3>Long context or any memory</h3>
+<ul>
+  <li><strong>Pick long context when</strong> stable material is small. Anthropic advises it under about 200K tokens with caching.<sup class="cite"><a href="#s18-4">4</a></sup> Long-context GPT-5-mini beat a Mem0-style system on accuracy in one study.<sup class="cite"><a href="#s18-26">26</a></sup></li>
+  <li><strong>Pick memory when</strong> history outgrows the window. The same study found memory cheaper after about ten turns at 100K context;<sup class="cite"><a href="#s18-26">26</a></sup> on this book's shorter local histories the break-even was about 49 questions, not turns (Chapter 17). Chapter 20 measures each addition's prompt tokens and correctness on 24 fixed questions.</li>
+  <li><strong>Combine:</strong> memory picks what enters the window.</li>
+</ul>
+</section>
+
+<section>
+<h2>Seven reference stacks</h2>
+<p>Stacks are untested exactly as listed; Chapters 20 to 23 are nearest. Chapter 20 stages a community Qwen3.8-2B, Q4_K_M assistant. Build dependencies first; review writes. CPU-only runs from November 2026 (Chapters 05, 06, 07, 12, 14 and 20) show functionality, not retrieval quality at scale.</p>
+
+<div class="ucases">
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Solo developer's coding agent</h3>
+  <dl>
+    <dt>Situation</dt><dd>One developer, one or two repositories, Claude Code or Cursor; commands, naming rules and decisions disappear between sessions.</dd>
+    <dt>Why it fits</dt><dd>Files load without retrieval, grep finds the rest, and git reviews changes.<sup class="cite"><a href="#s18-1">1</a>,<a href="#s18-27">27</a></sup> Keep them short.</dd>
+    <dt>Build order</dt><dd><ol class="small">
+      <li>Chapter 01: CLAUDE.md under 200 lines, scoped rules and notes with a dated index. Check past-decision answers in a fresh session.</li>
+      <li>Chapters 02 and 17: dated decision notes, pruned monthly.</li>
+      <li>Chapters 05 and 12: SQLite FTS5 only if grep stops finding things.</li>
+    </ol></dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Private assistant, fully local</h3>
+  <dl>
+    <dt>Situation</dt><dd>One person, one small machine, nothing leaving it; Chapter 21 is closest, with different hardware and model size.</dd>
+    <dt>Why it fits</dt><dd>One SQLite file holds text, keywords and vectors. Pin pre-v1 sqlite-vec; use SQLite 3.51.3 or later (Chapter 12).<sup class="cite"><a href="#s18-9">9</a></sup> Tests used Ubuntu CPU, and Chapter 21 a Mac mini; re-measure.</dd>
+    <dt>Build order</dt><dd><ol class="small">
+      <li>Chapters 12 and 01: a short profile file and JSONL message log: one object per event with id, timestamp, role and text; a delete event names its target id so rebuilds omit deleted messages.</li>
+      <li>Chapters 03, 05 and 12: FTS5 first; add Qwen3-Embedding-0.6B and sqlite-vec in that file after a paraphrase miss.</li>
+      <li>Chapter 06: a note-taking model after each session, writes reviewed (Chapter 21 uses 9B versus Chapter 06’s 2B test), or Chapter 13 (Hindsight, tested locally).</li>
+    </ol></dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Social-media reply agent in its owner's voice</h3>
+  <dl>
+    <dt>Situation</dt><dd>Drafts use the owner’s published voice and account context. A person approves every post.</dd>
+    <dt>Why it fits</dt><dd>Embed the fixed archive with each post’s URL and date. A note-taking model tracks changing, dated, sourced facts by account and marks superseded notes. Voice rules fit a flat file. Untrusted replies can poison memory: MINJA plants false memories through ordinary-looking queries (Chapter 17),<sup class="cite"><a href="#s18-28">28</a></sup> so approval gates both publishing and writing.</dd>
+    <dt>Build order</dt><dd><ol class="small">
+      <li>Chapters 01, 03 and 12: a voice file, and the archive embedded in one SQLite file with sources shown beside each draft.</li>
+      <li>Chapter 06: one approved row per fact: note_id, account_id, fact, date, source_exchange_id, supersedes_note_id. Exclude superseded rows from current replies; keep extraction only if omissions fall without more false writes.</li>
+      <li>Chapter 17: approval queue, trust labels, and a test requiring drafts to cite real posts and exclude superseded facts.</li>
+    </ol></dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>Customer-support bot with many tenants</h3>
+  <dl>
+    <dt>Situation</dt><dd>Hundreds of customers need isolated, changing facts and answer-time audits. Chapter 22 (per-patient isolation, audit) is closest.</dd>
+    <dt>Why it fits</dt><dd>Postgres + pgvector commits facts, embeddings, tenant and audit rows together, with row security.<sup class="cite"><a href="#s18-6">6</a></sup> Many vector stores rely on your tenant filter; bugs leak data;<sup class="cite"><a href="#s18-8">8</a></sup> check for native namespaces or per-tenant collections (Chapter 11). Valid and recorded times (Chapter 14) show which fact applied; log the version IDs cited.</dd>
+    <dt>Build order</dt><dd><ol class="small">
+      <li>Chapter 08: tenant_id with row security; append-only fact versions with valid_from, recorded_at and supersedes_id. For past answers, select versions recorded by that date, excluding those superseded within that set; log cited IDs.</li>
+      <li>Chapters 05 and 08: per-tenant search. Filtering approximate-scan candidates can leave fewer than k matches despite enough tenant records. Iterative scans probe within configured limits; raise limits or use exact search if needed. Test per-tenant recall against exact search.<sup class="cite"><a href="#s18-6">6</a></sup></li>
+      <li>Chapter 17: an outbox (change events written in the same transaction as the data) with event ids, and a tombstone per delete, so replay never restores a deleted record; trust labels, write gating, a cross-tenant test in CI returning zero foreign rows.</li>
+      <li>Chapters 09 and 10: Scope Redis sessions by tenant/user/purpose. Answer keys add query and fact-set revision; advance it transactionally with corrections/deletes. Test that the next identical query misses the old answer. A managed service (Chapter 13, not run) can replace the store, with scope checks still in your code.</li>
+    </ol></dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>Companion or role-play app</h3>
+  <dl>
+    <dt>Situation</dt><dd>Months of character conversations need plot continuity and user memory.</dd>
+    <dt>Why it fits</dt><dd>SillyTavern layers hand-written lorebooks, generated summaries and optional vector retrieval of past messages, matching this stack’s files, log and summaries. Summaries can lose details or hallucinate.<sup class="cite"><a href="#s18-29">29</a></sup></dd>
+    <dt>Build order</dt><dd><ol class="small">
+      <li>Chapter 01: character card and lorebook files.</li>
+      <li>Chapters 12 and 06: a JSONL log with FTS5; a local note-taking model appends one dated summary per session (Chapter 02).</li>
+      <li>Chapters 03 and 07: vectors as a supplement; an uncensored model only if the stock note-taking model refuses legitimate role-play and the replacement passes the Chapter 07 correction test.</li>
+      <li>Chapter 17: sample summary claims against the log. Regenerate summaries unsupported by the log; if they still lose or invent fixed plot facts, discard them and rely on the log.</li>
+    </ol></dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">6</span>Team of cooperating agents</h3>
+  <dl>
+    <dt>Situation</dt><dd>Researcher, writer and reviewer agents share facts and must not overwrite one another.</dd>
+    <dt>Why it fits</dt><dd>Shared Postgres with a version-checked pointer prevents stale overwrites. Shared-file writes can lose data.<sup class="cite"><a href="#s18-27">27</a></sup> The MCP reference memory server locks writes but rewrites its growing file (Chapter 13). Ordered writes alone permit stale overwrites. LangGraph namespaces separate private notes; shared facts need version checks.<sup class="cite"><a href="#s18-21">21</a></sup> Graphiti shares dated facts but needs structured model output (Chapter 14).<sup class="cite"><a href="#s18-11">11</a></sup></dd>
+    <dt>Build order</dt><dd><ol class="small">
+      <li>Chapter 08: shared Postgres with source_agent, recorded_at and supersedes columns. Use compare-and-set: append a version linked to its predecessor. Transactionally advance the current pointer only if that predecessor remains current. Otherwise roll back, re-read and retry; queue contradictory claims for human review.</li>
+      <li>Chapters 13 and 09: a namespace per agent, and Redis streams for hand-offs, never as the record.</li>
+      <li>Chapter 01: a task graph (Beads), so two agents cannot take the same task. Use the Chapter 01 multi-writer mode or route claims through one process; embedded mode allows one writer per database.</li>
+      <li>Chapter 17: gate poisoned writes; test that two edits from one predecessor yield one commit and one conflict.</li>
+    </ol></dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">7</span>Coding agent that resumes work across machines</h3>
+  <dl>
+    <dt>Situation</dt><dd>Machine or agent hand-offs need completed, blocked and next work.</dd>
+    <dt>Why it fits</dt><dd>A task graph keeps the plan outside any session. Beads lists unblocked work and syncs through the git remote with <code>bd dolt push</code> and <code>pull</code>.<sup class="cite"><a href="#s18-12">12</a></sup> Push before leaving; pull on arrival. Concurrent workers route claims through one writer: local claims do not reserve tasks elsewhere. Embedded mode allows one writer per database (Chapter 01 ran this against a local remote).</dd>
+    <dt>Build order</dt><dd><ol class="small">
+      <li>Chapter 01: CLAUDE.md and the notes folder, committed; Beads 1.3.4 on both machines, <code>bd ready</code> first each session.</li>
+      <li>Chapters 12 and 17: for offline search, commit only history-safe Markdown/JSONL; rebuild SQLite per machine. Tombstones suppress replay, not old commits or clones. For erasure, keep sources out of Git and choose a store and replica-retention policy supporting it. For offline edits, deduplicate event ids; send edits and base versions to one authoritative writer. It versions writes, rejects stale edits and retains versioned tombstones (delete markers) until every replica acknowledges deletion. Re-creation needs a new record ID.</li>
+      <li>Alternatively, Chapter 13: one shared Hindsight server (tested on one host only; cross-machine use is untested), a per-repository bank, writes reviewed.</li>
+    </ol></dd>
+  </dl>
+</article>
+</div>
+
+
+</section>
+
+<section>
+<h2>Start small</h2>
+<p><strong>Add one piece at a time to flat files (Chapter 01)</strong>, each when its signal appears.<sup class="cite"><a href="#s18-1">1</a></sup> Start with 20 to 30 failure cases; with traffic, test 100 to 300 scrubbed real interactions for recall, updates and forgetting (Chapter 17). Drop pieces that do not improve results.</p>
+<p class="table-title">Signal and the piece to add</p>
+<table class="data">
+  <colgroup><col class="c60"><col class="c40"></colgroup>
+  <thead><tr><th>Signal</th><th>Add</th></tr></thead>
+  <tbody>
+    <tr><td>You retype facts each session</td><td>Write them to notes (Chapter 01)</td></tr>
+    <tr><td>CLAUDE.md exceeds 200 lines</td><td>Index and split, append-only topic notes (Chapter 02); avoid full-page model rewrites</td></tr>
+    <tr><td>Grep returns too many hits to read, or misses word variants and you need ranked results</td><td>Keyword search (Chapters 05 and 12)<sup class="cite"><a href="#s18-4">4</a></sup></td></tr>
+    <tr><td>The note exists in different words</td><td>Embeddings (Chapter 03)</td></tr>
+    <tr><td>The right chunk is in the top 50, not the top 5</td><td>Reranking (Chapter 05)</td></tr>
+    <tr><td>Sessions or agents must track blocked, claimed or ready work</td><td>A task graph<sup class="cite"><a href="#s18-12">12</a></sup></td></tr>
+    <tr><td>Grep finds words but not the directory</td><td>A context database<sup class="cite"><a href="#s18-13">13</a></sup></td></tr>
+    <tr><td>A verified fact is in the source chat but repeatedly omitted from notes</td><td>A note-taking model (Chapter 06); keep it only if omissions fall without more false writes</td></tr>
+    <tr><td>Answers cite replaced facts, or must say what was known on a date</td><td>Dated facts or a graph (Chapter 14)<sup class="cite"><a href="#s18-11">11</a></sup></td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Scale path and the closest case study</h2>
+<p>This path adds capacity for users, writers or regions; “Start small” adds capabilities. Enter step 1 for keyword search or embeddings. Signals come from Chapters 01 to 14’s Scope and scale blocks and the case studies.</p>
+<p class="table-title">Deployment changes and their triggers</p>
+<table class="data">
+  <colgroup><col class="c25"><col class="c45"><col class="c30"></colgroup>
+  <thead><tr><th>Step</th><th>Take this step when</th><th>Read</th></tr></thead>
+  <tbody>
+    <tr><td>1. One writer host: SQLite with FTS5 and sqlite-vec</td><td>One writer host; exact-scan and append time fit your latency budget. No universal user cutoff.</td><td>Chapters 12 and 21.</td></tr>
+    <tr><td>2. Shared writes/tenants: Postgres + pgvector; Redis hot reads</td><td>Tenants need row security, another host needs direct writes, or local contention, exact-scan or append time exceeds your latency budget. Add Redis when repeated recall, embedding or session reads dominate. Set p95 and minimum recall targets on your test set (Chapter 17). Stay on exact search until p95 misses; then use approximate index scans (iterative for filtered queries), and go to step 4 when a tuned index still misses either target.</td><td>Chapters 08, 09 and 22. Chapter 20 stage 4 is the narrower single-user Postgres comparison.</td></tr>
+    <tr><td>3. Several workers and inference servers</td><td>The write queue grows older than your freshness budget, or a long image or document job blocks live replies. Mem0 saves search existing memories; remeasure with growth (Chapter 06). Split model hosts from the application host.</td><td>Chapters 06, 14 and 22 (two GPU lanes).</td></tr>
+    <tr><td>4. Dedicated vector store or managed service</td><td>On labeled queries a tuned index misses recall at the required latency while exact top-k over the same eligible rows finds the fact (if both miss, revisit chunking, embeddings or keyword search first), or measured I/O on the working set (sizing in Chapter 00) makes the tuned deployment miss its latency or cost budget. Choose managed operation separately, when you would rather pay than operate.</td><td>Chapters 11 and 13.</td></tr>
+    <tr><td>Any step: regional deployments</td><td>When personal data must not cross a border: one database, cache, inference endpoint, key set and backup per region, with no personal-data federation.</td><td>Chapter 23 (five regions).</td></tr>
+  </tbody>
+</table>
+<p class="table-title">Which case study is closest to you</p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c30"><col class="c25"><col class="c25"></colgroup>
+  <thead><tr><th>Case study</th><th>Closest if</th><th>Machine tier</th><th>Main local model</th></tr></thead>
+  <tbody>
+    <tr><td>Chapter 21, painter</td><td>One owner, one small machine, one SQLite file.</td><td>Mac mini M6, 32 GB unified memory, 1 TB</td><td>Qwen3.5-9B on Ollama 0.40.16 (2B vision, 0.6B embeddings).</td></tr>
+    <tr><td>Chapter 22, medical office</td><td>A regulated office: per-patient isolation, audit, Postgres and Redis.</td><td>Linux server with two 48 GB GPUs, 256 GB RAM</td><td>Qwen3.8-27B (Q4_K_M) for staff, Qwen3.5-9B for phones.</td></tr>
+    <tr><td>Chapter 23, homebuilder</td><td>Several countries; cited documents, Postgres, pgvector and Redis.</td><td>Per region: 96 GB GPU host, 256 GB RAM, voice and ingestion host</td><td>Qwen3.8-27B in bfloat16 on vLLM 0.34.0, fallback Qwen3.5-9B.</td></tr>
+  </tbody>
+</table>
+<p>Chapters 21 to 23 report runs; remeasure on your hardware.</p>
+
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s18-1"><span class="src-title">Claude Code memory documentation</span> <span class="src-note">(official)</span><a class="url" href="https://code.claude.com/docs/en/memory">https://code.claude.com/docs/en/memory</a></li>
+  <li id="s18-2"><span class="src-title">Karpathy, LLM Wiki gist (2026-04-04)</span> <span class="src-note">(primary)</span><a class="url" href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f</a></li>
+  <li id="s18-3"><span class="src-title">Laban et al., LLMs Corrupt Your Documents, arXiv:2604.15597 (2026-04-17)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2604.15597">https://arxiv.org/abs/2604.15597</a></li>
+  <li id="s18-4"><span class="src-title">Anthropic, Contextual Retrieval (2024-09-19)</span> <span class="src-note">(official)</span><a class="url" href="https://www.anthropic.com/research/contextual-retrieval">https://www.anthropic.com/research/contextual-retrieval</a></li>
+  <li id="s18-5"><span class="src-title">Qwen3-VL-Embedding-8B model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/Qwen/Qwen3-VL-Embedding-8B">https://huggingface.co/Qwen/Qwen3-VL-Embedding-8B</a></li>
+  <li id="s18-6"><span class="src-title">pgvector README (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/pgvector/pgvector/master/README.md">https://raw.githubusercontent.com/pgvector/pgvector/master/README.md</a></li>
+  <li id="s18-7"><span class="src-title">Redis persistence documentation</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/</a></li>
+  <li id="s18-8"><span class="src-title">Vector database tenant isolation, arXiv:2605.03275</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/pdf/2605.03275">https://arxiv.org/pdf/2605.03275</a></li>
+  <li id="s18-9"><span class="src-title">sqlite-vec README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/asg017/sqlite-vec">https://github.com/asg017/sqlite-vec</a></li>
+  <li id="s18-10"><span class="src-title">Wolff and Bennati, Cost and Accuracy of Long-Term Memory in Distributed Multi-Agent Systems, arXiv:2601.07978</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2601.07978">https://arxiv.org/abs/2601.07978</a></li>
+  <li id="s18-11"><span class="src-title">Graphiti README (getzep)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/getzep/graphiti">https://github.com/getzep/graphiti</a></li>
+  <li id="s18-12"><span class="src-title">Beads repository README (gastownhall/beads)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/gastownhall/beads">https://github.com/gastownhall/beads</a></li>
+  <li id="s18-13"><span class="src-title">OpenViking README (checked 2026-11-20)</span> <span class="src-note">(official, benchmark figures are maintainer claims)</span><a class="url" href="https://github.com/volcengine/OpenViking">https://github.com/volcengine/OpenViking</a></li>
+  <li id="s18-14"><span class="src-title">OpenViking documentation, Retrieval Mechanism</span> <span class="src-note">(official)</span><a class="url" href="https://docs.openviking.ai/en/concepts/07-retrieval">https://docs.openviking.ai/en/concepts/07-retrieval</a></li>
+  <li id="s18-15"><span class="src-title">Google Memory Bank API quickstart (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/api-quickstart">https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank/api-quickstart</a></li>
+  <li id="s18-16"><span class="src-title">AWS AgentCore Memory overview and namespace isolation (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory.html">https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory.html</a></li>
+  <li id="s18-17"><span class="src-title">MemPalace repository and license (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/MemPalace/mempalace">https://github.com/MemPalace/mempalace</a><a class="url" href="https://github.com/MemPalace/mempalace/blob/main/LICENSE">https://github.com/MemPalace/mempalace/blob/main/LICENSE</a></li>
+  <li id="s18-18"><span class="src-title">EverOS repository and API docs (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/EverMind-AI/EverOS">https://github.com/EverMind-AI/EverOS</a><a class="url" href="https://github.com/EverMind-AI/EverOS/blob/main/docs/api.md">https://github.com/EverMind-AI/EverOS/blob/main/docs/api.md</a></li>
+  <li id="s18-19"><span class="src-title">ViDoRe V3, arXiv:2601.08620</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2601.08620">https://arxiv.org/abs/2601.08620</a></li>
+  <li id="s18-20"><span class="src-title">Mem0, local companion with Ollama cookbook</span> <span class="src-note">(official)</span><a class="url" href="https://docs.mem0.ai/cookbooks/companions/local-companion-ollama">https://docs.mem0.ai/cookbooks/companions/local-companion-ollama</a></li>
+  <li id="s18-21"><span class="src-title">LangChain documentation, LangGraph memory</span> <span class="src-note">(official)</span><a class="url" href="https://docs.langchain.com/oss/python/langgraph/add-memory">https://docs.langchain.com/oss/python/langgraph/add-memory</a></li>
+  <li id="s18-22"><span class="src-title">Google Memory Bank pricing, billing structure of September 2026 (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing">https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing</a></li>
+  <li id="s18-23"><span class="src-title">AWS AgentCore pricing (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://aws.amazon.com/bedrock/agentcore/pricing/">https://aws.amazon.com/bedrock/agentcore/pricing/</a></li>
+  <li id="s18-24"><span class="src-title">AWS AgentCore CreateMemory retention controls (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory-create-a-memory-store.html">https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory-create-a-memory-store.html</a></li>
+  <li id="s18-25"><span class="src-title">Sarthi et al., RAPTOR, arXiv:2401.18059 (2024-01-31)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2401.18059">https://arxiv.org/abs/2401.18059</a></li>
+  <li id="s18-26"><span class="src-title">Pollertlam et al., Beyond the Context Window, arXiv:2603.04814 (2026-03)</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2603.04814">https://arxiv.org/abs/2603.04814</a></li>
+  <li id="s18-27"><span class="src-title">Letta, Context Repositories (2026-02-12)</span> <span class="src-note">(maintainer blog)</span><a class="url" href="https://www.letta.com/blog/context-repositories/">https://www.letta.com/blog/context-repositories/</a></li>
+  <li id="s18-28"><span class="src-title">Dong et al., MINJA, arXiv:2503.03704</span> <span class="src-note">(paper)</span><a class="url" href="https://arxiv.org/abs/2503.03704">https://arxiv.org/abs/2503.03704</a></li>
+  <li id="s18-29"><span class="src-title">SillyTavern documentation: World Info, Summarize and Chat Vectorization pages</span> <span class="src-note">(official)</span><a class="url" href="https://docs.sillytavern.app/">https://docs.sillytavern.app/</a></li>
+  <li id="s18-30"><span class="src-title">Microsoft Foundry Agent Service Memory: types, public preview, quotas and pricing, checked 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/agent-memory">https://learn.microsoft.com/en-us/azure/ai-foundry/agents/concepts/agent-memory</a></li>
+</ol>
+</section>
+
+</article>

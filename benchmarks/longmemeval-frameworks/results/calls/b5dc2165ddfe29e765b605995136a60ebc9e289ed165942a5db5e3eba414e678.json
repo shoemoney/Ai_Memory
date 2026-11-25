@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 43
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "a90fda17d2633192d4feb7b1f21e5ecd9fc7b4bf83577b54135527a128858685",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-82bb4937-c448-49bc-8342-e6bc2b3f563e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Westworld的使用闪回和时间线来创造一种困惑和神秘感，使观众更加投入。\",\n        \"Lost使用闪回来深入探索角色的过去和动机，以创建更深层次的情感连接。\",\n        \"The Social Network的故事以非线性的方式讲述，通过展示Facebook是如何形成的，来创造一种悬念和紧迫感。\",\n        \"Big Little Lies使用闪回来探索塑造角色的创伤事件，以创建更深层次的情感连接。\",\n        \"Birdman的故事以似乎发生在现实时间的方式讲述，只有短暂的过去闪回，以创造一种紧迫感和强度。\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332760,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 139,
+      "prompt_tokens": 2550,
+      "total_tokens": 2689,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Westworld的使用闪回和时间线来创造一种困惑和神秘感，使观众更加投入。\",\n        \"Lost使用闪回来深入探索角色的过去和动机，以创建更深层次的情感连接。\",\n        \"The Social Network的故事以非线性的方式讲述，通过展示Facebook是如何形成的，来创造一种悬念和紧迫感。\",\n        \"Big Little Lies使用闪回来探索塑造角色的创伤事件，以创建更深层次的情感连接。\",\n        \"Birdman的故事以似乎发生在现实时间的方式讲述，只有短暂的过去闪回，以创造一种紧迫感和强度。\"\n    ]\n}",
+  "seconds": 5.240470903998357,
+  "prompt_tokens_local": 2550,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

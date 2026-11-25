@@ -1,0 +1,103 @@
+[
+  {
+    "cell": "attn-r32-s0",
+    "state": {
+      "ActiveState": "active",
+      "SubState": "running",
+      "ExecMainStatus": "0"
+    },
+    "complete": false,
+    "latest": {
+      "step": 94,
+      "progress": 0.5621301775147929,
+      "cost/cumulative_usd": 3.77321775
+    },
+    "unsupported": null,
+    "failed": false,
+    "last_evaluation": {
+      "step": 50,
+      "valid/memory/exact_match": 0.9966666666666667,
+      "reader_check/exact_match": 1.0,
+      "test/nll": 2.6655960027710535e-05
+    }
+  },
+  {
+    "cell": "mlp-r32-s0",
+    "state": {
+      "ActiveState": "active",
+      "SubState": "running",
+      "ExecMainStatus": "0"
+    },
+    "complete": false,
+    "latest": {
+      "step": 94,
+      "progress": 0.5621301775147929,
+      "cost/cumulative_usd": 3.77321775
+    },
+    "unsupported": null,
+    "failed": false,
+    "last_evaluation": {
+      "step": 50,
+      "valid/memory/exact_match": 1.0,
+      "reader_check/exact_match": 0.9166666666666666,
+      "test/nll": 8.558662557334173e-06
+    }
+  },
+  {
+    "cell": "all-r4-s0",
+    "state": {
+      "ActiveState": "active",
+      "SubState": "running",
+      "ExecMainStatus": "0"
+    },
+    "complete": false,
+    "latest": {
+      "step": 19,
+      "progress": 0.11834319526627218,
+      "cost/cumulative_usd": 0.79759875
+    },
+    "unsupported": null,
+    "failed": false,
+    "last_evaluation": {
+      "step": 0,
+      "valid/memory/exact_match": 0.6266666666666667,
+      "reader_check/exact_match": 0.8333333333333334,
+      "test/nll": 2.8120741844177246
+    }
+  },
+  {
+    "cell": "all-r32-s0",
+    "state": {
+      "ActiveState": "active",
+      "SubState": "running",
+      "ExecMainStatus": "0"
+    },
+    "complete": false,
+    "latest": {
+      "step": 19,
+      "progress": 0.11834319526627218,
+      "cost/cumulative_usd": 0.79759875
+    },
+    "unsupported": null,
+    "failed": false,
+    "last_evaluation": {
+      "step": 0,
+      "valid/memory/exact_match": 0.6466666666666666,
+      "reader_check/exact_match": 1.0,
+      "test/nll": 2.8120741844177246
+    }
+  },
+  {
+    "cell": "all-r128-s0",
+    "state": {
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "ExecMainStatus": "0"
+    },
+    "complete": false,
+    "latest": {},
+    "unsupported": "HTTP 400: lora_config.rank 128 exceeds max LoRA rank 64 for model thinkingmachines/Inkling-2-Mini",
+    "failed": false,
+    "last_evaluation": {}
+  }
+]

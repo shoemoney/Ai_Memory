@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 65
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f493769ab26534d1d68c8a0eb5351be517bcfc839f72e0a6fb078fe9cc2621cf",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-47b04090-96f2-4d51-987a-ced180eedfdf",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Considered luxury watches like Rolex, Patek Philippe, and Audemars Piguet for investment potential\",\n        \"Asked for specific examples of luxury watches that have appreciated in value over time\",\n        \"Inquired about the appreciation potential of luxury watches compared to designer handbags\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357375,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 68,
+      "prompt_tokens": 2890,
+      "total_tokens": 2958,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Considered luxury watches like Rolex, Patek Philippe, and Audemars Piguet for investment potential\",\n        \"Asked for specific examples of luxury watches that have appreciated in value over time\",\n        \"Inquired about the appreciation potential of luxury watches compared to designer handbags\"\n    ]\n}",
+  "seconds": 14.923547233003774,
+  "prompt_tokens_local": 2890
+}

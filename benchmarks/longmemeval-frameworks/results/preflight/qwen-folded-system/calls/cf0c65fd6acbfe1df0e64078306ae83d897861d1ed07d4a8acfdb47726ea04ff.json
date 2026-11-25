@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 43
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2dcea7ce42c7c416d39554a7c2691412016bb93816848f2434925f5112e8012b",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-7a215e69-b691-4725-bb7d-304b9f45ecdd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"use of flashbacks and alternate storylines impact the audience's emotional connection to the characters\", \"show the past experiences and motivations of the characters\", \"create a deeper emotional connection between the audience and the characters\", \"create a sense of mystery and intrigue\", \"create a deeper emotional connection between the audience and the characters\", \"create a sense of immediacy and intensity\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330384,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 79,
+      "prompt_tokens": 2570,
+      "total_tokens": 2649,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"use of flashbacks and alternate storylines impact the audience's emotional connection to the characters\", \"show the past experiences and motivations of the characters\", \"create a deeper emotional connection between the audience and the characters\", \"create a sense of mystery and intrigue\", \"create a deeper emotional connection between the audience and the characters\", \"create a sense of immediacy and intensity\"]}",
+  "seconds": 4.117684619006468,
+  "prompt_tokens_local_gemma_estimate": 2588
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q080",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "3d5e5d6db4521afe7df8942805214af79d902dcd62778cd1bc151a1765dbf0df",
+  "reference_sha256": "c8393ef3ed51c2b4d8c8bf2c26696ba52cb0740f9e85980754b04eca48246dd0",
+  "method": "bm25",
+  "answer": "Person021 transformed Person187 into a beautiful home.",
+  "response": {
+    "text": "Person021 transformed Person187 into a beautiful home.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 15,
+      "prompt_tokens": 3164,
+      "total_tokens": 3179,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 18.796751291010878,
+    "request_sha256": "a2a465bab3a8aff2d16a7943e8f96603b56af5601fe49463f9c0987ed69e7d0e",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    281,
+    261,
+    282,
+    143,
+    280,
+    270,
+    291,
+    266,
+    297,
+    407,
+    330,
+    292,
+    183,
+    173,
+    287,
+    279,
+    188,
+    303,
+    301,
+    305
+  ],
+  "retrieval_scores": [
+    138.78298458151437,
+    109.87467668820588,
+    109.20661210508975,
+    104.84203869756901,
+    99.40892059018589,
+    98.40390538329656,
+    97.64946691652696,
+    97.51267851252078,
+    97.50796546170842,
+    97.39076363994646,
+    96.08307460791559,
+    95.34718987067085,
+    94.72371794212955,
+    94.46770551988216,
+    93.46007093847443,
+    92.68484250636944,
+    92.60098338531299,
+    91.78573027779602,
+    91.77737557455288,
+    91.31748941287371
+  ],
+  "retrieval_seconds": 0.017297332000453025,
+  "provided_context_sha256": "13539d5cb13b04a22a83a44afa621d6fa4aeb037e169f24e73b56e8c4897e274",
+  "provided_context_tokens": 2850,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "0ff607b46143a45e19753b94621d3c65c883d8531ae92b30b8cab43315614b3d",
+    "raw_answer_sha256": "76c0940cba2f671564231637efd655d6993c90c09d936effa7edcee64eb95413",
+    "answer_redacted": false
+  }
+}

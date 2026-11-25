@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 64
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "71f00d06e90e405736e8b81e01bbdaa54a9acc61fc2c8b9d58df6abe799117d3",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d56308ac-c4ec-48d5-86b7-31225f13a905",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Coach\",\n            \"summary\": \"Coach is a well-known brand for its stylish and durable accessories. A Coach handbag, like the one you mentioned, can cost around $800 and is a good quality item.\"\n        },\n        {\n            \"name\": \"Rolex\",\n            \"summary\": \"Rolex watches are an investment-worthy consideration. They can retain 60-70% of their original value after 5-10 years, depending on the brand and model. Some rare or limited-edition watches can even appreciate in value, making them a solid investment opportunity.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795364682,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 140,
+      "prompt_tokens": 8931,
+      "total_tokens": 9071,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6366
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Coach\",\n            \"summary\": \"Coach is a well-known brand for its stylish and durable accessories. A Coach handbag, like the one you mentioned, can cost around $800 and is a good quality item.\"\n        },\n        {\n            \"name\": \"Rolex\",\n            \"summary\": \"Rolex watches are an investment-worthy consideration. They can retain 60-70% of their original value after 5-10 years, depending on the brand and model. Some rare or limited-edition watches can even appreciate in value, making them a solid investment opportunity.\"\n        }\n    ]\n}",
+  "seconds": 23.830444847990293,
+  "prompt_tokens_local": 8931
+}

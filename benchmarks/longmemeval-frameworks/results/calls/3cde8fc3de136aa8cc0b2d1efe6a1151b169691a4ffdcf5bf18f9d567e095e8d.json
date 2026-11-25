@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 56
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "147aa3257c9bf3dc4e775f624fa3d17316d2f55181db838cfda8c50d852fdeac",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-829aca9f-4636-4571-a197-39b910e09f90",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Considering a locked display case for rare and valuable Pokémon figures\",\n        \"Looking for brands that offer locking display cases\",\n        \"Considering features such as adjustable lighting, customization options, and heat management\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357080,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 51,
+      "prompt_tokens": 2810,
+      "total_tokens": 2861,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Considering a locked display case for rare and valuable Pokémon figures\",\n        \"Looking for brands that offer locking display cases\",\n        \"Considering features such as adjustable lighting, customization options, and heat management\"\n    ]\n}",
+  "seconds": 11.79056792499614,
+  "prompt_tokens_local": 2810
+}

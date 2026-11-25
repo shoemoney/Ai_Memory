@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 19
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f787ea16ca309a0f9c062e04437226da2d2cc09a7c57316a4b27393a6cde4f7d",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c9a6a27e-ae05-4cc8-b0a5-01502b37f18e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        {\n            \"office_location\": \"city center, near the main train station\",\n            \"preferred_coffee\": \"cappuccino\",\n            \"preferred_coffee_shop\": \"The Daily Grind\",\n            \"walking_distance_to_coffee_shop\": \"12-15 minutes\",\n            \"morning_routine\": \"listening to audiobooksins and podcasts during commute\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332018,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 90,
+      "prompt_tokens": 2751,
+      "total_tokens": 2841,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        {\n            \"office_location\": \"city center, near the main train station\",\n            \"preferred_coffee\": \"cappuccino\",\n            \"preferred_coffee_shop\": \"The Daily Grind\",\n            \"walking_distance_to_coffee_shop\": \"12-15 minutes\",\n            \"morning_routine\": \"listening to audiobooksins and podcasts during commute\"\n        }\n    ]\n}",
+  "seconds": 2.5309467859915458,
+  "prompt_tokens_local": 2751,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

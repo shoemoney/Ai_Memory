@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 36
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "48847a68925e8f3360bdb2cb8212a53e2f61d7fb0474393c029fa5b350043194",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-570a2151-8f2e-4d2b-92fb-f18aa5a04d8d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Shakespeare\",\n            \"summary\": \"Shakespeare's life in London had a significant impact on his writing. He was exposed to a variety of people and experiences that provided him with a rich source of inspiration for his work. The city was home to prestigious theaters and acting troupes, allowing him to observe and learn from the best actors of his era. This exposure helped him develop his skills as a playwright and create some of his most famous plays. Additionally, his popularity in London allowed him to interact with influential people and gain recognition for his work, which later helped him secure patronage and fame.\"\n        },\n        {\n            \"name\": \"London\",\n            \"summary\": \"Shakespeare's life in London had a significant impact on his writing. He was exposed to a variety of people and experiences that provided him with a rich source of inspiration for his work. The city was home to prestigious theaters and acting troupes, allowing him to observe and learn from the best actors of his era. This exposure helped him develop his skills as a playwright and create some of his most famous plays. Additionally, his popularity in London allowed him to interact with influential people and gain recognition for his work, which later helped him secure patronage and fame.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795349595,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 270,
+      "prompt_tokens": 6181,
+      "total_tokens": 6451,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Shakespeare\",\n            \"summary\": \"Shakespeare's life in London had a significant impact on his writing. He was exposed to a variety of people and experiences that provided him with a rich source of inspiration for his work. The city was home to prestigious theaters and acting troupes, allowing him to observe and learn from the best actors of his era. This exposure helped him develop his skills as a playwright and create some of his most famous plays. Additionally, his popularity in London allowed him to interact with influential people and gain recognition for his work, which later helped him secure patronage and fame.\"\n        },\n        {\n            \"name\": \"London\",\n            \"summary\": \"Shakespeare's life in London had a significant impact on his writing. He was exposed to a variety of people and experiences that provided him with a rich source of inspiration for his work. The city was home to prestigious theaters and acting troupes, allowing him to observe and learn from the best actors of his era. This exposure helped him develop his skills as a playwright and create some of his most famous plays. Additionally, his popularity in London allowed him to interact with influential people and gain recognition for his work, which later helped him secure patronage and fame.\"\n        }\n    ]\n}",
+  "seconds": 55.64989965499262,
+  "prompt_tokens_local": 6181
+}

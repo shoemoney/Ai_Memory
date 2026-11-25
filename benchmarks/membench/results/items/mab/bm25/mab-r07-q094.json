@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q094",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "65be5d881e5e3a4c244a724363835923408e415274cd9a78295f76baa2d14da9",
+  "reference_sha256": "5d5dee4088343c135aa791f7042544296dc3e5c6a43c7dc171672a83987ab75a",
+  "method": "bm25",
+  "answer": "Person021 dismissed the coachman.",
+  "response": {
+    "text": "Person021 dismissed the coachman.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 10,
+      "prompt_tokens": 3114,
+      "total_tokens": 3124,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 17.56559115399432,
+    "request_sha256": "7c65c6d0537cae3b6c5c7fcdcac60e7f105c1cd4334a587bc9ee77d69d207465",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    320,
+    182,
+    321,
+    303,
+    337,
+    407,
+    173,
+    357,
+    325,
+    291,
+    143,
+    183,
+    330,
+    266,
+    185,
+    319,
+    542,
+    305,
+    297,
+    188
+  ],
+  "retrieval_scores": [
+    106.47818944490139,
+    95.14797578442881,
+    90.78115925544971,
+    88.8641928275701,
+    88.57859159442908,
+    88.05343249800158,
+    88.01648087203958,
+    86.43238818987078,
+    85.80509218951804,
+    84.01476002354924,
+    83.72832075875398,
+    83.70655004131194,
+    83.66609909705056,
+    82.6887936020539,
+    82.62571546343996,
+    82.24183855679193,
+    81.62014946938855,
+    81.27411353633282,
+    81.17378158660826,
+    80.19763735844117
+  ],
+  "retrieval_seconds": 0.016071095000370406,
+  "provided_context_sha256": "982988b1de8fa983b2885561291f5ed420a75ae1067a81208882833d0f5bba31",
+  "provided_context_tokens": 2841,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "b73e24de12c34935e65e39c63b5dfad55175b7fe2251767e4641652f1dd37e42",
+    "raw_answer_sha256": "afcc67f51afdb2c74d8e45fcc23f387767919a2186f3d701619ade5f1322b6db",
+    "answer_redacted": false
+  }
+}

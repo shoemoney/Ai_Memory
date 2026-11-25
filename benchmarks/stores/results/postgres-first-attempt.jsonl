@@ -1,0 +1,15 @@
+{"d": 384, "kind": "environment", "n": 100000, "packages": {"numpy": "2.5.5", "psycopg": "3.3.9", "psycopg-binary": "3.3.9", "redis": "8.1.0", "requests": "2.32.5", "sqlite-vec": "0.1.9"}, "python": "3.12.12", "queries": 200, "seed": 20261122}
+{"kind": "versions", "server": ["PostgreSQL 18.7 (Debian 18.7-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit", "0.8.7"]}
+{"accepted": true, "dimensions": 2000, "error": null, "kind": "index_boundary", "type": "vector"}
+{"accepted": false, "dimensions": 2001, "error": "column cannot have more than 2000 dimensions for hnsw index", "kind": "index_boundary", "type": "vector"}
+{"accepted": true, "dimensions": 4000, "error": null, "kind": "index_boundary", "type": "halfvec"}
+{"accepted": false, "dimensions": 4001, "error": "column cannot have more than 4000 dimensions for hnsw index", "kind": "index_boundary", "type": "halfvec"}
+{"accepted": true, "dimensions": 64000, "error": null, "kind": "index_boundary", "type": "bit"}
+{"accepted": false, "dimensions": 64001, "error": "column cannot have more than 64000 dimensions for hnsw index", "kind": "index_boundary", "type": "bit"}
+{"accepted": true, "error": null, "kind": "index_boundary", "nonzero": 1000, "type": "sparsevec"}
+{"accepted": false, "error": "sparsevec cannot have more than 1000 non-zero elements for hnsw index", "kind": "index_boundary", "nonzero": 1001, "type": "sparsevec"}
+{"kind": "default", "name": "hnsw.ef_search", "value": "40"}
+{"kind": "default", "name": "ivfflat.probes", "value": "1"}
+{"dimensions": 384, "kind": "load", "ms": 15425.897220004117, "rows": 100000}
+{"column_bytes": 1544, "kind": "storage", "table_bytes": 163905536, "vector_send_bytes": 1540}
+{"count": 10, "filter": "all", "ids": [4539, 8621, 41042, 6210, 83763, 26889, 50673, 59182, 49825, 91458], "kind": "query", "method": "exact", "ms": 26.34956499969121, "query": 0, "recall": 1.0}

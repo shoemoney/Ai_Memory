@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-d2fad028",
+  "object": "chat.completion",
+  "created": 1795581888,
+  "model": "Inkling-2-Mini-oQ4e-stock",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Jane Austen wrote *Pride and Prejudice*."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 26,
+    "completion_tokens": 15,
+    "total_tokens": 41,
+    "input_tokens": 26,
+    "output_tokens": 15,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "model_load_duration": 1.62,
+    "time_to_first_token": 0.18,
+    "total_time": 0.76,
+    "prompt_eval_duration": 0.18,
+    "generation_duration": 0.58,
+    "prompt_tokens_per_second": 147.84,
+    "generation_tokens_per_second": 25.85
+  }
+}

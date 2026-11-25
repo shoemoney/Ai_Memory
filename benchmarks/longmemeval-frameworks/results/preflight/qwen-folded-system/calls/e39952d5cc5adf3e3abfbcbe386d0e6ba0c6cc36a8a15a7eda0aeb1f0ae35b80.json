@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b544acf034b3f5c1990b2a0cb4026e840e054080d48af588394cda82286c3868",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c0ab62bb-578f-4c08-8fca-642fecd88173",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Nisha's dad\",\n            \"summary\": \"Nisha's dad is mentioned in the conversation, but no specific information about him is provided.\"\n        },\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"A dog leash is mentioned as a specific item to be considered for purchase.\"\n        },\n        {\n            \"name\": \"wool coat\",\n            \"summary\": \"Wool coats are mentioned as a type of clothing to be considered for purchase. The conversation discusses the importance of choosing the right display case for a wool coat, considering factors such as size, shape, material, and security.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331424,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 144,
+      "prompt_tokens": 7921,
+      "total_tokens": 8065,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 478
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Nisha's dad\",\n            \"summary\": \"Nisha's dad is mentioned in the conversation, but no specific information about him is provided.\"\n        },\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"A dog leash is mentioned as a specific item to be considered for purchase.\"\n        },\n        {\n            \"name\": \"wool coat\",\n            \"summary\": \"Wool coats are mentioned as a type of clothing to be considered for purchase. The conversation discusses the importance of choosing the right display case for a wool coat, considering factors such as size, shape, material, and security.\"\n        }\n    ]\n}",
+  "seconds": 14.355525988998124,
+  "prompt_tokens_local_gemma_estimate": 7921
+}

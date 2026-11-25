@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 71
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "cbc7fca0cb2497cc4ee5577612a04350487d454cf342d075d7df7fbf7374a574",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-805638f5-11d8-4cc0-8c5d-447892f76837",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Optimizing influencer marketing strategy based on analytics data\", \"Identify top-performing influencers\", \"Optimize content types\", \"Refine audience targeting\", \"Improve influencer collaboration timing\", \"Enhance influencer relationships\", \"Adjust budget allocation\", \"Experiment with new influencer types\", \"Monitor and adapt to trends\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330525,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 72,
+      "prompt_tokens": 2173,
+      "total_tokens": 2245,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Optimizing influencer marketing strategy based on analytics data\", \"Identify top-performing influencers\", \"Optimize content types\", \"Refine audience targeting\", \"Improve influencer collaboration timing\", \"Enhance influencer relationships\", \"Adjust budget allocation\", \"Experiment with new influencer types\", \"Monitor and adapt to trends\"]}",
+  "seconds": 2.0122556219866965,
+  "prompt_tokens_local_gemma_estimate": 2182
+}

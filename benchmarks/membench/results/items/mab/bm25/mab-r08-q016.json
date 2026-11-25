@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q016",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "06fc25209661ab894c73db822caba3a2982ab7f82a70d32e2b7a5ee861d6475d",
+  "reference_sha256": "aa1f3cfa32c0610e9c887f71e27193a9a0e1da88c8147a43b200f24255980d0c",
+  "method": "bm25",
+  "answer": "The man picked up his knapsack and departed from the inn.",
+  "response": {
+    "text": "The man picked up his knapsack and departed from the inn.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 15,
+      "prompt_tokens": 2937,
+      "total_tokens": 2952,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 17.5214109570079,
+    "request_sha256": "1f5186c27938d382c5a70df850e48bcb4597bf35bace8c2bfd7f1fcd95df1f86",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    318,
+    315,
+    309,
+    307,
+    327,
+    317,
+    310,
+    316,
+    308,
+    567,
+    323,
+    312,
+    550,
+    509,
+    379,
+    304,
+    328,
+    40,
+    303,
+    333
+  ],
+  "retrieval_scores": [
+    204.5982593133713,
+    195.90286467637608,
+    190.72582896496814,
+    178.27969227880533,
+    178.1490868598338,
+    175.7730336341227,
+    174.3956368482142,
+    173.243171259564,
+    168.44159497303374,
+    161.2286518573224,
+    161.17133794203963,
+    160.90015537741706,
+    160.68655134857573,
+    159.7449450890584,
+    159.60818808414308,
+    158.9331005043904,
+    156.95317116314908,
+    156.88138835562563,
+    156.56282395366884,
+    156.51117540687525
+  ],
+  "retrieval_seconds": 0.024231274001067504,
+  "provided_context_sha256": "b9ea9353faaa0f191f444a4737fa4a30c75fc0a872681c11fb3aafad7b08e841",
+  "provided_context_tokens": 2640,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "ea197b8cd025939713f6e39e0a6ce859b2bcbc4f5826d0e58733d7c30ca22adb",
+    "raw_answer_sha256": "09eefddfb07f15331bc2900c474b904f27b1205e3d0ebec202218e80a54973e2",
+    "answer_redacted": false
+  }
+}

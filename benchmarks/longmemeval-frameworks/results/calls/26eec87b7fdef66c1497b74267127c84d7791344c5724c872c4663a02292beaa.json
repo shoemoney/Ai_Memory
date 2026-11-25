@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 52
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "24f97a4243f41e705d65855e8b3b2d7fc4e7886e4f95d353f7733ea97469ed43",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-8201d443-0e59-4af2-811c-ba5018b60c22",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Cared for ceramic vases made in pottery class\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Provided specific care tips for ceramic vases\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Looking to buy vintage electronics like old computers and gadgets for restoration and potential resale\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Interested in organizing art supplies\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"A basic rice cooker is simpler and more limited in its functions compared to an Instant Pot\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Learn more about the different types of ceramic materials and glazes used during different time periods\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Learn more about the different types of ceramic materials and glazes used during different time periods\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356903,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 251,
+      "prompt_tokens": 1714,
+      "total_tokens": 1965,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Cared for ceramic vases made in pottery class\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Provided specific care tips for ceramic vases\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Looking to buy vintage electronics like old computers and gadgets for restoration and potential resale\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Interested in organizing art supplies\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"A basic rice cooker is simpler and more limited in its functions compared to an Instant Pot\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Learn more about the different types of ceramic materials and glazes used during different time periods\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Learn more about the different types of ceramic materials and glazes used during different time periods\"\n        }\n    ]\n}",
+  "seconds": 40.75436643899593,
+  "prompt_tokens_local": 1714
+}

@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 42
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "4ab1b613b1f939d467e87c52c0b18b5b6803bb878dfe9865839273fcf1060850",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-bb3a14f2-afa7-469d-8b49-e9762276ffd2",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Paradise is described as unique and central in the universe of universes\", \"Paradise is the goal of destiny for all spirit personalities\", \"Paradise is the source of all energies and the place of primal origin of all personalities\", \"Paradise is the center of all creation and the universal headquarters of all personality activities\", \"Paradise is the real and far-distant destiny of the immortal souls of the mortal and material sons of God\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330373,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 99,
+      "prompt_tokens": 2812,
+      "total_tokens": 2911,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Paradise is described as unique and central in the universe of universes\", \"Paradise is the goal of destiny for all spirit personalities\", \"Paradise is the source of all energies and the place of primal origin of all personalities\", \"Paradise is the center of all creation and the universal headquarters of all personality activities\", \"Paradise is the real and far-distant destiny of the immortal souls of the mortal and material sons of God\"]}",
+  "seconds": 4.864038959989557,
+  "prompt_tokens_local_gemma_estimate": 2772
+}

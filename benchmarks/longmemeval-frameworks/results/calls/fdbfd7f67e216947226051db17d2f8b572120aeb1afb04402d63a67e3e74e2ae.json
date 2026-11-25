@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c81ec31f68a9bc73f2b5ed6adc1c525d782ae6a4aeedfed7d0acc4b1da354c01",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e198a046-13f5-47f1-b331-580940479e36",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Levi's jeans\", \"entity_type_id\": 0, \"episode_indices\": [0, 1, 2, 3]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357968,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 40,
+      "prompt_tokens": 6575,
+      "total_tokens": 6615,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 1139
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Levi's jeans\", \"entity_type_id\": 0, \"episode_indices\": [0, 1, 2, 3]}]}",
+  "seconds": 45.98052777600242,
+  "prompt_tokens_local": 6575
+}

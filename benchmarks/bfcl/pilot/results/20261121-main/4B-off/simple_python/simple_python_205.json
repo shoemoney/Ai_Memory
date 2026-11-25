@@ -1,0 +1,175 @@
+{
+  "id": "simple_python_205",
+  "category": "simple_python",
+  "result": [
+    {
+      "get_traffic_info": "{\"start_location\":\"Boston\",\"end_location\":\"New York\",\"mode\":\"driving\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Find out the current traffic situation from Boston driving to New York.'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "get_traffic_info",
+                "description": "Retrieve current traffic conditions for a specified route.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "start_location": {
+                      "type": "string",
+                      "description": "The starting point of the route."
+                    },
+                    "end_location": {
+                      "type": "string",
+                      "description": "The destination of the route."
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "driving",
+                        "walking",
+                        "bicycling",
+                        "transit"
+                      ],
+                      "description": "Preferred method of transportation, default to 'driving'."
+                    }
+                  },
+                  "required": [
+                    "start_location",
+                    "end_location"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 369,
+    "output_token_count": 53,
+    "latency": 1.6822123830061173
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Find out the current traffic situation from Boston driving to New York."
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_traffic_info",
+          "description": "Retrieve current traffic conditions for a specified route.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_location": {
+                "type": "string",
+                "description": "The starting point of the route."
+              },
+              "end_location": {
+                "type": "string",
+                "description": "The destination of the route."
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "driving",
+                  "walking",
+                  "bicycling",
+                  "transit"
+                ],
+                "description": "Preferred method of transportation, default to 'driving'."
+              }
+            },
+            "required": [
+              "start_location",
+              "end_location"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-QDN1BmpzrE5eysH2LhQIR6FL5bi78q8u",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "nsLVHVV9DPid49KuEhTyeoQgf0eTJW8j",
+              "function": {
+                "arguments": "{\"start_location\":\"Boston\",\"end_location\":\"New York\",\"mode\":\"driving\"}",
+                "name": "get_traffic_info"
+              },
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ],
+    "created": 1795286911,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 53,
+      "prompt_tokens": 369,
+      "total_tokens": 422,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 369,
+      "prompt_ms": 594.22,
+      "prompt_per_token_ms": 1.6103523035230354,
+      "prompt_per_second": 620.9821278314429,
+      "predicted_n": 53,
+      "predicted_ms": 1080.261,
+      "predicted_per_token_ms": 20.77425,
+      "predicted_per_second": 48.13651515698521
+    }
+  },
+  "elapsed_seconds": 1.6823046229983447,
+  "score": {
+    "valid": true
+  }
+}

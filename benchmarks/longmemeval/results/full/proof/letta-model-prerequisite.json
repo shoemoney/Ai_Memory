@@ -1,0 +1,43 @@
+{
+  "scope": "Model API prerequisite probe only, not a Letta framework benchmark",
+  "request": {
+    "model": "default_model",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Call the complete tool to return done."
+      },
+      {
+        "role": "user",
+        "content": "Finish the control task."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "complete",
+          "description": "Return the control result",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "result"
+            ]
+          }
+        }
+      }
+    ],
+    "tool_choice": "auto",
+    "temperature": 0,
+    "max_tokens": 48
+  },
+  "http_status": 404,
+  "response": {
+    "error": "System role not supported"
+  }
+}

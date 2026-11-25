@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 33
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b16a278e48dd2d1d040341cfe434a059633302a6d0d354ef08e56aac7e1fba45",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-8c50c46e-77e8-447e-9c7d-c42f12d340a8",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Interested in trying hickory, apple, and mesquite wood chips for smoking\",\n        \"Purchased applewood and mesquite chips for future use\",\n        \"Plan to store wood chips in airtight containers in a dry, cool place\",\n        \"Plan to freeze wood chips for longer storage if not used within a year\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366190,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 79,
+      "prompt_tokens": 2896,
+      "total_tokens": 2975,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Interested in trying hickory, apple, and mesquite wood chips for smoking\",\n        \"Purchased applewood and mesquite chips for future use\",\n        \"Plan to store wood chips in airtight containers in a dry, cool place\",\n        \"Plan to freeze wood chips for longer storage if not used within a year\"\n    ]\n}",
+  "seconds": 9.814191229990683,
+  "prompt_tokens_local": 2896
+}

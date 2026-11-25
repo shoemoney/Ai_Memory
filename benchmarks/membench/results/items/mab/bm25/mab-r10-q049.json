@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q049",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "ff48f20a98d8a8bd35b8f079d55d2b5a909cb7b6bce635debdb5a01827264fc7",
+  "reference_sha256": "e0942d007838c3fbe7c1266f28aaa089909000b67aaff1c741ec0fbe57762f13",
+  "method": "bm25",
+  "answer": "Person513 sent Person426 a bouquet of flowers and a handwritten letter.",
+  "response": {
+    "text": "Person513 sent Person426 a bouquet of flowers and a handwritten letter.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 19,
+      "prompt_tokens": 3148,
+      "total_tokens": 3167,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 7.077100983995479,
+    "request_sha256": "b311e55ab6d6cd8df4f4ca3212d967f4bd3b489f573783a940aa0a4d719762b6",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    162,
+    552,
+    540,
+    25,
+    531,
+    286,
+    125,
+    61,
+    171,
+    314,
+    598,
+    481,
+    161,
+    424,
+    152,
+    64,
+    146,
+    78,
+    520,
+    554
+  ],
+  "retrieval_scores": [
+    149.47558363121658,
+    141.02176012082967,
+    139.45911060088784,
+    138.2464091355664,
+    137.59436934376146,
+    135.75633651485182,
+    135.55453280920722,
+    134.33416135491117,
+    133.8145389473367,
+    132.0467130146766,
+    129.26774098857285,
+    128.98536987817127,
+    128.4284194170397,
+    127.55718988119139,
+    126.76384611552074,
+    126.63147592663229,
+    125.93098688899771,
+    125.57269576112007,
+    125.3795667998414,
+    125.1943405518905
+  ],
+  "retrieval_seconds": 0.01176144101191312,
+  "provided_context_sha256": "e75ebcaad315ec6d6cdbc5cdcaddd780780bcfeb3199332d758d529dcfb567be",
+  "provided_context_tokens": 2799,
+  "score": 0,
+  "privacy_export": {
+    "raw_record_sha256": "2b016894ed130c4c557c987baac9a35d0ed3cb7134ffa596bbb7973c37ea525d",
+    "raw_answer_sha256": "cf51eac918397b600b421fc75bc035434dededd3c814c426685a9c8f87563fdf",
+    "answer_redacted": false
+  }
+}

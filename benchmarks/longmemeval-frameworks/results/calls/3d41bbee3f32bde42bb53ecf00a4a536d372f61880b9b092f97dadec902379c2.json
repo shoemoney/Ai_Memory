@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 54
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "42dff1bc83ddbc464d5c846af59e304e8d750d089faea545eda305af1e61d0ef",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-19d23d0f-a013-49a5-8165-3f8939326723",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Drills and exercises\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Discuss the cultural significance of weapons during medieval times\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Wrist snap\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Compare the cultural significance of weapons during medieval times and modern times\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Managed stakeholder expectations through design thinking\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"Picked up a hammer from the construction site\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356990,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 217,
+      "prompt_tokens": 1685,
+      "total_tokens": 1902,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Drills and exercises\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Discuss the cultural significance of weapons during medieval times\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Wrist snap\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Compare the cultural significance of weapons during medieval times and modern times\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Managed stakeholder expectations through design thinking\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"Picked up a hammer from the construction site\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+  "seconds": 35.25258165800187,
+  "prompt_tokens_local": 1685
+}

@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 22
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "aa45c900c992f49b3222830412dbf76b448713ee434c0b2d2625e3f302f45066",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5ab057f9-3cb5-4397-83ef-e6787b0d7e70",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in technology and innovation\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Recommended museums include Computer History Museum, Deutsches Museum, National Air and Space Museum, Tech Museum of Innovation, Museum of Science and Industry, Science Museum, National Museum of Emerging Science and Innovation (Miraikan), Smithsonian National Museum of American History, National Museum of Computing, TELUS Spark\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355288,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 123,
+      "prompt_tokens": 1857,
+      "total_tokens": 1980,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in technology and innovation\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Recommended museums include Computer History Museum, Deutsches Museum, National Air and Space Museum, Tech Museum of Innovation, Museum of Science and Industry, Science Museum, National Museum of Emerging Science and Innovation (Miraikan), Smithsonian National Museum of American History, National Museum of Computing, TELUS Spark\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 19.342339312002878,
+  "prompt_tokens_local": 1857
+}

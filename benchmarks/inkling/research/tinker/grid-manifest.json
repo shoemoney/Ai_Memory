@@ -1,0 +1,64 @@
+[
+  {
+    "name": "attn-r32-s0",
+    "unit": "inkling-tinker-attn-r32-s0",
+    "log_path": "$STUDY_DIR/runs/lora-attn-r32-s0",
+    "rank": 32,
+    "train_mlp": false,
+    "train_attn": true,
+    "train_unembed": false,
+    "seed": 0,
+    "lora_seed": 0,
+    "start": "2026-11-25T10:40:58.875633+00:00"
+  },
+  {
+    "name": "mlp-r32-s0",
+    "unit": "inkling-tinker-mlp-r32-s0",
+    "log_path": "$STUDY_DIR/runs/lora-mlp-r32-s0",
+    "rank": 32,
+    "train_mlp": true,
+    "train_attn": false,
+    "train_unembed": false,
+    "seed": 0,
+    "lora_seed": 0,
+    "start": "2026-11-25T10:40:58.895512+00:00"
+  },
+  {
+    "name": "all-r4-s0",
+    "unit": "inkling-tinker-all-r4-s0",
+    "log_path": "$STUDY_DIR/runs/lora-all-r4-s0",
+    "rank": 4,
+    "train_mlp": true,
+    "train_attn": true,
+    "train_unembed": false,
+    "seed": 0,
+    "lora_seed": 0,
+    "start": "2026-11-25T10:40:58.901586+00:00"
+  },
+  {
+    "name": "all-r32-s0",
+    "unit": "inkling-tinker-all-r32-s0",
+    "log_path": "$STUDY_DIR/runs/lora-all-r32-s0",
+    "rank": 32,
+    "train_mlp": true,
+    "train_attn": true,
+    "train_unembed": false,
+    "seed": 0,
+    "lora_seed": 0,
+    "start": "2026-11-25T10:40:58.907718+00:00"
+  },
+  {
+    "name": "all-r128-s0",
+    "unit": "inkling-tinker-all-r128-s0",
+    "log_path": "$STUDY_DIR/runs/lora-all-r128-s0",
+    "rank": 128,
+    "train_mlp": true,
+    "train_attn": true,
+    "train_unembed": false,
+    "seed": 0,
+    "lora_seed": 0,
+    "start": "2026-11-25T10:40:58.914142+00:00",
+    "unsupported": "HTTP 400: lora_config.rank 128 exceeds max LoRA rank 64 for model thinkingmachines/Inkling-2-Mini",
+    "end": "2026-11-25T10:41:05Z"
+  }
+]

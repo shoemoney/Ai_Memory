@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 65
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "01a561556701e0e5116ed632e508fddfa001cdd75eae095e783b2716c69f110a",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4913e45a-f216-4a6a-a88b-21e7fad706e2",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Tokyo's urban landscape reflects the city's commitment to sustainability and creating livable spaces for residents\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Tokyo has one of the world's most efficient public transportation systems\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Tokyo has a compact city design\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Tokyo has many parks and gardens\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Tokyo has strict building codes that require energy-efficient design and technology\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Tokyo's focus on sustainability can serve as an example for other cities\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Individuals can reduce energy consumption\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Individuals can reduce single-use plastic\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Individuals can practice environmentally friendly lifestyle choices\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Individuals can support sustainable practices\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"Individuals can join local advocacy groups\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"Individuals can participate in local government meetings\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"12\",\n            \"text\": \"Individuals can write to elected officials\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"13\",\n            \"text\": \"Individuals can share their ideas with peers, friends, and family members\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330498,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 570,
+      "prompt_tokens": 2647,
+      "total_tokens": 3217,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Tokyo's urban landscape reflects the city's commitment to sustainability and creating livable spaces for residents\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Tokyo has one of the world's most efficient public transportation systems\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Tokyo has a compact city design\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Tokyo has many parks and gardens\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Tokyo has strict building codes that require energy-efficient design and technology\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Tokyo's focus on sustainability can serve as an example for other cities\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Individuals can reduce energy consumption\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Individuals can reduce single-use plastic\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Individuals can practice environmentally friendly lifestyle choices\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Individuals can support sustainable practices\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"Individuals can join local advocacy groups\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"Individuals can participate in local government meetings\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"12\",\n            \"text\": \"Individuals can write to elected officials\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        },\n        {\n            \"id\": \"13\",\n            \"text\": \"Individuals can share their ideas with peers, friends, and family members\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"\"\n        }\n    ]\n}",
+  "seconds": 6.693067688000156,
+  "prompt_tokens_local_gemma_estimate": 2732
+}

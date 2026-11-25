@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 46
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7e34076582bd7b63704a5ddfe2fd82bd201a4cbb406f23492cfca0c1ebeafbce",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-247df2c1-5561-474a-b6b9-581692ce2713",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Willing to try brown butter and sage sauce for homemade ravioli\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Eating out in Vancouver can range from $15-30 CAD per meal for casual dining, and $30-50 CAD per meal for mid-range restaurants. High-end restaurants can cost $50-100 CAD per meal or more.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Eating smaller meals throughout the day, avoiding spicy or fatty foods, and propping up pillows for support may alleviate heartburn.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Interested in organizing art supplies\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Asked for a vegan substitute for eggs in baking, especially for cookies.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Suggested kitchen utensils for meal prep include a rice cooker and a food chopper.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356605,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 281,
+      "prompt_tokens": 1771,
+      "total_tokens": 2052,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Willing to try brown butter and sage sauce for homemade ravioli\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Eating out in Vancouver can range from $15-30 CAD per meal for casual dining, and $30-50 CAD per meal for mid-range restaurants. High-end restaurants can cost $50-100 CAD per meal or more.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Eating smaller meals throughout the day, avoiding spicy or fatty foods, and propping up pillows for support may alleviate heartburn.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Interested in organizing art supplies\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Asked for a vegan substitute for eggs in baking, especially for cookies.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Suggested kitchen utensils for meal prep include a rice cooker and a food chopper.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 35.46411579400592,
+  "prompt_tokens_local": 1771
+}

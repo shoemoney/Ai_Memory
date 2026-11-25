@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 47
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f6bc5a0aadd3dea6d09e8fe1a66e301bbf4aa53bc556d86506f70f0f685b4ebf",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-47137e2f-0797-4dc3-89e5-985a65e773f5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considering getting an Instant Pot, but unsure if it's better than a basic rice cooker\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Suggested kitchen utensils for meal prep include a rice cooker and a food chopper.\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"An Instant Pot is a multi-cooker with features like pressure cooking, slow cooking, and yogurt making\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Willing to try brown butter and sage sauce for homemade ravioli\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"A basic rice cooker is simpler and more limited in its functions compared to an Instant Pot\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Experimenting with sage as a herb\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356655,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 195,
+      "prompt_tokens": 1885,
+      "total_tokens": 2080,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considering getting an Instant Pot, but unsure if it's better than a basic rice cooker\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Suggested kitchen utensils for meal prep include a rice cooker and a food chopper.\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"An Instant Pot is a multi-cooker with features like pressure cooking, slow cooking, and yogurt making\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Willing to try brown butter and sage sauce for homemade ravioli\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"A basic rice cooker is simpler and more limited in its functions compared to an Instant Pot\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Experimenting with sage as a herb\"\n        }\n    ]\n}",
+  "seconds": 29.729508171003545,
+  "prompt_tokens_local": 1885
+}

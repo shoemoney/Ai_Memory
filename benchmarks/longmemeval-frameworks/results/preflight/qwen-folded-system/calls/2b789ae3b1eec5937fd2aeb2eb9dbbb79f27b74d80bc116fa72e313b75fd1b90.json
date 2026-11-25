@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 16
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "db006911ef1b210744fcbc2ef462f73ff34026bf32b7925211337791e2d29b8e",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e5e345b6-112e-4db9-821d-132e8db4468c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"different understandings of truth can lead to misunderstandings and conflicts between different societies or cultures\", \"promote cultural awareness and sensitivity\", \"promote open communication and dialogue\", \"cultural exchange programs\", \"mindset of cultural relativism\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330238,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 53,
+      "prompt_tokens": 1732,
+      "total_tokens": 1785,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"different understandings of truth can lead to misunderstandings and conflicts between different societies or cultures\", \"promote cultural awareness and sensitivity\", \"promote open communication and dialogue\", \"cultural exchange programs\", \"mindset of cultural relativism\"]}",
+  "seconds": 2.803785901007359,
+  "prompt_tokens_local_gemma_estimate": 1765
+}

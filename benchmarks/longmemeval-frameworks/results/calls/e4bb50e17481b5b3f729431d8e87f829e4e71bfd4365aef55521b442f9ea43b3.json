@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 6
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "43b2bba0cb3dc37c08d56318e1644bfba255317c56d5a0a61031cf105c89d299",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-27c6650d-051e-4771-8565-df9522b9d9e0",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Started brainstorming ideas for essay\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Wrote an essay on the connection between writing and personal growth\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Experimented with fountain pen for writing\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Explained how writing has helped clarify thoughts and feelings\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Asked about favorite writing tools and habits\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Asked about designing a garden bed to maximize space and reduce weeds\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Can use neem oil on eggplants to repel pests\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Asked about storing neem oil to maintain its potency and shelf life\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Pile height is an important factor when choosing a rug for a living room. Lower pile height is better for high-traffic areas.\",\n            \"event\": \"NONE\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365409,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 280,
+      "prompt_tokens": 1761,
+      "total_tokens": 2041,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Started brainstorming ideas for essay\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Wrote an essay on the connection between writing and personal growth\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Experimented with fountain pen for writing\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Explained how writing has helped clarify thoughts and feelings\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Asked about favorite writing tools and habits\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Asked about designing a garden bed to maximize space and reduce weeds\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Can use neem oil on eggplants to repel pests\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Asked about storing neem oil to maintain its potency and shelf life\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Pile height is an important factor when choosing a rug for a living room. Lower pile height is better for high-traffic areas.\",\n            \"event\": \"NONE\"\n        }\n    ]\n}",
+  "seconds": 37.47885652197874,
+  "prompt_tokens_local": 1761
+}

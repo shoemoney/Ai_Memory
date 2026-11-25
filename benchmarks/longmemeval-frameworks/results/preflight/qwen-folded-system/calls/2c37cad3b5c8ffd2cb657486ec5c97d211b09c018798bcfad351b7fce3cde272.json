@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "28e209504452dd3ed21d26ff9016c4ae10394a834adc51c89f3d559951ee3b69",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-503e9070-92b7-49cc-a451-a0db44927bcf",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Manfrotto\", \"target_entity_name\": \"Sony A7R IV\", \"relation_type\": \"OWNS\", \"fact\": \"The user is considering getting a camera rain cover for their Sony A7R IV.\", \"valid_at\": null, \"invalid_at\": null, \"episode_indices\": [1]}, {\"source_entity_name\": \"Manfrotto\", \"target_entity_name\": \"Canon EF 70-200mm f/2.8L IS III USM\", \"relation_type\": \"OWNS\", \"fact\": \"The user is looking for a more sturdy tripod to support their Canon EF 70-200mm f/2.8L IS III USM lens.\", \"valid_at\": null, \"invalid_at\": null, \"episode_indices\": [2]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331493,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 179,
+      "prompt_tokens": 9040,
+      "total_tokens": 9219,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4943
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Manfrotto\", \"target_entity_name\": \"Sony A7R IV\", \"relation_type\": \"OWNS\", \"fact\": \"The user is considering getting a camera rain cover for their Sony A7R IV.\", \"valid_at\": null, \"invalid_at\": null, \"episode_indices\": [1]}, {\"source_entity_name\": \"Manfrotto\", \"target_entity_name\": \"Canon EF 70-200mm f/2.8L IS III USM\", \"relation_type\": \"OWNS\", \"fact\": \"The user is looking for a more sturdy tripod to support their Canon EF 70-200mm f/2.8L IS III USM lens.\", \"valid_at\": null, \"invalid_at\": null, \"episode_indices\": [2]}]}",
+  "seconds": 26.881410747999325,
+  "prompt_tokens_local_gemma_estimate": 9237
+}

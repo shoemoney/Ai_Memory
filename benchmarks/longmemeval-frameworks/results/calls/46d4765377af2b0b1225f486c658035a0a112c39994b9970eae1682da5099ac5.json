@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "36c6b4f3d0a6025e419abc179882ab035fd3b510cb42f0948e2831d562fa40e8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0e5908ab-60ac-48f2-b219-5f42fbda78e9",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"$defs\": {\"NodeDuplicate\": {\"properties\": {\"id\": {\"description\": \"integer id of the entity\", \"title\": \"Id\", \"type\": \"integer\"}, \"name\": {\"description\": \"Name of the entity. Should be the most complete and descriptive name of the entity. Do not include any JSON formatting in the Entity name such as {}.\", \"title\": \"Name\", \"type\": \"string\"}, \"duplicate_candidate_id\": {\"description\": \"candidate_id of the matching EXisting ENTITY, or -1 if no duplicate exists.\", \"title\": \"Duplicate Candidate Id\", \"type\": \"integer\"}}, \"required\": [\"id\", \"name\", \"duplicate_candidate_id\"], \"title\": \"NodeDuplicate\", \"type\": \"object\"}}, \"properties\": {\"entity_resolutions\": {\"description\": \"List of resolved nodes\", \"items\": {\"$ref\": \"#/$defs/NodeDuplicate\"}, \"title\": \"Entity Resolutions\", \"type\": \"array\"}}, \"required\": [\"entity_resolutions\"], \"title\": \"NodeResolutions\", \"type\": \"object\"}, \"entity_resolutions\": [{\"id\": 0, \"name\": \"Nisha\", \"duplicate_candidate_id\": -1}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795337911,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 251,
+      "prompt_tokens": 5730,
+      "total_tokens": 5981,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 107
+      }
+    }
+  },
+  "text": "{\"$defs\": {\"NodeDuplicate\": {\"properties\": {\"id\": {\"description\": \"integer id of the entity\", \"title\": \"Id\", \"type\": \"integer\"}, \"name\": {\"description\": \"Name of the entity. Should be the most complete and descriptive name of the entity. Do not include any JSON formatting in the Entity name such as {}.\", \"title\": \"Name\", \"type\": \"string\"}, \"duplicate_candidate_id\": {\"description\": \"candidate_id of the matching EXisting ENTITY, or -1 if no duplicate exists.\", \"title\": \"Duplicate Candidate Id\", \"type\": \"integer\"}}, \"required\": [\"id\", \"name\", \"duplicate_candidate_id\"], \"title\": \"NodeDuplicate\", \"type\": \"object\"}}, \"properties\": {\"entity_resolutions\": {\"description\": \"List of resolved nodes\", \"items\": {\"$ref\": \"#/$defs/NodeDuplicate\"}, \"title\": \"Entity Resolutions\", \"type\": \"array\"}}, \"required\": [\"entity_resolutions\"], \"title\": \"NodeResolutions\", \"type\": \"object\"}, \"entity_resolutions\": [{\"id\": 0, \"name\": \"Nisha\", \"duplicate_candidate_id\": -1}]}",
+  "seconds": 106.28011048299959,
+  "prompt_tokens_local": 5730
+}

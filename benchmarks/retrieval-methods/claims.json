@@ -1,0 +1,30 @@
+[
+  {
+    "chapter": "05-retrieval-techniques.html",
+    "sentence": "Tested locally: on 300 LongMemEval conversational-memory questions, BM25 scored 191/300 (63.7%; 95% interval 58.1 to 68.9) versus dense retrieval's 165/300 (55.0%; 95% interval 49.3 to 60.5), an 8.7-point difference (95% interval 2.7 to 14.7; exact p = 0.006), using MiniLM and one small local Gemma 2 9B reader. BM25 was strong on single-session facts and knowledge updates but weak on multi-session reasoning and preferences; this supports keeping a keyword leg and measuring on your own questions, not general superiority, with the harness in the companion repository under benchmarks/longmemeval."
+  },
+  {
+    "chapter": "05-retrieval-techniques.html",
+    "sentence": "5.7% Anthropic vendor measurement: queries with no correct chunk in the top 20, using embeddings alone. 1 Vendor measurement"
+  },
+  {
+    "chapter": "05-retrieval-techniques.html",
+    "sentence": "3.7%, 2.9%, 1.9% The same failure rate with contextual embeddings, then contextual BM25 added, then reranking added. These are 35%, 49% and 67% fewer failures. 1 Vendor measurement"
+  },
+  {
+    "chapter": "05-retrieval-techniques.html",
+    "sentence": "150 in, 20 out Candidates sent to the reranker and chunks passed to the model. 1 Vendor measurement"
+  },
+  {
+    "chapter": "05-retrieval-techniques.html",
+    "sentence": "4 to 5% Average gain of RRF over the best single system in the RRF paper. 8 Paper"
+  },
+  {
+    "chapter": "14-knowledge-graphs.html",
+    "sentence": "0.1% LazyGraphRAG indexing cost relative to full GraphRAG, which Microsoft says matches vector RAG. 5 Maintainer blog"
+  },
+  {
+    "chapter": "14-knowledge-graphs.html",
+    "sentence": "+7% HippoRAG 2 on associative memory tasks against the best embedding model. 7 Paper"
+  }
+]

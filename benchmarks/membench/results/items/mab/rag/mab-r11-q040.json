@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q040",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "4a9dd41455737bfb76d67da65964c745aaa5450a84a8fe5b96ee87b1a21d06b0",
+  "reference_sha256": "61a12eb58be82d9be20457bbae40759e1e20b21c11af0a985f966d9cb5f0bedd",
+  "method": "rag",
+  "answer": "Person052 skated towards Person670 after speaking to Mlle. Person014.",
+  "response": {
+    "text": "Person052 skated towards Person670 after speaking to Mlle. Person014.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 23,
+      "prompt_tokens": 3186,
+      "total_tokens": 3209,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 10.432076080003753,
+    "request_sha256": "290f8f2a184de67477ee059f2e40fa76c79e2f98ae4fd6be7653e20c528c2ecc",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    262,
+    150,
+    147,
+    151,
+    166,
+    285,
+    225,
+    153,
+    411,
+    581,
+    273,
+    248,
+    375,
+    596,
+    152,
+    256,
+    159,
+    167,
+    433,
+    158
+  ],
+  "retrieval_scores": [
+    0.5289832949638367,
+    0.5267601013183594,
+    0.502934455871582,
+    0.4837765097618103,
+    0.47750645875930786,
+    0.47339576482772827,
+    0.4643312990665436,
+    0.4588034152984619,
+    0.4480321407318115,
+    0.44584521651268005,
+    0.44574350118637085,
+    0.4423676133155823,
+    0.44201385974884033,
+    0.43995246291160583,
+    0.43950462341308594,
+    0.4394063949584961,
+    0.4393983781337738,
+    0.43574321269989014,
+    0.4322887063026428,
+    0.4285663366317749
+  ],
+  "retrieval_seconds": 0.030791382989264093,
+  "provided_context_sha256": "47ab0d001fd712da0f3779ea02d993a8f8ca7e69f9a0890e48bb02047a770db4",
+  "provided_context_tokens": 2834,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "7077a5f5fb70a28ef0a78050e9d0894df001f82f7ea16eec25fa686ec891f898",
+    "raw_answer_sha256": "3497157778b0247e1b201f30cb6c0e1bb8468dbb9ab569bfffc34d49c56463d6",
+    "answer_redacted": false
+  }
+}

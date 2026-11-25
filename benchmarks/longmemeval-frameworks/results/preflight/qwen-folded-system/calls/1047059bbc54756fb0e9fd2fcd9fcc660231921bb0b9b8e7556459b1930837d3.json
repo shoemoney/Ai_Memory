@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 44
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7e9fdb232ff4ca0bd9b36641938b74aad57d7737bbf6f7faadb5cc696a5cb2d7",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-986b5902-1799-4853-9231-4eab83f6a3ad",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"planning a trip to europe\", \"looking for affordable flights\", \"booking a round-trip ticket or two one-way tickets\", \"visiting london\", \"networking with professionals in london\"]}]",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330400,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 45,
+      "prompt_tokens": 2843,
+      "total_tokens": 2888,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"planning a trip to europe\", \"looking for affordable flights\", \"booking a round-trip ticket or two one-way tickets\", \"visiting london\", \"networking with professionals in london\"]}]",
+  "seconds": 2.1793709860066883,
+  "prompt_tokens_local_gemma_estimate": 2970
+}

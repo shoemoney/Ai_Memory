@@ -1,0 +1,208 @@
+{
+  "id": "irrelevance_33",
+  "category": "irrelevance",
+  "result": [
+    {
+      "identify_species": "{\"sequence\":\"ATCG\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Identify the genetic code sequence \"ATCG\".'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "identify_species",
+                "description": "Identifies the species of an organism based on its genetic code sequence.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "sequence": {
+                      "type": "string",
+                      "description": "A genetic code sequence."
+                    },
+                    "database": {
+                      "type": "string",
+                      "description": "The genetic database to refer to while identifying species.",
+                      "default": "GenBank"
+                    }
+                  },
+                  "required": [
+                    "sequence"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 327,
+    "output_token_count": 28,
+    "latency": 1.1541246420019888
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Identify the genetic code sequence \"ATCG\"."
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "identify_species",
+          "description": "Identifies the species of an organism based on its genetic code sequence.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "sequence": {
+                "type": "string",
+                "description": "A genetic code sequence."
+              },
+              "database": {
+                "type": "string",
+                "description": "The genetic database to refer to while identifying species.",
+                "default": "GenBank"
+              }
+            },
+            "required": [
+              "sequence"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-mFPv1ZrdiiSN5o8ORoWHjluTykTaR1Te",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "TdijTpWB5Q3AduzaC9xia5hJjhPSiZPy",
+              "function": {
+                "arguments": "{\"sequence\":\"ATCG\"}",
+                "name": "identify_species"
+              },
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ],
+    "created": 1795286988,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 28,
+      "prompt_tokens": 327,
+      "total_tokens": 355,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 327,
+      "prompt_ms": 459.821,
+      "prompt_per_token_ms": 1.4061804281345567,
+      "prompt_per_second": 711.1462938839244,
+      "predicted_n": 28,
+      "predicted_ms": 685.002,
+      "predicted_per_token_ms": 25.37044444444444,
+      "predicted_per_second": 39.415943311114425
+    }
+  },
+  "elapsed_seconds": 1.154224575999251,
+  "score": {
+    "id": "irrelevance_33",
+    "model_name": "local-subset-FC",
+    "test_category": "irrelevance",
+    "valid": false,
+    "prompt": {
+      "id": "irrelevance_33",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Identify the genetic code sequence \"ATCG\"."
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "identify_species",
+          "description": "Identifies the species of an organism based on its genetic code sequence.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "sequence": {
+                "type": "string",
+                "description": "A genetic code sequence."
+              },
+              "database": {
+                "type": "string",
+                "description": "The genetic database to refer to while identifying species.",
+                "default": "GenBank"
+              }
+            },
+            "required": [
+              "sequence"
+            ]
+          }
+        }
+      ]
+    },
+    "model_result": [
+      {
+        "identify_species": "{\"sequence\":\"ATCG\"}"
+      }
+    ],
+    "decoded_result": [
+      {
+        "identify_species": {
+          "sequence": "ATCG"
+        }
+      }
+    ],
+    "error": [
+      "Valid syntax. Successfully decode AST when it should not."
+    ],
+    "error_type": "irrelevance_error:decoder_success"
+  }
+}

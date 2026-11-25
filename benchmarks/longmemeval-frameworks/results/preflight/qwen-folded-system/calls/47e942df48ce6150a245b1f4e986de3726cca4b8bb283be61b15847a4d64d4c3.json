@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 71
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7542c451af7d463e5df8dfb6bba48112fcc8141e17850b31d80840fcf045fbe4",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0ed5b539-a362-4048-a9a3-7668c4c72740",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Optimizing influencer marketing strategy based on analytics data\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Identify top-performing influencers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Optimize content types\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Refine audience targeting\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Improve influencer collaboration timing\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Enhance influencer relationships\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Adjust budget allocation\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Experiment with new influencer types\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Monitor and adapt to trends\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330527,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 276,
+      "prompt_tokens": 2181,
+      "total_tokens": 2457,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Optimizing influencer marketing strategy based on analytics data\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Identify top-performing influencers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Optimize content types\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Refine audience targeting\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Improve influencer collaboration timing\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Enhance influencer relationships\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Adjust budget allocation\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Experiment with new influencer types\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Monitor and adapt to trends\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 6.212876863995916,
+  "prompt_tokens_local_gemma_estimate": 2293
+}

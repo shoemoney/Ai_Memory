@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9a50c2d145bf108f673f6de26bccd7d1db3d50208a3e193882759dc373f2b5a7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-39dc2995-250e-4a1d-883f-b762d8b766b7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Jordan\",\n            \"summary\": \"Jordan is mentioned in the conversation but no specific information is provided for summarization.\"\n        },\n        {\n            \"name\": \"Nisha\",\n            \"summary\": \"Nisha is mentioned in the conversation but no specific information is provided for summarization.\"\n        },\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"A dog leash is mentioned as a specific item of interest. It is noted that the conversation does not provide any additional context or information regarding the dog leash.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795368560,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 125,
+      "prompt_tokens": 8304,
+      "total_tokens": 8429,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 458
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Jordan\",\n            \"summary\": \"Jordan is mentioned in the conversation but no specific information is provided for summarization.\"\n        },\n        {\n            \"name\": \"Nisha\",\n            \"summary\": \"Nisha is mentioned in the conversation but no specific information is provided for summarization.\"\n        },\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"A dog leash is mentioned as a specific item of interest. It is noted that the conversation does not provide any additional context or information regarding the dog leash.\"\n        }\n    ]\n}",
+  "seconds": 38.8065830009873,
+  "prompt_tokens_local": 8304
+}

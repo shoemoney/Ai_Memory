@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "800fadba6113f4da9fad556b32cda5edace5b8c12dc395cf297cb9a7c0de0c69",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b9cb446c-bcf2-4cb4-9782-b99244759b5b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Trigger\",\n            \"summary\": \"Trigger mentioned that his vehicle, a Mustang with a cracked windshield, was involved in an accident. He was asked if he needed assistance, and he indicated he was fine but needed a tow.\"\n        },\n        {\n            \"name\": \"Belmont Arts Center\",\n            \"summary\": \"Belmont Arts Center is a venue that hosts various events and performances. It is located in Denver and is known for its art exhibitions and theater productions.\"\n        },\n        {\n            \"name\": \"Lockheed Martin\",\n            \"summary\": \"\"\n        },\n        {\n            \"name\": \"Mustang\",\n            \"summary\": \"Mustang, a vehicle owned by Trigger, had a cracked windshield and was involved in an accident. He needed assistance and requested a tow.\"\n        },\n        {\n            \"name\": \"Riverside Park\",\n            \"summary\": \"\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367771,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 196,
+      "prompt_tokens": 7793,
+      "total_tokens": 7989,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Trigger\",\n            \"summary\": \"Trigger mentioned that his vehicle, a Mustang with a cracked windshield, was involved in an accident. He was asked if he needed assistance, and he indicated he was fine but needed a tow.\"\n        },\n        {\n            \"name\": \"Belmont Arts Center\",\n            \"summary\": \"Belmont Arts Center is a venue that hosts various events and performances. It is located in Denver and is known for its art exhibitions and theater productions.\"\n        },\n        {\n            \"name\": \"Lockheed Martin\",\n            \"summary\": \"\"\n        },\n        {\n            \"name\": \"Mustang\",\n            \"summary\": \"Mustang, a vehicle owned by Trigger, had a cracked windshield and was involved in an accident. He needed assistance and requested a tow.\"\n        },\n        {\n            \"name\": \"Riverside Park\",\n            \"summary\": \"\"\n        }\n    ]\n}",
+  "seconds": 32.21777671200107,
+  "prompt_tokens_local": 7793
+}

@@ -1,0 +1,32 @@
+{
+  "checkpoint": "tinker://<run>/sampler_weights/final",
+  "test_file": "$CURRICULUM_DATA_DIR/test.jsonl",
+  "effort": 0.0,
+  "max_tokens": 2048,
+  "metrics": {
+    "test/exact_match": 0.52,
+    "test/parse_clean": 1.0,
+    "test/count": 300.0,
+    "test/effort": 0.0,
+    "test/prefill_tokens": 490181.0,
+    "test/sample_tokens": 3657.0,
+    "test/estimated_sampling_usd": 0.07535565,
+    "test/recall/exact_match": 0.88,
+    "test/update/exact_match": 0.96,
+    "test/abstain/exact_match": 1.0,
+    "test/temporal/exact_match": 0.02,
+    "test/tool_write/exact_match": 0.0,
+    "test/tool_read/exact_match": 0.26,
+    "reader_check/exact_match": 0.75,
+    "reader_check/parse_clean": 1.0,
+    "reader_check/count": 12.0,
+    "reader_check/effort": 0.0,
+    "reader_check/prefill_tokens": 1584.0,
+    "reader_check/sample_tokens": 81.0,
+    "reader_check/estimated_sampling_usd": 0.00027810000000000004,
+    "reader_check/recall/exact_match": 0.6666666666666666,
+    "reader_check/update/exact_match": 1.0,
+    "reader_check/temporal/exact_match": 0.3333333333333333,
+    "reader_check/abstain/exact_match": 1.0
+  }
+}

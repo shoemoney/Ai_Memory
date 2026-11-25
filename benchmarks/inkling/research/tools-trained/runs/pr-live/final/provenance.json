@@ -1,0 +1,22 @@
+{
+  "pr_code_commit": "e6661f6 (the final PR commit, 31255c2, differs only in README.md, which holds the results table)",
+  "data_sha256": {
+    "train": "dea285cca75e52608f135865ad97fd4d629693b93b33e0c5cf29ab9195b136c7",
+    "valid": "bd8a858879c1227d19ed5f0afadb12970aa01a26e77e0c6eac342799c652e9d9",
+    "test": "e67fd75e88d0a66be5978348131430ea6516c6cd9e9db2dfcd49f6c35cb0b69d",
+    "answers": "e06ee6b1221430f85073057d893510c9501c5ca34e2733985a21fefa3dadc655"
+  },
+  "blind_test_sha256": "cf13fa71d5c824e5dda2d421a596f16fbc655d84696b1cfb903e81de27c4041e",
+  "final_checkpoint": "tinker://<run>/sampler_weights/final",
+  "checkpoint_sha256": "99eb8fecc6ab863aca358285ad51d7b134b54b4916421fcfc01ccccf2b003312",
+  "checkpoint_still_on_account": true,
+  "units": [
+    "inkling-tinker-tools-pr-live3"
+  ],
+  "how": "prepare, train, eval (generated test), eval (blind file) from a clean copy of the PR commit, as in the README",
+  "package_versions": {
+    "tinker": "0.40.0",
+    "tml-renderers": "0.4.2"
+  },
+  "settings": "README defaults: LoRA rank 32, batch 32, one epoch, effort 0.0, default learning rate, seed 0; save_every 0 (final checkpoint only)"
+}

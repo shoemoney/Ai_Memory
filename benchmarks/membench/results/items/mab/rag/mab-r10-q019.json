@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q019",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "741d1757d3f0ad7850596e44e1a4bafa8818472f75aab429c9048092374901a2",
+  "reference_sha256": "91d5be2f1d9cd683b7933144124139728e5efe593ae45f9dbebd02fd4b2af8d2",
+  "method": "rag",
+  "answer": "Person513 and Person252 sat by the parlour fire together.",
+  "response": {
+    "text": "Person513 and Person252 sat by the parlour fire together.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3387,
+      "total_tokens": 3405,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.094698697997956,
+    "request_sha256": "8e08eee486816178df5d5a6d4c5419f64c7acd46013b407b22ba74791c36002a",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    546,
+    525,
+    34,
+    504,
+    159,
+    212,
+    41,
+    471,
+    554,
+    498,
+    576,
+    47,
+    605,
+    105,
+    594,
+    127,
+    523,
+    15,
+    160,
+    61
+  ],
+  "retrieval_scores": [
+    0.568071722984314,
+    0.5597178936004639,
+    0.5347048044204712,
+    0.530545711517334,
+    0.5299580097198486,
+    0.527013897895813,
+    0.5248404741287231,
+    0.522834062576294,
+    0.5224610567092896,
+    0.5205779075622559,
+    0.5152272582054138,
+    0.511225700378418,
+    0.5091134905815125,
+    0.5087440013885498,
+    0.507064700126648,
+    0.5065640807151794,
+    0.5056360960006714,
+    0.5035098791122437,
+    0.5034337043762207,
+    0.5000383853912354
+  ],
+  "retrieval_seconds": 0.03609681500529405,
+  "provided_context_sha256": "ec0cec9c1355347ece51da4878ae79c19a6b7913dca48eda9dc7e0270b46ac7a",
+  "provided_context_tokens": 3013,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "6bf8de2baa16080df9fc87259d9981eee8c37c3da0ceea034756d5ce9d326133",
+    "raw_answer_sha256": "693724a109ceb825437a7e9286c171f868cf4501ae18b14515acf1ab7cc0dafa",
+    "answer_redacted": false
+  }
+}

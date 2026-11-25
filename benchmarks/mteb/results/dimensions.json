@@ -1,0 +1,39 @@
+[
+  {
+    "dimension": 768,
+    "task_ndcg_at_10": {
+      "SciFact": 0.8531690514390345,
+      "NFCorpus": 0.3685184212784902,
+      "ArguAna": 0.6000691737329275
+    },
+    "three_task_mean": 0.6072522154834842
+  },
+  {
+    "dimension": 256,
+    "task_ndcg_at_10": {
+      "SciFact": 0.8219178129936062,
+      "NFCorpus": 0.3501509188140221,
+      "ArguAna": 0.5789135955124243
+    },
+    "three_task_mean": 0.5836607757733508,
+    "delta_vs_768": -0.02359143971013314,
+    "paired_task_stratified_bootstrap_95_ci": [
+      -0.02969384388887342,
+      -0.01775009617829945
+    ]
+  },
+  {
+    "dimension": 128,
+    "task_ndcg_at_10": {
+      "SciFact": 0.8089386290757312,
+      "NFCorpus": 0.3038922644300492,
+      "ArguAna": 0.5116133554894163
+    },
+    "three_task_mean": 0.5414814163317323,
+    "delta_vs_768": -0.06577079915175182,
+    "paired_task_stratified_bootstrap_95_ci": [
+      -0.07542183413493973,
+      -0.0565839418505534
+    ]
+  }
+]

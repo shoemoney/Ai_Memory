@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d05ebba70cfeaac96f919d207a98bc287356f4d0b28e2bc10a7c05bff88e4e6b",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-856a4553-5267-49ca-ba40-2ec6c5787a62",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Lantern Garden\", \"summary\": \"A physical garden with a variety of traditional Chinese lanterns that visitors can color and decorate with provided materials. After they finish their lantern, visitors can scan a QR code on the lantern to add it to a virtual \\\"Lantern Garden\\\" on a dedicated website. This website will display a 3D model of the garden, featuring all the virtual lanterns submitted by visitors.\"}, {\"name\": \"Chinese Calligraphy Wall\", \"summary\": \"A physical wall where visitors can try their hand at Chinese calligraphy using traditional brushes and ink. The wall will have several prompts related to Chinese culture and language for visitors to write. After visitors complete their calligraphy, they can take a photo of it and upload it to a website where it will be displayed as part of a digital mosaic of all the calligraphy done by visitors.\"}, {\"name\": \"Chinese Tea Ceremony\", \"summary\": \"A physical tea room where visitors can participate in a traditional Chinese tea ceremony. The ceremony will be led by a tea master and visitors will learn about the history and cultural significance of tea in Chinese culture. Visitors will be able to take home a small tea set and instructions for conducting their own tea ceremony at home. After the ceremony, visitors can scan a QR code to access a digital guide to Chinese tea ceremonies, including history, etiquette, and types of tea.\"}, {\"name\": \"Zodiac Experience\", \"summary\": \"A physical installation featuring the 12 animals of the Chinese zodiac. Visitors can use provided materials to color and decorate each animal, then scan a QR code to learn more about their zodiac sign and its significance in Chinese culture. Visitors can also take a photo with their zodiac animal and upload it to a website to create a digital mosaic of all the zodiac animals decorated by visitors.\"}, {\"name\": \"Chinese Knot Tying\", \"summary\": \"A physical booth where visitors can learn how to tie traditional Chinese knots using provided materials. The booth will feature several knot-tying tutorials for visitors to follow, as well as more advanced tutorials for those who want to try more complicated knots. Visitors can take home their completed knots, as well as instructions for tying additional knots. After they finish, visitors can scan a QR code to access a digital guide to Chinese knot-tying, including history, symbolism, and instructions for more advanced knots.\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331218,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 496,
+      "prompt_tokens": 3871,
+      "total_tokens": 4367,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 27
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Lantern Garden\", \"summary\": \"A physical garden with a variety of traditional Chinese lanterns that visitors can color and decorate with provided materials. After they finish their lantern, visitors can scan a QR code on the lantern to add it to a virtual \\\"Lantern Garden\\\" on a dedicated website. This website will display a 3D model of the garden, featuring all the virtual lanterns submitted by visitors.\"}, {\"name\": \"Chinese Calligraphy Wall\", \"summary\": \"A physical wall where visitors can try their hand at Chinese calligraphy using traditional brushes and ink. The wall will have several prompts related to Chinese culture and language for visitors to write. After visitors complete their calligraphy, they can take a photo of it and upload it to a website where it will be displayed as part of a digital mosaic of all the calligraphy done by visitors.\"}, {\"name\": \"Chinese Tea Ceremony\", \"summary\": \"A physical tea room where visitors can participate in a traditional Chinese tea ceremony. The ceremony will be led by a tea master and visitors will learn about the history and cultural significance of tea in Chinese culture. Visitors will be able to take home a small tea set and instructions for conducting their own tea ceremony at home. After the ceremony, visitors can scan a QR code to access a digital guide to Chinese tea ceremonies, including history, etiquette, and types of tea.\"}, {\"name\": \"Zodiac Experience\", \"summary\": \"A physical installation featuring the 12 animals of the Chinese zodiac. Visitors can use provided materials to color and decorate each animal, then scan a QR code to learn more about their zodiac sign and its significance in Chinese culture. Visitors can also take a photo with their zodiac animal and upload it to a website to create a digital mosaic of all the zodiac animals decorated by visitors.\"}, {\"name\": \"Chinese Knot Tying\", \"summary\": \"A physical booth where visitors can learn how to tie traditional Chinese knots using provided materials. The booth will feature several knot-tying tutorials for visitors to follow, as well as more advanced tutorials for those who want to try more complicated knots. Visitors can take home their completed knots, as well as instructions for tying additional knots. After they finish, visitors can scan a QR code to access a digital guide to Chinese knot-tying, including history, symbolism, and instructions for more advanced knots.\"}]}",
+  "seconds": 7.586136637008167,
+  "prompt_tokens_local_gemma_estimate": 3824
+}

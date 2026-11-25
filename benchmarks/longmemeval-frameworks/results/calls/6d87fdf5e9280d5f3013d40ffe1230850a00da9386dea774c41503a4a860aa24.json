@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 62
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "8d96a2bde002fa6038c812f05d287ebde35eaa51e1528a7da4cb1f89e94cbcb7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6406495c-ce77-44c1-b25a-26d1f6094011",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Considering a scenic drive to El Chaltén and a boat tour on Lago Argentino\",\n        \"Interested in activities like horseback riding, kayaking, ice hiking, and estancia visits\",\n        \"Interested in scenic flights for a bird's-eye view of the Patagonian landscape\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332965,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 72,
+      "prompt_tokens": 1987,
+      "total_tokens": 2059,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Considering a scenic drive to El Chaltén and a boat tour on Lago Argentino\",\n        \"Interested in activities like horseback riding, kayaking, ice hiking, and estancia visits\",\n        \"Interested in scenic flights for a bird's-eye view of the Patagonian landscape\"\n    ]\n}",
+  "seconds": 3.8168952750129392,
+  "prompt_tokens_local": 1987,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

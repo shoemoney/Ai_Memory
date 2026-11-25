@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "782d4a275c1df907bb97ff4d3c64866060894758e4b523d23e7bf0a541d7e337",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5a3d21e1-44fc-4dc2-b3bb-72d5b9de1780",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "```json\n{\n  \"extracted_entities\": [\n    {\n      \"name\": \"Denver\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Lockheed Martin\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Belmont Arts Center\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Riverside Park\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [1]\n    },\n    {\n      \"name\": \"Trigger\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [1]\n    },\n    {\n      \"name\": \"Mustang\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    },\n    {\n      \"name\": \"Gamecube\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    },\n    {\n      \"name\": \"red and purple lighting\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    },\n    {\n      \"name\": \"Mustang\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [3]\n    },\n    {\n      \"name\": \"cracked windshield\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [3]\n    }\n  ]\n}\n```",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795362448,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 312,
+      "prompt_tokens": 552,
+      "total_tokens": 864,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "```json\n{\n  \"extracted_entities\": [\n    {\n      \"name\": \"Denver\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Lockheed Martin\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Belmont Arts Center\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Riverside Park\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [1]\n    },\n    {\n      \"name\": \"Trigger\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [1]\n    },\n    {\n      \"name\": \"Mustang\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    },\n    {\n      \"name\": \"Gamecube\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    },\n    {\n      \"name\": \"red and purple lighting\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [2]\n    },\n    {\n      \"name\": \"Mustang\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [3]\n    },\n    {\n      \"name\": \"cracked windshield\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [3]\n    }\n  ]\n}\n```",
+  "seconds": 18.58452163700713,
+  "prompt_tokens_local": 552
+}

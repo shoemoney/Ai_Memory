@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-23",
+  "n": 100000,
+  "d": 384,
+  "queries_per_cell": 200,
+  "seed": 20261122,
+  "postgres": "18.7",
+  "pgvector": "0.8.7",
+  "qdrant": "1.20.2",
+  "summaries": [
+    {
+      "kind": "summary",
+      "store": "qdrant",
+      "mode": "ef100",
+      "filter": "tenpct",
+      "mean_rows": 10.0,
+      "recall_pct": 96.35000000000001
+    },
+    {
+      "kind": "summary",
+      "store": "qdrant",
+      "mode": "exact",
+      "filter": "tenpct",
+      "mean_rows": 10.0,
+      "recall_pct": 100.0
+    },
+    {
+      "kind": "summary",
+      "store": "qdrant",
+      "mode": "ef100",
+      "filter": "tiny",
+      "mean_rows": 10.0,
+      "recall_pct": 100.0
+    },
+    {
+      "kind": "summary",
+      "store": "qdrant",
+      "mode": "exact",
+      "filter": "tiny",
+      "mean_rows": 10.0,
+      "recall_pct": 100.0
+    },
+    {
+      "kind": "summary",
+      "store": "postgres",
+      "mode": "default",
+      "filter": "tenpct",
+      "mean_rows": 3.925,
+      "recall_pct": 37.849999999999994
+    },
+    {
+      "kind": "summary",
+      "store": "postgres",
+      "mode": "default",
+      "filter": "tiny",
+      "mean_rows": 0.005,
+      "recall_pct": 0.05
+    },
+    {
+      "kind": "summary",
+      "store": "postgres",
+      "mode": "iterative",
+      "filter": "tenpct",
+      "mean_rows": 10.0,
+      "recall_pct": 87.15
+    },
+    {
+      "kind": "summary",
+      "store": "postgres",
+      "mode": "iterative",
+      "filter": "tiny",
+      "mean_rows": 4.115,
+      "recall_pct": 28.850000000000005
+    },
+    {
+      "kind": "summary",
+      "store": "postgres",
+      "mode": "tuned_cap",
+      "filter": "tenpct",
+      "mean_rows": 10.0,
+      "recall_pct": 87.15
+    },
+    {
+      "kind": "summary",
+      "store": "postgres",
+      "mode": "tuned_cap",
+      "filter": "tiny",
+      "mean_rows": 10.0,
+      "recall_pct": 91.30000000000001
+    },
+    {
+      "kind": "summary",
+      "store": "postgres",
+      "mode": "partial_index",
+      "filter": "tenpct",
+      "mean_rows": 10.0,
+      "recall_pct": 93.95
+    },
+    {
+      "kind": "summary",
+      "store": "postgres",
+      "mode": "partial_index",
+      "filter": "tiny",
+      "mean_rows": 10.0,
+      "recall_pct": 100.0
+    }
+  ],
+  "runtime_note": "Shared CPU hardware under variable memory and IO pressure. Own pip installation paused during the tuned tiny-filter cell. pg_prewarm read mode read vectors and ann files into filesystem cache during that cell. No latency or throughput conclusion."
+}

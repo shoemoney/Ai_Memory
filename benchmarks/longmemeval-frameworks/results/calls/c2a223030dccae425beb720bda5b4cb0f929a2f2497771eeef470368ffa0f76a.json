@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 18
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "6e37a5523303eb8de12782760395727131dd1b4166681febf5d6a04faa7fffc7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-cf601de9-c0b3-4f8b-a3ce-68ed9da3336b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Enjoyed the lyrical themes explored in 'That's Why' by Michael Ray\", \"'Kiss You in the Morning' is one of their favorite songs\", \"'One That Got Away' is a sad song they like\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365766,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 50,
+      "prompt_tokens": 1483,
+      "total_tokens": 1533,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Enjoyed the lyrical themes explored in 'That's Why' by Michael Ray\", \"'Kiss You in the Morning' is one of their favorite songs\", \"'One That Got Away' is a sad song they like\"]}",
+  "seconds": 4.552847248996841,
+  "prompt_tokens_local": 1483
+}

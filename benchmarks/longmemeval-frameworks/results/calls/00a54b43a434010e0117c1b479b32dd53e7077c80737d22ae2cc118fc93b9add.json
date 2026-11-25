@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 75
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "76080ff1389c016acc8afa77976febd1b8498ef3ab7d7e045ce8613a2561b80c",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e3517e22-554b-4db3-a20e-15bd0503051d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"neighborhood diversity with Asian markets and Latin American restaurants might make it easier to find language exchange partners or events\", \"diversity of the neighborhood can increase the chances of finding language exchange partners or events\", \"diversity of the neighborhood might mean that there are language exchange groups or clubs that cater to specific languages, including Spanish\", \"diversity of the neighborhood might mean that there are language schools or tutors offering Spanish classes or language exchange services\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795333078,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 96,
+      "prompt_tokens": 1480,
+      "total_tokens": 1576,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"neighborhood diversity with Asian markets and Latin American restaurants might make it easier to find language exchange partners or events\", \"diversity of the neighborhood can increase the chances of finding language exchange partners or events\", \"diversity of the neighborhood might mean that there are language exchange groups or clubs that cater to specific languages, including Spanish\", \"diversity of the neighborhood might mean that there are language schools or tutors offering Spanish classes or language exchange services\"]}",
+  "seconds": 3.2886206099938136,
+  "prompt_tokens_local": 1480,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

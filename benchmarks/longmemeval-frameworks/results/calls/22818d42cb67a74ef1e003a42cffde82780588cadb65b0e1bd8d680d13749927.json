@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 23
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c0cfed3ceee25af23fe34fa2f0e2f3703b4c31b824fad8599df339376daab8d0",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d88c2a33-f0dd-4d20-af31-1e2994f2f383",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Primary target audience for Legacy Space includes the 32-47 demographic as primary buyers and the 55+ demographic as end users.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Marketing messages highlight the benefits of improving social connections and preserving memories for both primary buyers and end users.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Operations and logistics include building and maintaining the platform, managing resources, and ensuring a smooth onboarding process.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Marketing strategies include targeted advertising on platforms frequented by the 32-47 demographic, educational content, and gift options.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Recommended museums include Computer History Museum, Deutsches Museum, National Air and Space Museum, Tech Museum of Innovation, Museum of Science and Industry, Science Museum, National Museum of Emerging Science and Innovation (Miraikan), Smithsonian National Museum of American History, National Museum of Computing, TELUS Spark\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Noted recent mergers and acquisitions in the hospitality industry such as AccorHotels acquiring Orbis, IHG acquiring Six Senses Hotels Resorts Spas, Marriott International acquiring Elegant Hotels Group, and AccorHotels acquiring sbe Entertainment Group.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Noted recent mergers and acquisitions in the hospitality industry such as AccorHotels acquiring Orbis, IHG acquiring Six Senses Hotels Resorts Spas, Marriott International acquiring Elegant Hotels Group, and AccorHotels acquiring sbe Entertainment Group.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355320,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 411,
+      "prompt_tokens": 1847,
+      "total_tokens": 2258,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Primary target audience for Legacy Space includes the 32-47 demographic as primary buyers and the 55+ demographic as end users.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Marketing messages highlight the benefits of improving social connections and preserving memories for both primary buyers and end users.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Operations and logistics include building and maintaining the platform, managing resources, and ensuring a smooth onboarding process.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Marketing strategies include targeted advertising on platforms frequented by the 32-47 demographic, educational content, and gift options.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Recommended museums include Computer History Museum, Deutsches Museum, National Air and Space Museum, Tech Museum of Innovation, Museum of Science and Industry, Science Museum, National Museum of Emerging Science and Innovation (Miraikan), Smithsonian National Museum of American History, National Museum of Computing, TELUS Spark\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Noted recent mergers and acquisitions in the hospitality industry such as AccorHotels acquiring Orbis, IHG acquiring Six Senses Hotels Resorts Spas, Marriott International acquiring Elegant Hotels Group, and AccorHotels acquiring sbe Entertainment Group.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Noted recent mergers and acquisitions in the hospitality industry such as AccorHotels acquiring Orbis, IHG acquiring Six Senses Hotels Resorts Spas, Marriott International acquiring Elegant Hotels Group, and AccorHotels acquiring sbe Entertainment Group.\"\n        }\n    ]\n}",
+  "seconds": 60.3867979439965,
+  "prompt_tokens_local": 1847
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q068",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "d38f0a85005793b70d2724d37c75a6e3631e59841a18d94e0deab83884d62128",
+  "reference_sha256": "f0029954d83929b3131703ed50dae0e3b3f0200db28476e2ede8aee60ca45c90",
+  "method": "bm25",
+  "answer": "Person581 shouted for Person111 to come to him.",
+  "response": {
+    "text": "Person581 shouted for Person111 to come to him.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 16,
+      "prompt_tokens": 3175,
+      "total_tokens": 3191,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.10496845000307,
+    "request_sha256": "666f21c4166918558dd412bb80c3e244aa70cbf4afd7caf7c0d508cb128b639a",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    320,
+    229,
+    419,
+    311,
+    224,
+    227,
+    306,
+    239,
+    285,
+    225,
+    265,
+    258,
+    609,
+    305,
+    268,
+    326,
+    318,
+    596,
+    312,
+    290
+  ],
+  "retrieval_scores": [
+    121.66340293755376,
+    119.87115300329489,
+    119.66663939758423,
+    117.71827075999163,
+    115.13599649893472,
+    115.10860194866768,
+    114.99936092335021,
+    114.19773286544337,
+    114.04119165692289,
+    111.17918386952152,
+    110.3671661962175,
+    110.06095161671847,
+    109.38392128882946,
+    109.33583360153705,
+    108.51180651246696,
+    107.69546769718403,
+    107.4237008004408,
+    107.27686650660728,
+    106.8938929925871,
+    106.76825372094208
+  ],
+  "retrieval_seconds": 0.010838432004675269,
+  "provided_context_sha256": "79b0591da481833159b95becc495de4702eb54a95d3756d360130b1aaf3bd8e8",
+  "provided_context_tokens": 2843,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "a27b7198f1a855edf397a1432f2a6d09f1f0352473371b747c7a68d9f9111fe5",
+    "raw_answer_sha256": "619e9511a8fce41b06049ef3ce5607a71da75758e1bccb3764bad310b12fe758",
+    "answer_redacted": false
+  }
+}

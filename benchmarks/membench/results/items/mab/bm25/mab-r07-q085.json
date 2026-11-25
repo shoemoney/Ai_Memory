@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q085",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "1921c61e98fd84c9a1c038765484a51bf6366fffb0e85ab445edccfe992ba31f",
+  "reference_sha256": "c9768736e8c035d9863a8ff4c3c0c9fde4021cd177c9078aa962228f1fcc5565",
+  "method": "bm25",
+  "answer": "Person238 planned to marry Person716.",
+  "response": {
+    "text": "Person238 planned to marry Person716.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 13,
+      "prompt_tokens": 3095,
+      "total_tokens": 3108,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 19.716644301995984,
+    "request_sha256": "543bb907b98f5f919f894aa3a6ec9971172f0b729edab669365eb9e4297897c4",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    572,
+    99,
+    579,
+    154,
+    341,
+    282,
+    177,
+    518,
+    173,
+    415,
+    547,
+    534,
+    404,
+    540,
+    188,
+    283,
+    471,
+    514,
+    284,
+    542
+  ],
+  "retrieval_scores": [
+    90.38428683343342,
+    89.86133100414489,
+    88.4253849126774,
+    88.04045653923181,
+    87.80471401658396,
+    86.89388083515801,
+    86.56545931336959,
+    86.03539428837936,
+    85.82045319300585,
+    85.69349482834153,
+    85.58189917827733,
+    85.2798178617494,
+    85.27395095999994,
+    85.09318434921992,
+    84.74470064193244,
+    84.56269055025686,
+    84.50186134705133,
+    84.37696528475091,
+    84.33778919787046,
+    84.15581153247486
+  ],
+  "retrieval_seconds": 0.01958674000343308,
+  "provided_context_sha256": "408afc033d1d32a20f519455676ba886443e42ade56c3b27f357f010addc0073",
+  "provided_context_tokens": 2783,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "1c98d4790a296ae183e15c78087bd414bc7feb2c8cd3d5848d9d2d82371eb0b8",
+    "raw_answer_sha256": "607408cb2f1b39b3d572b873a62c64e2fc713478876a95dbf902eec6cd1441aa",
+    "answer_redacted": false
+  }
+}

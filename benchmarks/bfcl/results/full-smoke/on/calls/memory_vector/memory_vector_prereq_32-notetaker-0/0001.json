@@ -1,0 +1,477 @@
+{
+  "request_sha256": "3b58ea26ff7b80b2ee58f31c99154e0b8bd75c31c4a26622451772e635c0d0e2",
+  "request": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a personal organization assistant. Capture key information from conversations, like tasks, deadlines, and preferences, and use it to give reliable reminders and answers in future sessions.\n\nYou have access to an advanced memory system, consisting of two memory types 'Core Memory' and 'Archival Memory'. Both type of memory is persistent across multiple conversations with the user, and can be accessed in a later interactions. You should actively manage your memory data to keep track of important information, ensure that it is up-to-date and easy to retrieve to provide personalized responses to the user later.\n\nThe Core memory is limited in size, but always visible to you in context. The Archival Memory has a much larger capacity, but will be held outside of your immediate context due to its size.\n\nHere is the content of your Core Memory from previous interactions:\n{}\n"
+      },
+      {
+        "role": "user",
+        "content": "Monday: Team meeting ran over by 30 minutes. Need to finalize Q1 budget report before Friday. IT updated security protocols—change passwords ASAP. Client call with Jacob—delayed till Wednesday."
+      }
+    ],
+    "model": "membench-bfcl-Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "archival_memory_add",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Add a new entry to the archival memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The text to be added to the archival memory. "
+              }
+            },
+            "required": [
+              "text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "The ID of the added entry, which can be used later for deletion or retrieval."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "archival_memory_clear",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Clear all entries in the archival memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "archival_memory_remove",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Remove an entry from the archival memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "vec_id": {
+                "type": "integer",
+                "description": "The ID of the entry to be removed. "
+              }
+            },
+            "required": [
+              "vec_id"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "archival_memory_retrieve",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Retrieve the most similar entries from the archival memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The query text to search for."
+              },
+              "top_k": {
+                "type": "integer",
+                "description": "The number of top similar entries to retrieve.",
+                "default": 5
+              }
+            },
+            "required": [
+              "query"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "results": {
+                "type": "array",
+                "description": "A list of dictionaries containing the ID, similarity score, and text of the retrieved entries.",
+                "items": {
+                  "type": "dict",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The ID of the entry."
+                    },
+                    "similarity_score": {
+                      "type": "float",
+                      "description": "The similarity score of the entry with respect to the query."
+                    },
+                    "text": {
+                      "type": "string",
+                      "description": "The text of the entry."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "archival_memory_retrieve_all",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Retrieve all entries from the archival memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "results": {
+                "type": "array",
+                "description": "A list of dictionaries containing the ID and text of all entries.",
+                "items": {
+                  "type": "dict",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The ID of the entry."
+                    },
+                    "text": {
+                      "type": "string",
+                      "description": "The text of the entry."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "archival_memory_update",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Update an entry in the archival memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "vec_id": {
+                "type": "integer",
+                "description": "The ID of the entry to be updated."
+              },
+              "new_text": {
+                "type": "string",
+                "description": "The new text to replace the old text. "
+              }
+            },
+            "required": [
+              "vec_id",
+              "new_text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "core_memory_add",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Add a new entry to the core memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The text to be added to the core memory. "
+              }
+            },
+            "required": [
+              "text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "The ID of the added entry, which can be used later for deletion or retrieval."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "core_memory_clear",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Clear all entries in the core memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "core_memory_remove",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Remove an entry from the core memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "vec_id": {
+                "type": "integer",
+                "description": "The ID of the entry to be removed. "
+              }
+            },
+            "required": [
+              "vec_id"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "core_memory_retrieve",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Retrieve the most similar entries from the core memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The query text to search for."
+              },
+              "top_k": {
+                "type": "integer",
+                "description": "The number of top similar entries to retrieve. ",
+                "default": 5
+              }
+            },
+            "required": [
+              "query"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "results": {
+                "type": "array",
+                "description": "A list of dictionaries containing the ID, similarity score, and text of the retrieved entries.",
+                "items": {
+                  "type": "dict",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The ID of the entry."
+                    },
+                    "similarity_score": {
+                      "type": "float",
+                      "description": "The similarity score of the entry with respect to the query."
+                    },
+                    "text": {
+                      "type": "string",
+                      "description": "The text of the entry."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "core_memory_retrieve_all",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Retrieve all entries from the core memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "results": {
+                "type": "array",
+                "description": "A list of dictionaries containing the ID and text of all entries.",
+                "items": {
+                  "type": "dict",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The ID of the entry."
+                    },
+                    "text": {
+                      "type": "string",
+                      "description": "The text of the entry."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "core_memory_update",
+          "description": "This tool belongs to the memory suite, which provides APIs to interact with a key-value based memory system. Tool description: Update an entry in the core memory. Note that the provided function is in Python 3 syntax.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "vec_id": {
+                "type": "integer",
+                "description": "The ID of the entry to be updated."
+              },
+              "new_text": {
+                "type": "string",
+                "description": "The new text to replace the old text. "
+              }
+            },
+            "required": [
+              "vec_id",
+              "new_text"
+            ]
+          },
+          "response": {
+            "type": "dict",
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "Status of the operation."
+              }
+            }
+          }
+        }
+      }
+    ],
+    "max_tokens": 16384,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-niRTAEQUykN5FrtzOrWLuFEakt2rkemY",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "12YiZjdEc8BwlFEJ8wJT4qAZKQhZq1hD",
+              "function": {
+                "arguments": "{\"text\":\"Monday: Team meeting ran over by 30 minutes. Need to finalize Q1 budget report before Friday. IT updated security protocols—change passwords ASAP. Client call with Jacob—delayed till Wednesday.\"}",
+                "name": "archival_memory_add"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is sharing important information about their Monday's activities:\n1. Team meeting ran over by 30 minutes\n2. Need to finalize Q1 budget report before Friday\n3. IT updated security protocols - change passwords ASAP\n4. Client call with Jacob - delayed till Wednesday\n\nThis is important information that should be stored in the memory system. I should add this to the archival memory since it's important information about their schedule and tasks.\n\nLet me add this information to the archival memory."
+        }
+      }
+    ],
+    "created": 1795292687,
+    "model": "membench-bfcl-Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 173,
+      "prompt_tokens": 1769,
+      "total_tokens": 1942,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 1769,
+      "prompt_ms": 446.04,
+      "prompt_per_token_ms": 0.2521424533634822,
+      "prompt_per_second": 3966.0120168594744,
+      "predicted_n": 173,
+      "predicted_ms": 2491.66,
+      "predicted_per_token_ms": 14.486395348837208,
+      "predicted_per_second": 69.03028503086296
+    }
+  },
+  "seconds": 3.2277411079994636,
+  "completed_at": 1795292687.9177172
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "a50fe07843c2933fb31bf2f02ce30f2ac5a884974336524a94ff5f158fc1e24f",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5765d607-5b22-479a-b361-c523c740324c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Pedigree\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"royal canin\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"orijen\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"acana\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 4,\n            \"name\": \"blue buffalo\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 5,\n            \"name\": \"wellness\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 6,\n            \"name\": \"taste of the wild\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795345808,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 215,
+      "prompt_tokens": 6166,
+      "total_tokens": 6381,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Pedigree\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"royal canin\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"orijen\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"acana\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 4,\n            \"name\": \"blue buffalo\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 5,\n            \"name\": \"wellness\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 6,\n            \"name\": \"taste of the wild\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+  "seconds": 94.56357337901136,
+  "prompt_tokens_local": 6166
+}

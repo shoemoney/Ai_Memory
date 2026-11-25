@@ -1,0 +1,108 @@
+/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/driver/search_interface/search_interface.py:22: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/
+  class SearchInterface(BaseModel):
+{"dataset_bytes_downloaded": 4194304}
+{"dataset_bytes_downloaded": 8388608}
+{"dataset_bytes_downloaded": 12582912}
+{"dataset_bytes_downloaded": 16777216}
+{"dataset_bytes_downloaded": 20971520}
+{"dataset_bytes_downloaded": 25165824}
+{"dataset_bytes_downloaded": 29360128}
+{"dataset_bytes_downloaded": 33554432}
+{"dataset_bytes_downloaded": 37748736}
+{"dataset_bytes_downloaded": 41943040}
+{"dataset_bytes_downloaded": 46137344}
+{"dataset_bytes_downloaded": 50331648}
+{"dataset_bytes_downloaded": 54525952}
+{"dataset_bytes_downloaded": 58720256}
+{"dataset_bytes_downloaded": 62914560}
+{"dataset_bytes_downloaded": 67108864}
+{"dataset_bytes_downloaded": 71303168}
+{"dataset_bytes_downloaded": 75497472}
+{"dataset_bytes_downloaded": 79691776}
+{"dataset_bytes_downloaded": 83886080}
+{"dataset_bytes_downloaded": 88080384}
+{"dataset_bytes_downloaded": 92274688}
+{"dataset_bytes_downloaded": 96468992}
+{"dataset_bytes_downloaded": 100663296}
+{"dataset_bytes_downloaded": 104857600}
+{"dataset_bytes_downloaded": 109051904}
+{"dataset_bytes_downloaded": 113246208}
+{"dataset_bytes_downloaded": 117440512}
+{"dataset_bytes_downloaded": 121634816}
+{"dataset_bytes_downloaded": 125829120}
+{"dataset_bytes_downloaded": 130023424}
+{"dataset_bytes_downloaded": 134217728}
+{"dataset_bytes_downloaded": 138412032}
+{"dataset_bytes_downloaded": 142606336}
+{"dataset_bytes_downloaded": 146800640}
+{"dataset_bytes_downloaded": 150994944}
+{"dataset_bytes_downloaded": 155189248}
+{"dataset_bytes_downloaded": 159383552}
+{"dataset_bytes_downloaded": 163577856}
+{"dataset_bytes_downloaded": 167772160}
+{"dataset_bytes_downloaded": 171966464}
+{"dataset_bytes_downloaded": 176160768}
+{"dataset_bytes_downloaded": 180355072}
+{"dataset_bytes_downloaded": 184549376}
+{"dataset_bytes_downloaded": 188743680}
+{"dataset_bytes_downloaded": 192937984}
+{"dataset_bytes_downloaded": 197132288}
+{"dataset_bytes_downloaded": 201326592}
+{"dataset_bytes_downloaded": 205520896}
+{"dataset_bytes_downloaded": 209715200}
+{"dataset_bytes_downloaded": 213909504}
+{"dataset_bytes_downloaded": 218103808}
+{"dataset_bytes_downloaded": 222298112}
+{"dataset_bytes_downloaded": 226492416}
+{"dataset_bytes_downloaded": 230686720}
+{"dataset_bytes_downloaded": 234881024}
+{"dataset_bytes_downloaded": 239075328}
+{"dataset_bytes_downloaded": 243269632}
+{"dataset_bytes_downloaded": 247463936}
+{"dataset_bytes_downloaded": 251658240}
+{"dataset_bytes_downloaded": 255852544}
+{"dataset_bytes_downloaded": 260046848}
+{"dataset_bytes_downloaded": 264241152}
+{"dataset_bytes_downloaded": 268435456}
+{"dataset_bytes_downloaded": 272629760}
+{"dataset_bytes_downloaded": 276824064}
+{"dataset_bytes_downloaded": 277383467}
+
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:01,  2.16it/s]/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/huggingface_hub/file_download.py:1723: DeprecationWarning: hf_xet.download_files() is deprecated. Use XetSession().new_file_download_group().start_download_file() instead.
+  xet_get(
+
+Fetching 4 files: 100%|██████████| 4/4 [00:02<00:00,  1.96it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:02<00:00,  1.96it/s]
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files:  53%|█████▎    | 8/15 [00:00<00:00, 29.94it/s]
+Fetching 15 files:  87%|████████▋ | 13/15 [00:16<00:02,  1.26s/it]
+Fetching 15 files:  93%|█████████▎| 14/15 [00:30<00:02,  2.15s/it]
+Fetching 15 files: 100%|██████████| 15/15 [00:47<00:00,  3.19s/it]
+Fetching 15 files: 100%|██████████| 15/15 [00:47<00:00,  3.20s/it]
+benchmarks/longmemeval-frameworks/run.py:203: DeprecationWarning: The Kuzu backend is deprecated and will be removed in a future release — the upstream Kuzu project is no longer maintained. Migrate to Neo4j or FalkorDB.
+  g=Graphiti(graph_driver=KuzuDriver(str(LAB/'graphiti-probe')),llm_client=LocalGraphLLM(LLMConfig(model='default_model',temperature=0,max_tokens=1536)),embedder=LocalEmbedding(),cross_encoder=CosineRanker(),max_coroutines=1)
+Traceback (most recent call last):
+  File "benchmarks/longmemeval-frameworks/run.py", line 222, in <module>
+    try:asyncio.run(main())
+        ~~~~~~~~~~~^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/asyncio/base_events.py", line 726, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "benchmarks/longmemeval-frameworks/run.py", line 206, in main
+    r=await g.add_episode(name='control',episode_body='user: My favorite color is blue. I work at ExampleCo.',source_description='synthetic prerequisite',reference_time=datetime(2023,1,1,tzinfo=timezone.utc),group_id='control',previous_episode_uuids=[])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/graphiti.py", line 1430, in add_episode
+    group_id, driver, clients = self._resolve_request_scope(group_id)
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval-frameworks/venv/lib/python3.13/site-packages/graphiti_core/graphiti.py", line 1327, in _resolve_request_scope
+    if group_id == self.driver._database:
+                   ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'KuzuDriver' object has no attribute '_database'. Did you mean: 'with_database'?

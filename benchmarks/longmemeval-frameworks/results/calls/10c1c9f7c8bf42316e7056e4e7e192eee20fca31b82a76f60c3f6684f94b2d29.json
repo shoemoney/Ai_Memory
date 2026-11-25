@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d367d47f613ce50510a4cbb4bed209637e9066f388c923822959facb349e5514",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-85083589-e99e-4b41-a0e8-8b4bcc1a488f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Nisha's dad\",\n            \"summary\": \"Nisha's dad is mentioned in the context of the Italian recipes and pasta dishes being discussed. He is referred to as the primary cook or chef in the household, providing tips and advice on how to make the perfect spaghetti dish and ravioli.\"\n        },\n        {\n            \"name\": \"red and purple lighting\",\n            \"summary\": \"The red and purple lighting is mentioned in the context of the Italian recipes and pasta dishes being discussed. It is described as a classic Italian style, adding a festive and romantic atmosphere to the dining experience.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795360443,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 139,
+      "prompt_tokens": 6908,
+      "total_tokens": 7047,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 479
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Nisha's dad\",\n            \"summary\": \"Nisha's dad is mentioned in the context of the Italian recipes and pasta dishes being discussed. He is referred to as the primary cook or chef in the household, providing tips and advice on how to make the perfect spaghetti dish and ravioli.\"\n        },\n        {\n            \"name\": \"red and purple lighting\",\n            \"summary\": \"The red and purple lighting is mentioned in the context of the Italian recipes and pasta dishes being discussed. It is described as a classic Italian style, adding a festive and romantic atmosphere to the dining experience.\"\n        }\n    ]\n}",
+  "seconds": 39.42211684701033,
+  "prompt_tokens_local": 6908
+}

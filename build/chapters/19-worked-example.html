@@ -1,0 +1,183 @@
+<article class="chapter essay" data-ch="19" data-part="f" data-running="Field report: four memory systems">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part F &middot; Chapter 19</p>
+  <div class="opener-num" aria-hidden="true">19</div>
+  <h1>Field report: four memory systems</h1>
+  <p class="opener-summary">One operator runs four memory systems side by side: timings, three traps, two search findings.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Kind</p>
+      <p class="glance-value">Field report</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Systems</p>
+      <p class="glance-value">Four, in daily use by one operator</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Evidence</p>
+      <p class="glance-value">First-party, not independently verified: one operator's own counts, 2026</p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Engineers choosing memory systems for different workloads.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>The setup in one picture</h2>
+<div class="plain">
+  <p class="lead">Assistants are A and B; hosts and products are unnamed.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+</div>
+<table class="data">
+  <colgroup><col class="c30"><col class="c70"></colgroup>
+  <thead><tr><th>System</th><th>Job in this setup</th></tr></thead>
+  <tbody>
+    <tr><td>Flat files</td><td>Hold hand-editable coding-agent rules, procedures and project notes without a service.</td></tr>
+    <tr><td>Wiki</td><td>Publishes dated, sourced pages: one answer per fact.</td></tr>
+    <tr><td>Framework + local note-taker</td><td>Extracts chat facts for two assistants locally (Chapter 13).</td></tr>
+    <tr><td>PostgreSQL search</td><td>Runs lexical and semantic search over a fixed document corpus.</td></tr>
+  </tbody>
+</table>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 316" role="img" aria-label="Diagram: coding agents write flat files that a wiki compiles; two assistants use a memory framework backed by a small local model; a search feature queries Postgres with pgvector, which calls an embedding API.">
+  <text class="d-label" x="20" y="24">1 and 2: text a person can read</text>
+  <rect class="d-box" x="20" y="34" width="140" height="60" rx="4"/>
+  <text class="d-title" x="90" y="60" text-anchor="middle">Coding agents</text>
+  <text class="d-sub" x="90" y="78" text-anchor="middle">write and read</text>
+  <rect class="d-box accent" x="230" y="34" width="150" height="60" rx="4"/>
+  <text class="d-title" x="305" y="60" text-anchor="middle">Flat memory files</text>
+  <text class="d-sub" x="305" y="78" text-anchor="middle">one file per fact, index</text>
+  <rect class="d-box accent" x="440" y="34" width="140" height="60" rx="4"/>
+  <text class="d-title" x="510" y="60" text-anchor="middle">Shared wiki</text>
+  <text class="d-sub" x="510" y="78" text-anchor="middle">schema, checks, log</text>
+  <path class="d-line" d="M160 64 H228"/>
+  <path class="d-line accent dash" d="M380 64 H438"/>
+
+  <text class="d-label" x="20" y="118">3: a small model as note-taker</text>
+  <rect class="d-box" x="20" y="130" width="140" height="38" rx="4"/>
+  <text class="d-title" x="90" y="154" text-anchor="middle">Assistant A</text>
+  <rect class="d-box" x="20" y="176" width="140" height="38" rx="4"/>
+  <text class="d-title" x="90" y="200" text-anchor="middle">Assistant B</text>
+  <rect class="d-box accent" x="230" y="130" width="150" height="84" rx="4"/>
+  <text class="d-title" x="305" y="166" text-anchor="middle">Memory framework</text>
+  <text class="d-sub" x="305" y="184" text-anchor="middle">retain, recall, reflect</text>
+  <rect class="d-box dark" x="440" y="130" width="140" height="84" rx="4"/>
+  <text class="d-title d-on-dark" x="510" y="166" text-anchor="middle">Small local model</text>
+  <text class="d-sub d-on-dark" x="510" y="184" text-anchor="middle">thinking off</text>
+  <path class="d-line" d="M160 149 H228"/>
+  <path class="d-line" d="M160 195 H228"/>
+  <path class="d-line accent" d="M380 172 H438"/>
+
+  <text class="d-label" x="20" y="238">4: a fixed corpus with search</text>
+  <rect class="d-box" x="20" y="250" width="140" height="56" rx="4"/>
+  <text class="d-title" x="90" y="282" text-anchor="middle">Search feature</text>
+  <rect class="d-box accent" x="230" y="250" width="150" height="56" rx="4"/>
+  <text class="d-title" x="305" y="274" text-anchor="middle">Postgres + pgvector</text>
+  <text class="d-sub" x="305" y="292" text-anchor="middle">hybrid search, fusion</text>
+  <rect class="d-box" x="440" y="250" width="140" height="56" rx="4"/>
+  <text class="d-title" x="510" y="274" text-anchor="middle">Embedding API</text>
+  <text class="d-sub" x="510" y="292" text-anchor="middle">1,536 dimensions</text>
+  <path class="d-line" d="M160 278 H228"/>
+  <path class="d-line accent dash" d="M380 278 H438"/>
+</svg>
+<figcaption><b>Figure 1.</b> The systems share no storage; only the wiki compiles the flat files.</figcaption>
+</figure>
+
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Retain, recall, reflect</dt><dd>Retain saves a note; recall fetches related notes; reflect reasons over them. Wide recall fetches notes with a high budget; its unit and value were not logged.</dd>
+  </dl>
+  <p class="small muted">You will need: HNSW and IVFFlat, approximate nearest-neighbor indexes (Chapters 08 and 11); rank fusion and rerankers (Chapter 05).</p>
+</aside>
+</section>
+
+<section>
+<h2>System 1: flat files with an index</h2>
+<p>Projects have Markdown notes with one-line index entries; counts and arrival rates are unknown. A global file loads hard rules at session start; procedures load when needed; facts go to the wiki.<sup class="cite"><a href="#s19-1">1</a></sup> Chapter 01 covers mechanics. No service runs; curation depends on System 2.</p>
+</section>
+
+<section>
+<h2>System 2: a wiki compiled from the files</h2>
+<p>Agents maintain Git-tracked Markdown pages under a schema, with an index, append-only log, types, dates and sources.<sup class="cite"><a href="#s19-1">1</a></sup> Chapter 02 describes the pattern. A script lists changed or new notes. An agent compiles their facts into pages and marks each note handled in a separate ledger, leaving the source untouched. A checker validates metadata and links.<sup class="cite"><a href="#s19-1">1</a></sup> At the last read, 1,177 of 1,424 source notes awaited compilation; read date, accumulation period and cause are unknown.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+<aside class="callout unverified">
+  <p class="callout-label">Unverified: the counts do not reconcile</p>
+  <p>The operator reports 257 compiled entries; 1,424 minus 1,177 is 247. The unexplained gap of 10 leaves roughly five sixths pending.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+</aside>
+</section>
+
+<section>
+<h2>System 3: a framework with a local note-taker</h2>
+<p>Each assistant’s framework starts PostgreSQL and maintains its memory bank (store). A local LLM extracts chat facts on an Apple Silicon Mac. Model: about 9 billion parameters, about 5 GB quantized, reasoning off; valid-JSON fact-extraction test passed.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+
+<p>B replaced reflect’s synthesis with wide recall’s notes, shifting reasoning into its context. A recall and B wide recall are not proven equivalent. Compare note overlap and answer quality on identical banks and prompts.</p>
+<p class="table-title">Timings, 19 to 20 November 2026 (not comparable)</p>
+<table class="data">
+  <colgroup><col class="c30"><col class="c20"><col class="c50"></colgroup>
+  <thead><tr><th>Operation</th><th>Time</th><th>What it means</th></tr></thead>
+  <tbody>
+    <tr><td>Recall, assistant A</td><td>about 2 s</td><td>Called before each answer.</td></tr>
+    <tr><td>Retain, assistant A, warm</td><td>about 25 s</td><td>Runs in the background after the answer.</td></tr>
+    <tr><td>Cold daemon start, assistant A</td><td>about 2 min</td><td>Starts the stopped service once per restart.</td></tr>
+    <tr><td>Reflect, assistant B</td><td>40 to 50 s</td><td>Returned prose with note ids.</td></tr>
+    <tr><td>Wide recall, assistant B</td><td>0.2 s</td><td>Fetches notes instead of generating a report.</td></tr>
+  </tbody>
+</table>
+<p>B’s memory daemon stays running; A’s idle policy is unknown. Bank sizes, trials, statistics and acceptability are unreported; extrapolation needs scale data.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+
+<h3>Three traps</h3>
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: ids that collide within one second</p>
+  <p>Parallel saves collided on framework-generated clock-second note ids. Check omitted-id generation. Persist unique ids per logical save; reuse on retries. Verify retries leave one note: replacement, ignored retry or conflict (Chapter 17, queued writes). Corrections need new ids; recommendation: link predecessors, exclude superseded notes from current-fact recall.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+</aside>
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: the gateway dropped system messages</p>
+  <p>B’s gateway removed system messages before the model, including memory instructions. Those moved to a preserved field; compare sent and model-bound requests. Unprompted saves and fresh-session readback confirmed storage and retrieval, without proving instruction delivery.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+</aside>
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: a changed prefix loses the cache</p>
+  <p>The note-taker’s server caches identical tokenized prefixes (first token: cold 0.776 s, repeat 0.165 to 0.232 s). Its client keeps the system message unchanged and first.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+</aside>
+</section>
+
+<section>
+<h2>System 4: PostgreSQL search</h2>
+<p>PostgreSQL with pgvector searches a fixed corpus. Queries filter by the pinned hosted embedding model and size (1,536 dimensions), excluding other models even at equal size. Changing models requires re-embedding all rows.<sup class="cite"><a href="#s19-1">1</a></sup> Chapter 08 covers this stack.</p>
+<p>One SQL statement filters both branches by model, dimensions and kind (record category). Semantic search keeps the nearest 40 passages by cosine distance; lexical search ranks by full-text score, cutoff unrecorded. Reciprocal Rank Fusion combines them with constant 60. The final limit defaults to 6, configurable from 1 to 20.<sup class="cite"><a href="#s19-1">1</a></sup> Chapter 05 explains the technique. A 26 September 2026 count found 3,245 active documents and 7,668 passages.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+
+<h3>Finding one: the semantic branch had no approximate index</h3>
+<p>The 26 September 2026 audit rated missing approximate indexes "Severe": three tables used bare <code>vector</code> columns without HNSW or IVFFlat, computing distances exactly. Exact search loses no recall through approximation. Without measured query cost, the rating establishes no current bottleneck.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+<p>The proposed migration adds partial HNSW expression indexes to two tables (cosine, <code>m=16</code>, <code>ef_construction=64</code>). For 1,536 dimensions, use a dimensioned cast in index and query ordering, or constrain the column dimensions. A partial index holds filtered rows; PostgreSQL must prove the query requests only those rows. Match its predicate and dimensioned expression in the query. The third table stays intentionally unindexed, reason unknown. The migration was unrun on 27 September 2026; later deployment is unconfirmed.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+
+<h3>Finding two: a miss with incomplete diagnostics</h3>
+<p>One query missed its correct passage: rank 159 of 1,905 lexically and 1,063 of 7,668 semantically. Its lexical-only fusion score, at most 1/219, trails all 40 semantic hits (at least 1/100 each), excluding it from the final results regardless of lexical cutoff. That cutoff decides whether a reranker could see it. A replay’s 30-fold widening and rank 240 lack branch labels. Log both ranks and cutoffs, fusion rank and final limit to distinguish pool exclusion from low final rank. An untested proposal reserves merged-pool space for unique headings in document front matter.<sup class="cite"><a href="#s19-1">1</a></sup></p>
+</section>
+
+
+
+<section>
+<h2>What to do differently</h2>
+<ol>
+  <li><strong>Track the inbox as a metric.</strong> Schedule compiles from day one. Set a publication freshness target; alert on oldest pending age and compare arrivals with completions.</li>
+  <li><strong>Inspect, then test end to end.</strong> Check model-bound instructions and roles, then test unprompted retention and fresh-session recall.</li>
+  <li><strong>Record cold start and idle behavior next to recall time.</strong></li>
+  <li><strong>Audit the vector index.</strong> Inspect the deployed index and <code>EXPLAIN</code> the real query, including partial-predicate implication. Time representative searches. EXPLAIN (ANALYZE, BUFFERS) executes the statement; use it on read-only searches. A scan may mean a missing or skipped index, or the planner’s correct choice for a small table. Keep exact search if it meets the budget.</li>
+  <li><strong>Measure candidate rank before adding a reranker.</strong> It cannot reach a passage outside the pool.</li>
+</ol>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: start with one system</p>
+  <p><strong>Start with flat files.</strong> Add a scheduled wiki for curation backlog, a framework for extracting chat facts, or PostgreSQL search for a fixed corpus. Only the wiki builds on the files. Measure backlog age, answer latency and candidate misses before adding systems (Chapter 18).</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s19-1"><span class="src-title">First-party measurements by the operator, 2026, published with permission; not independently verified</span> <span class="src-note">(first-party)</span></li>
+</ol>
+</section>
+
+</article>

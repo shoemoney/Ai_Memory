@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 26
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2c32090144f7a398ac9392eb14101b8aa6939b1e34b222307cf8f9e985a0b7d2",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f5edabff-3c2a-4042-a2f4-c08eda004aaa",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considered joining a painting group to get feedback on their work\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"thought about joining a painting group or club for feedback and learning\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Asked for feedback on a specific aspect (color palette) at the first meeting\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"thought about joining a painting group to get feedback on their work\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Asked the group for tips on photographing artwork for online platforms\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Asked for feedback on a specific aspect (color palette) at the first meeting\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330295,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 181,
+      "prompt_tokens": 1812,
+      "total_tokens": 1993,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considered joining a painting group to get feedback on their work\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"thought about joining a painting group or club for feedback and learning\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Asked for feedback on a specific aspect (color palette) at the first meeting\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"thought about joining a painting group to get feedback on their work\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Asked the group for tips on photographing artwork for online platforms\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Asked for feedback on a specific aspect (color palette) at the first meeting\"\n        }\n    ]\n}",
+  "seconds": 2.616720827005338,
+  "prompt_tokens_local_gemma_estimate": 1938
+}

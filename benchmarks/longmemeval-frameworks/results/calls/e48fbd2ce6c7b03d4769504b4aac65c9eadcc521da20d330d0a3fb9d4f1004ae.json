@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 55
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "198304612ecf7b35e67506b3f70799f6e2d341eb2aba391f560d13433903c931",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-12df5e67-e027-49e3-85d8-756097946a3a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Can use neem oil on eggplants to repel pests\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Tried brisket from Smoke and Dreams food truck\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Checked resources for smoking a whole turkey and pork belly\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Considered trying to smoke a whole turkey or a pork belly\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Interested in trying different wood chips for brisket\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"Added sunflower seeds to the gluten-free bread recipe\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366714,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 236,
+      "prompt_tokens": 1704,
+      "total_tokens": 1940,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Can use neem oil on eggplants to repel pests\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Tried brisket from Smoke and Dreams food truck\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Checked resources for smoking a whole turkey and pork belly\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Considered trying to smoke a whole turkey or a pork belly\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Interested in trying different wood chips for brisket\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"Added sunflower seeds to the gluten-free bread recipe\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+  "seconds": 15.816802058980102,
+  "prompt_tokens_local": 1704
+}

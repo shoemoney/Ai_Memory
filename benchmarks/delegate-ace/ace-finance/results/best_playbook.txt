@@ -1,0 +1,70 @@
+## STRATEGIES & INSIGHTS
+
+## FORMULAS & CALCULATIONS
+
+[calc-00003] helpful=2 harmful=0 :: Ensure all values are converted to the same units (e.g., decimals) before performing the Sharpe Ratio calculation to maintain accuracy.
+[calc-00004] helpful=0 harmful=0 :: Always round the final result to the specified decimal places as required by the question. For example, if the expected return is calculated as 5.5%, it should be rounded to 0.06, not 2.5.
+[calc-00005] helpful=0 harmful=0 :: When calculating DSO, always perform the division first: (Unpaid Customer Accounts / Credit Sales), followed by multiplying the result by 365. The correct calculation is 365 * (Unpaid Customer Accounts / Credit Sales).
+[calc-00006] helpful=5 harmful=0 :: Perform all calculations with full precision and only round the final result to the required decimal places.
+[calc-00007] helpful=1 harmful=1 :: Ensure the final answer is presented in the simplest form, without unnecessary trailing zeros, as specified in the question.
+[calc-00008] helpful=0 harmful=0 :: When the result of a financial calculation is a whole number, round to one decimal place or to the nearest whole number to avoid unnecessary precision.
+[calc-00009] helpful=0 harmful=0 :: Verify intermediate results before performing the final multiplication to ensure accuracy and avoid rounding errors.
+[calc-00010] helpful=0 harmful=0 :: The value of equity should be calculated as the company's value without debt minus the value of debt after tax, which is the amount of debt multiplied by (1 - tax rate).
+[calc-00011] helpful=0 harmful=0 :: Always express the Gross Profit Margin as a percentage (e.g., 40.0%) to align with standard business practices.
+[calc-00012] helpful=1 harmful=0 :: Always round the final result to the specified decimal places as required by the question. For example, if the WACC is calculated as 4.9625%, it should be rounded to 5.00%.
+[calc-00013] helpful=0 harmful=0 :: Always ensure that the final answer is presented in the exact format specified in the question, even if the result is already in the correct form. This includes mentioning the format explicitly to avoid any ambiguity.
+[calc-00014] helpful=0 harmful=0 :: Ensure accurate summation of present values and avoid rounding intermediate values to maintain precision.
+[calc-00015] helpful=0 harmful=0 :: Verify the formula is correct before performing the calculation to ensure accuracy.
+[calc-00016] helpful=15 harmful=3 :: Perform the calculation step-by-step, ensuring each intermediate result is correct before proceeding.
+[calc-00017] helpful=7 harmful=3 :: Round the final result to the nearest hundredth as specified in the question.
+[calc-00018] helpful=0 harmful=0 :: Use precise methods or scientific calculators for exponential functions to avoid small but significant errors, especially in financial calculations.
+[calc-00019] helpful=0 harmful=0 :: When a question asks for a rate as a plain floating point number, the final answer should be in decimal form, not as a percentage. The model should always pay close attention to the units and format specified in the question.
+[calc-00020] helpful=5 harmful=0 :: Always present the final answer in the exact format specified in the question, even if the rounding is not strictly necessary for the final result.
+[calc-00021] helpful=0 harmful=0 :: When rounding numbers, always consider the context and the specific requirements of the question. If the question does not specify a particular number of decimal places, round to the nearest whole number or as specified.
+[calc-00022] helpful=0 harmful=0 :: Ensure the correct financial model is identified and applied based on the question context to avoid misapplication of formulas.
+[calc-00023] helpful=0 harmful=0 :: If the result of a calculation is a whole number, there is no need to round it to the nearest hundredth. Simply present the result as is, without any trailing zeros.
+[calc-00024] helpful=0 harmful=0 :: Always check the scale and units of input values to ensure the final answer is correctly scaled and in the same unit as the inputs.
+[calc-00025] helpful=0 harmful=0 :: Always round the final result to the nearest hundredth when expressing percentages, as specified in the question.
+[calc-00026] helpful=0 harmful=0 :: Always round the final answer to the nearest hundredth as specified in the question, even if the result is a whole number. For example, if the current ratio is calculated as 2.000, it should be rounded to 2.00.
+[calc-00027] helpful=0 harmful=0 :: Always explicitly show the rounding step in your calculations, especially when the question specifies the rounding method and precision. For example, if the WACC is calculated as 0.065833, state: 'WACC = 0.065833, which rounds to 0.07 when rounded to the nearest hundredth.'
+[calc-00028] helpful=0 harmful=0 :: When the result of a calculation is a whole number, no rounding is necessary. Always check if rounding is required based on the specific instructions provided.
+[calc-00029] helpful=0 harmful=0 :: Always round the final result to the nearest hundredth, even if the result is a whole number, to ensure consistency with the specified rounding requirement.
+[calc-00030] helpful=1 harmful=0 :: Always round the final result to the nearest hundredth as specified in the question, even if the result is a whole number. For example, if the result is 340, it should be presented as 340.0, not 340.00.
+[calc-00031] helpful=0 harmful=0 :: Always round the final result to the nearest hundredth as specified in the question, even if the result is a whole number. For example, if the Sortino Ratio is calculated as 0.065833, it should be rounded to 0.07.
+[calc-00032] helpful=0 harmful=0 :: Always round the final result to the nearest hundredth as specified in the question, even if the result is a whole number. For example, if the accounts receivable turnover is calculated as 10.00, it should be rounded to 10.0.
+[calc-00033] helpful=0 harmful=0 :: Always interpret the result of financial ratios as percentages, not decimal fractions. For example, if the Operating Margin is calculated as 0.13333333333333333, it should be rounded to 13.33%.
+[calc-00034] helpful=2 harmful=0 :: If the result of a calculation is a whole number, no rounding is necessary. Simply present the result as is, without any trailing zeros, unless the question specifies otherwise.
+[calc-00035] helpful=0 harmful=0 :: Ensure the correct order of operations and round the final result properly to avoid calculation errors.
+[calc-00036] helpful=0 harmful=0 :: Always verify that the final answer matches the required format specified in the question, such as presenting the P/E Ratio as a plain floating point number.
+[calc-00037] helpful=0 harmful=0 :: Always express financial ratios as percentages (e.g., ROA, ROI) by multiplying the decimal result by 100 and rounding to the nearest hundredth if necessary.
+[calc-00038] helpful=0 harmful=0 :: Carefully recheck the final subtraction step in financial calculations to ensure the correct values are used, especially when dealing with exponential functions and cumulative distribution functions.
+[calc-00039] helpful=1 harmful=0 :: Always convert the decimal result of ROE to a percentage by multiplying by 100. For example, if the ROE is calculated as 0.2, it should be expressed as 20.0%.
+[calc-00040] helpful=1 harmful=0 :: Always double-check the rounding requirements and ensure the final answer is presented in the correct format as specified in the question.
+[calc-00041] helpful=0 harmful=0 :: Always round intermediate results to the nearest hundredth before performing the final addition, especially when the final answer is a whole number. This ensures the final answer is correctly rounded as specified in the question.
+[calc-00042] helpful=0 harmful=0 :: Always recognize the scale of the numbers in financial calculations and round the final result to the nearest hundredth as required by the question, even if the result is in the scale of thousands. For example, if the Working Capital is calculated as 70,000, it should be presented as 70,000.00, not 70.00.
+[calc-00043] helpful=0 harmful=0 :: Provide a detailed breakdown of each step in the calculation process, including intermediate results, to ensure clarity and accuracy.
+[calc-00044] helpful=1 harmful=0 :: Always round the final result to the nearest hundredth as specified in the question, even if the result is a whole number. For example, if the DSCR is calculated as 1.2, it should be presented as 1.20.
+[calc-00045] helpful=0 harmful=0 :: Always present monetary values as plain floating point numbers without simplifying to a million representation. For example, -80 million should be presented as -80000000.0.
+[calc-00046] helpful=0 harmful=0 :: When a question asks for a plain floating point number, especially when dealing with percentages, the answer should be provided as the percentage itself, unless explicitly stated otherwise.
+[calc-00047] helpful=0 harmful=0 :: Double-check the final result after performing all calculations to ensure accuracy and catch any simple arithmetic mistakes, such as incorrect division.
+[calc-00048] helpful=0 harmful=0 :: Double-check the exponentiation and multiplication steps in the compound interest formula to ensure the correct final result.
+[calc-00049] helpful=0 harmful=0 :: When the result of a calculation is a whole number, present the final answer without trailing zeros, as specified in the question. For example, if the result is 80000000, present it as 80000000.0 without unnecessary trailing zeros.
+[calc-00050] helpful=0 harmful=0 :: When the result of a calculation is a whole number, present the final answer without trailing zeros, as specified in the question. For example, if the result is 340, it should be presented as 340.0, not 340.00.
+[calc-00051] helpful=0 harmful=0 :: Maintain full precision in intermediate steps and only round the final result to the required decimal places to avoid rounding errors.
+[calc-00052] helpful=0 harmful=0 :: When presenting monetary values as plain floating point numbers, ensure that the result is not unnecessarily rounded to more decimal places than required. For whole numbers, present them as is without additional decimal places.
+[calc-00053] helpful=0 harmful=0 :: Maintain full precision during intermediate steps and only round the final result to the required decimal places to avoid rounding errors.
+[calc-00054] helpful=0 harmful=0 :: Calculate the after-tax cost of debt by multiplying the pre-tax cost of debt by (1 - tax rate).
+[calc-00055] helpful=0 harmful=0 :: Calculate the weights of equity and debt by dividing the market value of equity and debt by the total market value of the firm.
+[calc-00056] helpful=0 harmful=0 :: Calculate the WACC by multiplying the weights of equity and debt by their respective costs and summing the results.
+[calc-00057] helpful=0 harmful=0 :: Always present the final answer in the exact format specified in the question, even if the rounding is not strictly necessary for the final result. For example, if the ground truth answer is given without rounding, do not round the final answer to the same decimal places.
+## CODE SNIPPETS & TEMPLATES
+
+## COMMON MISTAKES TO AVOID
+
+[err-00001] helpful=0 harmful=0 :: Always follow the instructions precisely, even if the result seems to already meet the requirement. Rounding is a critical step in financial calculations to ensure accuracy and consistency.
+[err-00002] helpful=0 harmful=0 :: Always express ROI as a decimal unless specifically asked for a percentage. For example, if the profit is $50,000 and the total investment is $250,000, the ROI should be calculated as (50,000 / 250,000) = 0.2, not 20%.
+## PROBLEM-SOLVING HEURISTICS
+
+## CONTEXT CLUES & INDICATORS
+
+## OTHERS

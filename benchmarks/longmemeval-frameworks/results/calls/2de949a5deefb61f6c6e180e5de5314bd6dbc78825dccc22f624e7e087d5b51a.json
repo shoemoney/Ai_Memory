@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "879abbde6793dd08334db45b3c158715387a11c18b3f3686eefa875f250025b7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-282820f9-1a01-45aa-811c-d53651ee3691",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 0,\n      \"name\": \"TypingMind.com\",\n      \"duplicate_candidate_id\": -1\n    },\n    {\n      \"id\": 1,\n      \"name\": \"user\",\n      \"duplicate_candidate_id\": -1\n    },\n    {\n      \"id\": 2,\n      \"name\": \"user\",\n      \"duplicate_candidate_id\": -1\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795339310,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 96,
+      "prompt_tokens": 4491,
+      "total_tokens": 4587,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 0,\n      \"name\": \"TypingMind.com\",\n      \"duplicate_candidate_id\": -1\n    },\n    {\n      \"id\": 1,\n      \"name\": \"user\",\n      \"duplicate_candidate_id\": -1\n    },\n    {\n      \"id\": 2,\n      \"name\": \"user\",\n      \"duplicate_candidate_id\": -1\n    }\n  ]\n}",
+  "seconds": 77.12996057599958,
+  "prompt_tokens_local": 4491
+}

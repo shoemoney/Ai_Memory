@@ -1,0 +1,52 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 2
+  },
+  "phase": "mem0-json",
+  "prompt_sha256": "291d25b92a4577af85bf1e338a69ec22e699f6d493f08fab9f558bba29adde29",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-823d93a0-e720-4282-b7b2-ac67eb49a78f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "```json\n{\n\"memory\" : [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"The art installation focuses on celebrating heritage and family by having visitors create a family tree on paper using coloured pens and markers\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"The booths will also have augmented reality features, allowing visitors to see 3D models of objects and artifacts related to their stories\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"The art installation should be attractive and engaging to the public, while incorporating a digital or phygital element\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"3\",\n                \"text\" : \"A giant interactive tree sculpture that encourages visitors to write messages of unity and hope on paper leaves and hang them on the tree\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"4\",\n                \"text\" : \"Visitors can contribute their own stories and photos, and the wall will also have augmented reality features, allowing visitors to see 3D models of the different cultural artifacts and symbols\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"5\",\n                \"text\" : \"Interactive booths where visitors can record and share their family's stories and memories\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"6\",\n                \"text\" : \"Visitors can contribute digital messages, photos, and videos to be included in the capsule, which will be sealed and displayed at the exhibition\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"7\",\n                \"text\" : \"A large interactive wall featuring images and stories of diverse communities in Singapore\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"8\",\n                \"text\" : \"Thinking of displaying an antique brooch\",\n                \"event\" : \"ADD\"\n            },\n            {\n                \"id\" : \"9\",\n                \"text\" : \"Looking for advice on choosing a display case for a delicate or rare item\",\n                \"event\" : \"ADD\"\n            }\n        ]\n}\n```",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795328912,
+    "model": "default_model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 539,
+      "prompt_tokens": 2009,
+      "total_tokens": 2548,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4
+      }
+    }
+  },
+  "text": "```json\n{\n\"memory\" : [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"The art installation focuses on celebrating heritage and family by having visitors create a family tree on paper using coloured pens and markers\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"The booths will also have augmented reality features, allowing visitors to see 3D models of objects and artifacts related to their stories\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"The art installation should be attractive and engaging to the public, while incorporating a digital or phygital element\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"3\",\n                \"text\" : \"A giant interactive tree sculpture that encourages visitors to write messages of unity and hope on paper leaves and hang them on the tree\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"4\",\n                \"text\" : \"Visitors can contribute their own stories and photos, and the wall will also have augmented reality features, allowing visitors to see 3D models of the different cultural artifacts and symbols\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"5\",\n                \"text\" : \"Interactive booths where visitors can record and share their family's stories and memories\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"6\",\n                \"text\" : \"Visitors can contribute digital messages, photos, and videos to be included in the capsule, which will be sealed and displayed at the exhibition\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"7\",\n                \"text\" : \"A large interactive wall featuring images and stories of diverse communities in Singapore\",\n                \"event\" : \"NONE\"\n            },\n            {\n                \"id\" : \"8\",\n                \"text\" : \"Thinking of displaying an antique brooch\",\n                \"event\" : \"ADD\"\n            },\n            {\n                \"id\" : \"9\",\n                \"text\" : \"Looking for advice on choosing a display case for a delicate or rare item\",\n                \"event\" : \"ADD\"\n            }\n        ]\n}\n```",
+  "seconds": 14.153413224994438,
+  "prompt_tokens_local": 2009
+}

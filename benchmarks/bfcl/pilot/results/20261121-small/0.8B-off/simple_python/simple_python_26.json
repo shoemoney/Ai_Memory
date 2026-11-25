@@ -1,0 +1,212 @@
+{
+  "id": "simple_python_26",
+  "category": "simple_python",
+  "result": "To calculate the velocity, we use the formula:\n\n$$v = \\frac{d}{t}$$\n\nWhere:\n*   $v$ is the velocity (in km/h)\n*   $d$ is the distance (in kilometers)\n*   $t$ is the time (in hours)\n\nGiven:\n*   Distance ($d$) = 50 km\n*   Time ($t$) = 2 hours\n\nSubstituting the values into the formula:\n\n$$v = \\frac{50 \\text{ km}}{2 \\text{ h}} = 25 \\text{ km/h}$$\n\nThe velocity of the car is **25 km/h**.",
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Calculate the velocity of a car that travels a distance of 50 kilometers for a duration of 2 hours?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "calculate_velocity",
+                "description": "Calculate the velocity for a certain distance travelled within a specific duration.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "distance": {
+                      "type": "integer",
+                      "description": "The distance travelled by the object, typically in kilometers."
+                    },
+                    "duration": {
+                      "type": "integer",
+                      "description": "The duration of the journey, typically in hours."
+                    },
+                    "unit": {
+                      "type": "string",
+                      "description": "Optional parameter. The unit to return the velocity in. If not provided, the default is km/h."
+                    }
+                  },
+                  "required": [
+                    "distance",
+                    "duration"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 376,
+    "output_token_count": 149,
+    "latency": 1.4550825170008466
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Calculate the velocity of a car that travels a distance of 50 kilometers for a duration of 2 hours?"
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "calculate_velocity",
+          "description": "Calculate the velocity for a certain distance travelled within a specific duration.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "distance": {
+                "type": "integer",
+                "description": "The distance travelled by the object, typically in kilometers."
+              },
+              "duration": {
+                "type": "integer",
+                "description": "The duration of the journey, typically in hours."
+              },
+              "unit": {
+                "type": "string",
+                "description": "Optional parameter. The unit to return the velocity in. If not provided, the default is km/h."
+              }
+            },
+            "required": [
+              "distance",
+              "duration"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-xqADzocmP7Q9OB6pIcoe7YZOuvQV5Ugg",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "To calculate the velocity, we use the formula:\n\n$$v = \\frac{d}{t}$$\n\nWhere:\n*   $v$ is the velocity (in km/h)\n*   $d$ is the distance (in kilometers)\n*   $t$ is the time (in hours)\n\nGiven:\n*   Distance ($d$) = 50 km\n*   Time ($t$) = 2 hours\n\nSubstituting the values into the formula:\n\n$$v = \\frac{50 \\text{ km}}{2 \\text{ h}} = 25 \\text{ km/h}$$\n\nThe velocity of the car is **25 km/h**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795287439,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 149,
+      "prompt_tokens": 376,
+      "total_tokens": 525,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 376,
+      "prompt_ms": 183.258,
+      "prompt_per_token_ms": 0.48738829787234045,
+      "prompt_per_second": 2051.7521745298977,
+      "predicted_n": 149,
+      "predicted_ms": 1264.413,
+      "predicted_per_token_ms": 8.543331081081082,
+      "predicted_per_second": 117.05036250022738
+    }
+  },
+  "elapsed_seconds": 1.4552835560025414,
+  "score": {
+    "id": "simple_python_26",
+    "model_name": "local-subset-FC",
+    "test_category": "simple_python",
+    "valid": false,
+    "error": [
+      "Invalid syntax. Failed to decode AST. 'str' object has no attribute 'keys'"
+    ],
+    "error_type": "ast_decoder:decoder_failed",
+    "prompt": {
+      "id": "simple_python_26",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Calculate the velocity of a car that travels a distance of 50 kilometers for a duration of 2 hours?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "calculate_velocity",
+          "description": "Calculate the velocity for a certain distance travelled within a specific duration.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "distance": {
+                "type": "integer",
+                "description": "The distance travelled by the object, typically in kilometers."
+              },
+              "duration": {
+                "type": "integer",
+                "description": "The duration of the journey, typically in hours."
+              },
+              "unit": {
+                "type": "string",
+                "description": "Optional parameter. The unit to return the velocity in. If not provided, the default is km/h."
+              }
+            },
+            "required": [
+              "distance",
+              "duration"
+            ]
+          }
+        }
+      ]
+    },
+    "model_result_raw": "To calculate the velocity, we use the formula:\n\n$$v = \\frac{d}{t}$$\n\nWhere:\n*   $v$ is the velocity (in km/h)\n*   $d$ is the distance (in kilometers)\n*   $t$ is the time (in hours)\n\nGiven:\n*   Distance ($d$) = 50 km\n*   Time ($t$) = 2 hours\n\nSubstituting the values into the formula:\n\n$$v = \\frac{50 \\text{ km}}{2 \\text{ h}} = 25 \\text{ km/h}$$\n\nThe velocity of the car is **25 km/h**.",
+    "possible_answer": [
+      {
+        "calculate_velocity": {
+          "distance": [
+            50
+          ],
+          "duration": [
+            2
+          ],
+          "unit": [
+            "",
+            "km/h"
+          ]
+        }
+      }
+    ]
+  }
+}

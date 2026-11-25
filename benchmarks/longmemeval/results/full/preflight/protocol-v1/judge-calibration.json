@@ -1,0 +1,38 @@
+[
+  {
+    "expected": true,
+    "actual": true,
+    "response": "yes<end_of_turn>",
+    "prompt": "I will give you a question, a correct answer, and a response from a model. Please answer yes if the response contains the correct answer. Otherwise, answer no. If the response is equivalent to the correct answer or contains all the intermediate steps to get the correct answer, you should also answer yes. If the response only contains a subset of the information required by the answer, answer no. \n\nQuestion: What color is the flag?\n\nCorrect Answer: red\n\nModel Response: red\n\nIs the model response correct? Answer yes or no only."
+  },
+  {
+    "expected": false,
+    "actual": false,
+    "response": "no<end_of_turn>",
+    "prompt": "I will give you a question, a correct answer, and a response from a model. Please answer yes if the response contains the correct answer. Otherwise, answer no. If the response is equivalent to the correct answer or contains all the intermediate steps to get the correct answer, you should also answer yes. If the response only contains a subset of the information required by the answer, answer no. \n\nQuestion: What color is the flag?\n\nCorrect Answer: red\n\nModel Response: blue\n\nIs the model response correct? Answer yes or no only."
+  },
+  {
+    "expected": true,
+    "actual": true,
+    "response": "yes<end_of_turn>",
+    "prompt": "I will give you an unanswerable question, an explanation, and a response from a model. Please answer yes if the model correctly identifies the question as unanswerable. The model could say that the information is incomplete, or some other information is given but the asked information is not.\n\nQuestion: What is the missing code?\n\nExplanation: No code supplied.\n\nModel Response: There is insufficient information.\n\nDoes the model correctly identify the question as unanswerable? Answer yes or no only."
+  },
+  {
+    "expected": true,
+    "actual": true,
+    "response": "Yes \n<end_of_turn>",
+    "prompt": "I will give you a question, a rubric for desired personalized response, and a response from a model. Please answer yes if the response satisfies the desired response. Otherwise, answer no. The model does not need to reflect all the points in the rubric. The response is correct as long as it recalls and utilizes the user's personal information correctly.\n\nQuestion: Can you suggest some accessories that would complement my current photography setup?\n\nRubric: The user would prefer suggestions of Sony-compatible accessories or high-quality photography gear that can enhance their photography experience. They may not prefer suggestions of other brands' equipment or low-quality gear.\n\nModel Response: Based on the conversation history, the following accessories are suggested to complement your photography setup:\n\n*   **Camera Flash:** The **Godox V1** (recommended by you) or the **Sony HVL-F60RM**.\n*   **Flash Protection:** **Godox V1 Hard Case**, **Nanuk 915 Hard Case**, **Pelican 1060 Case**, **Think Tank Photo Flash Pouch**, **Lowepro Flash Pouch**, or **Vello Flash Pouch**.\n*   **External Battery Packs:** **Anker PowerCore 20000 PD**, **Mophie Powerstation XXL**, **Jackery Titan S 20000**, **Anker PowerCore Fusion**, **EC Technology 22400mAh**, or **RavPower 20000mAh**.\n*   **Tripod:** **Gitzo GT3543LS** (specifically noted for its **G-Lock Ultra** leg-locking system).\n*   **Lens:** **Sony 24-70mm f/2.8**.\n*   **Camera Bag:** Options from brands like **Think Tank Photo**, **Lowepro**, **F-Stop Gear**, **Peak Design**, or **MindShift Gear** (specific recommendations pending your budget, gear volume, and preferred style).\n\nIs the model response correct? Answer yes or no only."
+  },
+  {
+    "expected": true,
+    "actual": true,
+    "response": "Yes \n<end_of_turn>",
+    "prompt": "I will give you a question, a rubric for desired personalized response, and a response from a model. Please answer yes if the response satisfies the desired response. Otherwise, answer no. The model does not need to reflect all the points in the rubric. The response is correct as long as it recalls and utilizes the user's personal information correctly.\n\nQuestion: Can you suggest some accessories that would complement my current photography setup?\n\nRubric: The user would prefer suggestions of Sony-compatible accessories or high-quality photography gear that can enhance their photography experience. They may not prefer suggestions of other brands' equipment or low-quality gear.\n\nModel Response: Based on the conversation history, the following accessories are suggested to complement your photography setup:\n\n*   **Camera Flash:** Sony HVL-F60RM, Sony HVL-F45RM, Godox V1, or Godox AD200.\n*   **Flash Protection:** Godox V1 Hard Case, Nanuk 915 Hard Case, or Pelican 1060 Case.\n*   **External Battery Packs:** The history mentions the user asked for recommendations but does not contain the assistant's specific response to this query.\n*   **Lens Cleaning Supplies:** The history mentions the user asked about cleaning a Sony 24-70mm f/2.8 lens but does not contain the assistant's specific response to this query.\n*   **Tripod:** Gitzo GT3543LS (mentioned in the context of the G-Lock Ultra system).\n*   **Camera Bags:** Think Tank Photo, Lowepro, F-Stop Gear, Peak Design, or MindShift Gear.\n\n*Note: The specific recommendations for external battery packs and lens cleaning solutions are missing from the provided text.*\n\nIs the model response correct? Answer yes or no only."
+  },
+  {
+    "expected": true,
+    "actual": true,
+    "response": "Yes \n<end_of_turn>",
+    "prompt": "I will give you a question, a rubric for desired personalized response, and a response from a model. Please answer yes if the response satisfies the desired response. Otherwise, answer no. The model does not need to reflect all the points in the rubric. The response is correct as long as it recalls and utilizes the user's personal information correctly.\n\nQuestion: Can you suggest some accessories that would complement my current photography setup?\n\nRubric: The user would prefer suggestions of Sony-compatible accessories or high-quality photography gear that can enhance their photography experience. They may not prefer suggestions of other brands' equipment or low-quality gear.\n\nModel Response: Based on the conversation history, your current setup includes a **Sony A7R IV camera**, a **Sony 24-70mm f/2.8 lens**, and a **Godox V1 flash**.\n\nTo complement this, the following accessories are suggested:\n*   **Camera Bag:** Something more comfortable and durable than your current one.\n*   **Tripod:** Specifically the **Gitzo GT3543LS**.\n*   **Flash Protection:** Cases or pouches for your **Godox V1**.\n*   **Lens Mounting System:** Information on the **G-Lock Ultra system**.\n\nIs the model response correct? Answer yes or no only."
+  }
+]

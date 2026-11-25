@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q089",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "500fd357a015b7252186641f5d8f372df4db7ee83e76cd2d44dfaa1c84e546a4",
+  "reference_sha256": "b64ca177d2168120be5384eb304d8de4a883c607d679f4f52c2880c0a4771c10",
+  "method": "bm25",
+  "answer": "Person714 laughed upon seeing Mr. Person513 and Person657.",
+  "response": {
+    "text": "Person714 laughed upon seeing Mr. Person513 and Person657.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 20,
+      "prompt_tokens": 3255,
+      "total_tokens": 3275,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.571873321008752,
+    "request_sha256": "d051b10e5bd524a7d630f97a68036d154b7d641dd6234f66b671cecd2840edf1",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    469,
+    472,
+    467,
+    198,
+    466,
+    443,
+    552,
+    515,
+    56,
+    48,
+    25,
+    473,
+    447,
+    398,
+    184,
+    440,
+    420,
+    425,
+    125,
+    444
+  ],
+  "retrieval_scores": [
+    117.2552394887623,
+    117.08067457276282,
+    115.48245867932337,
+    115.28061409803854,
+    113.53658528681044,
+    111.36379279038533,
+    111.29885424202818,
+    109.73879264873392,
+    108.48559801055941,
+    107.83893368535323,
+    107.13306364235405,
+    103.30849299887527,
+    103.07380966354266,
+    102.849866469684,
+    102.4725462893439,
+    101.91976608125043,
+    101.90488965158343,
+    101.13976045026762,
+    100.88753639096163,
+    99.87656435525763
+  ],
+  "retrieval_seconds": 0.013387774000875652,
+  "provided_context_sha256": "2bc251d64a4645af83b12da9d853780d2b225d8e7979d308106cf4987c8c2054",
+  "provided_context_tokens": 2898,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "040d227cc3ac279108b0830233ed8c64554ce98d3179323a0e07f0f4f54d3e6d",
+    "raw_answer_sha256": "3bcfaba38a61c70fe07a639620ce5d936bdbe816f51c755b61fd1803c5811715",
+    "answer_redacted": false
+  }
+}

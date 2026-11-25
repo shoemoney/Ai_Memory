@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 53
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "009e758e8644ed39801e032d538614624cbfee41ce589abee11cf824f19a5840",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-69a34a92-f917-435a-b6d0-d95005a8e5db",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Doctor Sivana is the main antagonist in the film Shazam!\",\n    \"His full name is Dr. Sivana, and he is a scientist who works for the ancient wizard Morgan le Fay.\",\n    \"Sivana's primary motivation is to gain power and control over the world, believing that he can achieve this by defeating the superhero Shazam!\",\n    \"In the film, Sivana creates a device that can turn anyone into a superpowered being, but he uses it to create a horde of clones to take over the world.\",\n    \"Shazam! fights Sivana in the climax of the film, defeating him and saving the day.\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366666,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 149,
+      "prompt_tokens": 2791,
+      "total_tokens": 2940,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Doctor Sivana is the main antagonist in the film Shazam!\",\n    \"His full name is Dr. Sivana, and he is a scientist who works for the ancient wizard Morgan le Fay.\",\n    \"Sivana's primary motivation is to gain power and control over the world, believing that he can achieve this by defeating the superhero Shazam!\",\n    \"In the film, Sivana creates a device that can turn anyone into a superpowered being, but he uses it to create a horde of clones to take over the world.\",\n    \"Shazam! fights Sivana in the climax of the film, defeating him and saving the day.\"\n  ]\n}",
+  "seconds": 13.778263228014112,
+  "prompt_tokens_local": 2791
+}

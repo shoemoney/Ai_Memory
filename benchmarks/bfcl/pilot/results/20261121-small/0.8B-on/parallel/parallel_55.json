@@ -1,0 +1,183 @@
+{
+  "id": "parallel_55",
+  "category": "parallel",
+  "result": [
+    {
+      "grocery_store_find_by_criteria": "{\"location\":\"New York City\",\"criteria\":[\"24 hours\"]}"
+    },
+    {
+      "grocery_store_find_by_criteria": "{\"location\":\"San Diego\",\"criteria\":[\"Home Delivery\"]}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Find a supermarket in New York City that opens 24 hours and another one in San Diego that offers home delivery.'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "grocery_store_find_by_criteria",
+                "description": "Find grocery stores based on specific criteria such as location, hours of operation, or availability of services.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string",
+                      "description": "The city where you want to find a grocery store."
+                    },
+                    "criteria": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "24 hours",
+                          "Home Delivery",
+                          "In-store Pickup"
+                        ]
+                      },
+                      "description": "Specific features or services you're looking for in a grocery store."
+                    }
+                  },
+                  "required": [
+                    "location",
+                    "criteria"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 381,
+    "output_token_count": 286,
+    "latency": 2.321755871998903
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Find a supermarket in New York City that opens 24 hours and another one in San Diego that offers home delivery."
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "grocery_store_find_by_criteria",
+          "description": "Find grocery stores based on specific criteria such as location, hours of operation, or availability of services.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The city where you want to find a grocery store."
+              },
+              "criteria": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "24 hours",
+                    "Home Delivery",
+                    "In-store Pickup"
+                  ]
+                },
+                "description": "Specific features or services you're looking for in a grocery store."
+              }
+            },
+            "required": [
+              "location",
+              "criteria"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-Yw5dlWn1N5sw05H5e0VMizVI9JR1i5aK",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "5pDKJjchzozNBVD4iMop35H0n6qZjsgq",
+              "function": {
+                "arguments": "{\"location\":\"New York City\",\"criteria\":[\"24 hours\"]}",
+                "name": "grocery_store_find_by_criteria"
+              },
+              "type": "function"
+            },
+            {
+              "id": "88gd71qmFSMxZSeB9lAgFFzKU6f66Vyy",
+              "function": {
+                "arguments": "{\"location\":\"San Diego\",\"criteria\":[\"Home Delivery\"]}",
+                "name": "grocery_store_find_by_criteria"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking me to find grocery stores in two different locations:\n1. A supermarket in New York City that opens 24 hours\n2. A supermarket in San Diego that offers home delivery\n\nI need to use the grocery_store_find_by_criteria function for each location. Let me check the parameters:\n- location: The city where you want to find a grocery store\n- criteria: Specific features or services you're looking for in a grocery store\n\nFor the first location (New York City), I need to find a grocery store that opens 24 hours. Looking at the criteria options, I can see \"24 hours\" is available as a specific feature.\n\nFor the second location (San Diego), I need to find a grocery store that offers home delivery. Looking at the criteria options, \"Home Delivery\" is available as a specific feature.\n\nLet me make the function calls for both locations."
+        }
+      }
+    ],
+    "created": 1795287757,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 286,
+      "prompt_tokens": 381,
+      "total_tokens": 667,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 379,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 379,
+      "prompt_n": 2,
+      "prompt_ms": 11.506,
+      "prompt_per_token_ms": 5.753,
+      "prompt_per_second": 173.82235355466713,
+      "predicted_n": 286,
+      "predicted_ms": 2296.38,
+      "predicted_per_token_ms": 8.057473684210526,
+      "predicted_per_second": 124.10837927520706
+    }
+  },
+  "elapsed_seconds": 2.3220106560038403,
+  "score": {
+    "valid": true
+  }
+}

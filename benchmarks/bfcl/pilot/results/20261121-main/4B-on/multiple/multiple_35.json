@@ -1,0 +1,228 @@
+{
+  "id": "multiple_35",
+  "category": "multiple",
+  "result": [
+    {
+      "calculate_gcd": "{\"num1\":128,\"num2\":256,\"algorithm\":\"euclidean\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Calculate the greatest common divisor between 128 and 256.'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "calculate_lcm",
+                "description": "Calculate the least common multiple (lcm) between two integers.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "num1": {
+                      "type": "integer",
+                      "description": "First number to calculate lcm for."
+                    },
+                    "num2": {
+                      "type": "integer",
+                      "description": "Second number to calculate lcm for."
+                    },
+                    "method": {
+                      "type": "string",
+                      "description": "The specific method to use in the calculation. Supported values: 'standard', 'reduced'. Default 'standard'"
+                    }
+                  },
+                  "required": [
+                    "num1",
+                    "num2"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "calculate_gcd",
+                "description": "Calculate the greatest common divisor (gcd) between two integers.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "num1": {
+                      "type": "integer",
+                      "description": "First number to calculate gcd for."
+                    },
+                    "num2": {
+                      "type": "integer",
+                      "description": "Second number to calculate gcd for."
+                    },
+                    "algorithm": {
+                      "type": "string",
+                      "description": "The specific algorithm to use in the calculation. Supported values: 'euclidean', 'binary'. Default 'euclidean'",
+                      "enum": [
+                        "euclidean",
+                        "binary"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "num1",
+                    "num2"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 518,
+    "output_token_count": 203,
+    "latency": 7.494558587000938
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Calculate the greatest common divisor between 128 and 256."
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "calculate_lcm",
+          "description": "Calculate the least common multiple (lcm) between two integers.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "num1": {
+                "type": "integer",
+                "description": "First number to calculate lcm for."
+              },
+              "num2": {
+                "type": "integer",
+                "description": "Second number to calculate lcm for."
+              },
+              "method": {
+                "type": "string",
+                "description": "The specific method to use in the calculation. Supported values: 'standard', 'reduced'. Default 'standard'"
+              }
+            },
+            "required": [
+              "num1",
+              "num2"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "calculate_gcd",
+          "description": "Calculate the greatest common divisor (gcd) between two integers.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "num1": {
+                "type": "integer",
+                "description": "First number to calculate gcd for."
+              },
+              "num2": {
+                "type": "integer",
+                "description": "Second number to calculate gcd for."
+              },
+              "algorithm": {
+                "type": "string",
+                "description": "The specific algorithm to use in the calculation. Supported values: 'euclidean', 'binary'. Default 'euclidean'",
+                "enum": [
+                  "euclidean",
+                  "binary"
+                ]
+              }
+            },
+            "required": [
+              "num1",
+              "num2"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-4aXyJDA2310ZPD4rPoWlfot1X2cYzERC",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "9eeu1WZicm3RhmTTMsfTGf58pkEbpie8",
+              "function": {
+                "arguments": "{\"num1\":128,\"num2\":256,\"algorithm\":\"euclidean\"}",
+                "name": "calculate_gcd"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants to calculate the greatest common divisor (GCD) between 128 and 256. I have a function called calculate_gcd that can do this. Let me check the parameters:\n\n- num1: First number to calculate gcd for (required) - this would be 128\n- num2: Second number to calculate gcd for (required) - this would be 256\n- algorithm: The specific algorithm to use (optional, default 'euclidean') - I can use the default or specify 'euclidean' or 'binary'\n\nSince the user didn't specify which algorithm to use, I'll use the default 'euclidean' algorithm."
+        }
+      }
+    ],
+    "created": 1795287083,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 203,
+      "prompt_tokens": 518,
+      "total_tokens": 721,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 518,
+      "prompt_ms": 2012.084,
+      "prompt_per_token_ms": 3.8843320463320463,
+      "prompt_per_second": 257.44452020889787,
+      "predicted_n": 203,
+      "predicted_ms": 5476.895,
+      "predicted_per_token_ms": 27.11334158415842,
+      "predicted_per_second": 36.88221154504514
+    }
+  },
+  "elapsed_seconds": 7.494648341002176,
+  "score": {
+    "valid": true
+  }
+}

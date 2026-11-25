@@ -1,0 +1,531 @@
+<article class="chapter" data-ch="11" data-part="d" data-running="Dedicated vector stores">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part D &middot; Chapter 11</p>
+  <div class="opener-num" aria-hidden="true">11</div>
+  <h1>Dedicated vector stores</h1>
+  <p class="opener-summary">Searches vectors and metadata, with indexes and storage for large or multi-vector memory collections.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">3 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Tenants, large corpora or multi-vector pages outgrowing general databases.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">A dedicated vector store is a database that finds memories by meaning. It saves each memory as an embedding (Chapter 03), text and metadata; a query vector retrieves the nearest vectors and their metadata.</p>
+  <p>General database vector columns do this too. In pgvector, a scan of every eligible vector is exact, and a query through a graph index (HNSW) or cluster index (IVFFlat) is approximate. PostgreSQL also offers ACID transactions and joins with ordinary tables (Chapter 08).<sup class="cite"><a href="#s11-1">1</a></sup> Dedicated stores add search-focused filtering and object-storage designs.<sup class="cite"><a href="#s11-2">2</a>,<a href="#s11-3">3</a></sup> Coverage includes servers, services, embedded stores and libraries; sqlite-vec appears briefly here, fully in Chapter 12.</p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Payload</dt><dd>Metadata saved beside a vector, such as a user id or timestamp.</dd>
+    <dt>Collection, namespace</dt><dd>A named group of records; isolation and filtering guarantees vary by store.</dd>
+    <dt>MaxSim</dt><dd>Late-interaction models (Chapter 04) emit a vector per image patch or token. MaxSim sums each query vector's best page-vector similarity; rank pages by decreasing score.</dd>
+  </dl>
+</aside>
+<p>Approximate nearest neighbor (ANN) indexes skip vectors, trading recall@k (share of true top k returned) for speed. Chapters 03 and 05 explain embeddings, quantization and hybrid ranking. User id is the examples' tenant key.</p>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p>Save embedded memories, text and metadata. Embed questions, search the permitted tenant and put the top k hits into the prompt.</p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 322" role="img" aria-label="Diagram: on a write the agent text is embedded by a model and saved with its payload in the vector store. On a read the question is embedded, the store filters and searches, and the top hits return to the agent.">
+  <text class="d-label" x="20" y="22">Write</text>
+  <rect class="d-box" x="20" y="32" width="130" height="62" rx="4"/>
+  <text class="d-title" x="85" y="58" text-anchor="middle">Agent</text>
+  <text class="d-sub" x="85" y="76" text-anchor="middle">new fact + user id</text>
+  <rect class="d-box dark" x="235" y="32" width="130" height="62" rx="4"/>
+  <text class="d-title d-on-dark" x="300" y="58" text-anchor="middle">Embedding model</text>
+  <text class="d-sub d-on-dark" x="300" y="76" text-anchor="middle">text to vector</text>
+
+  <text class="d-label" x="20" y="182">Read</text>
+  <rect class="d-box" x="20" y="192" width="130" height="62" rx="4"/>
+  <text class="d-title" x="85" y="218" text-anchor="middle">Agent</text>
+  <text class="d-sub" x="85" y="236" text-anchor="middle">question + user id</text>
+  <rect class="d-box dark" x="235" y="192" width="130" height="62" rx="4"/>
+  <text class="d-title d-on-dark" x="300" y="218" text-anchor="middle">Embedding model</text>
+  <text class="d-sub d-on-dark" x="300" y="236" text-anchor="middle">text to vector</text>
+
+  <rect class="d-box accent" x="450" y="32" width="130" height="222" rx="4"/>
+  <text class="d-title" x="515" y="104" text-anchor="middle">Vector store</text>
+  <text class="d-sub" x="515" y="126" text-anchor="middle">vector + payload</text>
+  <text class="d-sub" x="515" y="143" text-anchor="middle">ANN index</text>
+  <text class="d-sub" x="515" y="160" text-anchor="middle">payload indexes</text>
+  <text class="d-sub" x="515" y="177" text-anchor="middle">filter, then search</text>
+
+  <path class="d-line" d="M150 63 H233"/>
+  <path class="d-line accent" d="M365 63 H448"/>
+  <path class="d-line" d="M150 223 H233"/>
+  <path class="d-line accent" d="M365 223 H448"/>
+  <path class="d-line accent dash" d="M515 254 V286 H85 V256"/>
+  <text class="d-sub" x="300" y="308" text-anchor="middle">top k hits with payload go into the prompt</text>
+</svg>
+<figcaption><b>Figure 1.</b> Both paths call an embedding model. Some stores, including Chroma by default, supply embeddings.</figcaption>
+</figure>
+
+<h3>Index families in plain words</h3>
+<table class="data">
+  <colgroup><col class="c20"><col class="c45"><col class="c35"></colgroup>
+  <thead><tr><th>Family</th><th>How it works</th><th>What it trades</th></tr></thead>
+  <tbody>
+    <tr><td>Flat</td><td>Compares the query with every vector.</td><td>Exact results, but cost grows linearly with the corpus.</td></tr>
+    <tr><td>IVF</td><td>Splits vectors into clusters and scans only the few nearest clusters.</td><td>Faster than flat, but misses neighbors in unscanned clusters.</td></tr>
+    <tr><td>HNSW</td><td>A layered near-neighbor graph, mostly in RAM, searched by node-to-node hops (below).<sup class="cite"><a href="#s11-4">4</a></sup></td><td>Fast and accurate, but memory-hungry.</td></tr>
+    <tr><td>Disk graphs (DiskANN)</td><td>A graph designed for SSD.<sup class="cite"><a href="#s11-5">5</a></sup></td><td>Handles data larger than RAM, with slower hops.</td></tr>
+    <tr><td>Scalar and product quantization</td><td>Shrink each vector to fewer bits or to a short code.<sup class="cite"><a href="#s11-4">4</a></sup></td><td>Less memory, some recall lost.</td></tr>
+    <tr><td>Binary quantization</td><td>Keeps one bit per dimension, with full vectors on disk to rerank candidates.<sup class="cite"><a href="#s11-6">6</a></sup></td><td>Up to 32x smaller than float32, but it needs reranking to keep recall.</td></tr>
+  </tbody>
+</table>
+<p class="small muted">Milvus lists DiskANN and HNSW among its index options.<sup class="cite"><a href="#s11-5">5</a></sup></p>
+
+<h3>HNSW parameters</h3>
+<p>Conventional HNSW names are M, efConstruction and efSearch. In pgvector, <code>m</code> limits links per node per layer (layer 0 allows twice that). Graph links add to raw-vector storage; doubling <code>m</code> roughly doubles this overhead. <code>ef_construction</code> sets the build candidate-list size (higher: better recall, slower builds). <code>hnsw.ef_search</code> sets the query candidate-list size (higher: generally better recall, higher cost). Qdrant calls them m, ef_construct and hnsw_ef: defaults 16, 100 and 100. pgvector defaults are m 16, ef_construction 64 and hnsw.ef_search 40. A non-iterative pgvector scan also caps returned rows at hnsw.ef_search; iterative scans (below) continue.<sup class="cite"><a href="#s11-1">1</a></sup> Tune query breadth first (pgvector hnsw.ef_search; Qdrant hnsw_ef), measuring latency and recall@k against exact filtered search (Numbers).</p>
+
+<h3>Metadata filtering: before, during or after the search</h3>
+<p><strong>Pre-filtering</strong> restricts candidates before scoring, often scanning matches directly. <strong>in-graph filtering</strong> checks predicates during traversal. <strong>post-filtering</strong> drops mismatches afterward, potentially returning fewer than k results. Chapter 08 demonstrates pgvector HNSW post-filtering. Qdrant filters in the graph, or scans exactly when few points match; check other stores separately. In Qdrant, tenant payload indexes add tenant-specific graph links. Create them before ingest; filtering improves at the cost of slower builds and larger graphs.<sup class="cite"><a href="#s11-2">2</a></sup></p>
+<p>In pgvector, filtering follows the index scan. If 10% of candidates match the tenant, a non-iterative scan with <code>hnsw.ef_search</code> = 40 returns about four matching rows on average. Set <code>hnsw.iterative_scan</code> to relaxed_order or strict_order (default: off) to continue until enough rows match, index exhaustion or a resource limit (hnsw.max_scan_tuples or hnsw.scan_mem_multiplier). Relaxed order may slightly misorder distances. Selective filters can still hit that limit (Numbers). Use partial indexes for a few predicates; for many tenants, consider PostgreSQL partitions, Qdrant graph filtering or store namespaces.<sup class="cite"><a href="#s11-1">1</a>,<a href="#s11-2">2</a></sup> Qdrant filters support nested AND, OR and NOT clauses.<sup class="cite"><a href="#s11-2">2</a></sup></p>
+
+<h3>Hybrid search</h3>
+<p>Vector search struggles with exact names, ids and rare words. Hybrid search blends keyword rankings such as BM25 with vector rankings, usually through reciprocal-rank fusion (Chapter 05). Qdrant 1.20 documents BM25 ranking on a full-text index over stored text, so the client builds no sparse vectors; the walkthrough instead shows unfused LanceDB searches.<sup class="cite"><a href="#s11-7">7</a></sup></p>
+
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<h3>Do you need one at all</h3>
+<p>Stay on PostgreSQL until filtered recall or p95 misses your target, the index exceeds RAM, or multi-vector pages require reconsideration. Record exact in-tenant top-k ids and latency; if too slow, test ANN against those ids and remeasure latency. pgvector gives no switching threshold.<sup class="cite"><a href="#s11-1">1</a></sup></p>
+
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>Selective filters: tenant-scoped search prevents other tenants consuming candidate budgets. Measure recall against exact in-tenant search.</li>
+      <li>Corpora too large for one machine's RAM, using disk graphs, quantization or object storage.</li>
+      <li>Multi-vector pages: hundreds of vectors per document.</li>
+      <li>Hybrid keyword and vector queries in one API.</li>
+      <li>Teams that want a managed service for index tuning.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">A server or managed store is not for</p>
+    <ul>
+      <li>One user's local notes: use an embedded store (use case 1) or SQLite (Chapter 12).</li>
+      <li>Transactional joins with relational data: use PostgreSQL (Chapter 08).</li>
+      <li>Offline devices: use embedded stores (use case 5).</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Reference: servers and managed services (state as of 20 November 2026)</h3>
+<p class="small muted">Check licenses before redistributing.</p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c40"><col class="c40"></colgroup>
+  <thead><tr><th>Store</th><th>Release and license</th><th>Form, and when to pick it</th></tr></thead>
+  <tbody>
+    <tr><td>Qdrant</td><td>1.20.2, 2026-11-16<sup class="cite"><a href="#s11-8">8</a></sup>; Apache-2.0.</td><td>Rust server. Pick to self-host with tenant filters.</td></tr>
+    <tr><td>Milvus</td><td>3.0.6, 2026-11-11<sup class="cite"><a href="#s11-5">5</a></sup>; Apache-2.0.</td><td>Distributed. Pick for huge corpora or a given index type.</td></tr>
+    <tr><td>Weaviate</td><td>1.40.7, 2026-11-20<sup class="cite"><a href="#s11-9">9</a></sup>; BSD-3-Clause outside <code>wl/</code>; enterprise license inside it.<sup class="cite"><a href="#s11-10">10</a></sup></td><td>Self-hosted objects and vectors with structured filters.</td></tr>
+    <tr><td>Elasticsearch</td><td>9.5.6, tag 2026-10-28, GitHub release 2026-11-02<sup class="cite"><a href="#s11-11">11</a></sup>; source: AGPLv3, SSPL or Elastic License 2.0 per file header; official distribution: Elastic License 2.0.<sup class="cite"><a href="#s11-12">12</a></sup></td><td>Search engine with k-nearest-neighbor (kNN) queries. Pick if you already run Elastic.</td></tr>
+    <tr><td>Vespa</td><td>CLI 8.788.13, 2026-11-16 (engine version not verified)<sup class="cite"><a href="#s11-13">13</a></sup>; Apache-2.0<sup class="cite"><a href="#s11-14">14</a></sup>.</td><td>Large-scale ranking and hybrid queries. Pick for custom ranking expressions.</td></tr>
+    <tr><td>Pinecone</td><td>Managed; proprietary.</td><td>Serverless object-storage namespaces for managed tenant isolation; untested here.<sup class="cite"><a href="#s11-15">15</a></sup></td></tr>
+    <tr><td>turbopuffer</td><td>Managed; proprietary.</td><td>Object storage with an NVMe cache. Pick so idle tenants cost storage, not RAM.<sup class="cite"><a href="#s11-3">3</a></sup></td></tr>
+    <tr><td>Amazon S3 Vectors</td><td>Managed; proprietary; general availability 2025-12-02<sup class="cite"><a href="#s11-16">16</a></sup>.</td><td>S3 vector buckets for cold, rarely queried corpora.</td></tr>
+    <tr><td>Cloudflare Vectorize</td><td>Managed; proprietary; docs updated 2026-10-30<sup class="cite"><a href="#s11-17">17</a></sup>.</td><td>Pick for Workers apps within the hard limits.</td></tr>
+    <tr><td>MongoDB Atlas Vector Search</td><td>Managed; proprietary.</td><td>Vectors beside documents, on separate search nodes. Pick if your data is in MongoDB.<sup class="cite"><a href="#s11-18">18</a></sup></td></tr>
+  </tbody>
+</table>
+
+<h3>Reference: embedded stores and libraries</h3>
+<p>Index libraries return vector ids; applications must synchronize text, tenant permissions and deletes.</p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c40"><col class="c40"></colgroup>
+  <thead><tr><th>Store</th><th>Release and license</th><th>Form, and when to pick it</th></tr></thead>
+  <tbody>
+    <tr><td>Chroma</td><td>1.5.9, 2026-05-05<sup class="cite"><a href="#s11-19">19</a></sup>; Apache-2.0.</td><td>Rust core, in process or <code>chroma run</code>. Pick for API simplicity.</td></tr>
+    <tr><td>LanceDB</td><td>0.41.0 (pre-v1), 2026-10-29<sup class="cite"><a href="#s11-20">20</a></sup>; Apache-2.0.</td><td>Versioned embedded Lance tables on disk or object storage, with vector and full-text search.</td></tr>
+    <tr><td>Milvus Lite</td><td>pymilvus 3.0.2 with milvus-lite 3.2.2, from the docs<sup class="cite"><a href="#s11-21">21</a></sup>; Apache-2.0<sup class="cite"><a href="#s11-22">22</a></sup>.</td><td>Local directory. Pick for prototypes moving to servers.</td></tr>
+    <tr><td>sqlite-vec</td><td>0.1.9, 2026-03-31<sup class="cite"><a href="#s11-23">23</a></sup>; Apache-2.0, per GitHub.</td><td>One SQLite file. Pick for one user on one machine (Chapter 12); pre-v1, so expect breaking changes.</td></tr>
+    <tr><td>FAISS</td><td>1.16.0, 2026-11-10<sup class="cite"><a href="#s11-4">4</a></sup>; MIT.</td><td>A library, not a database. Pick for GPU batch search.</td></tr>
+    <tr><td>hnswlib</td><td>0.9.0 (pre-v1), 2026-03-28<sup class="cite"><a href="#s11-24">24</a></sup>; Apache-2.0.</td><td>Header-only C++ HNSW in memory. Pick for an in-memory HNSW index.</td></tr>
+    <tr><td>usearch</td><td>2.26.6, 2026-10-25<sup class="cite"><a href="#s11-25">25</a></sup>; Apache-2.0.</td><td>Small footprint, quantized indexes. Pick for minimal footprint.</td></tr>
+  </tbody>
+</table>
+
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Local memory for a desktop or command-line agent</h3>
+  <dl>
+    <dt>Situation</dt><dd>A laptop agent needs persistent semantic search over thousands of notes.</dd>
+    <dt>Why it fits</dt><dd>Chroma and LanceDB persist local directories in process; LanceDB is pre-v1.<sup class="cite"><a href="#s11-19">19</a>,<a href="#s11-20">20</a></sup> For one <code>.db</code> file, use dependency-free C sqlite-vec (Chapter 12; pre-v1).<sup class="cite"><a href="#s11-23">23</a></sup> Pin versions.</dd>
+    <dt>Pair with</dt><dd>Chapter 12 for SQLite. Avoid a second daemon for one user.</dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Millions of memories across many tenants</h3>
+  <dl>
+    <dt>Situation</dt><dd>A hosted assistant serves mostly small tenants; queries must stay within their tenant.</dd>
+    <dt>Why it fits</dt><dd>Qdrant filters during the graph search;<sup class="cite"><a href="#s11-2">2</a></sup> Numbers compares filtered recall with unequal search budgets. For RAM-resident Qdrant, share one collection; on turbopuffer and Pinecone, give each tenant a namespace, since idle namespaces sit in object storage, not RAM.<sup class="cite"><a href="#s11-3">3</a>,<a href="#s11-15">15</a></sup></dd>
+    <dt>Pair with</dt><dd>For tenant-only Qdrant, mark the tenant keyword index is_tenant; m=0 skips the global graph and payload_m=16 builds tenant-specific links. Retain a global graph for fast cross-tenant searches.<sup class="cite"><a href="#s11-26">26</a></sup> Avoid post-filter-only designs for selective filters.</dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Very large corpora</h3>
+  <dl>
+    <dt>Situation</dt><dd>Years of cold documents exceed one machine's RAM.</dd>
+    <dt>Why it fits</dt><dd>Milvus is distributed with many index types.<sup class="cite"><a href="#s11-5">5</a></sup> S3 Vectors suits cold tiers, and AWS says infrequent queries return in under one second (a vendor claim, not run here).<sup class="cite"><a href="#s11-27">27</a></sup></dd>
+    <dt>Pair with</dt><dd>Quantization with full-vector reranking. Avoid single-node RAM-only HNSW at this size.</dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>Multi-vector pages from Chapter 04</h3>
+  <dl>
+    <dt>Situation</dt><dd>Scanned PDFs use a late-interaction model such as ColQwen2: up to 768 visual patches plus text tokens.<sup class="cite"><a href="#s11-28">28</a></sup></dd>
+    <dt>Why it fits</dt><dd>Qdrant supports late interaction with a MaxSim comparator (its API calls these multivectors). The walkthrough queries two stored synthetic pages.<sup class="cite"><a href="#s11-29">29</a></sup></dd>
+    <dt>Pair with</dt><dd>Shortlist before MaxSim reranking. Budget 197 GB raw per million pages (Numbers).</dd>
+  </dl>
+</article>
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>Offline or edge use</h3>
+  <dl>
+    <dt>Situation</dt><dd>A field device or Raspberry Pi needs memory without reliable networking.</dd>
+    <dt>Why it fits</dt><dd>Milvus Lite targets laptops and edge devices with Python.<sup class="cite"><a href="#s11-21">21</a></sup> usearch keeps a small footprint.<sup class="cite"><a href="#s11-25">25</a></sup> sqlite-vec (Chapter 12) runs on Linux, macOS, Windows, WASM and Raspberry Pi.<sup class="cite"><a href="#s11-23">23</a></sup></dd>
+    <dt>Pair with</dt><dd>Sync to a server later. Avoid managed-only services, which have no offline mode.</dd>
+  </dl>
+</article>
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p>Managed-service latency and quotas remain untested. Measure recall@k and p95/p99 (95th/99th percentile latencies).</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>874 ms</td><td>turbopuffer cold-query p50 at 1M documents. First queries read object storage; check your deadline.<sup class="cite"><a href="#s11-3">3</a></sup></td><td class="src"><span class="pill vendor">Vendor claim</span></td></tr>
+    <tr><td>14 ms</td><td>turbopuffer reports this cached-query p50 at 1M documents.<sup class="cite"><a href="#s11-3">3</a></sup></td><td class="src"><span class="pill vendor">Vendor claim</span></td></tr>
+    <tr><td>200 ms</td><td>turbopuffer's claimed write-commit time.<sup class="cite"><a href="#s11-30">30</a></sup></td><td class="src"><span class="pill vendor">Vendor claim</span></td></tr>
+    <tr><td>3.75x, 24x</td><td>MongoDB claims these scalar and binary vector RAM reductions.<sup class="cite"><a href="#s11-6">6</a></sup></td><td class="src"><span class="pill vendor">Vendor claim</span></td></tr>
+    <tr><td>1536, 10 KiB, 50</td><td>Vectorize limits: float32 dimensions, metadata/vector, topK with values or metadata (100 without). Upserts take 1,000 vectors per request via Workers, 5,000 via HTTP.<sup class="cite"><a href="#s11-17">17</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>6.1 GB</td><td>One million 1536-dimension float32 vectors: 1,000,000 x 1536 x 4 bytes, in decimal GB, before index overhead.</td><td class="src"><span class="pill example">Example</span></td></tr>
+    <tr><td>8.2 GB, 197 GB</td><td>One million pages as one 4096-dimension float16 vector each, versus 768 vectors of 128 dimensions in float16 each. Chapter 04 shows the arithmetic.<sup class="cite"><a href="#s11-28">28</a></sup></td><td class="src"><span class="pill example">Example</span></td></tr>
+  </tbody>
+</table>
+<p><strong>Tested:</strong> 100,000 seeded 384-dimension vectors, 200 queries per filter, LIMIT 10, CPU only (benchmarks/stores/ch11-filter.py). Mean recall@10 is exact in-tenant top-ten ids recovered divided by ten, averaged over queries.</p>
+<table class="data">
+<thead><tr><th>Configuration</th><th>10%: mean rows / recall@10</th><th>5,000 tenants: mean rows / recall@10</th></tr></thead>
+<tbody>
+<tr><td>pgvector, hnsw.ef_search=40</td><td>3.925 / 37.85%</td><td>0.005 / 0.05%</td></tr>
+<tr><td>strict_order, default scan limits</td><td>10 / 87.15%</td><td>4.115 / 28.85%</td></tr>
+<tr><td>hnsw.max_scan_tuples=100,000; hnsw.scan_mem_multiplier=16</td><td>10 / 87.15%</td><td>10 / 91.30%</td></tr>
+<tr><td>Predicate-specific partial HNSW</td><td>10 / 93.95%</td><td>10 / 100%</td></tr>
+<tr><td>Qdrant, indexed tenant, hnsw_ef=100</td><td>10 / 96.35%</td><td>10 / 100%</td></tr>
+</tbody></table>
+<p>Ground truth is exact tenant-scoped PostgreSQL search; Qdrant exact=True matched all 200 queries at each filter. Qdrant used m=16, ef_construct=100, not the tenant-only layout above. Unequal search breadth (pgvector 40, Qdrant 100) prevents isolating filter placement. Qdrant may scan small tenants exactly. One build per store; no throughput claim. Shared memory/disk pressure invalidate latency comparisons; higher scan limits trade time for recall.</p>
+<p>The selective filter has 20 rows. Default iterative limits include hnsw.max_scan_tuples=20,000. Partial indexes cover queried predicates; per-tenant maintenance was not tested. For small tenants, benchmark indexed tenant lookup with exact scoring.</p>
+<p><strong>Tested:</strong> in a local MongoDB Atlas container with 100,000 384-dimension vectors, CPU only, one build per mode, index files shrank 3.221x with scalar quantization and 15.680x with binary. Only unquantized files include full vectors; quantized files exclude reranking vectors, so total disk savings are smaller. Graph links do not shrink. These ratios neither measure MongoDB's RAM metric nor verify Atlas Required Memory or peak RAM.</p>
+<h3>Scope and scale</h3>
+<p>Retrieval supplies context without judging memories' truth. Latency includes embedding and store time; the walkthrough tests correctness only. Retrieving a new memory in the same turn requires searchable writes; Qdrant scripts use wait=True. Elsewhere, probe a same-tenant write then read; record time-to-visible. Beyond the turn budget, read the write store or wait explicitly.</p>
+<ul>
+  <li><strong>Per write or read (one unbatched item):</strong> one embedding call plus an upsert or a search. Five 200-token hits add about 1,000 input tokens to the answer (estimate).</li>
+  <li><strong>Capacity:</strong> see the Chapter 00 <a href="#sizing-reference">sizing reference</a>. 1,000 users x 1,000 memories at 1536 dimensions in float32 is the 6.1 GB row above; 100,000 users need 614.4 GB, and indexes, text and replicas add more (estimates). A 16 GB RAM budget cannot hold three million such vectors uncompressed (18.432 GB); multi-vector pages hit it sooner.</li>
+  <li><strong>Concurrency:</strong> 100 agents making one lookup per second need 100 searches and 100 query embeddings per second, before batching or caching.</li>
+</ul>
+<p>Measure RAM-resident HNSW memory at target size and p95 at target concurrency. Measure object-backed cold and warm store p95 separately from embedding time. If recall misses its target, test filtering or search breadth; if RAM is exceeded, trial disk-backed search. No universal row threshold applies. Chapter 10's cache handles repeated lookups.</p>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>The walkthrough uses Qdrant server, embedded Chroma and LanceDB, and four-dimensional toy vectors without model or dataset downloads. A follow-up lab after the documentation snapshot tested four scripts on 23 November 2026 on Ubuntu, CPU only, Python 3.14.4, Docker 29.1.3, Qdrant server 1.20.2, qdrant-client 1.20.0, chromadb 1.5.9, lancedb 0.41.0 and tantivy 0.27.0. Qdrant prints cosine similarity (higher is closer); Chroma and LanceDB print squared L2 distance (lower is closer).</p>
+<ol class="steps">
+  <li>
+    <p class="step-title">Install the clients</p>
+    <p>With Docker and Python 3.14.4, run this before /var/tmp/memlab-11 exists. Thread exports limit CPU use; set -e exits on failure. Save the next four Python files and final block (run-stores.sh) there; run bash run-stores.sh with these exports. tantivy was installed; its necessity was not isolated.</p>
+    <div class="codeblock">
+      <div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>set -e
+mkdir /var/tmp/memlab-11
+cd /var/tmp/memlab-11
+export OMP_NUM_THREADS=2 RAYON_NUM_THREADS=2
+python3.14 -m venv venv
+venv/bin/pip install qdrant-client==1.20.0 chromadb==1.5.9 \
+  lancedb==0.41.0 tantivy==0.27.0
+docker run -d --cpus=2 --name memlab-11-qdrant -p 127.0.0.1:39110:6333 \
+  qdrant/qdrant:v1.20.2</pre>
+    </div>
+  </li>
+  <li>
+    <p class="step-title">Qdrant: save two memories and search for one user</p>
+    <p>Write creates a collection and two points; a fresh process reads through a tenant-filtered <code>query_points</code>.</p>
+    <div class="codeblock">
+      <div class="code-head"><span class="code-lang">python</span><span class="code-file">qdrant_test.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import sys
+from qdrant_client import QdrantClient, models
+
+c = QdrantClient(url="http://127.0.0.1:39110")
+if sys.argv[1] == "write":
+    c.create_collection(
+        "memories",
+        vectors_config=models.VectorParams(
+            size=4, distance=models.Distance.COSINE),
+    )
+    c.create_payload_index("memories", "user_id",
+        field_schema=models.KeywordIndexParams(
+            type="keyword", is_tenant=True), wait=True)
+    c.upsert("memories", wait=True, points=[
+        models.PointStruct(id=1, vector=[1., 0., 0., 0.],
+            payload={"user_id": "alice", "content": "likes databases"}),
+        models.PointStruct(id=2, vector=[0., 1., 0., 0.],
+            payload={"user_id": "bob"}),
+    ])
+    sys.exit(0)
+only_alice = models.Filter(must=[models.FieldCondition(
+    key="user_id", match=models.MatchValue(value="alice"))])
+res = c.query_points("memories", query=[1., 0., 0., 0.],
+    query_filter=only_alice, with_payload=True, limit=3)
+assert [p.id for p in res.points] == [1]
+for p in res.points:
+    print(p.id, p.score, p.payload)</pre>
+    </div>
+    <div class="codeblock">
+      <div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>1 1.0 {'user_id': 'alice', 'content': 'likes databases'}</pre>
+    </div>
+    <p class="small muted">The other tenant is excluded. The tenant index precedes ingest; this toy omits the tenant-only m=0/payload_m=16 configuration.</p>
+  </li>
+  <li>
+    <p class="step-title">Chroma: embedded and persistent</p>
+    <p>Supply embeddings with <code>embedding_function=None</code> to avoid downloading a model. The <code>where</code> clause filters by metadata.</p>
+    <div class="codeblock">
+      <div class="code-head"><span class="code-lang">python</span><span class="code-file">chroma_test.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import sys
+import chromadb
+
+c = chromadb.PersistentClient(path="./chroma-data")
+t = c.get_or_create_collection("memories", embedding_function=None)
+if sys.argv[1] == "write":
+    t.add(
+        ids=["1", "2"],
+        documents=["likes databases", "travel to Paris"],
+        embeddings=[[1., 0., 0., 0.], [0., 1., 0., 0.]],
+        metadatas=[{"user_id": "alice"}, {"user_id": "bob"}],
+    )
+    sys.exit(0)
+out = t.query(
+    query_embeddings=[[1., 0., 0., 0.]], n_results=2,
+    where={"user_id": "alice"}, include=["documents", "distances"],
+)
+assert out["ids"] == [["1"]]
+print(out["documents"], out["distances"])</pre>
+    </div>
+    <div class="codeblock">
+      <div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>[['likes databases']] [[0.0]]</pre>
+    </div>
+  </li>
+  <li>
+    <p class="step-title">LanceDB: vector and full-text search in one table</p>
+    <p>Create the full-text index with <code>create_index</code> and <code>FTS()</code>. These unfused searches use lower distance for closer vectors and higher <code>_score</code> for better text matches; Chapter 05 covers fusion.</p>
+    <div class="codeblock">
+      <div class="code-head"><span class="code-lang">python</span><span class="code-file">lance_test.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import sys
+import lancedb
+from lancedb.index import FTS
+
+db = lancedb.connect("./lance-data")
+if sys.argv[1] == "write":
+    t = db.create_table("memories", data=[
+        {"id": 1, "text": "agent memory databases",
+         "vector": [1., 0., 0., 0.]},
+        {"id": 2, "text": "Paris travel plans",
+         "vector": [0., 1., 0., 0.]},
+    ])
+    t.create_index("text", config=FTS())
+    sys.exit(0)
+t = db.open_table("memories")
+rows = t.search([1., 0., 0., 0.]).limit(2).to_list()
+assert [r["id"] for r in rows] == [1, 2]
+for r in rows:
+    print("vector", r["id"], r["_distance"])
+rows = t.search("memory", query_type="fts").limit(2).to_list()
+assert [r["id"] for r in rows] == [1]
+for r in rows:
+    print("fts", r["id"], r["_score"])</pre>
+    </div>
+    <div class="codeblock">
+      <div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>vector 1 0.0
+vector 2 2.0
+fts 1 0.6931471824645996</pre>
+    </div>
+  </li>
+  <li>
+    <p class="step-title">Qdrant: store multi-vector pages and query with MaxSim</p>
+    <p>Multi-vector fields require Qdrant 1.10.0+. Size counts dimensions per vector, not vectors per page. Each query vector matches its best page vector, so page-a scores 1 + 1 = 2 and page-b scores 0 + 0 = 0.<sup class="cite"><a href="#s11-29">29</a></sup></p>
+<div class="codeblock">
+<div class="code-head"><span class="code-lang">python</span><span class="code-file">maxsim_test.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import sys
+from qdrant_client import QdrantClient, models
+
+c = QdrantClient(url="http://127.0.0.1:39110")
+if sys.argv[1] == "write":
+    c.create_collection(
+        "pages",
+        vectors_config={
+            "dense": models.VectorParams(size=4, distance=models.Distance.COSINE),
+            "patches": models.VectorParams(
+                size=4, distance=models.Distance.COSINE,
+                multivector_config=models.MultiVectorConfig(
+                    comparator=models.MultiVectorComparator.MAX_SIM),
+                hnsw_config=models.HnswConfigDiff(m=0),
+            ),
+        },
+    )
+    # Each page has 16 patch vectors; every vector has 4 dimensions.
+    page_a = [[1., 0., 0., 0.], [0., 1., 0., 0.]] * 8
+    page_b = [[0., 0., 1., 0.], [0., 0., 0., 1.]] * 8
+    c.upsert("pages", wait=True, points=[
+        models.PointStruct(id=101,
+            vector={"dense": [1., 0., 0., 0.], "patches": page_a},
+            payload={"page_id": "page-a"}),
+        models.PointStruct(id=102,
+            vector={"dense": [0., 0., 1., 0.], "patches": page_b},
+            payload={"page_id": "page-b"}),
+    ])
+    sys.exit(0)
+saved = c.retrieve("pages", ids=[101, 102], with_vectors=True)
+assert len(saved) == 2
+assert all(len(p.vector["patches"]) == 16 for p in saved)
+query = [[1., 0., 0., 0.], [0., 1., 0., 0.]]
+hits = c.query_points("pages", query=query, using="patches", limit=2,
+    prefetch=models.Prefetch(query=[1., 0., 0., 0.], using="dense", limit=2),
+    search_params=models.SearchParams(exact=True),
+    with_payload=True).points
+assert [p.id for p in hits] == [101, 102]
+assert [round(p.score, 6) for p in hits] == [2., 0.]
+for p in hits:
+    print(p.payload["page_id"], p.score)
+c.close()</pre>
+</div><div class="codeblock">
+<div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>page-a 2.0
+page-b 0.0</pre>
+</div>
+    <p><code>m=0</code> disables HNSW here, since a graph over hundreds of patch vectors per page adds memory and ingestion work, and <code>exact=True</code> scores the prefetched pages exactly. MaxSim work grows with shortlisted pages, query vectors, page vectors and dimensions.<sup class="cite"><a href="#s11-31">31</a></sup></p>
+    <p>Dense prefetch shortlists pages; MaxSim reranks their patches with HNSW disabled. Both toy pages enter in final order: scoring is verified, a ranking reversal is not. Shortlisting saves scoring work but cannot recover first-stage misses.<sup class="cite"><a href="#s11-31">31</a></sup></p>
+  </li>
+  <li>
+    <p class="step-title">Write, read in fresh processes, then clean up</p>
+    <p>Readiness waits for the server or raises; assertions fail the test. Reruns need a fresh directory and container. The final three lines delete both, including scripts: copy scripts first; clean up manually after failure.</p>
+<div class="codeblock">
+<div class="code-head"><span class="code-lang">bash</span><span class="code-file">run-stores.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -e
+venv/bin/python - &lt;&lt;'PYREADY'
+import time
+from qdrant_client import QdrantClient
+c = QdrantClient(url="http://127.0.0.1:39110")
+for attempt in range(60):
+    try:
+        c.get_collections()
+        break
+    except Exception:
+        if attempt == 59:
+            raise
+        time.sleep(1)
+c.close()
+PYREADY
+for file in qdrant_test.py chroma_test.py lance_test.py maxsim_test.py; do
+  venv/bin/python "$file" write
+  venv/bin/python "$file" read
+done
+docker rm -f memlab-11-qdrant
+cd /var/tmp
+rm -rf /var/tmp/memlab-11</pre>
+</div>
+  </li>
+</ol>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: churn and traps</p>
+  <ul>
+    <li>Pre-v1 components change APIs. sqlite-vec's docs site labels v0.1.10-alpha.4 but its latest GitHub release is v0.1.9: pin one.</li>
+    <li>LanceDB's <code>create_fts_index</code> is deprecated as of 0.25.0, though online examples still show it.</li>
+    <li>A client-supplied filter is not authentication; derive it from the authenticated tenant.</li>
+  </ul>
+</aside>
+
+<h3>Migration and lock-in</h3>
+<p>Keep stable ids, tenant metadata, model/preprocessing revisions and embedding inputs; for scans, keep PDFs and page mappings or images alongside extracted text. Snapshot consistently, record the change-log position, load the target and compare recall@k on identical queries. Replay subsequent upserts and deletes in order; pause writes, drain the log, compare per-tenant counts, verify deleted ids are absent and switch. Keep the old store read-only until acceptance; rollback is a config change only while writes stay paused. Retain the log after writes resume. For rollback, pause writes, replay post-cutover upserts/deletes into the old store, verify catch-up and switch back. Re-embed when the model changes (Chapter 03). Milvus Lite 3.x cannot open a 2.x <code>.db</code> in place.<sup class="cite"><a href="#s11-21">21</a></sup></p>
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: use one when filters, tenants or size force it</p>
+  <p><strong>Pick a dedicated store</strong> when PostgreSQL misses product recall and p95 targets. Budget store time within the turn; measure recall against exact filtered results. For MaxSim, shortlist densely, then trial native reranking if application reranking misses that deadline. Qdrant, Chroma and LanceDB passed toy tests; filtered recall used synthetic vectors. Weaviate structured filters, turbopuffer and Pinecone namespaces, Milvus at scale and S3 Vectors remain untested.</p>
+  <p><strong>Avoid server stores</strong> for single-file notes (Chapter 12) or relational joins (Chapter 08). Chapter 23's homebuilder starts on pgvector, reconsidering for page multi-vectors.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+<li id="s11-1"><span class="src-title">pgvector README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/pgvector/pgvector">https://github.com/pgvector/pgvector</a></li>
+<li id="s11-2"><span class="src-title">Qdrant filtering documentation</span> <span class="src-note">(official)</span><a class="url" href="https://qdrant.tech/documentation/search/filtering/">https://qdrant.tech/documentation/search/filtering/</a></li>
+<li id="s11-3"><span class="src-title">turbopuffer architecture documentation</span> <span class="src-note">(vendor)</span><a class="url" href="https://turbopuffer.com/docs/architecture">https://turbopuffer.com/docs/architecture</a></li>
+<li id="s11-4"><span class="src-title">FAISS README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/facebookresearch/faiss">https://github.com/facebookresearch/faiss</a></li>
+<li id="s11-5"><span class="src-title">Milvus repository, releases and topics</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/milvus-io/milvus">https://github.com/milvus-io/milvus</a></li>
+<li id="s11-6"><span class="src-title">MongoDB vector quantization documentation</span> <span class="src-note">(vendor)</span><a class="url" href="https://www.mongodb.com/docs/vector-search/about/vector-quantization/">https://www.mongodb.com/docs/vector-search/about/vector-quantization/</a></li>
+<li id="s11-7"><span class="src-title">Qdrant BM25 documentation, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://qdrant.tech/documentation/inference/inference-bm25">https://qdrant.tech/documentation/inference/inference-bm25</a></li>
+<li id="s11-8"><span class="src-title">Qdrant repository and releases</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/qdrant/qdrant">https://github.com/qdrant/qdrant</a></li>
+<li id="s11-9"><span class="src-title">Weaviate repository and releases</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/weaviate/weaviate">https://github.com/weaviate/weaviate</a></li>
+<li id="s11-10"><span class="src-title">Weaviate v1.40.7 LICENSE: component scope</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/weaviate/weaviate/blob/v1.40.7/LICENSE">https://github.com/weaviate/weaviate/blob/v1.40.7/LICENSE</a></li>
+<li id="s11-11"><span class="src-title">Elasticsearch repository, releases and LICENSE.txt</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/elastic/elasticsearch">https://github.com/elastic/elasticsearch</a></li>
+<li id="s11-12"><span class="src-title">Elastic software licensing FAQ</span> <span class="src-note">(official)</span><a class="url" href="https://www.elastic.co/pricing/faq/licensing">https://www.elastic.co/pricing/faq/licensing</a></li>
+<li id="s11-13"><span class="src-title">Vespa repository, CLI release (the engine release page gave HTTP 403 on 20 November 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/vespa-engine/vespa">https://github.com/vespa-engine/vespa</a></li>
+<li id="s11-14"><span class="src-title">Vespa LICENSE at checked revision</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/vespa-engine/vespa/blob/c59634c3b9588e735c0a54855b0296227d828011/LICENSE">https://github.com/vespa-engine/vespa/blob/c59634c3b9588e735c0a54855b0296227d828011/LICENSE</a></li>
+<li id="s11-15"><span class="src-title">Pinecone architecture documentation</span> <span class="src-note">(vendor)</span><a class="url" href="https://docs.pinecone.io/guides/get-started/architecture">https://docs.pinecone.io/guides/get-started/architecture</a></li>
+<li id="s11-16"><span class="src-title">Amazon S3 Vectors generally available, 2025-12-02</span> <span class="src-note">(vendor)</span><a class="url" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-s3-vectors-generally-available/">https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-s3-vectors-generally-available/</a></li>
+<li id="s11-17"><span class="src-title">Cloudflare Vectorize limits</span> <span class="src-note">(official)</span><a class="url" href="https://developers.cloudflare.com/vectorize/platform/limits/">https://developers.cloudflare.com/vectorize/platform/limits/</a></li>
+<li id="s11-18"><span class="src-title">MongoDB vector search deployment options</span> <span class="src-note">(vendor)</span><a class="url" href="https://www.mongodb.com/docs/vector-search/deployment/deployment-options/">https://www.mongodb.com/docs/vector-search/deployment/deployment-options/</a></li>
+<li id="s11-19"><span class="src-title">Chroma repository, releases and README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/chroma-core/chroma">https://github.com/chroma-core/chroma</a></li>
+<li id="s11-20"><span class="src-title">LanceDB repository, releases and README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/lancedb/lancedb">https://github.com/lancedb/lancedb</a></li>
+<li id="s11-21"><span class="src-title">Milvus Lite documentation</span> <span class="src-note">(official)</span><a class="url" href="https://milvus.io/docs/milvus_lite.md">https://milvus.io/docs/milvus_lite.md</a></li>
+<li id="s11-22"><span class="src-title">Milvus Lite LICENSE at checked revision</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/milvus-io/milvus-lite/blob/1320d26ec3d88b23b525e774df6e3c8e7c208f81/LICENSE">https://github.com/milvus-io/milvus-lite/blob/1320d26ec3d88b23b525e774df6e3c8e7c208f81/LICENSE</a></li>
+<li id="s11-23"><span class="src-title">sqlite-vec repository, releases and README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/asg017/sqlite-vec">https://github.com/asg017/sqlite-vec</a></li>
+<li id="s11-24"><span class="src-title">hnswlib repository and releases</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/nmslib/hnswlib">https://github.com/nmslib/hnswlib</a></li>
+<li id="s11-25"><span class="src-title">usearch repository, releases and LICENSE</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/unum-cloud/usearch">https://github.com/unum-cloud/usearch</a></li>
+<li id="s11-26"><span class="src-title">Qdrant multitenancy documentation</span> <span class="src-note">(official)</span><a class="url" href="https://qdrant.tech/documentation/manage-data/multitenancy/">https://qdrant.tech/documentation/manage-data/multitenancy/</a></li>
+<li id="s11-27"><span class="src-title">Amazon S3 Vectors now generally available with increased scale and performance (AWS blog)</span> <span class="src-note">(vendor)</span><a class="url" href="https://aws.amazon.com/blogs/aws/amazon-s3-vectors-now-generally-available-with-increased-scale-and-performance/">https://aws.amazon.com/blogs/aws/amazon-s3-vectors-now-generally-available-with-increased-scale-and-performance/</a></li>
+<li id="s11-28"><span class="src-title">vidore/colqwen2-v1.0 model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/vidore/colqwen2-v1.0">https://huggingface.co/vidore/colqwen2-v1.0</a></li>
+<li id="s11-29"><span class="src-title">Qdrant multivectors and MaxSim</span> <span class="src-note">(official)</span><a class="url" href="https://qdrant.tech/documentation/concepts/vectors/">https://qdrant.tech/documentation/concepts/vectors/</a></li>
+<li id="s11-30"><span class="src-title">turbopuffer tradeoffs documentation</span> <span class="src-note">(vendor)</span><a class="url" href="https://turbopuffer.com/docs/tradeoffs">https://turbopuffer.com/docs/tradeoffs</a></li>
+<li id="s11-31"><span class="src-title">Qdrant multivector retrieval and reranking</span> <span class="src-note">(official)</span><a class="url" href="https://qdrant.tech/documentation/tutorials-search-engineering/using-multivector-representations/">https://qdrant.tech/documentation/tutorials-search-engineering/using-multivector-representations/</a></li>
+</ol>
+</section>
+
+</article>

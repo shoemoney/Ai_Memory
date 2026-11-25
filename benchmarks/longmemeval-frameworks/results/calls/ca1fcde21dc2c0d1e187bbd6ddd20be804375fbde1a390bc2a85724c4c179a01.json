@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 64
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "da753451c73459dc775ae65cdcf9d6ce9b91a677af71906ee8b667c88d9a5ba7",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-25b9f647-700d-4e9c-89e5-3d6d41fd823e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"entity_resolutions\": [{\"id\": 0, \"name\": \"T.L.C. Sukari Babyfacial\", \"duplicate_candidate_id\": 0}, {\"id\": 1, \"name\": \"T.L.C. Sukari Babyfacial\", \"duplicate_candidate_id\": 0}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795372363,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 63,
+      "prompt_tokens": 7293,
+      "total_tokens": 7356,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\"entity_resolutions\": [{\"id\": 0, \"name\": \"T.L.C. Sukari Babyfacial\", \"duplicate_candidate_id\": 0}, {\"id\": 1, \"name\": \"T.L.C. Sukari Babyfacial\", \"duplicate_candidate_id\": 0}]}",
+  "seconds": 13.451402726001106,
+  "prompt_tokens_local": 7293
+}

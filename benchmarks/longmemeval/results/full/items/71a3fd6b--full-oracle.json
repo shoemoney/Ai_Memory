@@ -1,0 +1,255 @@
+{
+  "question_id": "71a3fd6b",
+  "question_type": "single-session-assistant",
+  "stratum": "single-session-assistant",
+  "method": "full-oracle",
+  "status": "scored",
+  "source_sha256": "4af04a955a15177a344f164b84d641c75719c3ce111a4161aa04e2b92adca71f",
+  "question": "I'm planning my trip to Speyer again and I wanted to confirm, what's the phone number of the Speyer tourism board that you provided me earlier?",
+  "reference": "+49 (0) 62 32 / 14 23 - 0",
+  "question_date": "2023/05/29 (Mon) 10:13",
+  "date_variant": "oracle",
+  "source_session_count": 44,
+  "context": [
+    {
+      "session_id": "answer_ultrachat_417348",
+      "date": "2023/05/28 (Sun) 05:24",
+      "dialogue": [
+        {
+          "role": "user",
+          "content": "Are there any upcoming sporting events in Speyer that visitors can attend or participate in?"
+        },
+        {
+          "role": "assistant",
+          "content": "I do not have access to real-time information about events or functions happening in speyer. however, visitors can check local event calendars, sports club websites or consult with the tourism board of speyer to know about any upcoming sporting events. additionally, major sporting events in germany such as the bundesliga, triathlon events, or marathon races might feature speyer as a destination, and visitors can participate in those."
+        },
+        {
+          "role": "user",
+          "content": "Can you provide me with the contact details of the local tourism board of Speyer?"
+        },
+        {
+          "role": "assistant",
+          "content": "Certainly! You can contact the tourism board of Speyer using the following details:\n\nSpeyer Tourismus Marketing GmbH\nMaximilianstraße 13\n67346 Speyer\nPhone: +49 (0) 62 32 / 14 23 - 0\nEmail: info@speyer.de\nWebsite: https://www.speyer.de/"
+        },
+        {
+          "role": "user",
+          "content": "Thanks for providing me with the contact details of the tourism board of Speyer. Can you tell me how I can get to Speyer from Frankfurt?"
+        },
+        {
+          "role": "assistant",
+          "content": "Yes, there are several ways to get to Speyer from Frankfurt. Here are some options:\n\n1. By car: Speyer is about 1 hour and 10 minutes drive from Frankfurt. You can rent a car at Frankfurt airport or in the city and drive to Speyer on the A67 and A61 highways.\n\n2. By train: The train is a convenient way to get to Speyer from Frankfurt. You can take a train from Frankfurt's main train station Frankfurt am Main Hauptbahnhof to Speyer Hauptbahnhof. The journey takes around 1 hour and 20 minutes, and there are several direct and indirect trains available throughout the day.\n\n3. By bus: You can also take a bus from Frankfurt to Speyer. There are several bus companies that operate between the two cities, and the journey takes around 1 hour and 30 minutes.\n\n4. By taxi: You can take a taxi from Frankfurt Airport or the city center to Speyer. The journey takes around 1 hour and can be quite expensive.\n\nI hope this information helps you!"
+        }
+      ]
+    }
+  ],
+  "prompt_tokens": 690,
+  "hypothesis": "The phone number for the Speyer tourism board is +49 (0) 62 32 / 14 23 - 0.",
+  "answer": {
+    "text": "The phone number for the Speyer tourism board is +49 (0) 62 32 / 14 23 - 0.",
+    "raw_text": "The phone number for the Speyer tourism board is +49 (0) 62 32 / 14 23 - 0. \n",
+    "raw": {
+      "id": "chatcmpl-448d8512-a88a-428e-a6b8-1077dfedebd2",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "The phone number for the Speyer tourism board is +49 (0) 62 32 / 14 23 - 0. \n",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": null,
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1795307241,
+      "model": "default_model",
+      "object": "chat.completion",
+      "service_tier": null,
+      "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+      "usage": {
+        "completion_tokens": 36,
+        "prompt_tokens": 690,
+        "total_tokens": 726,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 4
+        }
+      }
+    },
+    "seconds": 1.9210855099954642,
+    "context": [
+      {
+        "session_id": "answer_ultrachat_417348",
+        "date": "2023/05/28 (Sun) 05:24",
+        "dialogue": [
+          {
+            "role": "user",
+            "content": "Are there any upcoming sporting events in Speyer that visitors can attend or participate in?"
+          },
+          {
+            "role": "assistant",
+            "content": "I do not have access to real-time information about events or functions happening in speyer. however, visitors can check local event calendars, sports club websites or consult with the tourism board of speyer to know about any upcoming sporting events. additionally, major sporting events in germany such as the bundesliga, triathlon events, or marathon races might feature speyer as a destination, and visitors can participate in those."
+          },
+          {
+            "role": "user",
+            "content": "Can you provide me with the contact details of the local tourism board of Speyer?"
+          },
+          {
+            "role": "assistant",
+            "content": "Certainly! You can contact the tourism board of Speyer using the following details:\n\nSpeyer Tourismus Marketing GmbH\nMaximilianstraße 13\n67346 Speyer\nPhone: +49 (0) 62 32 / 14 23 - 0\nEmail: info@speyer.de\nWebsite: https://www.speyer.de/"
+          },
+          {
+            "role": "user",
+            "content": "Thanks for providing me with the contact details of the tourism board of Speyer. Can you tell me how I can get to Speyer from Frankfurt?"
+          },
+          {
+            "role": "assistant",
+            "content": "Yes, there are several ways to get to Speyer from Frankfurt. Here are some options:\n\n1. By car: Speyer is about 1 hour and 10 minutes drive from Frankfurt. You can rent a car at Frankfurt airport or in the city and drive to Speyer on the A67 and A61 highways.\n\n2. By train: The train is a convenient way to get to Speyer from Frankfurt. You can take a train from Frankfurt's main train station Frankfurt am Main Hauptbahnhof to Speyer Hauptbahnhof. The journey takes around 1 hour and 20 minutes, and there are several direct and indirect trains available throughout the day.\n\n3. By bus: You can also take a bus from Frankfurt to Speyer. There are several bus companies that operate between the two cities, and the journey takes around 1 hour and 30 minutes.\n\n4. By taxi: You can take a taxi from Frankfurt Airport or the city center to Speyer. The journey takes around 1 hour and can be quite expensive.\n\nI hope this information helps you!"
+          }
+        ]
+      }
+    ],
+    "prompt": "Answer using only the dated conversation history below. Account for updates and relative dates. If information is insufficient, say so. Give a concise but complete answer.\nQuestion date: 2023/05/29 (Mon) 10:13\nHistory:\n[{\"session_id\": \"answer_ultrachat_417348\", \"date\": \"2023/05/28 (Sun) 05:24\", \"dialogue\": [{\"role\": \"user\", \"content\": \"Are there any upcoming sporting events in Speyer that visitors can attend or participate in?\"}, {\"role\": \"assistant\", \"content\": \"I do not have access to real-time information about events or functions happening in speyer. however, visitors can check local event calendars, sports club websites or consult with the tourism board of speyer to know about any upcoming sporting events. additionally, major sporting events in germany such as the bundesliga, triathlon events, or marathon races might feature speyer as a destination, and visitors can participate in those.\"}, {\"role\": \"user\", \"content\": \"Can you provide me with the contact details of the local tourism board of Speyer?\"}, {\"role\": \"assistant\", \"content\": \"Certainly! You can contact the tourism board of Speyer using the following details:\\n\\nSpeyer Tourismus Marketing GmbH\\nMaximilianstraße 13\\n67346 Speyer\\nPhone: +49 (0) 62 32 / 14 23 - 0\\nEmail: info@speyer.de\\nWebsite: https://www.speyer.de/\"}, {\"role\": \"user\", \"content\": \"Thanks for providing me with the contact details of the tourism board of Speyer. Can you tell me how I can get to Speyer from Frankfurt?\"}, {\"role\": \"assistant\", \"content\": \"Yes, there are several ways to get to Speyer from Frankfurt. Here are some options:\\n\\n1. By car: Speyer is about 1 hour and 10 minutes drive from Frankfurt. You can rent a car at Frankfurt airport or in the city and drive to Speyer on the A67 and A61 highways.\\n\\n2. By train: The train is a convenient way to get to Speyer from Frankfurt. You can take a train from Frankfurt's main train station Frankfurt am Main Hauptbahnhof to Speyer Hauptbahnhof. The journey takes around 1 hour and 20 minutes, and there are several direct and indirect trains available throughout the day.\\n\\n3. By bus: You can also take a bus from Frankfurt to Speyer. There are several bus companies that operate between the two cities, and the journey takes around 1 hour and 30 minutes.\\n\\n4. By taxi: You can take a taxi from Frankfurt Airport or the city center to Speyer. The journey takes around 1 hour and can be quite expensive.\\n\\nI hope this information helps you!\"}]}]\nQuestion: I'm planning my trip to Speyer again and I wanted to confirm, what's the phone number of the Speyer tourism board that you provided me earlier?",
+    "prompt_tokens": 690
+  },
+  "judge": {
+    "correct": true,
+    "votes": [
+      true,
+      true,
+      true
+    ],
+    "calls": [
+      {
+        "text": "yes",
+        "raw_text": "yes",
+        "raw": {
+          "id": "chatcmpl-1501ca02-be2d-4627-a674-b21590bb649b",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "logprobs": null,
+              "message": {
+                "content": "yes",
+                "refusal": null,
+                "role": "assistant",
+                "annotations": null,
+                "audio": null,
+                "function_call": null,
+                "tool_calls": null
+              }
+            }
+          ],
+          "created": 1795307243,
+          "model": "default_model",
+          "object": "chat.completion",
+          "service_tier": null,
+          "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 202,
+            "total_tokens": 204,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": {
+              "audio_tokens": null,
+              "cached_tokens": 4
+            }
+          }
+        },
+        "seconds": 0.46531617699656636
+      },
+      {
+        "text": "yes",
+        "raw_text": "yes",
+        "raw": {
+          "id": "chatcmpl-be9445aa-01e2-422d-a5e9-e4c5b182664c",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "logprobs": null,
+              "message": {
+                "content": "yes",
+                "refusal": null,
+                "role": "assistant",
+                "annotations": null,
+                "audio": null,
+                "function_call": null,
+                "tool_calls": null
+              }
+            }
+          ],
+          "created": 1795307243,
+          "model": "default_model",
+          "object": "chat.completion",
+          "service_tier": null,
+          "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 202,
+            "total_tokens": 204,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": {
+              "audio_tokens": null,
+              "cached_tokens": 201
+            }
+          }
+        },
+        "seconds": 0.11937152700556908
+      },
+      {
+        "text": "yes",
+        "raw_text": "yes",
+        "raw": {
+          "id": "chatcmpl-ce95a582-a346-4b0f-b001-1ffb82bfb28e",
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "logprobs": null,
+              "message": {
+                "content": "yes",
+                "refusal": null,
+                "role": "assistant",
+                "annotations": null,
+                "audio": null,
+                "function_call": null,
+                "tool_calls": null
+              }
+            }
+          ],
+          "created": 1795307243,
+          "model": "default_model",
+          "object": "chat.completion",
+          "service_tier": null,
+          "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+          "usage": {
+            "completion_tokens": 2,
+            "prompt_tokens": 202,
+            "total_tokens": 204,
+            "completion_tokens_details": null,
+            "prompt_tokens_details": {
+              "audio_tokens": null,
+              "cached_tokens": 201
+            }
+          }
+        },
+        "seconds": 0.11595319099433254
+      }
+    ],
+    "format_valid": [
+      true,
+      true,
+      true
+    ],
+    "prompt": "I will give you a question, a correct answer, and a response from a model. Please answer yes if the response contains the correct answer. Otherwise, answer no. If the response is equivalent to the correct answer or contains all the intermediate steps to get the correct answer, you should also answer yes. If the response only contains a subset of the information required by the answer, answer no. \n\nQuestion: I'm planning my trip to Speyer again and I wanted to confirm, what's the phone number of the Speyer tourism board that you provided me earlier?\n\nCorrect Answer: +49 (0) 62 32 / 14 23 - 0\n\nModel Response: The phone number for the Speyer tourism board is +49 (0) 62 32 / 14 23 - 0.\n\nIs the model response correct? Answer yes or no only."
+  },
+  "correct": true,
+  "prep_seconds": 4.9174996092915535e-05
+}

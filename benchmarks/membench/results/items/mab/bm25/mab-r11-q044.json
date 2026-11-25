@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q044",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "6b9caad0b7be7803baf382f347d046a9e0360b0623d5ca73c490439049a601f9",
+  "reference_sha256": "1c08ba651a9de74573cea979681cd9cfd94c8940ca0deb280f3374b87d2b5991",
+  "method": "bm25",
+  "answer": "Person642 Person539 ordered oysters for dinner.",
+  "response": {
+    "text": "Person642 Person539 ordered oysters for dinner.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 15,
+      "prompt_tokens": 3264,
+      "total_tokens": 3279,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 11.596976978995372,
+    "request_sha256": "4bc9a563c7f67debd735b2c886ce568c7c3745c87ed8af93dfe0914a7cead7b6",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    101,
+    583,
+    83,
+    2,
+    178,
+    185,
+    109,
+    210,
+    33,
+    80,
+    372,
+    173,
+    194,
+    34,
+    166,
+    396,
+    184,
+    32,
+    29,
+    174
+  ],
+  "retrieval_scores": [
+    105.79253041612614,
+    104.17701762414251,
+    101.52650231687186,
+    98.66188098322276,
+    98.48163961504743,
+    98.279470559505,
+    97.94988605937735,
+    96.96543216073782,
+    96.85170864753935,
+    96.55452687363845,
+    95.88214934753833,
+    95.81387452801506,
+    95.65999572647547,
+    95.53456940652057,
+    95.26067901814092,
+    94.73907257682299,
+    94.53728433113939,
+    93.94542249121841,
+    92.59094014584294,
+    92.15890294592056
+  ],
+  "retrieval_seconds": 0.011785598006099463,
+  "provided_context_sha256": "01da7a4482aba0272f8a3a4b29c3fc3ca87f015a85990d901294961dbbaf24d4",
+  "provided_context_tokens": 2933,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "0d04f49071b74749bc91bf009bea51de8c9e95ba2290086e99406d78d306944b",
+    "raw_answer_sha256": "c570d4996fc81e45f3f92ba57d6afbd13e32000ef6f4e9e5e74e833fa49e922a",
+    "answer_redacted": false
+  }
+}

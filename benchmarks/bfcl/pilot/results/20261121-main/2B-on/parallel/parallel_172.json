@@ -1,0 +1,187 @@
+{
+  "id": "parallel_172",
+  "category": "parallel",
+  "result": [
+    {
+      "finance_predict_future_value": "{\"present_value\":5000,\"annual_interest_rate\":0.05,\"time_years\":10,\"compounding_periods_per_year\":1}"
+    },
+    {
+      "finance_predict_future_value": "{\"present_value\":7000,\"annual_interest_rate\":0.04,\"time_years\":15,\"compounding_periods_per_year\":1}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': '\"Imagine you have two different investment opportunities. The first one has a present value of $5000, an annual interest rate of 5%, and you plan to hold it for 10 years. The second one has a present value of $7000, an annual interest rate of 4%, and you plan to hold it for 15 years. Both investments compound interest annually. Can you calculate the future value of both investments using the finance.predict_future_value function?\"'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "finance_predict_future_value",
+                "description": "Calculate the future value of an investment given its present value, interest rate, the number of compounding periods per year, and the time horizon.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "present_value": {
+                      "type": "integer",
+                      "description": "The present value of the investment."
+                    },
+                    "annual_interest_rate": {
+                      "type": "number",
+                      "description": "The annual interest rate of the investment. This is a float type value.",
+                      "format": "float"
+                    },
+                    "compounding_periods_per_year": {
+                      "type": "integer",
+                      "description": "The number of times that interest is compounded per year. Default is 1 (annually)."
+                    },
+                    "time_years": {
+                      "type": "integer",
+                      "description": "The investment horizon in years."
+                    }
+                  },
+                  "required": [
+                    "present_value",
+                    "annual_interest_rate",
+                    "time_years"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 508,
+    "output_token_count": 321,
+    "latency": 1.7633681849983986
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "\"Imagine you have two different investment opportunities. The first one has a present value of $5000, an annual interest rate of 5%, and you plan to hold it for 10 years. The second one has a present value of $7000, an annual interest rate of 4%, and you plan to hold it for 15 years. Both investments compound interest annually. Can you calculate the future value of both investments using the finance.predict_future_value function?\""
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "finance_predict_future_value",
+          "description": "Calculate the future value of an investment given its present value, interest rate, the number of compounding periods per year, and the time horizon.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "present_value": {
+                "type": "integer",
+                "description": "The present value of the investment."
+              },
+              "annual_interest_rate": {
+                "type": "number",
+                "description": "The annual interest rate of the investment. This is a float type value.",
+                "format": "float"
+              },
+              "compounding_periods_per_year": {
+                "type": "integer",
+                "description": "The number of times that interest is compounded per year. Default is 1 (annually)."
+              },
+              "time_years": {
+                "type": "integer",
+                "description": "The investment horizon in years."
+              }
+            },
+            "required": [
+              "present_value",
+              "annual_interest_rate",
+              "time_years"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-AamZBtc66nvbrnrHNCl5buDVlBVHNHpr",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "2ZFkMTHwnme7g63YlvGxnu52gwhzlyKU",
+              "function": {
+                "arguments": "{\"present_value\":5000,\"annual_interest_rate\":0.05,\"time_years\":10,\"compounding_periods_per_year\":1}",
+                "name": "finance_predict_future_value"
+              },
+              "type": "function"
+            },
+            {
+              "id": "4UEnN79oz4EM61KOy1QPOv2VyOppER91",
+              "function": {
+                "arguments": "{\"present_value\":7000,\"annual_interest_rate\":0.04,\"time_years\":15,\"compounding_periods_per_year\":1}",
+                "name": "finance_predict_future_value"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking me to calculate the future value of two different investments using the finance_predict_future_value function. Let me identify the parameters for each investment:\n\nFirst investment:\n- Present value: $5000\n- Annual interest rate: 5% (0.05)\n- Time horizon: 10 years\n- Compounding periods per year: 1 (annually)\n\nSecond investment:\n- Present value: $7000\n- Annual interest rate: 4% (0.04)\n- Time horizon: 15 years\n- Compounding periods per year: 1 (annually)\n\nI need to call the finance_predict_future_value function twice, once for each investment. Let me make the function calls."
+        }
+      }
+    ],
+    "created": 1795286733,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 321,
+      "prompt_tokens": 508,
+      "total_tokens": 829,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 506,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 506,
+      "prompt_n": 2,
+      "prompt_ms": 8.788,
+      "prompt_per_token_ms": 4.394,
+      "prompt_per_second": 227.5830678197542,
+      "predicted_n": 321,
+      "predicted_ms": 1746.614,
+      "predicted_per_token_ms": 5.4581687500000005,
+      "predicted_per_second": 183.21163119040614
+    }
+  },
+  "elapsed_seconds": 1.7634456750020036,
+  "score": {
+    "valid": true
+  }
+}

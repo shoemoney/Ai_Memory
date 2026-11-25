@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f4a6dfe1522222ac9d1a5fe5f37b49e55c932f143e980c4751c7c4fbdff399de",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d0d2317a-8c87-462b-a9e6-4f79a08db9fc",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Lockheed Martin\", \"summary\": \"Lockheed Martin is a major defense contractor and aerospace manufacturer. They are known for their extensive portfolio of products and services, including fighter jets, missiles, and space exploration technologies. Their involvement in various military and civilian projects has made them a significant player in the global defense industry.\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795352866,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 74,
+      "prompt_tokens": 7509,
+      "total_tokens": 7583,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 478
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Lockheed Martin\", \"summary\": \"Lockheed Martin is a major defense contractor and aerospace manufacturer. They are known for their extensive portfolio of products and services, including fighter jets, missiles, and space exploration technologies. Their involvement in various military and civilian projects has made them a significant player in the global defense industry.\"}]}",
+  "seconds": 33.53942612699757,
+  "prompt_tokens_local": 7509
+}

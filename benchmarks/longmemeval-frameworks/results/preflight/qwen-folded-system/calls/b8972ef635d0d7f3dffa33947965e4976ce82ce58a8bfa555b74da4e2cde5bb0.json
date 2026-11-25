@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 39
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "a27daf935745875aee9e0e2939cfda518c64b4a47dedbf74b2be8b254002bb64",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e55d1fb6-1c1a-4809-ade5-ea49e0e06a00",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Asked for recipe ideas for leftover chili\", \"Asked about wine pairings with chili-based dishes\", \"Bought several bottles of wine\", \"Asked for pasta sauce recipe\", \"Asked about the location of the grocery store where the groceries were bought last Sunday\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330350,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 56,
+      "prompt_tokens": 2977,
+      "total_tokens": 3033,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Asked for recipe ideas for leftover chili\", \"Asked about wine pairings with chili-based dishes\", \"Bought several bottles of wine\", \"Asked for pasta sauce recipe\", \"Asked about the location of the grocery store where the groceries were bought last Sunday\"]}",
+  "seconds": 2.3137674879981205,
+  "prompt_tokens_local_gemma_estimate": 2979
+}

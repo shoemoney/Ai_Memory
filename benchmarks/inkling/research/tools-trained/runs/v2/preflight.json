@@ -1,0 +1,22 @@
+{
+  "config": {
+    "data_path": "$HOME/tinker-runs/trained_tools/data",
+    "model_path": "tinker://<run>/sampler_weights/final",
+    "log_path": "benchmarks/inkling/research/tools-trained/runs/v2",
+    "max_tokens": 512,
+    "budget_usd": 10,
+    "amended": true,
+    "dry_run": true
+  },
+  "arms": [
+    "A",
+    "B",
+    "C",
+    "C0"
+  ],
+  "episodes_per_arm": 400,
+  "compute_upper_bound_usd": 5.57056,
+  "reservation_usd": 5.57056,
+  "prefill_usd_per_million": 0.15,
+  "completion_usd_per_million": 0.5
+}

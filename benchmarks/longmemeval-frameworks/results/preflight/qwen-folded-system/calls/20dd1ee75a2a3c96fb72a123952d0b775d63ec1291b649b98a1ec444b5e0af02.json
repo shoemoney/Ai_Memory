@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 60
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "46dab29d21fda74807d84fdd3b013210fe93e6673e39b2f247f18d3778949320",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-304ec188-70b2-4ba3-bcd3-c76487a0fdd8",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Interested in focusing on a specific theme or topic for influencer marketing campaign\",\n    \"Interested in creating an influencer advisory board or council for guidance and feedback\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330466,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 44,
+      "prompt_tokens": 2777,
+      "total_tokens": 2821,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Interested in focusing on a specific theme or topic for influencer marketing campaign\",\n    \"Interested in creating an influencer advisory board or council for guidance and feedback\"\n  ]\n}",
+  "seconds": 2.0665786099998513,
+  "prompt_tokens_local_gemma_estimate": 2809
+}

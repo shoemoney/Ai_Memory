@@ -1,0 +1,19 @@
+{"event": "admitted", "free_percent": 60, "kernel_level": "1"}
+
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]
+Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 2864.80it/s]
+Traceback (most recent call last):
+  File "/Users/account/membench-mteb-large-tmp/mlx_server.py", line 100, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx_server.py", line 46, in main
+    tokenizer.save_pretrained(converted)
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/transformers/tokenization_utils_tokenizers.py", line 628, in save_pretrained
+    return super().save_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 2160, in save_pretrained
+    save_files = self._save_pretrained(
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/transformers/tokenization_utils_tokenizers.py", line 1213, in _save_pretrained
+    self.backend_tokenizer.save(tokenizer_file)
+Exception: Permission denied (os error 13)

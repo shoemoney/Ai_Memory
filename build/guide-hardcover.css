@@ -1,0 +1,11 @@
+/* Hardcover edition only: 8.25 x 11 in trim (the print service's hardcover size).
+   Loaded after guide.css by build.py when EDITION=hardcover; no other edition sees it.
+   Page margins are inherited from guide.css, so the text column is 6.65in. */
+@page { size: 8.25in 11in; }
+
+.ed-hardcover .cover,
+.ed-hardcover .titlepage { width: 8.25in; }
+/* The renderer scales divider pages to 99.5 percent, so the navy panel is drawn that much
+   larger to reach both edges of the trimmed page. */
+.ed-hardcover .part-divider { width: 8.289in; height: 11.057in; }
+.ed-hardcover .cover-art { width: 8.25in; object-fit: cover; }

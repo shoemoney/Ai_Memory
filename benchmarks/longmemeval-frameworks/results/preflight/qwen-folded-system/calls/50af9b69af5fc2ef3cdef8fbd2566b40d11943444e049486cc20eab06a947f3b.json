@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 23
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ee905b89c4f5b08a5c3e99b08b357688d517af05b497e817e8d84535d0fd7fc5",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-275b871b-f10d-4a05-b77b-aa60c170946f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Consider visiting Machu Picchu, Cusco, and the Sacred Valley in Peru, Santiago and Valparaíso in Chile, Buenos Aires and Iguazú Falls in Argentina, and Rio de Janeiro and Salvador in Brazil for solo travel experiences\",\n    \"Look for hostels with social areas and group tours that cater to solo travelers\",\n    \"Join Facebook groups or online forums for solo travel and meetups in South America\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330276,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 99,
+      "prompt_tokens": 2828,
+      "total_tokens": 2927,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Consider visiting Machu Picchu, Cusco, and the Sacred Valley in Peru, Santiago and Valparaíso in Chile, Buenos Aires and Iguazú Falls in Argentina, and Rio de Janeiro and Salvador in Brazil for solo travel experiences\",\n    \"Look for hostels with social areas and group tours that cater to solo travelers\",\n    \"Join Facebook groups or online forums for solo travel and meetups in South America\"\n  ]\n}",
+  "seconds": 2.6470466699975077,
+  "prompt_tokens_local_gemma_estimate": 2826
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q076",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "4783d487fbbac62bd97bcec84508ae78e8f6210de8b942fdfcda026ec845fb9c",
+  "reference_sha256": "6efeadf6bf8c5d192f163cc41e6a62e14f9d4579bdfa9c8e2e9e0f84d3893bf7",
+  "method": "bm25",
+  "answer": "Person347 Person218 opened the window to examine the garden.",
+  "response": {
+    "text": "Person347 Person218 opened the window to examine the garden.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 3185,
+      "total_tokens": 3202,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 14.204991763996077,
+    "request_sha256": "dd848f473675de4dfa517c7aa86a7b420642c9fc9ddc6a4e42c76b368e735d92",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    496,
+    550,
+    419,
+    430,
+    543,
+    541,
+    440,
+    467,
+    581,
+    537,
+    427,
+    528,
+    507,
+    538,
+    552,
+    422,
+    542,
+    572,
+    547,
+    478
+  ],
+  "retrieval_scores": [
+    210.4395846007547,
+    193.46797705537386,
+    188.97198511439177,
+    187.12571385259994,
+    185.56110428701837,
+    184.0816485456724,
+    184.02710241594747,
+    183.229823783,
+    183.00309073699478,
+    179.737640464883,
+    178.59311350945683,
+    178.25114948138406,
+    177.76567520356983,
+    176.84131052787532,
+    176.66227634399857,
+    176.28013324360552,
+    175.30265093701664,
+    174.68917962934526,
+    174.44808986216992,
+    173.69919093335852
+  ],
+  "retrieval_seconds": 0.022599980991799384,
+  "provided_context_sha256": "e41fa9b18f68b8371c3f6b7a2b9909cbf67b00dd09c98e7f7a63b21f44b5562b",
+  "provided_context_tokens": 2824,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "5279a1f7da94be12195c6645ab0ae032524bb3d0083e17970eb39ea55e743a25",
+    "raw_answer_sha256": "de80682caa7f1969b10c688f0e0140ed8d86119e982a06ab666dd9f643d1aacd",
+    "answer_redacted": false
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 48
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e12895f7befc20ac2aaa04fcff27cb5986d1b8d7bde76fadf14676708bd9f99a",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-3edb4772-66ee-4ca6-9332-fe3b60b13408",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Mushroom\", \"summary\": \"Mushrooms bring a rich, earthy flavor that's often described as umami. This savory flavor pairs well with the sweetness of the onions and the creaminess of the cheese.\"}, {\"name\": \"Onion\", \"summary\": \"The sweetness of the onions helps balance out the earthiness of the mushrooms, while the cheese adds a richness and creaminess that ties everything together.\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363669,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 97,
+      "prompt_tokens": 7220,
+      "total_tokens": 7317,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Mushroom\", \"summary\": \"Mushrooms bring a rich, earthy flavor that's often described as umami. This savory flavor pairs well with the sweetness of the onions and the creaminess of the cheese.\"}, {\"name\": \"Onion\", \"summary\": \"The sweetness of the onions helps balance out the earthiness of the mushrooms, while the cheese adds a richness and creaminess that ties everything together.\"}]}",
+  "seconds": 10.098026449995814,
+  "prompt_tokens_local": 7220
+}

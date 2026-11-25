@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 18
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "811734c04fadb65153e2988ebec7e0f0e219fb15238206bbff4567c46fb51205",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-13c0e6ba-18b1-41ac-8deb-49022eb25d54",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Contact the employer's HR department and payroll department to update employee records and paychecks.\",\n        \"Notify the relevant state licensing board about the name change for professional licenses.\",\n        \"Update voter registration information with the new name.\",\n        \"Inform the alumni association about the name change.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355102,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 67,
+      "prompt_tokens": 1802,
+      "total_tokens": 1869,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Contact the employer's HR department and payroll department to update employee records and paychecks.\",\n        \"Notify the relevant state licensing board about the name change for professional licenses.\",\n        \"Update voter registration information with the new name.\",\n        \"Inform the alumni association about the name change.\"\n    ]\n}",
+  "seconds": 11.594155148995924,
+  "prompt_tokens_local": 1802
+}

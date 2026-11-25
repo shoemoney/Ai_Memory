@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q094",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "65be5d881e5e3a4c244a724363835923408e415274cd9a78295f76baa2d14da9",
+  "reference_sha256": "5d5dee4088343c135aa791f7042544296dc3e5c6a43c7dc171672a83987ab75a",
+  "method": "rag",
+  "answer": "Person021 summoned the chef.",
+  "response": {
+    "text": "Person021 summoned the chef.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 9,
+      "prompt_tokens": 3200,
+      "total_tokens": 3209,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 21.77221598099277,
+    "request_sha256": "7c8c4c55b36957ab34f4a6b32c6b4eb8d0c228bad340bd614defc4231a60e5e6",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    303,
+    518,
+    309,
+    576,
+    474,
+    37,
+    305,
+    314,
+    503,
+    55,
+    360,
+    479,
+    306,
+    405,
+    510,
+    36,
+    436,
+    475,
+    54,
+    152
+  ],
+  "retrieval_scores": [
+    0.5536161065101624,
+    0.5192797183990479,
+    0.5135211944580078,
+    0.5102262496948242,
+    0.5050848126411438,
+    0.49985745549201965,
+    0.49826788902282715,
+    0.49825793504714966,
+    0.4961544871330261,
+    0.49579131603240967,
+    0.49447065591812134,
+    0.4942663311958313,
+    0.4861324727535248,
+    0.48524919152259827,
+    0.4831066131591797,
+    0.4782872200012207,
+    0.4755803942680359,
+    0.47529149055480957,
+    0.4706025719642639,
+    0.47057437896728516
+  ],
+  "retrieval_seconds": 0.03844761400250718,
+  "provided_context_sha256": "0c90c129e598fb4458a22d22f0be5269b7c591f7cc4a8c004f9ae13af88dcd39",
+  "provided_context_tokens": 2927,
+  "score": 0,
+  "privacy_export": {
+    "raw_record_sha256": "433ca8b4f0a80a00133d762457b5bdb5bc4365d9db6350442d2463d1458a3ef1",
+    "raw_answer_sha256": "a5198c8ef148ff3150c99a0288d3fa570cb8ceddfa9c6d75abb99e744650d26a",
+    "answer_redacted": false
+  }
+}

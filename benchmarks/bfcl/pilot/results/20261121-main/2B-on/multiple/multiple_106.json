@@ -1,0 +1,348 @@
+{
+  "id": "multiple_106",
+  "category": "multiple",
+  "result": [
+    {
+      "calculate_electric_field_strength": "{\"charge\":0.01,\"distance\":4}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Calculate the electric field strength 4 meters away from a charge of 0.01 Coulombs.'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "mix_paint_color",
+                "description": "Combine two primary paint colors and adjust the resulting color's lightness level.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "color1": {
+                      "type": "string",
+                      "description": "The first primary color to be mixed."
+                    },
+                    "color2": {
+                      "type": "string",
+                      "description": "The second primary color to be mixed."
+                    },
+                    "lightness": {
+                      "type": "integer",
+                      "description": "The desired lightness level of the resulting color in percentage. The default level is set to 50%."
+                    }
+                  },
+                  "required": [
+                    "color1",
+                    "color2"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "cooking_conversion_convert",
+                "description": "Convert cooking measurements from one unit to another.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "quantity": {
+                      "type": "integer",
+                      "description": "The quantity to be converted."
+                    },
+                    "from_unit": {
+                      "type": "string",
+                      "description": "The unit to convert from."
+                    },
+                    "to_unit": {
+                      "type": "string",
+                      "description": "The unit to convert to."
+                    },
+                    "item": {
+                      "type": "string",
+                      "description": "The item to be converted."
+                    }
+                  },
+                  "required": [
+                    "quantity",
+                    "from_unit",
+                    "to_unit",
+                    "item"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "group_dynamics_pattern",
+                "description": "Examine the social dynamics and interactions within a group based on the personality traits and group size.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "description": "The total group size."
+                    },
+                    "extroverts": {
+                      "type": "integer",
+                      "description": "The number of extroverted members in the group."
+                    },
+                    "introverts": {
+                      "type": "integer",
+                      "description": "The number of introverted members in the group."
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "extroverts",
+                    "introverts"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "calculate_electric_field_strength",
+                "description": "Calculate the electric field strength at a certain distance from a point charge.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "charge": {
+                      "type": "number",
+                      "description": "The charge in Coulombs. This is a float type value.",
+                      "format": "float"
+                    },
+                    "distance": {
+                      "type": "integer",
+                      "description": "The distance from the charge in meters."
+                    },
+                    "medium": {
+                      "type": "string",
+                      "description": "The medium in which the charge and the point of calculation is located. Default is 'vacuum'."
+                    }
+                  },
+                  "required": [
+                    "charge",
+                    "distance"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 811,
+    "output_token_count": 198,
+    "latency": 1.033508897999127
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Calculate the electric field strength 4 meters away from a charge of 0.01 Coulombs."
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "mix_paint_color",
+          "description": "Combine two primary paint colors and adjust the resulting color's lightness level.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "color1": {
+                "type": "string",
+                "description": "The first primary color to be mixed."
+              },
+              "color2": {
+                "type": "string",
+                "description": "The second primary color to be mixed."
+              },
+              "lightness": {
+                "type": "integer",
+                "description": "The desired lightness level of the resulting color in percentage. The default level is set to 50%."
+              }
+            },
+            "required": [
+              "color1",
+              "color2"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "cooking_conversion_convert",
+          "description": "Convert cooking measurements from one unit to another.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "quantity": {
+                "type": "integer",
+                "description": "The quantity to be converted."
+              },
+              "from_unit": {
+                "type": "string",
+                "description": "The unit to convert from."
+              },
+              "to_unit": {
+                "type": "string",
+                "description": "The unit to convert to."
+              },
+              "item": {
+                "type": "string",
+                "description": "The item to be converted."
+              }
+            },
+            "required": [
+              "quantity",
+              "from_unit",
+              "to_unit",
+              "item"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "group_dynamics_pattern",
+          "description": "Examine the social dynamics and interactions within a group based on the personality traits and group size.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "description": "The total group size."
+              },
+              "extroverts": {
+                "type": "integer",
+                "description": "The number of extroverted members in the group."
+              },
+              "introverts": {
+                "type": "integer",
+                "description": "The number of introverted members in the group."
+              }
+            },
+            "required": [
+              "total",
+              "extroverts",
+              "introverts"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "calculate_electric_field_strength",
+          "description": "Calculate the electric field strength at a certain distance from a point charge.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "charge": {
+                "type": "number",
+                "description": "The charge in Coulombs. This is a float type value.",
+                "format": "float"
+              },
+              "distance": {
+                "type": "integer",
+                "description": "The distance from the charge in meters."
+              },
+              "medium": {
+                "type": "string",
+                "description": "The medium in which the charge and the point of calculation is located. Default is 'vacuum'."
+              }
+            },
+            "required": [
+              "charge",
+              "distance"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-aVRZAHnXaJigZc8Fr301xaLeGl4ENYSe",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "ntE21tsFGvHLfsUJzfEuvGSmKTHQeTVd",
+              "function": {
+                "arguments": "{\"charge\":0.01,\"distance\":4}",
+                "name": "calculate_electric_field_strength"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user wants me to calculate the electric field strength at a distance of 4 meters from a charge of 0.01 Coulombs. I need to use the calculate_electric_field_strength function.\n\nLooking at the function parameters:\n- charge: 0.01 Coulombs (this is a float type value)\n- distance: 4 meters\n- medium: The default is 'vacuum', but I should probably specify this since it's not required\n\nLet me check the required parameters:\n- charge: required (float)\n- distance: required (integer)\n- medium: not required (default is 'vacuum')\n\nSo I have all the information I need. Let me make the function call."
+        }
+      }
+    ],
+    "created": 1795286719,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 198,
+      "prompt_tokens": 811,
+      "total_tokens": 1009,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 809,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 809,
+      "prompt_n": 2,
+      "prompt_ms": 8.713,
+      "prompt_per_token_ms": 4.3565,
+      "prompt_per_second": 229.54206358315164,
+      "predicted_n": 198,
+      "predicted_ms": 1010.93,
+      "predicted_per_token_ms": 5.131624365482233,
+      "predicted_per_second": 194.8700701334415
+    }
+  },
+  "elapsed_seconds": 1.033687765004288,
+  "score": {
+    "valid": true
+  }
+}

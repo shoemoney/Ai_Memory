@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "4dc301943bf226f07ceadd6a45dddee7a7910f55c23e8584e4c3a066e30e6581",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-113fe59c-6f09-4baa-b8ee-4168b1d036b5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"antique brooch\",\n            \"summary\": \"Choose a display case made from acid-free materials like wood, glass, or acrylic to prevent damage from acidic substances. Opt for a sturdy frame and a secure closure to prevent the brooch from shifting or falling. Use a soft, padded interior to cushion the brooch and prevent scratching. Select a case with a clear glass or acrylic front for clear visibility and an adjustable display stand or pedestal to showcase the brooch at the perfect angle. Use a removable background or a reversible background with different colors to create a contrasting display. Consider a case with a locking mechanism to prevent unauthorized access or tampering and UV-filtering glass or acrylic to protect the brooch from harmful UV light. If you live in an area with extreme temperatures or humidity, consider a case with climate control features, such as a thermally insulated case or a case with silica gel packets. Choose a finish that complements the brooch's metal, gemstones, or other materials and a finish that complements the era and style of the brooch, whether it's Art Deco, Victorian, or modern. Consider a minimalist or ornate case that lets the brooch take center stage or adds to the overall display.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795335735,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 267,
+      "prompt_tokens": 7768,
+      "total_tokens": 8035,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"antique brooch\",\n            \"summary\": \"Choose a display case made from acid-free materials like wood, glass, or acrylic to prevent damage from acidic substances. Opt for a sturdy frame and a secure closure to prevent the brooch from shifting or falling. Use a soft, padded interior to cushion the brooch and prevent scratching. Select a case with a clear glass or acrylic front for clear visibility and an adjustable display stand or pedestal to showcase the brooch at the perfect angle. Use a removable background or a reversible background with different colors to create a contrasting display. Consider a case with a locking mechanism to prevent unauthorized access or tampering and UV-filtering glass or acrylic to protect the brooch from harmful UV light. If you live in an area with extreme temperatures or humidity, consider a case with climate control features, such as a thermally insulated case or a case with silica gel packets. Choose a finish that complements the brooch's metal, gemstones, or other materials and a finish that complements the era and style of the brooch, whether it's Art Deco, Victorian, or modern. Consider a minimalist or ornate case that lets the brooch take center stage or adds to the overall display.\"\n        }\n    ]\n}",
+  "seconds": 36.641324238997186,
+  "prompt_tokens_local": 7768
+}

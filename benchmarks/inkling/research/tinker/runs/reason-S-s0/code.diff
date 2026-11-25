@@ -1,0 +1,808 @@
+### repo: $COOKBOOK_DIR @ b691116a21b4e3bb16e99aa75ef952445b207778
+modules: tinker_cookbook
+-- repo-wide (vs HEAD, staged+unstaged) --
+diff --git a/tinker_cookbook/recipes/agent_memory/data.py b/tinker_cookbook/recipes/agent_memory/data.py
+index 899ec55..0807cb3 100644
+--- a/tinker_cookbook/recipes/agent_memory/data.py
++++ b/tinker_cookbook/recipes/agent_memory/data.py
+@@ -35,7 +35,7 @@ class Call(BaseModel):
+ 
+ class RawMessage(BaseModel):
+     role: Literal["system", "user", "assistant", "tool"]
+-    content: str
++    content: str | list[dict[str, str]]
+     tool_calls: list[Call] = []
+     tool_call_id: str | None = None
+     name: str | None = None
+@@ -45,7 +45,20 @@ class Sample(BaseModel):
+     model_config = ConfigDict(extra="forbid")
+     id: str
+     group: int
+-    skill: Literal["recall", "update", "abstain", "temporal", "tool_write", "tool_read"]
++    skill: Literal[
++        "recall",
++        "update",
++        "abstain",
++        "temporal",
++        "tool_write",
++        "tool_read",
++        "revision",
++        "historical",
++        "join",
++        "date_order",
++        "date_interval",
++        "missing",
++    ]
+     entity_facts: list[list[str]] = []
+     messages: list[RawMessage]
+     tools: list[dict[str, object]] = []
+diff --git a/tinker_cookbook/recipes/agent_memory/hard_eval.py b/tinker_cookbook/recipes/agent_memory/hard_eval.py
+index c87997a..4943a7a 100644
+--- a/tinker_cookbook/recipes/agent_memory/hard_eval.py
++++ b/tinker_cookbook/recipes/agent_memory/hard_eval.py
+@@ -223,6 +223,219 @@ LEVELS = {
+ }
+ 
+ 
++@dataclass(frozen=True)
++class Flavor:
++    """Everything that makes up an item's wording: names, templates, prompts, dates.
++
++    `EVAL` is the hard evaluation set. `TRAIN` is a second, fully disjoint world (names,
++    codes, sentence templates, questions, system prompt, base year, varying note spacing)
++    used only to build the reasoning-preserving training curriculum.
++    """
++
++    name: str
++    system: str
++    first: tuple[str, ...]
++    last: tuple[str, ...]
++    minerals: tuple[str, ...]
++    badges: tuple[str, ...]
++    templates: dict[str, tuple[str, ...]]
++    noise: tuple[str, ...]
++    weather: tuple[str, ...]
++    questions: dict[str, str]
++    entry_label: str
++    archive_head: str
++    question_head: str
++    base_year: int
++    vary_step: bool
++
++    def vocab(self) -> dict[str, tuple[str, ...]]:
++        return {
++            "first": self.first,
++            "last": self.last,
++            "office": self.minerals,
++            "badge": self.badges,
++        }
++
++
++EVAL = Flavor(
++    name="hard",
++    system=SYSTEM,
++    first=tuple(FIRST),
++    last=tuple(LAST),
++    minerals=tuple(MINERALS),
++    badges=tuple(BADGES),
++    templates=TEMPLATES,
++    noise=NOISE,
++    weather=WEATHER,
++    questions={
++        "revision": "Which office does {s} currently have? Give the office code only.",
++        "historical": "Which office did {s} have on {d}? Give the office code only.",
++        "badge": "Which badge does {s} hold? Give the badge code only.",
++        "join2": "Which office does {s}'s current mentor currently have? Give the office code only.",
++        "join3": "Which office does the current mentor of {s}'s current mentor have? Give the office code only.",
++        "order": "Whose current review date is earlier, {a}'s or {b}'s? Give the full name only.",
++        "interval": "How many days are there from {s}'s current filing deadline to {s}'s current review date? Answer as N days.",
++    },
++    entry_label="Desk note",
++    archive_head="Archive:",
++    question_head="Question:",
++    base_year=2051,
++    vary_step=False,
++)
++
++TRAIN = Flavor(
++    name="train2",
++    system=(
++        "Below is a set of dated log entries about staff. Entries can come in any sequence; "
++        "whenever the same person and item appear on two dates, the later date wins. Answer "
++        "from the records alone, giving just the value asked for: a room or pass code, a full "
++        "name, or a number of days written as 'N days'. When the records never establish the "
++        f"fact (as of the date given, if any), answer exactly: {NOT_STATED}"
++    ),
++    first=(
++        "Alaric",
++        "Bettina",
++        "Corwin",
++        "Drusilla",
++        "Emeric",
++        "Faustine",
++        "Gareth",
++        "Henrik",
++        "Imogen",
++        "Joscelin",
++        "Kasimir",
++        "Lucinda",
++        "Merrick",
++        "Neville",
++        "Oswin",
++        "Philippa",
++        "Quentin",
++        "Rosalind",
++        "Sylvain",
++        "Theodora",
++        "Ulric",
++        "Viveka",
++        "Warrick",
++        "Ximena",
++        "Yseult",
++        "Zephyr",
++        "Brunhilde",
++        "Benedikt",
++        "Clemence",
++        "Desmond",
++        "Ethelred",
++        "Florian",
++        "Gwendal",
++        "Hilary",
++    ),
++    last=(
++        "Abernathy",
++        "Beaumont",
++        "Cranmer",
++        "Dalrymple",
++        "Eastwood",
++        "Fothergill",
++        "Grimshaw",
++        "Hawthorne",
++        "Islington",
++        "Jarrow",
++        "Knightley",
++        "Lovelace",
++        "Mandeville",
++        "Northcott",
++        "Ormerod",
++        "Peverell",
++        "Quigley",
++        "Radcliffe",
++        "Stanhope",
++        "Trevelyan",
++        "Uxbridge",
++        "Valmont",
++        "Whitcombe",
++        "Yardley",
++        "Zeller",
++        "Aldridge",
++        "Bellamy",
++        "Corbett",
++        "Draycott",
++        "Egerton",
++        "Farthing",
++        "Goodwin",
++        "Hartley",
++        "Iverson",
++    ),
++    minerals=(
++        "Alder",
++        "Cypress",
++        "Dogwood",
++        "Elder",
++        "Gorse",
++        "Hornbeam",
++        "Ilex",
++        "Laurel",
++        "Mulberry",
++        "Nettle",
++        "Olive",
++        "Poplar",
++        "Quince",
++        "Rowanberry",
++        "Sorrel",
++        "Teasel",
++    ),
++    badges=("Agate", "Beryl", "Citrine", "Diopside", "Epidote", "Fuchsite", "Garnet", "Howlite"),
++    templates={
++        "office": (
++            "{e} has moved into room {v}.",
++            "Room {v} is now {e}'s.",
++            "{e}'s desk sits in room {v}.",
++        ),
++        "mentor": (
++            "{e} is guided by {v}.",
++            "{v} has taken {e} on as a mentee.",
++            "{e}'s supervisor is {v}.",
++        ),
++        "review": (
++            "{e} is due for appraisal on {v}.",
++            "An appraisal is booked for {e} on {v}.",
++            "{e}'s appraisal date is {v}.",
++        ),
++        "filing": (
++            "{e} owes paperwork by {v}.",
++            "The paperwork for {e} closes on {v}.",
++            "{e}'s submission cutoff is {v}.",
++        ),
++        "badge": (
++            "{e} carries pass {v}.",
++            "Pass {v} was handed to {e}.",
++            "{e}'s pass number is {v}.",
++        ),
++    },
++    noise=(
++        "Truck {a} unloaded {b} pallets in {w} weather.",
++        "Meeting room {a} was booked {b} times, and it stayed {w}.",
++        "{b} visitors signed the book at entrance {a}; the sky was {w}.",
++        "The printer on level {a} jammed {b} times under {w} skies.",
++        "{b} umbrellas were left at stand {a}; the day was {w}.",
++    ),
++    weather=("bright", "cloudy", "gusty", "rainy", "calm"),
++    questions={
++        "revision": "Which room is {s} in right now? Reply with the room code only.",
++        "historical": "In which room was {s} on {d}? Reply with the room code only.",
++        "badge": "Which pass does {s} carry? Reply with the pass code only.",
++        "join2": "In which room is the present supervisor of {s} right now? Reply with the room code only.",
++        "join3": "In which room is the present supervisor of {s}'s present supervisor? Reply with the room code only.",
++        "order": "Who has the sooner current appraisal date, {a} or {b}? Reply with the full name only.",
++        "interval": "How many days lie between {s}'s current paperwork cutoff and {s}'s current appraisal date? Reply as N days.",
++    },
++    entry_label="Log entry",
++    archive_head="Records:",
++    question_head="Query:",
++    base_year=2063,
++    vary_step=True,
++)
++FLAVORS = {EVAL.name: EVAL, TRAIN.name: TRAIN}
++
++
+ @dataclass(frozen=True)
+ class Fact:
+     at: str
+@@ -262,25 +475,34 @@ def oracle(kind: str, facts: list[Fact], args: dict[str, object]) -> str:
+     raise ValueError(kind)
+ 
+ 
+-def render_fact(rng: random.Random, fact: Fact) -> str:
+-    return rng.choice(TEMPLATES[fact.key]).format(e=fact.entity, v=fact.value)
++def render_fact(rng: random.Random, fact: Fact, fl: Flavor = EVAL) -> str:
++    return rng.choice(fl.templates[fact.key]).format(e=fact.entity, v=fact.value)
+ 
+ 
+-def make_item(index: int, seed: int, level: int) -> dict[str, object]:
++def make_item(
++    index: int, seed: int, level: int, fl: Flavor = EVAL, kind: str | None = None
++) -> dict[str, object]:
+     cfg = LEVELS[level]
+-    rng = random.Random(f"hard-memory:{seed}:{level}:{index}")
+-    kind = KINDS[index % len(KINDS)]
++    if fl is EVAL:
++        rng = random.Random(f"hard-memory:{seed}:{level}:{index}")
++    else:
++        rng = random.Random(f"{fl.name}-memory:{seed}:{level}:{index}")
++    kind = kind or KINDS[index % len(KINDS)]
+     sessions: int = cfg["sessions"]
+-    base = date(2051, 1, 1) + timedelta(days=(index * 37) % 400)
++    step = 3
++    if fl.vary_step:
++        step = rng.randrange(2, 7)
++        sessions -= rng.randrange(0, 12)
++    base = date(fl.base_year, 1, 1) + timedelta(days=(index * 37) % 400)
+ 
+     def day(position: int) -> date:
+-        return base + timedelta(days=position * 3)
++        return base + timedelta(days=position * step)
+ 
+     names: set[str] = set()
+ 
+     def person() -> str:
+         while True:
+-            name = f"{rng.choice(FIRST)} {rng.choice(LAST)}"
++            name = f"{rng.choice(fl.first)} {rng.choice(fl.last)}"
+             if name not in names:
+                 names.add(name)
+                 return name
+@@ -289,19 +511,19 @@ def make_item(index: int, seed: int, level: int) -> dict[str, object]:
+         first, last = of.split()
+         while True:
+             name = (
+-                f"{first} {rng.choice(LAST)}"
++                f"{first} {rng.choice(fl.last)}"
+                 if rng.random() < 0.5
+-                else f"{rng.choice(FIRST)} {last}"
++                else f"{rng.choice(fl.first)} {last}"
+             )
+             if name not in names:
+                 names.add(name)
+                 return name
+ 
+     def office() -> str:
+-        return f"{rng.choice(MINERALS)}-{rng.randrange(10, 99)}"
++        return f"{rng.choice(fl.minerals)}-{rng.randrange(10, 99)}"
+ 
+     def badge() -> str:
+-        return f"{rng.choice(BADGES)}-{rng.randrange(100, 999)}"
++        return f"{rng.choice(fl.badges)}-{rng.randrange(100, 999)}"
+ 
+     def some_date() -> date:
+         return day(sessions) + timedelta(days=rng.randrange(20, 200))
+@@ -345,12 +567,12 @@ def make_item(index: int, seed: int, level: int) -> dict[str, object]:
+         args["key"] = "office"
+         if kind == "historical":
+             pick = rng.randrange(len(slots) - 1)
+-            gap = (slots[pick + 1] - slots[pick]) * 3
++            gap = (slots[pick + 1] - slots[pick]) * step
+             cutoff = day(slots[pick]) + timedelta(days=rng.randrange(1, max(gap, 2)))
+             args["cutoff"] = cutoff.isoformat()
+-            question = f"Which office did {subject} have on {cutoff.isoformat()}? Give the office code only."
++            question = fl.questions["historical"].format(s=subject, d=cutoff.isoformat())
+         else:
+-            question = f"Which office does {subject} currently have? Give the office code only."
++            question = fl.questions["revision"].format(s=subject)
+     elif kind == "join":
+         # subject -> mentors[0] -> (mentors[1] ->) office; every person in the chain is revised.
+         args["hops"] = cfg["hops"]
+@@ -360,10 +582,8 @@ def make_item(index: int, seed: int, level: int) -> dict[str, object]:
+             chain(who, "mentor", distinct_people(rng, pool, revisions(), nxt))
+         for who in [*links[1:], *others, partner]:
+             chain(who, "office", distinct(office, revisions()))
+-        if cfg["hops"] == 2:
+-            question = f"Which office does {subject}'s current mentor currently have? Give the office code only."
+-        else:
+-            question = f"Which office does the current mentor of {subject}'s current mentor have? Give the office code only."
++        join_key = "join2" if cfg["hops"] == 2 else "join3"
++        question = fl.questions[join_key].format(s=subject)
+     elif kind == "date_order":
+         chain(subject, "review", distinct(lambda: some_date().isoformat(), revisions()))
+         subject_final = latest(facts, subject, "review")
+@@ -374,7 +594,7 @@ def make_item(index: int, seed: int, level: int) -> dict[str, object]:
+             partner_values[-1] = some_date().isoformat()
+         chain(partner, "review", partner_values)
+         args.update(a=subject, b=partner)
+-        question = f"Whose current review date is earlier, {subject}'s or {partner}'s? Give the full name only."
++        question = fl.questions["order"].format(a=subject, b=partner)
+     elif kind == "date_interval":
+         chain(subject, "review", distinct(lambda: some_date().isoformat(), revisions()))
+         final_review = date.fromisoformat(latest(facts, subject, "review") or "")
+@@ -383,17 +603,17 @@ def make_item(index: int, seed: int, level: int) -> dict[str, object]:
+             for _ in range(revisions())
+         ]
+         chain(subject, "filing", filings)
+-        question = f"How many days are there from {subject}'s current filing deadline to {subject}'s current review date? Answer as N days."
++        question = fl.questions["interval"].format(s=subject)
+     else:  # missing
+         if rng.random() < 0.5:
+             args["key"] = "badge"
+-            question = f"Which badge does {subject} hold? Give the badge code only."
++            question = fl.questions["badge"].format(s=subject)
+         else:
+             slots = chain(subject, "office", distinct(office, revisions()))
+             args["key"] = "office"
+             early = day(slots[0]) - timedelta(days=rng.randrange(2, 5))
+             args["cutoff"] = early.isoformat()
+-            question = f"Which office did {subject} have on {early.isoformat()}? Give the office code only."
++            question = fl.questions["historical"].format(s=subject, d=early.isoformat())
+ 
+     # Distractor people carry the same item types, each revised several times.
+     competing = [*others, *close]
+@@ -420,17 +640,17 @@ def make_item(index: int, seed: int, level: int) -> dict[str, object]:
+     entries = []
+     for i in range(sessions):
+         stamp = day(i).isoformat()
+-        sentences = [render_fact(rng, f) for f in by_day.get(stamp, [])]
++        sentences = [render_fact(rng, f, fl) for f in by_day.get(stamp, [])]
+         rng.shuffle(sentences)
+-        noise = rng.choice(NOISE).format(
+-            a=rng.randrange(2, 40), b=rng.randrange(3, 60), w=rng.choice(WEATHER)
++        noise = rng.choice(fl.noise).format(
++            a=rng.randrange(2, 40), b=rng.randrange(3, 60), w=rng.choice(fl.weather)
+         )
+-        entries.append(f"[{stamp}] Desk note: {' '.join(sentences + [noise])}")
++        entries.append(f"[{stamp}] {fl.entry_label}: {' '.join(sentences + [noise])}")
+     if cfg["shuffle"]:
+         rng.shuffle(entries)
+     answer = oracle(kind, facts, args)
+-    return {
+-        "id": f"hard-v{level}-{index:04d}",
++    item: dict[str, object] = {
++        "id": f"hard-v{level}-{index:04d}" if fl is EVAL else f"{fl.name}-v{level}-{index:05d}",
+         "kind": kind,
+         "level": level,
+         "args": args,
+@@ -438,13 +658,19 @@ def make_item(index: int, seed: int, level: int) -> dict[str, object]:
+         "answer": answer,
+         "question": question,
+         "messages": [
+-            {"role": "system", "content": SYSTEM},
++            {"role": "system", "content": fl.system},
+             {
+                 "role": "user",
+-                "content": "Archive:\n" + "\n".join(entries) + "\n\nQuestion: " + question,
++                "content": f"{fl.archive_head}\n"
++                + "\n".join(entries)
++                + f"\n\n{fl.question_head} "
++                + question,
+             },
+         ],
+     }
++    if fl is not EVAL:
++        item["flavor"] = fl.name
++    return item
+ 
+ 
+ def distinct_people(rng: random.Random, pool: list[str], count: int, final: str) -> list[str]:
+@@ -459,32 +685,52 @@ def distinct_people(rng: random.Random, pool: list[str], count: int, final: str)
+ # ---------------------------------------------------------------- independent re-solver
+ 
+ 
+-def _statement_patterns() -> list[tuple[str, re.Pattern[str]]]:
+-    value = {
+-        "office": r"(?P<v>[A-Z][a-z]+-\d+)",
+-        "badge": r"(?P<v>[A-Z][a-z]+-\d+)",
+-        "mentor": r"(?P<v>[A-Z][a-z]+ [A-Z][a-z]+)",
+-        "review": r"(?P<v>\d{4}-\d\d-\d\d)",
+-        "filing": r"(?P<v>\d{4}-\d\d-\d\d)",
+-    }
+-    out = []
+-    for key, templates in TEMPLATES.items():
+-        for template in templates:
+-            pattern = re.escape(template).replace(r"\{e\}", r"(?P<e>[A-Z][a-z]+ [A-Z][a-z]+)")
+-            pattern = pattern.replace(r"\{v\}", value[key])
+-            out.append((key, re.compile(pattern)))
+-    return out
++_NAME = r"[A-Z][a-z]+ [A-Z][a-z]+"
++_VALUE = {
++    "office": r"[A-Z][a-z]+-\d+",
++    "badge": r"[A-Z][a-z]+-\d+",
++    "mentor": _NAME,
++    "review": r"\d{4}-\d\d-\d\d",
++    "filing": r"\d{4}-\d\d-\d\d",
++}
++_SLOTS = {"e": _NAME, "s": _NAME, "a": _NAME, "b": _NAME, "d": r"\d{4}-\d\d-\d\d"}
++
++
++def _template_regex(template: str, slots: dict[str, str]) -> re.Pattern[str]:
++    pattern = re.escape(template)
++    for slot, body in slots.items():
++        marker = re.escape("{" + slot + "}")
++        pattern = pattern.replace(marker, f"(?P<{slot}>{body})", 1).replace(marker, f"(?P={slot})")
++    return re.compile(pattern)
+ 
+ 
+-_PATTERNS = _statement_patterns()
+-_ENTRY = re.compile(r"^\[(\d{4}-\d\d-\d\d)\] Desk note: (.*)$", re.M)
++_CACHE: dict[
++    str, tuple[list[tuple[str, re.Pattern[str]]], re.Pattern[str], dict[str, re.Pattern[str]]]
++] = {}
+ 
+ 
+-def parse_archive(text: str) -> list[Fact]:
++def _compiled(fl: Flavor):
++    if fl.name not in _CACHE:
++        statements = [
++            (key, _template_regex(template, {"e": _NAME, "v": _VALUE[key]}))
++            for key, templates in fl.templates.items()
++            for template in templates
++        ]
++        entry = re.compile(rf"^\[(\d{{4}}-\d\d-\d\d)\] {re.escape(fl.entry_label)}: (.*)$", re.M)
++        questions = {
++            key: _template_regex(template, {k: v for k, v in _SLOTS.items() if k != "e"})
++            for key, template in fl.questions.items()
++        }
++        _CACHE[fl.name] = (statements, entry, questions)
++    return _CACHE[fl.name]
++
++
++def parse_archive(text: str, fl: Flavor = EVAL) -> list[Fact]:
++    statements, entry, _ = _compiled(fl)
+     facts = []
+-    for stamp, body in _ENTRY.findall(text):
++    for stamp, body in entry.findall(text):
+         for sentence in re.split(r"(?<=\.) ", body):
+-            for key, pattern in _PATTERNS:
++            for key, pattern in statements:
+                 match = pattern.fullmatch(sentence)
+                 if match:
+                     facts.append(Fact(stamp, match["e"], key, match["v"]))
+@@ -492,12 +738,12 @@ def parse_archive(text: str) -> list[Fact]:
+     return facts
+ 
+ 
+-def solve_from_prompt(messages: list[dict[str, str]]) -> str:
++def solve_from_prompt(messages: list[dict[str, str]], fl: Flavor = EVAL) -> str:
+     """Second oracle: replay the rendered archive text and read the question text only."""
+     user = messages[-1]["content"]
+-    archive, _, question = user.partition("\n\nQuestion: ")
++    archive, _, question = user.partition(f"\n\n{fl.question_head} ")
+     state: dict[tuple[str, str], list[tuple[str, str]]] = defaultdict(list)
+-    for fact in parse_archive(archive):
++    for fact in parse_archive(archive, fl):
+         state[(fact.entity, fact.key)].append((fact.at, fact.value))
+     for history in state.values():
+         history.sort()
+@@ -506,40 +752,34 @@ def solve_from_prompt(messages: list[dict[str, str]]) -> str:
+         seen = [value for at, value in state.get((entity, key), []) if at <= cutoff]
+         return seen[-1] if seen else None
+ 
+-    name = r"([A-Z][a-z]+ [A-Z][a-z]+)"
+-    if match := re.fullmatch(rf"Which office did {name} have on (\d{{4}}-\d\d-\d\d)\?.*", question):
+-        return current(match[1], "office", match[2]) or NOT_STATED
+-    if match := re.fullmatch(rf"Which office does {name} currently have\?.*", question):
+-        return current(match[1], "office") or NOT_STATED
+-    if match := re.fullmatch(rf"Which badge does {name} hold\?.*", question):
+-        return current(match[1], "badge") or NOT_STATED
+-    if match := re.fullmatch(
+-        rf"Which office does {name}'s current mentor currently have\?.*", question
+-    ):
+-        mentor = current(match[1], "mentor")
++    patterns = _compiled(fl)[2]
++    matches = {key: pattern.fullmatch(question) for key, pattern in patterns.items()}
++    found = {key: m for key, m in matches.items() if m}
++    if len(found) != 1:
++        raise ValueError(f"question matched {sorted(found)}: {question}")
++    key, match = next(iter(found.items()))
++    if key == "historical":
++        return current(match["s"], "office", match["d"]) or NOT_STATED
++    if key == "revision":
++        return current(match["s"], "office") or NOT_STATED
++    if key == "badge":
++        return current(match["s"], "badge") or NOT_STATED
++    if key == "join2":
++        mentor = current(match["s"], "mentor")
+         return (mentor and current(mentor, "office")) or NOT_STATED
+-    if match := re.fullmatch(
+-        rf"Which office does the current mentor of {name}'s current mentor have\?.*", question
+-    ):
+-        first = current(match[1], "mentor")
++    if key == "join3":
++        first = current(match["s"], "mentor")
+         second = first and current(first, "mentor")
+         return (second and current(second, "office")) or NOT_STATED
+-    if match := re.fullmatch(
+-        rf"Whose current review date is earlier, {name}'s or {name}'s\?.*", question
+-    ):
+-        da, db = current(match[1], "review"), current(match[2], "review")
++    if key == "order":
++        da, db = current(match["a"], "review"), current(match["b"], "review")
+         if da is None or db is None:
+             return NOT_STATED
+-        return match[1] if da < db else match[2]
+-    if match := re.fullmatch(
+-        rf"How many days are there from {name}'s current filing deadline to {name}'s current review date\?.*",
+-        question,
+-    ):
+-        filing, review = current(match[1], "filing"), current(match[2], "review")
+-        if filing is None or review is None:
+-            return NOT_STATED
+-        return f"{(date.fromisoformat(review) - date.fromisoformat(filing)).days} days"
+-    raise ValueError(f"unparsed question: {question}")
++        return match["a"] if da < db else match["b"]
++    filing, review = current(match["s"], "filing"), current(match["s"], "review")
++    if filing is None or review is None:
++        return NOT_STATED
++    return f"{(date.fromisoformat(review) - date.fromisoformat(filing)).days} days"
+ 
+ 
+ # ---------------------------------------------------------------- generation and cost
+@@ -561,10 +801,12 @@ def load_rows(path: Path) -> list[dict[str, object]]:
+     return [json.loads(line) for line in path.read_text().splitlines() if line]
+ 
+ 
+-def preflight(path: Path, max_tokens: int = 512) -> dict[str, object]:
++def preflight(path: Path, max_tokens: int = 512, effort: float = 0.0) -> dict[str, object]:
+     rows = load_rows(path)
+     renderer = make_renderer(MODEL_NAME)
+-    lengths = [renderer.build_generation_prompt(row["messages"], effort=0.0).length for row in rows]
++    lengths = [
++        renderer.build_generation_prompt(row["messages"], effort=effort).length for row in rows
++    ]
+     if max(lengths) > MAX_PROMPT_TOKENS:
+         raise ValueError(f"Hard-set prompt of {max(lengths)} tokens exceeds {MAX_PROMPT_TOKENS}")
+     return {
+@@ -576,7 +818,7 @@ def preflight(path: Path, max_tokens: int = 512) -> dict[str, object]:
+         "max_tokens": max_tokens,
+         "max_sampling_estimate_usd": (sum(lengths) * 0.15 + len(rows) * max_tokens * 0.50) / 1e6,
+         "license": "CC0-1.0",
+-        "effort": 0.0,
++        "effort": effort,
+         "temperature": 1.0,
+     }
+ 
+@@ -589,10 +831,12 @@ def score(row: dict[str, Any], actual: Any, clean: bool) -> bool:
+     )
+ 
+ 
+-async def evaluate(path: Path, output: Path, checkpoint: str, max_tokens: int) -> None:
++async def evaluate(
++    path: Path, output: Path, checkpoint: str, max_tokens: int, effort: float = 0.0
++) -> None:
+     import tinker
+ 
+-    report = preflight(path, max_tokens)
++    report = preflight(path, max_tokens, effort)
+     output.mkdir(parents=True, exist_ok=False)
+     (output / "preflight.json").write_text(json.dumps(report, indent=2) + "\n")
+     rows = load_rows(path)
+@@ -608,7 +852,7 @@ async def evaluate(path: Path, output: Path, checkpoint: str, max_tokens: int) -
+         )
+ 
+         async def one(row: dict[str, Any]) -> dict[str, Any]:
+-            prompt = renderer.build_generation_prompt(row["messages"], effort=0.0)
++            prompt = renderer.build_generation_prompt(row["messages"], effort=effort)
+             response = await client.sample_async(
+                 prompt=prompt,
+                 num_samples=1,
+@@ -640,6 +884,9 @@ async def evaluate(path: Path, output: Path, checkpoint: str, max_tokens: int) -
+             "per_kind": {k: sum(r["correct"] for r in g) / len(g) for k, g in by_kind.items()},
+             "prompt_tokens": sum(r["prompt_tokens"] for r in results),
+             "sample_tokens": sum(r["sample_tokens"] for r in results),
++            "mean_sample_tokens": sum(r["sample_tokens"] for r in results) / len(results),
++            "effort": effort,
++            "max_tokens": max_tokens,
+         }
+         metrics["estimated_sampling_usd"] = (
+             metrics["prompt_tokens"] * 0.15 + metrics["sample_tokens"] * 0.50
+@@ -663,15 +910,26 @@ async def evaluate(path: Path, output: Path, checkpoint: str, max_tokens: int) -
+         await service.close("success" if ok else "errored")
+ 
+ 
+-async def evaluate_many(path: Path, plan: Path, root: Path, max_tokens: int) -> None:
+-    """Evaluate `[{"name": ..., "checkpoint": ...}]` sequentially; finished outputs are skipped."""
++async def evaluate_many(
++    path: Path, plan: Path, root: Path, max_tokens: int, effort: float = 0.0
++) -> None:
++    """Evaluate `[{"name": ..., "checkpoint": ...}]` sequentially; finished outputs are skipped.
++
++    A plan entry may override `max_tokens` and `effort`.
++    """
+     for item in json.loads(plan.read_text()):
+         output = root / item["name"]
+         if (output / "metrics.json").exists():
+             continue
+         if output.exists():
+             raise FileExistsError(f"{output} exists without metrics.json; inspect before retrying")
+-        await evaluate(path, output, item["checkpoint"], max_tokens)
++        await evaluate(
++            path,
++            output,
++            item["checkpoint"],
++            item.get("max_tokens", max_tokens),
++            item.get("effort", effort),
++        )
+ 
+ 
+ def main() -> None:
+@@ -685,19 +943,20 @@ def main() -> None:
+     parser.add_argument("--output", type=Path, help="evaluate: output dir; batch: results root")
+     parser.add_argument("--plan", type=Path, help="batch: JSON list of name/checkpoint pairs")
+     parser.add_argument("--max-tokens", type=int, default=512)
++    parser.add_argument("--effort", type=float, default=0.0, help="thinking effort in [0, 1)")
+     args = parser.parse_args()
+     if args.action == "generate":
+         generate(args.data, args.count, args.seed, args.level)
+     if args.action in ("generate", "preflight"):
+-        print(json.dumps(preflight(args.data, args.max_tokens), indent=2))
++        print(json.dumps(preflight(args.data, args.max_tokens, args.effort), indent=2))
+     elif args.output is None:
+         parser.error(f"{args.action} requires --output")
+     elif args.action == "evaluate":
+-        asyncio.run(evaluate(args.data, args.output, args.checkpoint, args.max_tokens))
++        asyncio.run(evaluate(args.data, args.output, args.checkpoint, args.max_tokens, args.effort))
+     else:
+         if args.plan is None:
+             parser.error("batch requires --plan")
+-        asyncio.run(evaluate_many(args.data, args.plan, args.output, args.max_tokens))
++        asyncio.run(evaluate_many(args.data, args.plan, args.output, args.max_tokens, args.effort))
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/tinker_cookbook/recipes/agent_memory/hard_eval_test.py b/tinker_cookbook/recipes/agent_memory/hard_eval_test.py
+index 9ff2716..0d680be 100644
+--- a/tinker_cookbook/recipes/agent_memory/hard_eval_test.py
++++ b/tinker_cookbook/recipes/agent_memory/hard_eval_test.py
+@@ -155,3 +155,104 @@ def test_score_requires_clean_exact_answer_without_tool_calls():
+         item, {"role": "assistant", "content": "Tuff-40", "tool_calls": [object()]}, True
+     )
+     assert json.dumps(hard.SYSTEM)  # prompt text is serialisable
++
++
++def train_rows(level: int, count: int = 60) -> list[dict]:
++    return [hard.make_item(i, 11, level, hard.TRAIN) for i in range(count)]
++
++
++@pytest.mark.parametrize("level", sorted(hard.LEVELS))
++def test_training_flavor_has_its_own_independent_oracle_agreement(level):
++    items = train_rows(level, 120)
++    assert Counter(item["kind"] for item in items) == dict.fromkeys(hard.KINDS, 20)
++    for item in items:
++        assert item["flavor"] == "train2"
++        assert hard.solve_from_prompt(item["messages"], hard.TRAIN) == item["answer"], item["id"]
++        facts = [hard.Fact(**fact) for fact in item["facts"]]
++        assert hard.oracle(item["kind"], facts, item["args"]) == item["answer"]
++        parsed = hard.parse_archive(item["messages"][1]["content"], hard.TRAIN)
++        assert sorted(parsed, key=str) == sorted(facts, key=str)
++
++
++def test_training_world_shares_nothing_with_the_hard_evaluation():
++    ev, tr = hard.EVAL, hard.TRAIN
++    for group in ev.vocab():
++        left = {w.casefold() for w in ev.vocab()[group]}
++        right = {w.casefold() for w in tr.vocab()[group]}
++        assert not left & right, group
++    assert not {w.casefold() for g in ev.vocab().values() for w in g} & {
++        w.casefold() for g in tr.vocab().values() for w in g
++    }
++    for key in ev.templates:
++        assert not set(ev.templates[key]) & set(tr.templates[key])
++    assert not set(ev.noise) & set(tr.noise)
++    assert not set(ev.questions.values()) & set(tr.questions.values())
++    assert ev.system != tr.system
++    assert (ev.entry_label, ev.archive_head, ev.question_head) != (
++        tr.entry_label,
++        tr.archive_head,
++        tr.question_head,
++    )
++    eval_items = [hard.make_item(i, SEED, level) for level in (1, 2, 3) for i in range(60)]
++    train_items = [hard.make_item(i, 11, level, tr) for level in (1, 2, 3) for i in range(60)]
++    people = {
++        key: {f["entity"] for item in items for f in item["facts"]}
++        for key, items in (("eval", eval_items), ("train", train_items))
++    }
++    assert not people["eval"] & people["train"]
++    values = {
++        key: {f["value"] for item in items for f in item["facts"]}
++        for key, items in (("eval", eval_items), ("train", train_items))
++    }
++    assert not values["eval"] & values["train"]
++    prompts = {json.dumps(item["messages"]) for item in eval_items}
++    assert not prompts & {json.dumps(item["messages"]) for item in train_items}
++    assert {m["content"] for item in train_items for m in item["messages"][:1]} == {tr.system}
++
++
++def test_training_seeds_and_ids_do_not_collide_with_the_evaluation_set():
++    eval_ids = {hard.make_item(i, SEED, 1)["id"] for i in range(360)}
++    train_ids = {hard.make_item(i, 11, 1, hard.TRAIN)["id"] for i in range(360)}
++    assert not eval_ids & train_ids
++    assert hard.make_item(5, 11, 2, hard.TRAIN) == hard.make_item(5, 11, 2, hard.TRAIN)
++
++
++def test_training_flavor_varies_what_the_old_curriculum_held_fixed():
++    items = train_rows(2, 120)
++    gaps = Counter(item["answer"] for item in items if item["kind"] == "date_interval")
++    assert len(gaps) >= 12 and max(gaps.values()) <= 3  # no constant gap to memorise
++    spacings = {
++        (date_of(item["facts"][-1]["at"]) - date_of(item["facts"][0]["at"])).days for item in items
++    }
++    assert len(spacings) > 20
++    assert all(item["messages"][1]["content"].count("] Log entry:") >= 85 for item in items)
++
++
++def date_of(text: str):
++    from datetime import date
++
++    return date.fromisoformat(text)
++
++
++def test_training_vocabulary_is_disjoint_from_the_original_curriculum():
++    words = {w.casefold() for group in hard.TRAIN.vocab().values() for w in group}
++    reader_text = " ".join(
++        message.content for sample in reader_checks() for message in sample.messages
++    ).casefold()
++    assert not words & set(re.findall(r"[a-z]+", reader_text))
++    if not (TRAIN_DIR / "train.jsonl").exists():
++        pytest.skip("training corpus not available for the full-text comparison")
++    corpus: set[str] = set()
++    for split in ("train", "valid", "test"):
++        corpus |= set(re.findall(r"[a-z]+", (TRAIN_DIR / f"{split}.jsonl").read_text().casefold()))
++    assert not words & corpus, sorted(words & corpus)
++
++
++def test_training_prompts_fit_with_room_for_reasoning():
++    renderer = make_renderer(MODEL_NAME)
++    for level in sorted(hard.LEVELS):
++        lengths = [
++            renderer.build_generation_prompt(item["messages"], effort=0.0).length
++            for item in train_rows(level, 60)
++        ]
++        assert max(lengths) <= 7200, (level, max(lengths))

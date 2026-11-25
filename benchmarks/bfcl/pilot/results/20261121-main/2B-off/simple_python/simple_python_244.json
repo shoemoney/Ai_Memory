@@ -1,0 +1,239 @@
+{
+  "id": "simple_python_244",
+  "category": "simple_python",
+  "result": [
+    {
+      "publication_year_find": "{\"author\":\"Isaac Newton\",\"work_title\":\"Philosophiæ Naturalis Principia Mathematica\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'What year was the law of universal gravitation published by Isaac Newton?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "publication_year_find",
+                "description": "Fetches the year a particular scientific work was published.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "author": {
+                      "type": "string",
+                      "description": "Name of the author of the work."
+                    },
+                    "work_title": {
+                      "type": "string",
+                      "description": "Title of the scientific work."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "Place of the publication, if known. Default to 'all'."
+                    }
+                  },
+                  "required": [
+                    "author",
+                    "work_title"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 354,
+    "output_token_count": 52,
+    "latency": 0.44732672499958426
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What year was the law of universal gravitation published by Isaac Newton?"
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "publication_year_find",
+          "description": "Fetches the year a particular scientific work was published.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "author": {
+                "type": "string",
+                "description": "Name of the author of the work."
+              },
+              "work_title": {
+                "type": "string",
+                "description": "Title of the scientific work."
+              },
+              "location": {
+                "type": "string",
+                "description": "Place of the publication, if known. Default to 'all'."
+              }
+            },
+            "required": [
+              "author",
+              "work_title"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-oN2LoH12Kgyvf3GzNvZOfbfamSp2MAaD",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "d5enKJLgvFo7H9H5vSSXZBwoon7pM4vO",
+              "function": {
+                "arguments": "{\"author\":\"Isaac Newton\",\"work_title\":\"Philosophiæ Naturalis Principia Mathematica\"}",
+                "name": "publication_year_find"
+              },
+              "type": "function"
+            }
+          ]
+        }
+      }
+    ],
+    "created": 1795286654,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 52,
+      "prompt_tokens": 354,
+      "total_tokens": 406,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 354,
+      "prompt_ms": 174.857,
+      "prompt_per_token_ms": 0.4939463276836158,
+      "prompt_per_second": 2024.5114579341976,
+      "predicted_n": 52,
+      "predicted_ms": 265.615,
+      "predicted_per_token_ms": 5.208137254901961,
+      "predicted_per_second": 192.00722850742613
+    }
+  },
+  "elapsed_seconds": 0.44743171900336165,
+  "score": {
+    "id": "simple_python_244",
+    "model_name": "local-subset-FC",
+    "test_category": "simple_python",
+    "valid": false,
+    "error": [
+      "Invalid value for parameter 'work_title': 'Philosophiæ Naturalis Principia Mathematica'. Expected one of ['Law of Universal Gravitation', 'Universal Law of Gravitation', 'The law of universal gravitation']. Case insensitive."
+    ],
+    "error_type": "value_error:string",
+    "prompt": {
+      "id": "simple_python_244",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What year was the law of universal gravitation published by Isaac Newton?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "publication_year.find",
+          "description": "Fetches the year a particular scientific work was published.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "author": {
+                "type": "string",
+                "description": "Name of the author of the work."
+              },
+              "work_title": {
+                "type": "string",
+                "description": "Title of the scientific work."
+              },
+              "location": {
+                "type": "string",
+                "description": "Place of the publication, if known. Default to 'all'."
+              }
+            },
+            "required": [
+              "author",
+              "work_title"
+            ]
+          }
+        }
+      ]
+    },
+    "model_result_raw": [
+      {
+        "publication_year_find": "{\"author\":\"Isaac Newton\",\"work_title\":\"Philosophiæ Naturalis Principia Mathematica\"}"
+      }
+    ],
+    "model_result_decoded": [
+      {
+        "publication_year_find": {
+          "author": "Isaac Newton",
+          "work_title": "Philosophiæ Naturalis Principia Mathematica"
+        }
+      }
+    ],
+    "possible_answer": [
+      {
+        "publication_year.find": {
+          "author": [
+            "Isaac Newton"
+          ],
+          "work_title": [
+            "Law of Universal Gravitation",
+            "Universal Law of Gravitation",
+            "The law of universal gravitation"
+          ],
+          "location": [
+            "",
+            "all"
+          ]
+        }
+      }
+    ]
+  }
+}

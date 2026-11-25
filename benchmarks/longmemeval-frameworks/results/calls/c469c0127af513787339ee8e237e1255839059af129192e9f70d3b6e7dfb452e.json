@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 6
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f444915157df5456bb1af083ca850b50bf7d700c9b3ac6a7e282baa90b7d9194",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4c906d21-60fe-445f-a14a-5707cf6e687f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Pregnancy at twenty-seven weeks brings an array of physical and emotional changes.\", \"A growing belly is the most noticeable physical change during this stage.\", \"Increased vaginal discharge, swollen hands and feet, leg cramps, varicose veins, stretch marks are other physical changes.\", \"The twenty-seventh week of pregnancy may bring emotional ups and downs, mood swings, anxiety, and irritability.\", \"Prenatal exercises like yoga or swimming can help with backaches and improve overall well-being.\", \"Eating smaller meals throughout the day, avoiding spicy or fatty foods, and propping up pillows for support may alleviate heartburn.\", \"Staying hydrated and engaging in regular physical activity can also help combat constipation.\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354594,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 150,
+      "prompt_tokens": 1133,
+      "total_tokens": 1283,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Pregnancy at twenty-seven weeks brings an array of physical and emotional changes.\", \"A growing belly is the most noticeable physical change during this stage.\", \"Increased vaginal discharge, swollen hands and feet, leg cramps, varicose veins, stretch marks are other physical changes.\", \"The twenty-seventh week of pregnancy may bring emotional ups and downs, mood swings, anxiety, and irritability.\", \"Prenatal exercises like yoga or swimming can help with backaches and improve overall well-being.\", \"Eating smaller meals throughout the day, avoiding spicy or fatty foods, and propping up pillows for support may alleviate heartburn.\", \"Staying hydrated and engaging in regular physical activity can also help combat constipation.\"]}",
+  "seconds": 21.65291785100999,
+  "prompt_tokens_local": 1133
+}

@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "4a82239d51ec1c5f260940868d1679d067e629ababac19400a6ae11f0007ac39",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-36c8c6e5-1a91-4552-8c21-db9f641f66a7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 1,\n      \"name\": \"antique brooch\",\n      \"duplicate_candidate_id\": 6\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331422,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 42,
+      "prompt_tokens": 5617,
+      "total_tokens": 5659,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4382
+      }
+    }
+  },
+  "text": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 1,\n      \"name\": \"antique brooch\",\n      \"duplicate_candidate_id\": 6\n    }\n  ]\n}",
+  "seconds": 1.3610715140093816,
+  "prompt_tokens_local_gemma_estimate": 5669
+}

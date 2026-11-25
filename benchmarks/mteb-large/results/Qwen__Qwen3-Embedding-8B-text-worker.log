@@ -1,0 +1,16 @@
+{"event": "admitted", "free_percent": 42, "kernel_level": "1"}
+
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Fetching 14 files:   7%|▋         | 1/14 [00:00<00:04,  3.15it/s]
+Fetching 14 files:  29%|██▊       | 4/14 [00:00<00:00, 10.84it/s]
+Fetching 14 files:  43%|████▎     | 6/14 [00:00<00:00, 12.87it/s]
+Fetching 14 files:  64%|██████▍   | 9/14 [00:00<00:00, 14.65it/s]
+Fetching 14 files:  71%|███████▏  | 10/14 [00:20<00:00, 14.65it/s]
+Fetching 14 files:  79%|███████▊  | 11/14 [01:39<00:47, 15.68s/it]
+Fetching 14 files:  86%|████████▌ | 12/14 [01:54<00:31, 15.55s/it]
+Fetching 14 files:  93%|█████████▎| 13/14 [01:57<00:12, 12.81s/it]
+Fetching 14 files: 100%|██████████| 14/14 [01:59<00:00,  8.54s/it]
+{"event": "quantized", "stats": {"method": "MLX affine, CPU stream, no calibration", "bits": 4, "group_size": 64, "modules": 253, "original_matrix_bytes": 15133974528, "quantized_matrix_parameter_bytes": 4256430336, "skip_vision": true}}
+{"event": "immediate_preload_check", "free_percent": 41, "kernel_level": "1"}
+{"event": "ready", "model": "Qwen/Qwen3-Embedding-8B", "revision": "4e423935c619ae4df87b646a3ce949610c66241c", "free_percent": 41, "execution": {"engine": "MLX", "compute_dtype": "bfloat16", "bits": 4, "group_size": 64, "quantization": {"method": "MLX affine, streaming CPU conversion, no calibration", "vision": "bfloat16; not quantized"}, "mlx_embeddings_version": "0.1.0", "mlx_version": "0.32.4", "quantizer_sha256": "c6eccbf503e0452d04ee4b3505a7334853d36e1e4958953556f2f6f40d1920f1", "backend_sha256": "b87a32ba1f6798b79d89bb134a918794191228719c3119236a2655e171b92061", "instructions_sha256": "73a24aac2ac7d2fa4839b5898019acbebd6af1b0c843cc809271c1cfe94cd05f"}}

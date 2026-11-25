@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 50
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5ae18a1ee20fd7042be6d4cf1756c0bfe82e40b32ce22a10119f5494c623dfb6",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-224ef1e5-559e-40e7-9fa7-176b817b13f6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"5\",\n            \"text\": \"Interested in trying Green Chef service for healthy meals\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Currently using classic pizza toppings of mushrooms, onions, and extra cheese\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356843,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 1871,
+      "total_tokens": 1951,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"5\",\n            \"text\": \"Interested in trying Green Chef service for healthy meals\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Currently using classic pizza toppings of mushrooms, onions, and extra cheese\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 16.158893186991918,
+  "prompt_tokens_local": 1871
+}

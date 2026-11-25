@@ -1,0 +1,25 @@
+{
+  "purpose": "partial reproduction on three English retrieval tasks; not a full MTEB/MMTEB aggregate reproduction",
+  "selected_tasks": [
+    "SciFact",
+    "NFCorpus",
+    "ArguAna"
+  ],
+  "selection_rule": "three small English retrieval tasks spanning scientific claims, medical search, and counterargument retrieval, fixed before model scoring; all test queries and full corpora",
+  "seed": 20261121,
+  "hardware": {
+    "gpu": "8 GB NVIDIA GeForce RTX 3070 Ti, shared",
+    "cpu": "32-thread x86 CPU",
+    "physical_memory_gib": 28,
+    "host_available_memory_gib_at_start": 12,
+    "gpu_free_mib_before_loading": 5031
+  },
+  "not_run": {
+    "Qwen/Qwen3-Embedding-4B": "About 8 GB of unquantized bfloat16 weights exceeds free GPU memory; a CPU/offload run over all three full corpora was not undertaken within the three-hour shared-host budget. No quantized replacement was substituted.",
+    "Qwen/Qwen3-Embedding-8B": "About 16 GB of bfloat16 weights exceeds available GPU memory and initial available host memory.",
+    "microsoft/harrier-oss-v1-27b": "About 54 GB of bfloat16 weights exceeds physical host and GPU memory.",
+    "Qwen/Qwen3-VL-Embedding-8B": "About 16 GB of bfloat16 weights exceeds available GPU memory and initial available host memory."
+  },
+  "no_judge": "Relevance labels and deterministic retrieval metrics; no generated answers or LLM judge.",
+  "no_quantization": true
+}

@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 65
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "fdd6144ea35e6f1606e6b716d67463240da5a723378e8416518a8b284899794f",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-4c4ac7fb-6776-4868-9239-99339d474b4f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Tokyo's urban landscape reflects the city's commitment to sustainability and creating livable spaces for residents\",\n        \"Tokyo has a compact city design, efficient public transportation, green spaces, and energy-efficient buildings\",\n        \"Tokyo's approach to sustainability shows that it is possible for a city to grow and develop while prioritizing the environment and the well-being of its residents\",\n        \"Many cities worldwide are taking steps towards sustainable development practices\",\n        \"Individuals can reduce energy consumption, reduce single-use plastic, practice environmentally friendly lifestyle choices, support sustainable practices, and educate themselves and others\",\n        \"Advocating for sustainable policies in the community involves educating the community, joining local advocacy groups, participating in local government meetings, writing to officials, and sharing ideas\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332990,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 165,
+      "prompt_tokens": 2450,
+      "total_tokens": 2615,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Tokyo's urban landscape reflects the city's commitment to sustainability and creating livable spaces for residents\",\n        \"Tokyo has a compact city design, efficient public transportation, green spaces, and energy-efficient buildings\",\n        \"Tokyo's approach to sustainability shows that it is possible for a city to grow and develop while prioritizing the environment and the well-being of its residents\",\n        \"Many cities worldwide are taking steps towards sustainable development practices\",\n        \"Individuals can reduce energy consumption, reduce single-use plastic, practice environmentally friendly lifestyle choices, support sustainable practices, and educate themselves and others\",\n        \"Advocating for sustainable policies in the community involves educating the community, joining local advocacy groups, participating in local government meetings, writing to officials, and sharing ideas\"\n    ]\n}",
+  "seconds": 5.793013294998673,
+  "prompt_tokens_local": 2450,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

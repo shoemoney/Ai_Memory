@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 71
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f3211f5cd1c59990b455961993f970f604f53605d4554ce614141f0c80625ab8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-02a034eb-3915-4832-8fa9-f1329fe282fd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"There are several theories about the evolutionary basis of consciousness\", \"One theory suggests that consciousness evolved as a way for organisms to better adapt to their environment and improve their chances of survival\", \"Another theory suggests that consciousness evolved as a way for organisms to communicate and cooperate with one another\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357669,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 61,
+      "prompt_tokens": 986,
+      "total_tokens": 1047,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"There are several theories about the evolutionary basis of consciousness\", \"One theory suggests that consciousness evolved as a way for organisms to better adapt to their environment and improve their chances of survival\", \"Another theory suggests that consciousness evolved as a way for organisms to communicate and cooperate with one another\"]}",
+  "seconds": 9.321885855999426,
+  "prompt_tokens_local": 986
+}

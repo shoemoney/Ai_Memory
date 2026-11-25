@@ -1,0 +1,255 @@
+{
+  "id": "parallel_89",
+  "category": "parallel",
+  "result": "I cannot provide the specific route details for you because I do not know your current location in San Francisco or your office address in Palo Alto.\n\nTo get the fastest route, I need you to provide the following:\n1.  **Your current location in San Francisco** (e.g., \"I am at 123 Market St, San Francisco\").\n2.  **Your office address in Palo Alto** (e.g., \"My office is at 450 Mission St, Palo Alto\").\n3.  **The Golden Gate Bridge location** (e.g., \"The Golden Gate Bridge in San Francisco\").\n\nOnce you provide these details, I can calculate the fastest route for each leg of your journey.",
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Can you provide me with the fastest route from my home in San Francisco to my office in Palo Alto and then a scenic route from Palo Alto to the Golden Gate Bridge in San Francisco, and finally the fastest route back to my home from the Golden Gate Bridge?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "get_directions",
+                "description": "Retrieve directions from one location to another.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "start_location": {
+                      "type": "string",
+                      "description": "The starting point of the journey."
+                    },
+                    "end_location": {
+                      "type": "string",
+                      "description": "The destination point of the journey."
+                    },
+                    "route_type": {
+                      "type": "string",
+                      "description": "Type of route to use (e.g., fastest, scenic). Default is fastest.",
+                      "enum": [
+                        "fastest",
+                        "scenic"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "start_location",
+                    "end_location"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 406,
+    "output_token_count": 149,
+    "latency": 0.9586154150019865
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you provide me with the fastest route from my home in San Francisco to my office in Palo Alto and then a scenic route from Palo Alto to the Golden Gate Bridge in San Francisco, and finally the fastest route back to my home from the Golden Gate Bridge?"
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_directions",
+          "description": "Retrieve directions from one location to another.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_location": {
+                "type": "string",
+                "description": "The starting point of the journey."
+              },
+              "end_location": {
+                "type": "string",
+                "description": "The destination point of the journey."
+              },
+              "route_type": {
+                "type": "string",
+                "description": "Type of route to use (e.g., fastest, scenic). Default is fastest.",
+                "enum": [
+                  "fastest",
+                  "scenic"
+                ]
+              }
+            },
+            "required": [
+              "start_location",
+              "end_location"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-vTvekv6dG0CfJMuzaLIDSR4TbLHus4IH",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "I cannot provide the specific route details for you because I do not know your current location in San Francisco or your office address in Palo Alto.\n\nTo get the fastest route, I need you to provide the following:\n1.  **Your current location in San Francisco** (e.g., \"I am at 123 Market St, San Francisco\").\n2.  **Your office address in Palo Alto** (e.g., \"My office is at 450 Mission St, Palo Alto\").\n3.  **The Golden Gate Bridge location** (e.g., \"The Golden Gate Bridge in San Francisco\").\n\nOnce you provide these details, I can calculate the fastest route for each leg of your journey.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795286666,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 149,
+      "prompt_tokens": 406,
+      "total_tokens": 555,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 406,
+      "prompt_ms": 183.248,
+      "prompt_per_token_ms": 0.45134975369458125,
+      "prompt_per_second": 2215.5767047935037,
+      "predicted_n": 149,
+      "predicted_ms": 764.769,
+      "predicted_per_token_ms": 5.167358108108108,
+      "predicted_per_second": 193.52248848998846
+    }
+  },
+  "elapsed_seconds": 0.958702453004662,
+  "score": {
+    "id": "parallel_89",
+    "model_name": "local-subset-FC",
+    "test_category": "parallel",
+    "valid": false,
+    "error": [
+      "Invalid syntax. Failed to decode AST. 'str' object has no attribute 'keys'"
+    ],
+    "error_type": "ast_decoder:decoder_failed",
+    "prompt": {
+      "id": "parallel_89",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Can you provide me with the fastest route from my home in San Francisco to my office in Palo Alto and then a scenic route from Palo Alto to the Golden Gate Bridge in San Francisco, and finally the fastest route back to my home from the Golden Gate Bridge?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_directions",
+          "description": "Retrieve directions from one location to another.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "start_location": {
+                "type": "string",
+                "description": "The starting point of the journey."
+              },
+              "end_location": {
+                "type": "string",
+                "description": "The destination point of the journey."
+              },
+              "route_type": {
+                "type": "string",
+                "description": "Type of route to use (e.g., fastest, scenic). Default is fastest.",
+                "enum": [
+                  "fastest",
+                  "scenic"
+                ]
+              }
+            },
+            "required": [
+              "start_location",
+              "end_location"
+            ]
+          }
+        }
+      ]
+    },
+    "model_result_raw": "I cannot provide the specific route details for you because I do not know your current location in San Francisco or your office address in Palo Alto.\n\nTo get the fastest route, I need you to provide the following:\n1.  **Your current location in San Francisco** (e.g., \"I am at 123 Market St, San Francisco\").\n2.  **Your office address in Palo Alto** (e.g., \"My office is at 450 Mission St, Palo Alto\").\n3.  **The Golden Gate Bridge location** (e.g., \"The Golden Gate Bridge in San Francisco\").\n\nOnce you provide these details, I can calculate the fastest route for each leg of your journey.",
+    "possible_answer": [
+      {
+        "get_directions": {
+          "start_location": [
+            "San Francisco",
+            "SF"
+          ],
+          "end_location": [
+            "Palo Alto"
+          ],
+          "route_type": [
+            "fastest"
+          ]
+        }
+      },
+      {
+        "get_directions": {
+          "start_location": [
+            "Palo Alto"
+          ],
+          "end_location": [
+            "Golden Gate Bridge in San Francisco",
+            "Golden Gate Bridge, San Francisco",
+            "Golden Gate Bridge"
+          ],
+          "route_type": [
+            "scenic"
+          ]
+        }
+      },
+      {
+        "get_directions": {
+          "start_location": [
+            "Golden Gate Bridge in San Francisco",
+            "Golden Gate Bridge, San Francisco",
+            "Golden Gate Bridge"
+          ],
+          "end_location": [
+            "San Francisco",
+            "SF"
+          ],
+          "route_type": [
+            "fastest"
+          ]
+        }
+      }
+    ]
+  }
+}

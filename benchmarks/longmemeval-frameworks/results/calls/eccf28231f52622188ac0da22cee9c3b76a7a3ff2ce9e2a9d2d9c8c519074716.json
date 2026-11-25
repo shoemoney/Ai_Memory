@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "6e99dce7fb79a60bec5c0f9d80840abe83ec9645d4acaa0677120eb66f71fe47",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-156b052a-5c44-437d-ba6e-db66390417e3",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Yoga Tree Shimokitazawa\", \"target_entity_name\": \"Yoga for Foreigners\", \"relation_type\": \"IS_TAKEN_IN\", \"fact\": \"The Yoga for Foreigners class at Yoga Tree Shimokitazawa is a beginner to intermediate Hatha Yoga class taught in English.\", \"valid_at\": \"2023-05-23T13:19:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795369561,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 111,
+      "prompt_tokens": 7033,
+      "total_tokens": 7144,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 154
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Yoga Tree Shimokitazawa\", \"target_entity_name\": \"Yoga for Foreigners\", \"relation_type\": \"IS_TAKEN_IN\", \"fact\": \"The Yoga for Foreigners class at Yoga Tree Shimokitazawa is a beginner to intermediate Hatha Yoga class taught in English.\", \"valid_at\": \"2023-05-23T13:19:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 34.28202998000779,
+  "prompt_tokens_local": 7033
+}

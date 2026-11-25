@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 24
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "8105763787a8f349fbbd44275cba51f81ae4cb42e07c6296cb4e077d2be92e30",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f80a7da8-4d77-4f5a-ac49-c55c3f73c071",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Lockheed Martin\", \"summary\": \"\"}, {\"name\": \"cracked windshield\", \"summary\": \"\"}]}}\n{\"$defs\": {\"SummarizedEntity\": {\"properties\": {\"name\": {\"description\": \"Name of the entity being summarized\", \"title\": \"Name\", \"type\": \"string\"}, \"summary\": {\"description\": \"Updated summary for the entity\", \"title\": \"Summary\", \"type\": \"string\"}}, \"required\": [\"name\", \"summary\"], \"title\": \"SummarizedEntity\", \"type\": \"object\"}, \"properties\": {\"summaries\": {\"description\": \"List of entity summaries. Only include entities that need summary updates.\", \"items\": {\"$ref\": \"#/$defs/SummarizedEntity\"}, \"title\": \"Summaries\", \"type\": \"array\"}, \"required\": [\"summaries\"], \"title\": \"SummarizedEntities\", \"type\": \"object\"}}, \"type\": \"object\"}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795343421,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 203,
+      "prompt_tokens": 8723,
+      "total_tokens": 8926,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Lockheed Martin\", \"summary\": \"\"}, {\"name\": \"cracked windshield\", \"summary\": \"\"}]}}\n{\"$defs\": {\"SummarizedEntity\": {\"properties\": {\"name\": {\"description\": \"Name of the entity being summarized\", \"title\": \"Name\", \"type\": \"string\"}, \"summary\": {\"description\": \"Updated summary for the entity\", \"title\": \"Summary\", \"type\": \"string\"}}, \"required\": [\"name\", \"summary\"], \"title\": \"SummarizedEntity\", \"type\": \"object\"}, \"properties\": {\"summaries\": {\"description\": \"List of entity summaries. Only include entities that need summary updates.\", \"items\": {\"$ref\": \"#/$defs/SummarizedEntity\"}, \"title\": \"Summaries\", \"type\": \"array\"}, \"required\": [\"summaries\"], \"title\": \"SummarizedEntities\", \"type\": \"object\"}}, \"type\": \"object\"}",
+  "seconds": 155.13221262799925,
+  "prompt_tokens_local": 8723
+}

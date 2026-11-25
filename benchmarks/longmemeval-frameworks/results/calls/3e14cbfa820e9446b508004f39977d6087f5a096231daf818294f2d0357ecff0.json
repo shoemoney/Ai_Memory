@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 64
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "8e7239cfeeb2a2d1b2a26831eea8aaadd2aee43d951839780aabe0feaf682891",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9f6ff123-f789-4ed8-82f2-148e4d00fbb3",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Booked a flight to Miami for a friend's wedding\",\n        \"Frequent flyer status on United Airlines\",\n        \"Received an upgrade to first class on a United Airlines flight from Boston to Chicago\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357343,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 52,
+      "prompt_tokens": 2034,
+      "total_tokens": 2086,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Booked a flight to Miami for a friend's wedding\",\n        \"Frequent flyer status on United Airlines\",\n        \"Received an upgrade to first class on a United Airlines flight from Boston to Chicago\"\n    ]\n}",
+  "seconds": 11.255216603996814,
+  "prompt_tokens_local": 2034
+}

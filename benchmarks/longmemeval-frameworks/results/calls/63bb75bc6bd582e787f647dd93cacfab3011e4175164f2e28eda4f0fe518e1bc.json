@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 64
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9051ff1778ac06c49d47afd60b56b5f5779819399923db8d63a72d5776aac0db",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-7a8baa1d-8ca4-4ec1-820a-2b58c5da2302",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Lockheed Martin\", \"target_entity_name\": \"Denver\", \"relation_type\": \"WORKS_IN\", \"fact\": \"Lockheed Martin works in Denver\", \"valid_at\": \"2023-05-29T23:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795372294,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 82,
+      "prompt_tokens": 6618,
+      "total_tokens": 6700,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Lockheed Martin\", \"target_entity_name\": \"Denver\", \"relation_type\": \"WORKS_IN\", \"fact\": \"Lockheed Martin works in Denver\", \"valid_at\": \"2023-05-29T23:36:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 17.92058180598542,
+  "prompt_tokens_local": 6618
+}

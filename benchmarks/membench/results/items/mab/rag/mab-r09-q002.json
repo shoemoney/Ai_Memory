@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q002",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "092c52b7005aee0fb7e17f9e0ae4828781b47a3e043c47d74d774258382cdfcb",
+  "reference_sha256": "7056d4f9432db4a4fc6a9afec43cc7736726958ab069ffe1fadad7d161f72870",
+  "method": "rag",
+  "answer": "Person361 explained to Person268 how Captain Person267 died.",
+  "response": {
+    "text": "Person361 explained to Person268 how Captain Person267 died.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 19,
+      "prompt_tokens": 3271,
+      "total_tokens": 3290,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 8.9254182910081,
+    "request_sha256": "b53a13d06fbd6d542a748043a0a75ec54fca63b5feff876ce32cc2a173b8fe8c",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    5,
+    10,
+    23,
+    12,
+    33,
+    17,
+    68,
+    22,
+    16,
+    324,
+    328,
+    7,
+    504,
+    15,
+    201,
+    1,
+    14,
+    37,
+    39,
+    208
+  ],
+  "retrieval_scores": [
+    0.5653771162033081,
+    0.5642063617706299,
+    0.5496119260787964,
+    0.5419930219650269,
+    0.540519118309021,
+    0.5404523015022278,
+    0.5364924669265747,
+    0.5293533802032471,
+    0.5272329449653625,
+    0.5265480279922485,
+    0.5225024819374084,
+    0.521926999092102,
+    0.5181931853294373,
+    0.5142024159431458,
+    0.5093207955360413,
+    0.506483793258667,
+    0.4944925308227539,
+    0.4920947849750519,
+    0.4850621819496155,
+    0.4825563430786133
+  ],
+  "retrieval_seconds": 0.07657824900525156,
+  "provided_context_sha256": "9989b00f1e601447e9493f2ba61203c137292f154dcd996137977521102148e2",
+  "provided_context_tokens": 2973,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "1de2163eb5bcf2305b7492e3cfd0d10ec982dd31090bd8ebc5f49f675e2a51f7",
+    "raw_answer_sha256": "e3e71561e940176479d2a3aae663f88bd6d5e7951c5dcbefeb8aaee9bd37ca05",
+    "answer_redacted": false
+  }
+}

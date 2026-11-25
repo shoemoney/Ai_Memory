@@ -1,0 +1,112 @@
+[
+  {
+    "chapter": "06",
+    "location": "Models table, paragraph after table",
+    "sentence": "Qwen's own model cards report BFCL-V4 scores for Qwen3.5 of 25.3 at 0.8B, 43.6 at 2B, 50.3 at 4B and 66.1 at 9B.",
+    "figures": "25.3 / 43.6 / 50.3 / 66.1",
+    "source": "Chapter 06 sources 12 and 15: pinned official Qwen3.5 model cards",
+    "comparison": "Tool calling, not extraction. No directly comparable published extraction score.",
+    "chapter_path": "build/chapters/06-small-memory-models.html",
+    "source_urls": [
+      "https://huggingface.co/Qwen/Qwen3.5-0.8B/blob/2fc06364715b967f1860aea9cf38778875588b17/README.md",
+      "https://huggingface.co/Qwen/Qwen3.5-9B/blob/c202236235762e1c871ad0ccb60c8ee5ba337b9a/README.md"
+    ]
+  },
+  {
+    "chapter": "06",
+    "location": "Step 2, output and following sentence",
+    "sentence": "The first call included loading the model. A second default call, with the model loaded, took 96.9 seconds and a second off call 3.4.",
+    "figures": "109.4 s default with 1,735 reasoning characters; 6.2 s off with zero reasoning characters; repeats 96.9 s and 3.4 s",
+    "source": "First-party walkthrough, CPU Ollama 0.40.16, Qwen3.5 2B Q8_0, one input",
+    "comparison": "Local GGUF Q4_K_M thinking-off extraction latency and validity; hardware, quantization and runtime differ.",
+    "chapter_path": "build/chapters/06-small-memory-models.html"
+  },
+  {
+    "chapter": "06",
+    "location": "Step 3, output and following sentence",
+    "sentence": "Without the flag the same server answered after 31.2 seconds with content: '' and 1,924 characters of reasoning, because thinking used the whole 512-token limit.",
+    "figures": "5.6 s clean off answer; default 31.2 s with no answer, 1,924 reasoning characters and 512-token limit; alternate off flag 1.6 s",
+    "source": "First-party walkthrough, CPU llama.cpp b12464, pinned Qwen3.5 2B Q4_K_M",
+    "comparison": "Same 2B weight revision and schema; new dataset, Apple Metal and llama.cpp b12359. No thinking-on treatment in this benchmark.",
+    "chapter_path": "build/chapters/06-small-memory-models.html",
+    "source_urls": [
+      "https://huggingface.co/unsloth/Qwen3.5-2B-GGUF/tree/f6d5376be1edb4d416d56da11e5397a961aca8ae"
+    ]
+  },
+  {
+    "chapter": "06",
+    "location": "Step 4, paragraph after read-back",
+    "sentence": "In two runs of the add, the 2B model saved one fact and dropped \"love coffee\".",
+    "figures": "Two adds; one saved memory per add, preference omitted; add 42.5 s and busier rerun 120.5 s",
+    "source": "First-party Mem0 2.2.1 walkthrough, CPU",
+    "comparison": "Direct extraction only; no Mem0 retrieval, embedding, deduplication or persistence in the new benchmark.",
+    "chapter_path": "build/chapters/06-small-memory-models.html"
+  },
+  {
+    "chapter": "06",
+    "location": "Latency and why saves run in the background",
+    "sentence": "In the CPU test (step 4), one Mem0 add took 42.5 seconds: 35.7 seconds reading Mem0's own 8,242-token prompt at 231 tokens per second and 4.9 seconds generating 62 tokens.",
+    "figures": "42.5 s total; 35.7 s prefill; 8,242 tokens; 231 tokens/s; 4.9 s decoding; 62 tokens",
+    "source": "First-party CPU Mem0 walkthrough, sources 2 and 25 describe pipeline",
+    "comparison": "Ancillary pipeline latency, not reproduced by direct extraction.",
+    "chapter_path": "build/chapters/06-small-memory-models.html",
+    "source_urls": [
+      "https://github.com/mem0ai/mem0/blob/main/mem0/memory/main.py"
+    ]
+  },
+  {
+    "chapter": "06",
+    "location": "Inkling 2 Mini, Tested paragraph",
+    "sentence": "The schema check from step 3, with thinking switched off, did not return valid JSON within its 512-token limit and took 144.6 seconds.",
+    "figures": "0 valid responses in one attempt, 512-token cap, 144.6 s",
+    "source": "First-party 8 GB NVIDIA GPU plus CPU-offload probe; source 46 documents packager setup",
+    "comparison": "Different model and another benchmark task; not rerun here.",
+    "chapter_path": "build/chapters/06-small-memory-models.html",
+    "source_urls": [
+      "https://unsloth.ai/docs/models/inkling-2-mini"
+    ]
+  },
+  {
+    "chapter": "06",
+    "location": "Latency, first-party operating example",
+    "sentence": "With a 9B local memory model on an Apple Silicon Mac, recall took about 2 seconds, a warm retain about 25 seconds, and a cold start of the memory service about 2 minutes.",
+    "figures": "2 s recall / 25 s warm retain / 2 min cold service start",
+    "source": "Source 24, private first-party operator measurements, not public",
+    "comparison": "End-to-end memory service timing; not a public extraction benchmark and not reproduced here.",
+    "chapter_path": "build/chapters/06-small-memory-models.html"
+  },
+  {
+    "chapter": "06",
+    "location": "Latency, Hindsight model paragraph",
+    "sentence": "Hindsight reports a 167 ms median per request for a small decision model, against 1 to 7 seconds for a main model call.",
+    "figures": "167 ms median / 1 to 7 s main-model call",
+    "source": "Source 26, vendor Hindsight Models blog",
+    "comparison": "Different decision workload, not extraction; no numerical comparison is valid.",
+    "chapter_path": "build/chapters/06-small-memory-models.html",
+    "source_urls": [
+      "https://hindsight.vectorize.io/blog/2026/11/03/hindsight-models"
+    ]
+  },
+  {
+    "chapter": "07",
+    "location": "Numbers, introductory paragraph and table",
+    "sentence": "Every model saw the same ten messages once, in fresh requests with no conversation history. There are 13 expected propositions per model, including the two residence facts (past and current) and one message that should produce nothing.",
+    "figures": "10 responses and 13 propositions per model; stock/edited invalid JSON 0/0, invalid schema 0/0, reviewed refusals 0/0, omissions 0/0, additions 0/0, reversals 0/2",
+    "source": "First-party ten-case walkthrough, pinned stock and edited Q4_K_M files; sources 4 and 5",
+    "comparison": "Same two files, new 100-turn dataset and three seeds, Chapter 06 schema rather than Chapter 07 proposition schema. Cannot isolate the effect of editing.",
+    "chapter_path": "build/chapters/07-uncensored-memory-models.html",
+    "source_urls": [
+      "https://huggingface.co/bartowski/Qwen2.5-Coder-1.5B-Instruct-GGUF/tree/1af47f78b1f9b0c242fabe43f7a365d5a67f3207",
+      "https://huggingface.co/bartowski/Qwen2.5-Coder-1.5B-Instruct-abliterated-GGUF/tree/823ab8183896816dec7d29899310b556e655ad73"
+    ]
+  },
+  {
+    "chapter": "07",
+    "location": "Scope and scale, Time and Planning",
+    "sentence": "Time: one extraction call, including model loading, took 6.47 s, and reading its 216-byte note back took 0.24 ms with a warm file cache (anecdotal).",
+    "figures": "6.47 s cold extraction / 216-byte note / 0.24 ms read-back / about 9 writes per minute",
+    "source": "First-party CPU walkthrough, Ollama 0.40.16, 8 inference threads",
+    "comparison": "Warm direct extraction latency only; no read-back timing and no derived production-throughput claim.",
+    "chapter_path": "build/chapters/07-uncensored-memory-models.html"
+  }
+]

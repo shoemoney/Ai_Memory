@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 22
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "3af2bd178793ddf1bb01293c1316415ab730da968b631ef47237f247eb815c90",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-73dc4467-1c5f-423f-9f9a-5a0787ccc5c0",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Interested in technology and innovation\", \"Recommended museums include Computer History Museum, Deutsches Museum, National Air and Space Museum, Tech Museum of Innovation, Museum of Science and Industry, Science Museum, National Museum of Emerging Science and Innovation (Miraikan), Smithsonian National Museum of American History, National Museum of Computing, TELUS Spark\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355275,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 73,
+      "prompt_tokens": 1340,
+      "total_tokens": 1413,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Interested in technology and innovation\", \"Recommended museums include Computer History Museum, Deutsches Museum, National Air and Space Museum, Tech Museum of Innovation, Museum of Science and Industry, Science Museum, National Museum of Emerging Science and Innovation (Miraikan), Smithsonian National Museum of American History, National Museum of Computing, TELUS Spark\"]}",
+  "seconds": 12.328980272010085,
+  "prompt_tokens_local": 1340
+}

@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 18
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9e28f092b0e639a29156583a6b8c8e84e74c1bf72f180607cea4efb2f911789b",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-dd37e571-ee66-4770-a330-8ba889fa47fe",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Looking for hiking trails in San Francisco\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Consider a DIY popcorn bar with different toppings\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"cultural exchange programs\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Explore classic, savory, sweet, and nutty toppings for popcorn\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Community forum for users to connect and share experiences\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Think of setting up a cozy atmosphere similar to a movie marathon\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"promote open communication and dialogue\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Customer support can be contacted by phone, email, or through authorized service centers\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Manfrotto Academy offers tutorials, workshops, and webinars\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"considered buying sandals with a heel\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"considered buying from Birkenstock, Teva, Sanuk, Steve Madden, and OluKai brands\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"remembered wearing Converse Chuck Taylor's to a music festival\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"considered buying from Birkenstock, Teva, Sanuk, Steve Madden, and OluKai brands\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"considered buying from Birkenstock, Teva, Sanuk, Steve Madden, and OluKai brands\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"considered buying sandals with a heel\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330247,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 503,
+      "prompt_tokens": 1818,
+      "total_tokens": 2321,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Looking for hiking trails in San Francisco\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Consider a DIY popcorn bar with different toppings\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"cultural exchange programs\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Explore classic, savory, sweet, and nutty toppings for popcorn\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Community forum for users to connect and share experiences\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Think of setting up a cozy atmosphere similar to a movie marathon\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"promote open communication and dialogue\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Customer support can be contacted by phone, email, or through authorized service centers\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Manfrotto Academy offers tutorials, workshops, and webinars\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"considered buying sandals with a heel\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"considered buying from Birkenstock, Teva, Sanuk, Steve Madden, and OluKai brands\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"remembered wearing Converse Chuck Taylor's to a music festival\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"considered buying from Birkenstock, Teva, Sanuk, Steve Madden, and OluKai brands\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"considered buying from Birkenstock, Teva, Sanuk, Steve Madden, and OluKai brands\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"considered buying sandals with a heel\"\n        }\n    ]\n}",
+  "seconds": 9.073862841003574,
+  "prompt_tokens_local_gemma_estimate": 1940
+}

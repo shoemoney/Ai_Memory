@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q029",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "e7cc1a3a58d9600d414378db0620a7a903c1520f96ea0c39a5a42e06dbaae731",
+  "reference_sha256": "6ee5edcd76eff17879316ab28fe7cfb4f5455113ccd56d4f8e4fa4d6adee2b9a",
+  "method": "rag",
+  "answer": "Person052 became interested in the philosophical discussion between Person652 Person481 and the professor.",
+  "response": {
+    "text": "Person052 became interested in the philosophical discussion between Person652 Person481 and the professor.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 24,
+      "prompt_tokens": 3352,
+      "total_tokens": 3376,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.612511051993351,
+    "request_sha256": "2e8b40d6494f5213b0b3ce6eb751868833068c5e95a67066fa7e3cca46aa2ae3",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    101,
+    91,
+    124,
+    116,
+    144,
+    93,
+    302,
+    111,
+    420,
+    611,
+    110,
+    92,
+    190,
+    313,
+    34,
+    210,
+    224,
+    307,
+    269,
+    108
+  ],
+  "retrieval_scores": [
+    0.6774575710296631,
+    0.6315912008285522,
+    0.6186771392822266,
+    0.6157090067863464,
+    0.6090779304504395,
+    0.6043323278427124,
+    0.595092236995697,
+    0.5950055718421936,
+    0.5887544751167297,
+    0.5814187526702881,
+    0.5786949396133423,
+    0.5713302493095398,
+    0.5709899663925171,
+    0.5679701566696167,
+    0.5671075582504272,
+    0.5669045448303223,
+    0.5650595426559448,
+    0.5645201802253723,
+    0.5643544793128967,
+    0.5629808902740479
+  ],
+  "retrieval_seconds": 0.03304037199995946,
+  "provided_context_sha256": "52d229b68e5baf7a10a7b3e8c8a65f7b7bed8493e1de39d65fe4e9ab4dd76b95",
+  "provided_context_tokens": 2956,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "5bce6f31c4b04431ce8f7251827958d40c86b436e9fbde846702d1056ac9a1a1",
+    "raw_answer_sha256": "9a156cf4f566731015189ddc254897a3172e4e711c0ea144d9295eb2f6b890eb",
+    "answer_redacted": false
+  }
+}

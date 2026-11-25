@@ -1,0 +1,618 @@
+{
+  "summary": {
+    "in": {
+      "A": {
+        "episodes": 400,
+        "tool_needed": 280,
+        "no_tool_needed": 120,
+        "first_command_right": 277,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 0,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 277,
+        "call_attempts": 377,
+        "call_well_formed": 377,
+        "malformed_turns": 0,
+        "exact_sequence": 277,
+        "extra_calls": 0,
+        "no_tool_ok": 120,
+        "prompt_tokens": 82736,
+        "completion_tokens": 19888,
+        "prompt_per_episode": 206.84,
+        "completion_per_episode": 49.72,
+        "turns": 777,
+        "list_price_usd": 0.0223544
+      },
+      "A2": {
+        "episodes": 400,
+        "tool_needed": 280,
+        "no_tool_needed": 120,
+        "first_command_right": 280,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 0,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 280,
+        "call_attempts": 442,
+        "call_well_formed": 442,
+        "malformed_turns": 0,
+        "exact_sequence": 279,
+        "extra_calls": 62,
+        "no_tool_ok": 61,
+        "prompt_tokens": 89771,
+        "completion_tokens": 22079,
+        "prompt_per_episode": 224.4275,
+        "completion_per_episode": 55.1975,
+        "turns": 842,
+        "list_price_usd": 0.02450515
+      },
+      "B-native-1call": {
+        "episodes": 400,
+        "tool_needed": 280,
+        "no_tool_needed": 120,
+        "first_command_right": 252,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 1,
+        "first_turn_multi_call": 1,
+        "first_right_by_first_call": 252,
+        "call_attempts": 499,
+        "call_well_formed": 493,
+        "malformed_turns": 0,
+        "exact_sequence": 203,
+        "extra_calls": 125,
+        "no_tool_ok": 116,
+        "prompt_tokens": 894706,
+        "completion_tokens": 98558,
+        "prompt_per_episode": 2236.765,
+        "completion_per_episode": 246.395,
+        "turns": 876,
+        "list_price_usd": 0.1834849
+      },
+      "C": {
+        "episodes": 400,
+        "tool_needed": 280,
+        "no_tool_needed": 120,
+        "first_command_right": 217,
+        "first_turn_malformed": 47,
+        "first_malformed_intended_right": 23,
+        "first_turn_other_failure": 0,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 217,
+        "call_attempts": 462,
+        "call_well_formed": 436,
+        "malformed_turns": 48,
+        "exact_sequence": 177,
+        "extra_calls": 116,
+        "no_tool_ok": 103,
+        "prompt_tokens": 440555,
+        "completion_tokens": 103858,
+        "prompt_per_episode": 1101.3875,
+        "completion_per_episode": 259.645,
+        "turns": 817,
+        "list_price_usd": 0.11801225
+      }
+    },
+    "t2": {
+      "A": {
+        "episodes": 400,
+        "tool_needed": 250,
+        "no_tool_needed": 150,
+        "first_command_right": 205,
+        "first_turn_malformed": 1,
+        "first_malformed_intended_right": 1,
+        "first_turn_other_failure": 1,
+        "first_turn_multi_call": 1,
+        "first_right_by_first_call": 206,
+        "call_attempts": 328,
+        "call_well_formed": 326,
+        "malformed_turns": 6,
+        "exact_sequence": 179,
+        "extra_calls": 87,
+        "no_tool_ok": 71,
+        "prompt_tokens": 66359,
+        "completion_tokens": 20759,
+        "prompt_per_episode": 165.8975,
+        "completion_per_episode": 51.8975,
+        "turns": 726,
+        "list_price_usd": 0.02033335
+      },
+      "A2": {
+        "episodes": 400,
+        "tool_needed": 250,
+        "no_tool_needed": 150,
+        "first_command_right": 249,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 0,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 249,
+        "call_attempts": 308,
+        "call_well_formed": 308,
+        "malformed_turns": 0,
+        "exact_sequence": 243,
+        "extra_calls": 0,
+        "no_tool_ok": 150,
+        "prompt_tokens": 66531,
+        "completion_tokens": 19930,
+        "prompt_per_episode": 166.3275,
+        "completion_per_episode": 49.825,
+        "turns": 708,
+        "list_price_usd": 0.01994465
+      },
+      "B-native-1call": {
+        "episodes": 400,
+        "tool_needed": 250,
+        "no_tool_needed": 150,
+        "first_command_right": 237,
+        "first_turn_malformed": 1,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 2,
+        "first_turn_multi_call": 1,
+        "first_right_by_first_call": 237,
+        "call_attempts": 381,
+        "call_well_formed": 380,
+        "malformed_turns": 1,
+        "exact_sequence": 186,
+        "extra_calls": 84,
+        "no_tool_ok": 144,
+        "prompt_tokens": 771371,
+        "completion_tokens": 90890,
+        "prompt_per_episode": 1928.4275,
+        "completion_per_episode": 227.225,
+        "turns": 768,
+        "list_price_usd": 0.16115065
+      },
+      "C": {
+        "episodes": 400,
+        "tool_needed": 250,
+        "no_tool_needed": 150,
+        "first_command_right": 154,
+        "first_turn_malformed": 72,
+        "first_malformed_intended_right": 37,
+        "first_turn_other_failure": 3,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 154,
+        "call_attempts": 320,
+        "call_well_formed": 280,
+        "malformed_turns": 73,
+        "exact_sequence": 120,
+        "extra_calls": 69,
+        "no_tool_ok": 147,
+        "prompt_tokens": 349085,
+        "completion_tokens": 87055,
+        "prompt_per_episode": 872.7125,
+        "completion_per_episode": 217.6375,
+        "turns": 673,
+        "list_price_usd": 0.09589025
+      }
+    },
+    "oot1": {
+      "A": {
+        "episodes": 100,
+        "tool_needed": 70,
+        "no_tool_needed": 30,
+        "first_command_right": 61,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 0,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 61,
+        "call_attempts": 98,
+        "call_well_formed": 98,
+        "malformed_turns": 2,
+        "exact_sequence": 55,
+        "extra_calls": 27,
+        "no_tool_ok": 8,
+        "prompt_tokens": 18357,
+        "completion_tokens": 5107,
+        "prompt_per_episode": 183.57,
+        "completion_per_episode": 51.07,
+        "turns": 198,
+        "list_price_usd": 0.005307049999999999
+      },
+      "A2": {
+        "episodes": 100,
+        "tool_needed": 70,
+        "no_tool_needed": 30,
+        "first_command_right": 66,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 1,
+        "first_turn_multi_call": 1,
+        "first_right_by_first_call": 67,
+        "call_attempts": 84,
+        "call_well_formed": 83,
+        "malformed_turns": 0,
+        "exact_sequence": 65,
+        "extra_calls": 2,
+        "no_tool_ok": 30,
+        "prompt_tokens": 17077,
+        "completion_tokens": 4865,
+        "prompt_per_episode": 170.77,
+        "completion_per_episode": 48.65,
+        "turns": 183,
+        "list_price_usd": 0.004994049999999999
+      },
+      "B-native-1call": {
+        "episodes": 100,
+        "tool_needed": 70,
+        "no_tool_needed": 30,
+        "first_command_right": 65,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 0,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 65,
+        "call_attempts": 112,
+        "call_well_formed": 112,
+        "malformed_turns": 0,
+        "exact_sequence": 50,
+        "extra_calls": 27,
+        "no_tool_ok": 30,
+        "prompt_tokens": 207959,
+        "completion_tokens": 21698,
+        "prompt_per_episode": 2079.59,
+        "completion_per_episode": 216.98,
+        "turns": 207,
+        "list_price_usd": 0.04204285
+      },
+      "C": {
+        "episodes": 100,
+        "tool_needed": 70,
+        "no_tool_needed": 30,
+        "first_command_right": 41,
+        "first_turn_malformed": 20,
+        "first_malformed_intended_right": 12,
+        "first_turn_other_failure": 1,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 41,
+        "call_attempts": 96,
+        "call_well_formed": 83,
+        "malformed_turns": 20,
+        "exact_sequence": 30,
+        "extra_calls": 29,
+        "no_tool_ok": 30,
+        "prompt_tokens": 91889,
+        "completion_tokens": 20250,
+        "prompt_per_episode": 918.89,
+        "completion_per_episode": 202.5,
+        "turns": 177,
+        "list_price_usd": 0.02390835
+      }
+    },
+    "oot2": {
+      "A": {
+        "episodes": 120,
+        "tool_needed": 80,
+        "no_tool_needed": 40,
+        "first_command_right": 62,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 1,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 62,
+        "call_attempts": 119,
+        "call_well_formed": 119,
+        "malformed_turns": 1,
+        "exact_sequence": 55,
+        "extra_calls": 51,
+        "no_tool_ok": 6,
+        "prompt_tokens": 23294,
+        "completion_tokens": 7620,
+        "prompt_per_episode": 194.11666666666667,
+        "completion_per_episode": 63.5,
+        "turns": 239,
+        "list_price_usd": 0.0073041
+      },
+      "A2": {
+        "episodes": 120,
+        "tool_needed": 80,
+        "no_tool_needed": 40,
+        "first_command_right": 76,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 0,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 76,
+        "call_attempts": 93,
+        "call_well_formed": 93,
+        "malformed_turns": 0,
+        "exact_sequence": 71,
+        "extra_calls": 4,
+        "no_tool_ok": 39,
+        "prompt_tokens": 20926,
+        "completion_tokens": 6790,
+        "prompt_per_episode": 174.38333333333333,
+        "completion_per_episode": 56.583333333333336,
+        "turns": 213,
+        "list_price_usd": 0.0065339
+      },
+      "B-native-1call": {
+        "episodes": 120,
+        "tool_needed": 80,
+        "no_tool_needed": 40,
+        "first_command_right": 76,
+        "first_turn_malformed": 0,
+        "first_malformed_intended_right": 0,
+        "first_turn_other_failure": 1,
+        "first_turn_multi_call": 1,
+        "first_right_by_first_call": 76,
+        "call_attempts": 156,
+        "call_well_formed": 153,
+        "malformed_turns": 0,
+        "exact_sequence": 41,
+        "extra_calls": 64,
+        "no_tool_ok": 40,
+        "prompt_tokens": 261319,
+        "completion_tokens": 29444,
+        "prompt_per_episode": 2177.6583333333333,
+        "completion_per_episode": 245.36666666666667,
+        "turns": 259,
+        "list_price_usd": 0.05391985
+      },
+      "C": {
+        "episodes": 120,
+        "tool_needed": 80,
+        "no_tool_needed": 40,
+        "first_command_right": 52,
+        "first_turn_malformed": 25,
+        "first_malformed_intended_right": 7,
+        "first_turn_other_failure": 1,
+        "first_turn_multi_call": 0,
+        "first_right_by_first_call": 52,
+        "call_attempts": 111,
+        "call_well_formed": 103,
+        "malformed_turns": 25,
+        "exact_sequence": 32,
+        "extra_calls": 44,
+        "no_tool_ok": 40,
+        "prompt_tokens": 109248,
+        "completion_tokens": 28539,
+        "prompt_per_episode": 910.4,
+        "completion_per_episode": 237.825,
+        "turns": 211,
+        "list_price_usd": 0.030656700000000002
+      }
+    }
+  },
+  "invented": {
+    "in": {
+      "A": {},
+      "A2": {
+        "reverse": 1,
+        "capitalize": 20,
+        "str_case": 3
+      },
+      "B-native-1call": {},
+      "C": {
+        "-h": 16,
+        "read": 1,
+        "help": 1,
+        "bash": 3
+      }
+    },
+    "t2": {
+      "A": {
+        "brainstorm_ideas": 1,
+        "smallest_prime": 1,
+        "define": 2,
+        "explain": 2,
+        "prime": 1,
+        "suggest_hobby": 1,
+        "translate": 8,
+        "reword": 3,
+        "explain_vaccines": 1,
+        "count_vowels": 1,
+        "ask_user": 1,
+        "hasty": 1,
+        "most_moons_planet": 1,
+        "INVALID": 2,
+        "abbreviate": 1,
+        "dictionary": 4,
+        "welcome_new_neighbors": 1,
+        "rephrase": 4,
+        "explain_word": 1,
+        "web": 1,
+        "lookup": 1,
+        "which_planet_has_most_moons": 1,
+        "sort_letters": 1,
+        "rewrite": 1,
+        "Kyoto": 1
+      },
+      "A2": {},
+      "B-native-1call": {},
+      "C": {
+        "-h": 15,
+        "help": 2,
+        "bash": 3
+      }
+    },
+    "oot1": {
+      "A": {
+        "INVALID": 1,
+        "update_event": 1,
+        "image_gen_caption": 1,
+        "poem": 1,
+        "synonyms": 1,
+        "primary_colors": 1,
+        "rhymes": 1,
+        "who_wrote": 1,
+        "days_in_leap_year": 1,
+        "sign_off": 1,
+        "up_planet_at_distance": 1,
+        "rewrite": 1,
+        "translate": 1,
+        "plural": 1,
+        "nickname": 1
+      },
+      "A2": {
+        "INVALID": 1
+      },
+      "B-native-1call": {},
+      "C": {
+        "-h": 4,
+        "help": 1
+      }
+    },
+    "oot2": {
+      "A": {
+        "largest_planet": 1,
+        "translate": 5,
+        "mortgage_rates": 1,
+        "fix_grammar": 1,
+        "rephrase": 1,
+        "refrigerator": 1,
+        "name_ideas": 1,
+        "(287000": 1,
+        "INVALID": 5,
+        "suggest_names": 1,
+        "rewrite": 1,
+        "3": 1,
+        "language_of": 1,
+        "unclutter": 1,
+        "reduce_monday_stress": 1,
+        "read_text_file": 1,
+        "capital_of": 1,
+        "suggest_date_ideas": 1,
+        "1284": 1,
+        "show_model_demand": 1,
+        "nfl_snap_check_clinch": 1,
+        "hours": 1,
+        "dream": 1
+      },
+      "A2": {
+        "INVALID": 1
+      },
+      "B-native-1call": {},
+      "C": {
+        "-h": 1
+      }
+    }
+  },
+  "paired": {
+    "in": {
+      "A2-B-native-1call": {
+        "first_command": {
+          "diff_pp": 9.999999999999998,
+          "lo": 6.428571428571428,
+          "hi": 13.571428571428568,
+          "n": 280
+        },
+        "no_tool_specificity": {
+          "diff_pp": -45.833333333333336,
+          "lo": -55.00000000000001,
+          "hi": -35.83333333333334,
+          "n": 120
+        }
+      },
+      "A2-A": {
+        "first_command": {
+          "diff_pp": 1.0714285714285676,
+          "lo": 0.0,
+          "hi": 2.500000000000002,
+          "n": 280
+        },
+        "no_tool_specificity": {
+          "diff_pp": -49.16666666666667,
+          "lo": -58.33333333333333,
+          "hi": -40.0,
+          "n": 120
+        }
+      }
+    },
+    "t2": {
+      "A2-B-native-1call": {
+        "first_command": {
+          "diff_pp": 4.800000000000004,
+          "lo": 2.0000000000000018,
+          "hi": 7.9999999999999964,
+          "n": 250
+        },
+        "no_tool_specificity": {
+          "diff_pp": 4.0000000000000036,
+          "lo": 1.3333333333333308,
+          "hi": 7.333333333333336,
+          "n": 150
+        }
+      },
+      "A2-A": {
+        "first_command": {
+          "diff_pp": 17.600000000000005,
+          "lo": 12.8,
+          "hi": 22.4,
+          "n": 250
+        },
+        "no_tool_specificity": {
+          "diff_pp": 52.666666666666664,
+          "lo": 44.666666666666664,
+          "hi": 60.66666666666667,
+          "n": 150
+        }
+      }
+    },
+    "oot1": {
+      "A2-B-native-1call": {
+        "first_command": {
+          "diff_pp": 1.4285714285714235,
+          "lo": -5.714285714285716,
+          "hi": 8.571428571428575,
+          "n": 70
+        },
+        "no_tool_specificity": {
+          "diff_pp": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n": 30
+        }
+      },
+      "A2-A": {
+        "first_command": {
+          "diff_pp": 7.14285714285714,
+          "lo": 0.0,
+          "hi": 14.28571428571429,
+          "n": 70
+        },
+        "no_tool_specificity": {
+          "diff_pp": 73.33333333333334,
+          "lo": 56.666666666666664,
+          "hi": 86.66666666666667,
+          "n": 30
+        }
+      }
+    },
+    "oot2": {
+      "A2-B-native-1call": {
+        "first_command": {
+          "diff_pp": 0.0,
+          "lo": -7.499999999999996,
+          "hi": 6.25,
+          "n": 80
+        },
+        "no_tool_specificity": {
+          "diff_pp": -2.500000000000002,
+          "lo": -7.499999999999996,
+          "hi": 0.0,
+          "n": 40
+        }
+      },
+      "A2-A": {
+        "first_command": {
+          "diff_pp": 17.499999999999993,
+          "lo": 7.499999999999996,
+          "hi": 27.500000000000004,
+          "n": 80
+        },
+        "no_tool_specificity": {
+          "diff_pp": 82.5,
+          "lo": 67.5,
+          "hi": 95.0,
+          "n": 40
+        }
+      }
+    }
+  },
+  "draws": 10000,
+  "seed": 0
+}

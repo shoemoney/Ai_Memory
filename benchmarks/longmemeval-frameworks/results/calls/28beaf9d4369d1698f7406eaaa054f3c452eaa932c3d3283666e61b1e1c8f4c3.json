@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5161accded75852de72f63cf2273ea36b9de950be19869ec6b3cfcfc9b3e05fd",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-7cccaf47-76a3-435f-a1db-02270b87731c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"red and purple lighting\",\n            \"summary\": \"Red and purple lighting is recommended for creating a spooky and eerie atmosphere, perfect for horror or thriller scenes.\"\n        },\n        {\n            \"name\": \"Gamecube\",\n            \"summary\": \"Gamecube is a video game console from Nintendo, released in 1998. It was popular for its home gaming console and handheld Game Boy Advance SP.\"\n        },\n        {\n            \"name\": \"cracked windshield\",\n            \"summary\": \"A cracked windshield is a common issue for vehicles, especially those with older or poorly maintained glass. It can affect visibility and safety.\"\n        },\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"A dog leash is a strap used to attach a dog to a person or a vehicle. It is typically made of durable materials to withstand wear and tear.\"\n        },\n        {\n            \"name\": \"road cycling\",\n            \"summary\": \"Road cycling, also known as road cycling, is a sport involving the use of bicycles on paved roads. It is popular for racing and recreational activities.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795352866,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 240,
+      "prompt_tokens": 6311,
+      "total_tokens": 6551,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5077
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"red and purple lighting\",\n            \"summary\": \"Red and purple lighting is recommended for creating a spooky and eerie atmosphere, perfect for horror or thriller scenes.\"\n        },\n        {\n            \"name\": \"Gamecube\",\n            \"summary\": \"Gamecube is a video game console from Nintendo, released in 1998. It was popular for its home gaming console and handheld Game Boy Advance SP.\"\n        },\n        {\n            \"name\": \"cracked windshield\",\n            \"summary\": \"A cracked windshield is a common issue for vehicles, especially those with older or poorly maintained glass. It can affect visibility and safety.\"\n        },\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"A dog leash is a strap used to attach a dog to a person or a vehicle. It is typically made of durable materials to withstand wear and tear.\"\n        },\n        {\n            \"name\": \"road cycling\",\n            \"summary\": \"Road cycling, also known as road cycling, is a sport involving the use of bicycles on paved roads. It is popular for racing and recreational activities.\"\n        }\n    ]\n}",
+  "seconds": 65.44304656000168,
+  "prompt_tokens_local": 6311
+}

@@ -1,0 +1,47 @@
+{
+  "question_id": "681a1674",
+  "system": "graphiti",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "ingestion_hardware_class": "Apple M3 Ultra, 96 GB",
+  "reader_hardware_class": "Apple M3 Ultra, 96 GB",
+  "judge_hardware_class": "Apple M3 Ultra, 96 GB",
+  "stratum": "multi-session",
+  "question_type": "multi-session",
+  "question": "How many Marvel movies did I re-watch?",
+  "reference": "2",
+  "hypothesis": "The provided conversation history does not contain information about how many Marvel movies you re-watched.",
+  "context": [
+    {
+      "text": "user will write an essay on how writing has helped them clarify their thoughts and feelings.",
+      "valid_at": "2023-05-20 23:43:00+00:00",
+      "invalid_at": "None"
+    }
+  ],
+  "correct": false,
+  "judge": {
+    "correct": false,
+    "votes": [
+      false,
+      false,
+      false
+    ],
+    "calls": [
+      "05daa6d89bd5788b8462dfdb93757226be0cb9a526aa37b2bdf4ddbfa6a1279e",
+      "d7919ceaf4ed4d526bc2aa9fb5f016b26644ecaa0841853135c5de0111e680c0",
+      "38054c55e820c88ae0cb32ee0160dfa2a3fd7eb879282b35835b0b7a315e68be"
+    ]
+  },
+  "status": "scored",
+  "ingestion_seconds": 7827.825752735138,
+  "ingestion_usage": {
+    "prompt_tokens": 1569588,
+    "completion_tokens": 65074,
+    "model_calls": 311,
+    "model_seconds": 18397.759861240047
+  },
+  "source_sessions": 49,
+  "source_parts": 77,
+  "attempted_parts": 77,
+  "ingested_parts": 69,
+  "ingestion_failed_parts": 8
+}

@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 18
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0731b65ae2e879f2fb99212c8742a3607cf3a656f97a9724c39ccb8c3250b771",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-1d92bb79-d676-4764-a1ed-c12afdb66373",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Considered buying sandals with a bit of a heel, but also considered flat sandals for comfort\",\n        \"Wear Converse Chuck Taylor's to a music festival, found them comfortable despite long hours of standing and dancing\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332013,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 56,
+      "prompt_tokens": 1657,
+      "total_tokens": 1713,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 660
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Considered buying sandals with a bit of a heel, but also considered flat sandals for comfort\",\n        \"Wear Converse Chuck Taylor's to a music festival, found them comfortable despite long hours of standing and dancing\"\n    ]\n}",
+  "seconds": 1.2704113789950497,
+  "prompt_tokens_local": 1657,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

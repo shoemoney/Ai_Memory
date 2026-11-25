@@ -1,0 +1,16 @@
+{
+  "trials": 100,
+  "inversion_steps": 5,
+  "backend": "llama.cpp CPU",
+  "generator": "Qwen2.5-3B-Instruct Q4_K_M",
+  "model_revision": "7dabda4d13d513e3e842b20f0d435c732f172cbe",
+  "reason_for_sample_size": "The assigned Mac entered warning pressure; the authorized CPU fallback uses 100 paired trials per cell to fit the wall-clock budget.",
+  "headline_hardware": "32-thread x86 CPU; generation constrained to 8 CPU threads; inversion to 4",
+  "excluded_diagnostics": [
+    "minja-fixed-sequence.jsonl",
+    "review-audit-fixed-sequence.json",
+    "minja-mac-interrupted.jsonl",
+    "mac-source-pilot-error.log"
+  ],
+  "model_endpoint_default": "localhost"
+}

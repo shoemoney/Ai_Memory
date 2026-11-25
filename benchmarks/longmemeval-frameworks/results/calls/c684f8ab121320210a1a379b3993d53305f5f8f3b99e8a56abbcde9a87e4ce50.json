@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 71
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "82b2959ed9f148ef0e3747349814cae7122f3a2e5e9de8ae73f98e3388fc1749",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0e91c331-bba0-4505-9b3f-8d32ada068fa",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Social media companies should invest more resources into measures such as developing algorithms that proactively detect and flag harmful content\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Web3 and Metamask are utilized for secure interactions with smart contracts\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Their ideas shaped modern society in ways such as promoting freedom, reason, and democracy\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Social media companies have a responsibility to prevent harmful content and promote positive mental health outcomes\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Can the entire lifespan of MERIS satellite data combined with machine learning approaches be used to monitor the water quality of Valle de Bravo Reservoir in Mexico?\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"Brazil's Supreme Court has taken actions to protect democracy by investigating and removing posts that attack the honorability of the court and its justices\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367117,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 295,
+      "prompt_tokens": 1764,
+      "total_tokens": 2059,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Social media companies should invest more resources into measures such as developing algorithms that proactively detect and flag harmful content\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Web3 and Metamask are utilized for secure interactions with smart contracts\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Their ideas shaped modern society in ways such as promoting freedom, reason, and democracy\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"Social media companies have a responsibility to prevent harmful content and promote positive mental health outcomes\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Can the entire lifespan of MERIS satellite data combined with machine learning approaches be used to monitor the water quality of Valle de Bravo Reservoir in Mexico?\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"Brazil's Supreme Court has taken actions to protect democracy by investigating and removing posts that attack the honorability of the court and its justices\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+  "seconds": 25.196290407999186,
+  "prompt_tokens_local": 1764
+}

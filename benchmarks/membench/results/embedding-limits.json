@@ -1,0 +1,28 @@
+{
+  "encoder_limit_including_special_tokens": 256,
+  "queries": {
+    "mab": {
+      "n": 150,
+      "over_limit": 111,
+      "maximum_wordpieces": 351
+    },
+    "halu": {
+      "n": 150,
+      "over_limit": 0,
+      "maximum_wordpieces": 41
+    }
+  },
+  "chunks": {
+    "mab": {
+      "n": 3170,
+      "over_limit": 0,
+      "maximum_wordpieces": 213
+    },
+    "halu": {
+      "n": 40792,
+      "over_limit": 0,
+      "maximum_wordpieces": 190
+    }
+  },
+  "interpretation": "The encoder truncates over-limit inputs; the shared reader receives the full question and complete selected chunks. This is an encoder representation limit, not reader context truncation."
+}

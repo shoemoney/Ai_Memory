@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 27
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c6b8768ae86df6f67f208bb83390358c572e060d7799633048bf2dbf21c51685",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-905dd0b1-e55c-4095-9c83-09687898f16f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Recommended bourbon for a sweeter taste is from Four Roses Distillery\",\n        \"Four Roses offers tours and tastings, allowing customers to try different recipes\",\n        \"Four Roses Distillery has a gift shop where customers can purchase bottles of bourbon and branded merchandise\",\n        \"Visitors to Four Roses Distillery can bring bottles of alcohol onto a flight or across state borders\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332300,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 1812,
+      "total_tokens": 1898,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Recommended bourbon for a sweeter taste is from Four Roses Distillery\",\n        \"Four Roses offers tours and tastings, allowing customers to try different recipes\",\n        \"Four Roses Distillery has a gift shop where customers can purchase bottles of bourbon and branded merchandise\",\n        \"Visitors to Four Roses Distillery can bring bottles of alcohol onto a flight or across state borders\"\n    ]\n}",
+  "seconds": 4.32022289399174,
+  "prompt_tokens_local": 1812,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

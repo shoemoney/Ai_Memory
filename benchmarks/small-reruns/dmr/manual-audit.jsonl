@@ -1,0 +1,40 @@
+{"id": 327, "arm": "full_context", "tester_correct": true, "reason": "Names both supplied objects.", "tester": "implementation agent; not independent human"}
+{"id": 327, "arm": "dense_top5", "tester_correct": true, "reason": "Quoted evidence supplies both objects.", "tester": "implementation agent; not independent human"}
+{"id": 57, "arm": "full_context", "tester_correct": false, "reason": "Attributes camping in woods to the wrong speaker; reference is beach.", "tester": "implementation agent; not independent human"}
+{"id": 57, "arm": "dense_top5", "tester_correct": true, "reason": "Explicitly answers beach.", "tester": "implementation agent; not independent human"}
+{"id": 12, "arm": "full_context", "tester_correct": true, "reason": "Explicitly names the reference color.", "tester": "implementation agent; not independent human"}
+{"id": 12, "arm": "dense_top5", "tester_correct": true, "reason": "Explicitly names the reference color.", "tester": "implementation agent; not independent human"}
+{"id": 379, "arm": "full_context", "tester_correct": true, "reason": "Robot answer includes the required topic; extra detail does not remove it.", "tester": "implementation agent; not independent human"}
+{"id": 379, "arm": "dense_top5", "tester_correct": false, "reason": "Abstains on which object; no robot answer.", "tester": "implementation agent; not independent human"}
+{"id": 140, "arm": "full_context", "tester_correct": false, "reason": "Negates the required explanation: says cats do not want to eat birds.", "tester": "implementation agent; not independent human"}
+{"id": 140, "arm": "dense_top5", "tester_correct": false, "reason": "Restates premise without the requested reason.", "tester": "implementation agent; not independent human"}
+{"id": 125, "arm": "full_context", "tester_correct": true, "reason": "Names the reference dog breed.", "tester": "implementation agent; not independent human"}
+{"id": 125, "arm": "dense_top5", "tester_correct": true, "reason": "Names the reference dog breed despite irrelevant additional text.", "tester": "implementation agent; not independent human"}
+{"id": 114, "arm": "full_context", "tester_correct": true, "reason": "Names the reference color.", "tester": "implementation agent; not independent human"}
+{"id": 114, "arm": "dense_top5", "tester_correct": true, "reason": "Names the reference color.", "tester": "implementation agent; not independent human"}
+{"id": 71, "arm": "full_context", "tester_correct": true, "reason": "Identifies meditation before the event.", "tester": "implementation agent; not independent human"}
+{"id": 71, "arm": "dense_top5", "tester_correct": false, "reason": "Abstains without the required activity.", "tester": "implementation agent; not independent human"}
+{"id": 377, "arm": "full_context", "tester_correct": true, "reason": "Names the reference gift.", "tester": "implementation agent; not independent human"}
+{"id": 377, "arm": "dense_top5", "tester_correct": true, "reason": "Names the reference gift.", "tester": "implementation agent; not independent human"}
+{"id": 52, "arm": "full_context", "tester_correct": true, "reason": "Names both required classroom colors.", "tester": "implementation agent; not independent human"}
+{"id": 52, "arm": "dense_top5", "tester_correct": true, "reason": "Names both required classroom colors.", "tester": "implementation agent; not independent human"}
+{"id": 346, "arm": "full_context", "tester_correct": true, "reason": "Identifies museum tour-guide work.", "tester": "implementation agent; not independent human"}
+{"id": 346, "arm": "dense_top5", "tester_correct": true, "reason": "Identifies museum as workplace.", "tester": "implementation agent; not independent human"}
+{"id": 496, "arm": "full_context", "tester_correct": true, "reason": "Evidence supplies the reference hobby.", "tester": "implementation agent; not independent human"}
+{"id": 496, "arm": "dense_top5", "tester_correct": true, "reason": "Evidence supplies the reference hobby.", "tester": "implementation agent; not independent human"}
+{"id": 456, "arm": "full_context", "tester_correct": true, "reason": "Names the reference occupation.", "tester": "implementation agent; not independent human"}
+{"id": 456, "arm": "dense_top5", "tester_correct": false, "reason": "Gives a different occupation.", "tester": "implementation agent; not independent human"}
+{"id": 279, "arm": "full_context", "tester_correct": true, "reason": "Contains army, the required occupational topic, despite uncertainty about a finer title.", "tester": "implementation agent; not independent human"}
+{"id": 279, "arm": "dense_top5", "tester_correct": true, "reason": "Contains army, the required occupational topic, despite uncertainty about a finer title.", "tester": "implementation agent; not independent human"}
+{"id": 44, "arm": "full_context", "tester_correct": false, "reason": "Never supplies the required dog-based reasoning; unrelated collectible discussion.", "tester": "implementation agent; not independent human"}
+{"id": 44, "arm": "dense_top5", "tester_correct": false, "reason": "Never supplies the required reason.", "tester": "implementation agent; not independent human"}
+{"id": 302, "arm": "full_context", "tester_correct": false, "reason": "Only says roommate; omits the identifying best-friend relationship required by the reference.", "tester": "implementation agent; not independent human"}
+{"id": 302, "arm": "dense_top5", "tester_correct": true, "reason": "Supplies both roommate and best-friend relationship.", "tester": "implementation agent; not independent human"}
+{"id": 216, "arm": "full_context", "tester_correct": false, "reason": "Gives hiking rather than the reference activity.", "tester": "implementation agent; not independent human"}
+{"id": 216, "arm": "dense_top5", "tester_correct": true, "reason": "Includes volunteering among the discussed activities; accepted under the permissive topic rule despite abstention.", "tester": "implementation agent; not independent human"}
+{"id": 16, "arm": "full_context", "tester_correct": true, "reason": "Explicitly contains the reference band despite later claiming insufficient evidence.", "tester": "implementation agent; not independent human"}
+{"id": 16, "arm": "dense_top5", "tester_correct": false, "reason": "Gives a different music preference and omits the reference band.", "tester": "implementation agent; not independent human"}
+{"id": 15, "arm": "full_context", "tester_correct": true, "reason": "Identifies the required war stories despite prefatory uncertainty.", "tester": "implementation agent; not independent human"}
+{"id": 15, "arm": "dense_top5", "tester_correct": true, "reason": "Identifies the required war stories.", "tester": "implementation agent; not independent human"}
+{"id": 47, "arm": "full_context", "tester_correct": false, "reason": "Adds incorrect ingredients and gives a conflicting baking duration.", "tester": "implementation agent; not independent human"}
+{"id": 47, "arm": "dense_top5", "tester_correct": true, "reason": "Includes all reference ingredients and preparation and baking steps.", "tester": "implementation agent; not independent human"}

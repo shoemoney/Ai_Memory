@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 67
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "3017663041e80c577a69b189be2bc43e3754e966d1bf7e8fe4353f55641f0304",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5be75da6-eda3-48ac-b547-c19db5873d7a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"DaySculpting is a program that teaches users how to create success one day at a time\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"DaySculpting is a 90-day program\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"DaySculpting helps users create their Epic Ideal Day\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"DaySculpting helps users create habits that lead to success\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"DaySculpting helps users see their day as successful by celebrating their highlights and being present to things they could have improved on\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"DaySculpting helps users replace their mind traps with empowering rituals and habits\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"DaySculpting helps users flip their success switch back on\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"DaySculpting helps users master a new mindstate of success\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"DaySculpting helps users build a powerful day to create a series of 'dynamic days'\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"DaySculpting helps users keep positive results flowing\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"DaySculpting helps users put their success energy into a permanent 'ON' position\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357483,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 449,
+      "prompt_tokens": 2238,
+      "total_tokens": 2687,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"DaySculpting is a program that teaches users how to create success one day at a time\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"DaySculpting is a 90-day program\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"DaySculpting helps users create their Epic Ideal Day\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"DaySculpting helps users create habits that lead to success\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"DaySculpting helps users see their day as successful by celebrating their highlights and being present to things they could have improved on\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"DaySculpting helps users replace their mind traps with empowering rituals and habits\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"DaySculpting helps users flip their success switch back on\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"DaySculpting helps users master a new mindstate of success\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"DaySculpting helps users build a powerful day to create a series of 'dynamic days'\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"DaySculpting helps users keep positive results flowing\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"DaySculpting helps users put their success energy into a permanent 'ON' position\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 68.66345785900194,
+  "prompt_tokens_local": 2238
+}

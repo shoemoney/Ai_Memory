@@ -1,0 +1,62 @@
+{
+  "sampled": 1800,
+  "kept": 1427,
+  "keep_rate": 0.7927777777777778,
+  "kinds_under_50_percent": [
+    "join",
+    "date_interval"
+  ],
+  "by_kind": {
+    "revision": {
+      "sampled": 300,
+      "kept": 291,
+      "keep_rate": 0.97,
+      "truncated_or_malformed": 3,
+      "wrong_answer": 6
+    },
+    "historical": {
+      "sampled": 300,
+      "kept": 293,
+      "keep_rate": 0.9766666666666667,
+      "truncated_or_malformed": 2,
+      "wrong_answer": 5
+    },
+    "join": {
+      "sampled": 300,
+      "kept": 141,
+      "keep_rate": 0.47,
+      "truncated_or_malformed": 142,
+      "wrong_answer": 17
+    },
+    "date_order": {
+      "sampled": 300,
+      "kept": 299,
+      "keep_rate": 0.9966666666666667,
+      "truncated_or_malformed": 1,
+      "wrong_answer": 0
+    },
+    "date_interval": {
+      "sampled": 300,
+      "kept": 126,
+      "keep_rate": 0.42,
+      "truncated_or_malformed": 154,
+      "wrong_answer": 20
+    },
+    "missing": {
+      "sampled": 300,
+      "kept": 277,
+      "keep_rate": 0.9233333333333333,
+      "truncated_or_malformed": 23,
+      "wrong_answer": 0
+    }
+  },
+  "by_level": {
+    "1": 0.855,
+    "2": 0.795,
+    "3": 0.7283333333333334
+  },
+  "prompt_tokens": 8337050,
+  "sample_tokens": 1637463,
+  "mean_kept_sample_tokens": 640.155571128241,
+  "estimated_sampling_usd": 2.069289
+}

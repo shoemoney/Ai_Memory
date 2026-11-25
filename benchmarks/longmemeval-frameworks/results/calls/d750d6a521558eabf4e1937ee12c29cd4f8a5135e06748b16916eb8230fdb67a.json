@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ea2abea8d203b6febb4abfc9db84639489dbc899bc39aa278ad9c904c77223d9",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5cf40509-a772-4f47-bc21-7220cb3e577a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"A dog leash is a useful accessory for walking pets. It is typically made of durable materials to withstand wear and tear from daily use. Look for a leash that is comfortable for your dog to wear and fits well around their neck.\"\n        },\n        {\n            \"name\": \"wool coat\",\n            \"summary\": \"A wool coat is a warm and durable outerwear made from wool, a natural fiber known for its insulating properties. It is ideal for cold weather and provides excellent protection against the elements.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795360442,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 130,
+      "prompt_tokens": 7543,
+      "total_tokens": 7673,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"A dog leash is a useful accessory for walking pets. It is typically made of durable materials to withstand wear and tear from daily use. Look for a leash that is comfortable for your dog to wear and fits well around their neck.\"\n        },\n        {\n            \"name\": \"wool coat\",\n            \"summary\": \"A wool coat is a warm and durable outerwear made from wool, a natural fiber known for its insulating properties. It is ideal for cold weather and provides excellent protection against the elements.\"\n        }\n    ]\n}",
+  "seconds": 19.73083788799704,
+  "prompt_tokens_local": 7543
+}

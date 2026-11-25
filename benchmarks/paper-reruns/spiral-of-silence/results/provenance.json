@@ -1,0 +1,50 @@
+{
+  "code": {
+    "url": "https://github.com/VerdureChen/SOS-Retrieval-Loop",
+    "commit": "56a19847edfc30d1e6e59894d348e1c17ae15114",
+    "license": "No LICENSE file found at this revision; author code is fetched, not vendored."
+  },
+  "paper": {
+    "url": "https://arxiv.org/html/2404.10496v2",
+    "published_claim": "Under 10% human-authored top-50 results after ten iterations across datasets; Figure 4."
+  },
+  "data": {
+    "questions": "author repository NQ sample of 200",
+    "human_corpus_source": "https://dl.fbaipublicfiles.com/dpr/data/retriever_results/single/nq-test.json.gz",
+    "artifact_last_modified": "2020-04-10T17:35:59Z",
+    "artifact_s3_version": "TMro4OpDN4xxCBSmTU1bCt9aK85aaA.c",
+    "license": "No artifact-specific license verified; original Wikipedia-derived data and author query data are fetched, not redistributed."
+  },
+  "source_sha256": {
+    "data_v2/input_data/DPR/sampled_query/nq-test-sample-200.jsonl": "eb53af493630376dc3d40f94249f063e83321c6b5ef4b3ad6a569e09dd83adee",
+    "src/llm_zero_generate/get_response_llm.py": "3005d9d95acee3f4d4b5c5d34ff6c4abe781da2a087d41de3a7d882bb5f80857",
+    "src/post_process/process_llm_text.py": "a50ad60eb538330ee124556bcf99009f09f2618bc1054e94e6a57b83154306bd",
+    "src/evaluation/eva_percentage.py": "0f34f544f110e6768f35433f895e358a21c44cba04c42f55cfd7264cd12378c1",
+    "src/retrieval_loop/retrieve_configs/contriever-config-nq.json": "e40fa6c1af32fc7692d9c76ae56833b9aee3b9cf00a2fbca3cc2877fa4c2d7b0",
+    "src/retrieval_loop/embedding_index_incremental_corpus.py": "17336de632a6ce9bea69306bb07be85b071f8b35f6545942a0a4e76484bf0420"
+  },
+  "implementation": {
+    "author_components": "Prompt literal, filter_response function, calculate_llm_human_proportion scorer, sampled queries; Contriever mean pooling and unnormalized inner product follow the supplied author configuration",
+    "adaptations": [
+      "Replace full Wikipedia index with union of top-20 DPR contexts for matched questions",
+      "Replace multi-model multi-dataset writes with one local generator writing one document per question per round",
+      "Use exact numpy inner-product ranking instead of LangChain/Faiss/Elasticsearch orchestration",
+      "Select intended prompt explicitly: upstream Mode maps both Zero-shot and With-context to 0; avoid that ambiguous dispatcher",
+      "Use fixed per-request seeds; retain temperature 0.7, max_tokens 128, top_p 1, presence_penalty 0.6, five context documents, 100-word cap and author post-processing",
+      "Two concurrent local requests; up to three attempts for too-short generation, retaining attempts and varying fixed seed by attempt",
+      "Use the official public Contriever MS MARCO checkpoint; the exact bytes of the authors historical local contriever-base-msmarco folder are not published. Batch size 32 instead of 512."
+    ],
+    "models": "Local Qwen2.5-3B-Instruct Q4_K_M generator and CPU facebook/contriever-msmarco retriever",
+    "judge": "None"
+  },
+  "embedding": {
+    "id": "facebook/contriever-msmarco",
+    "revision": "abe8c1493371369031bcb1e02acb754cf4e162fa",
+    "pooling": "attention-mask mean pooling through SentenceTransformer, as in the author HuggingFaceEmbeddings wrapper",
+    "normalize_embeddings": false,
+    "similarity": "inner product",
+    "license": "Associated official Contriever repository: CC-BY-NC-4.0. The Hugging Face model card does not state a separate weight license.",
+    "license_source": "https://github.com/facebookresearch/contriever/blob/main/LICENSE",
+    "pooling_source": "https://huggingface.co/facebook/contriever-msmarco/blob/abe8c1493371369031bcb1e02acb754cf4e162fa/README.md"
+  }
+}

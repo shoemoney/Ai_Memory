@@ -1,0 +1,51 @@
+{
+  "item": {
+    "question_id": "prerequisite",
+    "system": "graphiti"
+  },
+  "phase": "graphiti-json",
+  "prompt_sha256": "21f5be7d49febe769e69e749281fc4dba9b71045e3a8036a480748991aac26e2",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-33930e3b-9c2e-4e12-9970-ff06413a19d5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"$defs\": {\"ExtractedEntity\": {\"properties\": {\"name\": {\"description\": \"Name of the extracted entity\", \"title\": \"Name\", \"type\": \"string\"}, \"entity_type_id\": {\"description\": \"ID of the classified entity type. Must be one of the provided entity_type_id integers.\", \"title\": \"Entity Type Id\", \"type\": \"integer\"}, \"episode_indices\": {\"description\": \"List of episode numbers (0-indexed) this entity was extracted from. When processing a single episode, this should be [0].\", \"items\": {\"type\": \"integer\"}, \"title\": \"Episode Indices\", \"type\": \"array\"}}, \"required\": [\"name\", \"entity_type_id\"], \"title\": \"ExtractedEntity\", \"type\": \"object\"}}, \"properties\": {\"extracted_entities\": {\"description\": \"List of extracted entities\", \"items\": {\"$ref\": \"#/$defs/ExtractedEntity\"}, \"title\": \"Extracted Entities\", \"type\": \"array\"}}, \"required\": [\"extracted_entities\"], \"title\": \"ExtractedEntities\", \"type\": \"object\"}}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795328681,
+    "model": "default_model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 237,
+      "prompt_tokens": 2230,
+      "total_tokens": 2467,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "text": "{\"$defs\": {\"ExtractedEntity\": {\"properties\": {\"name\": {\"description\": \"Name of the extracted entity\", \"title\": \"Name\", \"type\": \"string\"}, \"entity_type_id\": {\"description\": \"ID of the classified entity type. Must be one of the provided entity_type_id integers.\", \"title\": \"Entity Type Id\", \"type\": \"integer\"}, \"episode_indices\": {\"description\": \"List of episode numbers (0-indexed) this entity was extracted from. When processing a single episode, this should be [0].\", \"items\": {\"type\": \"integer\"}, \"title\": \"Episode Indices\", \"type\": \"array\"}}, \"required\": [\"name\", \"entity_type_id\"], \"title\": \"ExtractedEntity\", \"type\": \"object\"}}, \"properties\": {\"extracted_entities\": {\"description\": \"List of extracted entities\", \"items\": {\"$ref\": \"#/$defs/ExtractedEntity\"}, \"title\": \"Extracted Entities\", \"type\": \"array\"}}, \"required\": [\"extracted_entities\"], \"title\": \"ExtractedEntities\", \"type\": \"object\"}}",
+  "seconds": 13.351356327999383,
+  "prompt_tokens_local": 2230
+}

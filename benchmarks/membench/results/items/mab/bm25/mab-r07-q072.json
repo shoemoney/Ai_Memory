@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q072",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "4566ae65b60bb076396d77fb22b512e82725544ea12b22591a443e3c449e30d4",
+  "reference_sha256": "91c4e4175d86a9f3026562e3ce19b73ce6c78a29e2dde2d52fdfe5effb1e2fea",
+  "method": "bm25",
+  "answer": "Person021 left Person302 to journey to Person187 with Person646.",
+  "response": {
+    "text": "Person021 left Person302 to journey to Person187 with Person646.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 23,
+      "prompt_tokens": 3345,
+      "total_tokens": 3368,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 16.696451802010415,
+    "request_sha256": "962efbc01a062953bee85b03d71efd31930e843f27e2e13e07b6380728fcf814",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    261,
+    183,
+    337,
+    263,
+    305,
+    336,
+    173,
+    267,
+    344,
+    143,
+    407,
+    319,
+    200,
+    270,
+    325,
+    188,
+    282,
+    185,
+    186,
+    262
+  ],
+  "retrieval_scores": [
+    152.66640779721965,
+    147.11414671902097,
+    139.95819094219704,
+    136.7807168795514,
+    136.452039612994,
+    135.75538289508594,
+    135.08300119649627,
+    134.3820941464178,
+    134.25003407840552,
+    132.9820467014149,
+    132.5553567184725,
+    132.4266400902274,
+    131.22182685903954,
+    130.33003135585537,
+    128.80094398145542,
+    128.76562811106643,
+    128.57450165200797,
+    128.51049750941436,
+    127.78378911803294,
+    126.47926901630933
+  ],
+  "retrieval_seconds": 0.02388393100409303,
+  "provided_context_sha256": "ec7250d6bd978bfcf5d3bfa409ea7f5ff26d13d2aa4453a1e5f3dec07e10f70b",
+  "provided_context_tokens": 2967,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "b4280f1abfa3bccb60cc80933654417f22b1bf84e5d295457d319411205dac1d",
+    "raw_answer_sha256": "fb8b501816e3878e79c3d77fb515dc58c07fbf7ff5ecd43c2938b71a1df9c611",
+    "answer_redacted": false
+  }
+}

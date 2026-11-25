@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 24
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "a8d70eb0c0eda1f0d1a902980df2b3a472e3961b6e79feb8b154a7efce19f43b",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-1c32e6b9-b140-49ef-b5e6-257135433b51",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Lockheed Martin\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_PART_OF\", \"fact\": \"Trigger is a part of Lockheed Martin.\", \"valid_at\": \"2023-08-15T08:46:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795361169,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 10007,
+      "total_tokens": 10090,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Lockheed Martin\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_PART_OF\", \"fact\": \"Trigger is a part of Lockheed Martin.\", \"valid_at\": \"2023-08-15T08:46:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 30.061921568994876,
+  "prompt_tokens_local": 10007
+}

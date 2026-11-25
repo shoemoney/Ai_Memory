@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q031",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "f4752de81f24a561ec640d90f14abd41575d63627df89bbc207105ffc1bf4a3c",
+  "reference_sha256": "781c829e798c5faf41db6bed404c428098d411d9209033b477d305d9eed664f1",
+  "method": "rag",
+  "answer": "Person513 and Mrs. Person409 talked in tears.",
+  "response": {
+    "text": "Person513 and Mrs. Person409 talked in tears.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 16,
+      "prompt_tokens": 3402,
+      "total_tokens": 3418,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.062088061997201,
+    "request_sha256": "638253d6d17929ffb50c0c57d111f219245d028d5f5c9f2d2f018f46fa2bf4a2",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    546,
+    34,
+    191,
+    190,
+    525,
+    294,
+    554,
+    480,
+    53,
+    127,
+    159,
+    186,
+    498,
+    368,
+    198,
+    271,
+    445,
+    47,
+    395,
+    472
+  ],
+  "retrieval_scores": [
+    0.5095081329345703,
+    0.4832861125469208,
+    0.4760743975639343,
+    0.47604668140411377,
+    0.4751885235309601,
+    0.47386687994003296,
+    0.4719943702220917,
+    0.4716271162033081,
+    0.4693158268928528,
+    0.46791979670524597,
+    0.46776795387268066,
+    0.46770793199539185,
+    0.46749886870384216,
+    0.46413180232048035,
+    0.4641168713569641,
+    0.4627945125102997,
+    0.4566156268119812,
+    0.45592552423477173,
+    0.4536420404911041,
+    0.4530940055847168
+  ],
+  "retrieval_seconds": 0.029245635989354923,
+  "provided_context_sha256": "a79d607c89e4c96829793eff6ee84aff45d7ae9a4284eddc872dca6277e569fd",
+  "provided_context_tokens": 3066,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "91914583037070033f90db0c8db0e7eb465419bcf0321c02c41dc7468c17bccc",
+    "raw_answer_sha256": "7d01ca79fa2513c312b975bf89dde6f8c76674e364afceeb3a8dd7a4ddccec9f",
+    "answer_redacted": false
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "dataset_revision": "synthetic-clusters-v1",
+  "dataset_license": "CC0-1.0",
+  "seed": 20261122,
+  "rows": 100000,
+  "dimensions": 384,
+  "queries": 200,
+  "scope": "Hashes identify the shipped reproduction files and final primary result artifacts, not the archived failed attempts",
+  "code_sha256": {
+    "Dockerfile": "2614ae881d1300d651f711485a7ee180aea678285ab58af13a8335152dcafd4f",
+    "LICENSE": "864f4893aff8d3539e17c14c6e0006a52ca45f625c97f365fa0070a468d5b542",
+    "chart.py": "8291304f460f1b71de2451b5ea9c9080dd76cd7c388693422382b689cc851000",
+    "features.py": "028ee1e5c057241b07b4201ad7ee22ae8a00391fd19efad3feb22e446ee6820d",
+    "fetch_sources.py": "a0d381aeb4a05fd7222d641804c53d518c29dfbb6bc87149d7a0ec21fced3fd3",
+    "make_report.py": "fac1c4afde290e89f789868b46ef1531b4e6a16ae7f788f04d3abf0e0a8560ea",
+    "mongo_files.py": "781c750b64c042dd7fcdf603625cd768cd7312ef23a13ffbb6d9a947ecbbfd94",
+    "prefix.py": "0ed9fabaec983714d323722202f56252b3aed47a12f7ca7fa8bfd679dc446956",
+    "redis_default.py": "444cfe634ce42e25ee8cbf8d189819cb47cffbf47df0f3b9eec5eadeea840034",
+    "reproduce.sh": "ae34b89d284539df5249863c0b6351ef39418aa70bb74a7cb1e57f949c7e011a",
+    "requirements.txt": "170e80a6cf48d11a5cc9eca3767ddfefa85c3ec95923b3de31b0ceb488f3f815",
+    "run.py": "771fdf36667204d3141520bfdef3b6553a97b398606c82e68522eb6f2d8dfca9",
+    "summarize.py": "a776046bf8dcc81e69da2ecc4f0ab538f482fa1a48cd62b0a3ca669467d7a751",
+    "worker.py": "1dea7f5bd14e23283123a184fab0c49114964a32b960b59867b33726497333ec"
+  },
+  "results_sha256": {
+    "mongo_scalar.jsonl": "60449d4bfad3635e3b7bd0252355c78f8962a3a106b6296c4abfdc1f2026eb7e",
+    "mongo_none.jsonl": "994aca5e20f4c03f0f0759ed936701e592339ded53f426d61d5e16a2d604f3fb",
+    "duckdb.jsonl": "23f8f6efec9716616bac39f01ea3c2322cc27e9af6cd1af0a4f84868cd8833dc",
+    "sqlite.jsonl": "d1587b269de492f49505fe225fc143211e804fe164c9d8bb34f1473264c4dad8",
+    "sources.json": "fb704cdd9c0aa298b6fed4165800427e808d70b9aa9cfca7d9f738ce1d6a7205",
+    "redis.jsonl": "9ee47578269705e18a1d61adb697d5bba65cc5e50085e8cce6d3472009e985a4",
+    "valkey.jsonl": "52bf7ce9e111479a1b06e36d4d92b6ddc90ffa687a065e61c100b5d9338ee7ef",
+    "features.jsonl": "a6c8bb691fc5271385bc47aaf7918c57fb4e2b242d63356490ac8100bbc01a81",
+    "memcached.jsonl": "5d339e9a7865a9fc3625d55cd9a483fea413f0887210908ce664603bc1823ff9",
+    "redis-default.json": "6e50c2684a0b764661112900d4ecedaf2419a6b1ac9743d907c43eecb47672ce",
+    "defaults.jsonl": "add479e844444d802e7bfb295a6d5d336cfdd667070348cd77b32b58e89b9158",
+    "postgres.jsonl": "0fc0b0b43a9276e665c652b471713c6704d7577bc8dccea8530a05c8e091cb58",
+    "mongo_binary.jsonl": "3d2534294e624d882ed8cf3722a1a0c8e47b14e4c7e6e3358a6490ae7eb13825",
+    "prefix.json": "c3da2090996746200690437f56f1f4c6d05378b5140d38af54dae38716d145a2",
+    "summary.json": "defb9a5e030b0a9ff4258ee2e735d623ba879d3a2dbb12dfce4c5a62812cd003"
+  }
+}

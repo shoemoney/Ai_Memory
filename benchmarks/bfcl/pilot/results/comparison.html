@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><style>
+body{color:var(--foreground);font-family:var(--font-sans);margin:0}
+p{line-height:1.45}.note{color:var(--muted-foreground);font-size:13px}
+.group{margin:18px 0}.label{font-weight:600;margin-bottom:6px}
+.row{display:grid;grid-template-columns:35px 1fr 110px;align-items:center;gap:9px;margin:7px 0;font-size:13px}
+.track{height:16px;background:var(--secondary);border-radius:3px;overflow:hidden}
+.bar{height:16px;background:var(--chart-1)}.on{background:var(--chart-2)}
+.value{text-align:right;font-variant-numeric:tabular-nums}
+</style><body><p><strong>Local BFCL-V4 subset</strong><br>Correct out of the same 40 cases in four tool-calling categories.</p>
+<div class="group"><div class="label">Qwen3.5-0.8B, Q4_K_M</div>
+<div class="row" aria-label="Thinking off: 18/40 · 45%"><span>off</span><div class="track"><div class="bar off" style="width:45.0%"></div></div><span class="value">18/40 · 45%</span></div>
+<div class="row" aria-label="Thinking on: 27/40 · 67.5%"><span>on</span><div class="track"><div class="bar on" style="width:67.5%"></div></div><span class="value">27/40 · 67.5%</span></div>
+</div>
+<div class="group"><div class="label">Qwen3.5-2B, Q4_K_M</div>
+<div class="row" aria-label="Thinking off: 29/40 · 72.5%"><span>off</span><div class="track"><div class="bar off" style="width:72.5%"></div></div><span class="value">29/40 · 72.5%</span></div>
+<div class="row" aria-label="Thinking on: 37/40 · 92.5%"><span>on</span><div class="track"><div class="bar on" style="width:92.5%"></div></div><span class="value">37/40 · 92.5%</span></div>
+</div>
+<div class="group"><div class="label">Qwen3.5-4B, Q4_K_M</div>
+<div class="row" aria-label="Thinking off: 32/40 · 80%"><span>off</span><div class="track"><div class="bar off" style="width:80.0%"></div></div><span class="value">32/40 · 80%</span></div>
+<div class="row" aria-label="Thinking on: 34/40 · 85%"><span>on</span><div class="track"><div class="bar on" style="width:85.0%"></div></div><span class="value">34/40 · 85%</span></div>
+</div>
+<p class="note">Apple M3 Ultra, 96 GB. Thinking off/on. These subset results are not the published full BFCL-V4 aggregate and do not measure memory extraction. Truncated responses remain scored by the official BFCL rules; details are in REPORT.md.</p></body></html>

@@ -1,0 +1,24 @@
+{
+  "pr_code_commit": "745095a, an earlier state of the PR branch since amended: it differed in the sampling API calls, the answer-cost printout and the save_every default; training and scoring code were the same",
+  "data_sha256": {
+    "train": "2f1b27f1dd3aeaf72fdcf48d92b5248702eef1d3a8787f29d8acdacc15279d34",
+    "valid": "45e409b6cbebf0b349ca0b8a77fe8f1047d75f3474099feb8b5aa0d2e66fb8f1",
+    "test": "ceaec65e9a1cab842e9e68762fd85bf765de9dcc21090c526f0ed813a76c35a6",
+    "answers": "9b64cd9202de87718ecd254c0b9756110a3ee2568b9749884ffd0ce102372403"
+  },
+  "blind_test_sha256": "cf13fa71d5c824e5dda2d421a596f16fbc655d84696b1cfb903e81de27c4041e",
+  "final_checkpoint": "tinker://<run>/sampler_weights/final",
+  "checkpoint_sha256": "04f9760acfcc337b53afa1516eedee9a39e8cf795d5f2b37a3469d9ad0653336",
+  "checkpoint_still_on_account": false,
+  "units": [
+    "inkling-tinker-tools-pr-prepare",
+    "inkling-tinker-tools-pr-train",
+    "inkling-tinker-tools-pr-eval"
+  ],
+  "how": "separate units; the account's checkpoints from this run were deleted afterwards to free storage",
+  "package_versions": {
+    "tinker": "0.40.0",
+    "tml-renderers": "0.4.2"
+  },
+  "settings": "README defaults: LoRA rank 32, batch 32, one epoch, effort 0.0, default learning rate, seed 0; save_every 50"
+}

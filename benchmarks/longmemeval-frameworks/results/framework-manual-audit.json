@@ -1,0 +1,62 @@
+{
+  "reviewer": "tester who implemented and ran this benchmark, not an independent human",
+  "selection": "All six primary framework judgments of the final N=3 run (every framework item), read directly; the preselected 40-pair plan in the manifest was not applicable at N=3. Tester review, not an independent human.",
+  "n": 6,
+  "agree": 6,
+  "items": [
+    {
+      "question_id": "gpt4_8c8961ae",
+      "system": "mem0-extract",
+      "machine_correct": false,
+      "tester_correct": false,
+      "agree": true,
+      "reason": "The reference names the solo Thailand trip as first; the response declines to identify either trip and says the supplied context has no Thailand trip. It does not answer the temporal comparison.",
+      "reviewed_epoch": 1795349338.0698676
+    },
+    {
+      "question_id": "gpt4_8c8961ae",
+      "system": "graphiti",
+      "machine_correct": false,
+      "tester_correct": false,
+      "agree": true,
+      "reason": "The response declines the temporal comparison and says the context has no Europe or Thailand trips. The reference identifies the solo Thailand trip as first.",
+      "reviewed_epoch": 1795354456.0650337
+    },
+    {
+      "question_id": "fca70973",
+      "system": "mem0-extract",
+      "machine_correct": false,
+      "tester_correct": false,
+      "agree": true,
+      "reason": "The reference wants theme park suggestions tied to thrill rides, special events, food and night shows. The answer recalls a VIP buffet and an unrelated Miami trip and gives no suggestions.",
+      "reviewed_epoch": 1795375265.8042765
+    },
+    {
+      "question_id": "fca70973",
+      "system": "graphiti",
+      "machine_correct": false,
+      "tester_correct": false,
+      "agree": true,
+      "reason": "The answer says only that Universal Studios Hollywood is available for booking; it offers no suggestions matching the stated preferences.",
+      "reviewed_epoch": 1795375265.8042786
+    },
+    {
+      "question_id": "681a1674",
+      "system": "mem0-extract",
+      "machine_correct": false,
+      "tester_correct": false,
+      "agree": true,
+      "reason": "The reference is 2. The answer says the history does not say, so it gives no count.",
+      "reviewed_epoch": 1795375265.8042796
+    },
+    {
+      "question_id": "681a1674",
+      "system": "graphiti",
+      "machine_correct": false,
+      "tester_correct": false,
+      "agree": true,
+      "reason": "The reference is 2. The answer says the history does not say, so it gives no count.",
+      "reviewed_epoch": 1795375265.8042803
+    }
+  ]
+}

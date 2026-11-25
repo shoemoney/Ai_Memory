@@ -1,0 +1,222 @@
+{
+  "id": "multiple_2",
+  "category": "multiple",
+  "result": [
+    {
+      "country_info_capital": "{\"country\":\"Brazil\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'What is the capital of Brazil?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "country_info_largest_city",
+                "description": "Fetch the largest city of a specified country.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "country": {
+                      "type": "string",
+                      "description": "Name of the country."
+                    }
+                  },
+                  "required": [
+                    "country"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "country_info_capital",
+                "description": "Fetch the capital city of a specified country.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "country": {
+                      "type": "string",
+                      "description": "Name of the country."
+                    }
+                  },
+                  "required": [
+                    "country"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "country_info_population",
+                "description": "Fetch the current population of a specified country.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "country": {
+                      "type": "string",
+                      "description": "Name of the country."
+                    }
+                  },
+                  "required": [
+                    "country"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 428,
+    "output_token_count": 92,
+    "latency": 0.8034872200005339
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the capital of Brazil?"
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "country_info_largest_city",
+          "description": "Fetch the largest city of a specified country.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Name of the country."
+              }
+            },
+            "required": [
+              "country"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "country_info_capital",
+          "description": "Fetch the capital city of a specified country.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Name of the country."
+              }
+            },
+            "required": [
+              "country"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "country_info_population",
+          "description": "Fetch the current population of a specified country.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Name of the country."
+              }
+            },
+            "required": [
+              "country"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-847RAsOMe4BeOyJ2TASy6rsX9otBnqma",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "9oourNRMuQJnmi6ceLPJqejzUUxMGyRe",
+              "function": {
+                "arguments": "{\"country\":\"Brazil\"}",
+                "name": "country_info_capital"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for the capital of Brazil. I can see there's a tool available called \"country_info_capital\" that can fetch the capital city of a specified country. This is exactly what I need to use.\n\nI should call this function with \"Brazil\" as the country parameter."
+        }
+      }
+    ],
+    "created": 1795287718,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 92,
+      "prompt_tokens": 428,
+      "total_tokens": 520,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 426,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 426,
+      "prompt_n": 2,
+      "prompt_ms": 10.15,
+      "prompt_per_token_ms": 5.075,
+      "prompt_per_second": 197.04433497536945,
+      "predicted_n": 92,
+      "predicted_ms": 782.947,
+      "predicted_per_token_ms": 8.603813186813186,
+      "predicted_per_second": 116.22753519714617
+    }
+  },
+  "elapsed_seconds": 0.8039279229997192,
+  "score": {
+    "valid": true
+  }
+}

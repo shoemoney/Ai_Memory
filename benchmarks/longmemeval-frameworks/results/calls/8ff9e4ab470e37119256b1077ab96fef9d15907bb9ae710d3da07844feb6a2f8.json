@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 36
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7dad138eb575b6f55c764f533e2a4c2cd01d56a5d23af3f8f7d2feb935631f2d",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9a23e1ea-758e-4812-b77e-7ca69044d1cf",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Samsung Galaxy S22 Ultra\", \"target_entity_name\": \"Netgear Nighthawk RAX80\", \"relation_type\": \"USES\", \"fact\": \"The Samsung Galaxy S22 Ultra, which has Wi-Fi 6 capabilities, can be used with a Wi-Fi 6 router like the Netgear Nighthawk RAX80 for optimal streaming performance.\", \"valid_at\": \"2023-05-28T11:59:00Z\", \"invalid_at\": null, \"episode_indices\": [1]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795349344,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 126,
+      "prompt_tokens": 8672,
+      "total_tokens": 8798,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Samsung Galaxy S22 Ultra\", \"target_entity_name\": \"Netgear Nighthawk RAX80\", \"relation_type\": \"USES\", \"fact\": \"The Samsung Galaxy S22 Ultra, which has Wi-Fi 6 capabilities, can be used with a Wi-Fi 6 router like the Netgear Nighthawk RAX80 for optimal streaming performance.\", \"valid_at\": \"2023-05-28T11:59:00Z\", \"invalid_at\": null, \"episode_indices\": [1]}]}",
+  "seconds": 67.90757271500479,
+  "prompt_tokens_local": 8672
+}

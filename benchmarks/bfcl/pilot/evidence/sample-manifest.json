@@ -1,0 +1,71 @@
+{
+  "seed": 20261121,
+  "per_category": 10,
+  "sampling_rule": "Independent random.Random(f\"{seed}:{category}\").sample(rows, 10) in original file order",
+  "categories": {
+    "simple_python": {
+      "n": 400,
+      "ids": [
+        "simple_python_180",
+        "simple_python_150",
+        "simple_python_67",
+        "simple_python_26",
+        "simple_python_126",
+        "simple_python_313",
+        "simple_python_163",
+        "simple_python_244",
+        "simple_python_205",
+        "simple_python_146"
+      ],
+      "sha256": "82dd63ba502eb2520c6b5d1d9a5c4b590e03ff261565175561f6228a367d1991"
+    },
+    "multiple": {
+      "n": 200,
+      "ids": [
+        "multiple_73",
+        "multiple_35",
+        "multiple_40",
+        "multiple_137",
+        "multiple_106",
+        "multiple_2",
+        "multiple_183",
+        "multiple_60",
+        "multiple_120",
+        "multiple_43"
+      ],
+      "sha256": "aef168155ebd74b7ac2401198b201343bc7d16d7a3d7e0d4e6d8ee82c6969b2a"
+    },
+    "parallel": {
+      "n": 200,
+      "ids": [
+        "parallel_115",
+        "parallel_118",
+        "parallel_89",
+        "parallel_144",
+        "parallel_172",
+        "parallel_85",
+        "parallel_55",
+        "parallel_164",
+        "parallel_113",
+        "parallel_163"
+      ],
+      "sha256": "19f51a82eff42e5d62541aa500115a056eb78f437c2ba1f10415fd7c8e5dda84"
+    },
+    "irrelevance": {
+      "n": 240,
+      "ids": [
+        "irrelevance_68",
+        "irrelevance_163",
+        "irrelevance_33",
+        "irrelevance_156",
+        "irrelevance_112",
+        "irrelevance_210",
+        "irrelevance_145",
+        "irrelevance_166",
+        "irrelevance_115",
+        "irrelevance_207"
+      ],
+      "sha256": "2b6ed4c2e992cdcf5f1678a701851f944bef7550ee026ed1ddb89efed5be01a6"
+    }
+  }
+}

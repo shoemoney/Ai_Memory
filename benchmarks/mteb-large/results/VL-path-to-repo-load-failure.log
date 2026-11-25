@@ -1,0 +1,18 @@
+{"event": "admitted", "free_percent": 60, "kernel_level": "1"}
+
+Fetching 20 files:   0%|          | 0/20 [00:00<?, ?it/s]
+Fetching 20 files: 100%|██████████| 20/20 [00:00<00:00, 4076.69it/s]
+Traceback (most recent call last):
+  File "/Users/account/membench-mteb-large-tmp/mlx_server.py", line 103, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx_server.py", line 37, in main
+    prepared,config,tokenizer=fetch_from_hub(Path(snapshot),lazy=True)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/mlx_embeddings/utils.py", line 331, in fetch_from_hub
+    model = load_model(model_path, lazy, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/account/membench-mteb-large-tmp/mlx-venv/lib/python3.12/site-packages/mlx_embeddings/utils.py", line 181, in load_model
+    "medsiglip" not in kwargs["path_to_repo"]
+                       ~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'path_to_repo'

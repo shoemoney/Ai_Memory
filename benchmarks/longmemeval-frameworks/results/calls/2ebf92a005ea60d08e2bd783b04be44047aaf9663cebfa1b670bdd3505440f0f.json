@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "857e00d0733c5751e803fc403c4bcb5dff362cfb2fb2e1a01c313b4ba44c0ed3",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9b2a78b4-a8a4-4c96-a90e-b9fdc7485a99",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Nisha's dad\",\n            \"summary\": \"\"\n        },\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"\"\n        },\n        {\n            \"name\": \"wool coat\",\n            \"summary\": \"Wool coats are typically made from high-quality wool fibers, providing durability and warmth. They are often used for outdoor activities and cold weather conditions.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367480,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 94,
+      "prompt_tokens": 5566,
+      "total_tokens": 5660,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 1383
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Nisha's dad\",\n            \"summary\": \"\"\n        },\n        {\n            \"name\": \"dog leash\",\n            \"summary\": \"\"\n        },\n        {\n            \"name\": \"wool coat\",\n            \"summary\": \"Wool coats are typically made from high-quality wool fibers, providing durability and warmth. They are often used for outdoor activities and cold weather conditions.\"\n        }\n    ]\n}",
+  "seconds": 26.352160523005296,
+  "prompt_tokens_local": 5566
+}

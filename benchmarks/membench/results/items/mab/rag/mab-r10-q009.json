@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q009",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "40115fbc305f0895599454fc0211b4ab46171cb9abeeb8ba344619ae440cf1d2",
+  "reference_sha256": "94719a64ad5b1d5167b264811566a1366d0272056591dfd31eb5b0201d86a260",
+  "method": "rag",
+  "answer": "Person355 Person680 asked Person714 if she knew how to keep house.",
+  "response": {
+    "text": "Person355 Person680 asked Person714 if she knew how to keep house.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 22,
+      "prompt_tokens": 3456,
+      "total_tokens": 3478,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.234480990999145,
+    "request_sha256": "82d6e4788126eace63c90fd2a3b6ff24f184f61e2264d52f67ed29fef9ae242b",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    34,
+    554,
+    36,
+    204,
+    37,
+    25,
+    230,
+    480,
+    186,
+    17,
+    546,
+    236,
+    40,
+    504,
+    277,
+    22,
+    294,
+    232,
+    190,
+    542
+  ],
+  "retrieval_scores": [
+    0.624632716178894,
+    0.607695460319519,
+    0.5623844265937805,
+    0.5409688353538513,
+    0.5356276631355286,
+    0.5333256125450134,
+    0.5302097201347351,
+    0.529285728931427,
+    0.528239369392395,
+    0.527584969997406,
+    0.5247987508773804,
+    0.5212339758872986,
+    0.5202970504760742,
+    0.5202349424362183,
+    0.5200122594833374,
+    0.5176701545715332,
+    0.5147107243537903,
+    0.5142415761947632,
+    0.5136217474937439,
+    0.512606680393219
+  ],
+  "retrieval_seconds": 0.026710388992796652,
+  "provided_context_sha256": "7a7c4c1c62f06285986f5a7705f5cc5ab9fe0f6ca991b600d3a35e42bafd977f",
+  "provided_context_tokens": 3068,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "8079bf11a99aba9c952eb95942d5ddef08c7ef0fb3f80d49cfdbfe466e7ac8d5",
+    "raw_answer_sha256": "7188e46c394b3ac2199cddcc5a9ee0e2dfa8c07a369217378837b7d70de8bf57",
+    "answer_redacted": false
+  }
+}

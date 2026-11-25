@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 76
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5c6cdf41898a2ea1fd1a25d07623d8361143e7e989e15fa86b3b0586478a6b81",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-1c933f3b-c3dd-4a8e-8ee7-b98adcc1fdca",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"The legislative process differs in the U.S. House of Representatives and the Senate, with the House being larger and more diverse, and the Senate having more informal rules and unlimited debate.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"The House of Representatives has a Speaker of the House, while the Senate has a Majority Leader and a Minority Leader.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"There have been proposals for filibuster reform, committee reform, and increased transparency to make the legislative process more efficient and effective.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367251,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 163,
+      "prompt_tokens": 2099,
+      "total_tokens": 2262,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"The legislative process differs in the U.S. House of Representatives and the Senate, with the House being larger and more diverse, and the Senate having more informal rules and unlimited debate.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"The House of Representatives has a Speaker of the House, while the Senate has a Majority Leader and a Minority Leader.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"There have been proposals for filibuster reform, committee reform, and increased transparency to make the legislative process more efficient and effective.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 19.698609817016404,
+  "prompt_tokens_local": 2099
+}

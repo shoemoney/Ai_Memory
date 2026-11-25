@@ -1,0 +1,184 @@
+{
+  "id": "irrelevance_210",
+  "category": "irrelevance",
+  "result": "The most famous place in Paris is widely considered to be the **Eiffel Tower**.\n\nIt is an iconic iron lattice tower on the Champ de Mars in Paris, France, and is a global cultural icon. It was built for the 1889 World's Fair and has become a symbol of France and Paris.\n\nOther famous landmarks in Paris include:\n*   The **Louvre Museum** (home to the Mona Lisa)\n*   **Notre-Dame Cathedral**\n*   The **Arc de Triomphe**\n*   The **Champs-Élysées**",
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Which place in Paris that is most famous?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "recipe_based_restaurants",
+                "description": "Search for the restaurants based on the specific dishes.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "recipe_name": {
+                      "type": "string",
+                      "description": "The name of the dish."
+                    },
+                    "location": {
+                      "type": "string",
+                      "description": "The city where to look for the restaurants."
+                    },
+                    "price_range": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "$",
+                          "$$",
+                          "$$$",
+                          "$$$$"
+                        ]
+                      },
+                      "description": "The desired price range.",
+                      "default": [
+                        "$$"
+                      ]
+                    },
+                    "preferred_rating": {
+                      "type": "integer",
+                      "description": "The minimum restaurant rating.",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "recipe_name",
+                    "location"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 396,
+    "output_token_count": 124,
+    "latency": 2.5107229519999237
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Which place in Paris that is most famous?"
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "recipe_based_restaurants",
+          "description": "Search for the restaurants based on the specific dishes.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "recipe_name": {
+                "type": "string",
+                "description": "The name of the dish."
+              },
+              "location": {
+                "type": "string",
+                "description": "The city where to look for the restaurants."
+              },
+              "price_range": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "$",
+                    "$$",
+                    "$$$",
+                    "$$$$"
+                  ]
+                },
+                "description": "The desired price range.",
+                "default": [
+                  "$$"
+                ]
+              },
+              "preferred_rating": {
+                "type": "integer",
+                "description": "The minimum restaurant rating.",
+                "default": 3
+              }
+            },
+            "required": [
+              "recipe_name",
+              "location"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-AJZavtgfs3If7ettAKay3GFXuZAUL5Bj",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "The most famous place in Paris is widely considered to be the **Eiffel Tower**.\n\nIt is an iconic iron lattice tower on the Champ de Mars in Paris, France, and is a global cultural icon. It was built for the 1889 World's Fair and has become a symbol of France and Paris.\n\nOther famous landmarks in Paris include:\n*   The **Louvre Museum** (home to the Mona Lisa)\n*   **Notre-Dame Cathedral**\n*   The **Arc de Triomphe**\n*   The **Champs-Élysées**",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795286993,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 124,
+      "prompt_tokens": 396,
+      "total_tokens": 520,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 396,
+      "prompt_ms": 533.601,
+      "prompt_per_token_ms": 1.3474772727272728,
+      "prompt_per_second": 742.1275447384844,
+      "predicted_n": 124,
+      "predicted_ms": 1967.211,
+      "predicted_per_token_ms": 15.993585365853658,
+      "predicted_per_second": 62.525067214447255
+    }
+  },
+  "elapsed_seconds": 2.5108604690030916,
+  "score": {
+    "valid": true
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q051",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "d45dd3589a904bdfca43f3be21e404bd0d0324363a7a7140486f06e1373655f0",
+  "reference_sha256": "4ecd4e8daa2494ab93959af2ab3ef599b1f5286b2f0dad34c9ba570ddd760025",
+  "method": "rag",
+  "answer": "Person426 wrote a letter to Person513 about his safe arrival and Mr. Person086 being willing.",
+  "response": {
+    "text": "Person426 wrote a letter to Person513 about his safe arrival and Mr. Person086 being willing.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 27,
+      "prompt_tokens": 3359,
+      "total_tokens": 3386,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 12.532416302987258,
+    "request_sha256": "71ab21161deaaaad05d5f8255a080c9b71ffbd85e0f72c0d8c77f716b5465bdc",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    297,
+    476,
+    546,
+    488,
+    127,
+    53,
+    626,
+    424,
+    473,
+    204,
+    186,
+    294,
+    553,
+    190,
+    477,
+    632,
+    481,
+    198,
+    34,
+    380
+  ],
+  "retrieval_scores": [
+    0.6148393154144287,
+    0.6112785339355469,
+    0.580670177936554,
+    0.5722438097000122,
+    0.5685462951660156,
+    0.5626646280288696,
+    0.5602061748504639,
+    0.5599339008331299,
+    0.5539065599441528,
+    0.5531538724899292,
+    0.5490295886993408,
+    0.5383307933807373,
+    0.5331588983535767,
+    0.5293139815330505,
+    0.5271551609039307,
+    0.5268469452857971,
+    0.5264754295349121,
+    0.5207589864730835,
+    0.520412802696228,
+    0.5183091759681702
+  ],
+  "retrieval_seconds": 0.02823475599871017,
+  "provided_context_sha256": "c73990a5dc8aa26cd125ce12d48ba038ceb1553c6d7d5b8f611ebaf39fb12eb9",
+  "provided_context_tokens": 2951,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "0f4bb70265e9ba5f43743c3c8f064c5942147977505def5cc9296b3966100e5a",
+    "raw_answer_sha256": "aa0ba809242b71e3e2d407bcbe5cd6d5a702be5571db5e47408f758dc304327a",
+    "answer_redacted": false
+  }
+}

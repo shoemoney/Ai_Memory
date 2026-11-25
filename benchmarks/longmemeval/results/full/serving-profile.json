@@ -1,0 +1,38 @@
+{
+  "profile": "Gemma native turn stopping with bounded free allocator cache",
+  "model": "mlx-community/gemma-2-9b-it-4bit",
+  "model_revision": "ff12eb39da2cd9b3b0f4b4f9ffb274603f05bb29",
+  "hardware": "Apple M1 Ultra, 64 GB",
+  "native_context": 8192,
+  "weight_quantization": "4-bit",
+  "kv_quantization": "default model precision; not additionally quantized",
+  "mlx_lm": "0.32.2",
+  "mlx": "0.32.4",
+  "transformers": "5.20.2",
+  "free_allocator_cache_limit_bytes": 536870912,
+  "prompt_cache_limit_bytes": 1073741824,
+  "prompt_cache_sequences": 1,
+  "prefill_step_size": 256,
+  "api_stop": [
+    "<end_of_turn>"
+  ],
+  "parsed_output": "first assistant turn only",
+  "temperature": 0,
+  "answer_max_tokens": 512,
+  "judge_max_tokens": 10,
+  "judge_calls": 3,
+  "empty_content_policy": "JSON null or empty model content becomes an empty hypothesis, retaining the raw response and going through the same judge",
+  "oracle_question_date_policy": "Each official variant uses its own question date and history timestamps; text/answers/types match across selected IDs.",
+  "executed_scoring_source_counts": {
+    "4af04a955a15177a344f164b84d641c75719c3ce111a4161aa04e2b92adca71f": 1373,
+    "a4ae3f5f9a4a771402d0969999baaf303cd386bdd3442d8075dd9417f6dea9ea": 30,
+    "9df03373bc2e72d4cd149f1eae1a762aae3476120e8606dc42733a0b04b43791": 35,
+    "72fd2b684325eb144a71f4b7477944e52184834e324359c371fbd69b2cea4d54": 58,
+    "2a2a1ba9a2944cc22301f8ccde4d4134c2aa8fd9c91415081c40ef1601f452e8": 4
+  },
+  "shipping_scoring_source_sha256": "4af04a955a15177a344f164b84d641c75719c3ce111a4161aa04e2b92adca71f",
+  "shipping_supervisor_source_sha256": "3d0132cd9bf89e38a4711276ee12afd815b5ef3f3ab5ab696e39a75ab471554b",
+  "source_note": "Per-item code hashes and archived source are authoritative. Operational recovery bypasses disabled SDK telemetry only; shipping supervisor adds independent directory checks and IPv6 redaction after the final process launched. Shipping supervisor also persists the fixed absolute deadline automatically for resumptions.",
+  "initial_serving_profile_supervisor_sha256": "6138345426f2ec8b86a06e50dec9447cf0ea4b3b6225d604359824a8fd43c61c",
+  "initial_serving_profile_scoring_sha256": "9df03373bc2e72d4cd149f1eae1a762aae3476120e8606dc42733a0b04b43791"
+}

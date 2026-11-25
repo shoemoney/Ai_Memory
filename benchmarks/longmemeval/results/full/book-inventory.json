@@ -1,0 +1,30 @@
+[
+  {
+    "chapter": "17-security-eval-ops",
+    "sha256": "c82d2e5ffcc5cec80db623f6f189c011a97c8f4993701b429e510348362d1668",
+    "matching_paragraphs_or_rows": [
+      "LongMemEval (ICLR 2025) 500 questions on scalable chat histories: extraction, multi-session reasoning, temporal reasoning, knowledge updates, abstention. 21 Chat question answering only; no poisoning or deletion test.",
+      "LongMemEval's evaluation-only setup scores your own system's answers. Use repository revision 9e0b455 , its requirements-lite.txt and the downloaded data, and run the command below from src/evaluation . answers.jsonl holds one question_id and hypothesis per line. Set up an authorized OpenAI key first, because the judge makes paid API calls. The command was checked against the runner but not executed here. Its gpt-4o alias selects gpt-4o-2024-08-06. 28",
+      "One study found a Mem0-style system cheaper after about ten turns at 100,000-token context with caching, while long context was more accurate on LongMemEval and LoCoMo. 32 The crossover is specific to that workload. Budget for memory only when repeated read savings repay extraction, storage and maintenance."
+    ]
+  },
+  {
+    "chapter": "13-memory-frameworks",
+    "sha256": "55100ced2bed47fe3531428c007b121856441700f71b9d232bf1bc7ae7af52b2",
+    "matching_paragraphs_or_rows": [
+      "Mem0 reports LoCoMo 92.5 and LongMemEval 94.4 for its managed April 2026 stack, with a top-200 retrieval budget. These are vendor claims , not measurements of the open-source recipe. Its public harness defaults to GPT-4o for the answerer and the judge, while its separate OSS model-comparison table uses GPT-5 for both, so record the actual run configuration instead of assuming either default produced the headline scores. A score depends on retrieval depth, extraction model, answerer and judge, so none is a cross-vendor ranking. 5 , 7"
+    ]
+  },
+  {
+    "chapter": "16-frontier",
+    "sha256": "93ad05a5ec8cfbbf59fa51696c359c978b1fff5787cec63a2a86ee099cf7eea9",
+    "matching_paragraphs_or_rows": []
+  },
+  {
+    "chapter": "14-knowledge-graphs",
+    "sha256": "9f7095013b2a7e85a9eb743c733894ba82a87df3ab7f12cf59a166dddb6d8a0a",
+    "matching_paragraphs_or_rows": [
+      "94.8% vs 93.4% Zep against MemGPT on Deep Memory Retrieval, plus up to 18.5% higher accuracy and 90% lower latency on LongMemEval. The Zep authors' numbers. 22 Vendor claim"
+    ]
+  }
+]

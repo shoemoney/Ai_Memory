@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "6ac56d1b6e5222fd4bfc7b612f65d022d21407d7168cff23a4c3339d24e6e51a",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-015c3779-21a5-40a7-87de-1c802f823070",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Gujarati\", \"target_entity_name\": \"Punjabi\", \"relation_type\": \"SHARES_BACKGROUND_WITH\", \"fact\": \"Gujarati and Punjabi individuals share similar backgrounds and cultural heritage, as both are part of the larger Indian subcontinent.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795368012,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 105,
+      "prompt_tokens": 10061,
+      "total_tokens": 10166,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 162
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Gujarati\", \"target_entity_name\": \"Punjabi\", \"relation_type\": \"SHARES_BACKGROUND_WITH\", \"fact\": \"Gujarati and Punjabi individuals share similar backgrounds and cultural heritage, as both are part of the larger Indian subcontinent.\", \"valid_at\": \"2023-05-21T17:57:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 94.5771884630085,
+  "prompt_tokens_local": 10061
+}

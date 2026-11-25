@@ -1,0 +1,92 @@
+{
+  "question_id": "gpt4_8c8961ae",
+  "system": "graphiti",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "ingestion_hardware_class": "Apple M3 Ultra, 96 GB",
+  "reader_hardware_class": "Apple M3 Ultra, 96 GB",
+  "judge_hardware_class": "Apple M3 Ultra, 96 GB",
+  "stratum": "temporal-reasoning",
+  "question_type": "temporal-reasoning",
+  "question": "Which trip did I take first, the one to Europe with family or the solo trip to Thailand?",
+  "reference": "The solo trip to Thailand",
+  "hypothesis": "The provided conversation history does not contain information about any trips you took to Europe or Thailand.",
+  "context": [
+    {
+      "text": "I wore my old Converse Chuck Taylor's to a music festival last month.",
+      "valid_at": "2023-05-28 04:46:00+00:00",
+      "invalid_at": "None"
+    },
+    {
+      "text": "Nisha's dad lives with Nisha.",
+      "valid_at": "2023-05-28 16:12:00+00:00",
+      "invalid_at": "2023-05-28 23:25:00+00:00"
+    },
+    {
+      "text": "The use of the game-based learning platform Quizizz led to higher student engagement and performance compared to traditional instruction methods.",
+      "valid_at": "2023-05-28 15:59:00+00:00",
+      "invalid_at": "None"
+    },
+    {
+      "text": "Nisha lives with her dad.",
+      "valid_at": "2023-05-28 21:21:00+00:00",
+      "invalid_at": "2023-05-28 23:25:00+00:00"
+    },
+    {
+      "text": "We will continuously improve and expand the app's features to become the leading reading comprehension app for children.",
+      "valid_at": "2023-05-28 15:59:00+00:00",
+      "invalid_at": "None"
+    },
+    {
+      "text": "The Samsung Galaxy S22 Ultra, which has Wi-Fi 6 capabilities, can be used with a Wi-Fi 6 router like the Netgear Nighthawk RAX80 for optimal streaming performance.",
+      "valid_at": "2023-05-28 11:59:00+00:00",
+      "invalid_at": "None"
+    },
+    {
+      "text": "The Mustang is equipped with a Trigger.",
+      "valid_at": "2023-05-28 22:49:00+00:00",
+      "invalid_at": "None"
+    },
+    {
+      "text": "The user owns a Mustang with a cracked windshield.",
+      "valid_at": "2023-05-28 14:57:00+00:00",
+      "invalid_at": "None"
+    },
+    {
+      "text": "You are looking for a more sturdy tripod to support your Canon EF 70-200mm f/2.8L IS III USM lens.",
+      "valid_at": "2023-05-28 02:11:00+00:00",
+      "invalid_at": "None"
+    },
+    {
+      "text": "The Mustang is equipped with a Trigger for better performance.",
+      "valid_at": "2023-05-28 19:26:00+00:00",
+      "invalid_at": "None"
+    }
+  ],
+  "correct": false,
+  "judge": {
+    "correct": false,
+    "votes": [
+      false,
+      false,
+      false
+    ],
+    "calls": [
+      "eebc883ebfff4bd8904f9a9b023b61b5c4006715abc7960b92d830f3b7315f5c",
+      "e4aa0e250b22fab0de69d9d553927062bdc5b3cb94c4d556fdfea4b6e2c3d2fa",
+      "eb2ccdc81adf56ff170b4aef0f2275c955701fc63523338e4ecbaeb5abeb2d6d"
+    ]
+  },
+  "status": "scored",
+  "ingestion_seconds": 17736.679626703262,
+  "ingestion_usage": {
+    "prompt_tokens": 1847708,
+    "completion_tokens": 72151,
+    "model_calls": 377,
+    "model_seconds": 43492.92774325202
+  },
+  "source_sessions": 50,
+  "source_parts": 76,
+  "attempted_parts": 76,
+  "ingested_parts": 72,
+  "ingestion_failed_parts": 4
+}

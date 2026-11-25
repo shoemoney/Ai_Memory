@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 40
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b26a5212d7f4ccbc24cd9533435179fc6ed788c47811cc9dce401fa98bea933b",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-2f81a2e3-3a52-4e82-8c33-84d50cdac7a6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mark\", \"target_entity_name\": \"user\", \"relation_type\": \"TAUGHT_BY\", \"fact\": \"Mark will teach the user how to improve their serves during the tennis lesson on Saturday morning.\", \"valid_at\": \"2023-08-15T13:02:00Z\", \"episode_indices\": [1]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363054,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 8960,
+      "total_tokens": 9045,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mark\", \"target_entity_name\": \"user\", \"relation_type\": \"TAUGHT_BY\", \"fact\": \"Mark will teach the user how to improve their serves during the tennis lesson on Saturday morning.\", \"valid_at\": \"2023-08-15T13:02:00Z\", \"episode_indices\": [1]}]}",
+  "seconds": 40.09329993001302,
+  "prompt_tokens_local": 8960
+}

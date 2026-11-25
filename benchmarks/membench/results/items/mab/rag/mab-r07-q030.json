@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q030",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "41438f28d4e872714b40c900005e772c64b86822833d785126b847270b17ae4c",
+  "reference_sha256": "3aba859db0dc22f097fd9f5c88131dada7d6e61e6c9b5a26a59389d3631efa55",
+  "method": "rag",
+  "answer": "Person646 revealed that Person716 was at Twelve Oaks.",
+  "response": {
+    "text": "Person646 revealed that Person716 was at Twelve Oaks.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 16,
+      "prompt_tokens": 3244,
+      "total_tokens": 3260,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 19.345221363997553,
+    "request_sha256": "82de4b55c04673b25c053dcceeec91db0b85706465bdae5518c225764939e25f",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    152,
+    405,
+    323,
+    324,
+    151,
+    360,
+    305,
+    406,
+    59,
+    100,
+    145,
+    518,
+    144,
+    101,
+    571,
+    109,
+    154,
+    520,
+    261,
+    309
+  ],
+  "retrieval_scores": [
+    0.5730243921279907,
+    0.5557011365890503,
+    0.5397204160690308,
+    0.5248522758483887,
+    0.5233101844787598,
+    0.522925615310669,
+    0.5197389125823975,
+    0.5139062404632568,
+    0.5073023438453674,
+    0.5020403861999512,
+    0.4942246377468109,
+    0.49215468764305115,
+    0.49164384603500366,
+    0.48979905247688293,
+    0.48942553997039795,
+    0.48901957273483276,
+    0.4799615144729614,
+    0.47770956158638,
+    0.47479432821273804,
+    0.4744340181350708
+  ],
+  "retrieval_seconds": 0.27873078698758036,
+  "provided_context_sha256": "7a506181e5bd3583c930ae9a3193905747ca79f206d1f7d7ae06e20e3c09bbfa",
+  "provided_context_tokens": 2913,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "731cb9b083b8e099fcac962e78c127a6faae564f9498b7745c4c5d8eead4ed18",
+    "raw_answer_sha256": "f50d9039d587012dfa7ee531c74af56e97e6d0cd75d5cb41bffe921ef4ed1f3f",
+    "answer_redacted": false
+  }
+}

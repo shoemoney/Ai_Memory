@@ -1,0 +1,34 @@
+{
+  "model": "Qwen/Qwen3-VL-Embedding-2B",
+  "revision": "9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda",
+  "dataset": "vidore/vidore_v3_hr_mteb_format",
+  "dataset_revision": "bc7d43d64815ed30f664168c8052106484aba7fd",
+  "license": "cc-by-4.0",
+  "n_queries": 318,
+  "n_corpus": 1110,
+  "ignored_qrels_for_other_query_ids": 8655,
+  "sampling": "All English HR test queries; all corpus pages",
+  "seed": 20261121,
+  "dtype": "bfloat16",
+  "hardware": "8 GB NVIDIA GPU",
+  "scoring": "exact cosine, pytrec_eval nDCG@5 and @10, graded qrels",
+  "elapsed_seconds": 132.653619780991,
+  "timing_scope": "This resumed invocation only; cached embeddings can be reused. Not an end-to-end latency measurement.",
+  "encoded_this_invocation": 0,
+  "reused_embeddings": 1428,
+  "image_processing": "Qwen MTEB processor: max 1800 image tokens, 8192-token image sequence cap; queries 512 tokens",
+  "ndcg_cut_5": {
+    "mean": 0.5497897406012169,
+    "bootstrap_95_ci": [
+      0.5136149995133027,
+      0.5854912857057243
+    ]
+  },
+  "ndcg_cut_10": {
+    "mean": 0.5850994726208719,
+    "bootstrap_95_ci": [
+      0.5526338210997449,
+      0.6176971815840253
+    ]
+  }
+}

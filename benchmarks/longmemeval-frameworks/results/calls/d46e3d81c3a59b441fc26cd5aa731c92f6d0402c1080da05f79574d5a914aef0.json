@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 20
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e0bb7357ac7a572a5ee78b594c628ad5f133b455077dc6328cc4252bce8fa052",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-691d2e3c-556a-438f-bd4e-a849b79ba9a1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"enjoy a mix of informative and engaging content\", \"enjoy thriller and suspense\", \"enjoy entrepreneurship and business\", \"enjoy reading psychological thriller\", \"enjoy reading historical events\", \"enjoy true crime comedy\"]}]",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332021,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 51,
+      "prompt_tokens": 1132,
+      "total_tokens": 1183,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 660
+      }
+    }
+  },
+  "text": "{\"facts\": [\"enjoy a mix of informative and engaging content\", \"enjoy thriller and suspense\", \"enjoy entrepreneurship and business\", \"enjoy reading psychological thriller\", \"enjoy reading historical events\", \"enjoy true crime comedy\"]}]",
+  "seconds": 0.8162945779913571,
+  "prompt_tokens_local": 1132,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

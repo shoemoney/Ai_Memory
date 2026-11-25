@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 36
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "de40a7bb5cc3251f328d39fb780781d19ecbed2803f95928f9bd5b67c9af6fe7",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b9bb61dd-772e-4fb5-b900-2e2023d9c4dd",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"35 year old grocery shopper from Maryland, Visit the grocery store once a week, Plan meals before shopping, Check for deals and coupons, Read labels of products, Compare products, Stick to the shopping list\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366311,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 75,
+      "prompt_tokens": 2159,
+      "total_tokens": 2234,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"35 year old grocery shopper from Maryland, Visit the grocery store once a week, Plan meals before shopping, Check for deals and coupons, Read labels of products, Compare products, Stick to the shopping list\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 8.827598648989806,
+  "prompt_tokens_local": 2159
+}

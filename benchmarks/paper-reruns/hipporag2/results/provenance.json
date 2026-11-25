@@ -1,0 +1,96 @@
+{
+  "code": {
+    "url": "https://github.com/OSU-NLP-Group/HippoRAG",
+    "commit": "d5c8329422e0a0b834a15874545cb6a74b4f9b26",
+    "license": "MIT"
+  },
+  "paper": {
+    "url": "https://arxiv.org/html/2502.14802v1",
+    "version": "v1",
+    "table2_2wiki_F1": {
+      "hipporag2": 71.0,
+      "nv_embed_v2": 61.5
+    },
+    "table3_2wiki_recall5": {
+      "hipporag2": 90.4,
+      "nv_embed_v2": 76.5
+    },
+    "abstract_associative_gain": "7% improvement; aggregate, not a single dataset recall score"
+  },
+  "dataset": {
+    "url": "https://huggingface.co/datasets/osunlp/HippoRAG_2",
+    "revision": "5ec05b38deecc3318bb432c69865959c56058990",
+    "used": "authors Git repository copy of 2wikimultihopqa.json, pinned by code commit and SHA256",
+    "license": "No dataset license declared in the checked HF card; data fetched, not redistributed."
+  },
+  "generator": {
+    "id": "Qwen/Qwen2.5-3B-Instruct-GGUF",
+    "revision": "7dabda4d13d513e3e842b20f0d435c732f172cbe",
+    "quantization": "Q4_K_M",
+    "license": "Qwen Research license (model card license_name qwen-research)",
+    "server": "llama.cpp 1.0.0 build 12359, commit b1b770d90; AppleClang 21.0.0.21000401, Darwin arm64"
+  },
+  "embedding": {
+    "id": "sentence-transformers/all-mpnet-base-v2",
+    "revision": "e8c3b32edf5434bc2275fc9bab85f82640a19130",
+    "license": "Apache-2.0",
+    "device": "CPU",
+    "threads": 8,
+    "max_seq_length": 384
+  },
+  "source_sha256": {
+    "reproduce/dataset/2wikimultihopqa.json": "895cba294064df0c3302c76847b1fc08d99b5619f7663dfaa3b65cd780f1cac4",
+    "reproduce/dataset/2wikimultihopqa_corpus.json": "9d6e352952aafb18dab22bf8195039461321a44a949df902ae83bce134ad238a",
+    "src/hipporag/evaluation/retrieval_eval.py": "fe46d5647f2d66717484e78a0fec4b43a55fa9a0303bb12542d8519469a68c15",
+    "src/hipporag/evaluation/qa_eval.py": "b2a56adfa35294ecbc5c2eb2a4ffff0259f0d3020a6d6b47af31d00373868500",
+    "src/hipporag/HippoRAG.py": "3935854368bb11e960323c31fb3cc67bee9e393079ce522711586d5e643bdb46",
+    "src/hipporag/StandardRAG.py": "69a6a25e7dbcc513d1615eab5c8e122841d2049041e8f5f18ac3b37d58cc2610"
+  },
+  "hardware": {
+    "model_server": "Apple M3 Ultra, 96 GB",
+    "evaluator": "AMD Ryzen 9 8945HX, 16 cores, 32 threads, 32 GB; maximum 8 embedding threads",
+    "GPU_used_on_evaluator": false
+  },
+  "preflight": {
+    "memory_free_percent": 60,
+    "root_disk_size_GiB": 926,
+    "root_disk_available_GiB": 88,
+    "shared_processes_observed": [
+      "omlx-server",
+      "embedding server",
+      "other benchmark generation server"
+    ],
+    "existing_processes_modified": false,
+    "lsof_attempt": "Full lsof listener enumeration timed out; task port checked by successful own bind."
+  },
+  "abandoned_attempt": {
+    "generator": "Qwen2.5-7B-Instruct Q4_K_M",
+    "revision": "bb5d59e06d9551d752d08b292a50eb208b07ab1f",
+    "reason": "NER throughput about 10 completion tokens per second across two requests on shared model hardware; projected total exceeded budget",
+    "questions_scored": 0,
+    "action": "Stopped own evaluator and server, changed model alias, rebuilt index, did not mix extraction caches",
+    "completed_requests_cached": 23
+  },
+  "scratch_created_utc": "2026-11-22T11:48:44Z",
+  "unconstrained_3b_attempt": {
+    "questions_scored": 0,
+    "logged_ner_format_errors": 4,
+    "reason": "Malformed JSON and explanatory prose around a bare array; author batch fails closed on any format error. Stopped before QA and enabled author-supported JSON-object response_format in a fresh index namespace.",
+    "cached_requests_at_inspection": 315
+  },
+  "openie_response_format": {
+    "type": "json_object"
+  },
+  "python_hash_seed": 20261122,
+  "resume_note": "Pinned Python hash seed before graph construction; resumed identical extraction requests from native per-request cache without replacing model or embeddings.",
+  "index_resume": "force_index_from_scratch=True explicitly rebuilds graph while retaining compatible embeddings, extraction state and native per-request LLM cache; required by author safety guard after interruption before graph creation.",
+  "native_format_guard": {
+    "version": "native-format-retry-v1",
+    "behavior": "Call the unmodified native extraction parser, truncated-JSON fixer and triple filter; keep accepted responses unchanged. Retry only parser/type failures with a task-specific JSON schema, at most three attempts, seeds base plus attempt. Do not judge or correct facts.",
+    "index_identity": "native-format-retry-v1",
+    "qa_model": "unwrapped native CacheOpenAI",
+    "cache_reuse": "Compatible native per-request cache from earlier structured attempt; fresh graph and vector-index namespace. Cache keys bind endpoint, model, generation parameters and prompt.",
+    "trigger": "One triple response contained an integer where native filter_invalid_triples calls len(); the actual rejected passage passed a schema retry smoke check before QA.",
+    "questions_scored_before_adaptation": 0
+  }
+}

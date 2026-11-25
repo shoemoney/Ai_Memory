@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "91415229d398b4b607be36ff2ea3cb35599bdea40d452a7fdf827ec4e3629f37",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-3262466f-58c9-41b9-9857-a37bddf8d7c0",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Juan\", \"target_entity_name\": \"Mechanic\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Juan had a good experience with a mechanic named Juan when he took his car in for an oil change last Tuesday.\", \"valid_at\": \"2023-05-28T02:50:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795337128,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 97,
+      "prompt_tokens": 10611,
+      "total_tokens": 10708,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 162
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Juan\", \"target_entity_name\": \"Mechanic\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Juan had a good experience with a mechanic named Juan when he took his car in for an oil change last Tuesday.\", \"valid_at\": \"2023-05-28T02:50:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 399.839657161996,
+  "prompt_tokens_local": 10611
+}

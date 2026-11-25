@@ -1,0 +1,69 @@
+{
+  "n": 40,
+  "agreement": 33,
+  "agreement_rate": 0.825,
+  "exact_95": [
+    0.6722098666384142,
+    0.9266172706479148
+  ],
+  "mismatches": [
+    {
+      "id": 140,
+      "arm": "full_context",
+      "tester_correct": false,
+      "reason": "Negates the required explanation: says cats do not want to eat birds.",
+      "tester": "implementation agent; not independent human",
+      "judge_correct": true
+    },
+    {
+      "id": 125,
+      "arm": "dense_top5",
+      "tester_correct": true,
+      "reason": "Names the reference dog breed despite irrelevant additional text.",
+      "tester": "implementation agent; not independent human",
+      "judge_correct": false
+    },
+    {
+      "id": 279,
+      "arm": "full_context",
+      "tester_correct": true,
+      "reason": "Contains army, the required occupational topic, despite uncertainty about a finer title.",
+      "tester": "implementation agent; not independent human",
+      "judge_correct": false
+    },
+    {
+      "id": 279,
+      "arm": "dense_top5",
+      "tester_correct": true,
+      "reason": "Contains army, the required occupational topic, despite uncertainty about a finer title.",
+      "tester": "implementation agent; not independent human",
+      "judge_correct": false
+    },
+    {
+      "id": 302,
+      "arm": "full_context",
+      "tester_correct": false,
+      "reason": "Only says roommate; omits the identifying best-friend relationship required by the reference.",
+      "tester": "implementation agent; not independent human",
+      "judge_correct": true
+    },
+    {
+      "id": 216,
+      "arm": "dense_top5",
+      "tester_correct": true,
+      "reason": "Includes volunteering among the discussed activities; accepted under the permissive topic rule despite abstention.",
+      "tester": "implementation agent; not independent human",
+      "judge_correct": false
+    },
+    {
+      "id": 16,
+      "arm": "full_context",
+      "tester_correct": true,
+      "reason": "Explicitly contains the reference band despite later claiming insufficient evidence.",
+      "tester": "implementation agent; not independent human",
+      "judge_correct": false
+    }
+  ],
+  "tester": "implementation agent; not an independent human",
+  "policy": "headline labels remain local judge labels; tester audit is a separate quality check"
+}

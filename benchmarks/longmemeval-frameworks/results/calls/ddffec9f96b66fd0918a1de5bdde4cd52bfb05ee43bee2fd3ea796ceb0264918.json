@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 44
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2e52937107f7ce6214ad9da0c5939b42256cdd8230546a76bfe13d67b162dade",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5376a8c5-dd2a-4250-88de-18a386ffc886",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Improve serves\", \"Forehand and backhand strokes\", \"Non-dominant foot stance\", \"Toss consistency\", \"Racquet angle\", \"Wrist snap\", \"Follow-through\", \"Practice variations\", \"Video analysis\", \"Drills and exercises\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356479,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 59,
+      "prompt_tokens": 1142,
+      "total_tokens": 1201,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 660
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Improve serves\", \"Forehand and backhand strokes\", \"Non-dominant foot stance\", \"Toss consistency\", \"Racquet angle\", \"Wrist snap\", \"Follow-through\", \"Practice variations\", \"Video analysis\", \"Drills and exercises\"]}",
+  "seconds": 9.107039944996359,
+  "prompt_tokens_local": 1142
+}

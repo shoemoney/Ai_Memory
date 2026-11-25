@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 8
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "86c6025ea46e185046f891a85f1ad08677099671c0b43c1409085fc5e84f1cf5",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-8f5c4cdd-fdab-4a76-bc0f-c9be818f5ad4",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Excited to start commuting again on the bike\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Plan to celebrate the first day back on the bike with a nice coffee or breakfast\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330144,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 90,
+      "prompt_tokens": 1585,
+      "total_tokens": 1675,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Excited to start commuting again on the bike\",\n            \"event\" : \"ADD\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Plan to celebrate the first day back on the bike with a nice coffee or breakfast\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+  "seconds": 1.952204700006405,
+  "prompt_tokens_local_gemma_estimate": 1713
+}

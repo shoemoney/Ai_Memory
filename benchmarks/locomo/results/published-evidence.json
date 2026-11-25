@@ -1,0 +1,70 @@
+{
+  "paper": "https://arxiv.org/html/2601.07978v5",
+  "comparison_repo_revision": "03f391aed7486e8da4c333af143a40108d382811",
+  "published_accuracy_percent": {
+    "full-context": 77.16,
+    "rag": 78.31,
+    "mem0": 81.08,
+    "graphiti": 56.03,
+    "cognee": 55.27
+  },
+  "published_plus_minus": {
+    "full-context": 5.21,
+    "rag": 5.75,
+    "mem0": 3.19,
+    "graphiti": 5.56,
+    "cognee": 3.6
+  },
+  "published_n_unique_questions": 1540,
+  "published_conversations": 10,
+  "network_scenarios": 2,
+  "judge": "gpt-4o-mini, three judge calls and majority vote",
+  "data_repo_revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+  "data_license": "CC-BY-NC-4.0",
+  "label_error_citation": {
+    "issue23": "https://github.com/snap-research/locomo/issues/23",
+    "issue23_scope": "Original post reports inconsistent grading. Later discussion includes a maintainer acknowledgment of separately reported data quality issues, dated 2026-02-17.",
+    "independent_audit": "https://github.com/dial481/locomo-audit",
+    "audit_claim": {
+      "wrong_gold": 99,
+      "scored_questions": 1540,
+      "percent": 6.4,
+      "citation_only": 57
+    },
+    "earlier_error_report": "https://github.com/snap-research/locomo/issues/27",
+    "maintainer_acknowledgment": "https://github.com/snap-research/locomo/issues/23#issuecomment-3916421856",
+    "audit_method": "Claude Opus 4.6 with human review, according to the audit; not independently re-audited here.",
+    "audit_revision": "9493fb4b4af4256ed17a18e8fd0b3cfdeec29539"
+  },
+  "vendor_claims": {
+    "graphiti_percent": 75.14,
+    "letta_filesystem_percent": 74.0,
+    "mem0_managed_percent": 92.5,
+    "mem0_2025_relative_gain_percent": 26.0
+  },
+  "source_sha256": {
+    "comparison-latest.html": "b7e868144f44f58a45dbc13266e0469aa87626c67df3d7f054a3be1926064df8",
+    "issue23.json": "3532599c26a96dc9982454254fcbd152d07d6f4341b685c0b8cb7fe295081773",
+    "audit.md": "d7d692c7c8ca984f88d410e56e176c63b24bd4bd6ad30c97828428fcbac51e6a",
+    "mem0-readme.md": "f72db3426438dbdf6879a2b50583fbee8e7e2dde5d01308c6295bcd09fd3db86",
+    "letta.html": "903c72cf2e3aa57b46928c0efe91ee3d48508013f9fb1a2c082ed74542074c61",
+    "mem0-paper.html": "999aea13b219b6fc761cbb517df11dda2c8d9ae0ebf7cdd9b7c0482777005436",
+    "cost-paper.html": "2df3c950b14e18843ec74df51bd5090f148756270be2990905a99c74158f1a86",
+    "issue23-comments.json": "76e66f1416a31dd888fcb26eb86b30c5b8a57d61e1b1f79f39fc04f03e1a5f2c",
+    "memory-benchmarks-readme.md": "ed4ee055be417ca6896aab00b2ad62d4b3c67205ed32f496544803492faffae2"
+  },
+  "aggregation": "Macro mean of per-conversation rates; plus-minus values are standard deviations across conversations, not confidence intervals.",
+  "published_exclusions": "1540 unique questions before exclusions; 0.83% multi-retrieval anomalies and 0.03% full-context overflow anomalies removed across treatments.",
+  "cost_crossover": {
+    "source": "https://arxiv.org/html/2603.04814",
+    "reported": "Approximately ten interaction turns at 100k-token context with caching; not reproduced here."
+  },
+  "vendor_managed_locomo_count": {
+    "correct": 1425,
+    "n": 1540,
+    "retrieval_k": 200,
+    "source": "https://github.com/mem0ai/memory-benchmarks"
+  },
+  "comparison_repository": "https://github.com/wolffbe/dmas-memory/tree/03f391aed7486e8da4c333af143a40108d382811",
+  "judge_prompt_source": "https://github.com/wolffbe/dmas-memory/blob/03f391aed7486e8da4c333af143a40108d382811/dmas/benchmark/app/prompts/judge.py"
+}

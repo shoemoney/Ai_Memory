@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 67
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "41b6a31c3608b1d9fb988bed79979ec901acb903329ef9e651e1c5c70470db20",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-eb2c1010-2753-4de9-8a0f-f3a46125b6da",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"DaySculpting is a program that teaches users how to create success one day at a time\", \"DaySculpting is a 90-day program\", \"DaySculpting helps users create their Epic Ideal Day\", \"DaySculpting helps users create habits that lead to success\", \"DaySculpting helps users see their day as successful by celebrating their highlights and being present to things they could have improved on\", \"DaySculpting helps users replace their mind traps with empowering rituals and habits\", \"DaySculpting helps users flip their success switch back on\", \"DaySculpting helps users master a new mindstate of success\", \"DaySculpting helps users build a powerful day to create a series of 'dynamic days'\", \"DaySculpting helps users keep positive results flowing\", \"DaySculpting helps users put their success energy into a permanent 'ON' position\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357449,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 200,
+      "prompt_tokens": 2556,
+      "total_tokens": 2756,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"DaySculpting is a program that teaches users how to create success one day at a time\", \"DaySculpting is a 90-day program\", \"DaySculpting helps users create their Epic Ideal Day\", \"DaySculpting helps users create habits that lead to success\", \"DaySculpting helps users see their day as successful by celebrating their highlights and being present to things they could have improved on\", \"DaySculpting helps users replace their mind traps with empowering rituals and habits\", \"DaySculpting helps users flip their success switch back on\", \"DaySculpting helps users master a new mindstate of success\", \"DaySculpting helps users build a powerful day to create a series of 'dynamic days'\", \"DaySculpting helps users keep positive results flowing\", \"DaySculpting helps users put their success energy into a permanent 'ON' position\"]}",
+  "seconds": 34.28787244099658,
+  "prompt_tokens_local": 2556
+}

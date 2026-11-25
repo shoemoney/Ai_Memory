@@ -1,0 +1,8 @@
+{
+  "judge_prompt_source": "https://github.com/xiaowu0162/LongMemEval/blob/9e0b455f4ef0e2ab8f2e582289761153549043fc/src/evaluation/evaluate_qa.py",
+  "official_label_rule": "label = 'yes' in eval_response.lower()",
+  "local_vote_rule": "Same rule after native assistant-turn normalization; three calls, majority vote",
+  "nonbinary_outputs": "Retained and counted separately; not discarded or regenerated because of content",
+  "empty_answers": "Submitted to the same reference judge prompts",
+  "previous_strict_binary_results": "Numerically unchanged under the official rule"
+}

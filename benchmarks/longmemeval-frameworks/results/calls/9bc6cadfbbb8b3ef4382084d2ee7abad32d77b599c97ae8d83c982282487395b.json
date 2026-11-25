@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 42
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "310e7b1e3aae8d2d3ab2ccf1fd29fccb112c18c35ed288400cc3469f4c63c0ff",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f85596bb-a6de-4492-a543-cc3596f72cdf",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366387,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 79,
+      "prompt_tokens": 2256,
+      "total_tokens": 2335,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    \"Wrote about 10 tourist attractions in Ubud, Bali, including Monkey Forest, Tegalalang Rice Terraces, Ubud Palace, Ubud Market, Campuhan Ridge Walk, Goa Gajah, Pura Taman Saraswati, Blanco Renaissance Museum, Gunung Kawi Temple, and Bali Bird Park.\"\n  ]\n}",
+  "seconds": 5.1929302669886965,
+  "prompt_tokens_local": 2256
+}

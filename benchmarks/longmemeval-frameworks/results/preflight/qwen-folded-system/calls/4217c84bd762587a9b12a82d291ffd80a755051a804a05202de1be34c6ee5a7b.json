@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 36
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "871d4ae44a284500dad44c2550be9313c385803b5671b6ed97a9ea3e7c50671d",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f8602879-a1c8-499a-be0a-4ffa8e17d721",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\n      \"considering_upgrading_internet_plan\": true,\n      \"current_internet_plan_speed\": \"100 Mbps\",\n      \"considered_upgrade_options\": [\"500 Mbps\", \"1 Gbps\"]\n    },\n    {\n      \"new_phone_model\": \"Samsung Galaxy S22 Ultra\",\n      \"camera_features\": \"enjoyed\",\n      \"additional_storage\": true\n    },\n    {\n      \"router_recommendations\": [\n        \"Netgear Nighthawk RAX80\",\n        \"Asus RT-AX88U\",\n        \"TP-Link Archer AX90\",\n        \"Linksys Velop MX10\",\n        \"Google Wifi\",\n        \"Netgear Orbi RBK852\"\n      ]\n    },\n    {\n      \"streaming_video_online_content\": true\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330338,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 180,
+      "prompt_tokens": 2570,
+      "total_tokens": 2750,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\n      \"considering_upgrading_internet_plan\": true,\n      \"current_internet_plan_speed\": \"100 Mbps\",\n      \"considered_upgrade_options\": [\"500 Mbps\", \"1 Gbps\"]\n    },\n    {\n      \"new_phone_model\": \"Samsung Galaxy S22 Ultra\",\n      \"camera_features\": \"enjoyed\",\n      \"additional_storage\": true\n    },\n    {\n      \"router_recommendations\": [\n        \"Netgear Nighthawk RAX80\",\n        \"Asus RT-AX88U\",\n        \"TP-Link Archer AX90\",\n        \"Linksys Velop MX10\",\n        \"Google Wifi\",\n        \"Netgear Orbi RBK852\"\n      ]\n    },\n    {\n      \"streaming_video_online_content\": true\n    }\n  ]\n}",
+  "seconds": 3.167594711005222,
+  "prompt_tokens_local_gemma_estimate": 2690
+}

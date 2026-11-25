@@ -1,0 +1,99 @@
+{
+  "arms": [
+    "A",
+    "A2",
+    "B-native-1call",
+    "C"
+  ],
+  "rates": {
+    "prefill_usd_per_million": 0.15,
+    "cached_prefill_usd_per_million": 0.015,
+    "sample_usd_per_million": 0.5,
+    "train_usd_per_million": 0.75
+  },
+  "budget_usd": 6.0,
+  "per_arm": {
+    "in/A": {
+      "episodes": 400,
+      "first_turn_mean": 70.59,
+      "ceiling_usd": 0.6065416
+    },
+    "in/A2": {
+      "episodes": 400,
+      "first_turn_mean": 70.59,
+      "ceiling_usd": 0.6065416
+    },
+    "in/B-native-1call": {
+      "episodes": 400,
+      "first_turn_mean": 921.59,
+      "ceiling_usd": 0.8107816
+    },
+    "in/C": {
+      "episodes": 400,
+      "first_turn_mean": 433.59,
+      "ceiling_usd": 0.6936616
+    },
+    "t2/A": {
+      "episodes": 400,
+      "first_turn_mean": 64.47,
+      "ceiling_usd": 0.6050728000000001
+    },
+    "t2/A2": {
+      "episodes": 400,
+      "first_turn_mean": 64.47,
+      "ceiling_usd": 0.6050728000000001
+    },
+    "t2/B-native-1call": {
+      "episodes": 400,
+      "first_turn_mean": 915.47,
+      "ceiling_usd": 0.8093128
+    },
+    "t2/C": {
+      "episodes": 400,
+      "first_turn_mean": 427.47,
+      "ceiling_usd": 0.6921928
+    },
+    "oot1/A": {
+      "episodes": 100,
+      "first_turn_mean": 63.02,
+      "ceiling_usd": 0.15118120000000002
+    },
+    "oot1/A2": {
+      "episodes": 100,
+      "first_turn_mean": 63.02,
+      "ceiling_usd": 0.15118120000000002
+    },
+    "oot1/B-native-1call": {
+      "episodes": 100,
+      "first_turn_mean": 914.02,
+      "ceiling_usd": 0.2022412
+    },
+    "oot1/C": {
+      "episodes": 100,
+      "first_turn_mean": 426.02,
+      "ceiling_usd": 0.1729612
+    },
+    "oot2/A": {
+      "episodes": 120,
+      "first_turn_mean": 66.9,
+      "ceiling_usd": 0.1816968
+    },
+    "oot2/A2": {
+      "episodes": 120,
+      "first_turn_mean": 66.9,
+      "ceiling_usd": 0.1816968
+    },
+    "oot2/B-native-1call": {
+      "episodes": 120,
+      "first_turn_mean": 917.9,
+      "ceiling_usd": 0.24296879999999998
+    },
+    "oot2/C": {
+      "episodes": 120,
+      "first_turn_mean": 429.9,
+      "ceiling_usd": 0.20783279999999998
+    }
+  },
+  "ceiling_usd": 6.920937599999999,
+  "expected_usd": 1.097286
+}

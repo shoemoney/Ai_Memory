@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 25
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e59879cdfb7cf1f287fc2e0dc9deca71ac7725ace1e88c6c2fcafe7707a45864",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0e878e27-fc03-4094-803c-ab57b9a5ca62",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"considered custom framing and online framing services for the artwork\", \"thought about setting up a small art studio in the backyard\", \"considered organizing the workspace and furniture for the studio\", \"thought about joining a painting group or club for feedback and learning\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330287,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 56,
+      "prompt_tokens": 2873,
+      "total_tokens": 2929,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"considered custom framing and online framing services for the artwork\", \"thought about setting up a small art studio in the backyard\", \"considered organizing the workspace and furniture for the studio\", \"thought about joining a painting group or club for feedback and learning\"]}",
+  "seconds": 2.2332491819979623,
+  "prompt_tokens_local_gemma_estimate": 2943
+}

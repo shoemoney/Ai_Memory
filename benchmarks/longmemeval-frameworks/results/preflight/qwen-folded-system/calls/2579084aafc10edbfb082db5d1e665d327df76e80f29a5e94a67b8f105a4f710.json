@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ef03134c7d1e382f821853f0b73c5b5c3c83ddc8917cc1974600ee9d72915d43",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c050d646-8e12-4fb1-a99d-1ba3dfee3437",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 0,\n      \"name\": \"Riverside Park\",\n      \"duplicate_candidate_id\": -1\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Chinese Calligraphy Wall\",\n      \"duplicate_candidate_id\": -1\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331542,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 72,
+      "prompt_tokens": 8345,
+      "total_tokens": 8417,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 129
+      }
+    }
+  },
+  "text": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 0,\n      \"name\": \"Riverside Park\",\n      \"duplicate_candidate_id\": -1\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Chinese Calligraphy Wall\",\n      \"duplicate_candidate_id\": -1\n    }\n  ]\n}",
+  "seconds": 14.343038495993824,
+  "prompt_tokens_local_gemma_estimate": 8525
+}

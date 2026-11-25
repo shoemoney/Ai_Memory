@@ -1,0 +1,50 @@
+{
+  "n": 150,
+  "reader": "Qwen2.5-3B-Instruct Q4_K_M",
+  "judge": "Qwen2.5-7B-Instruct Q4_K_M",
+  "arms": {
+    "full_context": {
+      "correct": 100,
+      "n": 150,
+      "rate": 0.6666666666666666,
+      "exact_95": [
+        0.5851569937344412,
+        0.7414436366064876
+      ],
+      "reader_seconds": 679.2102234360063,
+      "judge_seconds": 144.49826115700125,
+      "reader_capped": 1,
+      "judge_capped": 0,
+      "prompt_tokens_min": 1148,
+      "prompt_tokens_max": 2278,
+      "embedding_truncated_chunks": 0
+    },
+    "dense_top5": {
+      "correct": 92,
+      "n": 150,
+      "rate": 0.6133333333333333,
+      "exact_95": [
+        0.5304533422065142,
+        0.6916426928331265
+      ],
+      "reader_seconds": 443.87856957197073,
+      "judge_seconds": 134.49148679595964,
+      "reader_capped": 0,
+      "judge_capped": 0,
+      "prompt_tokens_min": 239,
+      "prompt_tokens_max": 485,
+      "embedding_truncated_chunks": 0
+    }
+  },
+  "paired": {
+    "n": 150,
+    "gain": 23,
+    "loss": 31,
+    "difference": -0.05333333333333334,
+    "difference_exact_conservative_95": [
+      -0.19757170164711407,
+      0.0937566255159841
+    ],
+    "mcnemar_exact_p": 0.3408909412200971
+  }
+}

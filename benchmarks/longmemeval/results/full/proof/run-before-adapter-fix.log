@@ -1,0 +1,41 @@
+
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  8.28it/s]/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/huggingface_hub/file_download.py:1723: DeprecationWarning: hf_xet.download_files() is deprecated. Use XetSession().new_file_download_group().start_download_file() instead.
+  xet_get(
+
+Fetching 4 files: 100%|██████████| 4/4 [00:01<00:00,  3.33it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:01<00:00,  3.33it/s]
+
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]
+Fetching 15 files:  53%|█████▎    | 8/15 [00:00<00:00, 56.33it/s]
+Fetching 15 files: 100%|██████████| 15/15 [00:03<00:00,  4.92it/s]
+{"question_id": "72e3ee87", "method": "bm25-standard"}
+{"question_id": "72e3ee87", "method": "dense-standard"}
+{"question_id": "72e3ee87", "method": "mem0-raw-standard"}
+/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/mem0/vector_stores/qdrant.py:112: UserWarning: Payload indexes have no effect in the local Qdrant, except text indexes with `scoring`, which enable text queries. Please use server Qdrant if you need payload indexes.
+  self.client.create_payload_index(
+[PostHog] Multiple active PostHog clients detected for the same project API key and host. Reuse one Posthog instance per app or process when possible to avoid competing background queues and missed shutdown flushes. Multiple clients are supported when intentional.
+Traceback (most recent call last):
+  File "benchmarks/longmemeval/large.py", line 229, in <module>
+    try:main()
+        ~~~~^^
+  File "benchmarks/longmemeval/large.py", line 203, in main
+    events=memory.add([{'role':d['role'],'content':t} for d,t in zip(docs,texts)],user_id=qid,infer=False)
+  File "/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/mem0/memory/main.py", line 289, in add
+    vector_store_result = future1.result()
+  File "/var/tmp/membench-longmemeval/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/tmp/membench-longmemeval/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+    raise self._exception
+  File "/var/tmp/membench-longmemeval/python/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/mem0/memory/main.py", line 334, in _add_to_vector_store
+    mem_id = self._create_memory(msg_content, msg_embeddings, per_msg_meta)
+  File "/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/mem0/memory/main.py", line 867, in _create_memory
+    capture_event("mem0._create_memory", self, {"memory_id": memory_id, "sync_type": "sync"})
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/membench-longmemeval/venv/lib/python3.13/site-packages/mem0/memory/telemetry.py", line 67, in capture_event
+    "vector_size": memory_instance.embedding_model.config.embedding_dims,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CachedEmbedding' object has no attribute 'config'

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q033",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "f53ebf830cd160241cb7a0526dc7e1f542f37823315d25286a64663611bdbb2e",
+  "reference_sha256": "a5b6b44695499b00ce2090f1e96d048c06528218511660e86ba8a4e17d103739",
+  "method": "rag",
+  "answer": "The man lay down on a stone bench outside a printing office.",
+  "response": {
+    "text": "The man lay down on a stone bench outside a printing office.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 14,
+      "prompt_tokens": 2942,
+      "total_tokens": 2956,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 18.51380681101,
+    "request_sha256": "9e2627d12f9646673c6e4a6a482c4e54f7b298a21c9ce6e0c41e3aa1a8828667",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    331,
+    426,
+    440,
+    356,
+    343,
+    518,
+    530,
+    532,
+    468,
+    314,
+    555,
+    441,
+    517,
+    573,
+    310,
+    68,
+    315,
+    509,
+    435,
+    319
+  ],
+  "retrieval_scores": [
+    0.4302856922149658,
+    0.42079785466194153,
+    0.4127727448940277,
+    0.407164067029953,
+    0.40164661407470703,
+    0.39061203598976135,
+    0.39006268978118896,
+    0.3895378112792969,
+    0.3885990381240845,
+    0.38698774576187134,
+    0.3809170722961426,
+    0.37973642349243164,
+    0.37558454275131226,
+    0.37221693992614746,
+    0.37034231424331665,
+    0.3699890375137329,
+    0.3699032962322235,
+    0.369825541973114,
+    0.3688476085662842,
+    0.36884456872940063
+  ],
+  "retrieval_seconds": 0.029044354989309795,
+  "provided_context_sha256": "d964c30e98c3b7d8bf50e53e3fab44727f69505c1121a1b268269cb7e3b5c622",
+  "provided_context_tokens": 2636,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "03232f8deacf853865ccc775909a72dcf524564ca8106f9f3507033d0b63706e",
+    "raw_answer_sha256": "7ebe5ca5738ba80e1ea85dfd488c918b070f03c810cd271dff43bf32f580b11a",
+    "answer_redacted": false
+  }
+}

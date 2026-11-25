@@ -1,0 +1,113 @@
+{
+  "checked_utc": "2026-11-22T12:25:17.647865+00:00",
+  "client_exit_code": 0,
+  "raw_rows": 1201,
+  "serial_model_loads": [
+    {
+      "loaded": "gtr",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "hypothesizer",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "gtr",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "corrector",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "gtr",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "corrector",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "gtr",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "corrector",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "gtr",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "corrector",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "gtr",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    },
+    {
+      "loaded": "corrector",
+      "free_percentage_before": null,
+      "active_neural_models": 1,
+      "quantization": "symmetric signed int4, group size 64, float32 scales",
+      "cpu_compute": "float32 matmuls; decoded Q4 linear weights cached until unload",
+      "rss_limit_goal_gib": 3
+    }
+  ],
+  "cgroup_peak_bytes": 2651152384,
+  "cgroup_limit_bytes": 5368709120,
+  "final_model_service_state": {
+    "ready": true,
+    "kind": "corrector",
+    "active_neural_models": 1,
+    "memory_guard_level": 1,
+    "guard_basis": "Linux MemAvailable; stop below 1 GiB"
+  },
+  "own_generator_already_removed": true
+}

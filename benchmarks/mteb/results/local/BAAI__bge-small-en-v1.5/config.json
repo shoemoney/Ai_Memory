@@ -1,0 +1,20 @@
+{
+  "model": "BAAI/bge-small-en-v1.5",
+  "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+  "device": "cuda",
+  "max_length": 512,
+  "batch_size": 8,
+  "dimension": null,
+  "seed": 20261121,
+  "threads": 4,
+  "dtype": "torch.bfloat16",
+  "versions": {
+    "mteb": "2.27.20",
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "sentence-transformers": "6.3.0",
+    "datasets": "5.2.0",
+    "numpy": "2.5.5",
+    "pytrec-eval-terrier": "0.5.11"
+  }
+}

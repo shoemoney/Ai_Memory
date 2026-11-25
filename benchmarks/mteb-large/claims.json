@@ -1,0 +1,117 @@
+[
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "This book claims no ranking, because card scores from different benchmark versions are not comparable and the live MTEB leaderboard could not be read. Licenses, dimensions and context lengths were read from each card on 20 November 2026. A card license covers the weights, not the training data or base model."
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "Qwen3-Embedding 0.6B, 4B, 8B 64.33, 69.45, 70.58 MTEB multilingual (MMTEB) task mean. The 8B was No. 1 in the 5 June 2025 snapshot. 1"
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "jina v5 text small 71.7 and 67.7 MTEB English v2 and MMTEB. 5"
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "Harrier 270m, 0.6b, 27b 66.5, 69.0, 74.3 MTEB v2 multilingual. The 27B is too large for CPU. 6"
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "EmbeddingGemma 2 61.36 MTEB multilingual v2 at 768 dimensions. 7"
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "BGE-M3 59.56 MTEB multilingual, from a secondary guide. 11"
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "bge-small-en-v1.5 62.17 Mean of the English MTEB tasks in its card. 9"
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "A Matryoshka model is trained so that the first k numbers of its vector work as an embedding by themselves. You can store 256 numbers of a 1024-number vector and give up a little quality. Jina v5 lists every size from 32 to 1024 as supported. 5 The EmbeddingGemma 2 card reports its MTEB English score falling from 68.46 at 768 dimensions to 67.78 at 256, a loss of 0.68 points for a vector one third the size, and to 65.68 at 128. 7 Tested: on this book's three retrieval tasks the same cut from 768 to 256 dimensions cost 2.36 nDCG points (95% interval 1.78 to 2.97), from a mean of 60.73 to 58.37. The published figure averages the whole English suite, so the two measure different things."
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "Qwen3-Embedding is scored on the multilingual MTEB benchmark, and BGE-M3 adds sparse output from the same model. 1 , 2 One index then serves every language."
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "sha256": "84fc9f52f596fe4bf323e3330b7c1ef3d84b5533f64f36e74580b85ddb9b906b",
+    "sentence": "The current No. 1 model on MTEB (the leaderboard did not render), and GPU and Mac speed."
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "A single-vector model squeezes a page into one vector. A multi-vector model, such as ColPali or ColQwen, keeps one vector per visual patch. The ColPali authors describe the output as \"ColBERT-style multi-vector representations\" and introduced the ViDoRe benchmark to argue that embedding page images beats an OCR pipeline. 8 , 9 The cost is storage. ColQwen2 caps a page at 768 patches 8 of 128 numbers each, and the ColQwen2 card shows an example page with 755 vectors. 8 The table below works out one million pages in float16 (two bytes per number)."
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "The embedder scores each item alone, so it is fast. A reranker reads the query and one candidate together, which is slower and more precise. Qwen3-VL-Reranker, shipped in 2B and 8B sizes, takes mixed text and image pairs. 4 Fetch a few dozen candidates with the embedder and re-score only those, at one model pass per candidate. ViDoRe V3 reports that textual reranking improves results. 22 See Chapter 05."
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "Documents where OCR loses the layout. Visual retrievers beat textual ones on ViDoRe V3. 22"
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "ColQwen2 embeds page images. ViDoRe V3 reports stronger visual retrieval on its tested datasets. 22 The illustrative 768-vector budget makes a 200-page deck about 39 MB before indexing."
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "77.8 and 73.2 MMEB-V2 overall score, Qwen3-VL-Embedding 8B and 2B over 78 tasks. The pinned model card (16 April 2026, read 20 November 2026) and paper v2 (19 January 2026), Table 1, both give these figures; the paper's abstract gives only the 8B score. Qwen ran the evaluation. 2 1 , 23 Vendor measurement"
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "67.88 vs 70.58 Text-only MTEB multilingual (MMTEB) task mean: Qwen3-VL-Embedding-8B vs Qwen3-Embedding-8B, a gap of 2.70. At 2B it is 63.87 against 64.33 for a 0.6B text model. 1 Vendor measurement"
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "58.8 Nomic Embed Multimodal 7B, NDCG@5 on ViDoRe-v2. 7 Vendor measurement"
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "10 sets, 26,000 pages ViDoRe V3: 10 datasets, about 26,000 pages, 3,099 queries, 6 languages. 22 Paper"
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "The sources checked here (Qwen's card and ViDoRe V3) contain no agent screenshot-task evaluation, and the synthetic test checks plumbing, not agent usefulness. GPU memory and latency for full-resolution document pages are unmeasured. EmbeddingGemma 2 was not run, so its card is the source for its capabilities."
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "ViDoRe V3, arXiv:2601.08620 (revised 2026-04-21) (official) https://arxiv.org/abs/2601.08620"
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "sha256": "9ef661dedd252929528c20060ef3653dc472aff3965eacb8c00aa9734f523c92",
+    "sentence": "VLM2Vec-V2, arXiv:2507.04590 (2025-07-07), source of MMEB-V2 (official) https://arxiv.org/abs/2507.04590"
+  },
+  {
+    "chapter": "18-choosing.html",
+    "sha256": "3591befc081e36601e81b7617a4d57b98e6b9c6abeb404b47c875ac655772d61",
+    "sentence": "Pick multimodal when you search screenshots, slides or photos directly. ViDoRe V3 reports visual retrievers beat textual ones on document pages. 19"
+  },
+  {
+    "chapter": "18-choosing.html",
+    "sha256": "3591befc081e36601e81b7617a4d57b98e6b9c6abeb404b47c875ac655772d61",
+    "sentence": "ViDoRe V3, arXiv:2601.08620 (paper) https://arxiv.org/abs/2601.08620"
+  }
+]

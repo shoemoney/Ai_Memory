@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 17
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b6e8d618cf96cb9f4b304cc7c9107082cce3596f043c93a403f696a287b0599c",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5830db7e-b17e-4c21-a5fe-cfc696714a57",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Read about Game Design Theory by Keith Burgun\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Read about Designing Games by Tynan Sylvester\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Read about Challenges for Game Designers by Brenda Brathwaite and Ian Schreiber\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Read about Game Balancing by Steve Rabin\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Read about The Art of Game Design by Jesse Schell\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Read about Level Up! The Guide to Great Video Game Design by Scott Rogers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Read about The Game Design Reader by Katie Salen and Eric Zimmerman\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Read about The Game Maker's Apprentice by Mark Overmars and Jacob Habgood\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Read about Game Mechanics by Ernest Adams and Joris Dormans\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Read about The Game Design Workshop by Tracy Fullerton\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365732,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 373,
+      "prompt_tokens": 1985,
+      "total_tokens": 2358,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Read about Game Design Theory by Keith Burgun\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Read about Designing Games by Tynan Sylvester\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Read about Challenges for Game Designers by Brenda Brathwaite and Ian Schreiber\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Read about Game Balancing by Steve Rabin\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Read about The Art of Game Design by Jesse Schell\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Read about Level Up! The Guide to Great Video Game Design by Scott Rogers\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"Read about The Game Design Reader by Katie Salen and Eric Zimmerman\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Read about The Game Maker's Apprentice by Mark Overmars and Jacob Habgood\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Read about Game Mechanics by Ernest Adams and Joris Dormans\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Read about The Game Design Workshop by Tracy Fullerton\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 33.9412373380037,
+  "prompt_tokens_local": 1985
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "Qwen3-Embedding 0.6B, 4B, 8B 64.33, 69.45, 70.58 MTEB multilingual. The 8B was No. 1 in the 5 June 2025 snapshot.",
+    "sources": {
+      "s03-1": [
+        "https://huggingface.co/Qwen/Qwen3-Embedding-8B"
+      ]
+    }
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "jina v5 text small 71.7 and 67.7 MTEB English v2 and MMTEB.",
+    "sources": {
+      "s03-5": [
+        "https://huggingface.co/jinaai/jina-embeddings-v5-text-small"
+      ]
+    }
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "Harrier 270m, 0.6b, 27b 66.5, 69.0, 74.3 MTEB v2 multilingual. The 27B is too large for CPU.",
+    "sources": {
+      "s03-6": [
+        "https://huggingface.co/microsoft/harrier-oss-v1-270m"
+      ]
+    }
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "EmbeddingGemma 2 61.36 MTEB multilingual v2 at 768 dimensions.",
+    "sources": {
+      "s03-7": [
+        "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2"
+      ]
+    }
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "BGE-M3 59.56 MTEB multilingual, from a secondary guide.",
+    "sources": {
+      "s03-11": [
+        "https://superlinked.com/blog/qwen3-embedding-reranker-guide"
+      ]
+    }
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "bge-small-en-v1.5 62.17 Mean of the English MTEB tasks in its card.",
+    "sources": {
+      "s03-9": [
+        "https://huggingface.co/BAAI/bge-small-en-v1.5"
+      ]
+    }
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "all-MiniLM-L6-v2 None Its card gives no score. A small baseline.",
+    "sources": {}
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "A Matryoshka model is trained so that the first k numbers of its vector work as an embedding by themselves. You can store 256 numbers of a 1024-number vector and give up a little quality. Jina v5 lists every size from 32 to 1024 as supported. The EmbeddingGemma 2 card reports its MTEB English score falling from 68.46 at 768 dimensions to 67.78 at 256, a loss of 0.68 points for a vector one third the size, and to 65.68 at 128.",
+    "sources": {
+      "s03-5": [
+        "https://huggingface.co/jinaai/jina-embeddings-v5-text-small"
+      ],
+      "s03-7": [
+        "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2"
+      ]
+    }
+  },
+  {
+    "chapter": "03-text-embeddings.html",
+    "chapter_sha256": "3e6b8f0f438974bc09a650be8117552d25552f878f60884d9948f418bcc7fce1",
+    "sentence_or_table_row": "Qwen3-Embedding expects a task instruction on the query side. Its card says instructions typically add 1 to 5 points and recommends writing them in English.",
+    "sources": {
+      "s03-1": [
+        "https://huggingface.co/Qwen/Qwen3-Embedding-8B"
+      ]
+    }
+  },
+  {
+    "chapter": "04-multimodal-embeddings.html",
+    "chapter_sha256": "f0b2a95353fb84f1be57c812fdc16559f10550e537bc17351f5b719b7dfd1308",
+    "sentence_or_table_row": "67.88 vs 70.58 Text-only MMTEB task mean: Qwen3-VL-Embedding-8B vs Qwen3-Embedding-8B, a gap of 2.70. At 2B it is 63.87 against 64.33 for a 0.6B text model. Vendor measurement",
+    "sources": {
+      "s04-1": [
+        "https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda/README.md"
+      ]
+    }
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "n": 320,
+  "seed": 20261122,
+  "categories": {
+    "1": 80,
+    "2": 80,
+    "3": 80,
+    "4": 80
+  },
+  "conversations": 10,
+  "sampling": "8 per conversation/category where available, then fill each category uniformly from unselected items to 80",
+  "dataset_revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+  "dataset_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "dataset_license": "CC-BY-NC-4.0",
+  "embed_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "model": "qwen2.5-14b-instruct",
+  "judge_votes": 3,
+  "pseudonymization": "pilot hashes plus speaker aliases and spaCy en_core_web_sm 3.8.0 PERSON token hashes",
+  "server_context": 65536,
+  "judge_seed_rule": "20261122 + 100 * backend index (full-context, rag, mem0, graphiti, cognee) + vote index 0..2; prevents cross-system cache reuse",
+  "question_gold_pairs_unique": true,
+  "task_scratch_birth_epoch": 1795292236,
+  "task_hard_deadline_epoch": 1795328036,
+  "model_slots": 2,
+  "concurrent_conversations": 2,
+  "per_slot_context": 65536,
+  "mem0_batch_turns": 8,
+  "mem0_message_format": "one user message per timestamped named turn, eight messages per add call; native ten-message history",
+  "rag_top_k": 20,
+  "graphiti_episode_unit": "session",
+  "cognee_document_unit": "session"
+}

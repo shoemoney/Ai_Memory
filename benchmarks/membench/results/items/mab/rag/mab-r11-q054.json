@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q054",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "fd2f98006919c21512fef567b96af11fe2d946558763a81e22ad7511ac781e09",
+  "reference_sha256": "23e37ef5664b8a3363037dc97164b354247878f991ab72249a3ca0ac1622084f",
+  "method": "rag",
+  "answer": "Person052 intended to propose to Person670 but hesitated.",
+  "response": {
+    "text": "Person052 intended to propose to Person670 but hesitated.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 3216,
+      "total_tokens": 3233,
+      "prompt_tokens_details": {
+        "cached_tokens": 222
+      }
+    },
+    "seconds": 8.64740786200855,
+    "request_sha256": "b6309106f2fb85a2f6dfd458b15c9dff128da0cd90166b99d6090302cb74de11",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    313,
+    257,
+    520,
+    342,
+    225,
+    101,
+    226,
+    286,
+    238,
+    242,
+    375,
+    115,
+    229,
+    563,
+    246,
+    519,
+    394,
+    241,
+    383,
+    374
+  ],
+  "retrieval_scores": [
+    0.6946375370025635,
+    0.6725998520851135,
+    0.6560274362564087,
+    0.64756178855896,
+    0.6394461393356323,
+    0.6339262127876282,
+    0.6156840324401855,
+    0.6126022338867188,
+    0.6107494831085205,
+    0.6072449684143066,
+    0.6067874431610107,
+    0.6053682565689087,
+    0.6039429903030396,
+    0.6038599014282227,
+    0.6031017303466797,
+    0.6012600064277649,
+    0.5897507667541504,
+    0.5884002447128296,
+    0.5874403715133667,
+    0.5837720632553101
+  ],
+  "retrieval_seconds": 0.028815131008741446,
+  "provided_context_sha256": "479b852e77780488c7d380b20ae621f86e32d93cfdd2e1f84fae239f977fa63f",
+  "provided_context_tokens": 2846,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "1015268d13bd60dbb48408f08aad6920aecd62e6a037e8e99a9f50d034eda68b",
+    "raw_answer_sha256": "dbc399d4d2043efe90cd6c26118ddb7b29366514a4ce12dc2f90651ec7508a07",
+    "answer_redacted": false
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "selection": {
+    "seed": 20261125,
+    "method": "largest-remainder proportional strata, sorted IDs, seeded sample then shuffle",
+    "longmemeval": [
+      "6e984302",
+      "gpt4_f49edff3",
+      "gpt4_8279ba02",
+      "c6853660",
+      "1c549ce4",
+      "0977f2af",
+      "a82c026e",
+      "3d86fd0a",
+      "a40e080f",
+      "f0853d11",
+      "031748ae_abs",
+      "affe2881",
+      "81507db6",
+      "5e1b23de",
+      "4fd1909e",
+      "8979f9ec",
+      "3c1045c8",
+      "75f70248",
+      "27016adc",
+      "89941a93",
+      "eeda8a6d_abs",
+      "e3fc4d6e",
+      "1f2b8d4f",
+      "7e00a6cb",
+      "b86304ba",
+      "129d1232",
+      "4d6b87c8",
+      "71a3fd6b",
+      "cf22b7bf",
+      "36b9f61e",
+      "b320f3f8",
+      "603deb26",
+      "gpt4_f420262c",
+      "b46e15ed",
+      "bc8a6e93_abs",
+      "55241a1f",
+      "fca70973",
+      "dd2973ad",
+      "06878be2",
+      "gpt4_213fd887",
+      "gpt4_e05b82a6",
+      "gpt4_7ddcf75f",
+      "88432d0a",
+      "gpt4_d6585ce9",
+      "gpt4_b5700ca9",
+      "c7cf7dfd",
+      "gpt4_4edbafa2",
+      "faba32e5"
+    ],
+    "locomo": [
+      "c00-q051",
+      "c00-q001",
+      "c01-q022",
+      "c00-q040",
+      "c01-q033",
+      "c01-q003",
+      "c00-q020",
+      "c00-q064",
+      "c01-q081",
+      "c00-q109",
+      "c01-q020",
+      "c00-q026",
+      "c03-q053",
+      "c01-q031",
+      "c00-q004",
+      "c01-q074",
+      "c03-q009",
+      "c01-q004",
+      "c00-q124",
+      "c03-q000",
+      "c00-q110",
+      "c01-q025",
+      "c00-q069",
+      "c00-q030"
+    ]
+  },
+  "stock_snapshot": {
+    "longmemeval": {
+      "sha256": "fb80cc72d11b1ee077afc067f9008e7f6d2966ee5afeb1dc21a69a639574729a",
+      "data": {
+        "planned": 1500,
+        "completed": 1500,
+        "complete": true,
+        "systems": {
+          "dense-standard": {
+            "n": 300,
+            "correct": 192,
+            "skipped": 0,
+            "length_stops": 0,
+            "accuracy": 0.64
+          },
+          "full-standard": {
+            "n": 0,
+            "correct": 0,
+            "skipped": 300,
+            "length_stops": 0,
+            "accuracy": null
+          },
+          "mem0-raw-standard": {
+            "n": 300,
+            "correct": 192,
+            "skipped": 0,
+            "length_stops": 0,
+            "accuracy": 0.64
+          },
+          "bm25-standard": {
+            "n": 300,
+            "correct": 210,
+            "skipped": 0,
+            "length_stops": 0,
+            "accuracy": 0.7
+          },
+          "full-oracle": {
+            "n": 212,
+            "correct": 180,
+            "skipped": 88,
+            "length_stops": 1,
+            "accuracy": 0.8490566037735849
+          }
+        }
+      }
+    },
+    "locomo": {
+      "sha256": "4f9b6dc2725b3c15d148a436fc033b3d4e5bca227be8140c0c203e47229a990a",
+      "data": {
+        "item_ids": [
+          "c00-q001",
+          "c00-q002",
+          "c00-q004",
+          "c00-q008",
+          "c00-q016",
+          "c00-q020",
+          "c00-q026",
+          "c00-q027",
+          "c00-q030",
+          "c00-q037",
+          "c00-q040",
+          "c00-q046",
+          "c00-q050",
+          "c00-q051",
+          "c00-q052",
+          "c00-q054",
+          "c00-q055",
+          "c00-q057",
+          "c00-q058",
+          "c00-q059",
+          "c00-q064",
+          "c00-q066",
+          "c00-q069",
+          "c00-q076",
+          "c00-q077",
+          "c00-q081",
+          "c00-q084",
+          "c00-q109",
+          "c00-q110",
+          "c00-q114",
+          "c00-q124",
+          "c00-q135",
+          "c00-q139",
+          "c00-q147",
+          "c01-q003",
+          "c01-q004",
+          "c01-q005",
+          "c01-q007",
+          "c01-q009",
+          "c01-q010",
+          "c01-q014",
+          "c01-q017",
+          "c01-q019",
+          "c01-q020",
+          "c01-q022",
+          "c01-q023",
+          "c01-q024",
+          "c01-q025",
+          "c01-q031",
+          "c01-q033",
+          "c01-q037",
+          "c01-q039",
+          "c01-q044",
+          "c01-q066",
+          "c01-q074",
+          "c01-q075",
+          "c01-q078",
+          "c01-q081",
+          "c03-q000",
+          "c03-q009",
+          "c03-q012",
+          "c03-q015",
+          "c03-q034",
+          "c03-q053",
+          "c03-q056",
+          "c03-q106",
+          "c03-q110"
+        ],
+        "planned_n": 67,
+        "complete": false,
+        "systems": {
+          "full-context": {
+            "n": 67,
+            "correct": 47,
+            "accuracy": 0.7014925373134329
+          },
+          "rag": {
+            "n": 0,
+            "correct": 0,
+            "accuracy": null
+          },
+          "mem0": {
+            "n": 0,
+            "correct": 0,
+            "accuracy": null
+          },
+          "graphiti": {
+            "n": 0,
+            "correct": 0,
+            "accuracy": null
+          },
+          "cognee": {
+            "n": 0,
+            "correct": 0,
+            "accuracy": null
+          }
+        }
+      }
+    }
+  },
+  "power": {
+    "longmemeval": {
+      "n_questions": 48,
+      "planning_lane": "bm25-standard",
+      "stock_accuracy": 0.7,
+      "assumed_discordance": 0.42000000000000004,
+      "maximum_equal_marginal_discordance": 0.6000000000000001,
+      "mde80_unadjusted": 0.2620643006507268,
+      "mde80_two_labs_bonferroni": 0.28839048444855503,
+      "sensitivity_mde80": {
+        "0.2": 0.19900834096000458,
+        "0.4": 0.28144029481100763,
+        "0.6": 0.34469255767271845
+      },
+      "caution": "Discordance assumed, not estimated across passes; same-question lanes and votes are not independent."
+    },
+    "locomo": {
+      "n_questions": 24,
+      "planning_lane": "full-context",
+      "stock_accuracy": 0.7014925373134329,
+      "assumed_discordance": 0.41880151481398975,
+      "maximum_equal_marginal_discordance": 0.5970149253731343,
+      "mde80_unadjusted": 0.370085728938705,
+      "mde80_two_labs_bonferroni": 0.4072634173792941,
+      "sensitivity_mde80": {
+        "0.2": 0.28144029481100763,
+        "0.4": 0.39801668192000916,
+        "0.6": 0.4874688899098287
+      },
+      "caution": "Discordance assumed, not estimated across passes; same-question lanes and votes are not independent."
+    }
+  },
+  "timing": {
+    "longmemeval": {
+      "scored_lanes": {
+        "bm25-standard": 48,
+        "dense-standard": 48,
+        "mem0-raw-standard": 48,
+        "full-oracle": 32
+      },
+      "observed_reader_mean_seconds": {
+        "full-oracle": 5.835207425745123,
+        "mem0-raw-standard": 3.1312892541397015,
+        "dense-standard": 3.040607720983777,
+        "bm25-standard": 3.0218319411232852
+      },
+      "missing_lane_fallback_seconds": 5.835207425745123,
+      "judge_vote_mean_seconds": 0.14217458002482783,
+      "p3_reader_seconds": 628.0256256036886,
+      "per_pass_judge_seconds": 75.0681782531091
+    },
+    "locomo": {
+      "scored_lanes": {
+        "full-context": 24,
+        "rag": 24,
+        "mem0": 24,
+        "graphiti": 24,
+        "cognee": 24
+      },
+      "observed_reader_mean_seconds": {
+        "full-context": 33.8328941729799
+      },
+      "missing_lane_fallback_seconds": 33.8328941729799,
+      "judge_vote_mean_seconds": 1.3028498980584924,
+      "p3_reader_seconds": 4059.9473007575875,
+      "per_pass_judge_seconds": 469.02596330105723
+    }
+  },
+  "runtime_estimate": {
+    "reader_seconds": 17579.898473854784,
+    "judge_seconds": 2176.376566216665,
+    "starts_including_initial": 144,
+    "seconds_per_start_assumed": 15,
+    "total_hours": 6.087854177797625,
+    "worst_case_no_pass_speedup_hours": 7.01340785323938,
+    "caution": "Stock timing extrapolation only; includes full-context fallback for unmeasured LoCoMo lanes. Download/conversion excluded; length retries and memory pressure can exceed budget."
+  }
+}

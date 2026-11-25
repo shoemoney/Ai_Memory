@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 72
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "504f5ba2d9b2cdd901742626da8ba9f5e0e73185e221620c4576b7dd6b5234bf",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-363fabe1-9713-461b-ae34-ec344d139c56",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Brazil's Supreme Court has been expanding its powers, allowing it to act as an investigator, prosecutor, and judge in some cases.\",\n        \"The Supreme Court has jailed people without trial for posts on social media that they believe attack Brazil's institutions.\",\n        \"The Supreme Court has ordered social networks to remove thousands of posts and videos with little room for appeal.\",\n        \"The Supreme Court sentenced a congressman to nearly nine years in prison.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367142,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 98,
+      "prompt_tokens": 1490,
+      "total_tokens": 1588,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Brazil's Supreme Court has been expanding its powers, allowing it to act as an investigator, prosecutor, and judge in some cases.\",\n        \"The Supreme Court has jailed people without trial for posts on social media that they believe attack Brazil's institutions.\",\n        \"The Supreme Court has ordered social networks to remove thousands of posts and videos with little room for appeal.\",\n        \"The Supreme Court sentenced a congressman to nearly nine years in prison.\"\n    ]\n}",
+  "seconds": 9.436344194982667,
+  "prompt_tokens_local": 1490
+}

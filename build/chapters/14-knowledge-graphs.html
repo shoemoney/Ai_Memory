@@ -1,0 +1,621 @@
+<article class="chapter" data-ch="14" data-part="e" data-running="Knowledge-graph memory">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part E &middot; Chapter 14</p>
+  <div class="opener-num" aria-hidden="true">14</div>
+  <h1>Knowledge-graph memory</h1>
+  <p class="opener-summary">Memory stores entities and relationships; facts can carry validity dates.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-prototype">Prototype</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">4 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r4" role="img" aria-label="4 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">4 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Changing relationships across entities and questions over a whole corpus.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">Knowledge-graph memory stores nodes (people or companies) and edges (their relationships), extracted by a model or written directly.</p>
+  <p>Follow entity links to answer "Who knows the person who introduced me to Bluefin?", or read community summaries. Microsoft's GraphRAG paper finds vector retrieval strong for local questions, weak for corpus-wide themes.<sup class="cite"><a href="#s14-1">1</a></sup> Some systems also track time. Graphiti, the open-source engine behind Zep, says: "facts have validity windows. When information changes, old facts are invalidated, not deleted".<sup class="cite"><a href="#s14-2">2</a></sup></p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Cypher</dt><dd>Neo4j’s language for matching node and edge patterns.</dd>
+    <dt>Valid time</dt><dd>When a claim applies in the world; in this walkthrough, the half-open interval from <code>valid_from</code> to <code>invalid_at</code>.</dd>
+    <dt>Recorded time</dt><dd>When a version was live in the store; in this walkthrough, from <code>recorded_at</code> to <code>superseded_at</code>. Also called transaction time.</dd>
+    <dt>Community summary</dt><dd>Model-written text describing a cluster of closely linked entities.</dd>
+    <dt>Episode</dt><dd>A message, note or record Graphiti ingests and retains as extracted facts' source.</dd>
+    <dt>Multi-hop question</dt><dd>A question whose answer needs two or more edges in a row.</dd>
+  </dl>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p><strong>Extract:</strong> a model emits entities and relationships from text. <strong>Resolve entities:</strong> match mentions to existing people or firms. <strong>Reconcile facts:</strong> close earlier relationships only when evidence and validity rules warrant it. <strong>Store:</strong> save nodes and edges. <strong>Retrieve:</strong> use a path query for exact relationship patterns. GraphRAG local search gathers context around relevant entities; global search reads community summaries,<sup class="cite"><a href="#s14-1">1</a></sup> while HippoRAG 2 ranks passages with personalized PageRank (which spreads query relevance across linked nodes to score passages).</p>
+<p>Extraction requires generation calls; queries depend on their output. If three edges are each 90% likely to be correct and errors are independent, all three are correct about 73% of the time. This is not answer accuracy. Graphiti's default fact search makes no generative LLM call.<sup class="cite"><a href="#s14-3">3</a></sup></p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 270" role="img" aria-label="Diagram: an episode of text goes to an extractor model, which writes entities and facts into a graph store. Local search and global search read the store and return a slice to the model.">
+  <text class="d-label" x="20" y="24">Write path</text>
+  <rect class="d-box" x="20" y="34" width="110" height="86" rx="4"/>
+  <text class="d-title" x="75" y="68" text-anchor="middle">Episode</text>
+  <text class="d-sub" x="75" y="86" text-anchor="middle">chat, email,</text>
+  <text class="d-sub" x="75" y="100" text-anchor="middle">document chunk</text>
+
+  <rect class="d-box dark" x="175" y="34" width="120" height="86" rx="4"/>
+  <text class="d-title d-on-dark" x="235" y="62" text-anchor="middle">Extractor</text>
+  <text class="d-sub d-on-dark" x="235" y="82" text-anchor="middle">model call that</text>
+  <text class="d-sub d-on-dark" x="235" y="96" text-anchor="middle">finds entities,</text>
+  <text class="d-sub d-on-dark" x="235" y="110" text-anchor="middle">facts and dates</text>
+
+  <rect class="d-box accent" x="340" y="34" width="110" height="86" rx="4"/>
+  <text class="d-title" x="395" y="58" text-anchor="middle">Graph store</text>
+  <text class="d-sub" x="395" y="76" text-anchor="middle">nodes and edges</text>
+  <text class="d-mono" x="395" y="94" text-anchor="middle">valid + recorded</text>
+  <text class="d-mono" x="395" y="108" text-anchor="middle">time intervals</text>
+
+  <text class="d-label" x="190" y="152">Read path</text>
+  <rect class="d-box soft" x="190" y="160" width="260" height="100" rx="4"/>
+  <rect class="d-box" x="200" y="170" width="115" height="80" rx="3"/>
+  <text class="d-title" x="257" y="196" text-anchor="middle">Local search</text>
+  <text class="d-sub" x="257" y="216" text-anchor="middle">walk edges from</text>
+  <text class="d-sub" x="257" y="230" text-anchor="middle">matched entities</text>
+  <rect class="d-box" x="325" y="170" width="115" height="80" rx="3"/>
+  <text class="d-title" x="382" y="196" text-anchor="middle">Global search</text>
+  <text class="d-sub" x="382" y="216" text-anchor="middle">read community</text>
+  <text class="d-sub" x="382" y="230" text-anchor="middle">summaries</text>
+
+  <rect class="d-box dark" x="500" y="34" width="80" height="226" rx="4"/>
+  <text class="d-title d-on-dark" x="540" y="140" text-anchor="middle">Model</text>
+  <text class="d-sub d-on-dark" x="540" y="160" text-anchor="middle">reads the</text>
+  <text class="d-sub d-on-dark" x="540" y="174" text-anchor="middle">returned</text>
+  <text class="d-sub d-on-dark" x="540" y="188" text-anchor="middle">slice</text>
+
+  <path class="d-line" d="M130 77 H173"/>
+  <path class="d-line" d="M295 77 H338"/>
+  <path class="d-line accent" d="M395 120 V160"/>
+  <path class="d-line accent dash" d="M450 210 H498"/>
+</svg>
+<figcaption><b>Figure 1.</b> Extraction writes an episode into the graph. Local search walks edges; global search reads summaries.</figcaption>
+</figure>
+
+<h3>Two timelines</h3>
+<p>Each fact can carry a valid time and a recorded time; Graphiti describes tracking both.<sup class="cite"><a href="#s14-2">2</a></sup> The walkthrough implements both directly in Cypher, without Graphiti.</p>
+<table class="data">
+<colgroup><col class="c50"><col class="c25"><col class="c25"></colgroup>
+<thead><tr><th>Event</th><th>Valid from</th><th>Recorded at</th></tr></thead>
+<tbody>
+<tr><td>Alice works at Acme.</td><td>2024-03-01</td><td>2024-03-02</td></tr>
+<tr><td>The application learns she joined Bluefin.</td><td>2026-09-01</td><td>2026-09-07</td></tr>
+<tr><td>A correction moves the Bluefin start date earlier.</td><td>2026-08-15</td><td>2026-11-15</td></tr>
+</tbody>
+</table>
+<p>Updates close recorded intervals and append complete replacements. For 20 August 2026, current knowledge returns Bluefin; knowledge recorded on 1 November 2026 returns Acme, before the correction. Assume one employer at a time; intervals include their start, exclude their end.</p>
+
+
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>Multi-hop connections between people, companies and projects.</li>
+      <li>Changing relationships needing joins, history and sources. Structured updates can write edges directly; a lone attribute needs SQL.</li>
+      <li>Whole-corpus questions such as "what themes recur across these reports", which top-k vector search answers poorly.</li>
+      <li>Known entity types. Graphiti accepts Pydantic types (Python classes defining and validating fields).<sup class="cite"><a href="#s14-2">2</a></sup></li>
+      <li>Teams able to afford extraction and inspect edges.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>Single-passage lookups such as "what did I say about X on Tuesday". Use vectors (Chapter 03) or files (Chapter 01).</li>
+      <li>A few dozen notes. Read the files.</li>
+      <li>Preferences and short facts about one user need a keyed profile. For a few relations, the MCP reference memory server is the lightest graph option.</li>
+      <li>Local models that cannot reliably return structured output. Test one first.<sup class="cite"><a href="#s14-2">2</a></sup></li>
+      <li>Write volumes that outrun extraction. If passage lookup suffices, use timestamped vectors.</li>
+    </ul>
+  </div>
+</div>
+<h3>Variants and tools</h3>
+<p class="table-title">Graph-based memory and retrieval tools (state as of 20 November 2026)</p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c50"><col class="c30"></colgroup>
+  <thead><tr><th>Tool</th><th>Core idea</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Microsoft GraphRAG</td><td>Extracts entities and relations; summarizes communities (Leiden, a graph-clustering method). Offers global, local and DRIFT (local search seeded with community context) search.<sup class="cite"><a href="#s14-1">1</a></sup></td><td>MIT license. README says the project is "largely in maintenance mode".<sup class="cite"><a href="#s14-4">4</a></sup></td></tr>
+    <tr><td>LazyGraphRAG</td><td>Defers model work to query time, so Microsoft reports indexing costs about the same as vector RAG.<sup class="cite"><a href="#s14-5">5</a></sup></td><td>November 2024; June 2025 note names Microsoft Discovery and Azure Local.<sup class="cite"><a href="#s14-5">5</a></sup></td></tr>
+    <tr><td>LightRAG</td><td>Cheap indexing; local and global retrieval over an extracted graph plus vectors.<sup class="cite"><a href="#s14-6">6</a></sup></td><td>EMNLP 2025 paper. Stores in Neo4j, PostgreSQL, MongoDB or OpenSearch.<sup class="cite"><a href="#s14-6">6</a></sup></td></tr>
+    <tr><td>HippoRAG 2</td><td>Extracts a graph and ranks passages with personalized PageRank.<sup class="cite"><a href="#s14-7">7</a></sup></td><td>ICML 2025 paper. Code at OSU-NLP-Group/HippoRAG.<sup class="cite"><a href="#s14-7">7</a></sup></td></tr>
+
+    <tr><td>Graphiti (Zep)</td><td>Temporal graph of episodes, entities and facts with validity windows. Search mixes semantic, BM25 keyword and graph methods.<sup class="cite"><a href="#s14-2">2</a></sup></td><td>Apache-2.0. <code>graphiti-core</code> 0.31.2, 2026-10-20.<sup class="cite"><a href="#s14-2">2</a></sup></td></tr>
+    <tr><td>Mem0 graph memory</td><td>Links extracted entities to memories. The docs say it "does not assign typed, labeled relationships".<sup class="cite"><a href="#s14-8">8</a></sup></td><td>Platform only. OSS v3 removed graph memory and external graph drivers; Mem0 core remains open source.<sup class="cite"><a href="#s14-9">9</a></sup></td></tr>
+    <tr><td>Cognee</td><td>Ingests text, extracts a graph and queries it with vector and graph search. Has local extraction and embeddings without a model key.<sup class="cite"><a href="#s14-10">10</a></sup></td><td>Version 1.6.10, 2026-11-18. Apache-2.0.<sup class="cite"><a href="#s14-10">10</a>,<a href="#s14-11">11</a></sup></td></tr>
+    <tr><td>MCP reference memory server</td><td>Entities, relations and observations (short facts on an entity) in a local file. The client model decides what to write.<sup class="cite"><a href="#s14-12">12</a></sup></td><td>README requires Node 24 or newer. It rewrites a whole-file store and serializes writes from several processes with a lock, so write cost grows with file size (Chapter 13).<sup class="cite"><a href="#s14-12">12</a></sup></td></tr>
+  </tbody>
+</table>
+
+<p>Chapter 13 covers MCP reference memory server 2.2.1 (not run): Streamable HTTP, the <code>memory://knowledge-graph</code> resource and filtered reads, which limit response size, not rewrite cost. It listens on loopback by default.<sup class="cite"><a href="#s14-30">30</a></sup></p>
+
+<p>Chapter 04 covers ConceptGraphs: a 3D object graph associating detections across camera views.<sup class="cite"><a href="#s14-29">29</a></sup> Not run here; Chapter 04 distinguishes image embeddings from maps.</p>
+
+<h3>Graph stores</h3>
+<p class="table-title">Where the graph lives (state as of 20 November 2026)</p>
+<table class="data">
+  <colgroup><col class="c30"><col class="c70"></colgroup>
+  <thead><tr><th>Store</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Kuzu</td><td><strong>Archived.</strong> Its 2025-10-10 README announces archival and says 0.11.3 bundles common extensions.<sup class="cite"><a href="#s14-13">13</a></sup> Graphiti 0.31.2 marks its Kuzu driver deprecated.<sup class="cite"><a href="#s14-2">2</a></sup> Start no new work on it.</td></tr>
+    <tr><td>FalkorDB</td><td>Property graph (nodes and edges with named fields), using OpenCypher and the Redis protocol. Graphiti names FalkorDB 1.1.2 and supports the embedded Python package <code>falkordblite</code> (appeared 2025-11-26; Python 3.12 or newer).<sup class="cite"><a href="#s14-2">2</a>,<a href="#s14-14">14</a></sup></td></tr>
+    <tr><td>Neo4j</td><td>Graphiti names Neo4j 5.26.<sup class="cite"><a href="#s14-2">2</a></sup> Choose it for the tested lab: Community 2026.10.2 worked, though not the documented version.</td></tr>
+    <tr><td>Apache AGE</td><td>A PostgreSQL extension. Version 1.7.0, 2026-01-21, adds PostgreSQL 18 builds and row-level security.<sup class="cite"><a href="#s14-15">15</a></sup> Natural if you already run Postgres (Chapter 08).</td></tr>
+  </tbody>
+</table>
+<p>Graphiti also documents Amazon Neptune Database and Analytics with OpenSearch full-text search.<sup class="cite"><a href="#s14-2">2</a></sup></p>
+<h3>Property graphs or RDF</h3>
+<p>Either model accepts extracted facts or direct writes; choose by queries and fact exchange.</p>
+<table class="data">
+<colgroup><col class="c20"><col class="c40"><col class="c40"></colgroup>
+<thead><tr><th>Choice</th><th>Representation and reasoning</th><th>When agent memory benefits</th></tr></thead>
+<tbody>
+<tr><td>Property graph</td><td>Nodes and edges have properties; Cypher matches paths. Applications define types and validity rules.<sup class="cite"><a href="#s14-16">16</a></sup></td><td>Choose for application-specific links, timestamps and path queries (walkthrough).</td></tr>
+<tr><td>RDF / SPARQL</td><td>Subject-predicate-object triples share identifiers. An ontology names types; an optional reasoner derives triples from its rules.<sup class="cite"><a href="#s14-17">17</a>,<a href="#s14-18">18</a></sup></td><td>Combine external vocabularies or exchange facts across systems. SPARQL queries triples; separate inference provides no automatic truth checking.<sup class="cite"><a href="#s14-19">19</a></sup></td></tr>
+</tbody>
+</table>
+
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Who knows whom in a personal network</h3>
+  <dl>
+    <dt>Situation</dt><dd>After recording investor meetings and introductions, a founder asks "Who knows the person who introduced me to Bluefin?" Keyword search cannot join notes.</dd>
+    <dt>Why it fits</dt><dd>Typed edges join people and firms: Bluefin, its introducer, then their contacts. HippoRAG 2 reports gains on associative recall (answers needing linked facts), also found in a reduced local run (Numbers).<sup class="cite"><a href="#s14-7">7</a></sup></dd>
+    <dt>Pair with</dt><dd>Neo4j for the tested setup, or embedded FalkorDBLite without a server. Keep source notes for quotations.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Changing facts that link several entities</h3>
+  <dl>
+    <dt>Situation</dt><dd>Over a year, an assistant hears "I moved" and "I switched to Bluefin". Plain notes may preserve stale answers.</dd>
+    <dt>Why it fits</dt><dd>Each fact has a start and end date, and a change closes the old edge instead of deleting it.<sup class="cite"><a href="#s14-2">2</a></sup> The example answers Acme or Bluefin by recorded date. One job or address needs SQL validity columns (Verdict); use graphs when facts join people and firms.</dd>
+    <dt>Pair with</dt><dd>Graphiti, or the hand-written pattern in the walkthrough. Store the source episode on every edge.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>One question over thousands of reports</h3>
+  <dl>
+    <dt>Situation</dt><dd>An analyst asks which causes recur across thousands of incident reports. Top-k vector search returns ten reports, missing the pattern.</dd>
+    <dt>Why it fits</dt><dd>GraphRAG global search answers from community summaries built over the whole corpus.<sup class="cite"><a href="#s14-1">1</a></sup> Microsoft reports that LazyGraphRAG avoids most up-front indexing cost,<sup class="cite"><a href="#s14-5">5</a></sup> but LazyGraphRAG was not run locally; try RAPTOR summaries (Chapter 05) first.</dd>
+    <dt>Pair with</dt><dd>A corpus slice first, since indexing is expensive.<sup class="cite"><a href="#s14-4">4</a></sup></dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>Multi-hop research across documents</h3>
+  <dl>
+    <dt>Situation</dt><dd>A team asks which component supplier a named company owns. A bridging entity joins two documents.</dd>
+    <dt>Why it fits</dt><dd>HippoRAG 2 ranks passages over its extracted graph with personalized PageRank.<sup class="cite"><a href="#s14-7">7</a></sup> LightRAG retrieves at a local and a global level over its graph.<sup class="cite"><a href="#s14-6">6</a></sup></dd>
+    <dt>Pair with</dt><dd>A reranker, hybrid search (Chapter 05), and sampled edge checks.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>A small graph for one developer, no database</h3>
+  <dl>
+    <dt>Situation</dt><dd>A developer wants Claude Desktop or Claude Code to retain people, projects and relations across sessions without a database.</dd>
+    <dt>Why it fits</dt><dd>The MCP reference memory server keeps entities, relations and observations in one local file and exposes nine tools. The client model chooses writes; the server makes no model call.<sup class="cite"><a href="#s14-12">12</a></sup></dd>
+    <dt>Pair with</dt><dd>The file under git. Use filtered reads if only the response is too large. Measure p95 write latency at your note rate. Migrate when it exceeds your latency budget, writers regularly wait on the lock, or queries need dated relationships.</dd>
+  </dl>
+</article>
+
+</div>
+
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p>Local runs cannot settle graphs versus vectors: Graphiti needed extraction retries with Qwen2.5-14B-Instruct and finished only three LongMemEval histories (Chapter 13), too few to score.</p>
+<p class="table-title">Benchmark and cost figures with provenance (state as of 20 November 2026)</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>Measure</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>55 to 56%</td><td>Graphiti and Cognee on LoCoMo (long-conversation question answering) in Wolff and Bennati's independent testbed, against 77 to 81% for Mem0, RAG and full context. The authors blame incomplete retrieval, not reasoning.<sup class="cite"><a href="#s14-20">20</a></sup></td><td class="src"><span class="pill secondary">Independent paper</span></td></tr>
+    <tr><td>75.14%</td><td>Graphiti on LoCoMo in Zep's counter-evaluation, quoted second-hand in the independent paper.<sup class="cite"><a href="#s14-20">20</a></sup></td><td class="src"><span class="pill vendor">Vendor claim</span>, second-hand</td></tr>
+    <tr><td>74.0%</td><td>Letta Filesystem with gpt-4o-mini and grep-style tools on LoCoMo.<sup class="cite"><a href="#s14-21">21</a></sup></td><td class="src"><span class="pill vendor">Vendor claim</span></td></tr>
+    <tr><td>94.8% vs 93.4%</td><td>Zep against MemGPT on Deep Memory Retrieval, plus up to 18.5% higher accuracy and 90% lower latency on LongMemEval. Vendor figures, not run here; benchmarks are described in Chapter 17.<sup class="cite"><a href="#s14-22">22</a></sup></td><td class="src"><span class="pill vendor">Vendor claim</span></td></tr>
+    <tr><td>0.1%</td><td>LazyGraphRAG indexing cost as a share of full GraphRAG's; Microsoft says this equals vector RAG indexing cost.<sup class="cite"><a href="#s14-5">5</a></sup></td><td class="src"><span class="pill official">Maintainer blog</span></td></tr>
+    <tr><td>+7%</td><td>HippoRAG 2 on associative memory tasks against the best embedding model.<sup class="cite"><a href="#s14-7">7</a></sup></td><td class="src"><span class="pill official">Paper</span></td></tr>
+  </tbody>
+</table>
+<p>Neither LazyGraphRAG's 0.1% cost (Microsoft's report; cited release points to Azure integrations; not run locally) nor HippoRAG 2's +7% average across datasets was reproduced as published. A reduced run (150 2Wiki questions; Qwen2.5-3B-Instruct, replacing the paper's 70B) scored answer F1 (reference-answer token overlap, out of 100) of 46.3 for HippoRAG 2 versus dense retrieval's 32.5: a 13.8-point gain (95% interval 6.6 to 21.2). Supporting-passage recall at five was 78.5% versus 53.8%. That supports the direction on one dataset, not the 7% average. See <code>benchmarks/paper-reruns</code>.</p>
+<p>Zep and Mem0 dispute scores; an independent audit and the benchmark repository's issue thread both contest the LoCoMo answer key.<sup class="cite"><a href="#s14-28">28</a>,<a href="#s14-31">31</a></sup> Evaluate on your own data.</p>
+<p>Tested on 22 November 2026 (Qwen2.5-14B-Instruct Q4_K_M, 4-bit quantized; CPU MiniLM embeddings; three local judge votes per answer, majority wins; 96 GB Apple Silicon), Graphiti scored 44/123 on completed LoCoMo questions from conversations 0 through 3 (35.8%, 95% interval 27.9 to 44.6) against full context's 71/123 (57.7%, 95% interval 48.9 to 66.1). Of 320 targeted questions each, full context completed 320 (180 correct), Graphiti 123 (44), Cognee 67 (39). Retries and the deadline limited completion. Pairing requires answers and three votes from every method: 67 questions from conversations 0, 1 and 3. Graphiti scored 22/67 (32.8%, 95% Wilson interval 22.8 to 44.7); Cognee and full context each scored 39/67 (58.2%, 95% interval 46.3 to 69.3). Scores are conditional on completion.</p>
+<p>Ingestion per conversation took Graphiti 37.6 to 148.8 minutes against vector-only Mem0 OSS's 25.8 to 39.6, including retries and waits on a shared model host, so these are observations, not controlled throughput.</p>
+<p>On 150 LongMemEval items, a 3B local reader scored 66.7% with full context and 61.3% with dense retrieval, no clear gap. Only these two baselines ran, without graphs, Zep or MemGPT. Chapter 17 has the LoCoMo table; the harness is in the companion repository under benchmarks/locomo.</p>
+<h3>Scope and scale</h3>
+<p>Calls per operation:<sup class="cite"><a href="#s14-2">2</a>,<a href="#s14-23">23</a></sup></p>
+<ul>
+<li><strong>Direct edge write or lookup:</strong> zero generation or embedding calls.</li>
+<li><strong>Graphiti episode ingestion:</strong> several generation calls plus embeddings. Retries and entity matching vary the count.</li>
+<li><strong>Default Graphiti fact search:</strong> one query embedding call; add one generation call only if you turn the facts into a prose answer.</li>
+</ul>
+<p>The extractor queue fills first. At the walkthrough's 57 to 115 seconds per episode on CPU with one slot, 60 writes take roughly one to two hours. Its 171.7-second timer covers index setup, two writes, checks, search and model loading, excluding installation and downloads. Time a warmed batch at your concurrency. Graphiti's default of 10 concurrent operations can exceed a local model's capacity.<sup class="cite"><a href="#s14-2">2</a></sup></p>
+<p>Storage estimate: at 768 dimensions in float32 (per-vector size in the Chapter 00 sizing reference), one million embedded entities plus one million embedded facts take about 6.14 GB for vectors alone, before episodes, properties and indexes. Partition users with Graphiti's <code>group_id</code>; measure recall and ingestion backlog as memory grows. If backlog exceeds your freshness budget, batch extraction or use Chapter 20’s synchronous SQL assistant when its narrower design fits.</p>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>The 23 November 2026 check on Linux with a 32-thread CPU postdates the research cutoff; output follows. The 20 November single-episode run passed on an 8 GB consumer GPU, without testing invalidation. You need Docker 29.1.3 (install it first on an empty machine<sup class="cite"><a href="#s14-24">24</a></sup>), Python 3.12.16 and uv 0.13.9 on PATH. Neo4j authentication is off in this disposable loopback-only lab. The temporal test uses no model; the automatic route uses local Qwen2.5-7B-Instruct (Ollama tag qwen2.5:7b).</p>
+<ol class="steps">
+<li><p class="step-title">Start the graph store</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+mkdir /var/tmp/memlab-14
+cd /var/tmp/memlab-14
+export UV_CACHE_DIR=$PWD/uv-cache
+docker run -d --name memlab-14-neo4j -p 127.0.0.1:39140:7687 \
+  -v /var/tmp/memlab-14/neo4j-data:/data \
+  -v /var/tmp/memlab-14/neo4j-logs:/logs -e NEO4J_AUTH=none \
+  -e NEO4J_server_memory_heap_initial__size=128m \
+  -e NEO4J_server_memory_heap_max__size=256m \
+  -e NEO4J_server_memory_pagecache_size=128m \
+  neo4j:2026.10.2-community
+ready=false
+for i in $(seq 1 60); do
+  if timeout 10s docker exec memlab-14-neo4j cypher-shell 'RETURN 1' \
+      &gt;/dev/null 2&gt;&amp;1; then ready=true; break; fi
+  sleep 2
+done
+if [ "$ready" != true ]; then
+  echo 'STOP: Neo4j not ready' &gt;&amp;2
+  docker logs --tail 50 memlab-14-neo4j &gt;&amp;2 || true
+  exit 1
+fi
+printf 'Neo4j ready\n'</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>Neo4j ready</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Write both timelines, then query them</p>
+<p>Save this whole file (initial write, September update, November correction) as plain Cypher and run it once in the empty lab; cypher-shell reads standard input.<sup class="cite"><a href="#s14-25">25</a></sup> The queries use latest knowledge, then fixed valid and recorded dates. Sources name version updates, not all evidence: Acme starts per note-1 and ends per correction-3.</p>
+<p>Fixture-specific updates use a stable person ID and atomically close and append versions. November selects September-recorded Acme/Bluefin versions; reusable updates need date parameters and interval selection. The final query follows KNOWS and INTRODUCED to find the introducer's contacts.</p>
+<div class="codeblock splittable" data-listing-note="Save as jobs.cypher, then run the command below; this file contains only Cypher."><div class="code-head"><span class="code-lang">CYPHER</span><span class="code-file">jobs.cypher</span><span class="code-tag tested">Tested</span></div>
+<pre>CREATE (a:Person {id:'person-1', name:'Alice'}), (c:Company {name:'Acme'}),
+  (:Company {name:'Bluefin'}),
+  (a)-[:WORKS_AT {valid_from:date('2024-03-01'),
+    recorded_at:date('2024-03-02'), source:'note-1'}]-&gt;(c);
+
+MATCH (a:Person {id:'person-1'})-[r:WORKS_AT]-&gt;(c:Company {name:'Acme'})
+WHERE r.superseded_at IS NULL AND r.valid_from &lt;= date('2026-09-01')
+  AND (r.invalid_at IS NULL OR date('2026-09-01') &lt; r.invalid_at)
+SET r.superseded_at = date('2026-09-07')
+WITH a, c
+MATCH (b:Company {name:'Bluefin'})
+CREATE (a)-[:WORKS_AT {valid_from:date('2024-03-01'),
+  invalid_at:date('2026-09-01'), recorded_at:date('2026-09-07'),
+  source:'chat-2'}]-&gt;(c),
+  (a)-[:WORKS_AT {valid_from:date('2026-09-01'),
+  recorded_at:date('2026-09-07'), source:'chat-2'}]-&gt;(b);
+
+MATCH (a:Person {id:'person-1'})-[r:WORKS_AT]-&gt;(employer:Company)
+WHERE r.superseded_at IS NULL
+  AND employer.name IN ['Acme', 'Bluefin']
+  AND r.recorded_at = date('2026-09-07')
+  AND (r.invalid_at IS NULL OR date('2026-08-15') &lt; r.invalid_at)
+SET r.superseded_at = date('2026-11-15')
+WITH DISTINCT a
+MATCH (c:Company {name:'Acme'}), (b:Company {name:'Bluefin'})
+CREATE (a)-[:WORKS_AT {valid_from:date('2024-03-01'),
+  invalid_at:date('2026-08-15'), recorded_at:date('2026-11-15'),
+  source:'correction-3'}]-&gt;(c),
+  (a)-[:WORKS_AT {valid_from:date('2026-08-15'),
+  recorded_at:date('2026-11-15'), source:'correction-3'}]-&gt;(b);
+
+WITH date('2026-08-20') AS event
+MATCH (:Person {id:'person-1'})-[r:WORKS_AT]-&gt;(c:Company)
+WHERE r.superseded_at IS NULL AND r.valid_from &lt;= event
+  AND (r.invalid_at IS NULL OR event &lt; r.invalid_at)
+RETURN 'event, latest knowledge' AS query, c.name AS company, r.source AS source;
+
+WITH date('2026-08-20') AS event, date('2026-11-01') AS known
+MATCH (:Person {id:'person-1'})-[r:WORKS_AT]-&gt;(c:Company)
+WHERE r.valid_from &lt;= event
+  AND (r.invalid_at IS NULL OR event &lt; r.invalid_at)
+  AND r.recorded_at &lt;= known
+  AND (r.superseded_at IS NULL OR known &lt; r.superseded_at)
+RETURN 'event, known Nov 1' AS query, c.name AS company, r.source AS source;
+
+MATCH (:Person {id:'person-1'})-[r:WORKS_AT]-&gt;(:Company)
+RETURN count(r) AS preserved_versions;
+
+MATCH (a:Person {id:'person-1'}), (b:Company {name:'Bluefin'})
+CREATE (contact:Person {id:'contact-1', name:'Morgan'}),
+  (colleague:Person {id:'contact-2', name:'Casey'}),
+  (contact)-[:INTRODUCED {person_id:a.id}]-&gt;(b),
+  (colleague)-[:KNOWS]-&gt;(contact);
+
+MATCH (p:Person)-[:KNOWS]-&gt;(contact:Person)-[intro:INTRODUCED]-&gt;
+  (:Company {name:'Bluefin'})
+WHERE intro.person_id = 'person-1'
+RETURN p.name AS person, contact.name AS introducer;</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>docker exec -i memlab-14-neo4j cypher-shell &lt; jobs.cypher</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>query, company, source
+"event, latest knowledge", "Bluefin", "correction-3"
+query, company, source
+"event, known Nov 1", "Acme", "chat-2"
+preserved_versions
+5
+person, introducer
+"Casey", "Morgan"</pre></div>
+<p>Verify persistence in a fresh client process; it returns <code>preserved_versions</code> = <code>5</code>.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>docker exec memlab-14-neo4j cypher-shell \
+  "MATCH (:Person {id:'person-1'})-[r:WORKS_AT]-&gt;()
+   RETURN count(r) AS preserved_versions;"</pre></div>
+<p>Five versions survive; overwriting employer intervals loses the recorded 1 November Acme answer. Another fixture preserved another person, employer and earlier interval.</p></li>
+<li><p class="step-title">Install Graphiti and acquire local model weights</p>
+<p>The probe sets pipefail and selects GPU at 6 GB free, a lab threshold. It does not test Docker GPU access: without the NVIDIA Container Toolkit, launch fails instead of falling back to CPU. CPU-only execution avoids this branch. A manifest check stops the walkthrough if a model or embedding tag has changed. Ollama ran one request at a time; weights and caches stay in the lab folder.<sup class="cite"><a href="#s14-26">26</a></sup></p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+gpu=()
+free=$(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits \
+  | head -n 1) || free=0
+if [ "$free" -ge 6144 ]; then gpu=(--gpus all); fi
+docker run -d --name memlab-14-ollama "${gpu[@]}" \
+  -p 127.0.0.1:39141:11434 -e OLLAMA_NUM_PARALLEL=1 \
+  -e OLLAMA_MAX_LOADED_MODELS=2 -e OLLAMA_CONTEXT_LENGTH=8192 \
+  -v /var/tmp/memlab-14/models:/root/.ollama ollama/ollama:0.40.16
+</pre></div>
+<p>Wait for the HTTP endpoint before pulling either model; the check times out and prints logs.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+ready=false
+for i in $(seq 1 30); do
+  if curl -fsS --connect-timeout 2 --max-time 5 \
+      http://127.0.0.1:39141/api/tags &gt;/dev/null 2&gt;&amp;1; then
+    ready=true; break
+  fi
+  sleep 2
+done
+if [ "$ready" != true ]; then
+  echo 'STOP: Ollama not ready' &gt;&amp;2
+  docker logs --tail 50 memlab-14-ollama &gt;&amp;2 || true
+  exit 1
+fi
+printf 'Ollama ready\n'</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>Ollama ready</pre></div>
+<p>Pull and verify the weights against the 20 November 2026 manifests. If floating tags move, the check stops: revalidate the replacement before proceeding.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>docker exec memlab-14-ollama ollama pull qwen2.5:7b
+docker exec memlab-14-ollama ollama pull nomic-embed-text:v1.5
+(
+ cd models/models/manifests/registry.ollama.ai/library
+ printf '%s  %s\n' \
+  156bcbf71df68f7a6581fb4ab306ed921b8114d82b6eaeab5c0442785ea9b4c3 qwen2.5/7b \
+  8688dbc0926c1dfdc1b8b7489034e1fedb06f6ac66472dd2d7f0ed6d7d23ba29 \
+  nomic-embed-text/v1.5 | sha256sum -c
+)</pre></div>
+<p>Install the pinned Python clients.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>uv venv /var/tmp/memlab-14/venv --python 3.12.16
+UV_CACHE_DIR=/var/tmp/memlab-14/uv-cache uv pip install \
+  --python /var/tmp/memlab-14/venv/bin/python \
+  graphiti-core==0.31.2 httpx==0.28.1 openai==3.57.0 \
+  neo4j==6.4.1 pydantic==2.14.4 numpy==2.5.5</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Initialize, ingest and search</p>
+<p>Save <code>graph.py</code>. Ingestion alone builds indexes and adds two dated notes. Both processes check episodes, direction, invalidation, activity and recall. Exact-English old-edge matching can reject or miss paraphrases. Clients use IPv4 loopback and a separate schema. SEMAPHORE_LIMIT=1 matches Ollama's single request. Reciprocal rank fusion (Chapter 05) combines semantic and keyword ranks. Search uses rank fusion. Supplying a local Ollama reranker client prevents Graphiti from initializing its OpenAI default; no reranking runs.<sup class="cite"><a href="#s14-3">3</a></sup> Raw search needs filtering: at 22 November, keep edges starting by then with no end or a later end. Keep positive Bluefin, exclude obsolete positive Acme; negative Acme asserts no employer. The script neither filters validity nor checks paraphrased live employers.</p>
+<div class="codeblock splittable" data-listing-note="Save as graph.py; run once to ingest, then with read in a fresh process."><div class="code-head"><span class="code-lang">python</span><span class="code-file">graph.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import asyncio
+import sys
+import time
+from datetime import datetime, timezone
+from graphiti_core import Graphiti
+from graphiti_core.nodes import EpisodeType
+from graphiti_core.llm_client.config import LLMConfig
+from graphiti_core.llm_client.openai_generic_client import OpenAIGenericClient
+from graphiti_core.embedder.openai import OpenAIEmbedder, OpenAIEmbedderConfig
+from graphiti_core.cross_encoder.openai_reranker_client import OpenAIRerankerClient
+
+async def main():
+    config = LLMConfig(api_key='local', base_url='http://127.0.0.1:39141/v1',
+        model='qwen2.5:7b', small_model='qwen2.5:7b', temperature=0)
+    llm = OpenAIGenericClient(config=config, max_tokens=4096)
+    g = Graphiti('bolt://127.0.0.1:39140', 'neo4j', 'unused', llm_client=llm,
+        embedder=OpenAIEmbedder(OpenAIEmbedderConfig(api_key='local',
+            base_url=config.base_url, embedding_model='nomic-embed-text:v1.5',
+            embedding_dim=768)),
+        cross_encoder=OpenAIRerankerClient(config=config))
+    started = time.monotonic()
+    try:
+        if 'read' not in sys.argv:
+            await g.build_indices_and_constraints()
+            result = await g.add_episode(name='job-note',
+                episode_body='Alice works at Acme.', source=EpisodeType.text,
+                source_description='synthetic lab note',
+                reference_time=datetime(2026, 11, 20, tzinfo=timezone.utc),
+                group_id='lab14')
+            assert result.episode.uuid
+            print('first episode seconds:', round(time.monotonic() - started, 1),
+                  flush=True)
+            warm = time.monotonic()
+            result = await g.add_episode(name='job-change',
+                episode_body='As of 2026-11-21, Alice no longer works at Acme. '
+                    'As of 2026-11-21, Alice works only at Bluefin.',
+                source=EpisodeType.text, source_description='synthetic lab update',
+                reference_time=datetime(2026, 11, 21, tzinfo=timezone.utc),
+                group_id='lab14')
+            assert result.episode.uuid
+            print('second episode seconds:', round(time.monotonic() - warm, 1),
+                  flush=True)
+        records, _, _ = await g.driver.execute_query(
+            'MATCH (e:Episodic {group_id: $group}) RETURN count(e) AS n',
+            group='lab14')
+        assert records[0]['n'] == 2, records
+        records, _, _ = await g.driver.execute_query(
+            'MATCH (a:Entity)-[r:RELATES_TO]-&gt;(b:Entity) '
+            'WHERE r.group_id = $group '
+            'RETURN a.name AS a, b.name AS b, r.fact AS fact, '
+            'r.valid_at AS valid_at, r.invalid_at AS invalid_at', group='lab14')
+        for employer in ('acme', 'bluefin'):
+            matches = [r for r in records if r['a'].lower() == 'alice'
+                       and r['b'].lower() == employer and 'work' in r['fact'].lower()]
+            if employer == 'acme':
+                matches = [r for r in matches
+                           if r['fact'].lower() == 'alice works at acme.']
+                assert matches and all(r['invalid_at'] is not None
+                                       for r in matches), records
+                assert all(str(r['invalid_at']).startswith('2026-11-21')
+                           for r in matches), matches
+            else:
+                assert any(r['invalid_at'] is None
+                           and str(r['valid_at']).startswith('2026-11-21')
+                           for r in matches), records
+        if 'read' not in sys.argv:
+            for r in sorted(records, key=lambda r: (r['a'], r['b'], r['fact'])):
+                if (r['b'].lower() == 'acme'
+                        and r['fact'].lower() != 'alice works at acme.'):
+                    continue
+                valid = r['valid_at'].to_native().isoformat(timespec='seconds')
+                invalid = (r['invalid_at'].to_native().isoformat(timespec='seconds')
+                           if r['invalid_at'] is not None else 'None')
+                print(r['a'], '-&gt;', r['b'], 'valid_at=' + valid,
+                      'invalid_at=' + invalid, flush=True)
+        rows = await g.search('Where does Alice work?', group_ids=['lab14'])
+        assert any('alice' in r.fact.lower() and 'bluefin' in r.fact.lower()
+                   and 'work' in r.fact.lower() for r in rows), rows
+        print('PASS: episodes=2; directed employment; invalidation; search recall',
+              flush=True)
+        if 'read' not in sys.argv:
+            for r in rows:
+                print('fact:', r.fact, flush=True)
+        print('seconds:', round(time.monotonic() - started, 1), flush=True)
+    finally:
+        await g.close()
+
+asyncio.run(asyncio.wait_for(main(), timeout=600))</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>export GRAPHITI_TELEMETRY_ENABLED=false SEMAPHORE_LIMIT=1
+/var/tmp/memlab-14/venv/bin/python graph.py
+/var/tmp/memlab-14/venv/bin/python graph.py read</pre></div>
+<p>Both processes pass the limited assertions above. CPU output, omitting Neo4j index and missing-property warnings:</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>first episode seconds: 56.9
+second episode seconds: 114.8
+Alice -&gt; Acme valid_at=2026-11-20T00:00:00+00:00 invalid_at=2026-11-21T00:00:00+00:00
+Alice -&gt; Bluefin valid_at=2026-11-21T00:00:00+00:00 invalid_at=None
+PASS: episodes=2; directed employment; invalidation; search recall
+fact: Alice works at Acme.
+fact: Alice works only at Bluefin as of 2026-11-21
+fact: As of 2026-11-21, Alice no longer works at Acme
+seconds: 171.7
+PASS: episodes=2; directed employment; invalidation; search recall
+seconds: 0.1</pre></div>
+<p>The single-episode GPU run took 134.8 seconds for ingestion/search and 0.7 for fresh read. Runs include model loading and establish no hardware ranking. Change <code>timeout=600</code> to set a budget.</p>
+</li>
+<li class="step-long"><p class="step-title">Remove only this lab</p>
+<p>Remove the two containers, then the lab folder (it holds bind-mounted data and model files); shared images stay. If sudo -n fails on root-owned files, rerun without -n.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>docker rm -fv memlab-14-neo4j memlab-14-ollama
+cd /var/tmp
+sudo -n rm -rf /var/tmp/memlab-14</pre></div>
+</li>
+</ol>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: one wrong edge poisons later answers</p>
+  <p>Merging two people named Smith combines their edges and contaminates later reads. Keep the source episode on each edge, as Graphiti does,<sup class="cite"><a href="#s14-2">2</a></sup> and inspect retrieved edges. For direct writes, key nodes by a stable, user-scoped contact ID. Graphiti model resolution is not tested by this fixture. Proposed test: ingest two Smiths with different contact IDs and employers; each ID must retrieve only its own employment edge.</p>
+</aside>
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: relation names drift without a schema</p>
+  <p>Free-form extraction can write <code>works_at</code>, <code>employed_by</code> and <code>job</code> for one fact. Graphiti lets you prescribe entity and edge types as Pydantic models;<sup class="cite"><a href="#s14-2">2</a></sup> Mem0's Platform-only graph leaves relationships untyped.<sup class="cite"><a href="#s14-8">8</a></sup> Constrain edge types first.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: passing ingestion is not accuracy</p>
+  <p>A smoke-test pass measures no accuracy. Test real episodes, contradictions and empty cases against expected facts. Qwen2.5-7B-Instruct passed on CPU and an 8 GB consumer GPU. Qwen3-0.6B (<code>qwen3:0.6b</code>) passed CPU ingestion and search in 83.2 seconds under the printed 600-second budget; a fresh read also passed. Its earlier 300-second trial timed out and returned no facts; the cause remains unknown. Extraction needs no GPU; Ollama supports CPU execution.<sup class="cite"><a href="#s14-27">27</a></sup> Graphiti's README warns that smaller models can give wrong schemas and failed ingestion.<sup class="cite"><a href="#s14-2">2</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: Graphiti's bundled servers are open by default</p>
+  <p>Graphiti's bundled MCP server and REST service have no authentication or prompt-injection filter; keep them off untrusted networks.<sup class="cite"><a href="#s14-2">2</a></sup> See Chapter 17.</p>
+</aside>
+
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: earn the graph</p>
+  <p><strong>Choose a graph only when all three hold:</strong> questions need multi-hop joins or corpus-wide answers beyond files and vectors; typed writes or accurate extraction are affordable; someone reviews sampled edges. Delete or correct an episode, then confirm derived edges, embeddings and summaries no longer present its old fact as current. Otherwise, treat propagation as unsupported.</p>
+  <p>One job or address needs validity and recorded-version columns in Postgres or SQLite (Chapters 08 and 12; hybrid facts and edges in Chapter 23). Start with files (Chapter 01), timestamped vectors (Chapter 03) or RAPTOR summaries (Chapter 05). Try AGE for Postgres graph queries, or GraphRAG global search on a corpus slice.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+<li id="s14-1"><span class="src-title">Edge et al., From Local to Global: A Graph RAG Approach (arXiv 2404.16130)</span> <span class="src-note">(paper by the authors)</span><a class="url" href="https://arxiv.org/abs/2404.16130">https://arxiv.org/abs/2404.16130</a></li>
+<li id="s14-2"><span class="src-title">getzep/graphiti README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/getzep/graphiti">https://github.com/getzep/graphiti</a></li>
+<li id="s14-3"><span class="src-title">Graphiti 0.31.2 search implementation</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/getzep/graphiti/blob/v0.31.2/graphiti_core/graphiti.py">https://github.com/getzep/graphiti/blob/v0.31.2/graphiti_core/graphiti.py</a></li>
+<li id="s14-4"><span class="src-title">microsoft/graphrag README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/microsoft/graphrag">https://github.com/microsoft/graphrag</a></li>
+<li id="s14-5"><span class="src-title">Microsoft Research, LazyGraphRAG (2024-11-25)</span> <span class="src-note">(maintainer blog)</span><a class="url" href="https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/">https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/</a></li>
+<li id="s14-6"><span class="src-title">HKUDS/LightRAG README</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/HKUDS/LightRAG/main/README.md">https://raw.githubusercontent.com/HKUDS/LightRAG/main/README.md</a></li>
+<li id="s14-7"><span class="src-title">HippoRAG 2 paper (arXiv 2502.14802)</span> <span class="src-note">(paper by the authors)</span><a class="url" href="https://arxiv.org/abs/2502.14802">https://arxiv.org/abs/2502.14802</a></li>
+<li id="s14-8"><span class="src-title">mem0 graph memory documentation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.mem0.ai/platform/features/graph-memory">https://docs.mem0.ai/platform/features/graph-memory</a></li>
+<li id="s14-9"><span class="src-title">Mem0 OSS v2 to v3 migration: graph memory is Platform only</span> <span class="src-note">(official)</span><a class="url" href="https://docs.mem0.ai/migration/oss-v2-to-v3">https://docs.mem0.ai/migration/oss-v2-to-v3</a></li>
+<li id="s14-10"><span class="src-title">topoteretes/cognee repository</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/topoteretes/cognee">https://github.com/topoteretes/cognee</a></li>
+<li id="s14-11"><span class="src-title">Cognee LICENSE</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/topoteretes/cognee/blob/main/LICENSE">https://github.com/topoteretes/cognee/blob/main/LICENSE</a></li>
+<li id="s14-12"><span class="src-title">MCP reference memory server README</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/modelcontextprotocol/servers/main/src/memory/README.md">https://raw.githubusercontent.com/modelcontextprotocol/servers/main/src/memory/README.md</a></li>
+<li id="s14-13"><span class="src-title">kuzudb/kuzu README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/kuzudb/kuzu/commit/06890e1ac6bd31216f916526b933afc2a7802ec1">https://github.com/kuzudb/kuzu/commit/06890e1ac6bd31216f916526b933afc2a7802ec1</a></li>
+<li id="s14-14"><span class="src-title">FalkorDB, FalkorDBLite embedded Python graph database (2025-11-26)</span> <span class="src-note">(vendor blog)</span><a class="url" href="https://www.falkordb.com/blog/falkordblite-embedded-python-graph-database/">https://www.falkordb.com/blog/falkordblite-embedded-python-graph-database/</a></li>
+<li id="s14-15"><span class="src-title">Apache AGE release notes</span> <span class="src-note">(official)</span><a class="url" href="https://age.apache.org/release-notes/">https://age.apache.org/release-notes/</a></li>
+<li id="s14-16"><span class="src-title">Neo4j graph database concepts</span> <span class="src-note">(official)</span><a class="url" href="https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/">https://neo4j.com/docs/getting-started/appendix/graphdb-concepts/</a></li>
+<li id="s14-17"><span class="src-title">W3C RDF 1.1 Concepts and Abstract Syntax</span> <span class="src-note">(official)</span><a class="url" href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></li>
+<li id="s14-18"><span class="src-title">W3C OWL 2 Overview</span> <span class="src-note">(official)</span><a class="url" href="https://www.w3.org/TR/owl2-overview/">https://www.w3.org/TR/owl2-overview/</a></li>
+<li id="s14-19"><span class="src-title">W3C SPARQL 1.1 Overview</span> <span class="src-note">(official)</span><a class="url" href="https://www.w3.org/TR/sparql11-overview/">https://www.w3.org/TR/sparql11-overview/</a></li>
+<li id="s14-20"><span class="src-title">Wolff and Bennati, Cost and Accuracy of Long-Term Memory in Distributed Multi-Agent Systems Based on Large Language Models (arXiv 2601.07978)</span> <span class="src-note">(paper, independent of the vendors)</span><a class="url" href="https://arxiv.org/abs/2601.07978">https://arxiv.org/abs/2601.07978</a></li>
+<li id="s14-21"><span class="src-title">Letta, Benchmarking AI agent memory</span> <span class="src-note">(vendor)</span><a class="url" href="https://www.letta.com/blog/benchmarking-ai-agent-memory">https://www.letta.com/blog/benchmarking-ai-agent-memory</a></li>
+<li id="s14-22"><span class="src-title">Zep paper (arXiv 2501.13956)</span> <span class="src-note">(paper by the vendor)</span><a class="url" href="https://arxiv.org/abs/2501.13956">https://arxiv.org/abs/2501.13956</a></li>
+<li id="s14-23"><span class="src-title">Graphiti 0.31.2 OpenAI-compatible client implementation</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/getzep/graphiti/blob/v0.31.2/graphiti_core/llm_client/openai_generic_client.py">https://github.com/getzep/graphiti/blob/v0.31.2/graphiti_core/llm_client/openai_generic_client.py</a></li>
+<li id="s14-24"><span class="src-title">Docker Engine on Ubuntu, installation</span> <span class="src-note">(official)</span><a class="url" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></li>
+<li id="s14-25"><span class="src-title">Neo4j Cypher Shell manual (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://neo4j.com/docs/operations-manual/current/cypher-shell/">https://neo4j.com/docs/operations-manual/current/cypher-shell/</a></li>
+<li id="s14-26"><span class="src-title">Ollama Qwen2.5 7B model manifest</span> <span class="src-note">(official; retrieved 2026-11-20)</span><a class="url" href="https://ollama.com/library/qwen2.5:7b">https://ollama.com/library/qwen2.5:7b</a></li>
+<li id="s14-27"><span class="src-title">Ollama GPU and CPU execution documentation (read 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://docs.ollama.com/gpu">https://docs.ollama.com/gpu</a></li>
+<li id="s14-28"><span class="src-title">snap-research/locomo issue 23 on wrong ground-truth answers (2025-10-15)</span> <span class="src-note">(secondary)</span><a class="url" href="https://github.com/snap-research/locomo/issues/23">https://github.com/snap-research/locomo/issues/23</a></li>
+<li id="s14-29"><span class="src-title">Gu et al., ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning (2023-09-28)</span> <span class="src-note">(paper by the authors)</span><a class="url" href="https://arxiv.org/abs/2309.16650">https://arxiv.org/abs/2309.16650</a></li>
+<li id="s14-30"><span class="src-title">MCP reference memory server 2.2.1 README</span> <span class="src-note">(official)</span><a class="url" href="https://unpkg.com/@modelcontextprotocol/server-memory@2.2.1/README.md">https://unpkg.com/@modelcontextprotocol/server-memory@2.2.1/README.md</a></li>
+<li id="s14-31"><span class="src-title">LoCoMo ground-truth audit repository</span> <span class="src-note">(secondary)</span><a class="url" href="https://github.com/dial481/locomo-audit">https://github.com/dial481/locomo-audit</a></li>
+</ol>
+</section>
+
+</article>

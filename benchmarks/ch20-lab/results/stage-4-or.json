@@ -1,0 +1,2142 @@
+{
+  "stage": 4,
+  "storage_bytes": 142811,
+  "rows": [
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q01",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer a window seat.",
+      "seconds": 1.5755094269989058,
+      "prompt_tokens": 200,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-01: I prefer a window seat.\n2026-09-01: I prefer quiet hotels.\n2026-09-01: I prefer oatmeal for breakfast.\n2026-09-01: I prefer email reminders.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-26: My talk needs a projector.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I prefer a window seat."
+            }
+          }
+        ],
+        "created": 1795425530,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 7,
+          "prompt_tokens": 200,
+          "total_tokens": 207,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-Gxt8tg63gsdbjUu8hVw6DPgGKEe1dmVS",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 200,
+          "prompt_ms": 948.498,
+          "prompt_per_token_ms": 4.74249,
+          "prompt_per_second": 210.8596960668341,
+          "predicted_n": 7,
+          "predicted_ms": 603.001,
+          "predicted_per_token_ms": 100.50016666666666,
+          "predicted_per_second": 9.950232255004554
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q02",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer quiet hotels.",
+      "seconds": 1.4702293169975746,
+      "prompt_tokens": 201,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-01: I prefer quiet hotels.\n2026-09-01: I prefer a window seat.\n2026-09-01: I prefer oatmeal for breakfast.\n2026-09-01: I prefer email reminders.\n2026-09-22: I moved to Mallow Bay on September 22; I live there now.\n2026-09-22: My usual drink is now mint tea.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I prefer quiet hotels."
+            }
+          }
+        ],
+        "created": 1795425532,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 201,
+          "total_tokens": 207,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-MW0g9Hd0O919zG6tRvRKiimjGt7VgGh2",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 201,
+          "prompt_ms": 1031.224,
+          "prompt_per_token_ms": 5.130467661691542,
+          "prompt_per_second": 194.91400510461355,
+          "predicted_n": 6,
+          "predicted_ms": 404.866,
+          "predicted_per_token_ms": 80.97319999999999,
+          "predicted_per_second": 12.349765107467656
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q03",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer oatmeal for breakfast.",
+      "seconds": 1.4330125510168727,
+      "prompt_tokens": 189,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-01: I prefer oatmeal for breakfast.\n2026-09-01: I prefer a window seat.\n2026-09-01: I prefer email reminders.\n2026-09-01: I prefer quiet hotels.\n2026-09-22: My usual drink is now mint tea.\n2026-09-26: My talk needs a projector.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I prefer oatmeal for breakfast."
+            }
+          }
+        ],
+        "created": 1795425533,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 8,
+          "prompt_tokens": 189,
+          "total_tokens": 197,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-SDpUzAh67MZYlNoUwJy5VQzc9HUA4Zzd",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 189,
+          "prompt_ms": 903.039,
+          "prompt_per_token_ms": 4.777984126984127,
+          "prompt_per_second": 209.29328633647052,
+          "predicted_n": 8,
+          "predicted_ms": 506.162,
+          "predicted_per_token_ms": 72.30885714285714,
+          "predicted_per_second": 13.82956444774598
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q04",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer email reminders.",
+      "seconds": 1.1275627900031395,
+      "prompt_tokens": 190,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-01: I prefer email reminders.\n2026-09-01: I prefer a window seat.\n2026-09-01: I prefer oatmeal for breakfast.\n2026-09-26: My talk needs a projector.\n2026-09-01: I prefer quiet hotels.\n2026-09-22: My remote work day is now Thursday.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I prefer email reminders."
+            }
+          }
+        ],
+        "created": 1795425534,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 190,
+          "total_tokens": 196,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-Fm8o6XQMr2OSYt2zyOtdZf9LuCiAHtug",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 190,
+          "prompt_ms": 809.221,
+          "prompt_per_token_ms": 4.259057894736842,
+          "prompt_per_second": 234.79370901150614,
+          "predicted_n": 6,
+          "predicted_ms": 297.987,
+          "predicted_per_token_ms": 59.59740000000001,
+          "predicted_per_second": 16.779255470876244
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q05",
+      "category": "updated",
+      "correct": true,
+      "answer": "Mallow Bay",
+      "seconds": 1.2203086459776387,
+      "prompt_tokens": 217,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-22: I moved to Mallow Bay on September 22; I live there now.\n2026-09-22: My remote work day is now Thursday.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-01: I prefer quiet hotels.\n2026-09-01: I prefer a window seat.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Mallow Bay"
+            }
+          }
+        ],
+        "created": 1795425536,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 4,
+          "prompt_tokens": 217,
+          "total_tokens": 221,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-tddfKYmYNpT96IEP1DQ5ivc54W6gjF5S",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 217,
+          "prompt_ms": 987.392,
+          "prompt_per_token_ms": 4.550193548387097,
+          "prompt_per_second": 219.77087114337567,
+          "predicted_n": 4,
+          "predicted_ms": 208.24,
+          "predicted_per_token_ms": 69.41333333333334,
+          "predicted_per_second": 14.40645409143296
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q06",
+      "category": "updated",
+      "correct": true,
+      "answer": "I work at Copper Kite Workshop.",
+      "seconds": 1.7081930430140346,
+      "prompt_tokens": 226,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-22: My remote work day is now Thursday.\n2026-09-22: I started at Copper Kite Workshop on September 22; I work there now.\n2026-09-22: I moved to Mallow Bay on September 22; I live there now.\n2026-09-26: My talk needs a projector.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-01: I prefer a window seat.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I work at Copper Kite Workshop."
+            }
+          }
+        ],
+        "created": 1795425537,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 9,
+          "prompt_tokens": 226,
+          "total_tokens": 235,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-jW6Srzsex3UrcjcHsH6bvieY6Oh6AIKt",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 226,
+          "prompt_ms": 1060.006,
+          "prompt_per_token_ms": 4.6902920353982305,
+          "prompt_per_second": 213.20634034146977,
+          "predicted_n": 9,
+          "predicted_ms": 628.272,
+          "predicted_per_token_ms": 78.534,
+          "predicted_per_second": 12.733338426668704
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q07",
+      "category": "updated",
+      "correct": true,
+      "answer": "My usual drink now is mint tea.",
+      "seconds": 1.598000691010384,
+      "prompt_tokens": 207,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-22: My usual drink is now mint tea.\n2026-09-01: I prefer oatmeal for breakfast.\n2026-09-22: My remote work day is now Thursday.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-22: I moved to Mallow Bay on September 22; I live there now.\n2026-09-01: I prefer email reminders.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "My usual drink now is mint tea."
+            }
+          }
+        ],
+        "created": 1795425539,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 9,
+          "prompt_tokens": 207,
+          "total_tokens": 216,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-Z7q49R3CwZCZqlIomFSiJynz69kpxrH9",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 207,
+          "prompt_ms": 957.598,
+          "prompt_per_token_ms": 4.62607729468599,
+          "prompt_per_second": 216.16586500807227,
+          "predicted_n": 9,
+          "predicted_ms": 609.643,
+          "predicted_per_token_ms": 76.205375,
+          "predicted_per_second": 13.122433949048869
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q08",
+      "category": "updated",
+      "correct": true,
+      "answer": "Thursday",
+      "seconds": 1.2597488909959793,
+      "prompt_tokens": 249,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-22: My remote work day is now Thursday.\n2026-09-22: I started at Copper Kite Workshop on September 22; I work there now.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-22: I moved to Mallow Bay on September 22; I live there now.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Thursday"
+            }
+          }
+        ],
+        "created": 1795425540,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 2,
+          "prompt_tokens": 249,
+          "total_tokens": 251,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-XLb5HFH9w4zh3mHdxSW7fsQaPAcO80ac",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 249,
+          "prompt_ms": 1145.796,
+          "prompt_per_token_ms": 4.601590361445783,
+          "prompt_per_second": 217.31617146507756,
+          "predicted_n": 2,
+          "predicted_ms": 81.477,
+          "predicted_per_token_ms": 81.477,
+          "predicted_per_second": 12.273402309854314
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q09",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I moved to Mallow Bay on September 22.",
+      "seconds": 2.269417520990828,
+      "prompt_tokens": 241,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-22: I moved to Mallow Bay on September 22; I live there now.\n2026-09-22: I started at Copper Kite Workshop on September 22; I work there now.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-22: My remote work day is now Thursday.\n2026-09-07: I bought a green bicycle on September 7.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I moved to Mallow Bay on September 22."
+            }
+          }
+        ],
+        "created": 1795425542,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 13,
+          "prompt_tokens": 241,
+          "total_tokens": 254,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-QZXr9qOIBS9bXjEfC8Gj9lYZreEnumcX",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 241,
+          "prompt_ms": 1187.419,
+          "prompt_per_token_ms": 4.927049792531121,
+          "prompt_per_second": 202.96121251217977,
+          "predicted_n": 13,
+          "predicted_ms": 1051.766,
+          "predicted_per_token_ms": 87.64716666666668,
+          "predicted_per_second": 11.409381934764955
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q10",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I live in Alder Quay.",
+      "seconds": 1.6907422079821117,
+      "prompt_tokens": 236,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-03: I live in Alder Quay.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-03: My remote work day is Monday.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I live in Alder Quay."
+            }
+          }
+        ],
+        "created": 1795425544,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 8,
+          "prompt_tokens": 236,
+          "total_tokens": 244,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-rggt0cqMgJ6beRElMWgcVeXDtZy58DhB",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 236,
+          "prompt_ms": 1095.384,
+          "prompt_per_token_ms": 4.641457627118644,
+          "prompt_per_second": 215.44955924132543,
+          "predicted_n": 8,
+          "predicted_ms": 571.428,
+          "predicted_per_token_ms": 81.63257142857142,
+          "predicted_per_second": 12.250012250012249
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q11",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I booked the pottery class on September 7.",
+      "seconds": 1.9196066870063078,
+      "prompt_tokens": 242,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-14: The pottery class requires an apron.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-22: I started at Copper Kite Workshop on September 22; I work there now.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I booked the pottery class on September 7."
+            }
+          }
+        ],
+        "created": 1795425546,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 11,
+          "prompt_tokens": 242,
+          "total_tokens": 253,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-9msA0z5h6UFoEGOzT8D3PocqYeOHrNfB",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 242,
+          "prompt_ms": 1122.387,
+          "prompt_per_token_ms": 4.637962809917355,
+          "prompt_per_second": 215.61190569741098,
+          "predicted_n": 11,
+          "predicted_ms": 765.553,
+          "predicted_per_token_ms": 76.5553,
+          "predicted_per_second": 13.062452893529253
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q12",
+      "category": "temporal",
+      "correct": true,
+      "answer": "September 18",
+      "seconds": 1.3563021659792867,
+      "prompt_tokens": 253,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-26: The first-aid course requires a notebook.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-22: I started at Copper Kite Workshop on September 22; I work there now.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-22: I moved to Mallow Bay on September 22; I live there now.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "September 18"
+            }
+          }
+        ],
+        "created": 1795425547,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 5,
+          "prompt_tokens": 253,
+          "total_tokens": 258,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-xzSd5Ub3PcsJn7iYdqOOfn1OalRxOhM3",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 253,
+          "prompt_ms": 1067.358,
+          "prompt_per_token_ms": 4.2188063241106715,
+          "prompt_per_second": 237.03387242143685,
+          "predicted_n": 5,
+          "predicted_ms": 262.219,
+          "predicted_per_token_ms": 65.55475,
+          "predicted_per_second": 15.254424736575153
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q13",
+      "category": "multi",
+      "correct": true,
+      "answer": "You should bring an apron to the pottery class on October 19.",
+      "seconds": 2.285485005006194,
+      "prompt_tokens": 236,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-14: The pottery class requires an apron.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-26: The first-aid course requires a notebook.\n2026-09-22: My remote work day is now Thursday.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "You should bring an apron to the pottery class on October 19."
+            }
+          }
+        ],
+        "created": 1795425550,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 17,
+          "prompt_tokens": 236,
+          "total_tokens": 253,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-CrLgAcR8Z5mvKg4Pb4REGfkb4wv0Drr8",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 236,
+          "prompt_ms": 1068.237,
+          "prompt_per_token_ms": 4.5264279661016955,
+          "prompt_per_second": 220.9247573338126,
+          "predicted_n": 17,
+          "predicted_ms": 1196.837,
+          "predicted_per_token_ms": 74.8023125,
+          "predicted_per_second": 13.368570657491372
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q14",
+      "category": "multi",
+      "correct": true,
+      "answer": "The item I bought on September 7 needs a rear light.",
+      "seconds": 2.1328812380088493,
+      "prompt_tokens": 235,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-07: I bought a green bicycle on September 7.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-14: The bicycle needs a rear light.\n2026-09-22: My remote work day is now Thursday.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "The item I bought on September 7 needs a rear light."
+            }
+          }
+        ],
+        "created": 1795425552,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 14,
+          "prompt_tokens": 235,
+          "total_tokens": 249,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-paIMaiPtIyNWDb7hTkIhXe9wbr0GFxuy",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 235,
+          "prompt_ms": 1100.644,
+          "prompt_per_token_ms": 4.683591489361702,
+          "prompt_per_second": 213.5113624387177,
+          "predicted_n": 14,
+          "predicted_ms": 1006.397,
+          "predicted_per_token_ms": 77.41515384615386,
+          "predicted_per_second": 12.917367599466214
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q15",
+      "category": "multi",
+      "correct": true,
+      "answer": "A notebook.",
+      "seconds": 1.4127332950010896,
+      "prompt_tokens": 250,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-22: I moved to Mallow Bay on September 22; I live there now.\n2026-09-26: The first-aid course requires a notebook.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "A notebook."
+            }
+          }
+        ],
+        "created": 1795425553,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 4,
+          "prompt_tokens": 250,
+          "total_tokens": 254,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-IFsyStPF6kAbJc57VJLqx5Sb3MubVcIv",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 250,
+          "prompt_ms": 1132.203,
+          "prompt_per_token_ms": 4.528812,
+          "prompt_per_second": 220.80845926039765,
+          "predicted_n": 4,
+          "predicted_ms": 244.847,
+          "predicted_per_token_ms": 81.61566666666667,
+          "predicted_per_second": 12.252549551352477
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q16",
+      "category": "multi",
+      "correct": true,
+      "answer": "A projector is needed in the Otter Room for your October 22 talk.",
+      "seconds": 2.4773172560089733,
+      "prompt_tokens": 237,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-26: My talk needs a projector.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-01: I prefer a window seat.\n2026-09-14: The bicycle needs a rear light.\n2026-09-22: I moved to Mallow Bay on September 22; I live there now.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "A projector is needed in the Otter Room for your October 22 talk."
+            }
+          }
+        ],
+        "created": 1795425556,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 18,
+          "prompt_tokens": 237,
+          "total_tokens": 255,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-NZpjd5OzPeq8Y38bdV2sPZapibUP1VJY",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 237,
+          "prompt_ms": 1112.636,
+          "prompt_per_token_ms": 4.6946666666666665,
+          "prompt_per_second": 213.00766827605796,
+          "predicted_n": 18,
+          "predicted_ms": 1330.378,
+          "predicted_per_token_ms": 78.25752941176471,
+          "predicted_per_second": 12.778323153269222
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q17",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 1.4033750160015188,
+      "prompt_tokens": 205,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-22: My usual drink is now mint tea.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-26: My talk needs a projector.\n2026-09-01: I prefer oatmeal for breakfast.\n2026-09-26: The first-aid course requires a notebook.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I do not know."
+            }
+          }
+        ],
+        "created": 1795425557,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 205,
+          "total_tokens": 211,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-frLZotK9Da4jYW1KDNwF5EFBYiLc20hl",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 205,
+          "prompt_ms": 981.506,
+          "prompt_per_token_ms": 4.7878341463414635,
+          "prompt_per_second": 208.86270690143513,
+          "predicted_n": 6,
+          "predicted_ms": 394.745,
+          "predicted_per_token_ms": 78.949,
+          "predicted_per_second": 12.66640489429885
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q18",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 1.4679448189854156,
+      "prompt_tokens": 227,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-22: My remote work day is now Thursday.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-01: I prefer email reminders.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I do not know."
+            }
+          }
+        ],
+        "created": 1795425559,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 227,
+          "total_tokens": 233,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-FJe2nyGVljISAKvLfqM7PHe10AKlbNwS",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 227,
+          "prompt_ms": 1049.592,
+          "prompt_per_token_ms": 4.623753303964758,
+          "prompt_per_second": 216.27451428745644,
+          "predicted_n": 6,
+          "predicted_ms": 394.22,
+          "predicted_per_token_ms": 78.84400000000001,
+          "predicted_per_second": 12.68327329917305
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q19",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 1.2512108320079278,
+      "prompt_tokens": 195,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-01: I prefer oatmeal for breakfast.\n2026-09-01: I prefer a window seat.\n2026-09-22: My usual drink is now mint tea.\n2026-09-22: My remote work day is now Thursday.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-01: I prefer email reminders.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I do not know."
+            }
+          }
+        ],
+        "created": 1795425560,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 195,
+          "total_tokens": 201,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-T6yKNlLcoKUKXBPjlKzpdv8DunUuor8d",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 195,
+          "prompt_ms": 902.107,
+          "prompt_per_token_ms": 4.626189743589744,
+          "prompt_per_second": 216.16061065926772,
+          "predicted_n": 6,
+          "predicted_ms": 328.345,
+          "predicted_per_token_ms": 65.66900000000001,
+          "predicted_per_second": 15.227885303567891
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q20",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 1.1698510760033969,
+      "prompt_tokens": 201,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-07: I bought a green bicycle on September 7.\n2026-09-22: My remote work day is now Thursday.\n2026-09-26: My talk needs a projector.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-01: I prefer email reminders.\n2026-09-01: I prefer oatmeal for breakfast.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I do not know."
+            }
+          }
+        ],
+        "created": 1795425561,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 201,
+          "total_tokens": 207,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-sOtDRQAQahkwS7Vb4en9cTMNYAbuv3x9",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 201,
+          "prompt_ms": 856.27,
+          "prompt_per_token_ms": 4.260049751243781,
+          "prompt_per_second": 234.73904259170587,
+          "predicted_n": 6,
+          "predicted_ms": 292.821,
+          "predicted_per_token_ms": 58.56420000000001,
+          "predicted_per_second": 17.075278070903384
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q21",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 1.5044420399935916,
+      "prompt_tokens": 240,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-22: My remote work day is now Thursday.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-22: I moved to Mallow Bay on September 22; I live there now.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I do not know."
+            }
+          }
+        ],
+        "created": 1795425562,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 240,
+          "total_tokens": 246,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-UDw541L7ZuT5zqgev2jrpnb8m5sUgDVq",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 240,
+          "prompt_ms": 1091.12,
+          "prompt_per_token_ms": 4.546333333333333,
+          "prompt_per_second": 219.9574748881883,
+          "predicted_n": 6,
+          "predicted_ms": 395.116,
+          "predicted_per_token_ms": 79.0232,
+          "predicted_per_second": 12.654511586470809
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q22",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 1.4891798280004878,
+      "prompt_tokens": 231,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-22: My remote work day is now Thursday.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-07: I bought a green bicycle on September 7.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-14: The pottery class requires an apron.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I do not know."
+            }
+          }
+        ],
+        "created": 1795425564,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 231,
+          "total_tokens": 237,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-T7R1ZRFnNNYxYgZOJBVCOeLGB3mzVjfX",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 231,
+          "prompt_ms": 1073.224,
+          "prompt_per_token_ms": 4.6459913419913415,
+          "prompt_per_second": 215.23931630302715,
+          "predicted_n": 6,
+          "predicted_ms": 394.365,
+          "predicted_per_token_ms": 78.873,
+          "predicted_per_second": 12.678609917208677
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q23",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 1.4653016160009429,
+      "prompt_tokens": 229,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-07: I bought a green bicycle on September 7.\n2026-09-22: My remote work day is now Thursday.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-01: I prefer a window seat.\n2026-09-18: I enrolled in a first-aid course on September 18.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I do not know."
+            }
+          }
+        ],
+        "created": 1795425565,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 229,
+          "total_tokens": 235,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-yqnzXozQQQDToJoldaGJpE82A0YIzvtU",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 229,
+          "prompt_ms": 1039.876,
+          "prompt_per_token_ms": 4.540943231441048,
+          "prompt_per_second": 220.21856452115443,
+          "predicted_n": 6,
+          "predicted_ms": 399.081,
+          "predicted_per_token_ms": 79.81620000000001,
+          "predicted_per_second": 12.52878488326931
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 1,
+      "id": "q24",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 1.469145495997509,
+      "prompt_tokens": 231,
+      "read_calls": 2,
+      "write_calls": 0.875,
+      "chat_read_calls": 1,
+      "embedding_read_calls": 1,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "2026-09-07: I bought a green bicycle on September 7.\n2026-09-18: I reserved the Otter Room on September 18 for my talk on October 22.\n2026-09-22: My remote work day is now Thursday.\n2026-09-07: I booked a pottery class on September 7; the class is on October 19.\n2026-09-18: I enrolled in a first-aid course on September 18.\n2026-09-14: The pottery class requires an apron.",
+      "response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "I do not know."
+            }
+          }
+        ],
+        "created": 1795425567,
+        "model": "qwen38",
+        "system_fingerprint": "b12464-d3c3e242c",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 6,
+          "prompt_tokens": 231,
+          "total_tokens": 237,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-WNrQvwPQpIRDQEAf3czWT7Y98aYq3cYG",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 231,
+          "prompt_ms": 1061.536,
+          "prompt_per_token_ms": 4.59539393939394,
+          "prompt_per_second": 217.60920025321795,
+          "predicted_n": 6,
+          "predicted_ms": 387.59,
+          "predicted_per_token_ms": 77.518,
+          "predicted_per_second": 12.90022962408731
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q01",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer a window seat.",
+      "seconds": 0.0003342379932291806,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q02",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer quiet hotels.",
+      "seconds": 0.0001469650014769286,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q03",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer oatmeal for breakfast.",
+      "seconds": 0.0005832909955643117,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q04",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer email reminders.",
+      "seconds": 0.0010535019973758608,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q05",
+      "category": "updated",
+      "correct": true,
+      "answer": "Mallow Bay",
+      "seconds": 0.00016071199206635356,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q06",
+      "category": "updated",
+      "correct": true,
+      "answer": "I work at Copper Kite Workshop.",
+      "seconds": 0.0001244109880644828,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q07",
+      "category": "updated",
+      "correct": true,
+      "answer": "My usual drink now is mint tea.",
+      "seconds": 0.00011512299533933401,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q08",
+      "category": "updated",
+      "correct": true,
+      "answer": "Thursday",
+      "seconds": 0.00011297900346107781,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q09",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I moved to Mallow Bay on September 22.",
+      "seconds": 0.00012118497397750616,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q10",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I live in Alder Quay.",
+      "seconds": 0.00011596499825827777,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q11",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I booked the pottery class on September 7.",
+      "seconds": 0.0001562020042911172,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q12",
+      "category": "temporal",
+      "correct": true,
+      "answer": "September 18",
+      "seconds": 0.00017300498438999057,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q13",
+      "category": "multi",
+      "correct": true,
+      "answer": "You should bring an apron to the pottery class on October 19.",
+      "seconds": 0.0001600600080564618,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q14",
+      "category": "multi",
+      "correct": true,
+      "answer": "The item I bought on September 7 needs a rear light.",
+      "seconds": 0.00035905599361285567,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q15",
+      "category": "multi",
+      "correct": true,
+      "answer": "A notebook.",
+      "seconds": 0.0001236489915754646,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q16",
+      "category": "multi",
+      "correct": true,
+      "answer": "A projector is needed in the Otter Room for your October 22 talk.",
+      "seconds": 0.00011337999603711069,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q17",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.0001077490160241723,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q18",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00010588500299490988,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q19",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00011407100828364491,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q20",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00013428000966086984,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q21",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00014406899572350085,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q22",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00021106898202560842,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q23",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.0001988150179386139,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 2,
+      "id": "q24",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00012641499051824212,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q01",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer a window seat.",
+      "seconds": 0.0001253219961654395,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q02",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer quiet hotels.",
+      "seconds": 0.00010789898806251585,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q03",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer oatmeal for breakfast.",
+      "seconds": 0.00010277002002112567,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q04",
+      "category": "stable",
+      "correct": true,
+      "answer": "I prefer email reminders.",
+      "seconds": 0.00011481202091090381,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q05",
+      "category": "updated",
+      "correct": true,
+      "answer": "Mallow Bay",
+      "seconds": 0.00012774800416082144,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q06",
+      "category": "updated",
+      "correct": true,
+      "answer": "I work at Copper Kite Workshop.",
+      "seconds": 0.00012183698709122837,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q07",
+      "category": "updated",
+      "correct": true,
+      "answer": "My usual drink now is mint tea.",
+      "seconds": 0.00011575399548746645,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q08",
+      "category": "updated",
+      "correct": true,
+      "answer": "Thursday",
+      "seconds": 0.00011865998385474086,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q09",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I moved to Mallow Bay on September 22.",
+      "seconds": 0.0001527559943497181,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q10",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I live in Alder Quay.",
+      "seconds": 0.00010852000559680164,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q11",
+      "category": "temporal",
+      "correct": true,
+      "answer": "I booked the pottery class on September 7.",
+      "seconds": 0.00010534402099438012,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q12",
+      "category": "temporal",
+      "correct": true,
+      "answer": "September 18",
+      "seconds": 0.00010310998186469078,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q13",
+      "category": "multi",
+      "correct": true,
+      "answer": "You should bring an apron to the pottery class on October 19.",
+      "seconds": 0.00010192699846811593,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q14",
+      "category": "multi",
+      "correct": true,
+      "answer": "The item I bought on September 7 needs a rear light.",
+      "seconds": 0.00010490301065146923,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q15",
+      "category": "multi",
+      "correct": true,
+      "answer": "A notebook.",
+      "seconds": 0.00014747600653208792,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q16",
+      "category": "multi",
+      "correct": true,
+      "answer": "A projector is needed in the Otter Room for your October 22 talk.",
+      "seconds": 0.00013981101801618934,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q17",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00013296797988004982,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q18",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00019450701074674726,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q19",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00017793499864637852,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q20",
+      "category": "unknown",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00013998098438605666,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q21",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00013019199832342565,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q22",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00015800702385604382,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q23",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00015136299771256745,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    },
+    {
+      "stage": 4,
+      "rep": 3,
+      "id": "q24",
+      "category": "forgotten",
+      "correct": true,
+      "answer": "I do not know.",
+      "seconds": 0.00013024199870415032,
+      "prompt_tokens": 0,
+      "read_calls": 0,
+      "write_calls": 0.875,
+      "chat_read_calls": 0,
+      "embedding_read_calls": 0,
+      "chat_write_calls": 0,
+      "embedding_write_calls": 21,
+      "memory": "",
+      "response": null
+    }
+  ]
+}

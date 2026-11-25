@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 3
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "096b49829005a18443fe63283bf248d90dd9ddf472ca4934f91667cf41c86c3d",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e655fa15-5bc9-4c3c-99a9-b35f87151fa3",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the display will be visually appealing and meaningful. The display will include the vinyl record and other items that share a similar style or era. The display will tell a story or evoke a certain mood, such as the era or style of the album.\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331910,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 74,
+      "prompt_tokens": 2941,
+      "total_tokens": 3015,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Curating a themed display for a limited edition vinyl record of a favorite band's debut album, the display will be visually appealing and meaningful. The display will include the vinyl record and other items that share a similar style or era. The display will tell a story or evoke a certain mood, such as the era or style of the album.\"]}",
+  "seconds": 2.456186578012421,
+  "prompt_tokens_local": 2941,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

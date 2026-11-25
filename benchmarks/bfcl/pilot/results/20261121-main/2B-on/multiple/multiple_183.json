@@ -1,0 +1,264 @@
+{
+  "id": "multiple_183",
+  "category": "multiple",
+  "result": [
+    {
+      "recipe_info_get_calories": "{\"website\":\"Foodnetwork.com\",\"recipe\":\"Beef Lasagna Recipe\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'How many calories in the Beef Lasagna Recipe from Foodnetwork.com?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "get_stock_price",
+                "description": "Retrieves the current stock price of the specified companies",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "company_names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "The list of companies for which to retrieve the stock price."
+                    }
+                  },
+                  "required": [
+                    "company_names"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "get_team_ranking",
+                "description": "Retrieve the FIFA ranking of a specific soccer team for a certain year.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "team_name": {
+                      "type": "string",
+                      "description": "The name of the soccer team."
+                    },
+                    "year": {
+                      "type": "integer",
+                      "description": "The year for which the ranking is to be retrieved."
+                    },
+                    "gender": {
+                      "type": "string",
+                      "description": "The gender of the team. It can be either 'men' or 'women'. Default is 'men'."
+                    }
+                  },
+                  "required": [
+                    "team_name",
+                    "year"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "recipe_info_get_calories",
+                "description": "Retrieve the amount of calories from a specific recipe in a food website.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "website": {
+                      "type": "string",
+                      "description": "The food website that has the recipe."
+                    },
+                    "recipe": {
+                      "type": "string",
+                      "description": "Name of the recipe."
+                    },
+                    "optional_meal_time": {
+                      "type": "string",
+                      "description": "Specific meal time of the day for the recipe (optional, could be 'Breakfast', 'Lunch', 'Dinner') Default is ''"
+                    }
+                  },
+                  "required": [
+                    "website",
+                    "recipe"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 607,
+    "output_token_count": 162,
+    "latency": 0.8481715859961696
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "How many calories in the Beef Lasagna Recipe from Foodnetwork.com?"
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_stock_price",
+          "description": "Retrieves the current stock price of the specified companies",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "company_names": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The list of companies for which to retrieve the stock price."
+              }
+            },
+            "required": [
+              "company_names"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "get_team_ranking",
+          "description": "Retrieve the FIFA ranking of a specific soccer team for a certain year.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "team_name": {
+                "type": "string",
+                "description": "The name of the soccer team."
+              },
+              "year": {
+                "type": "integer",
+                "description": "The year for which the ranking is to be retrieved."
+              },
+              "gender": {
+                "type": "string",
+                "description": "The gender of the team. It can be either 'men' or 'women'. Default is 'men'."
+              }
+            },
+            "required": [
+              "team_name",
+              "year"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "recipe_info_get_calories",
+          "description": "Retrieve the amount of calories from a specific recipe in a food website.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "website": {
+                "type": "string",
+                "description": "The food website that has the recipe."
+              },
+              "recipe": {
+                "type": "string",
+                "description": "Name of the recipe."
+              },
+              "optional_meal_time": {
+                "type": "string",
+                "description": "Specific meal time of the day for the recipe (optional, could be 'Breakfast', 'Lunch', 'Dinner') Default is ''"
+              }
+            },
+            "required": [
+              "website",
+              "recipe"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-KYeyJFLgfZjm7dj1hw1aRKujmWkXdG4V",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "QR7dr8Ywgwwg8e6r079qHpQfk2s3G91z",
+              "function": {
+                "arguments": "{\"website\":\"Foodnetwork.com\",\"recipe\":\"Beef Lasagna Recipe\"}",
+                "name": "recipe_info_get_calories"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking about the calorie count for a Beef Lasagna Recipe from Foodnetwork.com. I need to use the recipe_info_get_calories function to get this information.\n\nLooking at the function parameters:\n- website: \"Foodnetwork.com\" (this is required)\n- recipe: \"Beef Lasagna Recipe\" (this is required)\n- optional_meal_time: This is optional and defaults to '' (empty string), so I don't need to specify it\n\nI have all the required information to make this function call."
+        }
+      }
+    ],
+    "created": 1795286720,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 162,
+      "prompt_tokens": 607,
+      "total_tokens": 769,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 605,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 605,
+      "prompt_n": 2,
+      "prompt_ms": 8.495,
+      "prompt_per_token_ms": 4.2475,
+      "prompt_per_second": 235.43260741612715,
+      "predicted_n": 162,
+      "predicted_ms": 829.198,
+      "predicted_per_token_ms": 5.150298136645962,
+      "predicted_per_second": 194.16351703694414
+    }
+  },
+  "elapsed_seconds": 0.8482813690061448,
+  "score": {
+    "valid": true
+  }
+}

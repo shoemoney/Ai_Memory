@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "6797dcbfe0bbccfb7d316a675f612c174f4c038f2bf55981501e74359d08ee3b",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-3dacd8ed-c538-41c4-8ceb-66f97fecd41b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"entity_resolutions\": [{\"id\": 0, \"name\": \"Jordan\", \"duplicate_candidate_id\": -1}, {\"id\": 1, \"name\": \"Deception: Murder in Hong Kong\", \"duplicate_candidate_id\": 0}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795344725,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 53,
+      "prompt_tokens": 8463,
+      "total_tokens": 8516,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 107
+      }
+    }
+  },
+  "text": "{\"entity_resolutions\": [{\"id\": 0, \"name\": \"Jordan\", \"duplicate_candidate_id\": -1}, {\"id\": 1, \"name\": \"Deception: Murder in Hong Kong\", \"duplicate_candidate_id\": 0}]}",
+  "seconds": 63.85169467500236,
+  "prompt_tokens_local": 8463
+}

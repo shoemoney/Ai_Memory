@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 25
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "627e9a7182fe649062e7eb17720bbd4c6630289bdca265dad9d66591dc2e5d9b",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0644a245-7105-4888-8764-9eb44ebfc4a6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Thinking about the cost of living in Vancouver, especially food and transportation. Vancouver is known to be expensive, and I want to budget accordingly.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Groceries in Vancouver can vary depending on dietary preferences and lifestyle, with a rough estimate of $10-15 CAD per week for basic fruits and vegetables, $20-30 CAD per week for protein sources and dairy products, and $20-30 CAD per month for rice, pasta, canned goods, and snacks.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Eating out in Vancouver can range from $15-30 CAD per meal for casual dining, and $30-50 CAD per meal for mid-range restaurants. High-end restaurants can cost $50-100 CAD per meal or more.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Public transit in Vancouver is a comprehensive system including buses, SkyTrain, and SeaBus. A single ride costs $3.15 CAD, but you can purchase a monthly pass for $95.20 CAD or a student pass for $78.20 CAD.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Biking is a bike-friendly option in Vancouver, and you can purchase a used bike or rent one for a few hours or days.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Car sharing or ride-hailing services like Modo or Zipcar can be a cost-effective option for occasional use. Ride-hailing services like Uber or Lyft are also available, but prices can add up quickly.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"The cost of rent in Vancouver varies depending on location, size, and amenities, with a shared apartment costing around $1,500-2,500 CAD per month and a one-bedroom apartment costing around $2,000-4,000 CAD per month.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Utilities in Vancouver include electricity, water, and internet, with a cost of around $100-200 CAD per month.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Vancouver offers many free or low-cost activities, such as hiking, visiting museums, or attending outdoor events. However, you may want to budget for occasional concerts, movies, or sporting events.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355453,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 622,
+      "prompt_tokens": 2692,
+      "total_tokens": 3314,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Thinking about the cost of living in Vancouver, especially food and transportation. Vancouver is known to be expensive, and I want to budget accordingly.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Groceries in Vancouver can vary depending on dietary preferences and lifestyle, with a rough estimate of $10-15 CAD per week for basic fruits and vegetables, $20-30 CAD per week for protein sources and dairy products, and $20-30 CAD per month for rice, pasta, canned goods, and snacks.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Eating out in Vancouver can range from $15-30 CAD per meal for casual dining, and $30-50 CAD per meal for mid-range restaurants. High-end restaurants can cost $50-100 CAD per meal or more.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Public transit in Vancouver is a comprehensive system including buses, SkyTrain, and SeaBus. A single ride costs $3.15 CAD, but you can purchase a monthly pass for $95.20 CAD or a student pass for $78.20 CAD.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Biking is a bike-friendly option in Vancouver, and you can purchase a used bike or rent one for a few hours or days.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Car sharing or ride-hailing services like Modo or Zipcar can be a cost-effective option for occasional use. Ride-hailing services like Uber or Lyft are also available, but prices can add up quickly.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"The cost of rent in Vancouver varies depending on location, size, and amenities, with a shared apartment costing around $1,500-2,500 CAD per month and a one-bedroom apartment costing around $2,000-4,000 CAD per month.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"Utilities in Vancouver include electricity, water, and internet, with a cost of around $100-200 CAD per month.\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Vancouver offers many free or low-cost activities, such as hiking, visiting museums, or attending outdoor events. However, you may want to budget for occasional concerts, movies, or sporting events.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 91.60176237599808,
+  "prompt_tokens_local": 2692
+}

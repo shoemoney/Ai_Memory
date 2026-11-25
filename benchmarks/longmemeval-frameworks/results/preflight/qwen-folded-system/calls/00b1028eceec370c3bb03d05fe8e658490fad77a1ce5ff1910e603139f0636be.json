@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 41
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "3ea7de7300c10f0b999e9b7606d71fb0fcb289be7f85b3de750bfa0be4a076ff",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a6541ac0-7f94-4ca1-b459-c9580c23c7e6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"user wants to build a showcase/community website for software engineering college students\", \"target audience is software engineering college students in one major\", \"first generation of target audience has been graduated\", \"reference website is awwwards.com\", \"problems include lack of features and functionalities, difficulty in finding internships and job opportunities, and time-consuming process of creating personal websites\", \"solutions include creating a tailored website with specific features, conducting user research, enabling lecturer profiles, providing resources, and offering simple website templates\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330363,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 106,
+      "prompt_tokens": 2140,
+      "total_tokens": 2246,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"user wants to build a showcase/community website for software engineering college students\", \"target audience is software engineering college students in one major\", \"first generation of target audience has been graduated\", \"reference website is awwwards.com\", \"problems include lack of features and functionalities, difficulty in finding internships and job opportunities, and time-consuming process of creating personal websites\", \"solutions include creating a tailored website with specific features, conducting user research, enabling lecturer profiles, providing resources, and offering simple website templates\"]}",
+  "seconds": 4.125813586986624,
+  "prompt_tokens_local_gemma_estimate": 2201
+}

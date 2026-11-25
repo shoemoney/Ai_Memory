@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 9
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "06f05a41343d5ac31b128fc79573bbdd16828116a8f8354a99ae1ddf92deb9fe",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-eadf6bcf-4b4b-4f2e-98a7-8b82ec1aac4c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        {\n            \"tripod_recommendations\": [\n                \"Gitzo GT3543LS Systematic Series 3 Carbon Fiber Tripod\",\n                \"Really Right Stuff TVC-34L Tripod\",\n                \"Manfrotto MT057CXPRO4 Carbon Fiber Tripod\",\n                \"Feisol CT-3472T Tripod\"\n            ]\n        },\n        {\n            \"camera_lens\": \"Canon EF 70-200mm f/2.8L IS III USM\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330146,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 122,
+      "prompt_tokens": 2774,
+      "total_tokens": 2896,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        {\n            \"tripod_recommendations\": [\n                \"Gitzo GT3543LS Systematic Series 3 Carbon Fiber Tripod\",\n                \"Really Right Stuff TVC-34L Tripod\",\n                \"Manfrotto MT057CXPRO4 Carbon Fiber Tripod\",\n                \"Feisol CT-3472T Tripod\"\n            ]\n        },\n        {\n            \"camera_lens\": \"Canon EF 70-200mm f/2.8L IS III USM\"\n        }\n    ]\n}",
+  "seconds": 2.7618082919943845,
+  "prompt_tokens_local_gemma_estimate": 2838
+}

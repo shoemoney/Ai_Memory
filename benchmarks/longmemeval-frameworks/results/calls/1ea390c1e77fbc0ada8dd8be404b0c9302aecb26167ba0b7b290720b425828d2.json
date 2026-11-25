@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 21
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "bdcd608788a4fb22ba330e131cc30b104d191d59a6d9eb8ea90f6c60524643bd",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-24533363-747d-4ba0-90fc-8f6c2c10a73e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Independent labels have a significant impact on the music industry and are more innovative and artist-friendly than major labels.\",\n        \"Sub Pop, XL Recordings, Warp Records, and 4AD are examples of successful independent music labels.\",\n        \"Independent labels offer more flexibility and artist-friendly contracts, allowing them to take creative risks and support up-and-coming talent.\",\n        \"The rise of independent labels is expected to continue shaping the music industry due to the popularity of streaming services and the DIY ethos of independent labels.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332021,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 113,
+      "prompt_tokens": 1831,
+      "total_tokens": 1944,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 660
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Independent labels have a significant impact on the music industry and are more innovative and artist-friendly than major labels.\",\n        \"Sub Pop, XL Recordings, Warp Records, and 4AD are examples of successful independent music labels.\",\n        \"Independent labels offer more flexibility and artist-friendly contracts, allowing them to take creative risks and support up-and-coming talent.\",\n        \"The rise of independent labels is expected to continue shaping the music industry due to the popularity of streaming services and the DIY ethos of independent labels.\"\n    ]\n}",
+  "seconds": 2.009725563999382,
+  "prompt_tokens_local": 1831,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

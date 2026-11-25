@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 63
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "3dc19b825cbcfbee9c9c49c3b6919921c44d4a5b14c420655157cd49e21f0010",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-baa979b8-27e5-4d11-8206-9c55fe7ffdaf",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"現在の役割として述べたように、責任は、関連する規制や要件を満たすことです\", \"既存のポリシーをレビューし、欠陥や潜在的なリスクを特定し、それらのリスクを軽減する戦略を開発する\", \"いくつかの一般的な質問と回答を紹介する\", \"脆弱性、脅威、リスクを説明することから始めるのが良い\", \"簡単な例を使って、回答を裏付ける\", \"関連する脅威についての情報を収集し、システムをより安全に保つために、ポリシー、手順、およびトレーニングを作成する\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330483,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 158,
+      "prompt_tokens": 2122,
+      "total_tokens": 2280,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"現在の役割として述べたように、責任は、関連する規制や要件を満たすことです\", \"既存のポリシーをレビューし、欠陥や潜在的なリスクを特定し、それらのリスクを軽減する戦略を開発する\", \"いくつかの一般的な質問と回答を紹介する\", \"脆弱性、脅威、リスクを説明することから始めるのが良い\", \"簡単な例を使って、回答を裏付ける\", \"関連する脅威についての情報を収集し、システムをより安全に保つために、ポリシー、手順、およびトレーニングを作成する\"]}",
+  "seconds": 4.191722864998155,
+  "prompt_tokens_local_gemma_estimate": 2124
+}

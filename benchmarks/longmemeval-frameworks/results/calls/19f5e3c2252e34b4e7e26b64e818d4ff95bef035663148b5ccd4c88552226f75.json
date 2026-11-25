@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 71
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "57dcbf890d16794f58232e66fd9c05961f85e4a3c017e2185adae64eb1845ab2",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-defe3a10-c0e5-47c7-869f-3593ca768a52",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Optimizing influencer marketing strategy based on analytics data from AspireIQ and Grin\", \"Identify top-performing influencers\", \"Optimize content types\", \"Refine audience targeting\", \"Improve influencer collaboration timing\", \"Enhance influencer relationships\", \"Adjust budget allocation\", \"Experiment with new influencer types\", \"Monitor and adapt to trends\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795333046,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 79,
+      "prompt_tokens": 2153,
+      "total_tokens": 2232,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Optimizing influencer marketing strategy based on analytics data from AspireIQ and Grin\", \"Identify top-performing influencers\", \"Optimize content types\", \"Refine audience targeting\", \"Improve influencer collaboration timing\", \"Enhance influencer relationships\", \"Adjust budget allocation\", \"Experiment with new influencer types\", \"Monitor and adapt to trends\"]}",
+  "seconds": 3.9749683960108086,
+  "prompt_tokens_local": 2153,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

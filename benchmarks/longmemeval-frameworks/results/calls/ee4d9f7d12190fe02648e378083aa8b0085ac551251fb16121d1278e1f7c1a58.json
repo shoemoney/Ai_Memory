@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 40
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "42900d95dba6588b87293c9ddeb314dbef1bc7b56b0be610b6d97b5823103b08",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-743de6ba-ac57-4a88-a2bf-d271beeeb5f3",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "```json\n{\n  \"extracted_entities\": [\n    {\n      \"name\": \"Echo Beach\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Tanah Lot Temple\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Deus Ex Machina\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"La Brisa Bali\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Finn's Recreation Club\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Berawa Beach\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Bali Equestrian Centre\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Old Man's\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Taman Segara Madu Waterpark\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    }\n  ]\n}\n```",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795370233,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 299,
+      "prompt_tokens": 546,
+      "total_tokens": 845,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "```json\n{\n  \"extracted_entities\": [\n    {\n      \"name\": \"Echo Beach\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Tanah Lot Temple\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Deus Ex Machina\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"La Brisa Bali\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Finn's Recreation Club\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Berawa Beach\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Bali Equestrian Centre\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Old Man's\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    },\n    {\n      \"name\": \"Taman Segara Madu Waterpark\",\n      \"entity_type_id\": 0,\n      \"episode_indices\": [0]\n    }\n  ]\n}\n```",
+  "seconds": 402.25384702999145,
+  "prompt_tokens_local": 546
+}

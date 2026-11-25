@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 15
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d0f886acb400d189d8a1c69d9579918f3159497fe6dff0fbaa559e8393c20827",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5c4850dc-f937-4e85-92c7-f0593c81a033",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"cozy atmosphere with blankets, pillows, and snacks\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"set up a DIY popcorn bar with different toppings\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"suggestions for toppings include butter and salt, cheese, caramel, chili powder, paprika, garlic powder, dried herbs, cinnamon sugar, nutella, peanuts, almonds, pecans, crushed cookies, candy pieces, coconut flakes, candy melts\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331984,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 150,
+      "prompt_tokens": 1844,
+      "total_tokens": 1994,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"cozy atmosphere with blankets, pillows, and snacks\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"set up a DIY popcorn bar with different toppings\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"suggestions for toppings include butter and salt, cheese, caramel, chili powder, paprika, garlic powder, dried herbs, cinnamon sugar, nutella, peanuts, almonds, pecans, crushed cookies, candy pieces, coconut flakes, candy melts\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 2.582292333987425,
+  "prompt_tokens_local": 1844,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

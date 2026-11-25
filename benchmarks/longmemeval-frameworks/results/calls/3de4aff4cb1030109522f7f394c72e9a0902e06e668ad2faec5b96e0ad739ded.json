@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 48
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e50de13047bb98b31cfcd8b94609bd7053f2e5c9b8d8805ba0de02665ddaf0eb",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-357932bd-7a3c-4726-bc90-a10d40f59a58",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"event\", \"summary\": \"The event described in the message is about the Wet Bandits' Mardi Gras float, \\\"Feeling Nauti,\\\" which was commandeered by Tanner Shelley and his crew. The float was decorated with mermaids and dolphins, and the Wet Bandits threw beads and water balloons during the parade. The police tried to stop them, but Tanner Shelley was too smart and outmaneuvered them, causing the Wet Bandits to vanish like magic. The legend of the Feeling Nauti float became a significant part of Dothan's Mardi Gras, and the Wet Bandits were celebrated for their performance.\"}, {\"name\": \"pic\", \"summary\": \"\"}, {\"name\": \"windshield\", \"summary\": \"\"}, {\"name\": \"game\", \"summary\": \"\"}, {\"name\": \"Nate\", \"summary\": \"\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795371627,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 188,
+      "prompt_tokens": 4331,
+      "total_tokens": 4519,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"event\", \"summary\": \"The event described in the message is about the Wet Bandits' Mardi Gras float, \\\"Feeling Nauti,\\\" which was commandeered by Tanner Shelley and his crew. The float was decorated with mermaids and dolphins, and the Wet Bandits threw beads and water balloons during the parade. The police tried to stop them, but Tanner Shelley was too smart and outmaneuvered them, causing the Wet Bandits to vanish like magic. The legend of the Feeling Nauti float became a significant part of Dothan's Mardi Gras, and the Wet Bandits were celebrated for their performance.\"}, {\"name\": \"pic\", \"summary\": \"\"}, {\"name\": \"windshield\", \"summary\": \"\"}, {\"name\": \"game\", \"summary\": \"\"}, {\"name\": \"Nate\", \"summary\": \"\"}]}",
+  "seconds": 13.211771748989122,
+  "prompt_tokens_local": 4331
+}

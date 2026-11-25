@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 70
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "6b43195227b8fad87dd6bf4bee8d509bb756358b7671a13316bc422776b8c786",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ab56ddf5-1ce5-49d8-9fd6-668fb26906fe",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Considering checking out YouTube channels for gaming news and reviews\",\n        \"Recommend GameSpot, IGN, and Game Informer for gaming news\",\n        \"Recommend AngryJoeShow, PeanutButterGamer, and JonTron for gaming reviews\",\n        \"Recommend SuperButterBuns, Errant Signal, and ProJared for gaming analysis and commentary\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367086,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 2582,
+      "total_tokens": 2665,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Considering checking out YouTube channels for gaming news and reviews\",\n        \"Recommend GameSpot, IGN, and Game Informer for gaming news\",\n        \"Recommend AngryJoeShow, PeanutButterGamer, and JonTron for gaming reviews\",\n        \"Recommend SuperButterBuns, Errant Signal, and ProJared for gaming analysis and commentary\"\n    ]\n}",
+  "seconds": 8.858616106997943,
+  "prompt_tokens_local": 2582
+}

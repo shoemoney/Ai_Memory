@@ -1,0 +1,176 @@
+{
+  "id": "simple_python_205",
+  "category": "simple_python",
+  "result": [
+    {
+      "get_traffic_info": "{\"start_location\":\"Boston\",\"end_location\":\"New York\",\"mode\":\"driving\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Find out the current traffic situation from Boston driving to New York.'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "get_traffic_info",
+                "description": "Retrieve current traffic conditions for a specified route.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "start_location": {
+                      "type": "string",
+                      "description": "The starting point of the route."
+                    },
+                    "end_location": {
+                      "type": "string",
+                      "description": "The destination of the route."
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "driving",
+                        "walking",
+                        "bicycling",
+                        "transit"
+                      ],
+                      "description": "Preferred method of transportation, default to 'driving'."
+                    }
+                  },
+                  "required": [
+                    "start_location",
+                    "end_location"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 367,
+    "output_token_count": 139,
+    "latency": 4.970221997995395
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Find out the current traffic situation from Boston driving to New York."
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_traffic_info",
+          "description": "Retrieve current traffic conditions for a specified route.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_location": {
+                "type": "string",
+                "description": "The starting point of the route."
+              },
+              "end_location": {
+                "type": "string",
+                "description": "The destination of the route."
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "driving",
+                  "walking",
+                  "bicycling",
+                  "transit"
+                ],
+                "description": "Preferred method of transportation, default to 'driving'."
+              }
+            },
+            "required": [
+              "start_location",
+              "end_location"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-3agXjbIysyzOLMsC6EGu4DGZ4XYmrML4",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "n8ajQP4VQpUtQr85jvDSxKKbAdLbAWil",
+              "function": {
+                "arguments": "{\"start_location\":\"Boston\",\"end_location\":\"New York\",\"mode\":\"driving\"}",
+                "name": "get_traffic_info"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for current traffic information from Boston to New York, driving. I need to use the get_traffic_info function with the following parameters:\n- start_location: \"Boston\"\n- end_location: \"New York\"\n- mode: \"driving\" (this is the default, but I'll specify it explicitly)\n\nAll required parameters are provided, so I can make the function call."
+        }
+      }
+    ],
+    "created": 1795287066,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 139,
+      "prompt_tokens": 367,
+      "total_tokens": 506,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 367,
+      "prompt_ms": 1321.422,
+      "prompt_per_token_ms": 3.6006049046321524,
+      "prompt_per_second": 277.7311108790379,
+      "predicted_n": 139,
+      "predicted_ms": 3640.722,
+      "predicted_per_token_ms": 26.382043478260872,
+      "predicted_per_second": 37.904569478251844
+    }
+  },
+  "elapsed_seconds": 4.970301843000925,
+  "score": {
+    "valid": true
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "ad4d479f43293a51e420900d7273b3e4a193add71ffb2a6d98bbfbb6d989b0d5",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a27bae9d-57af-4d50-8a91-e27930cd27b7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Lucy\",\n            \"duplicate_candidate_id\": 3\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Shelter\",\n            \"duplicate_candidate_id\": 4\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Juan\",\n            \"duplicate_candidate_id\": 2\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Shelter\",\n            \"duplicate_candidate_id\": 4\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Shelter\",\n            \"duplicate_candidate_id\": 4\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Nisha\",\n            \"duplicate_candidate_id\": 5\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795339311,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 179,
+      "prompt_tokens": 7648,
+      "total_tokens": 7827,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 89
+      }
+    }
+  },
+  "text": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Lucy\",\n            \"duplicate_candidate_id\": 3\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Shelter\",\n            \"duplicate_candidate_id\": 4\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Juan\",\n            \"duplicate_candidate_id\": 2\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Shelter\",\n            \"duplicate_candidate_id\": 4\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Shelter\",\n            \"duplicate_candidate_id\": 4\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Nisha\",\n            \"duplicate_candidate_id\": 5\n        }\n    ]\n}",
+  "seconds": 147.08141713400255,
+  "prompt_tokens_local": 7648
+}

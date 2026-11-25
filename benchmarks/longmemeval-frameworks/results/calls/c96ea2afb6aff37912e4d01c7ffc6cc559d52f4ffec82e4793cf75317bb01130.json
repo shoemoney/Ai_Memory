@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 64
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2231156fa54d7bde4a685c70dd3e18448d0df8cd178287fed630de458dab491b",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-55b00d3b-1677-4f5c-a8d3-a339bc0289ff",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Jordan's cat\", \"summary\": \"Jordan has a cat named Luna. Luna enjoys sleeping on the windowsill and eating tuna. She is a playful cat who loves to chase toys.\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795353944,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 48,
+      "prompt_tokens": 7395,
+      "total_tokens": 7443,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Jordan's cat\", \"summary\": \"Jordan has a cat named Luna. Luna enjoys sleeping on the windowsill and eating tuna. She is a playful cat who loves to chase toys.\"}]}",
+  "seconds": 13.988217953999992,
+  "prompt_tokens_local": 7395
+}

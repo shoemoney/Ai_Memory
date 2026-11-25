@@ -1,0 +1,541 @@
+<article class="chapter" data-ch="04" data-part="b" data-running="Multimodal embeddings">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part B &middot; Chapter 04</p>
+  <div class="opener-num" aria-hidden="true">04</div>
+  <h1>Multimodal embeddings</h1>
+  <p class="opener-summary">Shared vectors let a sentence find a picture across text, images, screenshots and video.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">3 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">3 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Agents that must find screenshots, photos, slides or video from a text description.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">Multimodal models embed text, images, screenshots, video and sometimes audio in shared vectors (Chapter 03). Similar meanings sit close across forms.</p>
+  <p>Qwen3-VL-Embedding, released in January 2026, accepts "text, images, screenshots, and videos, as well as inputs containing a mixture of these modalities".<sup class="cite"><a href="#s04-1">1</a>,<a href="#s04-2">2</a></sup> Google's Gemini Embedding 2 maps "text, images, video, audio, and documents" into one space.<sup class="cite"><a href="#s04-3">3</a></sup></p>
+  </div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Modality</dt><dd>An input type: text, image, video or audio.</dd>
+    <dt>Modality gap</dt><dd>Matching text and image vectors in separate regions.</dd>
+    <dt>Multi-vector</dt><dd>Many vectors per item (Chapter 03), here per page patch (small image tile). MaxSim sums query tokens’ best patch scores.</dd>
+    <dt>Backbone</dt><dd>Pretrained core. Adapters add weights, sometimes separately licensed.</dd>
+    <dt>Interleaved</dt><dd>Text and images mixed in one input.</dd>
+    <dt>nDCG@5</dt><dd>Normalized discounted cumulative gain at five: relevance versus the ideal top five; 0 to 100 here (Chapter 05).</dd>
+    <dt>bfloat16</dt><dd>Two-byte float with float32's exponent range and fewer precision bits. float16: same bytes, narrower range. Stored-vector precision is independent (Chapter 03).</dd>
+  </dl>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p>On write, embed items and save vectors and paths. On read, embed the question, search, optionally rerank and pass matching originals to the model.</p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 322" role="img" aria-label="Diagram: material is embedded and stored with a file path. A text query goes through the same embedder, the store returns top matches, a reranker re-scores them and the best few reach the model.">
+  <text class="d-label" x="20" y="30">Write</text>
+  <rect class="d-box" x="20" y="40" width="150" height="66" rx="4"/>
+  <text class="d-title" x="95" y="64" text-anchor="middle">Your material</text>
+  <text class="d-sub" x="95" y="82" text-anchor="middle">screenshots, photos,</text>
+  <text class="d-sub" x="95" y="96" text-anchor="middle">video frames, text</text>
+
+  <rect class="d-box accent" x="230" y="40" width="150" height="66" rx="4"/>
+  <text class="d-title" x="305" y="64" text-anchor="middle">Embedder</text>
+  <text class="d-sub" x="305" y="82" text-anchor="middle">one vector space for</text>
+  <text class="d-sub" x="305" y="96" text-anchor="middle">every modality</text>
+
+  <rect class="d-box" x="440" y="40" width="140" height="66" rx="4"/>
+  <text class="d-title" x="510" y="64" text-anchor="middle">Vector store</text>
+  <text class="d-sub" x="510" y="82" text-anchor="middle">vector + file path</text>
+  <text class="d-sub" x="510" y="96" text-anchor="middle">(Chapters 08, 11)</text>
+
+  <text class="d-label" x="20" y="148">Read</text>
+  <rect class="d-box" x="20" y="158" width="150" height="66" rx="4"/>
+  <text class="d-title" x="95" y="182" text-anchor="middle">Text query</text>
+  <text class="d-sub" x="95" y="200" text-anchor="middle">or an image used</text>
+  <text class="d-sub" x="95" y="214" text-anchor="middle">as the query</text>
+
+  <rect class="d-box accent" x="440" y="250" width="140" height="60" rx="4"/>
+  <text class="d-title" x="510" y="276" text-anchor="middle">Reranker</text>
+  <text class="d-sub" x="510" y="294" text-anchor="middle">re-scores top matches</text>
+
+  <rect class="d-box dark" x="230" y="250" width="150" height="60" rx="4"/>
+  <text class="d-title d-on-dark" x="305" y="276" text-anchor="middle">Model</text>
+  <text class="d-sub d-on-dark" x="305" y="294" text-anchor="middle">sees the best few</text>
+
+  <text class="d-sub" x="522" y="190">top matches</text>
+
+  <path class="d-line" d="M170 73 H228"/>
+  <path class="d-line" d="M380 73 H438"/>
+  <path class="d-line accent dash" d="M170 191 H305 V108"/>
+  <path class="d-line" d="M510 106 V248"/>
+  <path class="d-line" d="M440 280 H382"/>
+</svg>
+<figcaption><b>Figure 1.</b> Write: embed and store with the file path. Read: the same embedder (dashed) embeds the query, the store returns the nearest items and a reranker re-scores them.</figcaption>
+</figure>
+
+<h3>Variants and tools</h3>
+<p class="table-title">Models you run yourself (state as of 20 November 2026)</p>
+<table class="data">
+  <colgroup><col class="c30"><col class="c35"><col class="c35"></colgroup>
+  <thead><tr><th>Model</th><th>Inputs and output</th><th>Size and licence</th></tr></thead>
+  <tbody>
+    <tr><td>Qwen3-VL-Embedding-2B / -8B, January 2026</td><td>Text, image, screenshot, video, mixed. One vector, 2048 or 4096 numbers, truncatable to 64.<sup class="cite"><a href="#s04-1">1</a></sup></td><td>2B and 8B. Apache-2.0. 32K context.<sup class="cite"><a href="#s04-1">1</a></sup></td></tr>
+    <tr><td>Qwen3-VL-Reranker-2B / -8B</td><td>Mixed pairs. No vectors; scores a (query, document) pair.<sup class="cite"><a href="#s04-4">4</a></sup></td><td>2B and 8B. Apache-2.0 per the repository.<sup class="cite"><a href="#s04-4">4</a></sup></td></tr>
+    <tr><td>jina-embeddings-v4, June 2025</td><td>Text, images, visual documents. One vector, 2048 numbers, truncatable to 128, or many vectors, 128 numbers per patch.<sup class="cite"><a href="#s04-5">5</a></sup></td><td>3.8B, built on Qwen2.5-VL-3B. Qwen Research License: non-commercial only.<sup class="cite"><a href="#s04-6">6</a></sup><sup class="cite"><a href="#s04-5">5</a></sup></td></tr>
+    <tr><td>Nomic Embed Multimodal 7B</td><td>Text, images, interleaved. One vector; the ColNomic variants keep many vectors.<sup class="cite"><a href="#s04-7">7</a></sup></td><td>7B, built on Qwen2.5-VL-7B. Apache-2.0.<sup class="cite"><a href="#s04-7">7</a></sup></td></tr>
+    <tr><td>ColQwen2 v1.0</td><td>Page images, text. Many vectors, 128 numbers each; up to 768 visual patches.<sup class="cite"><a href="#s04-8">8</a></sup></td><td>2B. Qwen2-VL backbone: Apache-2.0; adapters: MIT. Keep both notices when redistributing.<sup class="cite"><a href="#s04-8">8</a></sup></td></tr>
+    <tr><td>ColPali, ICLR 2025</td><td>Page images, text. Many vectors: one per page patch (stored) and one per query token (at search time).<sup class="cite"><a href="#s04-9">9</a></sup></td><td>PaliGemma-3B base: Gemma licence; v1.3 adapters: MIT. Keep both notices.<sup class="cite"><a href="#s04-10">10</a></sup><sup class="cite"><a href="#s04-9">9</a></sup></td></tr>
+    <tr><td>EmbeddingGemma 2</td><td>Text/code, image, video, audio, mixed. One vector, 768 numbers, truncatable to 512, 256 or 128.</td><td>740M total; text + vision 440M. Apache-2.0. Vector truncation and float precision: Chapter 03.<sup class="cite"><a href="#s04-11">11</a></sup></td></tr>
+    <tr><td>ImageBind, May 2023</td><td>Image, text, audio, depth, thermal, motion-sensor (IMU) readings. One shared space for six modalities.<sup class="cite"><a href="#s04-12">12</a></sup></td><td>CC-BY-NC-SA-4.0 in the LICENSE file; the README says CC-BY-NC 4.0. Non-commercial either way.<sup class="cite"><a href="#s04-12">12</a></sup></td></tr>
+  </tbody>
+</table>
+
+<p class="table-title">Hosted models (the Numbers section prices only Gemini Embedding 2 and Qwen)</p>
+<table class="data">
+  <colgroup><col class="c30"><col class="c35"><col class="c35"></colgroup>
+  <thead><tr><th>Model</th><th>Inputs and vector size</th><th>Limits and notes</th></tr></thead>
+  <tbody>
+    <tr><td>Gemini Embedding 2, public preview 10 March 2026, generally available 22 April 2026.<sup class="cite"><a href="#s04-13">13</a>,<a href="#s04-14">14</a></sup></td><td>Text, image, video, audio, PDF.<sup class="cite"><a href="#s04-3">3</a></sup> One vector, 3072 numbers, truncatable.<sup class="cite"><a href="#s04-15">15</a></sup></td><td>Per request: 6 images, 120 s of video, 180 s of audio, one PDF of up to 6 pages.<sup class="cite"><a href="#s04-3">3</a></sup></td></tr>
+    <tr><td>voyage-multimodal-3.5, 15 January 2026</td><td>Interleaved text, images, video.<sup class="cite"><a href="#s04-16">16</a></sup> 1024 default, or 256, 512, 2048.<sup class="cite"><a href="#s04-16">16</a></sup></td><td>32K context.<sup class="cite"><a href="#s04-16">16</a></sup></td></tr>
+    <tr><td>Cohere Embed v4, 15 April 2025</td><td>Text, images, interleaved.<sup class="cite"><a href="#s04-17">17</a></sup> 256, 512, 1024 or 1536.<sup class="cite"><a href="#s04-17">17</a></sup></td><td>128K context. Also on AWS, Azure, Oracle. Images above 2,458,624 pixels are downsampled.<sup class="cite"><a href="#s04-17">17</a>,<a href="#s04-18">18</a></sup></td></tr>
+    <tr><td>Qwen models in Alibaba Model Studio</td><td>Text, up to 5 images, video.<sup class="cite"><a href="#s04-19">19</a></sup> qwen3-vl-embedding: 2560, or 256 to 2560. tongyi-embedding-vision-plus and tongyi-embedding-vision-flash: 1152 and 768.<sup class="cite"><a href="#s04-19">19</a></sup></td><td>qwen3-vl-embedding is Beijing region only; the two tongyi-embedding-vision models are Singapore only.<sup class="cite"><a href="#s04-19">19</a></sup></td></tr>
+  </tbody>
+</table>
+
+<h3>One vector or many per page</h3>
+<p>Single-vector models compress pages into one vector; ColPali and ColQwen2 keep one vector per patch. The ColPali authors call this "ColBERT-style multi-vector representations" and introduced ViDoRe (visual document retrieval) to argue that embedding page images beats indexing text from optical character recognition (OCR), which can lose the link between a chart label and its bar.<sup class="cite"><a href="#s04-8">8</a>,<a href="#s04-9">9</a></sup> Storage is the cost. ColQwen2 caps a page at 768 visual patches<sup class="cite"><a href="#s04-8">8</a></sup> of 128 numbers each, plus a few special text-token vectors; its card shows an example page with 755 vectors.<sup class="cite"><a href="#s04-8">8</a></sup> The table sizes one million pages in float16 (two bytes per number).</p>
+<p class="table-title">Worked storage arithmetic, before any index overhead</p>
+<table class="data">
+  <colgroup><col class="c35"><col class="c25"><col class="c20"><col class="c20"></colgroup>
+  <thead><tr><th>Layout</th><th>Arithmetic</th><th class="num">Per page</th><th class="num">One million (decimal GB)</th></tr></thead>
+  <tbody>
+    <tr><td>Qwen3-VL-Embedding-8B, 4096 numbers</td><td>4096 x 2 bytes</td><td class="num">8,192 B</td><td class="num">8.2 GB</td></tr>
+    <tr><td>Qwen3-VL-Embedding-2B, 2048 numbers</td><td>2048 x 2 bytes</td><td class="num">4,096 B</td><td class="num">4.1 GB</td></tr>
+    <tr><td>Qwen3-VL-Embedding-2B, 512 numbers</td><td>512 x 2 bytes</td><td class="num">1,024 B</td><td class="num">1.0 GB</td></tr>
+    <tr><td>ColQwen2, 768 patches</td><td>768 x 128 x 2 bytes</td><td class="num">196,608 B</td><td class="num">196.6 GB</td></tr>
+  </tbody>
+</table>
+<p>At 768 vectors per page, illustrative multi-vector storage is 24 times the 8B single vector and 48 times the 2B one. The 2B model truncates anywhere from 64 to 2048 numbers; no source reports quality at 512.<sup class="cite"><a href="#s04-1">1</a></sup> Qdrant supports multi-vector MaxSim scoring since v1.10.0;<sup class="cite"><a href="#s04-21">21</a></sup> Chapter 11 gives the recipe.</p>
+
+<h3>The reranker that pairs with it</h3>
+<p>Reranking adds one model pass per query/candidate pair. Qwen3-VL-Reranker (2B and 8B) takes mixed text and image pairs.<sup class="cite"><a href="#s04-4">4</a></sup> Re-score a few dozen candidates on GPU; on CPU, skip reranking or cap it at three to five (about 13 seconds per screenshot pair below). ViDoRe V3 reports gains from text rerankers;<sup class="cite"><a href="#s04-22">22</a></sup> only vendor tables measure visual reranking,<sup class="cite"><a href="#s04-4">4</a></sup> so require better top-five hits on your queries (Chapter 05).</p>
+
+<h3>One backbone, and the modality gap</h3>
+<p>CLIP-style models train separate text and image encoders to place matching captions and images near each other; Qwen3-VL-Embedding uses one backbone.<sup class="cite"><a href="#s04-4">4</a></sup> Whether the gap in two-encoder models<sup class="cite"><a href="#s04-20">20</a></sup> also appears in this model is unmeasured. A gap could favor captions over matching screenshots. Test whether the top five change before mixing them in one index.</p>
+
+<h3>The alternative: caption first</h3>
+<p>Caption on write for editable text embeddings (Chapter 03), adding a generation call. Retrieval sees only captioned details.</p>
+<p>Separate caption collections use their own embedder. Merge ranks (Chapter 05); scores across embedding spaces are incomparable.</p>
+
+<h3>The 50-query test</h3>
+<ol>
+  <li>Test five layouts on identical items: images only (multimodal embedder), captions only (text embedder), rank fusion over those separate collections, one mixed index using the multimodal embedder for images, captions and queries deduplicated by item id, and one vector encoding image plus caption jointly.</li>
+  <li>Write 50 requests before seeing captions. Record target ids for exact lookup; for descriptive search, pool candidates and judge relevance blind to route.</li>
+  <li>Fetch five distinct item ids per route; count requests with targets or relevant items among them.</li>
+  <li>Report paired wins/losses. Prefer simplicity unless the alternative answers about five more of the same 50 requests correctly within the top five. This deployment margin is not a significance test.</li>
+</ol>
+
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>Search boxes where people describe an image, a slide or a moment in words.</li>
+      <li>Content whose meaning is visual: screenshots, charts, slides, photos with no useful text.</li>
+      <li>A picture plus a line describing it, stored as one vector; if the text is unrelated, embed the image alone (Use case 2).</li>
+      <li>Local-first: Qwen3-VL-Embedding-2B has open weights; about 4 GB in bfloat16 (2B parameters x 2 bytes; computed, not measured).<sup class="cite"><a href="#s04-1">1</a></sup></li>
+      <li>Documents where OCR loses the layout: on ViDoRe V3's tested datasets, visual retrievers beat its textual baselines.<sup class="cite"><a href="#s04-22">22</a></sup></li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>A text-first collection: a text embedder scores higher on text (Chapter 03).<sup class="cite"><a href="#s04-1">1</a></sup></li>
+      <li>Millions of pages without a multi-vector budget: 196.6 GB per million pages in float16.</li>
+      <li>Speech inside video: Gemini Embedding 2 ignores the audio track, so send it separately (see Gotchas).<sup class="cite"><a href="#s04-3">3</a></sup></li>
+      <li id="spatial-memory">Tracking where objects are over time: an image embedding finds a matching view, not a position. Extract positions into structured records for spatial tracking.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Screenshot memory for a computer-use agent</h3>
+  <dl>
+    <dt>Situation</dt><dd>A computer-use agent seeks a failed-deploy screen outside its context window.</dd>
+    <dt>Why it fits</dt><dd>Qwen3-VL-Embedding retrieves screenshots. Save timestamps, tasks and last actions with images; retrieve past states by text intent instead of replaying history.<sup class="cite"><a href="#s04-1">1</a></sup> Neither the model card nor the paper tests agent screenshot tasks.</dd>
+    <dt>Pair with</dt><dd>Task/window filters and reranking. Re-observe before acting: retrieved screens show past state.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>A social feed where each post is a picture and one line</h3>
+  <dl>
+    <dt>Situation</dt><dd>An assistant searches a million posts for "dog on a beach at sunset", but the post text is an unrelated joke.</dd>
+    <dt>Why it fits</dt><dd>Qwen3-VL-Embedding can fuse <code>text</code> and <code>image</code> into one vector, but the joke would pull it away from "dog on a beach". Embed the image alone, and add the fused vector only if the 50-query test shows a clear gain over image-only.<sup class="cite"><a href="#s04-1">1</a></sup></dd>
+    <dt>Pair with</dt><dd>A separate text embedding of the line for text-only queries, merged as in Chapter 05.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Slide and PDF search without OCR</h3>
+  <dl>
+    <dt>Situation</dt><dd>An LLM answers from thousands of slide decks, but OCR scrambles chart labels and text retrieval misses pages.</dd>
+    <dt>Why it fits</dt><dd>ColQwen2 embeds page images. ViDoRe V3 reports stronger visual retrieval on its tested datasets.<sup class="cite"><a href="#s04-22">22</a></sup> At 768 vectors, a 200-page deck needs about 39 MB before indexing.</dd>
+    <dt>Pair with</dt><dd>A reranker. For slow scoring, shortlist before MaxSim with one Qwen3-VL-Embedding vector per page. For limited storage, keep only those vectors and rerank originals with Qwen3-VL-Reranker-2B; measure latency.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>A laptop archive that stays offline</h3>
+  <dl>
+    <dt>Situation</dt><dd>An offline laptop assistant searches 10,000 field photos and voice notes.</dd>
+    <dt>Why it fits</dt><dd>EmbeddingGemma 2 supports all these inputs locally. The 440M parameters (text and images) or 740M (all modalities) take about 0.88 GB or 1.48 GB of bfloat16 weights before runtime memory, or about 1.76 GB or 2.96 GB in float32. Computed from the card; EmbeddingGemma 2 was not run.<sup class="cite"><a href="#s04-11">11</a></sup></dd>
+    <dt>Pair with</dt><dd>Local files and SQLite (Chapter 12), a 768-number vector per item, and date/project filters. Test recall on real photos and speech before choosing a smaller vector.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>Finding a moment in a video</h3>
+  <dl>
+    <dt>Situation</dt><dd>Search hour-long screen recordings for "the part where the error dialog appears".</dd>
+    <dt>Why it fits</dt><dd>Gemini Embedding 2 samples at most 32 frames per video.<sup class="cite"><a href="#s04-3">3</a></sup> Size clips, up to 120 seconds, for the shortest event to catch; shorter clips give denser sampling. Sampling all 32 frames averages one per 3.75 seconds for 120-second clips (30 clips an hour), one per second for 32-second clips (about 113 clips an hour). Neither guarantees catching brief dialogs. Store start times.</dd>
+    <dt>Pair with</dt><dd>The audio track, embedded as audio on its own (see Gotchas).<sup class="cite"><a href="#s04-3">3</a></sup></dd>
+  </dl>
+</article>
+
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p class="table-title">Figures from the sources (as of November 2026)</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>77.8 and 73.2</td><td>MMEB-V2 overall score (a 78-task benchmark across images, video and visual documents), Qwen3-VL-Embedding-8B and -2B, run by the Qwen team. Both the pinned card (16 April 2026, read 20 November 2026) and paper v2 Table 1 (19 January 2026) give these scores; the abstract gives only 8B.<sup class="cite"><a href="#s04-2">2</a></sup><sup class="cite"><a href="#s04-1">1</a>,<a href="#s04-23">23</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>67.88 vs 70.58</td><td>Text-only MTEB multilingual (MMTEB) task mean: Qwen3-VL-Embedding-8B vs Qwen3-Embedding-8B, a gap of 2.70. At 2B it is 63.87 against 64.33 for a 0.6B text model.<sup class="cite"><a href="#s04-1">1</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>58.8</td><td>Nomic Embed Multimodal 7B, nDCG@5 on ViDoRe V2. The card's text says 58.8 but its table gives 59.7, unexplained; treat both as vendor-reported.<sup class="cite"><a href="#s04-7">7</a></sup></td><td class="src"><span class="pill vendor">Vendor measurement</span></td></tr>
+    <tr><td>10 sets, 26,000 pages</td><td>ViDoRe V3: 10 datasets, about 26,000 pages, 3,099 queries, 6 languages.<sup class="cite"><a href="#s04-22">22</a></sup></td><td class="src"><span class="pill official">Paper</span></td></tr>
+    <tr><td>768 visual patches</td><td>Maximum ColQwen2 keeps per page, plus a few special-token vectors.<sup class="cite"><a href="#s04-8">8</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>$0.00012 per image</td><td>Gemini Embedding 2 paid tier. Also $0.20 per 1M text tokens, $0.00016 per second of audio and $0.00079 per video frame.<sup class="cite"><a href="#s04-24">24</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>$0.258 per 1M tokens</td><td>qwen3-vl-embedding on image and video input. Text is $0.10. tongyi-embedding-vision-plus is $0.09 and tongyi-embedding-vision-flash is $0.03 for image and video. The reference gives no tokens per image, so compare with Gemini's per-image price only after a test call.<sup class="cite"><a href="#s04-19">19</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>32 frames</td><td>Most frames Gemini Embedding 2 reads from a video. Text input is capped at 8,192 tokens.<sup class="cite"><a href="#s04-3">3</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+  </tbody>
+</table>
+<h3>Own measurement</h3>
+<p><strong>Tested here:</strong> ViDoRe V3 subset (318 English queries, 1,110 pages), not MMEB-V2 or ViDoRe V2, not comparable with vendor figures, including Nomic Embed Multimodal 7B's 58.8. nDCG@5 was 58.77 (95% bootstrap interval over queries, 55.39 to 62.20) for Qwen3-VL-Embedding-8B and 55.17 (51.64 to 58.74) for Nomic Embed Multimodal 7B. Both used 4-bit weights (compressed; Chapter 06), which may lower scores. Paired difference: 3.60 points (95% paired bootstrap interval 1.00 to 6.19, 10,000 resamples of shared query ids), so Qwen3-VL-Embedding-8B scored higher here. A separate bfloat16 2B run scored 54.98 (51.36 to 58.55) on this subset; runtime and precision differ. Companion: benchmarks/mteb-large/vidore.py; the folder also holds text-embedding runs.</p>
+
+<h3>Scope and scale</h3>
+<p>Keep paths current; replace or delete vectors with originals, and re-embed the collection when changing models. The answer model sees selected images or clips; its resolution and frame policy set token costs.<sup class="cite"><a href="#s04-4">4</a></sup></p>
+<ul>
+  <li><strong>Per write:</strong> one embedding pass per item, no generation call. <strong>Per read:</strong> one query embedding plus one pair-scoring pass per reranked candidate (Chapter 00).</li>
+  <li><strong>Storage:</strong> raw float16 sizes follow the table above (method in Chapter 00). Qwen3-VL-Embedding-2B in float16 needs 4.1 GB for 100 users at 10,000 memories each, before originals, payloads and indexes.</li>
+  <li><strong>Memory:</strong> budget about 4 GB of bfloat16 weights per independently loaded Qwen3-VL-Embedding-2B. For shared instances, measure peak memory at intended concurrency.</li>
+</ul>
+<p>Benchmark real page sizes and concurrency; full-page GPU memory and latency are unmeasured. Use captions if visuals add little (Chapter 03), fewer reranking candidates for latency (Chapter 05), or a dedicated vector store for index RAM (Chapter 11). No source gives an item-count cutoff.</p>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Create three PNGs, embed them and a query, store vectors in Qdrant, filter, rerank and return the original filename. Start a child Bash shell; paste shell blocks in order (or source setup.sh) to preserve directories and exports. Failed commands stop it. Needs Linux x86-64, Docker 29.1.3, uv 0.13.9, Git, curl, GNU time (/usr/bin/time), internet, about 16 GB disk and 4 GB free RAM; Google Chrome for optional screenshot timing. Public models; authentication optional.</p>
+<p>Lab verification (run date unrecorded; not verified against the 22 November 2026 research cutoff) on an x86-64 CPU (32 logical CPUs, 8 PyTorch threads), bfloat16, CUDA disabled. Versions: Python 3.12.16, PyTorch 2.8.0, torchvision 0.23.0, Transformers 4.57.1, qwen-vl-utils 0.0.14, SciPy 1.18.1, Pillow 11.3.0, accelerate 1.10.1, huggingface-hub 0.36.2, Qdrant 1.15.4 and client 1.15.1. Synthetic plumbing test; document recall and agent usefulness untested. Checkpoints and helpers pinned.<sup class="cite"><a href="#s04-4">4</a></sup></p>
+<ol class="steps">
+<li class="step-long"><p class="step-title">Create the pinned environment</p>
+<p>The mkdir fails if the directory exists; after a crash, delete the leftover or choose another.</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">setup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+mkdir /var/tmp/memlab-04 || exit 1
+cd /var/tmp/memlab-04
+export HF_HOME=&quot;$PWD/hf&quot;
+export UV_CACHE_DIR=&quot;$PWD/uv-cache&quot;
+export PIP_CACHE_DIR=&quot;$PWD/pip-cache&quot;
+export HF_HUB_DISABLE_XET=1
+export CUDA_VISIBLE_DEVICES=""
+uv venv --python 3.12.16 venv
+uv pip install --python venv/bin/python \
+  torch==2.8.0 torchvision==0.23.0 transformers==4.57.1 \
+  qwen-vl-utils==0.0.14 Pillow==11.3.0 \
+  qdrant-client==1.15.1 accelerate==1.10.1 scipy==1.18.1 \
+  huggingface-hub==0.36.2</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Fetch the helper implementation and model weights</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file"></span><span class="code-tag tested">Tested</span></div>
+<pre>git clone https://github.com/QwenLM/Qwen3-VL-Embedding.git qwen
+git -C qwen checkout 393e2978d27852b0d0230d6994f37f9c15bed73c</pre></div>
+<p>Save as <code>download.py</code>.</p><div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">download.py</span><span class="code-tag tested">Tested</span></div><pre>from huggingface_hub import snapshot_download
+for name, rev in [
+    (&#x27;Qwen3-VL-Embedding-2B&#x27;, &#x27;9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda&#x27;),
+    (&#x27;Qwen3-VL-Reranker-2B&#x27;, &#x27;4bd860ac4f15ad1897a214615cccc700f8f71818&#x27;),
+]:
+    snapshot_download(&#x27;Qwen/&#x27; + name, revision=rev, local_dir=&#x27;models/&#x27; + name)
+</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>venv/bin/python download.py</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Start an isolated vector store</p>
+<p>Loopback-only port; writes complete before reads. Qdrant defaults to float32: three 2048-number vectors total 24,576 raw bytes before payloads/indexes, versus earlier float16 budgets.<sup class="cite"><a href="#s04-21">21</a></sup></p><p>Save as <code>readiness.sh</code>. The gate tries 30 times (two-second curl, one-second sleep; about 90 seconds maximum), then prints logs and exits.</p>
+<div class="codeblock" data-listing-note="Bounds HTTP readiness and prints container logs on failure."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">readiness.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>set -euo pipefail
+wait_http() {
+  local name=$1 url=$2
+  for attempt in $(seq 1 30); do
+    if curl --fail -s --max-time 2 "$url" &gt; /dev/null; then
+      echo "ready: $name"
+      return 0
+    fi
+    sleep 1
+  done
+  docker logs --tail 40 "$name" &gt;&amp;2 || true
+  echo "STOP: readiness timed out: $url" &gt;&amp;2
+  return 1
+}</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>source readiness.sh
+docker run -d --name memlab-04-qdrant \
+  -p 127.0.0.1:39040:6333 qdrant/qdrant:v1.15.4 || exit 1
+wait_http memlab-04-qdrant http://127.0.0.1:39040/readyz</pre></div>
+<p>Readiness output, after Docker prints the container id:</p>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>ready: memlab-04-qdrant</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Write, then read in a fresh process</p>
+<p><code>write.py</code> stores three generated images' vectors and paths. <code>search.py</code> embeds a query in a fresh process, searches Qdrant, reranks originals, checks the filename and retains the collection. Without avx512_bf16 or amx_bf16 in lscpu, replace torch.bfloat16 with torch.float32 in write.py, search.py and warm.py; weight memory doubles. decoy.png duplicates circle.png in another album: an unfiltered search returns it; the filter excludes it.</p>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">python</span><span class="code-file">write.py</span><span class="code-tag tested">Tested</span></div><pre>from pathlib import Path
+import time
+import torch
+from PIL import Image, ImageDraw
+from qdrant_client import QdrantClient, models as m
+from src.models.qwen3_vl_embedding import Qwen3VLEmbedder
+
+torch.set_num_threads(8)
+model = Qwen3VLEmbedder(&#x27;models/Qwen3-VL-Embedding-2B&#x27;,
+    torch_dtype=torch.bfloat16, attn_implementation=&#x27;sdpa&#x27;,
+    max_length=512, max_pixels=224 * 224)
+paths = []
+for name, color, shape in [(&#x27;circle&#x27;, &#x27;red&#x27;, &#x27;ellipse&#x27;),
+                           (&#x27;square&#x27;, &#x27;blue&#x27;, &#x27;rectangle&#x27;),
+                           (&#x27;decoy&#x27;, &#x27;red&#x27;, &#x27;ellipse&#x27;)]:
+    image = Image.new(&#x27;RGB&#x27;, (224, 224), &#x27;white&#x27;)
+    getattr(ImageDraw.Draw(image), shape)((32, 32, 192, 192), fill=color)
+    path = str(Path(name + &#x27;.png&#x27;).resolve())
+    image.save(path)
+    paths.append(path)
+started = time.perf_counter()
+vectors = torch.cat([model.process([{&#x27;image&#x27;: p}]) for p in paths])
+print(f&#x27;image embedding: {time.perf_counter() - started:.3f} s&#x27;)
+client = QdrantClient(url=&#x27;http://127.0.0.1:39040&#x27;)
+client.create_collection(&#x27;pictures&#x27;, vectors_config=m.VectorParams(
+    size=2048, distance=m.Distance.COSINE))
+client.upsert(&#x27;pictures&#x27;, wait=True, points=[
+    m.PointStruct(id=i + 1, vector=v.float().tolist(),
+                  payload={&#x27;path&#x27;: p, &#x27;album&#x27;: &#x27;other&#x27; if i == 2 else &#x27;shapes&#x27;})
+    for i, (p, v) in enumerate(zip(paths, vectors))])
+assert client.count(&#x27;pictures&#x27;, exact=True).count == 3
+print(&#x27;stored:&#x27;, tuple(vectors.shape), &#x27;count: 3&#x27;)
+client.close()</pre></div>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">python</span><span class="code-file">search.py</span><span class="code-tag tested">Tested</span></div><pre>import gc
+import time
+from pathlib import Path
+import torch
+from qdrant_client import QdrantClient, models as m
+from src.models.qwen3_vl_embedding import Qwen3VLEmbedder
+from src.models.qwen3_vl_reranker import Qwen3VLReranker
+
+torch.set_num_threads(8)
+query = &#x27;A red circle on a white background.&#x27;
+options = dict(torch_dtype=torch.bfloat16, attn_implementation=&#x27;sdpa&#x27;,
+               max_length=512, max_pixels=224 * 224)
+embedder = Qwen3VLEmbedder(&#x27;models/Qwen3-VL-Embedding-2B&#x27;, **options)
+started = time.perf_counter()
+q = embedder.process([{&#x27;text&#x27;: query}])[0]
+print(f&#x27;query embedding: {time.perf_counter() - started:.3f} s&#x27;)
+client = QdrantClient(url=&#x27;http://127.0.0.1:39040&#x27;)
+assert client.count(&#x27;pictures&#x27;, exact=True).count == 3
+unfiltered = client.query_points(&#x27;pictures&#x27;, query=q.float().tolist(), limit=2).points
+assert any(h.id == 3 for h in unfiltered)
+hits = client.query_points(&#x27;pictures&#x27;, query=q.float().tolist(), limit=2,
+    query_filter=m.Filter(must=[m.FieldCondition(
+        key=&#x27;album&#x27;, match=m.MatchValue(value=&#x27;shapes&#x27;))])).points
+assert len(hits) == 2 and all(h.id != 3 for h in hits)
+print(&#x27;excluded decoy: 3&#x27;)
+print(&#x27;retrieved:&#x27;, [(h.id, round(h.score, 4)) for h in hits])
+assert Path(hits[0].payload[&#x27;path&#x27;]).name == &#x27;circle.png&#x27;
+del embedder, q
+gc.collect()
+reranker = Qwen3VLReranker(&#x27;models/Qwen3-VL-Reranker-2B&#x27;, **options)
+started = time.perf_counter()
+scores = reranker.process({&#x27;query&#x27;: {&#x27;text&#x27;: query},
+    &#x27;documents&#x27;: [{&#x27;image&#x27;: h.payload[&#x27;path&#x27;]} for h in hits]})
+print(f&#x27;reranking: {time.perf_counter() - started:.3f} s&#x27;)
+ranked = sorted(zip(hits, scores), key=lambda pair: pair[1], reverse=True)
+print(&#x27;reranked:&#x27;, [(h.id, round(float(s), 4)) for h, s in ranked])
+original = Path(ranked[0][0].payload[&#x27;path&#x27;])
+assert original.is_file() and original.name == &#x27;circle.png&#x27;
+print(&#x27;original:&#x27;, original.name)
+print(&#x27;recall@1: 1/1 (one synthetic query; not a benchmark)&#x27;)
+client.close()</pre></div>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">bash</span><span class="code-file"></span><span class="code-tag tested">Tested</span></div><pre>export PYTHONPATH=&quot;$PWD/qwen&quot;
+/usr/bin/time -v -o write.resources venv/bin/python write.py
+/usr/bin/time -v -o search.resources venv/bin/python search.py</pre></div>
+<p>Measured stdout, library warnings omitted. Scores vary by runtime and precision; assertions check the original.</p>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">text</span><span class="code-file"></span><span class="code-tag tested">Tested</span></div><pre>image embedding: 6.468 s
+stored: (3, 2048) count: 3
+query embedding: 2.347 s
+excluded decoy: 3
+retrieved: [(1, 0.6903), (2, 0.3771)]
+reranking: 6.598 s
+reranked: [(1, 0.7383), (2, 0.3105)]
+original: circle.png
+recall@1: 1/1 (one synthetic query; not a benchmark)</pre></div>
+<p><strong>Timings:</strong> the three-image write took 24.92 seconds and the fresh read took 23.67 seconds, including loading, excluding downloads. Printed inference times exclude loading. Toy images are 224 by 224 pixels; the sequence cap is 512 tokens. The embedder defaults to 8192 tokens and 1,843,200 pixels;<sup class="cite"><a href="#s04-4">4</a></sup> start there, then choose the lowest cap where the 50-query test stops improving.</p>
+</li>
+<li class="step-long"><p class="step-title">Time a real screenshot (optional; needs Google Chrome)</p>
+<p>Without Chrome, skip to cleanup. Save as <code>warm.py</code>. This captures the local dashboard, warms each model once, then times a screenshot, query and pair at explicit caps. Single shared-CPU observations; recall untested.</p>
+<div class="codeblock splittable"><div class="code-head"><span class="code-lang">python</span><span class="code-file">warm.py</span><span class="code-tag tested">Tested</span></div><pre>import gc
+import time
+import subprocess
+from pathlib import Path
+import torch
+from PIL import Image
+from src.models.qwen3_vl_embedding import Qwen3VLEmbedder
+from src.models.qwen3_vl_reranker import Qwen3VLReranker
+
+torch.set_num_threads(8)
+subprocess.run([&#x27;google-chrome&#x27;, &#x27;--headless&#x27;, &#x27;--no-sandbox&#x27;,
+    &#x27;--disable-gpu&#x27;, &#x27;--hide-scrollbars&#x27;, &#x27;--window-size=1280,800&#x27;,
+    &#x27;--virtual-time-budget=6000&#x27;, &#x27;--user-data-dir=chrome&#x27;,
+    &#x27;--screenshot=screenshot.png&#x27;, &#x27;http://127.0.0.1:39040/dashboard&#x27;],
+    check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+path = str(Path(&#x27;screenshot.png&#x27;).resolve())
+query = &#x27;The welcome screen for a vector database dashboard.&#x27;
+options = dict(torch_dtype=torch.bfloat16, attn_implementation=&#x27;sdpa&#x27;,
+               max_length=8192, max_pixels=1843200)
+embedder = Qwen3VLEmbedder(&#x27;models/Qwen3-VL-Embedding-2B&#x27;, **options)
+inputs = [{&#x27;image&#x27;: path}, {&#x27;text&#x27;: query}]
+for item in inputs:
+    embedder.process([item])
+for label, item in zip([&#x27;screenshot embedding&#x27;, &#x27;text embedding&#x27;], inputs):
+    started = time.perf_counter()
+    embedder.process([item])
+    print(f&#x27;warm {label}: {time.perf_counter() - started:.3f} s&#x27;)
+print(&#x27;screenshot pixels:&#x27;, Image.open(path).size, &#x27;caps: 8192 / 1843200&#x27;)
+del embedder
+gc.collect()
+reranker = Qwen3VLReranker(&#x27;models/Qwen3-VL-Reranker-2B&#x27;, **options)
+pair = {&#x27;query&#x27;: {&#x27;text&#x27;: query}, &#x27;documents&#x27;: [{&#x27;image&#x27;: path}]}
+reranker.process(pair)
+started = time.perf_counter()
+reranker.process(pair)
+print(f&#x27;warm screenshot reranking: {time.perf_counter() - started:.3f} s&#x27;)</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div><pre>/usr/bin/time -v -o warm.resources venv/bin/python warm.py
+du -sb models venv uv-cache</pre></div>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div><pre>warm screenshot embedding: 14.072 s
+warm text embedding: 0.373 s
+screenshot pixels: (1280, 800) caps: 8192 / 1843200
+warm screenshot reranking: 12.936 s
+8542129212	models
+7207313775	venv
+23521350	uv-cache</pre></div>
+<p><strong>Resources:</strong> GNU time peak resident RAM was 3.98 GB for writing, 3.99 GB for the fresh read and 4.03 GB for the screenshot probe. Disk lines are apparent bytes, including package caches, excluding Docker's shared image. Screenshot timing excludes loading; full-page GPU latency remains unmeasured.</p>
+</li>
+<li class="step-long"><p class="step-title">Clean up the tutorial resources</p>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file"></span><span class="code-tag tested">Tested</span></div>
+<pre>docker rm -f memlab-04-qdrant
+cd /var/tmp
+rm -rf /var/tmp/memlab-04</pre></div>
+</li>
+</ol>
+</section>
+
+
+<section>
+<h2>Gotchas</h2>
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: pgvector index limits</p>
+  <p>pgvector indexes up to 2,000 numbers per vector, or 4,000 with its two-byte halfvec type (Chapter 08). Use halfvec for 2048 or 3072; truncate 4096.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: Gemini Embedding 2 media and page caps</p>
+  <p>For frame density and clip length, see Use case 5. In Gemini Embedding 2, "Audio tracks are not processed in video files".<sup class="cite"><a href="#s04-3">3</a></sup> A 40-page deck must be split at 6 pages per request.<sup class="cite"><a href="#s04-3">3</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: hosted availability varies</p>
+  <p>Alibaba Model Studio Qwen models are region-bound with separate keys.<sup class="cite"><a href="#s04-19">19</a></sup> Pinecone (November 2026) says Gemini Embedding 2 "is only offered as a text model today" in its integration, though its native API takes images.<sup class="cite"><a href="#s04-25">25</a></sup> Check the surface you call.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: EmbeddingGemma 2 precision</p>
+  <p>Run EmbeddingGemma 2 in bfloat16 where supported and float32 otherwise (Chapter 03); the card warns that float16 can produce NaNs.<sup class="cite"><a href="#s04-11">11</a></sup> Check finite vectors and known query/item pairs before indexing.</p>
+</aside>
+
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: one small model, then measure</p>
+  <p><strong>Pick it when</strong> remembered content is visual: screenshots, photos, slides, short video. Start with Qwen3-VL-Embedding-2B. The walkthrough checks plumbing. For latency decisions, time identical queries, candidates and caps end to end in fresh and resident processes. The ViDoRe V3 subset scored 54.98 for 2B versus 58.77 for 8B; precision and runtime differed. Run the 50-query test. Choose CPU, GPU or hosted against a preset latency/cost budget using warm real screenshots; include hosted network time and reranking. Use a page model such as ColQwen2 for slides and scans. If weights exceed local memory, consider hosted inference (Gemini Embedding 2 for audio or PDF) only if the originals may leave the device. Offline, test EmbeddingGemma 2 (card claims; not run here).<sup class="cite"><a href="#s04-1">1</a>,<a href="#s04-8">8</a>,<a href="#s04-11">11</a>,<a href="#s04-24">24</a></sup> </p>
+  <p>Use captions and a text embedder (Chapter 03) for word-focused queries or when captions keep needed details. For audits, retain originals and provenance; captions are inspection aids, not proof. If patch vectors exceed budget, try one visual vector per page with reranking (Use case 3). Store vectors in pgvector (see Gotchas and Chapter 08) or a dedicated vector store (Chapter 11), and merge text results (Chapter 05). Worked example: Chapter 23; page multi-vectors: Chapter 11.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s04-1"><span class="src-title">Qwen3-VL-Embedding-2B pinned model card, revision 9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda (16 April 2026)</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda/README.md">https://huggingface.co/Qwen/Qwen3-VL-Embedding-2B/blob/9f2f7e710d6d81056aa5c0a4f04764fec6bb7bda/README.md</a></li>
+  <li id="s04-2"><span class="src-title">Qwen3-VL-Embedding technical report, arXiv:2601.04720 (submitted 2026-01-08, revised 2026-01-19)</span> <span class="src-note">(official)</span><a class="url" href="https://arxiv.org/abs/2601.04720v2">https://arxiv.org/abs/2601.04720v2</a></li>
+  <li id="s04-3"><span class="src-title">Gemini API, Embeddings documentation</span> <span class="src-note">(official)</span><a class="url" href="https://ai.google.dev/gemini-api/docs/embeddings">https://ai.google.dev/gemini-api/docs/embeddings</a></li>
+  <li id="s04-4"><span class="src-title">QwenLM/Qwen3-VL-Embedding GitHub README</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/QwenLM/Qwen3-VL-Embedding">https://github.com/QwenLM/Qwen3-VL-Embedding</a></li>
+  <li id="s04-5"><span class="src-title">jina-embeddings-v4 model card and arXiv:2506.18902</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/jinaai/jina-embeddings-v4">https://huggingface.co/jinaai/jina-embeddings-v4</a></li>
+  <li id="s04-6"><span class="src-title">Jina embeddings v4 checkpoint LICENSE</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/jinaai/jina-embeddings-v4/blob/853c867b65b749f3c3c72a06868140d842e04f06/LICENSE">https://huggingface.co/jinaai/jina-embeddings-v4/blob/853c867b65b749f3c3c72a06868140d842e04f06/LICENSE</a></li>
+  <li id="s04-7"><span class="src-title">nomic-embed-multimodal-7b model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/nomic-ai/nomic-embed-multimodal-7b">https://huggingface.co/nomic-ai/nomic-embed-multimodal-7b</a></li>
+  <li id="s04-8"><span class="src-title">vidore/colqwen2-v1.0 model card</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/vidore/colqwen2-v1.0">https://huggingface.co/vidore/colqwen2-v1.0</a></li>
+  <li id="s04-9"><span class="src-title">Faysse et al., ColPali: Efficient Document Retrieval with Vision Language Models (ICLR 2025)</span> <span class="src-note">(official)</span><a class="url" href="https://arxiv.org/abs/2407.01449">https://arxiv.org/abs/2407.01449</a></li>
+  <li id="s04-10"><span class="src-title">ColPali v1.3 card: base model and licences</span> <span class="src-note">(official)</span><a class="url" href="https://huggingface.co/vidore/colpali-v1.3/blob/b5c6dd62125326e6f0b540c1f7b36e901cdc0a11/README.md">https://huggingface.co/vidore/colpali-v1.3/blob/b5c6dd62125326e6f0b540c1f7b36e901cdc0a11/README.md</a></li>
+  <li id="s04-11"><span class="src-title">EmbeddingGemma 2 model card: modalities, selective loading and limits</span> <span class="src-note">(official)</span><a class="url" href="https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2">https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2</a></li>
+  <li id="s04-12"><span class="src-title">ImageBind README and repository LICENSE</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/facebookresearch/ImageBind">https://github.com/facebookresearch/ImageBind</a></li>
+  <li id="s04-13"><span class="src-title">Google, Gemini Embedding 2 announcement (10 March 2026, public preview)</span> <span class="src-note">(official)</span><a class="url" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2/">https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2/</a></li>
+  <li id="s04-14"><span class="src-title">Gemini API changelog (10 March and 22 April 2026 entries)</span> <span class="src-note">(official)</span><a class="url" href="https://ai.google.dev/gemini-api/docs/changelog">https://ai.google.dev/gemini-api/docs/changelog</a></li>
+  <li id="s04-15"><span class="src-title">Google Cloud, Gemini Embedding 2 model page</span> <span class="src-note">(official)</span><a class="url" href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/embedding-2">https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/embedding-2</a></li>
+  <li id="s04-16"><span class="src-title">Voyage AI, voyage-multimodal-3.5 announcement (2026-01-15)</span> <span class="src-note">(vendor)</span><a class="url" href="https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/">https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/</a></li>
+  <li id="s04-17"><span class="src-title">Cohere, Announcing Embed Multimodal v4 (2025-04-15)</span> <span class="src-note">(vendor)</span><a class="url" href="https://docs.cohere.com/changelog/embed-multimodal-v4">https://docs.cohere.com/changelog/embed-multimodal-v4</a></li>
+  <li id="s04-18"><span class="src-title">AWS Bedrock, Cohere Embed v4 parameters</span> <span class="src-note">(official)</span><a class="url" href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-embed-v4.html">https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-embed-v4.html</a></li>
+  <li id="s04-19"><span class="src-title">Alibaba Cloud Model Studio, Multimodal-Embedding API reference (updated 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://www.alibabacloud.com/help/en/model-studio/multimodal-embedding-api-reference">https://www.alibabacloud.com/help/en/model-studio/multimodal-embedding-api-reference</a></li>
+  <li id="s04-20"><span class="src-title">Liang et al., Mind the Gap: Understanding the Modality Gap in Multi-modal Contrastive Representation Learning (NeurIPS 2022)</span> <span class="src-note">(official)</span><a class="url" href="https://arxiv.org/abs/2203.02053">https://arxiv.org/abs/2203.02053</a></li>
+  <li id="s04-21"><span class="src-title">Qdrant vector documentation: multivectors and MaxSim</span> <span class="src-note">(official)</span><a class="url" href="https://qdrant.tech/documentation/concepts/vectors/">https://qdrant.tech/documentation/concepts/vectors/</a></li>
+  <li id="s04-22"><span class="src-title">ViDoRe V3, arXiv:2601.08620 (revised 2026-04-21)</span> <span class="src-note">(official)</span><a class="url" href="https://arxiv.org/abs/2601.08620">https://arxiv.org/abs/2601.08620</a></li>
+  <li id="s04-23"><span class="src-title">VLM2Vec-V2, arXiv:2507.04590 (2025-07-07), source of MMEB-V2</span> <span class="src-note">(official)</span><a class="url" href="https://arxiv.org/abs/2507.04590">https://arxiv.org/abs/2507.04590</a></li>
+  <li id="s04-24"><span class="src-title">Gemini API pricing, Gemini Embedding 2 section</span> <span class="src-note">(official)</span><a class="url" href="https://ai.google.dev/gemini-api/docs/pricing">https://ai.google.dev/gemini-api/docs/pricing</a></li>
+  <li id="s04-25"><span class="src-title">Pinecone, integrated embedding for Gemini (2026-11-12)</span> <span class="src-note">(vendor)</span><a class="url" href="https://www.pinecone.io/blog/integrated-embedding-google/">https://www.pinecone.io/blog/integrated-embedding-google/</a></li>
+</ol>
+</section>
+
+</article>

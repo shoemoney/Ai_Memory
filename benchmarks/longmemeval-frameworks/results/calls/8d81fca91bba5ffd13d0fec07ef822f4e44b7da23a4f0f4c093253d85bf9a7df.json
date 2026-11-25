@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 10
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "34580f5f77f293a83b276d0fdc065455852727d69b4b8f7e64b0faeca3d1adf3",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d5ccc9c4-5df9-4ac6-8139-1afc09cabc74",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in the Manfrotto MT057CXPRO4 Carbon Fiber Tripod\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Willing to learn more about the leg locks and height adjustment of the MT057CXPRO4\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Confident about keeping the camera gear in top condition with the new sensor cleaning kit from B&H Photo\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Considering the Manfrotto MT057CXPRO4 Carbon Fiber Tripod as a great upgrade for their kit\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Interested in the Manfrotto MT057CXPRO4 Carbon Fiber Tripod\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331951,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 215,
+      "prompt_tokens": 1949,
+      "total_tokens": 2164,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in the Manfrotto MT057CXPRO4 Carbon Fiber Tripod\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Willing to learn more about the leg locks and height adjustment of the MT057CXPRO4\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Confident about keeping the camera gear in top condition with the new sensor cleaning kit from B&H Photo\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Considering the Manfrotto MT057CXPRO4 Carbon Fiber Tripod as a great upgrade for their kit\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Interested in the Manfrotto MT057CXPRO4 Carbon Fiber Tripod\"\n        }\n    ]\n}",
+  "seconds": 3.1564834199962206,
+  "prompt_tokens_local": 1949,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

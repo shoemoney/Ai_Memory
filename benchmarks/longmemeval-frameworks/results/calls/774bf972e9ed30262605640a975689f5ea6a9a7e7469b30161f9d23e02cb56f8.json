@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 12
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "6871e5849ca8b6af76102264a5a5e2734ca097349513cd1bc6ce5c1a6e566ed8",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-8a545962-e31c-4ff4-9f25-4d7b399e8e2e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Lucy\", \"target_entity_name\": \"Shelter\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Lucy works at a shelter last Saturday\", \"valid_at\": \"2023-05-28T02:50:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Shelter\", \"target_entity_name\": \"Juan\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Juan works at a shelter last Tuesday\", \"valid_at\": \"2023-05-28T02:50:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795338940,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 161,
+      "prompt_tokens": 8210,
+      "total_tokens": 8371,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 162
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Lucy\", \"target_entity_name\": \"Shelter\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Lucy works at a shelter last Saturday\", \"valid_at\": \"2023-05-28T02:50:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"Shelter\", \"target_entity_name\": \"Juan\", \"relation_type\": \"WORKS_AT\", \"fact\": \"Juan works at a shelter last Tuesday\", \"valid_at\": \"2023-05-28T02:50:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 366.71162387200457,
+  "prompt_tokens_local": 8210
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q094",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "27277de9d0e6775147ee0911a75e350642d16bd2a5c26e7f875543697879810e",
+  "reference_sha256": "48be59db30e2d1d8d80a94adff033c1032b5f14be7ae984dbc1c2701974a6c18",
+  "method": "bm25",
+  "answer": "Person052 called a sledge to go to his brother's address.",
+  "response": {
+    "text": "Person052 called a sledge to go to his brother's address.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 3237,
+      "total_tokens": 3254,
+      "prompt_tokens_details": {
+        "cached_tokens": 222
+      }
+    },
+    "seconds": 9.486886796017643,
+    "request_sha256": "68e9d91ae638814e9ba9bc3d6bc1f71fa95794a6ebdb15a1c03e99ed39868e6d",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    144,
+    442,
+    140,
+    101,
+    143,
+    443,
+    394,
+    124,
+    440,
+    257,
+    437,
+    436,
+    450,
+    261,
+    239,
+    433,
+    598,
+    417,
+    385,
+    428
+  ],
+  "retrieval_scores": [
+    156.21197907940922,
+    149.22973499147352,
+    143.95880760614438,
+    143.63834675851905,
+    142.0525364237517,
+    141.37063508308415,
+    139.75640214051933,
+    138.74976634838848,
+    138.59430036729975,
+    137.30982998953633,
+    137.17004420892587,
+    134.78979653139487,
+    134.4961980798207,
+    134.4311332649578,
+    132.92546934067875,
+    132.91776085785807,
+    132.41266529064285,
+    132.13691142517482,
+    130.751600603072,
+    130.66529644677888
+  ],
+  "retrieval_seconds": 0.01255574999959208,
+  "provided_context_sha256": "e9c8acc28ba8724bd31a4e403ae13904a11c02affec038895977e061ebf92a97",
+  "provided_context_tokens": 2868,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "33f461758a29d1da1000f4198fae6c253e2243f31bb84c70e14b0909831faf18",
+    "raw_answer_sha256": "67e857ddd2c737b320c1f662b9b599dbb92197d3786a2f1198721998a9d8edea",
+    "answer_redacted": false
+  }
+}

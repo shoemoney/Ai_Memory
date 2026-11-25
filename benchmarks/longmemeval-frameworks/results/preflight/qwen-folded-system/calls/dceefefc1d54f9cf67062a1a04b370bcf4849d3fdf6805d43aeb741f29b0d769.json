@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 19
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "66e1c858b75c30e50eea0c3c917a775cba5cefefa098047271cb09508281a465",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d646e74c-f9c8-438b-992e-91dee8e7e082",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\n      \"office_location\": \"city center, near the main train station\",\n      \"preferred_coffee\": \"cappuccino\",\n      \"preferred_coffee_shop\": \"The Daily Grind\",\n      \"walking_distance\": \"12-15 minutes\",\n      \"audiobooksloud_recommendations\": [\n        \"The 7 Habits of Highly Effective People by Stephen Covey\",\n        \"Sapiens: A Brief History of Humankind by Yuval Noah Harari\",\n        \"The Power of Now by Eckhart Tolle\",\n        \"Ready Player One by Ernest Cline\"\n      ],\n      \"podcast_recommendations\": [\n        \"How I Built This\",\n        \"The Tim Ferriss Show\",\n        \"Stuff You Should Know\",\n        \"Radiolab\"\n      ]\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330256,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 174,
+      "prompt_tokens": 2771,
+      "total_tokens": 2945,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\n      \"office_location\": \"city center, near the main train station\",\n      \"preferred_coffee\": \"cappuccino\",\n      \"preferred_coffee_shop\": \"The Daily Grind\",\n      \"walking_distance\": \"12-15 minutes\",\n      \"audiobooksloud_recommendations\": [\n        \"The 7 Habits of Highly Effective People by Stephen Covey\",\n        \"Sapiens: A Brief History of Humankind by Yuval Noah Harari\",\n        \"The Power of Now by Eckhart Tolle\",\n        \"Ready Player One by Ernest Cline\"\n      ],\n      \"podcast_recommendations\": [\n        \"How I Built This\",\n        \"The Tim Ferriss Show\",\n        \"Stuff You Should Know\",\n        \"Radiolab\"\n      ]\n    }\n  ]\n}",
+  "seconds": 4.14562613099406,
+  "prompt_tokens_local_gemma_estimate": 2848
+}

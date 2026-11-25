@@ -1,0 +1,37 @@
+{
+  "counts": {
+    "train": 5400,
+    "valid": 300,
+    "test": 300
+  },
+  "unique_prompts": {
+    "train": 5400,
+    "valid": 300,
+    "test": 300
+  },
+  "persona_overlap": 0,
+  "prompt_overlap": 0,
+  "tokens_per_split": {
+    "train": 8939004,
+    "valid": 498321,
+    "test": 495981
+  },
+  "steps": 169,
+  "updates_per_pass": 169,
+  "training_tokens": 8939004,
+  "periodic_evals": 4,
+  "compute_estimate_usd": 10.744245150000001,
+  "reserved_usd": 26.488490300000002,
+  "budget_usd": 40.0,
+  "effort": 0.0,
+  "learning_rate": 0.00054,
+  "initialization": "fresh base model, fresh AdamW optimizer",
+  "seed": 0,
+  "lora_seed": 0,
+  "lora_rank": 4,
+  "lora_targets": {
+    "mlp": true,
+    "attention": true,
+    "unembedding": false
+  }
+}

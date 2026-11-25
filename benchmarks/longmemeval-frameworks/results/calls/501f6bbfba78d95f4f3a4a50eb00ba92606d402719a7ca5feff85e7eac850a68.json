@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "16ca4b9b5780fc543a55075a0ca2a153739c49f73e8eac9eb9c86c230b3f761f",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-3b58cbc8-4f1a-4968-b255-19d1c59d0f66",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"extracted_entities\": [\n        {\n            \"name\": \"Denver\",\n            \"entity_type_id\": 1,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Lockheed Martin\",\n            \"entity_type_id\": 2,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Belmont Arts Center\",\n            \"entity_type_id\": 3,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Riverside Park\",\n            \"entity_type_id\": 4,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Trigger\",\n            \"entity_type_id\": 5,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Mustang\",\n            \"entity_type_id\": 6,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Gamecube\",\n            \"entity_type_id\": 7,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"red and purple lighting\",\n            \"entity_type_id\": 8,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Mustang\",\n            \"entity_type_id\": 6,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"cracked windshield\",\n            \"entity_type_id\": 9,\n            \"episode_indices\": [0]\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795371731,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 308,
+      "prompt_tokens": 552,
+      "total_tokens": 860,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 310
+      }
+    }
+  },
+  "text": "{\n    \"extracted_entities\": [\n        {\n            \"name\": \"Denver\",\n            \"entity_type_id\": 1,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Lockheed Martin\",\n            \"entity_type_id\": 2,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Belmont Arts Center\",\n            \"entity_type_id\": 3,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Riverside Park\",\n            \"entity_type_id\": 4,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Trigger\",\n            \"entity_type_id\": 5,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Mustang\",\n            \"entity_type_id\": 6,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Gamecube\",\n            \"entity_type_id\": 7,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"red and purple lighting\",\n            \"entity_type_id\": 8,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Mustang\",\n            \"entity_type_id\": 6,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"cracked windshield\",\n            \"entity_type_id\": 9,\n            \"episode_indices\": [0]\n        }\n    ]\n}",
+  "seconds": 72.63571589998901,
+  "prompt_tokens_local": 552
+}

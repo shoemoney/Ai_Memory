@@ -1,0 +1,213 @@
+{
+ "seed": 20261122,
+ "max_seed_tokens": 3600,
+ "eligible_domains": 42,
+ "environments": [
+  {
+   "sample_id": "accounting3",
+   "domain": "accounting",
+   "seed_tokens": 3382
+  },
+  {
+   "sample_id": "audiosyn4",
+   "domain": "audiosyn",
+   "seed_tokens": 3513
+  },
+  {
+   "sample_id": "calendar5",
+   "domain": "calendar",
+   "seed_tokens": 3387
+  },
+  {
+   "sample_id": "chess2",
+   "domain": "chess",
+   "seed_tokens": 2301
+  },
+  {
+   "sample_id": "circuit5",
+   "domain": "circuit",
+   "seed_tokens": 2007
+  },
+  {
+   "sample_id": "dbschema2",
+   "domain": "dbschema",
+   "seed_tokens": 2718
+  },
+  {
+   "sample_id": "dns1",
+   "domain": "dns",
+   "seed_tokens": 2543
+  },
+  {
+   "sample_id": "docker5",
+   "domain": "docker",
+   "seed_tokens": 2360
+  },
+  {
+   "sample_id": "edifact2",
+   "domain": "edifact",
+   "seed_tokens": 2157
+  },
+  {
+   "sample_id": "emails6",
+   "domain": "emails",
+   "seed_tokens": 2651
+  },
+  {
+   "sample_id": "filesystem3",
+   "domain": "filesystem",
+   "seed_tokens": 3554
+  },
+  {
+   "sample_id": "fonteng4",
+   "domain": "fonteng",
+   "seed_tokens": 3477
+  },
+  {
+   "sample_id": "foodmenu3",
+   "domain": "foodmenu",
+   "seed_tokens": 3280
+  },
+  {
+   "sample_id": "genealogy5",
+   "domain": "genealogy",
+   "seed_tokens": 3413
+  },
+  {
+   "sample_id": "geodata4",
+   "domain": "geodata",
+   "seed_tokens": 3471
+  },
+  {
+   "sample_id": "geotrack6",
+   "domain": "geotrack",
+   "seed_tokens": 3301
+  },
+  {
+   "sample_id": "graphviz5",
+   "domain": "graphviz",
+   "seed_tokens": 3058
+  },
+  {
+   "sample_id": "hamradio3",
+   "domain": "hamradio",
+   "seed_tokens": 3103
+  },
+  {
+   "sample_id": "infra2",
+   "domain": "infra",
+   "seed_tokens": 2918
+  },
+  {
+   "sample_id": "jobboard4",
+   "domain": "jobboard",
+   "seed_tokens": 3276
+  },
+  {
+   "sample_id": "json1",
+   "domain": "json",
+   "seed_tokens": 2925
+  },
+  {
+   "sample_id": "libcatalog5",
+   "domain": "libcatalog",
+   "seed_tokens": 3475
+  },
+  {
+   "sample_id": "makefile4",
+   "domain": "makefile",
+   "seed_tokens": 2024
+  },
+  {
+   "sample_id": "malware1",
+   "domain": "malware",
+   "seed_tokens": 2800
+  },
+  {
+   "sample_id": "mathlean4",
+   "domain": "mathlean",
+   "seed_tokens": 3326
+  },
+  {
+   "sample_id": "musicsheet6",
+   "domain": "musicsheet",
+   "seed_tokens": 2164
+  },
+  {
+   "sample_id": "obj3d3",
+   "domain": "obj3d",
+   "seed_tokens": 3042
+  },
+  {
+   "sample_id": "protein6",
+   "domain": "protein",
+   "seed_tokens": 3090
+  },
+  {
+   "sample_id": "quantum5",
+   "domain": "quantum",
+   "seed_tokens": 1474
+  },
+  {
+   "sample_id": "robotics1",
+   "domain": "robotics",
+   "seed_tokens": 3440
+  },
+  {
+   "sample_id": "satellite1",
+   "domain": "satellite",
+   "seed_tokens": 2688
+  },
+  {
+   "sample_id": "screenplay2",
+   "domain": "screenplay",
+   "seed_tokens": 2931
+  },
+  {
+   "sample_id": "spreadsheet3",
+   "domain": "spreadsheet",
+   "seed_tokens": 3588
+  },
+  {
+   "sample_id": "starcatalog4",
+   "domain": "starcatalog",
+   "seed_tokens": 2999
+  },
+  {
+   "sample_id": "subtitles4",
+   "domain": "subtitles",
+   "seed_tokens": 1966
+  },
+  {
+   "sample_id": "transit1",
+   "domain": "transit",
+   "seed_tokens": 3369
+  },
+  {
+   "sample_id": "translation1",
+   "domain": "translation",
+   "seed_tokens": 3009
+  },
+  {
+   "sample_id": "treebank6",
+   "domain": "treebank",
+   "seed_tokens": 3481
+  },
+  {
+   "sample_id": "vector6",
+   "domain": "vector",
+   "seed_tokens": 3495
+  },
+  {
+   "sample_id": "recipe1",
+   "domain": "recipe",
+   "seed_tokens": 1554
+  }
+ ],
+ "replacement": {
+  "dropped": "python1",
+  "reason": "official repository lacks utils_eval.py needed by the python-domain evaluator (ModuleNotFoundError); no step could be scored",
+  "replaced_by": "recipe1",
+  "rule": "first alphabetically of the two domains not drawn (recipe, weather)"
+ }
+}

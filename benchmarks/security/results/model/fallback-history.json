@@ -1,0 +1,53 @@
+{
+  "recorded_utc": "2026-11-22T08:14:08.620404+00:00",
+  "assigned_replacement_hardware": "Apple M3 Ultra, 96 GB",
+  "observations": [
+    {
+      "phase": "user preflight report",
+      "free_percentage": 67
+    },
+    {
+      "phase": "earlier task inference",
+      "free_percentage": 58,
+      "kernel_pressure_level": 1
+    },
+    {
+      "phase": "later model service unavailable",
+      "free_percentage": 25,
+      "kernel_pressure_level": 2
+    }
+  ],
+  "action": "Own guards stopped services on warning pressure; complete headline cohort restarted on authorized CPU fallback. Earlier Mac prototype excluded.",
+  "remote_cleanup_observed": {
+    "own_model_pid_before": 27028,
+    "own_empty_inversion_pid_before": 20973,
+    "own_pids_after": [],
+    "task_directory_removed": true,
+    "task_ports_listening_after": [],
+    "existing_model_service_pid_before": 81393,
+    "existing_model_service_pid_after": 81393,
+    "disk_before": {
+      "size_gib": 926,
+      "used_gib": 808,
+      "available_gib": 89
+    },
+    "disk_after": {
+      "size_gib": 926,
+      "used_gib": 803,
+      "available_gib": 94
+    }
+  },
+  "tunnels_closed_pids": [
+    3772655,
+    4019351
+  ],
+  "earlier_assigned_host_not_recontacted": true,
+  "cpu_fallback": {
+    "generator": "Qwen2.5-3B-Instruct Q4_K_M",
+    "threads": 8,
+    "gpu_layers": 0,
+    "container_memory_limit_gib": 5,
+    "generation_container": "membench-security-cpu-backend",
+    "adapter_pid": 171732
+  }
+}

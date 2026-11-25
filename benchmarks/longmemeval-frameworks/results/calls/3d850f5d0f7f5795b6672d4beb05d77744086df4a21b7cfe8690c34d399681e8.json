@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 10
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "681b34e5ae7ac4b71dfa5f70e8a81af824ebf875b8423aeb3097e6ee6d6f2105",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5c25ec4b-3449-4f69-b03b-6b155b1ba8d1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Recommended more sci-fi and action movies with a similar sense of scale and grandeur as Avengers: Endgame\", \"Exploring more options for similar blends of sci-fi and action elements\", \"Asked for more recommendations with a similar sense of urgency and action to Avengers: Endgame\", \"Asked for more recommendations with a similar sense of grandeur and epic battles\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365513,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 77,
+      "prompt_tokens": 2685,
+      "total_tokens": 2762,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Recommended more sci-fi and action movies with a similar sense of scale and grandeur as Avengers: Endgame\", \"Exploring more options for similar blends of sci-fi and action elements\", \"Asked for more recommendations with a similar sense of urgency and action to Avengers: Endgame\", \"Asked for more recommendations with a similar sense of grandeur and epic battles\"]}",
+  "seconds": 10.21972076498787,
+  "prompt_tokens_local": 2685
+}

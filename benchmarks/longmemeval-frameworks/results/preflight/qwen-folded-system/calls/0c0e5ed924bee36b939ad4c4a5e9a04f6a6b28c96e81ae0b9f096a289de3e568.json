@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 15
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c9a080f09b29899af8f774700da13bb6297d8c9b5cf9d594e3b77b62a0872d47",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b597c8fc-2250-456f-879a-d52fe41a3f18",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Think of setting up a cozy atmosphere similar to a movie marathon\", \"Consider a DIY popcorn bar with different toppings\", \"Explore classic, savory, sweet, and nutty toppings for popcorn\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330234,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 43,
+      "prompt_tokens": 2483,
+      "total_tokens": 2526,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 680
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Think of setting up a cozy atmosphere similar to a movie marathon\", \"Consider a DIY popcorn bar with different toppings\", \"Explore classic, savory, sweet, and nutty toppings for popcorn\"]}",
+  "seconds": 1.4896930550021352,
+  "prompt_tokens_local_gemma_estimate": 2547
+}

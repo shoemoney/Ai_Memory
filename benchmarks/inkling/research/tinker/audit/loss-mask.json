@@ -1,0 +1,166 @@
+{
+  "summary": {
+    "recall": {
+      "rows": 900,
+      "supervised_positions": {
+        "min": 8,
+        "mean": 8,
+        "max": 8
+      },
+      "content_positions": {
+        "min": 4,
+        "mean": 4,
+        "max": 4
+      },
+      "sum_weights": {
+        "min": 1.0,
+        "mean": 1.0,
+        "max": 1.0
+      }
+    },
+    "update": {
+      "rows": 900,
+      "supervised_positions": {
+        "min": 8,
+        "mean": 8,
+        "max": 8
+      },
+      "content_positions": {
+        "min": 4,
+        "mean": 4,
+        "max": 4
+      },
+      "sum_weights": {
+        "min": 1.0,
+        "mean": 1.0,
+        "max": 1.0
+      }
+    },
+    "abstain": {
+      "rows": 900,
+      "supervised_positions": {
+        "min": 6,
+        "mean": 6,
+        "max": 6
+      },
+      "content_positions": {
+        "min": 2,
+        "mean": 2,
+        "max": 2
+      },
+      "sum_weights": {
+        "min": 1.0000000298023224,
+        "mean": 1.0000000298023224,
+        "max": 1.0000000298023224
+      }
+    },
+    "temporal": {
+      "rows": 900,
+      "supervised_positions": {
+        "min": 6,
+        "mean": 6,
+        "max": 6
+      },
+      "content_positions": {
+        "min": 2,
+        "mean": 2,
+        "max": 2
+      },
+      "sum_weights": {
+        "min": 1.0000000298023224,
+        "mean": 1.0000000298023224,
+        "max": 1.0000000298023224
+      }
+    },
+    "tool_write": {
+      "rows": 900,
+      "supervised_positions": {
+        "min": 68,
+        "mean": 68,
+        "max": 68
+      },
+      "content_positions": {
+        "min": 64,
+        "mean": 64,
+        "max": 64
+      },
+      "sum_weights": {
+        "min": 1.0000000037252903,
+        "mean": 1.0000000037252903,
+        "max": 1.0000000037252903
+      }
+    },
+    "tool_read": {
+      "rows": 900,
+      "supervised_positions": {
+        "min": 8,
+        "mean": 26,
+        "max": 44
+      },
+      "content_positions": {
+        "min": 4,
+        "mean": 22,
+        "max": 40
+      },
+      "sum_weights": {
+        "min": 1.0,
+        "mean": 1.0000000149011612,
+        "max": 1.0000000298023224
+      }
+    }
+  },
+  "examples": {
+    "recall": {
+      "id": "00000-recall",
+      "supervised_target": "<|message_model|><|content_text|>Harbor-00000<|end_message|><|content_model_end_sampling|>",
+      "content_target": "Harbor-00000",
+      "first_weight_index": 1594,
+      "prompt_tokens": 1595,
+      "weights_sum": 1.0
+    },
+    "update": {
+      "id": "00000-update",
+      "supervised_target": "<|message_model|><|content_text|>Orchard-00000<|end_message|><|content_model_end_sampling|>",
+      "content_target": "Orchard-00000",
+      "first_weight_index": 1591,
+      "prompt_tokens": 1592,
+      "weights_sum": 1.0
+    },
+    "abstain": {
+      "id": "00000-abstain",
+      "supervised_target": "<|message_model|><|content_text|>Not stated<|end_message|><|content_model_end_sampling|>",
+      "content_target": "Not stated",
+      "first_weight_index": 1592,
+      "prompt_tokens": 1593,
+      "weights_sum": 1.0000000298023224
+    },
+    "temporal": {
+      "id": "00000-temporal",
+      "supervised_target": "<|message_model|><|content_text|>17 days<|end_message|><|content_model_end_sampling|>",
+      "content_target": "17 days",
+      "first_weight_index": 1604,
+      "prompt_tokens": 1605,
+      "weights_sum": 1.0000000298023224
+    },
+    "tool_write": {
+      "id": "00000-tool_write",
+      "supervised_target": "<|message_model|>memory.put<|content_invoke_tool_json|>{\"name\":\"memory.put\",\"args\":{\"date\":\"2031-02-06\",\"entity\":\"Velan-00000\",\"key\":\"home\",\"value\":\"Orchard-00000\"}}<|end_message|><|content_model_end_sampling|>",
+      "content_target": "memory.put{\"name\":\"memory.put\",\"args\":{\"date\":\"2031-02-06\",\"entity\":\"Velan-00000\",\"key\":\"home\",\"value\":\"Orchard-00000\"}}",
+      "first_weight_index": 1860,
+      "prompt_tokens": 1861,
+      "weights_sum": 1.0000000037252903
+    },
+    "tool_read": {
+      "id": "00000-tool_read",
+      "supervised_target": "<|message_model|>memory.get<|content_invoke_tool_json|>{\"name\":\"memory.get\",\"args\":{\"entity\":\"Velan-00000\",\"key\":\"home\"}}<|end_message|><|content_model_end_sampling|>",
+      "content_target": "memory.get{\"name\":\"memory.get\",\"args\":{\"entity\":\"Velan-00000\",\"key\":\"home\"}}",
+      "first_weight_index": 1860,
+      "prompt_tokens": 1861,
+      "weights_sum": 1.0000000298023224
+    }
+  },
+  "all_prompt_weights_zero": true,
+  "all_targets_aligned": true,
+  "all_example_weight_sums_one": true,
+  "rows": 5400
+}

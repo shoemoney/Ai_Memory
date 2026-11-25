@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "4e025ca6a5588d6024ce84f332ce04715959ec1b56e36b16c12203e3b70b0b9c",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a7bc8ab2-5ac0-412e-8a7e-d252c8c315c8",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Ibanez\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Ibanez SR300\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Ibanez SR505\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Ibanez BTB740\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Ibanez GIO GSR200\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795345025,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 142,
+      "prompt_tokens": 8493,
+      "total_tokens": 8635,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 690
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Ibanez\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Ibanez SR300\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Ibanez SR505\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Ibanez BTB740\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Ibanez GIO GSR200\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+  "seconds": 184.0498420799995,
+  "prompt_tokens_local": 8493
+}

@@ -1,0 +1,111 @@
+# Third-party notices
+
+The author's MIT and CC BY 4.0 licences do not replace any third-party terms.
+This inventory distinguishes material retained in this tree from inputs fetched
+by the lab scripts. Downloading an input for a lab does not grant permission to
+relicense or redistribute it. Per-lab protocols, source manifests and upstream
+notices remain the source of exact revisions and hashes.
+
+## What ships, and under which licence
+
+Our code is MIT (`LICENSE`) and our text is CC BY 4.0 (`LICENSE-TEXT`). Third-party material that is
+shipped keeps its own licence, listed here. Material under non-commercial, share-alike or
+no-derivatives terms is not shipped; the next section says what it is and where to get it.
+
+### Retained upstream material
+
+| Material and authors | Location / provenance | Licence |
+| --- | --- | --- |
+| Berkeley Function Calling Leaderboard, Gorilla/BFCL contributors | `benchmarks/bfcl/` and `pilot/`; upstream `6ea57973c7a6097fd7c5915698c54c17c5b1b6c8`; official package loader, adapter, simulators and scoring are used | Apache-2.0; retained `LICENSE.upstream` in both directories |
+| LongMemEval, Di Wu and contributors, copyright 2024 Di Wu | Unmodified `judge_prompt.py` in `benchmarks/longmemeval/` and `benchmarks/longmemeval-frameworks/`; function attributed to revision `9e0b455` | MIT; each directory retains `LICENSE.upstream` |
+| Dynamic Cheatsheet, Mirac Suzgun and contributors, copyright 2025 Mirac Suzgun | Generator/curator templates in `benchmarks/small-reruns/game24/`; upstream `5cfe3c37e8e52b1d858d0f3df46e7f17c50991b9`; local cumulative implementation and bounded execution differ from upstream | MIT; `game24/LICENSE.upstream` |
+| oMLX, jundot and contributors | installed and run from upstream; not redistributed here. The licence text is kept for reference | Apache-2.0; full upstream licence in `LICENSES/oMLX-Apache-2.0.txt` |
+| Inkling 2 Mini, Thinking Machines Lab | Model-card metadata in `benchmarks/inkling/infra/`; source revision in `hf-source-manifest.json`; no model weights in this tree | Apache-2.0 according to the official model card; community quantization card also declares Apache-2.0 |
+| Inter / Inter Display, The Inter Project Authors, copyright 2016 | `build/fonts-ttf/Inter*.ttf`; `covers/build/assets/body.otf`, `display.otf`, `sans.otf`; TrueType conversion performed by `build/build.py` for print | SIL Open Font License 1.1; `LICENSES/Inter-OFL.txt`; converted font files retain upstream terms |
+
+The existing `benchmarks/stores/LICENSE` credits “2026 Storage benchmark
+contributors” under MIT. Preserve that notice as well as the root licence.
+Its synthetic fixture is identified as CC0-1.0 in the lab README; no fixture
+vectors are retained.
+
+### Data and code fetched by the labs
+
+These sources are referenced or downloaded by harnesses. Full corpora, weights
+and cloned upstream repositories generally live in temporary scratch rather
+than this tree. Retained outputs may contain source-derived text, references,
+labels or prompts; the original licences still apply to any such material.
+
+| Input / upstream project | Labs and recorded provenance | Licence recorded or verified |
+| --- | --- | --- |
+| LongMemEval cleaned dataset | `longmemeval/`, `longmemeval-frameworks/`, `extraction/`, `retrieval-methods/`, `cost/`; `xiaowu0162/longmemeval-cleaned` revision `98d7416c24c778c2fee6e6f3006e7a073259d48f` | MIT per pinned dataset card |
+| MemoryAgentBench | `membench/common.py` and `results/manifest.json`; dataset `ai-hyz/MemoryAgentBench` | MIT for dataset card and code |
+| BEAM, STATE-Bench | `membench/results/source-audit.json`, `gap-reruns/g10-beam-light/` | MIT according to retained source audits |
+| MemoryArena | `membench/arena_pilot.py` and `results/arena-pilot/manifest.json` | Dataset CC-BY-4.0; no top-level code licence in inspected source; source fetched, not vendored |
+| Hy-Memory / CMB | `membench/results/source-audit.json` | Apache-2.0 implementation; separate frozen benchmark data/licence not located; no CMB result claimed |
+| SciFact | `mteb/`, `mteb-large/`, `retrieval-methods/` | MTEB metadata: CC-BY-NC-4.0; BEIR card: CC-BY-SA-4.0; original annotations: CC-BY-NC-2.0. These describe different releases/components; do not infer a single permissive grant |
+| NFCorpus | `mteb/`, `mteb-large/` | Dataset licence not established by the inspected metadata; a website theme licence does not license the data |
+| ArguAna | `mteb/`, `mteb-large/`, `retrieval-methods/` | CC-BY-SA-4.0 per dataset cards |
+| ViDoRe V3 HR MTEB format | `mteb-large/vidore.py`; `vidore/vidore_v3_hr_mteb_format` revision `bc7d43d64815ed30f664168c8052106484aba7fd` | CC-BY-4.0 per pinned card; corpus images/text downloaded at runtime |
+| MSC-Self-Instruct | `small-reruns/dmr/PROTOCOL.md`; `MemGPT/MSC-Self-Instruct` revision `5138f416f8fa76b75b2e080da87e8a8e346e1500` | Apache-2.0 per pinned dataset card; distinct from the Zep prompt licence |
+| GameOf24 / meta-prompting dataset | `small-reruns/game24/PROTOCOL.md` | No licence stated on inspected dataset card; runtime fetch |
+| mlabonne/harmful_behaviors | `small-reruns/refusal/PROTOCOL.md` | No licence stated on inspected dataset card; runtime fetch; retained prompt indices/hashes, not original prompts |
+| Stateful GSM-Symbolic P1/P2 | `gap-reruns/g44-sleep-time/` | No licence stated on inspected dataset card; sleep-time-compute code separately MIT |
+| HippoRAG 2 / 2WikiMultihopQA | `paper-reruns/hipporag2/` and parent README | HippoRAG code MIT; inspected HippoRAG_2 dataset card has no dataset licence; corpus not vendored |
+| Spiral of Silence / DPR NQ passages | `paper-reruns/spiral-of-silence/` and parent README | No LICENSE in inspected SOS source; no artifact-specific redistribution licence verified for the DPR input; fetched to scratch |
+| GSM8K | `param-reruns/results/sources.json` | MIT per pinned card |
+| TriviaQA | `param-reruns/results/sources.json` | `unknown` on pinned card; do not infer permission for source passages |
+| LongHealth | `param-reruns/README.md` and source manifest | Apache-2.0 repository; dataset README asks researchers to avoid publicly sharing examples; source examples and self-study text kept in scratch |
+| MINJA, AgentPoison, agmi | `security/results/sources.json` | MIT; pinned upstream material fetched to scratch |
+| InjecMEM and its query/conversation inputs | `security/results/sources.json` | No LICENSE at pinned revision; fetched to scratch |
+| Vec2Text reference code | `security/results/sources.json` | Software for Open Models License 1.0; learned inversion checkpoints have no model-card licence recorded |
+| ACE, DELEGATE-52, MemGen, Cartridges and their task inputs | `delegate-ace/` launchers and `param-reruns/prepare.py` | Upstream clones fetched to scratch; the local manifests do not establish all code/data redistribution terms. The small `ace-finance/ace-local.patch` is retained; check source terms before distributing any copied upstream lines |
+
+Models and installed packages are dependencies, not relicensed components of the
+book. Qwen, Gemma, embedding and inversion model terms differ. Qwen2.5 3B uses
+the Qwen Research licence; several other Qwen cards declare Apache-2.0. Gemma has
+its own terms; the Contriever reference repository declares CC-BY-NC-4.0.
+Consult the exact pinned card before downloading or redistributing weights.
+Database containers also retain their own terms, including Redis and MongoDB
+licence options, as documented in `benchmarks/stores/README.md`.
+
+## Licence-text provenance
+
+The full CC BY 4.0 legal code in `LICENSE-TEXT` was downloaded verbatim from
+https://creativecommons.org/licenses/by/4.0/legalcode.txt.
+Additional retained texts were downloaded from:
+
+- https://raw.githubusercontent.com/rsms/inter/master/LICENSE.txt
+- https://raw.githubusercontent.com/ArtifexSoftware/urw-base35-fonts/master/LICENSE
+- https://raw.githubusercontent.com/ArtifexSoftware/urw-base35-fonts/master/COPYING
+- https://raw.githubusercontent.com/jundot/omlx/main/LICENSE
+
+The additional upstream URLs identify the source of each licence text; the lab
+manifests identify the actual source revisions used by the experiments.
+
+## Not shipped, and where to get it
+
+These inputs are under non-commercial, share-alike, no-derivatives or copyleft terms (or have no
+licence that permits redistribution). They are not in this repository. Each lab's results tables
+keep the numbers; the source-derived text, prompts and traces are left out. Fetch the originals from
+upstream under their own terms, and do not redistribute them.
+
+| Material | What is left out | Terms | Where to get it |
+| --- | --- | --- | --- |
+| LoCoMo (Snap Research) | source conversations, derived turns and references, contextual prefixes, request traces | CC-BY-NC-4.0 | `python3 release/download-inputs.py conversation` (pinned revision `3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376`) |
+| SciFact, NFCorpus, ArguAna | local retrieval records and per-query results | NC / SA / mixed (see the data table above) | `python3 release/download-inputs.py retrieval` |
+| Zep paper prompts (getzep/zep-papers) | the adapted reader and judge prompt implementation for the DMR lab | CC-BY-NC-SA-4.0 | `python3 release/download-inputs.py prompt` (notebook revision `4b7f26cc76cca20743314ba9acb8c2cb6adc42f6`); `benchmarks/small-reruns/dmr/PROTOCOL.md` lists the changes made to it |
+| HaluMem (MemTensor / IAAR-Shanghai) | the adapted QA judging rubric (`benchmarks/membench/run.py`), per-item answers and judge outputs for HaluMem, the privacy-transformed input export | CC-BY-NC-ND-4.0 | https://github.com/MemTensor/HaluMem, data revision `cb04336aa1b732d4b24f5186c552456b4099806e`, code revision `d653749586bfc7d13f5b68e8851f52155b5b1650`; the lab protocol describes how the local judge differs |
+| Heretic (p-e-w) | the 33 KeywordRate markers and normalisation method (`benchmarks/small-reruns/refusal/run.py`) | AGPL-3.0 | https://github.com/p-e-w/heretic at commit `aecd4a845a23be3f96ddc03b37b53a9195ee2566`; only the aggregate rates and prompt hashes are kept |
+| P052 (URW++ Base35), standalone converted font files | `build/fonts-ttf/P052-*.ttf`, `covers/build/assets/italic.otf` | AGPL-3.0 with a PostScript/PDF embedding exception | https://github.com/ArtifexSoftware/urw-base35-fonts; the built PDFs embed the font under that exception, and the licence texts are kept in `LICENSES/` |
+| HarmBench and XSTest prompt lists | the CSVs and the 180-prompt subset built from them | MIT (HarmBench); CC-BY-4.0 (XSTest) | pinned URLs, revisions and digests in `benchmarks/inkling/refusal/sources/manifest.json`; `build_prompts.py` rebuilds the subset. Licence texts are kept |
+| HippoRAG 2 / 2WikiMultihopQA | per-item answers, gold answers and extracted triples | no dataset licence on the inspected card | upstream dataset; summaries are kept |
+| Stateful GSM-Symbolic | the generated contexts and questions of the sleep-time lab | no licence stated on the inspected card | upstream dataset; answers and scores are kept |
+| ACE (agentic context engineering) | `delegate-ace/ace-finance/ace-local.patch` | upstream terms not established for copied lines | upstream repository; `analyze.py` and `make_subsets.py` are ours |
+| LongMemEval raw ingestion trace | `benchmarks/longmemeval/results/full/memory-ingestion.jsonl` (20 MB, over the size limit) | MIT | regenerate with `benchmarks/longmemeval/` scripts; summaries are kept |
+| Models and weights | all of them | each model's own licence | the pinned model cards named in each lab protocol |
+
+Other inputs named in the tables above (MemoryArena, Spiral of Silence / DPR, TriviaQA, InjecMEM, the
+Vec2Text reference code, LongHealth and the `mlabonne/harmful_behaviors` list) are fetched at run time
+and are not vendored; only identifiers, hashes and our own model outputs are kept. Respect LongHealth's
+request that its examples not be shared publicly.
+

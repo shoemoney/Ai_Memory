@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "147d0a45c9df3d460e6aebfa7c79764d0cc429b5ffff3cb498a08a69a1444f3d",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-11999736-dfac-40fa-bd26-f8548a16be82",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Jordan\",\n            \"summary\": \"Jordan played Codenames with his friends at a family gathering and had a lot of fun. He also introduced Codenames to his friend Emily and suggested it as a good game for a group of 6-8 players.\"\n        },\n        {\n            \"name\": \"user\",\n            \"summary\": \"The user mentioned Codenames and Taboo as games suitable for a group of coworkers. They also suggested Codenames and Taboo for a game night with colleagues and mentioned Carcassonne as a game they enjoyed playing with their friend David.\"\n        },\n        {\n            \"name\": \"Jordan's cat\",\n            \"summary\": \"\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795344789,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 153,
+      "prompt_tokens": 7992,
+      "total_tokens": 8145,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Jordan\",\n            \"summary\": \"Jordan played Codenames with his friends at a family gathering and had a lot of fun. He also introduced Codenames to his friend Emily and suggested it as a good game for a group of 6-8 players.\"\n        },\n        {\n            \"name\": \"user\",\n            \"summary\": \"The user mentioned Codenames and Taboo as games suitable for a group of coworkers. They also suggested Codenames and Taboo for a game night with colleagues and mentioned Carcassonne as a game they enjoyed playing with their friend David.\"\n        },\n        {\n            \"name\": \"Jordan's cat\",\n            \"summary\": \"\"\n        }\n    ]\n}",
+  "seconds": 65.28197353499127,
+  "prompt_tokens_local": 7992
+}

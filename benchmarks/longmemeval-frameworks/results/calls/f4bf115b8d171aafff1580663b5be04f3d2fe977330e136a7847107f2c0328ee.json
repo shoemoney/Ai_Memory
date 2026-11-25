@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 48
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "cee3d3924d6726965f240d9e7483f28cf91d96e1d57ab7c4244196daf134e67e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-86ff58ba-32ac-4bcf-8135-ffe15e27b4aa",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"International Monetary Fund (IMF) is an organization that manages the global economy by providing financial assistance to countries experiencing economic and financial difficulties.\", \"The IMF provides financial assistance to countries based on economic indicators and the country's ability to repay the loan.\", \"The IMF requires countries to implement a range of structural reforms in exchange for financial assistance, such as fiscal reforms, monetary reforms, financial sector reforms, and structural reforms.\", \"The IMF works with the country to tailor the reforms to its needs and ensures the reforms are targeted and effective.\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356685,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 112,
+      "prompt_tokens": 1650,
+      "total_tokens": 1762,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"International Monetary Fund (IMF) is an organization that manages the global economy by providing financial assistance to countries experiencing economic and financial difficulties.\", \"The IMF provides financial assistance to countries based on economic indicators and the country's ability to repay the loan.\", \"The IMF requires countries to implement a range of structural reforms in exchange for financial assistance, such as fiscal reforms, monetary reforms, financial sector reforms, and structural reforms.\", \"The IMF works with the country to tailor the reforms to its needs and ensures the reforms are targeted and effective.\"]}",
+  "seconds": 18.15504569800396,
+  "prompt_tokens_local": 1650
+}

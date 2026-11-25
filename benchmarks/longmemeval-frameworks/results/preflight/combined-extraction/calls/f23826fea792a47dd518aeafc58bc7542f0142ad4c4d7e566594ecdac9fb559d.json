@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1263b971ee59733d95d13b5df0132c6bb7d88042eb62aba2385a11f38d887fbd",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5b5269f0-b94b-4ec6-99fe-7caadf08a02a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"extracted_entities\": [\n    {\n      \"name\": \"Lantern Garden\",\n      \"entity_type_id\": 0\n    },\n    {\n      \"name\": \"Chinese Calligraphy Wall\",\n      \"entity_type_id\": 0\n    },\n    {\n      \"name\": \"Chinese Tea Ceremony\",\n      \"entity_type_id\": 0\n    },\n    {\n      \"name\": \"Zodiac Experience\",\n      \"entity_type_id\": 0\n    },\n    {\n      \"name\": \"Chinese Knot Tying\",\n      \"entity_type_id\": 0\n    }\n  ],\n  \"edges\": [\n    {\n      \"source_entity_name\": \"Lantern Garden\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can color and decorate traditional Chinese lanterns with provided materials and scan a QR code to add their lanterns to a virtual Lantern Garden on a dedicated website.\",\n      \"episode_indices\": [0]\n    },\n    {\n      \"source_entity_name\": \"Chinese Calligraphy Wall\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can try their hand at Chinese calligraphy on a physical wall with traditional brushes and ink and scan a QR code to display their calligraphy on a website as part of a digital mosaic of all calligraphy done by visitors.\",\n      \"episode_indices\": [0]\n    },\n    {\n      \"source_entity_name\": \"Chinese Tea Ceremony\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can participate in a traditional Chinese tea ceremony led by a tea master and scan a QR code to access a digital guide to Chinese tea ceremonies, including history, etiquette, and types of tea.\",\n      \"episode_indices\": [0]\n    },\n    {\n      \"source_entity_name\": \"Zodiac Experience\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can color and decorate the Chinese zodiac animals with provided materials and scan a QR code to learn more about their zodiac signs and significance in Chinese culture.\",\n      \"episode_indices\": [0]\n    },\n    {\n      \"source_entity_name\": \"Chinese Knot Tying\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can learn how to tie traditional Chinese knots using provided materials and scan a QR code to access a digital guide to Chinese knot-tying, including history, symbolism, and instructions for more advanced knots.\",\n      \"episode_indices\": [0]\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330556,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 564,
+      "prompt_tokens": 4894,
+      "total_tokens": 5458,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "text": "{\n  \"extracted_entities\": [\n    {\n      \"name\": \"Lantern Garden\",\n      \"entity_type_id\": 0\n    },\n    {\n      \"name\": \"Chinese Calligraphy Wall\",\n      \"entity_type_id\": 0\n    },\n    {\n      \"name\": \"Chinese Tea Ceremony\",\n      \"entity_type_id\": 0\n    },\n    {\n      \"name\": \"Zodiac Experience\",\n      \"entity_type_id\": 0\n    },\n    {\n      \"name\": \"Chinese Knot Tying\",\n      \"entity_type_id\": 0\n    }\n  ],\n  \"edges\": [\n    {\n      \"source_entity_name\": \"Lantern Garden\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can color and decorate traditional Chinese lanterns with provided materials and scan a QR code to add their lanterns to a virtual Lantern Garden on a dedicated website.\",\n      \"episode_indices\": [0]\n    },\n    {\n      \"source_entity_name\": \"Chinese Calligraphy Wall\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can try their hand at Chinese calligraphy on a physical wall with traditional brushes and ink and scan a QR code to display their calligraphy on a website as part of a digital mosaic of all calligraphy done by visitors.\",\n      \"episode_indices\": [0]\n    },\n    {\n      \"source_entity_name\": \"Chinese Tea Ceremony\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can participate in a traditional Chinese tea ceremony led by a tea master and scan a QR code to access a digital guide to Chinese tea ceremonies, including history, etiquette, and types of tea.\",\n      \"episode_indices\": [0]\n    },\n    {\n      \"source_entity_name\": \"Zodiac Experience\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can color and decorate the Chinese zodiac animals with provided materials and scan a QR code to learn more about their zodiac signs and significance in Chinese culture.\",\n      \"episode_indices\": [0]\n    },\n    {\n      \"source_entity_name\": \"Chinese Knot Tying\",\n      \"target_entity_name\": \"visitors\",\n      \"relation_type\": \"IS_FOR\",\n      \"fact\": \"visitors can learn how to tie traditional Chinese knots using provided materials and scan a QR code to access a digital guide to Chinese knot-tying, including history, symbolism, and instructions for more advanced knots.\",\n      \"episode_indices\": [0]\n    }\n  ]\n}",
+  "seconds": 9.104186750002555,
+  "prompt_tokens_local_gemma_estimate": 4911
+}

@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 55
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "956077a93c22b76366a68e85d7e2bbd0df90bf845d49e1068e00b84b6a78f6e9",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d68d58d2-195b-4520-bdee-fc53b43eb1d9",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in Google Wifi system\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Operations and logistics include building and maintaining the platform, managing resources, and ensuring a smooth onboarding process.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Asked about its features and how it handles multiple devices and traffic prioritization\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"fitness apps\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Growth and sustainability focus on tracking progress and success, scaling the business, and addressing additional needs or demographics.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Implementing an advanced stock portfolio tracker on Google Cloud Platform (GCP) involves several steps including data ingestion, processing, storage, analysis, and visualization.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Implementing an advanced stock portfolio tracker on Google Cloud Platform (GCP) involves several steps including data ingestion, processing, storage, analysis, and visualization.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357035,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 283,
+      "prompt_tokens": 1735,
+      "total_tokens": 2018,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Interested in Google Wifi system\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Operations and logistics include building and maintaining the platform, managing resources, and ensuring a smooth onboarding process.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Asked about its features and how it handles multiple devices and traffic prioritization\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"fitness apps\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Growth and sustainability focus on tracking progress and success, scaling the business, and addressing additional needs or demographics.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Implementing an advanced stock portfolio tracker on Google Cloud Platform (GCP) involves several steps including data ingestion, processing, storage, analysis, and visualization.\",\n            \"event\": \"ADD\",\n            \"old_memory\": \"Implementing an advanced stock portfolio tracker on Google Cloud Platform (GCP) involves several steps including data ingestion, processing, storage, analysis, and visualization.\"\n        }\n    ]\n}",
+  "seconds": 44.81029286599369,
+  "prompt_tokens_local": 1735
+}

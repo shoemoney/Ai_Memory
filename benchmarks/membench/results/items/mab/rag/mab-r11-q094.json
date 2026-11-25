@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q094",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "27277de9d0e6775147ee0911a75e350642d16bd2a5c26e7f875543697879810e",
+  "reference_sha256": "48be59db30e2d1d8d80a94adff033c1032b5f14be7ae984dbc1c2701974a6c18",
+  "method": "rag",
+  "answer": "Person052 called a sledge to go to his brother's address.",
+  "response": {
+    "text": "Person052 called a sledge to go to his brother's address.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 3302,
+      "total_tokens": 3319,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 13.337928018008824,
+    "request_sha256": "8a487c0e8cdd58be104fcdd10bdf6eb928c79c22835089e27721e25c5b80fcff",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    306,
+    144,
+    433,
+    432,
+    510,
+    436,
+    116,
+    375,
+    422,
+    101,
+    577,
+    429,
+    111,
+    372,
+    307,
+    110,
+    239,
+    108,
+    394,
+    269
+  ],
+  "retrieval_scores": [
+    0.6434431076049805,
+    0.6396045088768005,
+    0.6303470134735107,
+    0.6302757263183594,
+    0.6279722452163696,
+    0.6178939342498779,
+    0.6159422397613525,
+    0.5933835506439209,
+    0.591921865940094,
+    0.5911744236946106,
+    0.5841331481933594,
+    0.5836474299430847,
+    0.5821911096572876,
+    0.5806093215942383,
+    0.5803254246711731,
+    0.5772439241409302,
+    0.5756664276123047,
+    0.5747600793838501,
+    0.573462188243866,
+    0.5732285976409912
+  ],
+  "retrieval_seconds": 0.02780957199865952,
+  "provided_context_sha256": "249f0e1f96853d6fefcba463e9001a0830361a8db573c490c785bb947fe004f9",
+  "provided_context_tokens": 2933,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "99465f7171fb4cb44960af61d37e66bba66b0c018ec2eaf6aaebdd0cca5daaa7",
+    "raw_answer_sha256": "67e857ddd2c737b320c1f662b9b599dbb92197d3786a2f1198721998a9d8edea",
+    "answer_redacted": false
+  }
+}

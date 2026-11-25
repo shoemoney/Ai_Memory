@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 30
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "a0a26d9f979ea4ed3b07a75be6d512b7d596371c048289104b6475187dc908ce",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6828c818-bb91-4f29-b33a-797dba1c2ac8",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Vege Heritage offers an English menu and is open for dinner\",\n        \"Yoga Studio Hana, Yoga Tree Shimokitazawa, Sattva Yoga Studio, and Yoga House Shimokitazawa offer classes in English or have English-speaking instructors\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366107,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 63,
+      "prompt_tokens": 2735,
+      "total_tokens": 2798,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Vege Heritage offers an English menu and is open for dinner\",\n        \"Yoga Studio Hana, Yoga Tree Shimokitazawa, Sattva Yoga Studio, and Yoga House Shimokitazawa offer classes in English or have English-speaking instructors\"\n    ]\n}",
+  "seconds": 6.749527075997321,
+  "prompt_tokens_local": 2735
+}

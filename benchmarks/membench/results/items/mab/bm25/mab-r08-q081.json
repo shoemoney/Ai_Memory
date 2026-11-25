@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q081",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "7a28926d9276ac5365094849e6f2f3dc1fb4f38a200d647a01598396673ed52b",
+  "reference_sha256": "4399bdeb40b5ded792cf919748229d38579283a08be21b0e5b9647a77431ad6d",
+  "method": "bm25",
+  "answer": "Person347 Person218 halted after hearing the noise from the door's hinge.",
+  "response": {
+    "text": "Person347 Person218 halted after hearing the noise from the door's hinge.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 20,
+      "prompt_tokens": 3181,
+      "total_tokens": 3201,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 8.606696315997397,
+    "request_sha256": "bd14cd6c7eaafa30e93ab7520f424f9b67c1cd5f49c183e130d8588a921e566c",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    550,
+    419,
+    512,
+    507,
+    537,
+    427,
+    552,
+    543,
+    514,
+    440,
+    520,
+    542,
+    467,
+    581,
+    541,
+    420,
+    465,
+    463,
+    445,
+    422
+  ],
+  "retrieval_scores": [
+    191.7061603344174,
+    190.99950767417315,
+    190.0331348458264,
+    184.49799531360776,
+    183.6309510588419,
+    178.16809293567775,
+    177.18930981474895,
+    177.1392155846084,
+    176.08828000367743,
+    175.5340110240286,
+    175.4790251263166,
+    175.4465437583151,
+    175.38584893363543,
+    174.94632826454819,
+    174.02608782326988,
+    172.82381318319665,
+    171.3863482040413,
+    171.19845135306284,
+    170.68761672954523,
+    168.6193175321733
+  ],
+  "retrieval_seconds": 0.022212950003449805,
+  "provided_context_sha256": "086d82eaa98cc3bee8b0b5d124651c2e03ff39346190440290a6d0f3b310464f",
+  "provided_context_tokens": 2815,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "d507cb1aaaa3f59a418913a849902f443d23d4f0b889146d9f981e95ea7045b0",
+    "raw_answer_sha256": "66724ccf07a660878c869750493c7714c9473aadddd2453606e190d356a56dba",
+    "answer_redacted": false
+  }
+}

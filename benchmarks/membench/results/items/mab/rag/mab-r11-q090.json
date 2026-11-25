@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q090",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "912eee0d6f1ee1ec19d29080bf6dd8dae1d32f140de8c8b367466e303c5cc5e6",
+  "reference_sha256": "835db9bd43740c158f0b301098c20522d79bdd43317853694737388c76633b54",
+  "method": "rag",
+  "answer": "Person670 observed Person581 and Person711 sitting opposite her during the mazurka.",
+  "response": {
+    "text": "Person670 observed Person581 and Person711 sitting opposite her during the mazurka.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 25,
+      "prompt_tokens": 3290,
+      "total_tokens": 3315,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.051879751001252,
+    "request_sha256": "a6611ed3f3be7cf9a245f445a1efcc47332f55b048ca238dd663dcc8d1019f5b",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    433,
+    432,
+    428,
+    431,
+    422,
+    429,
+    416,
+    518,
+    436,
+    435,
+    239,
+    421,
+    405,
+    418,
+    417,
+    375,
+    423,
+    404,
+    419,
+    394
+  ],
+  "retrieval_scores": [
+    0.7891169786453247,
+    0.6926559805870056,
+    0.680060863494873,
+    0.6621500253677368,
+    0.652732253074646,
+    0.6409443616867065,
+    0.638516902923584,
+    0.6318820118904114,
+    0.6242892742156982,
+    0.5916990637779236,
+    0.5802450180053711,
+    0.5679166316986084,
+    0.5471403002738953,
+    0.5464499592781067,
+    0.543851375579834,
+    0.5413491725921631,
+    0.5268608927726746,
+    0.5261356234550476,
+    0.5243132710456848,
+    0.5220256447792053
+  ],
+  "retrieval_seconds": 0.027806705998955294,
+  "provided_context_sha256": "548a77f097bedca4dd984d40d3659917181e8a19feb8cec9f9ec5e451b5f0e17",
+  "provided_context_tokens": 2868,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "b6233f833aa670bfcaa1bf5474fa9775e776514c8a2d2e4ecdfe33660f7159ab",
+    "raw_answer_sha256": "da46ae72a351c139d947a6041bf95b5795260ad518b7f430c758eba81246d297",
+    "answer_redacted": false
+  }
+}

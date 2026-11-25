@@ -1,0 +1,142 @@
+{
+  "gsm8k": {
+    "n": 150,
+    "systems": {
+      "base": {
+        "n": 150,
+        "rate": 0.58,
+        "ci95": [
+          0.49998480543102514,
+          0.6560199554700825
+        ]
+      },
+      "memgen": {
+        "n": 150,
+        "rate": 0.68,
+        "ci95": [
+          0.6016560026038712,
+          0.7493547094236214
+        ]
+      }
+    },
+    "paired": {
+      "n": 150,
+      "difference": 0.1,
+      "bootstrap_ci95": [
+        0.013333333333333334,
+        0.18666666666666668
+      ],
+      "replicates": 20000,
+      "seed": 42
+    },
+    "seconds": {
+      "base": 244.01984825103136,
+      "memgen": 254.76514432001568
+    },
+    "token_limit_counts": {
+      "base": 1,
+      "memgen": 1
+    }
+  },
+  "triviaqa": {
+    "n": 150,
+    "systems": {
+      "base": {
+        "n": 150,
+        "rate": 0.2866666666666667,
+        "ci95": [
+          0.22033812687205268,
+          0.36364917739166003
+        ]
+      },
+      "memgen": {
+        "n": 150,
+        "rate": 0.3466666666666667,
+        "ci95": [
+          0.2751950896082086,
+          0.4257957853313349
+        ]
+      }
+    },
+    "paired": {
+      "n": 150,
+      "difference": 0.06,
+      "bootstrap_ci95": [
+        -0.006666666666666667,
+        0.13333333333333333
+      ],
+      "replicates": 20000,
+      "seed": 42
+    },
+    "seconds": {
+      "base": 92.25786510996113,
+      "memgen": 42.19364257402776
+    },
+    "token_limit_counts": {
+      "base": 1,
+      "memgen": 0
+    },
+    "tagged_answer_counts": {
+      "base": 102,
+      "memgen": 145
+    }
+  },
+  "cartridges": {
+    "n": 20,
+    "systems": {
+      "context": {
+        "n": 20,
+        "rate": 0.8,
+        "ci95": [
+          0.5839825677481064,
+          0.919342337420202
+        ]
+      },
+      "cartridge": {
+        "n": 20,
+        "rate": 0.3,
+        "ci95": [
+          0.1454772448676043,
+          0.5189728183535235
+        ]
+      }
+    },
+    "paired": {
+      "n": 20,
+      "difference": -0.5,
+      "bootstrap_ci95": [
+        -0.7,
+        -0.3
+      ],
+      "replicates": 20000,
+      "seed": 42
+    },
+    "seconds": {
+      "context": 3.212278438033536,
+      "cartridge": 0.4729406890401151
+    },
+    "cache_ratio_mean": 62.42357358779899,
+    "cache_bytes_ranges": {
+      "context": [
+        353411072,
+        360407040
+      ],
+      "cartridge": [
+        4386816,
+        11382784
+      ]
+    },
+    "cache_bytes_means": {
+      "context": 355052544.0,
+      "cartridge": 6028288.0
+    },
+    "cache_ratio_of_means": 58.89774078478003,
+    "cache_ratio_range": [
+      31.662468513853906,
+      80.56209150326798
+    ],
+    "document_tokens": 12234,
+    "cartridge_tokens": 64,
+    "corpus_only_cache_ratio": 191.15625
+  }
+}

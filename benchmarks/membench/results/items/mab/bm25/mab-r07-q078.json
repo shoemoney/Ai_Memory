@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r07-q078",
+  "context": "mab-r07",
+  "kind": "eventqa_65536",
+  "question_sha256": "3f76a85045f8456bca36dd1dc2afdb1264870ccca533c315b659a4c88cf3fd18",
+  "reference_sha256": "47bf87ba695c62d40d948e0e7e74f6eb43f4d60e76bcc023764d5218606b3c06",
+  "method": "bm25",
+  "answer": "\"Person021's third child, Person659, was born.\"",
+  "response": {
+    "text": "\"Person021's third child, Person659, was born.\"",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3241,
+      "total_tokens": 3259,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 20.047200389002683,
+    "request_sha256": "3d25867827379d15dfadedd35ff7edb5f731ad3ca6056888651a8215eff826af",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    281,
+    270,
+    291,
+    280,
+    183,
+    319,
+    297,
+    261,
+    185,
+    292,
+    192,
+    143,
+    173,
+    407,
+    305,
+    196,
+    330,
+    337,
+    102,
+    220
+  ],
+  "retrieval_scores": [
+    150.4350449932189,
+    133.42128338337352,
+    130.8963024216499,
+    127.17892928038329,
+    126.83265416556483,
+    123.9626336286399,
+    123.75179532222477,
+    122.11516256614067,
+    120.46791879406399,
+    120.28676451724604,
+    119.91167759237726,
+    119.15875255778474,
+    118.39593352143534,
+    117.04046355843242,
+    116.6945805953466,
+    115.48137234482225,
+    115.04382547694499,
+    114.74035240720822,
+    114.27177697021435,
+    113.77914607748504
+  ],
+  "retrieval_seconds": 0.026649272011127323,
+  "provided_context_sha256": "8882aaaf1354866f8e91a361e650743b7023d8cc4b568f14de6e8c0833d852d5",
+  "provided_context_tokens": 2882,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "10cbfe17a97e96bfb1207e9af7279dd33b5435480c43f2b375824de4ba7a2af7",
+    "raw_answer_sha256": "84eeaab929771cbfee3e231ef3c56620ceb0a618bfea5538b51aa912a7bf5970",
+    "answer_redacted": false
+  }
+}

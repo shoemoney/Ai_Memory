@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 36
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "dca110de95437d47344ddc901befef2a03f5ae15aead88cf08eff98d0ac09a7e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-6d5feb49-f398-4546-8f8b-611c420081ec",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Netgear Nighthawk RAX80\", \"summary\": \"The Netgear Nighthawk RAX80 is a Wi-Fi 6 router with dual-band support (2.4GHz and 5GHz), up to 6Gbps combined wireless speeds, 5 Gigabit Ethernet ports, and supports MU-MIMO. It is a good choice for streaming videos and online content, and offers excellent performance for households with many devices. It is recommended for those planning to use their new phone (Samsung Galaxy S22 Ultra) for streaming, as it supports Wi-Fi 6 and can handle the increased bandwidth requirements.\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795349595,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 138,
+      "prompt_tokens": 7389,
+      "total_tokens": 7527,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 476
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Netgear Nighthawk RAX80\", \"summary\": \"The Netgear Nighthawk RAX80 is a Wi-Fi 6 router with dual-band support (2.4GHz and 5GHz), up to 6Gbps combined wireless speeds, 5 Gigabit Ethernet ports, and supports MU-MIMO. It is a good choice for streaming videos and online content, and offers excellent performance for households with many devices. It is recommended for those planning to use their new phone (Samsung Galaxy S22 Ultra) for streaming, as it supports Wi-Fi 6 and can handle the increased bandwidth requirements.\"}]}",
+  "seconds": 90.04416559700621,
+  "prompt_tokens_local": 7389
+}

@@ -1,0 +1,72 @@
+{
+  "arms_in_template": [
+    "A",
+    "B-native",
+    "B-lean",
+    "C"
+  ],
+  "arms_ood": [
+    "A",
+    "B-native",
+    "C"
+  ],
+  "rates": {
+    "prefill_usd_per_million": 0.15,
+    "cached_prefill_usd_per_million": 0.015,
+    "sample_usd_per_million": 0.5,
+    "train_usd_per_million": 0.75
+  },
+  "pricing_source": "tinker models.json via cost_estimation.fetch_model_pricing",
+  "budget_usd": 5.0,
+  "per_arm": {
+    "in/A": {
+      "episodes": 400,
+      "first_turn_tokens_mean": 70.59,
+      "ceiling_usd": 0.6065416
+    },
+    "in/B-native": {
+      "episodes": 400,
+      "first_turn_tokens_mean": 915.59,
+      "ceiling_usd": 0.8093416
+    },
+    "in/B-lean": {
+      "episodes": 400,
+      "first_turn_tokens_mean": 2008.59,
+      "ceiling_usd": 1.0716616
+    },
+    "in/C": {
+      "episodes": 400,
+      "first_turn_tokens_mean": 433.59,
+      "ceiling_usd": 0.6936616
+    },
+    "ood/A": {
+      "episodes": 100,
+      "first_turn_tokens_mean": 63.02,
+      "ceiling_usd": 0.15118120000000002
+    },
+    "ood/B-native": {
+      "episodes": 100,
+      "first_turn_tokens_mean": 908.02,
+      "ceiling_usd": 0.2018812
+    },
+    "ood/C": {
+      "episodes": 100,
+      "first_turn_tokens_mean": 426.02,
+      "ceiling_usd": 0.1729612
+    }
+  },
+  "ceiling_usd": 3.70723,
+  "expected_usd": 0.81364375,
+  "ceiling_tokens": {
+    "sampled": 3891200,
+    "prefill_cached": 0,
+    "prefill_uncached": 11744200,
+    "trained": 0
+  },
+  "expected_tokens": {
+    "sampled": 494000,
+    "prefill_cached": 0,
+    "prefill_uncached": 3777625,
+    "trained": 0
+  }
+}

@@ -1,0 +1,128 @@
+{"key": "c0|g1", "ctx": "c0", "qid": "g1", "expr": "142 + 172 + 3 * 142", "value": 740.0, "gold": "740", "match": true, "completion_tokens": 21}
+{"key": "c0|g0", "ctx": "c0", "qid": "g0", "expr": "3 * 142", "value": 426.0, "gold": "426", "match": true, "completion_tokens": 11}
+{"key": "c0|g2", "ctx": "c0", "qid": "g2", "expr": "(142 + 172 + 142 * 3 + (142 + 172 + 142 * 3) / 2) / 15 * 15", "value": 1110.0, "gold": "370", "match": false, "completion_tokens": 52}
+{"key": "c0|g3", "ctx": "c0", "qid": "g3", "expr": "(142 + 172 + 142*3 + (142 + 172 + 142*3)/2)", "value": 1110.0, "gold": "1110", "match": true, "completion_tokens": 40}
+{"key": "c1|g0", "ctx": "c1", "qid": "g0", "expr": "5", "value": 5.0, "gold": "16", "match": false, "completion_tokens": 6}
+{"key": "c1|g1", "ctx": "c1", "qid": "g1", "expr": "8 * 2 - 1", "value": 15.0, "gold": "15", "match": true, "completion_tokens": 12}
+{"key": "c1|g3", "ctx": "c1", "qid": "g3", "expr": "(10*12-5-8-2*8-2+1+1/5*(2*8-2)+4*12)", "value": 140.8, "gold": "72", "match": false, "completion_tokens": 38}
+{"key": "c1|g2", "ctx": "c1", "qid": "g2", "expr": "(10*12-5-8-2*8-2+1+1/5*(2*8+8-2*8-2+1))*1/5", "value": 18.28, "gold": "3", "match": false, "completion_tokens": 44}
+{"key": "c2|g0", "ctx": "c2", "qid": "g0", "expr": "40*12 - (10*12 + (20/2*12) + (4*3))", "value": 228.0, "gold": "360", "match": false, "completion_tokens": 33}
+{"key": "c2|g1", "ctx": "c2", "qid": "g1", "expr": "40*12 - 10*12 - (20/2*12 + 4*3)", "value": 228.0, "gold": "360", "match": false, "completion_tokens": 32}
+{"key": "c2|g2", "ctx": "c2", "qid": "g2", "expr": "(20 * 12 / 2 + 20 * 12) - (4 * 3 * 10)", "value": 240.0, "gold": "108", "match": false, "completion_tokens": 34}
+{"key": "c2|g3", "ctx": "c2", "qid": "g3", "expr": "(20 * 12 / 2 + 4 * 3) / (40 + 10) * 40", "value": 105.60000000000001, "gold": "108", "match": false, "completion_tokens": 34}
+{"key": "c3|g0", "ctx": "c3", "qid": "g0", "expr": "60*(15/7.5)*0.5*2", "value": 120.0, "gold": "18", "match": false, "completion_tokens": 20}
+{"key": "c3|g1", "ctx": "c3", "qid": "g1", "expr": "(11/2.5 + 15/12.5) * 2", "value": 11.200000000000001, "gold": "84", "match": false, "completion_tokens": 24}
+{"key": "c3|g2", "ctx": "c3", "qid": "g2", "expr": "4.8", "value": 4.8, "gold": "1", "match": false, "completion_tokens": 8}
+{"key": "c3|g3", "ctx": "c3", "qid": "g3", "expr": "11 / (2 * 5)", "value": 1.1, "gold": "66", "match": false, "completion_tokens": 14}
+{"key": "c4|g0", "ctx": "c4", "qid": "g0", "expr": "17*0.31 + 8*0.62", "value": 10.23, "gold": "10.23", "match": true, "completion_tokens": 20}
+{"key": "c4|g1", "ctx": "c4", "qid": "g1", "expr": "10 * 7 + 4 * 2 * 0.9", "value": 77.2, "gold": "71.0", "match": false, "completion_tokens": 21}
+{"key": "c4|g2", "ctx": "c4", "qid": "g2", "expr": "90.23 - 17 * 0.31 - 8 * 0.62 - 8 * 7", "value": 24.000000000000014, "gold": "24.0", "match": true, "completion_tokens": 35}
+{"key": "c4|g3", "ctx": "c4", "qid": "g3", "expr": "80 - (10 * 7) - (4 * 2)", "value": 2.0, "gold": "9.0", "match": false, "completion_tokens": 22}
+{"key": "c5|g0", "ctx": "c5", "qid": "g0", "expr": "(11 + 25) - (25 - 18)", "value": 29.0, "gold": "11", "match": false, "completion_tokens": 21}
+{"key": "c5|g1", "ctx": "c5", "qid": "g1", "expr": "(25 - 18) + 26", "value": 33.0, "gold": "8", "match": false, "completion_tokens": 28}
+{"key": "c5|g2", "ctx": "c5", "qid": "g2", "expr": "(25 + 11) + (25 + 11 - 18) + (25 + 11 + 25 + 11 - 18 + 26) - (25 + 11 + 25 + 11 - 18)", "value": 80.0, "gold": "62", "match": false, "completion_tokens": 71}
+{"key": "c5|g3", "ctx": "c5", "qid": "g3", "expr": "(11 + 25) - (25 - 18)", "value": 29.0, "gold": "11", "match": false, "completion_tokens": 21}
+{"key": "c6|g0", "ctx": "c6", "qid": "g0", "expr": "(150 * 15 - 1050 + 150) - (150 * 15 - 1000 - 200)", "value": 300.0, "gold": "1050", "match": false, "completion_tokens": 45}
+{"key": "c6|g1", "ctx": "c6", "qid": "g1", "expr": "(200 * 15 - 1050 + 150) / 350 * 4 - 200", "value": -176.0, "gold": "2100", "match": false, "completion_tokens": 37}
+{"key": "c6|g2", "ctx": "c6", "qid": "g2", "expr": "(150 * 15 / 2.2) - (1000 + 200) - ((150 * 15 / 2.2) - (1050 - 150))", "value": -300.0, "gold": "1050", "match": false, "completion_tokens": 57}
+{"key": "c7|g0", "ctx": "c7", "qid": "g0", "expr": "32 * 43", "value": 1376.0, "gold": "1376", "match": true, "completion_tokens": 11}
+{"key": "c6|g3", "ctx": "c6", "qid": "g3", "expr": "(200 * 15 - 1050 + 150) - (150 * 15 - 1000 - 200)", "value": 1050.0, "gold": "1050", "match": true, "completion_tokens": 45}
+{"key": "c7|g1", "ctx": "c7", "qid": "g1", "expr": "18 * 17", "value": 306.0, "gold": "306", "match": true, "completion_tokens": 11}
+{"key": "c7|g2", "ctx": "c7", "qid": "g2", "expr": "43 + 27 + 100", "value": 170.0, "gold": "170", "match": true, "completion_tokens": 16}
+{"key": "c7|g3", "ctx": "c7", "qid": "g3", "expr": "8 * 7", "value": 56.0, "gold": "56", "match": true, "completion_tokens": 9}
+{"key": "c8|g0", "ctx": "c8", "qid": "g0", "expr": "4 * 15", "value": 60.0, "gold": "60", "match": true, "completion_tokens": 10}
+{"key": "c8|g1", "ctx": "c8", "qid": "g1", "expr": "(80/4)*1", "value": 20.0, "gold": "20", "match": true, "completion_tokens": 15}
+{"key": "c8|g2", "ctx": "c8", "qid": "g2", "expr": "75", "value": 75.0, "gold": "75", "match": true, "completion_tokens": 7}
+{"key": "c8|g3", "ctx": "c8", "qid": "g3", "expr": "(100/40)*8", "value": 20.0, "gold": "20", "match": true, "completion_tokens": 13}
+{"key": "c9|g0", "ctx": "c9", "qid": "g0", "expr": "17 * 0.37", "value": 6.29, "gold": "1", "match": false, "completion_tokens": 13}
+{"key": "c9|g1", "ctx": "c9", "qid": "g1", "expr": "4 * 3", "value": 12.0, "gold": "1", "match": false, "completion_tokens": 9}
+{"key": "c9|g2", "ctx": "c9", "qid": "g2", "expr": "8 * 0.63", "value": 5.04, "gold": "1", "match": false, "completion_tokens": 12}
+{"key": "c9|g3", "ctx": "c9", "qid": "g3", "expr": "10 * 7 * 0.9", "value": 63.0, "gold": "1", "match": false, "completion_tokens": 15}
+{"key": "c10|g0", "ctx": "c10", "qid": "g0", "expr": "6100 - 50", "value": 6050.0, "gold": "6", "match": false, "completion_tokens": 13}
+{"key": "c10|g1", "ctx": "c10", "qid": "g1", "expr": "6100 - 200", "value": 5900.0, "gold": "4650", "match": false, "completion_tokens": 14}
+{"key": "c10|g2", "ctx": "c10", "qid": "g2", "expr": "6100 - 50", "value": 6050.0, "gold": "5", "match": false, "completion_tokens": 13}
+{"key": "c10|g3", "ctx": "c10", "qid": "g3", "expr": "6100 - 150", "value": 5950.0, "gold": "4", "match": false, "completion_tokens": 14}
+{"key": "c11|g0", "ctx": "c11", "qid": "g0", "expr": "(18 * 5/6)", "value": 15.0, "gold": "15", "match": true, "completion_tokens": 17}
+{"key": "c11|g1", "ctx": "c11", "qid": "g1", "expr": "60", "value": 60.0, "gold": "60", "match": true, "completion_tokens": 7}
+{"key": "c11|g2", "ctx": "c11", "qid": "g2", "expr": "(18*5/6 + 32) + (60/2)*0", "value": 47.0, "gold": "65", "match": false, "completion_tokens": 28}
+{"key": "c11|g3", "ctx": "c11", "qid": "g3", "expr": "(18 + 32/2 - (18/5)*6/5)", "value": 29.68, "gold": "3", "match": false, "completion_tokens": 31}
+{"key": "c12|g0", "ctx": "c12", "qid": "g0", "expr": "9500 * 0.25", "value": 2375.0, "gold": "2375", "match": true, "completion_tokens": 15}
+{"key": "c12|g1", "ctx": "c12", "qid": "g1", "expr": "9500 + 600", "value": 10100.0, "gold": "7500", "match": false, "completion_tokens": 14}
+{"key": "c12|g2", "ctx": "c12", "qid": "g2", "expr": "9500 * 0.75", "value": 7125.0, "gold": "7125", "match": true, "completion_tokens": 15}
+{"key": "c13|g0", "ctx": "c13", "qid": "g0", "expr": "10", "value": 10.0, "gold": "10", "match": true, "completion_tokens": 7}
+{"key": "c12|g3", "ctx": "c12", "qid": "g3", "expr": "9500 + 500", "value": 10000.0, "gold": "7600", "match": false, "completion_tokens": 14}
+{"key": "c13|g1", "ctx": "c13", "qid": "g1", "expr": "14", "value": 14.0, "gold": "6", "match": false, "completion_tokens": 7}
+{"key": "c13|g2", "ctx": "c13", "qid": "g2", "expr": "(9*12-3-5-2*5+4-0.5*(2*5+5)+4*12) / 2", "value": 67.25, "gold": "3", "match": false, "completion_tokens": 38}
+{"key": "c13|g3", "ctx": "c13", "qid": "g3", "expr": "(9*12-3-5-2*5-2+0.5*(2*5+5)+4*12)", "value": 143.5, "gold": "63", "match": false, "completion_tokens": 35}
+{"key": "c14|g0", "ctx": "c14", "qid": "g0", "expr": "(15 + 15) * (2/4) * (0.8 * 0.5)", "value": 6.0, "gold": "15", "match": false, "completion_tokens": 29}
+{"key": "c14|g1", "ctx": "c14", "qid": "g1", "expr": "(15 + 15) * (1 - 0.5) * 15 / 30", "value": 7.5, "gold": "540", "match": false, "completion_tokens": 29}
+{"key": "c14|g2", "ctx": "c14", "qid": "g2", "expr": "(15 + 15 + (15 + 15) * 0.75 * 0.5) * 30 * 0.5", "value": 618.75, "gold": "270", "match": false, "completion_tokens": 41}
+{"key": "c14|g3", "ctx": "c14", "qid": "g3", "expr": "(15+15)*(24*2)+(15+15)*2*(24/2)", "value": 2160.0, "gold": "1350", "match": false, "completion_tokens": 29}
+{"key": "c15|g0", "ctx": "c15", "qid": "g0", "expr": "3500 - 50", "value": 3450.0, "gold": "4", "match": false, "completion_tokens": 13}
+{"key": "c15|g1", "ctx": "c15", "qid": "g1", "expr": "", "value": null, "gold": "2250", "match": false, "completion_tokens": 24}
+{"key": "c15|g2", "ctx": "c15", "qid": "g2", "expr": "3500 - 50", "value": 3450.0, "gold": "4", "match": false, "completion_tokens": 13}
+{"key": "c15|g3", "ctx": "c15", "qid": "g3", "expr": "3500 + 100 - 3500", "value": 100.0, "gold": "3", "match": false, "completion_tokens": 20}
+{"key": "c16|g0", "ctx": "c16", "qid": "g0", "expr": "(95 * (4/5 * 29)) * (3 * 12)", "value": 79344.00000000001, "gold": "10329", "match": false, "completion_tokens": 25}
+{"key": "c16|g1", "ctx": "c16", "qid": "g1", "expr": "11 * 15 * (6 / 4)", "value": 247.5, "gold": "247.5", "match": true, "completion_tokens": 18}
+{"key": "c16|g2", "ctx": "c16", "qid": "g2", "expr": "(95 * (4/5 * 29 / 12)) - (11 * 15 / 4)", "value": 142.41666666666669, "gold": "2948", "match": false, "completion_tokens": 33}
+{"key": "c16|g3", "ctx": "c16", "qid": "g3", "expr": "(95 * (29 / (4/5))) * 2 - (11 * 15) * (2 * 3)", "value": 5897.5, "gold": "4906", "match": false, "completion_tokens": 36}
+{"key": "c17|g0", "ctx": "c17", "qid": "g0", "expr": "(13 + 22) - (22 + 12)", "value": 1.0, "gold": "13", "match": false, "completion_tokens": 21}
+{"key": "c17|g1", "ctx": "c17", "qid": "g1", "expr": "27 + (22 + 5) - 12", "value": 42.0, "gold": "27", "match": false, "completion_tokens": 19}
+{"key": "c17|g2", "ctx": "c17", "qid": "g2", "expr": "(22 + 13) - 22", "value": 13.0, "gold": "22", "match": false, "completion_tokens": 16}
+{"key": "c17|g3", "ctx": "c17", "qid": "g3", "expr": "(22 + 13 + 22 + 13 + 27 - 12) / 2 - 27", "value": 15.5, "gold": "42", "match": false, "completion_tokens": 35}
+{"key": "c18|g0", "ctx": "c18", "qid": "g0", "expr": "3 * (4)", "value": 12.0, "gold": "12", "match": true, "completion_tokens": 10}
+{"key": "c18|g1", "ctx": "c18", "qid": "g1", "expr": "9", "value": 9.0, "gold": "8", "match": false, "completion_tokens": 6}
+{"key": "c18|g2", "ctx": "c18", "qid": "g2", "expr": "3.5", "value": 3.5, "gold": "1", "match": false, "completion_tokens": 8}
+{"key": "c18|g3", "ctx": "c18", "qid": "g3", "expr": "(10*12-5-4-12*3-3*4+4-4/3+4+5)", "value": 74.66666666666667, "gold": "52", "match": false, "completion_tokens": 34}
+{"key": "c19|g0", "ctx": "c19", "qid": "g0", "expr": "(60/12*16 + 72/12*33) / 0.8 * 0.8 - 60/12*16 - 72/12*33", "value": 0.0, "gold": "278", "match": false, "completion_tokens": 54}
+{"key": "c19|g1", "ctx": "c19", "qid": "g1", "expr": "(60/12*16 + 72/12*33 +", "value": null, "gold": "1122", "match": false, "completion_tokens": 76}
+{"key": "c19|g2", "ctx": "c19", "qid": "g2", "expr": "(60/12 + 72/12 + 72/6) / 0.8 * 1120 / 1120", "value": 28.75, "gold": "17", "match": false, "completion_tokens": 41}
+{"key": "c19|g3", "ctx": "c19", "qid": "g3", "expr": "(60/12*16 + 72/12*33) / 0.8 * 0.8 + (60/12*16 + 72/12*33)", "value": 556.0, "gold": "222.4", "match": false, "completion_tokens": 55}
+{"key": "c20|g0", "ctx": "c20", "qid": "g0", "expr": "80 + 160 + 240 + 120", "value": 600.0, "gold": "240", "match": false, "completion_tokens": 27}
+{"key": "c20|g1", "ctx": "c20", "qid": "g1", "expr": "(80 + 2*80 + 3*80 + 0.5*3*80) * 1.25 / 7", "value": 107.14285714285714, "gold": "360", "match": false, "completion_tokens": 39}
+{"key": "c20|g2", "ctx": "c20", "qid": "g2", "expr": "80 + 160 + 240 + 120", "value": 600.0, "gold": "480", "match": false, "completion_tokens": 27}
+{"key": "c20|g3", "ctx": "c20", "qid": "g3", "expr": "(80 + 2*80 + 3*80 + 0.5*3*80 + 0.25*0.5*3*80)", "value": 630.0, "gold": "480", "match": false, "completion_tokens": 45}
+{"key": "c21|g0", "ctx": "c21", "qid": "g0", "expr": "43 + 9 * 50 - 4 * 50", "value": 293.0, "gold": "563", "match": false, "completion_tokens": 21}
+{"key": "c21|g1", "ctx": "c21", "qid": "g1", "expr": "50 * 9 - 50 * 4 + 43 - 70", "value": 223.0, "gold": "493", "match": false, "completion_tokens": 25}
+{"key": "c21|g2", "ctx": "c21", "qid": "g2", "expr": "43 + 9 * 50 - 4 * 50", "value": 293.0, "gold": "563", "match": false, "completion_tokens": 21}
+{"key": "c21|g3", "ctx": "c21", "qid": "g3", "expr": "50 * 9 - 50 * 4 + 43 - 70", "value": 223.0, "gold": "493", "match": false, "completion_tokens": 25}
+{"key": "c22|g0", "ctx": "c22", "qid": "g0", "expr": "(200*(200/125*5-1250+50)) - (200*(180/125*5-900-200))", "value": -19840.0, "gold": "200", "match": false, "completion_tokens": 51}
+{"key": "c22|g1", "ctx": "c22", "qid": "g1", "expr": "(200*15/200-1250+50+200*15/180-900-200)*180/15", "value": -27219.999999999996, "gold": "13.33", "match": false, "completion_tokens": 49}
+{"key": "c22|g2", "ctx": "c22", "qid": "g2", "expr": "(15*200-1250+50)/200 - (15*180-900-200)/125 * 5", "value": -55.0, "gold": "1", "match": false, "completion_tokens": 46}
+{"key": "c22|g3", "ctx": "c22", "qid": "g3", "expr": "(200*(200-15*200/1500) - 1250 + 50) - (160*(180-15*180/1500) - 900 - 200)", "value": 10988.0, "gold": "25", "match": false, "completion_tokens": 69}
+{"key": "c23|g0", "ctx": "c23", "qid": "g0", "expr": "11 + 20.5 * 18", "value": 380.0, "gold": "380", "match": true, "completion_tokens": 17}
+{"key": "c23|g2", "ctx": "c23", "qid": "g2", "expr": "5", "value": 5.0, "gold": "5", "match": true, "completion_tokens": 6}
+{"key": "c23|g1", "ctx": "c23", "qid": "g1", "expr": "22*(17 + (23-17)*0.5) + 11 + 18*20.5 - 5", "value": 815.0, "gold": "418", "match": false, "completion_tokens": 38}
+{"key": "c23|g3", "ctx": "c23", "qid": "g3", "expr": "1400 - (22*17 + 22*4*0.5 + 11 + 18*20.5 + 5)", "value": 597.0, "gold": "803", "match": false, "completion_tokens": 43}
+{"key": "c24|g0", "ctx": "c24", "qid": "g0", "expr": "(210*10/62)*10", "value": 338.7096774193548, "gold": "27", "match": false, "completion_tokens": 36}
+{"key": "c24|g1", "ctx": "c24", "qid": "g1", "expr": "(210 - 210*45/90 - 210*2/45)*27/90", "value": 28.7, "gold": "35", "match": false, "completion_tokens": 35}
+{"key": "c24|g2", "ctx": "c24", "qid": "g2", "expr": "(210 - 27*7.7778 - 45*21.7778)*0.2", "value": -196.00032, "gold": "90", "match": false, "completion_tokens": 35}
+{"key": "c24|g3", "ctx": "c24", "qid": "g3", "expr": "(50*27/45) + (50*2/45)*10/10", "value": 32.22222222222222, "gold": "30", "match": false, "completion_tokens": 41}
+{"key": "c25|g0", "ctx": "c25", "qid": "g0", "expr": "6 * 2 + 6 * 2 + 6 * 2", "value": 36.0, "gold": "36", "match": true, "completion_tokens": 21}
+{"key": "c25|g1", "ctx": "c25", "qid": "g1", "expr": "(6*2/2*4) - (2*4)", "value": 16.0, "gold": "88", "match": false, "completion_tokens": 19}
+{"key": "c25|g2", "ctx": "c25", "qid": "g2", "expr": "(128/2) / (6*6) + 2*6/(6*6) * 2", "value": 2.444444444444444, "gold": "6", "match": false, "completion_tokens": 30}
+{"key": "c25|g3", "ctx": "c25", "qid": "g3", "expr": "128 - 2 - 12 - 12 - 6", "value": 96.0, "gold": "90", "match": false, "completion_tokens": 26}
+{"key": "c26|g1", "ctx": "c26", "qid": "g1", "expr": "14 * 5", "value": 70.0, "gold": "60", "match": false, "completion_tokens": 10}
+{"key": "c26|g0", "ctx": "c26", "qid": "g0", "expr": "(334 - (12*16 + 14*0.5 + 12*5)) / (0.25)", "value": 300.0, "gold": "12", "match": false, "completion_tokens": 37}
+{"key": "c26|g2", "ctx": "c26", "qid": "g2", "expr": "14 * 0.5", "value": 7.0, "gold": "7", "match": true, "completion_tokens": 12}
+{"key": "c26|g3", "ctx": "c26", "qid": "g3", "expr": "12*16", "value": 192.0, "gold": "192", "match": true, "completion_tokens": 10}
+{"key": "c27|g0", "ctx": "c27", "qid": "g0", "expr": "31 - 7", "value": 24.0, "gold": "24", "match": true, "completion_tokens": 10}
+{"key": "c27|g1", "ctx": "c27", "qid": "g1", "expr": "(31 + 7) * 2 + 12 + 8 * 10 + 27 + 300 - (31 + 7 + (31 + 7) * 2 + 12 + 27)", "value": 342.0, "gold": "80", "match": false, "completion_tokens": 61}
+{"key": "c27|g2", "ctx": "c27", "qid": "g2", "expr": "31 + 7 + 2*(31+7) + 12 + 8*10 + 27 - 300", "value": -67.0, "gold": "153", "match": false, "completion_tokens": 38}
+{"key": "c27|g3", "ctx": "c27", "qid": "g3", "expr": "2*(31+7) - 7", "value": 69.0, "gold": "69", "match": true, "completion_tokens": 15}
+{"key": "c28|g0", "ctx": "c28", "qid": "g0", "expr": "5 * 162 / 1", "value": 810.0, "gold": "810", "match": true, "completion_tokens": 73}
+{"key": "c28|g1", "ctx": "c28", "qid": "g1", "expr": "162 + 54 + (162 * 5)", "value": 1026.0, "gold": "1026", "match": true, "completion_tokens": 21}
+{"key": "c28|g2", "ctx": "c28", "qid": "g2", "expr": "(162 + 54 + 162 * 5 + (162 + 54 + 162 * 5) / 2) / 19 * 19", "value": 1539.0, "gold": "513", "match": false, "completion_tokens": 50}
+{"key": "c28|g3", "ctx": "c28", "qid": "g3", "expr": "162 + 54 + (162 * 5) + ((162 + 54 + (162 * 5)) / 2)", "value": 1539.0, "gold": "1539", "match": true, "completion_tokens": 43}
+{"key": "c29|g0", "ctx": "c29", "qid": "g0", "expr": "720 / 10", "value": 72.0, "gold": "72", "match": true, "completion_tokens": 12}
+{"key": "c29|g1", "ctx": "c29", "qid": "g1", "expr": "720 - (13*27 + (3-2)*135 + 720/10)", "value": 162.0, "gold": "486", "match": false, "completion_tokens": 33}
+{"key": "c29|g2", "ctx": "c29", "qid": "g2", "expr": "720 - (13*27 + (3-2)*135 + 720/10)", "value": 162.0, "gold": "648", "match": false, "completion_tokens": 33}
+{"key": "c29|g3", "ctx": "c29", "qid": "g3", "expr": "3 - 2 + (720 / 10) / 9", "value": 9.0, "gold": "1", "match": false, "completion_tokens": 22}
+{"key": "c30|g0", "ctx": "c30", "qid": "g0", "expr": "390000 * 0.01 + 390000 * 0.06", "value": 27300.0, "gold": "27300", "match": true, "completion_tokens": 31}
+{"key": "c30|g1", "ctx": "c30", "qid": "g1", "expr": "330000 + 15000", "value": 345000.0, "gold": "345000", "match": true, "completion_tokens": 18}
+{"key": "c30|g2", "ctx": "c30", "qid": "g2", "expr": "390000 - 3900 - 23400 - 330000 - 15000", "value": 17700.0, "gold": "17700", "match": true, "completion_tokens": 39}
+{"key": "c30|g3", "ctx": "c30", "qid": "g3", "expr": "390000 - 3900 - 23400 - 330000 - 15000 + (390000 - 3900 - 23400 - 330000 - 15000) * 1.1 * 1.1", "value": 39117.0, "gold": "32700", "match": false, "completion_tokens": 86}
+{"key": "c31|g0", "ctx": "c31", "qid": "g0", "expr": "49*12 - 10*12 - (24 - 24/8)*14/6 - 6*8/6", "value": 411.0, "gold": "468", "match": false, "completion_tokens": 39}
+{"key": "c31|g2", "ctx": "c31", "qid": "g2", "expr": "(14/12*24*(7/8) + 8*12) - 8*6", "value": 72.5, "gold": "48", "match": false, "completion_tokens": 30}
+{"key": "c31|g1", "ctx": "c31", "qid": "g1", "expr": "(49*12 + 24*(14/12) - 24/8*(14/12))*12 + 10*12 + 6*8", "value": 7518.0, "gold": "294", "match": false, "completion_tokens": 48}
+{"key": "c31|g3", "ctx": "c31", "qid": "g3", "expr": "(32-24)*(14/12) + (32/8)*14/12 + (6-0)*8/12 + (32-32)*0/12", "value": 18.0, "gold": "112", "match": false, "completion_tokens": 51}

@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 50
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "58bab880f10730dea4d231059e19bdd161276aafccdfdb5528f45ad83ded74bf",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-374c7321-68a3-4578-b3f7-5114b7729724",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\n      \"increased_water_changes_frequency\": \"every 3 weeks\",\n      \"considered_uv_sterilizer\": true,\n      \"considered_amano_shrimp\": true\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330425,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 51,
+      "prompt_tokens": 2507,
+      "total_tokens": 2558,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 700
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\n      \"increased_water_changes_frequency\": \"every 3 weeks\",\n      \"considered_uv_sterilizer\": true,\n      \"considered_amano_shrimp\": true\n    }\n  ]\n}",
+  "seconds": 1.600804211004288,
+  "prompt_tokens_local_gemma_estimate": 2570
+}

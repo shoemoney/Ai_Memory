@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 16
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "955bf176150f5d48be20a6c9d239fb301b1864b11ad5ec82c1441cf3ed30aee6",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e8e5cc87-54fe-4898-aaa3-9e03c998edda",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 0,\n      \"name\": \"Terraform Labs\",\n      \"duplicate_candidate_id\": -1\n    }\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795360769,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 42,
+      "prompt_tokens": 8904,
+      "total_tokens": 8946,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n  \"entity_resolutions\": [\n    {\n      \"id\": 0,\n      \"name\": \"Terraform Labs\",\n      \"duplicate_candidate_id\": -1\n    }\n  ]\n}",
+  "seconds": 14.742057624986046,
+  "prompt_tokens_local": 8904
+}

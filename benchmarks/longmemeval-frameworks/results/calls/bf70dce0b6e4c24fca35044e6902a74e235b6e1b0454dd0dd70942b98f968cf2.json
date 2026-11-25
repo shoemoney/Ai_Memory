@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract"
+  },
+  "phase": "judge",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/model",
+  "prompt_sha256": "c9010fb677ef2c528640913a4b001725c1e15057e0e11aaddf128f7b6c145cce",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 10,
+  "seed": 20261123,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-55c8e7aa-5798-4e43-8266-8359fdeaec97",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "No \n",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357960,
+    "model": "membench-longmemeval-frameworks-tmp/model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 4,
+      "prompt_tokens": 285,
+      "total_tokens": 289,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 284
+      }
+    }
+  },
+  "text": "No",
+  "seconds": 1.2674021239945432,
+  "prompt_tokens_local": 285
+}

@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json-repair-1",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7ca6e3b289252828b757ebcc8ae9de3b7ca80ca6ff9d569daaffc68c51eb4e96",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-d527c2a8-2198-4ac0-a5f0-d6595995434a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"extracted_entities\": [\n        {\n            \"name\": \"Denver\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Lockheed Martin\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Belmont Arts Center\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Riverside Park\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"Nisha's dad\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"Trigger\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"dog leash\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"wool coat\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"Mustang\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [2]\n        },\n        {\n            \"name\": \"cracked windshield\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [2]\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331465,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 309,
+      "prompt_tokens": 553,
+      "total_tokens": 862,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"extracted_entities\": [\n        {\n            \"name\": \"Denver\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Lockheed Martin\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Belmont Arts Center\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [0]\n        },\n        {\n            \"name\": \"Riverside Park\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"Nisha's dad\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"Trigger\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"dog leash\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"wool coat\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [1]\n        },\n        {\n            \"name\": \"Mustang\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [2]\n        },\n        {\n            \"name\": \"cracked windshield\",\n            \"entity_type_id\": 0,\n            \"episode_indices\": [2]\n        }\n    ]\n}",
+  "seconds": 23.467117624997627,
+  "prompt_tokens_local_gemma_estimate": 567
+}

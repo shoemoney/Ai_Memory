@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 9
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "dc092fa7419bab5d60ec227eb9b0477d16e1d4c5481be79f9fbdf2c0926435bd",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-b8bfa067-d93a-483b-b4cc-d14bde675d2e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Primary target audience for Legacy Space includes the 32-47 demographic as primary buyers and the 55+ demographic as end users.\",\n        \"Marketing strategies include targeted advertising on platforms frequented by the 32-47 demographic, educational content, and gift options.\",\n        \"Marketing messages highlight the benefits of improving social connections and preserving memories for both primary buyers and end users.\",\n        \"Market research focuses on understanding the specific needs and preferences of the target audience, including addressing loneliness and social isolation in older adults.\",\n        \"Product development involves ensuring accessibility and engagement for the target demographic, continuously improving offerings based on user feedback, and establishing partnerships.\",\n        \"Marketing and promotion strategies aim to build credibility and trust with users and their loved ones, measure success, and adjust strategies based on insights.\",\n        \"Operations and logistics include building and maintaining the platform, managing resources, and ensuring a smooth onboarding process.\",\n        \"Legal and regulatory considerations include compliance with legal and regulatory requirements, protecting user data, and implementing insurance policies.\",\n        \"Growth and sustainability focus on tracking progress and success, scaling the business, and addressing additional needs or demographics.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795354729,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 243,
+      "prompt_tokens": 2743,
+      "total_tokens": 2986,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Primary target audience for Legacy Space includes the 32-47 demographic as primary buyers and the 55+ demographic as end users.\",\n        \"Marketing strategies include targeted advertising on platforms frequented by the 32-47 demographic, educational content, and gift options.\",\n        \"Marketing messages highlight the benefits of improving social connections and preserving memories for both primary buyers and end users.\",\n        \"Market research focuses on understanding the specific needs and preferences of the target audience, including addressing loneliness and social isolation in older adults.\",\n        \"Product development involves ensuring accessibility and engagement for the target demographic, continuously improving offerings based on user feedback, and establishing partnerships.\",\n        \"Marketing and promotion strategies aim to build credibility and trust with users and their loved ones, measure success, and adjust strategies based on insights.\",\n        \"Operations and logistics include building and maintaining the platform, managing resources, and ensuring a smooth onboarding process.\",\n        \"Legal and regulatory considerations include compliance with legal and regulatory requirements, protecting user data, and implementing insurance policies.\",\n        \"Growth and sustainability focus on tracking progress and success, scaling the business, and addressing additional needs or demographics.\"\n    ]\n}",
+  "seconds": 39.96997160799219,
+  "prompt_tokens_local": 2743
+}

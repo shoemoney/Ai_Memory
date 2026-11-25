@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q073",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "b7c3b2f542fa933829add9bb5fdbd526a89037fe124943819c96df7b37311b83",
+  "reference_sha256": "6cb25696b24c7415cd70cd472918a19172f6c8bbf8c7286390d9db0da7b1e478",
+  "method": "rag",
+  "answer": "Person031 drank black currant brandy to forget his worries about Person361.",
+  "response": {
+    "text": "Person031 drank black currant brandy to forget his worries about Person361.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 21,
+      "prompt_tokens": 3432,
+      "total_tokens": 3453,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.681305186997633,
+    "request_sha256": "a06f00e00c8ea25ffb1089608d02a2ecda513231a3c0b58e4297c619cd474330",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    362,
+    370,
+    369,
+    361,
+    266,
+    376,
+    303,
+    120,
+    528,
+    105,
+    23,
+    363,
+    503,
+    22,
+    368,
+    253,
+    201,
+    307,
+    122,
+    355
+  ],
+  "retrieval_scores": [
+    0.6467005610466003,
+    0.6244372129440308,
+    0.6163100004196167,
+    0.5919994115829468,
+    0.5670837759971619,
+    0.558750331401825,
+    0.548395574092865,
+    0.5421067476272583,
+    0.5361858010292053,
+    0.5359102487564087,
+    0.5313528776168823,
+    0.5305166244506836,
+    0.5286840200424194,
+    0.5274807810783386,
+    0.524333119392395,
+    0.5242739915847778,
+    0.5222399830818176,
+    0.5212724208831787,
+    0.5173109769821167,
+    0.5110796689987183
+  ],
+  "retrieval_seconds": 0.03510399100196082,
+  "provided_context_sha256": "9716f887daaef3206601cd17f13e28ee7e180af173f852657c0530a8fd0c74c8",
+  "provided_context_tokens": 3081,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "c430ce5d9aeed6f3c23c34a79ac339f06d9873f9fd74af1eac737454680ec8da",
+    "raw_answer_sha256": "6b637bc6de0afc49dd827d8ac087264960f44260347d3ee44f31be3f237c7379",
+    "answer_redacted": false
+  }
+}

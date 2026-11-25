@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 42
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f6c9ffc113d33f9c3e04f8597c465739f9fe171e66b78a55d366622f12dbfa7c",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0347fa1b-4354-4c76-bdb2-1fdf7565d0a2",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Resources and case studies on how design thinking can be used to improve stakeholder engagement in project management were suggested\",\n        \"Understood stakeholder needs through empathy mapping\",\n        \"Managed stakeholder expectations through design thinking\",\n        \"Built strong stakeholder relationships through design thinking\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795356432,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 66,
+      "prompt_tokens": 2000,
+      "total_tokens": 2066,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Resources and case studies on how design thinking can be used to improve stakeholder engagement in project management were suggested\",\n        \"Understood stakeholder needs through empathy mapping\",\n        \"Managed stakeholder expectations through design thinking\",\n        \"Built strong stakeholder relationships through design thinking\"\n    ]\n}",
+  "seconds": 12.20978766999906,
+  "prompt_tokens_local": 2000
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "model": "Qwen/Qwen3-Embedding-4B",
+    "status": "worker stopped during loading",
+    "free_percent": 36,
+    "kernel_pressure_level": 2,
+    "evaluated_queries": 0,
+    "reason": "Memory safety stop; no retrieval score produced. Other services were not changed."
+  },
+  {
+    "model": "Qwen/Qwen3-VL-Embedding-2B",
+    "event": "GPU worker exited before completion",
+    "exit_code": 120,
+    "observations": [
+      "Worker log ended mid-write",
+      "Shared disk free space fell near 1 GB",
+      "HTTP request returned 500 without a retained body on the first attempt"
+    ],
+    "interpretation": "A standard-stream failure is suspected; exact cause was not proven. Resume keeps identical model revision, inputs, and preprocessing."
+  },
+  {
+    "event": "English qrels loader corrected before any visual score was retained",
+    "reason": "The English qrels configuration contains entries for query IDs absent from the English query file. Restrict judgments to the 318 provided English query IDs; ignore 8655 other judgment rows. All 318 English queries retain judgments.",
+    "new_inference_needed": false
+  }
+]

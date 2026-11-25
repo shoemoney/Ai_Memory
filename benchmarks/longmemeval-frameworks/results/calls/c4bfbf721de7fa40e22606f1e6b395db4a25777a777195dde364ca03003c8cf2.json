@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 8
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "1456029aed2a95850020621089f8405c78fa810f8508e688efe712250ae53bef",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e3caec54-558a-4ca0-8e2d-e7cb90efb117",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"summaries\": [\n        {\n            \"name\": \"Canon EF 70-200mm f/2.8L IS III USM\",\n            \"summary\": \"Consider upgrading to a more sturdy tripod like the **Gitzo GT3543LS Systematic Series 3 Carbon Fiber Tripod** or the **Really Right Stuff TVC-34L Tripod**. These tripods offer exceptional build quality, high weight capacities, and advanced features like adjustable legs and built-in levels, making them suitable for supporting your Canon EF 70-200mm f/2.8L IS III USM lens. Additionally, the **Manfrotto MT057CXPRO4 Carbon Fiber Tripod** is a good option, providing a sturdy and reliable platform for your camera.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795338046,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 177,
+      "prompt_tokens": 7670,
+      "total_tokens": 7847,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"summaries\": [\n        {\n            \"name\": \"Canon EF 70-200mm f/2.8L IS III USM\",\n            \"summary\": \"Consider upgrading to a more sturdy tripod like the **Gitzo GT3543LS Systematic Series 3 Carbon Fiber Tripod** or the **Really Right Stuff TVC-34L Tripod**. These tripods offer exceptional build quality, high weight capacities, and advanced features like adjustable legs and built-in levels, making them suitable for supporting your Canon EF 70-200mm f/2.8L IS III USM lens. Additionally, the **Manfrotto MT057CXPRO4 Carbon Fiber Tripod** is a good option, providing a sturdy and reliable platform for your camera.\"\n        }\n    ]\n}",
+  "seconds": 149.38383959299244,
+  "prompt_tokens_local": 7670
+}

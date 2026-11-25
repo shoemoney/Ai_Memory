@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "b23f600a4c82edb695e52ba8991a7c3a011a3cc8640d312afc447a509d2fff03",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-8c7cabd4-5c15-4d41-9c5b-9a9eca80d182",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"summaries\": [{\"name\": \"Ibanez SR505\", \"summary\": \"The SR505 is a step up from the SR300, offering a more aggressive sound with a stronger midrange presence. It features a 5-piece neck, a mahogany body, and a pair of Bartolini MK1 pickups.\"}, {\"name\": \"Ibanez BTB740\", \"summary\": \"The BTB740 is a high-end bass that offers a complex, aggressive sound with a strong low-end response. It features a 7-piece neck, a mahogany body, and a pair of Bartolini MK1 pickups.\"}, {\"name\": \"Ibanez GIO GSR200\", \"summary\": \"The GIO GSR200 is a more affordable option that still delivers a great sound for rock music. It features a mahogany neck, a poplar body, and a pair of Ibanez humbucking pickups.\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795346021,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 207,
+      "prompt_tokens": 7289,
+      "total_tokens": 7496,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 4819
+      }
+    }
+  },
+  "text": "{\"summaries\": [{\"name\": \"Ibanez SR505\", \"summary\": \"The SR505 is a step up from the SR300, offering a more aggressive sound with a stronger midrange presence. It features a 5-piece neck, a mahogany body, and a pair of Bartolini MK1 pickups.\"}, {\"name\": \"Ibanez BTB740\", \"summary\": \"The BTB740 is a high-end bass that offers a complex, aggressive sound with a strong low-end response. It features a 7-piece neck, a mahogany body, and a pair of Bartolini MK1 pickups.\"}, {\"name\": \"Ibanez GIO GSR200\", \"summary\": \"The GIO GSR200 is a more affordable option that still delivers a great sound for rock music. It features a mahogany neck, a poplar body, and a pair of Ibanez humbucking pickups.\"}]}",
+  "seconds": 228.07260277800378,
+  "prompt_tokens_local": 7289
+}

@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 66
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "4ec2c8b1af21bda4d48419d9881518acbb6f2e35ceee7e23af461c51cf4bbfe1",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-7fe1144f-8129-4029-a5f2-6d6b3f03a848",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considered reselling a Coach handbag and a potential Rolex watch\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Considered luxury watches like Rolex, Patek Philippe, and Audemars Piguet for investment potential\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Asked for advice on how to stay organized and keep track of luxury items\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Asked for specific examples of luxury watches that have appreciated in value over time\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795357425,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 134,
+      "prompt_tokens": 1785,
+      "total_tokens": 1919,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Considered reselling a Coach handbag and a potential Rolex watch\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Considered luxury watches like Rolex, Patek Philippe, and Audemars Piguet for investment potential\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Asked for advice on how to stay organized and keep track of luxury items\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Asked for specific examples of luxury watches that have appreciated in value over time\"\n        }\n    ]\n}",
+  "seconds": 23.227844312001253,
+  "prompt_tokens_local": 1785
+}

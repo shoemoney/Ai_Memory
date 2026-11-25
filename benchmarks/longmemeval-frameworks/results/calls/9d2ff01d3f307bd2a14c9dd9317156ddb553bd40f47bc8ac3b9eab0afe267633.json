@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 42
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0161b79a3f9eadaf0307b603be6dd5dd7d5c85cbb1d29a689e44aace05062e19",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f323a5bc-68ce-4208-98e2-4cd35f2ebd0c",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Paradise is the central and eternal home of the Universal Father, the goal of destiny for all spirit personalities, and the perfect abode of the Universal Father.\",\n        \"Paradise is unique in that it is the realm of primal origin and the final goal of destiny for all spirit personalities.\",\n        \"Paradise is not part of the universal creation, not even a real part of the eternal Havona universe.\",\n        \"Paradise is an eternal and exclusive existence, and the source of all energies and the place of primal origin of all personalities.\",\n        \"Paradise is the center of all creation and the universal headquarters of all personality activities.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332749,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 145,
+      "prompt_tokens": 2792,
+      "total_tokens": 2937,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 2791
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Paradise is the central and eternal home of the Universal Father, the goal of destiny for all spirit personalities, and the perfect abode of the Universal Father.\",\n        \"Paradise is unique in that it is the realm of primal origin and the final goal of destiny for all spirit personalities.\",\n        \"Paradise is not part of the universal creation, not even a real part of the eternal Havona universe.\",\n        \"Paradise is an eternal and exclusive existence, and the source of all energies and the place of primal origin of all personalities.\",\n        \"Paradise is the center of all creation and the universal headquarters of all personality activities.\"\n    ]\n}",
+  "seconds": 3.326377303004847,
+  "prompt_tokens_local": 2792,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

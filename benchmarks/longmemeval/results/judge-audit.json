@@ -1,0 +1,29 @@
+{
+  "scope": "Editorial spot check, not an independent human validation or alternate score",
+  "flags": [
+    {
+      "question_id": "06878be2",
+      "method": "full-context",
+      "local_judge_label": false,
+      "review_flag": "possible false negative",
+      "reason": "The reference rubric accepts Sony-compatible or high-quality photography accessories. The response names Sony gear or explicitly uses the current Sony setup, so its negative verdict deserves independent review.",
+      "action": "Retained the original local-judge label. No rescore or prompt change."
+    },
+    {
+      "question_id": "06878be2",
+      "method": "bm25-rag",
+      "local_judge_label": false,
+      "review_flag": "possible false negative",
+      "reason": "The reference rubric accepts Sony-compatible or high-quality photography accessories. The response names Sony gear or explicitly uses the current Sony setup, so its negative verdict deserves independent review.",
+      "action": "Retained the original local-judge label. No rescore or prompt change."
+    },
+    {
+      "question_id": "06878be2",
+      "method": "mem0-oss",
+      "local_judge_label": false,
+      "review_flag": "possible false negative",
+      "reason": "The reference rubric accepts Sony-compatible or high-quality photography accessories. The response names Sony gear or explicitly uses the current Sony setup, so its negative verdict deserves independent review.",
+      "action": "Retained the original local-judge label. No rescore or prompt change."
+    }
+  ]
+}

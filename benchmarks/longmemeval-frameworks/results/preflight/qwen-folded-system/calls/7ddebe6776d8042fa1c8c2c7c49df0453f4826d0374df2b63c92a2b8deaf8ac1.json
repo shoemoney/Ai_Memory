@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 58
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d34f651165e213441e935317fe8bf48e9ed308c4183bd6bfc29441e2797889bf",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-5d601ed3-4fdf-424d-8f54-359aeeb88f1b",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"How to account for gift cards in the budget\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"How to account for gift cards in the budget, Choose between treating gift cards as a separate fund or subtracting them from the total budget\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Choose between treating gift cards as a separate fund or subtracting them from the total budget\",\n            \"event\": \"DELETE\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330459,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 118,
+      "prompt_tokens": 1700,
+      "total_tokens": 1818,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"How to account for gift cards in the budget\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"How to account for gift cards in the budget, Choose between treating gift cards as a separate fund or subtracting them from the total budget\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Choose between treating gift cards as a separate fund or subtracting them from the total budget\",\n            \"event\": \"DELETE\"\n        }\n    ]\n}",
+  "seconds": 2.0468455199879827,
+  "prompt_tokens_local_gemma_estimate": 1830
+}

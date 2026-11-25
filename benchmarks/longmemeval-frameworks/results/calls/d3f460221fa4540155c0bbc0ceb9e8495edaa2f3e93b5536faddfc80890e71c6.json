@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 28
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f11a62299a8743a313516c81bb10b9b36a49d44a0d132e91863c3ac4025b2009",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-1af4a65b-8c0e-4900-9cb8-d4c1bde2a572",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Product development involves ensuring accessibility and engagement for the target demographic, continuously improving offerings based on user feedback, and establishing partnerships.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Interested in rare or hard-to-find figures like variant with specific accessory or unique paint application\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"flexibility\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Marketing strategies include targeted advertising on platforms frequented by the 32-47 demographic, educational content, and gift options.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Interested in specific variants like comic-con exclusive, retailer exclusive, or limited edition figures\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Samsung Galaxy Tab S7 supports the S Pen stylus, which is compatible with the device and offers features like gesture control, color accuracy, and pressure sensitivity.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355650,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 268,
+      "prompt_tokens": 1758,
+      "total_tokens": 2026,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Product development involves ensuring accessibility and engagement for the target demographic, continuously improving offerings based on user feedback, and establishing partnerships.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Interested in rare or hard-to-find figures like variant with specific accessory or unique paint application\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"flexibility\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Marketing strategies include targeted advertising on platforms frequented by the 32-47 demographic, educational content, and gift options.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Interested in specific variants like comic-con exclusive, retailer exclusive, or limited edition figures\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Samsung Galaxy Tab S7 supports the S Pen stylus, which is compatible with the device and offers features like gesture control, color accuracy, and pressure sensitivity.\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 40.11905446900346,
+  "prompt_tokens_local": 1758
+}

@@ -1,0 +1,122 @@
+{
+  "full-context": {
+    "correct": 10,
+    "n": 14,
+    "accuracy": 0.7142857142857143,
+    "wilson95": [
+      0.453509156701075,
+      0.8827862135542279
+    ],
+    "by_stratum": {
+      "abstention": {
+        "correct": 2,
+        "n": 2
+      },
+      "knowledge-update": {
+        "correct": 1,
+        "n": 2
+      },
+      "multi-session": {
+        "correct": 1,
+        "n": 2
+      },
+      "single-session-assistant": {
+        "correct": 2,
+        "n": 2
+      },
+      "single-session-preference": {
+        "correct": 1,
+        "n": 2
+      },
+      "single-session-user": {
+        "correct": 2,
+        "n": 2
+      },
+      "temporal-reasoning": {
+        "correct": 1,
+        "n": 2
+      }
+    },
+    "length_stopped": 0
+  },
+  "bm25-rag": {
+    "correct": 11,
+    "n": 14,
+    "accuracy": 0.7857142857142857,
+    "wilson95": [
+      0.5241076941340045,
+      0.9242861328730662
+    ],
+    "by_stratum": {
+      "abstention": {
+        "correct": 2,
+        "n": 2
+      },
+      "knowledge-update": {
+        "correct": 2,
+        "n": 2
+      },
+      "multi-session": {
+        "correct": 1,
+        "n": 2
+      },
+      "single-session-assistant": {
+        "correct": 2,
+        "n": 2
+      },
+      "single-session-preference": {
+        "correct": 0,
+        "n": 2
+      },
+      "single-session-user": {
+        "correct": 2,
+        "n": 2
+      },
+      "temporal-reasoning": {
+        "correct": 2,
+        "n": 2
+      }
+    },
+    "length_stopped": 0
+  },
+  "mem0-oss": {
+    "correct": 8,
+    "n": 14,
+    "accuracy": 0.5714285714285714,
+    "wilson95": [
+      0.3259064457965131,
+      0.7861920109552545
+    ],
+    "by_stratum": {
+      "abstention": {
+        "correct": 2,
+        "n": 2
+      },
+      "knowledge-update": {
+        "correct": 1,
+        "n": 2
+      },
+      "multi-session": {
+        "correct": 1,
+        "n": 2
+      },
+      "single-session-assistant": {
+        "correct": 0,
+        "n": 2
+      },
+      "single-session-preference": {
+        "correct": 1,
+        "n": 2
+      },
+      "single-session-user": {
+        "correct": 2,
+        "n": 2
+      },
+      "temporal-reasoning": {
+        "correct": 1,
+        "n": 2
+      }
+    },
+    "length_stopped": 0
+  }
+}

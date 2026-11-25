@@ -1,0 +1,198 @@
+{
+  "id": "simple_python_313",
+  "category": "simple_python",
+  "result": "According to the most recent data available (as of late 2024), the total net worth of Lionel Messi is approximately **€100 million**.\n\nThis figure is based on his current salary, which is approximately €1.5 billion, minus his net worth.",
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': \"What's the total worth in euro of Messi according to latest data?\"}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "celebrity_net_worth_get",
+                "description": "Get the total net worth of a sports celebrity based on most recent data.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The full name of the sports celebrity."
+                    },
+                    "currency": {
+                      "type": "string",
+                      "description": "The currency in which the net worth will be returned. Default is 'USD'."
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "currency"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 343,
+    "output_token_count": 57,
+    "latency": 1.8062994459978654
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the total worth in euro of Messi according to latest data?"
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "celebrity_net_worth_get",
+          "description": "Get the total net worth of a sports celebrity based on most recent data.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The full name of the sports celebrity."
+              },
+              "currency": {
+                "type": "string",
+                "description": "The currency in which the net worth will be returned. Default is 'USD'."
+              }
+            },
+            "required": [
+              "name",
+              "currency"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-jnrfeRAuq9L60uYN2TFHtpS71UtQoOt5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "According to the most recent data available (as of late 2024), the total net worth of Lionel Messi is approximately **€100 million**.\n\nThis figure is based on his current salary, which is approximately €1.5 billion, minus his net worth.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795287445,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 57,
+      "prompt_tokens": 343,
+      "total_tokens": 400,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 343,
+      "prompt_ms": 1021.825,
+      "prompt_per_token_ms": 2.9790816326530614,
+      "prompt_per_second": 335.6739167665696,
+      "predicted_n": 57,
+      "predicted_ms": 776.682,
+      "predicted_per_token_ms": 13.869321428571428,
+      "predicted_per_second": 72.10158082715964
+    }
+  },
+  "elapsed_seconds": 1.806518370998674,
+  "score": {
+    "id": "simple_python_313",
+    "model_name": "local-subset-FC",
+    "test_category": "simple_python",
+    "valid": false,
+    "error": [
+      "Invalid syntax. Failed to decode AST. 'str' object has no attribute 'keys'"
+    ],
+    "error_type": "ast_decoder:decoder_failed",
+    "prompt": {
+      "id": "simple_python_313",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What's the total worth in euro of Messi according to latest data?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "celebrity_net_worth.get",
+          "description": "Get the total net worth of a sports celebrity based on most recent data.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The full name of the sports celebrity."
+              },
+              "currency": {
+                "type": "string",
+                "description": "The currency in which the net worth will be returned. Default is 'USD'."
+              }
+            },
+            "required": [
+              "name",
+              "currency"
+            ]
+          }
+        }
+      ]
+    },
+    "model_result_raw": "According to the most recent data available (as of late 2024), the total net worth of Lionel Messi is approximately **€100 million**.\n\nThis figure is based on his current salary, which is approximately €1.5 billion, minus his net worth.",
+    "possible_answer": [
+      {
+        "celebrity_net_worth.get": {
+          "name": [
+            "Lionel Messi",
+            "Messi"
+          ],
+          "currency": [
+            "EUR",
+            "euro"
+          ]
+        }
+      }
+    ]
+  }
+}

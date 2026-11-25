@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 44
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d5b8b6eb44ddc5461a9c5c5c760cf77b43cfe24b7b5c940ca8c724932981a3cb",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-c4dd8f6b-4677-46c7-ba3b-4a54ec2e9901",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Planning a trip to London and visiting family in London\", \n        \"Considering booking round-trip or one-way tickets to London\", \n        \"Interested in networking with professionals in London\", \n        \"Planning ahead for transportation from Heathrow Airport\", \n        \"Thinking of attending professional events in London\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332805,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 72,
+      "prompt_tokens": 2823,
+      "total_tokens": 2895,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Planning a trip to London and visiting family in London\", \n        \"Considering booking round-trip or one-way tickets to London\", \n        \"Interested in networking with professionals in London\", \n        \"Planning ahead for transportation from Heathrow Airport\", \n        \"Thinking of attending professional events in London\"\n    ]\n}",
+  "seconds": 4.581318324999302,
+  "prompt_tokens_local": 2823,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

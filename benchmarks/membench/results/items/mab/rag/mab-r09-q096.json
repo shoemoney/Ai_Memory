@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r09-q096",
+  "context": "mab-r09",
+  "kind": "eventqa_65536",
+  "question_sha256": "6c0025d49056b0861e6895ea3df6d09f3b56f2e6bf754aee281965202640d1dc",
+  "reference_sha256": "f2ceeb1daefde3d0a1fada86679b624fe2eed327c0746200d01682fbe2ad143a",
+  "method": "rag",
+  "answer": "Person361 drank the soup brought by the jailer and regained strength.",
+  "response": {
+    "text": "Person361 drank the soup brought by the jailer and regained strength.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 2980,
+      "total_tokens": 2997,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 7.844913591994555,
+    "request_sha256": "64b9faa63dcac76173c316c855835e0d5b35a382f62f7a82c945e90f7c0f3c61",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    575,
+    340,
+    579,
+    588,
+    593,
+    614,
+    342,
+    582,
+    599,
+    595,
+    592,
+    578,
+    597,
+    616,
+    584,
+    574,
+    341,
+    594,
+    528,
+    105
+  ],
+  "retrieval_scores": [
+    0.5832215547561646,
+    0.5737265348434448,
+    0.5595541000366211,
+    0.5313721299171448,
+    0.5284707546234131,
+    0.5236971974372864,
+    0.522624135017395,
+    0.5211322903633118,
+    0.5068107843399048,
+    0.5056799650192261,
+    0.5038825869560242,
+    0.49767005443573,
+    0.4973512887954712,
+    0.49374115467071533,
+    0.4936116635799408,
+    0.48853474855422974,
+    0.4868496060371399,
+    0.4815250039100647,
+    0.4752236306667328,
+    0.47141343355178833
+  ],
+  "retrieval_seconds": 0.03716709000582341,
+  "provided_context_sha256": "f5872885cc94675e64230807728b66d3f19523df1da1551e6adb1d8daf800eec",
+  "provided_context_tokens": 2648,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "fed5513f8c619028b4550913fb9fdb11dc557746eef4b4769e402ce3433e236c",
+    "raw_answer_sha256": "e15a9642a0aa666aa1908c562811180aa2d3b1ea4b668dbc5109a3a313323193",
+    "answer_redacted": false
+  }
+}

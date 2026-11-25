@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 56
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "a0369cd01673d297db99da270e9b3cb6e5849702fc118f841e13840ef39fe0b2",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-927bfbd8-dcd6-458c-accd-af9936bf621f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"OWNS\", \"fact\": \"Nate owns a Mustang and a Trigger.\", \"valid_at\": \"2023-05-29T06:11:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"Nate's Mustang has a cracked windshield.\", \"valid_at\": \"2023-05-29T06:11:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795372004,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 135,
+      "prompt_tokens": 8960,
+      "total_tokens": 9095,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"OWNS\", \"fact\": \"Nate owns a Mustang and a Trigger.\", \"valid_at\": \"2023-05-29T06:11:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"Nate's Mustang has a cracked windshield.\", \"valid_at\": \"2023-05-29T06:11:00Z\"}]}",
+  "seconds": 52.781167987996014,
+  "prompt_tokens_local": 8960
+}

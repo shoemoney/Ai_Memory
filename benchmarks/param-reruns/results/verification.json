@@ -1,0 +1,52 @@
+{
+  "official_gsm8k_scorer_controls": {
+    "same_boxed_answer": 1.0,
+    "different_answer": 0.0,
+    "missing_answer": 0.0,
+    "comma_difference": 0.0
+  },
+  "paired_difference_direction_controls": true,
+  "wilson_n150_precision_control": true,
+  "fixed_samples_unique_150": true,
+  "cartridges_training_mechanism": {
+    "cache_tokens": 64,
+    "training_steps": 1,
+    "synthetic_conversations": 1,
+    "cache_change_l2": 18.49117375227315,
+    "base_parameters_frozen": true,
+    "base_parameter_gradients_absent": true,
+    "source_patient": "patient_01",
+    "document_count": 2,
+    "document_tokens": 768,
+    "full_document_tokens": 12234,
+    "smoke_excerpt": true
+  },
+  "cpu_smokes_completed": [
+    "gsm8k-2-items-8-tokens",
+    "triviaqa-2-items-8-tokens",
+    "cartridges-1-item-768-document-tokens"
+  ],
+  "final_memgen_dtype": "bfloat16 for reader, Weaver, LoRA, projections and latent parameters",
+  "final_loader_smoke_items": {
+    "gsm8k": 13,
+    "triviaqa": 217
+  },
+  "shared_base_storage_checks": 339,
+  "batch4_controls": [
+    {
+      "source_index": 13,
+      "system": "base",
+      "single_vs_batch4_output_equal": true
+    },
+    {
+      "source_index": 13,
+      "system": "memgen",
+      "single_vs_batch4_output_equal": true
+    }
+  ],
+  "checkpoint_failed_write_preserves_prior_state": true,
+  "checkpoint_successful_write_replaces_state": true,
+  "scored_core_code_unchanged_from_gpu_start": true,
+  "released_lora_tensors_verified_per_checkpoint": 112,
+  "final_scored_rows": 640
+}

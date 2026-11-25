@@ -1,0 +1,361 @@
+{
+  "id": "multiple_43",
+  "category": "multiple",
+  "result": "To calculate the energy produced by 5 moles of glucose, we need to use the energy required to produce one mole of glucose.\n\nThe chemical formula for glucose is **C₆H₁₂O₆**.\n\nThe standard energy required to produce one mole of glucose is approximately **2800 kJ/mol**.\n\nThe calculation is as follows:\n$$ \\text{Energy} = \\text{Moles of glucose} \\times \\text{Energy per mole of glucose} $$\n$$ \\text{Energy} = 5 \\, \\text{mol} \\times 2800 \\, \\text{kJ/mol} $$\n$$ \\text{Energy} = 14,000 \\, \\text{kJ} $$\n\nSo, the energy produced by 5 mol of glucose is **14,000 kJ**.",
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'What is the energy produced by 5 mol of glucose (C6H12O6)?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "biological_calc_biomass",
+                "description": "Calculate the biomass from the energy given the energy conversion efficiency.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "energy": {
+                      "type": "number",
+                      "description": "The total energy produced. This is a float type value.",
+                      "format": "float"
+                    },
+                    "efficiency": {
+                      "type": "number",
+                      "description": "The conversion efficiency, default value is 10%. This is a float type value.",
+                      "default": 0.1,
+                      "format": "float"
+                    }
+                  },
+                  "required": [
+                    "energy"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "biological_calc_energy",
+                "description": "Calculate energy from amount of substance based on its molecular composition.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "mols": {
+                      "type": "integer",
+                      "description": "Amount of substance in moles."
+                    },
+                    "substance": {
+                      "type": "string",
+                      "description": "The chemical formula of the substance."
+                    },
+                    "joules_per_mol": {
+                      "type": "integer",
+                      "description": "The energy produced or required for the reaction, default value for glucose is 2800 kJ/mol",
+                      "default": 2800
+                    }
+                  },
+                  "required": [
+                    "mols",
+                    "substance"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "function",
+              "function": {
+                "name": "physical_calc_work",
+                "description": "Calculate the work from energy.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "energy": {
+                      "type": "number",
+                      "description": "The total energy produced. This is a float type value.",
+                      "format": "float"
+                    },
+                    "distance": {
+                      "type": "number",
+                      "description": "The distance over which the work is done. This is a float type value.",
+                      "format": "float"
+                    }
+                  },
+                  "required": [
+                    "energy",
+                    "distance"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 636,
+    "output_token_count": 182,
+    "latency": 1.8183079119989998
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the energy produced by 5 mol of glucose (C6H12O6)?"
+      }
+    ],
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "biological_calc_biomass",
+          "description": "Calculate the biomass from the energy given the energy conversion efficiency.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "energy": {
+                "type": "number",
+                "description": "The total energy produced. This is a float type value.",
+                "format": "float"
+              },
+              "efficiency": {
+                "type": "number",
+                "description": "The conversion efficiency, default value is 10%. This is a float type value.",
+                "default": 0.1,
+                "format": "float"
+              }
+            },
+            "required": [
+              "energy"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "biological_calc_energy",
+          "description": "Calculate energy from amount of substance based on its molecular composition.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "mols": {
+                "type": "integer",
+                "description": "Amount of substance in moles."
+              },
+              "substance": {
+                "type": "string",
+                "description": "The chemical formula of the substance."
+              },
+              "joules_per_mol": {
+                "type": "integer",
+                "description": "The energy produced or required for the reaction, default value for glucose is 2800 kJ/mol",
+                "default": 2800
+              }
+            },
+            "required": [
+              "mols",
+              "substance"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "physical_calc_work",
+          "description": "Calculate the work from energy.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "energy": {
+                "type": "number",
+                "description": "The total energy produced. This is a float type value.",
+                "format": "float"
+              },
+              "distance": {
+                "type": "number",
+                "description": "The distance over which the work is done. This is a float type value.",
+                "format": "float"
+              }
+            },
+            "required": [
+              "energy",
+              "distance"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-CeJvQPIWHpp21OWR8qvpV83a4IKGRMMz",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "To calculate the energy produced by 5 moles of glucose, we need to use the energy required to produce one mole of glucose.\n\nThe chemical formula for glucose is **C₆H₁₂O₆**.\n\nThe standard energy required to produce one mole of glucose is approximately **2800 kJ/mol**.\n\nThe calculation is as follows:\n$$ \\text{Energy} = \\text{Moles of glucose} \\times \\text{Energy per mole of glucose} $$\n$$ \\text{Energy} = 5 \\, \\text{mol} \\times 2800 \\, \\text{kJ/mol} $$\n$$ \\text{Energy} = 14,000 \\, \\text{kJ} $$\n\nSo, the energy produced by 5 mol of glucose is **14,000 kJ**.",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795287513,
+    "model": "Qwen3.5-0.8B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 182,
+      "prompt_tokens": 636,
+      "total_tokens": 818,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 636,
+      "prompt_ms": 283.687,
+      "prompt_per_token_ms": 0.4460487421383648,
+      "prompt_per_second": 2241.9074543422857,
+      "predicted_n": 182,
+      "predicted_ms": 1527.324,
+      "predicted_per_token_ms": 8.43825414364641,
+      "predicted_per_second": 118.50792628152244
+    }
+  },
+  "elapsed_seconds": 1.8184669300026144,
+  "score": {
+    "id": "multiple_43",
+    "model_name": "local-subset-FC",
+    "test_category": "multiple",
+    "valid": false,
+    "error": [
+      "Invalid syntax. Failed to decode AST. 'str' object has no attribute 'keys'"
+    ],
+    "error_type": "ast_decoder:decoder_failed",
+    "prompt": {
+      "id": "multiple_43",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What is the energy produced by 5 mol of glucose (C6H12O6)?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "biological.calc_biomass",
+          "description": "Calculate the biomass from the energy given the energy conversion efficiency.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "energy": {
+                "type": "float",
+                "description": "The total energy produced."
+              },
+              "efficiency": {
+                "type": "float",
+                "description": "The conversion efficiency, default value is 10%.",
+                "default": 0.1
+              }
+            },
+            "required": [
+              "energy"
+            ]
+          }
+        },
+        {
+          "name": "biological.calc_energy",
+          "description": "Calculate energy from amount of substance based on its molecular composition.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "mols": {
+                "type": "integer",
+                "description": "Amount of substance in moles."
+              },
+              "substance": {
+                "type": "string",
+                "description": "The chemical formula of the substance."
+              },
+              "joules_per_mol": {
+                "type": "integer",
+                "description": "The energy produced or required for the reaction, default value for glucose is 2800 kJ/mol",
+                "default": 2800
+              }
+            },
+            "required": [
+              "mols",
+              "substance"
+            ]
+          }
+        },
+        {
+          "name": "physical.calc_work",
+          "description": "Calculate the work from energy.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "energy": {
+                "type": "float",
+                "description": "The total energy produced."
+              },
+              "distance": {
+                "type": "float",
+                "description": "The distance over which the work is done."
+              }
+            },
+            "required": [
+              "energy",
+              "distance"
+            ]
+          }
+        }
+      ]
+    },
+    "model_result_raw": "To calculate the energy produced by 5 moles of glucose, we need to use the energy required to produce one mole of glucose.\n\nThe chemical formula for glucose is **C₆H₁₂O₆**.\n\nThe standard energy required to produce one mole of glucose is approximately **2800 kJ/mol**.\n\nThe calculation is as follows:\n$$ \\text{Energy} = \\text{Moles of glucose} \\times \\text{Energy per mole of glucose} $$\n$$ \\text{Energy} = 5 \\, \\text{mol} \\times 2800 \\, \\text{kJ/mol} $$\n$$ \\text{Energy} = 14,000 \\, \\text{kJ} $$\n\nSo, the energy produced by 5 mol of glucose is **14,000 kJ**.",
+    "possible_answer": [
+      {
+        "biological.calc_energy": {
+          "mols": [
+            5
+          ],
+          "substance": [
+            "C6H12O6"
+          ],
+          "joules_per_mol": [
+            2800,
+            ""
+          ]
+        }
+      }
+    ]
+  }
+}

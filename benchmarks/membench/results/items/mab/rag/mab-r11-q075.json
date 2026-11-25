@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r11-q075",
+  "context": "mab-r11",
+  "kind": "eventqa_65536",
+  "question_sha256": "97209a6d0caa674c75172a8677f88154b306cf3da60147a468a69edf21a0d399",
+  "reference_sha256": "95f4b354be1b4580688e9d02602983f37ad48217c0ee556fba2132f349838968",
+  "method": "rag",
+  "answer": "Person153 and Person711 sat together alone in the drawing-room to drink coffee.",
+  "response": {
+    "text": "Person153 and Person711 sat together alone in the drawing-room to drink coffee.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 21,
+      "prompt_tokens": 3227,
+      "total_tokens": 3248,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 14.525776441994822,
+    "request_sha256": "c308faf4f9e7ab7f06767ed3968ed3f2f641b340b577c2ccf3bff9d5056a5743",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    577,
+    375,
+    394,
+    581,
+    245,
+    521,
+    587,
+    257,
+    522,
+    372,
+    115,
+    409,
+    511,
+    383,
+    563,
+    349,
+    523,
+    501,
+    596,
+    376
+  ],
+  "retrieval_scores": [
+    0.6151593923568726,
+    0.5819174647331238,
+    0.5695789456367493,
+    0.5646088123321533,
+    0.5518918037414551,
+    0.5472471714019775,
+    0.543052613735199,
+    0.5399814248085022,
+    0.5378099679946899,
+    0.5311188697814941,
+    0.5297757387161255,
+    0.5293668508529663,
+    0.5286833047866821,
+    0.5274056792259216,
+    0.5258821249008179,
+    0.5245980024337769,
+    0.5240206718444824,
+    0.5213419198989868,
+    0.5191903114318848,
+    0.5159873366355896
+  ],
+  "retrieval_seconds": 0.02274167699215468,
+  "provided_context_sha256": "08e77addf28ca8e8441233c39478559ec5af482b8c0c30e2712d5f9e6ef4d0f5",
+  "provided_context_tokens": 2866,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "2dd4d1134eb1fc78883dcc6484a7e1f2d70a71b6ae8af071ed3e0a5e93478be2",
+    "raw_answer_sha256": "01149ec9ca66adc26b9a1a2c1feb2c0e82d8386dff1d848e4915292b293c001b",
+    "answer_redacted": false
+  }
+}

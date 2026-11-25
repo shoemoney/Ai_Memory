@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 40
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c1279808b82200107b0e9aca2f69d33d5d788dc46f6094b92fe84ad96f83ca67",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-eae262dd-d960-4024-a059-c0bbd2dc0625",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Provided guidelines for a well-balanced meal\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Provided guidelines for a well-balanced meal, Offered portion size guidelines for a meal, Shared tips for meal prep and easy recipes, Recommended healthy snacks for between meals\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Offered portion size guidelines for a meal\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Provided guidelines for a well-balanced meal, Offered portion size guidelines for a meal, Shared tips for meal prep and easy recipes, Recommended healthy snacks for between meals\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Shared tips for meal prep and easy recipes\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Provided guidelines for a well-balanced meal, Offered portion size guidelines for a meal, Shared tips for meal prep and easy recipes, Recommended healthy snacks for between meals\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Recommended healthy snacks for between meals\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Provided guidelines for a well-balanced meal, Offered portion size guidelines for a meal, Shared tips for meal prep and easy recipes, Recommended healthy snacks for between meals\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332582,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 301,
+      "prompt_tokens": 1877,
+      "total_tokens": 2178,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Provided guidelines for a well-balanced meal\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Provided guidelines for a well-balanced meal, Offered portion size guidelines for a meal, Shared tips for meal prep and easy recipes, Recommended healthy snacks for between meals\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Offered portion size guidelines for a meal\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Provided guidelines for a well-balanced meal, Offered portion size guidelines for a meal, Shared tips for meal prep and easy recipes, Recommended healthy snacks for between meals\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Shared tips for meal prep and easy recipes\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Provided guidelines for a well-balanced meal, Offered portion size guidelines for a meal, Shared tips for meal prep and easy recipes, Recommended healthy snacks for between meals\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Recommended healthy snacks for between meals\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Provided guidelines for a well-balanced meal, Offered portion size guidelines for a meal, Shared tips for meal prep and easy recipes, Recommended healthy snacks for between meals\"\n        }\n    ]\n}",
+  "seconds": 7.886781090011937,
+  "prompt_tokens_local": 1877,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

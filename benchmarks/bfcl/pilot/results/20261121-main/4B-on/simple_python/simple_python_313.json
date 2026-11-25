@@ -1,0 +1,156 @@
+{
+  "id": "simple_python_313",
+  "category": "simple_python",
+  "result": [
+    {
+      "celebrity_net_worth_get": "{\"name\":\"Messi\",\"currency\":\"EUR\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': \"What's the total worth in euro of Messi according to latest data?\"}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "celebrity_net_worth_get",
+                "description": "Get the total net worth of a sports celebrity based on most recent data.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The full name of the sports celebrity."
+                    },
+                    "currency": {
+                      "type": "string",
+                      "description": "The currency in which the net worth will be returned. Default is 'USD'."
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "currency"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 341,
+    "output_token_count": 137,
+    "latency": 6.306876009999542
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "What's the total worth in euro of Messi according to latest data?"
+      }
+    ],
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "celebrity_net_worth_get",
+          "description": "Get the total net worth of a sports celebrity based on most recent data.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The full name of the sports celebrity."
+              },
+              "currency": {
+                "type": "string",
+                "description": "The currency in which the net worth will be returned. Default is 'USD'."
+              }
+            },
+            "required": [
+              "name",
+              "currency"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-uOmDzIZsJQwRq8Zgj8qD7YcGUMUbBGqG",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "3p8ywowxSGJTjTkiLYH9Yk1PS1Ll5uqC",
+              "function": {
+                "arguments": "{\"name\":\"Messi\",\"currency\":\"EUR\"}",
+                "name": "celebrity_net_worth_get"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for the total net worth of Messi in euros according to the latest data. I need to use the celebrity_net_worth_get function to get this information.\n\nLooking at the function parameters:\n- name: \"Messi\" (the full name of the sports celebrity)\n- currency: \"EUR\" (since they want it in euros)\n\nI have all the required parameters, so I can make the function call."
+        }
+      }
+    ],
+    "created": 1795287046,
+    "model": "Qwen3.5-4B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 137,
+      "prompt_tokens": 341,
+      "total_tokens": 478,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 341,
+      "prompt_ms": 711.206,
+      "prompt_per_token_ms": 2.0856480938416424,
+      "prompt_per_second": 479.4672710860144,
+      "predicted_n": 137,
+      "predicted_ms": 5587.621,
+      "predicted_per_token_ms": 41.085448529411764,
+      "predicted_per_second": 24.339517658767477
+    }
+  },
+  "elapsed_seconds": 6.306945003998408,
+  "score": {
+    "valid": true
+  }
+}

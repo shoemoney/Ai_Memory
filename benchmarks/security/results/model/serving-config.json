@@ -1,0 +1,56 @@
+{
+  "backend": "llama.cpp b12464 CPU",
+  "image_digest": "sha256:5b43086e3ba7ea5794d72904654f6cd41224a9b1c6ac0398f4940ee380d30f23",
+  "generator": "Qwen2.5-3B-Instruct Q4_K_M",
+  "model_revision": "7dabda4d13d513e3e842b20f0d435c732f172cbe",
+  "native_flags": {
+    "gpu_layers": 0,
+    "threads": 8,
+    "threads_batch": 8,
+    "ctx_size": 4096,
+    "batch_size": 512,
+    "ubatch_size": 512,
+    "parallel": 1,
+    "pooling": "mean",
+    "embedding": true,
+    "warmup": false
+  },
+  "container_limits": {
+    "cpus": 8,
+    "memory_gib": 5
+  },
+  "embeddings": {
+    "dimension": 2048,
+    "normalized": true,
+    "retrieval_top_k": 3,
+    "input_token_cap": 510
+  },
+  "sampling": {
+    "evaluation_temperature": 0,
+    "review_temperature": 0,
+    "minja_exploration_temperature": 0.5,
+    "top_p": 1,
+    "top_k": 0,
+    "min_p": 0,
+    "base_seed": 20261122
+  },
+  "default_image_healthcheck_note": "The original container healthcheck targeted the image default port; actual readiness used the native /health route on the configured loopback port.",
+  "inversion": {
+    "threads": 4,
+    "inter_op_threads": 1,
+    "steps": 5,
+    "sequence_beams": 1,
+    "batch_size": 8,
+    "quantization": "symmetric signed int4, group size 64, float32 scales/bias/norms/narrow relative-position embeddings",
+    "cpu_compute": "float32 matmuls on Q4-decoded weights; decoded linear values cached until unload",
+    "embedding_token_cap": 32,
+    "preserves_hypothesis_token_ids": true
+  },
+  "protocol_adapter": {
+    "initial": "host standard-library HTTP process",
+    "resumed": "detached task-owned Python container",
+    "generator_backend_unchanged": true,
+    "reason": "Host adapter exited during InjecMEM; completed checkpoint rows retained and same pending item resumed.",
+    "low_memory_stop": "Host Docker CLI initially; Docker Unix socket in adapter container, restricted by code to named task backend."
+  }
+}

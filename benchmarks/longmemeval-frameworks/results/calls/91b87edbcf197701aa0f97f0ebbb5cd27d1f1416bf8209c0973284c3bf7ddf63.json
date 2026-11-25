@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 52
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f8478660a92d8d62c5dfbcfca602f1b6e3dca0a71811b44905e5edfb6edd3ab6",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-861b10ff-9f11-4314-a0c1-4ed2ffca48d4",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Understandable that personal preferences in music are important\", \"There are many different kinds of music that focus on emotional connection or meaningful messages\", \"Experimentation and deconstruction are used to explore complex emotions and experiences\", \"Musicians who choose not to incorporate postmodern elements create music focused on straightforward storytelling or emotional expression\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366645,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 69,
+      "prompt_tokens": 944,
+      "total_tokens": 1013,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Understandable that personal preferences in music are important\", \"There are many different kinds of music that focus on emotional connection or meaningful messages\", \"Experimentation and deconstruction are used to explore complex emotions and experiences\", \"Musicians who choose not to incorporate postmodern elements create music focused on straightforward storytelling or emotional expression\"]}",
+  "seconds": 5.6964621740044095,
+  "prompt_tokens_local": 944
+}

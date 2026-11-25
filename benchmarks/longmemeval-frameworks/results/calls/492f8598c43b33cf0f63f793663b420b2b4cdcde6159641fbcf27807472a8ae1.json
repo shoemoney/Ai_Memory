@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 56
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f16d913bb617d02709681e62bc5a8beb07e0de9799f7fc11cc9990aac2886b7e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-767332bb-f67a-4009-b066-d733d2fd3ecc",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"OWNS\", \"fact\": \"Denver owns the Belmont Arts Center.\", \"valid_at\": \"2023-08-15T19:40:00Z\"}, {\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"OWNS\", \"fact\": \"Denver owns Riverside Park.\", \"valid_at\": \"2023-08-15T19:40:00Z\"}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"Trigger is the model of a Mustang.\", \"valid_at\": \"2023-08-15T19:40:00Z\"}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Gamecube\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"Trigger is the model of a Gamecube.\", \"valid_at\": \"2023-08-15T19:40:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363925,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 260,
+      "prompt_tokens": 8880,
+      "total_tokens": 9140,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"OWNS\", \"fact\": \"Denver owns the Belmont Arts Center.\", \"valid_at\": \"2023-08-15T19:40:00Z\"}, {\"source_entity_name\": \"Denver\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"OWNS\", \"fact\": \"Denver owns Riverside Park.\", \"valid_at\": \"2023-08-15T19:40:00Z\"}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Mustang\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"Trigger is the model of a Mustang.\", \"valid_at\": \"2023-08-15T19:40:00Z\"}, {\"source_entity_name\": \"Trigger\", \"target_entity_name\": \"Gamecube\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"Trigger is the model of a Gamecube.\", \"valid_at\": \"2023-08-15T19:40:00Z\"}]}",
+  "seconds": 26.75584485498257,
+  "prompt_tokens_local": 8880
+}

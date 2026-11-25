@@ -1,0 +1,52 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract"
+  },
+  "phase": "answer",
+  "served_model": "default_model",
+  "prompt_sha256": "75ea0b9539278245753d3dc01f693a8d0dc3d583aa6637be2268e6e6fe5eaaed",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 512,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-80b950c1-f526-465a-bce2-bdc79d1f984e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "The provided conversation history does not mention any trips to Europe or Thailand. \n",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330549,
+    "model": "default_model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 17,
+      "prompt_tokens": 958,
+      "total_tokens": 975,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    }
+  },
+  "text": "The provided conversation history does not mention any trips to Europe or Thailand.",
+  "seconds": 3.314939903008053,
+  "prompt_tokens_local_gemma_estimate": 958
+}

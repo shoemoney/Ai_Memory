@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 26
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f0799f4a4d7dab9b977e9a9b8cfbfc4ab270efaa7e9318df63fb85e745182f48",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-cb7b3157-0f15-4e2d-ac8e-0140fabf8680",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"The current state of healthcare in the EU is diverse, with significant differences in the quality of healthcare and access to healthcare services among member states.\",\n        \"Public health is a shared responsibility among the EU member states, but the current state of healthcare in the EU is diverse, with significant differences in the quality of healthcare and access to healthcare services among member states.\",\n        \"Infectious diseases are a significant public health concern in the EU.\",\n        \"Chronic diseases, such as cardiovascular diseases, cancer, and diabetes, are the leading causes of death and disability in the EU.\",\n        \"Health inequalities are a significant public health concern in the EU.\",\n        \"The increasing burden of healthcare costs on member states is a concern, as well as the sustainability of healthcare financing systems.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365988,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 166,
+      "prompt_tokens": 2899,
+      "total_tokens": 3065,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"The current state of healthcare in the EU is diverse, with significant differences in the quality of healthcare and access to healthcare services among member states.\",\n        \"Public health is a shared responsibility among the EU member states, but the current state of healthcare in the EU is diverse, with significant differences in the quality of healthcare and access to healthcare services among member states.\",\n        \"Infectious diseases are a significant public health concern in the EU.\",\n        \"Chronic diseases, such as cardiovascular diseases, cancer, and diabetes, are the leading causes of death and disability in the EU.\",\n        \"Health inequalities are a significant public health concern in the EU.\",\n        \"The increasing burden of healthcare costs on member states is a concern, as well as the sustainability of healthcare financing systems.\"\n    ]\n}",
+  "seconds": 15.513691120024305,
+  "prompt_tokens_local": 2899
+}

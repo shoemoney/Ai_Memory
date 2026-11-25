@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 4
+  },
+  "phase": "graphiti-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "48af3219970d965bedec221814b7af8b09771c1b38ea004fa9a51d56dc0c24f1",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-49e5e551-e8f8-4528-9332-78e4cc194813",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"The Mustang is a model of the Trigger vehicle.\", \"valid_at\": \"2023-05-28T02:05:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"IS_SITED_AT\", \"fact\": \"The Mustang is located at Belmont Arts Center.\", \"valid_at\": \"2023-05-28T02:05:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"IS_SITED_AT\", \"fact\": \"The Mustang is located at Riverside Park.\", \"valid_at\": \"2023-05-28T02:05:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"The Mustang has a cracked windshield.\", \"valid_at\": \"2023-05-28T02:05:00Z\"}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795331300,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 272,
+      "prompt_tokens": 9996,
+      "total_tokens": 10268,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 162
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Trigger\", \"relation_type\": \"IS_MODEL_OF\", \"fact\": \"The Mustang is a model of the Trigger vehicle.\", \"valid_at\": \"2023-05-28T02:05:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Belmont Arts Center\", \"relation_type\": \"IS_SITED_AT\", \"fact\": \"The Mustang is located at Belmont Arts Center.\", \"valid_at\": \"2023-05-28T02:05:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"Riverside Park\", \"relation_type\": \"IS_SITED_AT\", \"fact\": \"The Mustang is located at Riverside Park.\", \"valid_at\": \"2023-05-28T02:05:00Z\"}, {\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"cracked windshield\", \"relation_type\": \"HAS_ATTRIBUTE\", \"fact\": \"The Mustang has a cracked windshield.\", \"valid_at\": \"2023-05-28T02:05:00Z\"}]}",
+  "seconds": 29.538575558006414,
+  "prompt_tokens_local_gemma_estimate": 10213
+}

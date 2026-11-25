@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 32
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "9b9f213ef621982d8e2ea3a07908cc9ab95a1c11acdbb1ce2210c073a358f215",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f91891c4-7bc0-4c21-be07-e1041522d8bc",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Pedigree\", \"target_entity_name\": \"hill's science diet\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"hill's science diet is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"royal canin\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"royal canin is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"orijen\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"orijen is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"acana\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"acana is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"blue buffalo\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"blue buffalo is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"wellness\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"wellness is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"taste of the wild\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"taste of the wild is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795345377,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 629,
+      "prompt_tokens": 6627,
+      "total_tokens": 7256,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 142
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Pedigree\", \"target_entity_name\": \"hill's science diet\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"hill's science diet is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"royal canin\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"royal canin is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"orijen\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"orijen is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"acana\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"acana is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"blue buffalo\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"blue buffalo is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"wellness\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"wellness is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}, {\"source_entity_name\": \"hill's science diet\", \"target_entity_name\": \"taste of the wild\", \"relation_type\": \"IS_RECOGNIZED_BY\", \"fact\": \"taste of the wild is a widely recognized high-quality pet food brand\", \"valid_at\": \"2023-05-28T10:34:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 429.1816000349936,
+  "prompt_tokens_local": 6627
+}

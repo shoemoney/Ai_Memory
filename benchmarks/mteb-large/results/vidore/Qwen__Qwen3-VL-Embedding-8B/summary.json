@@ -1,0 +1,50 @@
+{
+  "model": "Qwen/Qwen3-VL-Embedding-8B",
+  "revision": "2c4565515e0f265c6511776e7193b22c0968ddc7",
+  "dataset": "vidore/vidore_v3_hr_mteb_format",
+  "dataset_revision": "bc7d43d64815ed30f664168c8052106484aba7fd",
+  "license": "cc-by-4.0",
+  "n_queries": 318,
+  "n_corpus": 1110,
+  "ignored_qrels_for_other_query_ids": 8655,
+  "sampling": "All English HR test queries; all corpus pages",
+  "seed": 20261121,
+  "dtype": "bfloat16",
+  "execution": {
+    "engine": "MLX",
+    "compute_dtype": "bfloat16",
+    "bits": 4,
+    "group_size": 64,
+    "quantization": {
+      "method": "MLX affine, streaming CPU conversion, no calibration",
+      "vision": "bfloat16; not quantized"
+    },
+    "mlx_embeddings_version": "0.1.0",
+    "mlx_version": "0.32.4",
+    "quantizer_sha256": "c6eccbf503e0452d04ee4b3505a7334853d36e1e4958953556f2f6f40d1920f1",
+    "backend_sha256": "ee16bdc49a39e06055599bbaeedc983187f4eab840f7ec14073fbf1bafd3997b",
+    "backbone": "Qwen3 VL embedding backbone; unused language-model output head omitted",
+    "instructions_sha256": "73a24aac2ac7d2fa4839b5898019acbebd6af1b0c843cc809271c1cfe94cd05f"
+  },
+  "hardware": "Apple M3 Ultra, 96 GB",
+  "scoring": "exact cosine, pytrec_eval nDCG@5 and @10, graded qrels",
+  "elapsed_seconds": 2833.645138346008,
+  "timing_scope": "This resumed invocation only; cached embeddings can be reused. Not an end-to-end latency measurement.",
+  "encoded_this_invocation": 1416,
+  "reused_embeddings": 12,
+  "image_processing": "Qwen MTEB processor: max 1800 image tokens, 8192-token image sequence cap; queries 512 tokens",
+  "ndcg_cut_5": {
+    "mean": 0.5877099713892161,
+    "bootstrap_95_ci": [
+      0.5539179097714032,
+      0.6219572847972253
+    ]
+  },
+  "ndcg_cut_10": {
+    "mean": 0.6206938039429492,
+    "bootstrap_95_ci": [
+      0.5895169818269322,
+      0.6520365086855593
+    ]
+  }
+}

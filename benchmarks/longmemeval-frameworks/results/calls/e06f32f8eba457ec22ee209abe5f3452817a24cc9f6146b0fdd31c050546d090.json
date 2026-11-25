@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 51
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "5859a719d6b8cbe2af4d5c60984ab8127141f4a4fa4e02593eb1a6dfc414157c",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-e4738ce3-8f5b-44b8-9be6-324389cda955",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"It is fascinating to think about how their ideas are still relevant today\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Social media companies should invest more resources into measures such as developing algorithms that proactively detect and flag harmful content\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Enjoyed the lyrical themes explored in 'That's Why' by Michael Ray\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Exploring more options for similar blends of sci-fi and action elements\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Exploring more options for similar blends of sci-fi and action elements\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Believes music should focus on delivering a message or emotion to its audience, not on experimentation and deconstruction\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Believes music should focus on experimentation and deconstruction, not on delivering a message or emotion to its audience\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366621,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 279,
+      "prompt_tokens": 1738,
+      "total_tokens": 2017,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"It is fascinating to think about how their ideas are still relevant today\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Social media companies should invest more resources into measures such as developing algorithms that proactively detect and flag harmful content\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Enjoyed the lyrical themes explored in 'That's Why' by Michael Ray\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Exploring more options for similar blends of sci-fi and action elements\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Exploring more options for similar blends of sci-fi and action elements\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"Believes music should focus on delivering a message or emotion to its audience, not on experimentation and deconstruction\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Believes music should focus on experimentation and deconstruction, not on delivering a message or emotion to its audience\"\n        }\n    ]\n}",
+  "seconds": 23.644914762990084,
+  "prompt_tokens_local": 1738
+}

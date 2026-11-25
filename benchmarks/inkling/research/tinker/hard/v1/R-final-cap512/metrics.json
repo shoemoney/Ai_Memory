@@ -1,0 +1,23 @@
+{
+  "checkpoint": "tinker://<run>/sampler_weights/final",
+  "data": "$STUDY_DIR/hard/v1.jsonl",
+  "data_sha256": "d145ecd48802c8511e0621d11505edd11c8657ec2a8673edd6b137a87ce37cf2",
+  "metrics": {
+    "exact_match": 0.6861111111111111,
+    "parse_clean": 0.6888888888888889,
+    "per_kind": {
+      "revision": 1.0,
+      "historical": 0.9833333333333333,
+      "join": 0.31666666666666665,
+      "date_order": 0.8666666666666667,
+      "date_interval": 0.0,
+      "missing": 0.95
+    },
+    "prompt_tokens": 1212983,
+    "sample_tokens": 127944,
+    "mean_sample_tokens": 355.4,
+    "effort": 0.0,
+    "max_tokens": 512,
+    "estimated_sampling_usd": 0.24591944999999998
+  }
+}

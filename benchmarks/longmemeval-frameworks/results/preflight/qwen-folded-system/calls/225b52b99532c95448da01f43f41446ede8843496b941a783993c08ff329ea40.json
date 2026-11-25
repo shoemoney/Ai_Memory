@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 48
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "0eced10db8e93f45e05bba9f203dd9750fd556b424cc305d9546a5aa6150cf54",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-45edbc8a-cd48-45cd-b954-8f66a9a7657e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Amazon Cockatoo, a proposed reading comprehension app for children, has a bright future ahead. The app focuses on continuously improving and expanding its features, reaching a wider audience of parents and educators, and integrating into school curricula. Collaboration with schools and literacy organizations, gathering feedback from parents, educators, and children, and monitoring security measures are planned for the future. The long-term goal is to become the leading reading comprehension app for children, providing a valuable resource for parents and educators to help children succeed in reading.\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330417,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 109,
+      "prompt_tokens": 1130,
+      "total_tokens": 1239,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Amazon Cockatoo, a proposed reading comprehension app for children, has a bright future ahead. The app focuses on continuously improving and expanding its features, reaching a wider audience of parents and educators, and integrating into school curricula. Collaboration with schools and literacy organizations, gathering feedback from parents, educators, and children, and monitoring security measures are planned for the future. The long-term goal is to become the leading reading comprehension app for children, providing a valuable resource for parents and educators to help children succeed in reading.\"]}",
+  "seconds": 1.6280631499976153,
+  "prompt_tokens_local_gemma_estimate": 1150
+}

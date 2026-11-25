@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "58f8be5c95148369a58eb8ad51f0018206fdf7a5b241c5ee48e8fdc5650e3875",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0c88418f-aee5-44be-adc0-38a73200c550",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Yoga Tree Shimokitazawa\", \"entity_type_id\": 1, \"episode_indices\": [10]}, {\"name\": \"Yoga for Foreigners\", \"entity_type_id\": 1, \"episode_indices\": [10]}, {\"name\": \"Yoga Tree Shimokitazawa\", \"entity_type_id\": 1, \"episode_indices\": [10]}, {\"name\": \"Yoga Room Shimokitazawa\", \"entity_type_id\": 1, \"episode_indices\": [10]}, {\"name\": \"Bikram Yoga Shimokitazawa\", \"entity_type_id\": 1, \"episode_indices\": [10]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795369457,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 146,
+      "prompt_tokens": 7032,
+      "total_tokens": 7178,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 702
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Yoga Tree Shimokitazawa\", \"entity_type_id\": 1, \"episode_indices\": [10]}, {\"name\": \"Yoga for Foreigners\", \"entity_type_id\": 1, \"episode_indices\": [10]}, {\"name\": \"Yoga Tree Shimokitazawa\", \"entity_type_id\": 1, \"episode_indices\": [10]}, {\"name\": \"Yoga Room Shimokitazawa\", \"entity_type_id\": 1, \"episode_indices\": [10]}, {\"name\": \"Bikram Yoga Shimokitazawa\", \"entity_type_id\": 1, \"episode_indices\": [10]}]}",
+  "seconds": 88.17291996398126,
+  "prompt_tokens_local": 7032
+}

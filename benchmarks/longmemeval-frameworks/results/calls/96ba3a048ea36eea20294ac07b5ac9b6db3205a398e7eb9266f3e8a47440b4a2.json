@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 23
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "83dbadcedd3c6c85433bb39cb4ea4e3e5c6f6e631c300733a6958e610f6e6294",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-3a549816-eec7-450c-aa3e-b290579b802d",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Noted recent mergers and acquisitions in the hospitality industry such as AccorHotels acquiring Orbis, IHG acquiring Six Senses Hotels Resorts Spas, Marriott International acquiring Elegant Hotels Group, and AccorHotels acquiring sbe Entertainment Group.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355307,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 62,
+      "prompt_tokens": 2672,
+      "total_tokens": 2734,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Noted recent mergers and acquisitions in the hospitality industry such as AccorHotels acquiring Orbis, IHG acquiring Six Senses Hotels Resorts Spas, Marriott International acquiring Elegant Hotels Group, and AccorHotels acquiring sbe Entertainment Group.\"\n    ]\n}",
+  "seconds": 13.019164797005942,
+  "prompt_tokens_local": 2672
+}

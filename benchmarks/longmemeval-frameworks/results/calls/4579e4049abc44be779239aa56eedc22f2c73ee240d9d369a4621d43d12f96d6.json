@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 21
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "8494430345e419b774c8d4aa7f223188080c68018bbe8dc5a7457009c1ce4b0d",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-f678412a-86ed-4305-902f-946ff265202a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Independent labels have a significant impact on the music industry and are more innovative and artist-friendly than major labels.\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Independent labels have a significant impact on the music industry and are more innovative and artist-friendly than major labels.\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Sub Pop, XL Recordings, Warp Records, and 4AD are examples of successful independent music labels.\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Sub Pop, XL Recordings, Warp Records, and 4AD are examples of successful independent music labels.\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Independent labels offer more flexibility and artist-friendly contracts, allowing them to take creative risks and support up-and-coming talent.\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Independent labels offer more flexibility and artist-friendly contracts, allowing them to take creative risks and support up-and-coming talent.\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"The rise of independent labels is expected to continue shaping the music industry due to the popularity of streaming services and the DIY ethos of independent labels.\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"The rise of independent labels is expected to continue shaping the music industry due to the popularity of streaming services and the DIY ethos of independent labels.\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332024,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 316,
+      "prompt_tokens": 1948,
+      "total_tokens": 2264,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Independent labels have a significant impact on the music industry and are more innovative and artist-friendly than major labels.\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Independent labels have a significant impact on the music industry and are more innovative and artist-friendly than major labels.\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"Sub Pop, XL Recordings, Warp Records, and 4AD are examples of successful independent music labels.\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Sub Pop, XL Recordings, Warp Records, and 4AD are examples of successful independent music labels.\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Independent labels offer more flexibility and artist-friendly contracts, allowing them to take creative risks and support up-and-coming talent.\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"Independent labels offer more flexibility and artist-friendly contracts, allowing them to take creative risks and support up-and-coming talent.\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"The rise of independent labels is expected to continue shaping the music industry due to the popularity of streaming services and the DIY ethos of independent labels.\",\n            \"event\": \"UPDATE\",\n            \"old_memory\": \"The rise of independent labels is expected to continue shaping the music industry due to the popularity of streaming services and the DIY ethos of independent labels.\"\n        }\n    ]\n}",
+  "seconds": 4.168909685991821,
+  "prompt_tokens_local": 1948,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

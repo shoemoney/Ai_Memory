@@ -1,0 +1,411 @@
+{
+  "id": "parallel_89",
+  "category": "parallel",
+  "result": [
+    {
+      "get_directions": "{\"start_location\":\"San Francisco home\",\"end_location\":\"Palo Alto office\",\"route_type\":\"fastest\"}"
+    },
+    {
+      "get_directions": "{\"start_location\":\"Palo Alto\",\"end_location\":\"Golden Gate Bridge in San Francisco\",\"route_type\":\"scenic\"}"
+    },
+    {
+      "get_directions": "{\"start_location\":\"Golden Gate Bridge in San Francisco\",\"end_location\":\"San Francisco home\",\"route_type\":\"fastest\"}"
+    }
+  ],
+  "metadata": {
+    "inference_log": [
+      {
+        "role": "inference_input",
+        "content": {
+          "message": "[{'role': 'user', 'content': 'Can you provide me with the fastest route from my home in San Francisco to my office in Palo Alto and then a scenic route from Palo Alto to the Golden Gate Bridge in San Francisco, and finally the fastest route back to my home from the Golden Gate Bridge?'}]",
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "get_directions",
+                "description": "Retrieve directions from one location to another.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "start_location": {
+                      "type": "string",
+                      "description": "The starting point of the journey."
+                    },
+                    "end_location": {
+                      "type": "string",
+                      "description": "The destination point of the journey."
+                    },
+                    "route_type": {
+                      "type": "string",
+                      "description": "Type of route to use (e.g., fastest, scenic). Default is fastest.",
+                      "enum": [
+                        "fastest",
+                        "scenic"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "start_location",
+                    "end_location"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "input_token_count": 404,
+    "output_token_count": 423,
+    "latency": 2.254485877994739
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can you provide me with the fastest route from my home in San Francisco to my office in Palo Alto and then a scenic route from Palo Alto to the Golden Gate Bridge in San Francisco, and finally the fastest route back to my home from the Golden Gate Bridge?"
+      }
+    ],
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "temperature": 0,
+    "store": false,
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_directions",
+          "description": "Retrieve directions from one location to another.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "start_location": {
+                "type": "string",
+                "description": "The starting point of the journey."
+              },
+              "end_location": {
+                "type": "string",
+                "description": "The destination point of the journey."
+              },
+              "route_type": {
+                "type": "string",
+                "description": "Type of route to use (e.g., fastest, scenic). Default is fastest.",
+                "enum": [
+                  "fastest",
+                  "scenic"
+                ]
+              }
+            },
+            "required": [
+              "start_location",
+              "end_location"
+            ]
+          }
+        }
+      }
+    ],
+    "max_tokens": 4096,
+    "seed": 20261121,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
+  },
+  "response": {
+    "id": "chatcmpl-IYhAyVZhLE4NPmgTRJ3BFb15JPpnmHZ6",
+    "choices": [
+      {
+        "finish_reason": "tool_calls",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [
+            {
+              "id": "URMVVOwe9jRpMT3qz9s0s2dk2SEpXlgY",
+              "function": {
+                "arguments": "{\"start_location\":\"San Francisco home\",\"end_location\":\"Palo Alto office\",\"route_type\":\"fastest\"}",
+                "name": "get_directions"
+              },
+              "type": "function"
+            },
+            {
+              "id": "pi2kDSpojIX0BEYZVKVCjWQMqwEjEujV",
+              "function": {
+                "arguments": "{\"start_location\":\"Palo Alto\",\"end_location\":\"Golden Gate Bridge in San Francisco\",\"route_type\":\"scenic\"}",
+                "name": "get_directions"
+              },
+              "type": "function"
+            },
+            {
+              "id": "GLwz8JOkmyXDWKyk0THbuTdVI2CKxlno",
+              "function": {
+                "arguments": "{\"start_location\":\"Golden Gate Bridge in San Francisco\",\"end_location\":\"San Francisco home\",\"route_type\":\"fastest\"}",
+                "name": "get_directions"
+              },
+              "type": "function"
+            }
+          ],
+          "reasoning_content": "The user is asking for multiple directions:\n1. From San Francisco home to Palo Alto office (fastest route)\n2. From Palo Alto to Golden Gate Bridge in San Francisco (scenic route)\n3. From Golden Gate Bridge back to San Francisco home (fastest route)\n\nI need to use the get_directions function for each leg of the journey. However, I notice that the user hasn't provided specific addresses or locations. They've given me general locations:\n- San Francisco home\n- Palo Alto office\n- Golden Gate Bridge in San Francisco\n\nFor the get_directions function, I need start_location and end_location parameters. Since the user hasn't provided specific addresses, I'll use the general location names they've provided.\n\nLet me make three separate function calls:\n1. San Francisco home to Palo Alto office (fastest route)\n2. Palo Alto to Golden Gate Bridge in San Francisco (scenic route)\n3. Golden Gate Bridge in San Francisco to San Francisco home (fastest route)\n\nI'll use the default route_type of \"fastest\" for the first and third requests, and \"scenic\" for the second request."
+        }
+      }
+    ],
+    "created": 1795286730,
+    "model": "Qwen3.5-2B-Q4_K_M",
+    "object": "chat.completion",
+    "metadata": null,
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": "b12359-b1b770d90",
+    "usage": {
+      "completion_tokens": 423,
+      "prompt_tokens": 404,
+      "total_tokens": 827,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 402,
+        "image_tokens": null,
+        "text_tokens": null
+      }
+    },
+    "timings": {
+      "cache_n": 402,
+      "prompt_n": 2,
+      "prompt_ms": 9.191,
+      "prompt_per_token_ms": 4.5955,
+      "prompt_per_second": 217.6041780002176,
+      "predicted_n": 423,
+      "predicted_ms": 2234.422,
+      "predicted_per_token_ms": 5.294838862559242,
+      "predicted_per_second": 188.863160137163
+    }
+  },
+  "elapsed_seconds": 2.2545649309977307,
+  "score": {
+    "id": "parallel_89",
+    "model_name": "local-subset-FC",
+    "test_category": "parallel",
+    "valid": false,
+    "error": [
+      "Could not find a matching function among index [0, 1, 2] of model output for index 0 of possible answers.",
+      {
+        "Model Result Index 0": {
+          "sub_error": [
+            "Invalid value for parameter 'start_location': 'San Francisco home'. Expected one of ['San Francisco', 'SF']. Case insensitive."
+          ],
+          "sub_error_type": "value_error:string",
+          "model_output_item": {
+            "get_directions": {
+              "start_location": "San Francisco home",
+              "end_location": "Palo Alto office",
+              "route_type": "fastest"
+            }
+          },
+          "possible_answer_item": {
+            "get_directions": {
+              "start_location": [
+                "San Francisco",
+                "SF"
+              ],
+              "end_location": [
+                "Palo Alto"
+              ],
+              "route_type": [
+                "fastest"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "Model Result Index 1": {
+          "sub_error": [
+            "Invalid value for parameter 'start_location': 'Palo Alto'. Expected one of ['San Francisco', 'SF']. Case insensitive."
+          ],
+          "sub_error_type": "value_error:string",
+          "model_output_item": {
+            "get_directions": {
+              "start_location": "Palo Alto",
+              "end_location": "Golden Gate Bridge in San Francisco",
+              "route_type": "scenic"
+            }
+          },
+          "possible_answer_item": {
+            "get_directions": {
+              "start_location": [
+                "San Francisco",
+                "SF"
+              ],
+              "end_location": [
+                "Palo Alto"
+              ],
+              "route_type": [
+                "fastest"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "Model Result Index 2": {
+          "sub_error": [
+            "Invalid value for parameter 'start_location': 'Golden Gate Bridge in San Francisco'. Expected one of ['San Francisco', 'SF']. Case insensitive."
+          ],
+          "sub_error_type": "value_error:string",
+          "model_output_item": {
+            "get_directions": {
+              "start_location": "Golden Gate Bridge in San Francisco",
+              "end_location": "San Francisco home",
+              "route_type": "fastest"
+            }
+          },
+          "possible_answer_item": {
+            "get_directions": {
+              "start_location": [
+                "San Francisco",
+                "SF"
+              ],
+              "end_location": [
+                "Palo Alto"
+              ],
+              "route_type": [
+                "fastest"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "error_type": "parallel_function_checker_no_order:cannot_find_match",
+    "prompt": {
+      "id": "parallel_89",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Can you provide me with the fastest route from my home in San Francisco to my office in Palo Alto and then a scenic route from Palo Alto to the Golden Gate Bridge in San Francisco, and finally the fastest route back to my home from the Golden Gate Bridge?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_directions",
+          "description": "Retrieve directions from one location to another.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "start_location": {
+                "type": "string",
+                "description": "The starting point of the journey."
+              },
+              "end_location": {
+                "type": "string",
+                "description": "The destination point of the journey."
+              },
+              "route_type": {
+                "type": "string",
+                "description": "Type of route to use (e.g., fastest, scenic). Default is fastest.",
+                "enum": [
+                  "fastest",
+                  "scenic"
+                ]
+              }
+            },
+            "required": [
+              "start_location",
+              "end_location"
+            ]
+          }
+        }
+      ]
+    },
+    "model_result_raw": [
+      {
+        "get_directions": "{\"start_location\":\"San Francisco home\",\"end_location\":\"Palo Alto office\",\"route_type\":\"fastest\"}"
+      },
+      {
+        "get_directions": "{\"start_location\":\"Palo Alto\",\"end_location\":\"Golden Gate Bridge in San Francisco\",\"route_type\":\"scenic\"}"
+      },
+      {
+        "get_directions": "{\"start_location\":\"Golden Gate Bridge in San Francisco\",\"end_location\":\"San Francisco home\",\"route_type\":\"fastest\"}"
+      }
+    ],
+    "model_result_decoded": [
+      {
+        "get_directions": {
+          "start_location": "San Francisco home",
+          "end_location": "Palo Alto office",
+          "route_type": "fastest"
+        }
+      },
+      {
+        "get_directions": {
+          "start_location": "Palo Alto",
+          "end_location": "Golden Gate Bridge in San Francisco",
+          "route_type": "scenic"
+        }
+      },
+      {
+        "get_directions": {
+          "start_location": "Golden Gate Bridge in San Francisco",
+          "end_location": "San Francisco home",
+          "route_type": "fastest"
+        }
+      }
+    ],
+    "possible_answer": [
+      {
+        "get_directions": {
+          "start_location": [
+            "San Francisco",
+            "SF"
+          ],
+          "end_location": [
+            "Palo Alto"
+          ],
+          "route_type": [
+            "fastest"
+          ]
+        }
+      },
+      {
+        "get_directions": {
+          "start_location": [
+            "Palo Alto"
+          ],
+          "end_location": [
+            "Golden Gate Bridge in San Francisco",
+            "Golden Gate Bridge, San Francisco",
+            "Golden Gate Bridge"
+          ],
+          "route_type": [
+            "scenic"
+          ]
+        }
+      },
+      {
+        "get_directions": {
+          "start_location": [
+            "Golden Gate Bridge in San Francisco",
+            "Golden Gate Bridge, San Francisco",
+            "Golden Gate Bridge"
+          ],
+          "end_location": [
+            "San Francisco",
+            "SF"
+          ],
+          "route_type": [
+            "fastest"
+          ]
+        }
+      }
+    ]
+  }
+}

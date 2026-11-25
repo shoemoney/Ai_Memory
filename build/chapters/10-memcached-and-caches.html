@@ -1,0 +1,573 @@
+<article class="chapter" data-ch="10" data-part="d" data-running="Memcached and the cache layer">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part D &middot; Chapter 10</p>
+  <div class="opener-num" aria-hidden="true">10</div>
+  <h1>Memcached and the cache layer</h1>
+  <p class="opener-summary">A cache keeps recomputable answers, vectors and prefixes so an agent can reuse work.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">1 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r1" role="img" aria-label="1 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">1 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Agent apps that repeat prompts, embeddings or tool calls, with a durable store behind them.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">Agents repeat prompts, embeddings and document reads. A cache provides fast, disposable copies, avoiding repeat costs. Memcached stores these copies under keys, in RAM by default, until expiry or eviction.<sup class="cite"><a href="#s10-1">1</a></sup><sup class="cite"><a href="#s10-2">2</a></sup></p>
+  <p>Keep facts elsewhere. This chapter covers Memcached, response, semantic, embedding and tool-result caches, provider prompt caching and local inference-level reuse.</p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>Prompt prefix</dt><dd>A prompt’s start; requests share one when their first tokens match.</dd>
+    <dt>KV cache</dt><dd>Attention keys and values for a prompt, unrelated to key-value stores. Reuse skips re-reading the prefix.</dd>
+    <dt>Semantic cache</dt><dd>Matches questions by meaning, not exact text.</dd>
+    <dt>Cache key, authorization scope</dt><dd>A key names a stored value; authorization scope identifies who may reuse it.</dd>
+    <dt>Cache control</dt><dd>A provider marker or option selecting prompt blocks for reuse.</dd>
+    <dt>Slab class, CAS</dt><dd>Memcached pools similar-sized items in slab classes and evicts within each. CAS (compare-and-swap) uses a token from a versioned read; writes with stale tokens fail.</dd>
+    <dt>Hit, miss, TTL, eviction</dt><dd>A hit finds a usable entry; a miss does not. TTL limits serving time; eviction drops entries early for space (Chapter 09).</dd>
+  </dl>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p>Applications manage Figure 1’s first four layers. Memcached serves exact-key lookups; semantic lookup needs a vector-capable store such as Redis. Providers or inference servers manage the last two.</p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 320" role="img" aria-label="Diagram: an agent loop passes through four caches you run, then reaches a hosted API with provider prompt caching or a local server with KV reuse.">
+  <text class="d-label" x="20" y="22">Agent</text>
+  <rect class="d-box dark" x="20" y="120" width="100" height="100" rx="4"/>
+  <text class="d-title d-on-dark" x="70" y="164" text-anchor="middle">Agent loop</text>
+  <text class="d-sub d-on-dark" x="70" y="182" text-anchor="middle">builds prompt</text>
+
+  <text class="d-label" x="170" y="22">Caches you run</text>
+  <rect class="d-zone" x="170" y="30" width="230" height="280" rx="6"/>
+  <rect class="d-box accent" x="185" y="44" width="200" height="56" rx="4"/>
+  <text class="d-title" x="285" y="68" text-anchor="middle">Exact-match response</text>
+  <text class="d-sub" x="285" y="86" text-anchor="middle">hash of model, prompt, scope</text>
+  <rect class="d-box accent" x="185" y="112" width="200" height="56" rx="4"/>
+  <text class="d-title" x="285" y="136" text-anchor="middle">Semantic cache</text>
+  <text class="d-sub" x="285" y="154" text-anchor="middle">nearest earlier question</text>
+  <rect class="d-box accent" x="185" y="180" width="200" height="56" rx="4"/>
+  <text class="d-title" x="285" y="204" text-anchor="middle">Embedding cache</text>
+  <text class="d-sub" x="285" y="222" text-anchor="middle">vector by model and text</text>
+  <rect class="d-box accent" x="185" y="248" width="200" height="50" rx="4"/>
+  <text class="d-title" x="285" y="270" text-anchor="middle">Tool-result cache</text>
+  <text class="d-sub" x="285" y="287" text-anchor="middle">tool, arguments, scope</text>
+
+  <text class="d-label" x="450" y="22">Hosted API</text>
+  <rect class="d-box" x="450" y="30" width="130" height="110" rx="4"/>
+  <text class="d-title" x="515" y="66" text-anchor="middle">Provider</text>
+  <text class="d-title" x="515" y="82" text-anchor="middle">prompt cache</text>
+  <text class="d-sub" x="515" y="104" text-anchor="middle">repeated prefix</text>
+  <text class="d-sub" x="515" y="118" text-anchor="middle">billed lower</text>
+
+  <text class="d-label" x="450" y="170">Local server</text>
+  <rect class="d-box" x="450" y="178" width="130" height="132" rx="4"/>
+  <text class="d-title" x="515" y="214" text-anchor="middle">Prefix and</text>
+  <text class="d-title" x="515" y="230" text-anchor="middle">KV reuse</text>
+  <text class="d-sub" x="515" y="252" text-anchor="middle">llama.cpp slots,</text>
+  <text class="d-sub" x="515" y="266" text-anchor="middle">vLLM, LM Studio,</text>
+  <text class="d-sub" x="515" y="280" text-anchor="middle">oMLX</text>
+
+  <path class="d-line" d="M120 170 H168"/>
+  <path class="d-line accent dash" d="M400 90 H448"/>
+  <path class="d-line accent dash" d="M400 240 H448"/>
+</svg>
+<figcaption><b>Figure 1.</b> On a miss, fetch the tool result, compute the embedding or generate the answer. Only generation uses the prompt-prefix caching shown.</figcaption>
+</figure>
+
+<h3>The six layers</h3>
+<table class="data">
+  <colgroup><col class="c25"><col class="c45"><col class="c30"></colgroup>
+  <thead><tr><th>Layer</th><th>What it stores and matches on</th><th>Lifetime guidance</th></tr></thead>
+  <tbody>
+    <tr><td>Exact-match response cache</td><td>A finished answer keyed by hashed model, parameters, prompt, authorization scope and data version.</td><td>Minutes to hours. Bump the data version on write.</td></tr>
+    <tr><td>Semantic cache</td><td>An answer matched by question embedding within a distance threshold (lower is stricter). Examples: GPTCache,<sup class="cite"><a href="#s10-4">4</a></sup> RedisVL,<sup class="cite"><a href="#s10-5">5</a></sup> Redis,<sup class="cite"><a href="#s10-6">6</a></sup> Amazon ElastiCache.<sup class="cite"><a href="#s10-7">7</a></sup></td><td>Short, and only after hit precision is measured.</td></tr>
+    <tr><td>Embedding cache</td><td>A vector, keyed by pinned model revision, preprocessing settings and text hash.</td><td>Long or none. Changing any of these changes the key.</td></tr>
+    <tr><td>Tool-result cache</td><td>Read-only tool output keyed by tool, arguments and authorization scope.</td><td>Bound the TTL by permitted staleness. Cache user-dependent reads only with authorization scope and data version in the key.</td></tr>
+    <tr><td>Provider prompt cache</td><td>Provider-held state for a repeated prefix, excluding answers; re-reads cost less.</td><td>Anthropic’s documented default: 5-minute retention. Prices and thresholds under Numbers.<sup class="cite"><a href="#s10-8">8</a></sup></td></tr>
+    <tr><td>Inference-level reuse</td><td>The engine keeps or restores prompt-prefix KV state.</td><td>Until the engine evicts it or the file is deleted.</td></tr>
+  </tbody>
+</table>
+
+<h3>Memcached keys and defaults</h3>
+<p>Memcached stores opaque bytes under keys. <code>set</code> writes a value and <code>get</code> reads it back. It has no data structures or vector search. Keys are limited to 250 bytes, and the protocol forbids whitespace and control characters.</p>
+<p>Hash prompts, validate keys client-side and avoid tabs/control bytes even if accepted.<sup class="cite"><a href="#s10-1">1</a></sup></p>
+
+<h3>Flash, restart and expiry are cache features</h3>
+<ul>
+  <li><strong>Extstore</strong> moves colder values to flash and keeps keys and the hash table in RAM.<sup class="cite"><a href="#s10-19">19</a></sup></li>
+  <li><strong>Warm restart</strong> keeps items in a memory-mapped file, recording metadata at graceful shutdown. It requires a stable clock; missed sets/deletes during restart can leave stale entries. The cache starts empty if -m, -I, slab chunk sizes, -C (CAS) or slab reassignment differ from the previous run. Extstore is documented as incompatible.<sup class="cite"><a href="#s10-3">3</a></sup></li>
+  <li><strong>Expiry</strong> up to 2,592,000 seconds (30 days) is relative; larger values are Unix timestamps. Eviction reclaims least-recently-used items within each slab class; watch the per-class evicted counters before raising memory.<sup class="cite"><a href="#s10-1">1</a></sup><sup class="cite"><a href="#s10-2">2</a></sup></li>
+</ul>
+
+<h3>Local servers</h3>
+
+<ul>
+  <li><strong>llama.cpp server:</strong> <code>--slot-save-path</code> plus <code>POST /slots/{id}?action=save</code> or <code>restore</code> saves or restores a slot’s KV state (one server-side conversation context).<sup class="cite"><a href="#s10-14">14</a></sup> Saved prompts are readable; treat files as sensitive.</li>
+  <li><strong>LM Studio MLX engine:</strong> loads previously seen prompt KV state from disk; see the cited configuration guide.<sup class="cite"><a href="#s10-15">15</a></sup></li>
+  <li><strong>oMLX:</strong> persists KV cache blocks to SSD; see its configuration guide (checked 20 November 2026).<sup class="cite"><a href="#s10-16">16</a></sup></li>
+  <li><strong>vLLM:</strong> reuses matching prompt-prefix KV state to cut prompt-processing work.<sup class="cite"><a href="#s10-17">17</a></sup></li>
+  <li><strong>LMCache (repository checked 20 November 2026):</strong> a self-run, Apache-2.0 layer that offloads KV state from GPU memory to CPU RAM, local disk or remote backends and shares it across requests and engines. It saves prompt-processing work, not provider billing.<sup class="cite"><a href="#s10-18">18</a></sup></li>
+</ul>
+
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>Identical requests permitting replay: FAQ questions from, or normalised to, a fixed list. Repeating templates around changing records suit provider prompt caching.</li>
+      <li>Embedding the same text repeatedly: re-indexing, retries, repeated chunks.</li>
+      <li>Read-only tool calls repeated within a short window.</li>
+      <li>Cheap shared caching across app servers already running Memcached.</li>
+      <li>Long stable system prompts or document prefixes, through provider prompt caching.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>Agent memory: facts about a user, decisions, task state. Use a durable store (Chapter 08; Chapter 11 for embedding retrieval).</li>
+      <li>Answers that depend on per-user state when the key cannot carry that scope.</li>
+      <li>Matching by meaning: Memcached alone has no vector search. Use RedisVL or GPTCache with strict thresholds.</li>
+      <li>Medical, legal or financial actions where a stale hit does harm.</li>
+      <li>Persistence, data structures or queue semantics. Use Redis or Valkey.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>FAQ bot with repeated questions</h3>
+  <dl>
+    <dt>Situation</dt><dd>A support bot pays per model call for a few hundred recurring questions through one template.</dd>
+    <dt>Why it fits</dt><dd>An exact-match response cache uses the layers-table key with fixed public scope and FAQ version as data version. Each repeat needs one <code>get</code> for a listed or normalised question; hashing keeps keys under the 250-byte limit.<sup class="cite"><a href="#s10-1">1</a></sup></dd>
+    <dt>Pair with</dt><dd>A minutes-to-hours TTL; bump the data version when answers change. Skip it for questions that depend on the signed-in user.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>Re-ingesting a document library</h3>
+  <dl>
+    <dt>Situation</dt><dd>A nightly job re-embeds all 20,000 chunks though few changed.</dd>
+    <dt>Why it fits</dt><dd>For repeatable embeddings, store vectors by text hash, pinned model revision and preprocessing settings. Only new or edited chunks need embedding (figures under Numbers).</dd>
+    <dt>Pair with</dt><dd>A vector-store index (Chapter 11). Flushing the cache forces re-embedding.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Agent that keeps calling a read-only tool</h3>
+  <dl>
+    <dt>Situation</dt><dd>A research agent repeatedly fetches slow or rate-limited exchange rates or documentation each hour.</dd>
+    <dt>Why it fits</dt><dd>Key tool results by tool name, arguments and authorization scope. Set TTL to accepted staleness: minutes for exchange rates, hours for documentation.</dd>
+    <dt>Pair with</dt><dd>State-dependent read keys require authorization scope and relevant data version. Keep the authoritative copy elsewhere. Never cache state-changing calls; a write must bump the changed data’s version.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">4</span>Long system prompt on a hosted model</h3>
+  <dl>
+    <dt>Situation</dt><dd>A coding agent’s repeated long instructions and tool definitions dominate its input bill.</dd>
+    <dt>Why it fits</dt><dd>Anthropic bills a cached prefix at a fraction of base input, from 0.025x for Fable/Mythos 5.2 to 0.1x for Haiku 5.5 (per-model prices are on the pricing page).<sup class="cite"><a href="#s10-8">8</a></sup> Memcached is not involved.</dd>
+    <dt>Pair with</dt><dd>Usage fields cache_read_input_tokens and cache_creation_input_tokens; nonzero reads on the second call confirm reuse.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">5</span>Local agent on llama.cpp with a big prefix</h3>
+  <dl>
+    <dt>Situation</dt><dd>A local agent reloads a large prompt each session, delaying its first answer.</dd>
+    <dt>Why it fits</dt><dd>llama.cpp can save a slot's KV state to disk and restore it, reusing a compatible prefix. Check <code>timings.cache_n</code> and <code>prompt_n</code> to confirm the reuse, and time it on your hardware.<sup class="cite"><a href="#s10-14">14</a></sup></dd>
+    <dt>Pair with</dt><dd>Restricted permissions on the save folder.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">6</span>Pilot of a semantic cache</h3>
+  <dl>
+    <dt>Situation</dt><dd>Support teams want paraphrased questions to share answers, but "Cancel my order" and "cancel my subscription" must not.</dd>
+    <dt>Why it fits</dt><dd>RedisVL’s <code>SemanticCache</code> separates near matches with a distance threshold, TTL and metadata filters.<sup class="cite"><a href="#s10-5">5</a></sup></dd>
+    <dt>Pair with</dt><dd>Hit precision measured on real logs before launch.</dd>
+  </dl>
+</article>
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<h3>Memcached limits: tested here, 20 November 2026</h3>
+<p>Companion benchmarks/stores tests: Memcached 1.6.45, shared x86, ZFS backing files, 2-CPU/3-GiB caps per server and client. Walkthrough machines differed; its header gives stack and date.</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>1.6.45</td><td>Pinned release tested here; release notes dated 9 July 2026.<sup class="cite"><a href="#s10-20">20</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>250 bytes</td><td>Longest key. Raw TCP accepted 249 and 250 bytes, a tab and byte 0x01; it rejected an embedded space and a 251-byte key.<sup class="cite"><a href="#s10-1">1</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+    <tr><td>1,048,577 bytes</td><td>One byte over 1 MiB. The cap includes header, key and value; even values just under 1 MiB can fail. The default server returned "object too large for cache"; a server with <code>-I 2m</code> accepted it.</td><td class="src"><span class="pill example">Tested 2026-11-20</span></td></tr>
+
+  </tbody>
+</table>
+
+<table class="data">
+  <colgroup><col class="c20"><col class="c30"><col class="c30"><col class="c20"></colgroup>
+  <thead><tr><th>Feature</th><th>Tested here</th><th>Result</th><th>Takeaway or limit</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Extstore</strong></td><td>10,000 writes of 8 KiB with confirmed external writes, then a restart.</td><td>The restart lost the cache index.</td><td>Disk I/O buys capacity, not durability.</td></tr>
+    <tr><td><strong>Warm restart</strong></td><td>Graceful and SIGKILL restarts with -e alone; separately, startup with -e and -o ext_path together.</td><td>Graceful shutdown with SIGUSR1 retained 100/100 values; SIGKILL emptied the cache (0/100). Both startup options were accepted.</td><td>Power loss and combined-option recovery are untested. Do not combine the documented incompatible options; neither provides durability.</td></tr>
+    <tr><td><strong>Expiry</strong></td><td>Five expiry cases, then 20,000 values of 8 KiB loaded into 64 MiB.</td><td>Zero expiry, 30 days and an absolute 31-day timestamp retained values; a relative 31 days exceeded the relative cap, was read as a past timestamp and was absent at once; one second expired. The load evicted items.</td><td>Zero prevents time expiry but not eviction.</td></tr>
+  </tbody>
+</table>
+
+<h3>Local reuse timings</h3>
+<p>Supplemental verification after the research cutoff, 23 November 2026: llama.cpp b12464, CPU only, two threads, Qwen2.5-0.5B Q4_K_M. A saved 889-token slot reused 888 tokens and processed one after restart. Three fresh-process pairs gave median time to first streamed token of about 2.6 s cold, 26 ms restored, or 30 ms including restore. Model startup and initial slot save are excluded. Shared-hardware timings do not predict other workloads; other engines were untested.</p>
+
+<h3>Provider prompt caching: documented, untested, checked 20 November 2026</h3>
+<p>Provider-documented thresholds, prices and retention, including the layers-table default, are untested. Prices: standard paid API input USD per million tokens, excluding output, tax, batch discounts and residency uplifts. Write prices are multiples of base input price (5m is 5 minutes, 1h one hour); cache control marks which prefix blocks may be cached.</p>
+<table class="data">
+<colgroup><col class="c20"><col class="c25"><col class="c30"><col class="c25"></colgroup>
+<thead><tr><th>Provider / model family</th><th>Minimum prefix</th><th>Hit price examples</th><th>Write / retention</th></tr></thead>
+<tbody>
+<tr><td>Anthropic (named models only)</td><td>512 tokens: Fable/Mythos 5.2, Opus/Sonnet/Haiku 5.5.</td><td>Opus $0.20; Sonnet $0.10; Haiku $0.01 (Haiku base rate up to 100K prompt tokens).</td><td>1.25x base for 5m; 2x for 1h. Explicit or automatic cache control.<sup class="cite"><a href="#s10-8">8</a></sup><sup class="cite"><a href="#s10-9">9</a></sup></td></tr>
+<tr><td>OpenAI</td><td>1,024 tokens for GPT-5.6 and later.</td><td>GPT-6.2 Astra $0.40; Sol $0.10 (both 0.05x).</td><td>1.25x for 30m; 2.5x for 12h. Implicit or explicit breakpoints.<sup class="cite"><a href="#s10-10">10</a></sup><sup class="cite"><a href="#s10-11">11</a></sup></td></tr>
+<tr><td>Google, Gemini 4 Carbon</td><td>4,096 tokens for the listed 3.x and 4 models.</td><td>$0.20 (0.05x of $4 input) from 1 December 2026; $0.10 promotional through 30 November 2026.</td><td>Gemini 4: implicit caching only.<sup class="cite"><a href="#s10-12">12</a></sup><sup class="cite"><a href="#s10-13">13</a></sup></td></tr>
+<tr><td>Google, Gemini 2.5 Flash</td><td>2,048 tokens for 2.5 Pro/Flash.</td><td>$0.03 text (0.1x); this row moves to 3.5 Flash-Lite pricing on 1 December 2026.</td><td>Explicit storage: $1/M tokens/hour.</td></tr>
+</tbody></table>
+<p>Other Anthropic models need up to 4,096 tokens; check your model's minimum.<sup class="cite"><a href="#s10-8">8</a></sup></p>
+<p>Gemini rules differ by model; check its price row and cached-token counters. Gemini 4 reuses the full previous request when the new turn adds at least 2,050 tokens; for smaller additions it reprocesses the last 2,050 prior tokens at standard input price. Explicit storage for Gemini 2.5 Pro costs $4.50/M tokens/hour.<sup class="cite"><a href="#s10-12">12</a></sup><sup class="cite"><a href="#s10-13">13</a></sup></p>
+
+<p>At the listed Opus 5.5 rates, one write and one read within five minutes cost $5.20 per million prefix tokens against $8 uncached. For each TTL, price a write initially and after gaps exceeding it; otherwise price a read. Rates (not a measured bill): $4 uncached, $5 for a 5m write, $8 for a 1h write and $0.20 for a read, with the TTL refreshed on each read. Output and suffix cost extra.<sup class="cite"><a href="#s10-8">8</a></sup><sup class="cite"><a href="#s10-9">9</a></sup></p>
+<table class="data">
+  <colgroup><col class="c35"><col class="c15"><col class="c15"><col class="c15"><col class="c20"></colgroup>
+  <thead><tr><th>Request pattern</th><th>Uncached</th><th>5m cache</th><th>1h cache</th><th>Cheapest</th></tr></thead>
+  <tbody>
+    <tr><td>Two requests, minutes 0 and 1</td><td class="num">$8</td><td class="num">$5.20</td><td class="num">$8.20</td><td>5m</td></tr>
+    <tr><td>Two requests, minutes 0 and 10</td><td class="num">$8</td><td class="num">$10</td><td class="num">$8.20</td><td>Uncached</td></tr>
+    <tr><td>Three requests, minutes 0, 10 and 11</td><td class="num">$12</td><td class="num">$10.20</td><td class="num">$8.40</td><td>1h</td></tr>
+  </tbody>
+</table>
+<p>The table prices a one-million-token prefix at Opus 5.5's flat rate.<sup class="cite"><a href="#s10-9">9</a></sup> At minute 10 the expired 5m entry misses and pays $5 to write again.</p>
+
+<h3>What a hit saves, and sizing</h3>
+<p>A cache tells the model nothing new; it saves work by layer:</p>
+<ul>
+  <li><strong>Exact-match response cache:</strong> a hit costs one lookup and zero model calls or tokens.</li>
+  <li><strong>Embedding cache:</strong> a hit makes no embedding call, a miss one.</li>
+  <li><strong>Semantic cache:</strong> a lookup generally embeds the query even on a hit.<sup class="cite"><a href="#s10-5">5</a></sup></li>
+  <li><strong>Provider prompt caches and inference-level reuse:</strong> they still generate output tokens and skip only reusable input processing.<sup class="cite"><a href="#s10-17">17</a></sup></li>
+</ul>
+<p><strong>Capacity estimate:</strong> payload RAM = users × entries/user × bytes/entry. At 1,000 users × 100 entries × 8 KiB, that is about 781 MiB, while 256 MiB item memory (-m 256) fits at most 32,768 such payloads, fewer after keys, item headers and slab rounding. All 100,000 cannot coexist; expect evictions.</p>
+<p>Watch the stats command (get_hits, get_misses, evictions) and, per slab class, stats items: rising evictions with a falling hit rate signal a capacity problem.<sup class="cite"><a href="#s10-2">2</a></sup></p>
+
+<p class="table-title">Worked example: embedding cache on a re-ingest (counts are assumed)</p>
+<table class="data">
+  <colgroup><col class="c40"><col class="c30"><col class="c30"></colgroup>
+  <thead><tr><th>Run</th><th>Embedding-model calls</th><th>Cache hits</th></tr></thead>
+  <tbody>
+    <tr><td>First ingest, 20,000 chunks</td><td class="num">20,000</td><td class="num">0</td></tr>
+    <tr><td>Re-ingest, 400 chunks edited</td><td class="num">400</td><td class="num">19,600</td></tr>
+    <tr><td>Re-ingest after switching embedding model</td><td class="num">20,000</td><td class="num">0</td></tr>
+  </tbody>
+</table>
+<p>Re-ingest makes 98 percent fewer embedding calls; the third misses on model-revision change. Memory cost: 20,000 vectors of 1,536 float32 numbers take about 117 MiB raw, before per-item overhead (bytes per vector: <a href="#sizing-reference">Chapter 00</a>). The walkthrough stores float32 bytes but returns original floats on misses, rounded floats on hits; its fixture hides the difference. An undersized cache drops items for re-embedding: slower, never wrong.</p>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Supplemental verification after the research cutoff, 23 November 2026, CPU only on shared x86 hardware; Python 3.14.4, Memcached 1.6.45, pymemcache 4.0.0. Needs Linux, GNU coreutils, Docker Engine and Python with venv. No model or paid API is called; the vector is a fixture.</p>
+<ol class="steps">
+<li><p class="step-title">Start two isolated servers and install the client</p>
+<p>Save named shell files and run with Bash. The ownership token protects other containers; scripts load their lab path and token and exit on failed checks. Run <code>bash start.sh</code>. Setup refuses existing paths, container names or occupied ports and binds to localhost. Its container cap differs from item memory (default 64 MiB). UUID failure after directory creation leaves no cleanup markers; remove only that empty directory manually. Output omits pip logs and container IDs.</p><div class="codeblock" data-listing-note="Creates a fresh lab and labels both cache containers with its run token."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">start.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>#!/usr/bin/env bash
+set -euo pipefail
+LAB=/var/tmp/memlab-10/run
+if [ -e "$LAB" ] || [ -L "$LAB" ]; then
+  echo "STOP: $LAB already exists" &gt;&amp;2
+  exit 1
+fi
+for name in memlab-10-default memlab-10-large; do
+  if docker container inspect "$name" &gt;/dev/null 2&gt;&amp;1; then
+    echo "STOP: $name already exists" &gt;&amp;2
+    exit 1
+  fi
+done
+python3 - &lt;&lt;'PYPORT'
+import socket
+sockets = []
+for port in (39100, 39101):
+    sock = socket.socket()
+    sock.bind(("127.0.0.1", port))
+    sockets.append(sock)
+PYPORT
+mkdir -p -- "$(dirname "$LAB")"
+mkdir -- "$LAB" || { echo "STOP: lab creation failed" &gt;&amp;2; exit 1; }
+LAB_TOKEN=$(cat /proc/sys/kernel/random/uuid)
+LAB_REAL=$(realpath -e -- "$LAB")
+printf '%s\n' "$LAB_TOKEN" &gt; "$LAB/.owner"
+printf '%s\n' "$LAB_REAL" &gt; "$LAB/.path"
+export PIP_CACHE_DIR="$LAB/pip-cache"
+python3 -m venv "$LAB/venv"
+"$LAB/venv/bin/pip" install pymemcache==4.0.0
+docker run -d --name memlab-10-default --label "memfix.owner=$LAB_TOKEN" \
+  --memory 256m --cpus 1 \
+  -p 127.0.0.1:39100:11211 memcached:1.6.45
+docker run -d --name memlab-10-large --label "memfix.owner=$LAB_TOKEN" \
+  --memory 256m --cpus 1 \
+  -p 127.0.0.1:39101:11211 memcached:1.6.45 memcached -I 2m
+docker exec memlab-10-default memcached --version
+"$LAB/venv/bin/python" --version</pre></div>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>memcached 1.6.45
+Python 3.14.4</pre></div>
+</li>
+<li class="step-long"><p class="step-title">Write, read, test limits and reuse a vector</p>
+<p>Save the file below as <code>/var/tmp/memlab-10/run/memcache.py</code>. Acknowledged writes (<code>default_noreply=False</code>) expose server errors. Real revision keys also need dimensions and normalization alongside revision and preprocessing. Write mode checks size rejection and vector reuse; read mode checks saved values in a fresh process within 60 seconds. Embedding TTL is a lab bound; use long or no TTL as advised above.</p><div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">memcache.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import hashlib, json, struct, sys, time, uuid
+from pymemcache.client.base import Client
+from pymemcache.exceptions import MemcacheError, MemcacheServerError
+
+options = dict(default_noreply=False, connect_timeout=1, timeout=1, ignore_exc=True)
+c = Client(("127.0.0.1", 39100), **options)
+c2 = Client(("127.0.0.1", 39101), **options)
+
+def response_key(version):
+    fields = ["demo-model-v1", {"temperature": 0}, "FAQ hours?", "public", version]
+    return hashlib.sha256(json.dumps(fields, sort_keys=True).encode()).hexdigest()
+
+if sys.argv[-1] == "read":
+    assert c.get(response_key("faq-v1")) == b"summary"
+    assert c.get("month") == b"retained"
+    print("fresh-process read OK")
+    c.close()
+    c2.close()
+    sys.exit(0)
+print("set/get TTL", c.set(response_key("faq-v1"), "summary", expire=60),
+      c.get(response_key("faq-v1")))
+assert c.get(response_key("faq-v2")) is None
+print("version bump: MISS")
+expiry = int(time.time()) + 31 * 24 * 60 * 60
+assert c.set("month", "retained", expire=expiry)
+print("absolute expiry", c.get("month"))
+large_key = "large:" + uuid.uuid4().hex
+try:
+    c.set(large_key, b"x" * (1024 * 1024 + 1))
+except MemcacheServerError as e:
+    assert e.args[0] == b"object too large for cache"
+    print("default rejection", type(e).__name__, str(e))
+else:
+    raise AssertionError("oversized item accepted")
+assert c2.set("check", b"ok")
+print("raised limit", c2.set(large_key, b"x" * (1024 * 1024 + 1)),
+      len(c2.get(large_key)))
+
+def embedding_cache(revision, text, compute):
+    key = hashlib.sha256((revision + "\0" + text).encode()).hexdigest()
+    cached = c.get(key)
+    if cached is not None:
+        return list(struct.unpack("&lt;" + "f" * (len(cached) // 4), cached))
+    vector = compute(text)
+    try:
+        if not c.set(key, struct.pack("&lt;" + "f" * len(vector), *vector), expire=3600):
+            print("cache set failed", file=sys.stderr)
+    except (OSError, MemcacheError) as error:
+        print("cache set failed:", error, file=sys.stderr)
+    return vector
+
+def must_not_run(text):
+    raise RuntimeError("must not compute")
+
+revision = "demo-v1:prep1:" + uuid.uuid4().hex
+print("cache miss", embedding_cache(revision, "hello", lambda text: [1., 0., 0., 0.]))
+assert embedding_cache(revision, "hello", must_not_run) == [1., 0., 0., 0.]
+print("cache hit", embedding_cache(revision, "hello", must_not_run))
+c.close()
+c2.close()</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>LAB=/var/tmp/memlab-10/run
+"$LAB/venv/bin/python" "$LAB/memcache.py"
+"$LAB/venv/bin/python" "$LAB/memcache.py" read</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>set/get TTL True b&#x27;summary&#x27;
+version bump: MISS
+absolute expiry b&#x27;retained&#x27;
+default rejection MemcacheServerError b&#x27;object too large for cache&#x27;
+raised limit True 1048577
+cache miss [1.0, 0.0, 0.0, 0.0]
+cache hit [1.0, 0.0, 0.0, 0.0]
+fresh-process read OK</pre></div>
+<p class="small muted">The client bounds connect/read waits, treats get errors as misses and reports set errors while returning computed vectors.</p></li>
+<li class="step-long"><p class="step-title">Reject an inappropriate semantic hit</p>
+<p>RedisVL takes a maximum cosine distance in [0,2], so lower is stricter; a similarity API takes a minimum, so higher is stricter. Save this as <code>/var/tmp/memlab-10/run/semantic.py</code>. The distance formula assumes the cached vector is the unit x-axis vector. The third query is from another tenant, so the scope check rejects it despite its small distance; production must also check intent.<sup class="cite"><a href="#s10-5">5</a></sup></p><div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">semantic.py</span><span class="code-tag tested">Tested</span></div>
+<pre>from math import sqrt
+
+# Synthetic vectors: demonstrate a gate, not embedding-model quality.
+cached = {"query": "Cancel my order", "vector": [1., 0.],
+          "scope": "tenant-a:policy-v1", "answer": "Use order cancellation."}
+queries = [
+    ("Please cancel the order", [0.999, 0.045], "tenant-a:policy-v1", True),
+    ("Cancel my subscription", [0.98, 0.20], "tenant-a:policy-v1", False),
+    ("Please cancel the order", [0.999, 0.045], "tenant-b:policy-v1", False),
+]
+accepted = correct = 0
+checks = []
+for text, vector, scope, expected in queries:
+    distance = 1 - vector[0] / sqrt(sum(x*x for x in vector))
+    hit = scope == cached["scope"] and distance &lt;= 0.01  # LOWER is stricter
+    checks.append(hit == expected)
+    accepted += hit
+    correct += hit and expected
+    print(text, scope, f"distance={distance:.4f}",
+          cached["answer"] if hit else "MISS: compute fresh answer")
+print(f"hit precision: {correct}/{accepted}")
+assert all(checks), "unexpected semantic decision"</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>LAB=/var/tmp/memlab-10/run
+"$LAB/venv/bin/python" "$LAB/semantic.py"</pre></div>
+<div class="codeblock"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>Please cancel the order tenant-a:policy-v1 distance=0.0010 Use order cancellation.
+Cancel my subscription tenant-a:policy-v1 distance=0.0202 MISS: compute fresh answer
+Please cancel the order tenant-b:policy-v1 distance=0.0010 MISS: compute fresh answer
+hit precision: 1/1</pre></div>
+<p>At 0.03, the script prints hit precision 1/2 before its assertion fails. RedisVL uses a distance threshold and authorization-scope metadata filter. This fixture does not establish a production threshold. Sweep labelled logs, including negations and intent changes. Report correct hits / accepted hits and accepted hits / lookups on held-out requests; set a false-hit limit per intent first, and enable reuse only if held-out results meet it and avoided calls pay for lookup.</p></li>
+<li><p class="step-title">Cleanup</p>
+<p>Cleanup verifies ownership, removes lab containers and directory and leaves the image. Run <code>bash cleanup.sh</code>; it also handles a setup that started only one container.</p><div class="codeblock" data-listing-note="Verifies lab and container ownership before removal."><div class="code-head"><span class="code-lang">bash</span><span class="code-file">cleanup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>#!/usr/bin/env bash
+set -euo pipefail
+LAB=/var/tmp/memlab-10/run
+if [ -L "$LAB" ] || [ ! -f "$LAB/.owner" ] || [ -L "$LAB/.owner" ] ||
+   [ ! -f "$LAB/.path" ] || [ -L "$LAB/.path" ]; then
+  echo "STOP: lab ownership check failed" &gt;&amp;2
+  exit 1
+fi
+LAB_TOKEN=$(cat "$LAB/.owner")
+LAB_REAL=$(cat "$LAB/.path")
+if [ -z "$LAB_TOKEN" ] || [ "$LAB_REAL" != "$LAB" ] ||
+   [ "$(realpath -e -- "$LAB")" != "$LAB" ]; then
+  echo "STOP: lab ownership check failed" &gt;&amp;2
+  exit 1
+fi
+names=$(docker container ls -a --format '{{.Names}}')
+present=()
+for name in memlab-10-default memlab-10-large; do
+  if ! grep -Fxq -- "$name" &lt;&lt;&lt; "$names"; then
+    continue
+  fi
+  owner=$(docker inspect -f '{{ index .Config.Labels "memfix.owner" }}' "$name")
+  if [ "$owner" != "$LAB_TOKEN" ]; then
+    echo "STOP: container ownership check failed" &gt;&amp;2
+    exit 1
+  fi
+  present+=("$name")
+done
+if [ "${#present[@]}" -gt 0 ]; then docker rm -f "${present[@]}"; fi
+cd /var/tmp
+rm -rf -- "$LAB"
+test ! -e "$LAB" &amp;&amp; test ! -L "$LAB"
+echo "Cleanup verified: lab and containers removed"</pre></div>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>memlab-10-default
+memlab-10-large
+Cleanup verified: lab and containers removed</pre></div>
+<p>Failed checks stop a block before it changes anything:</p>
+<div class="codeblock output"><div class="code-head"><span class="code-lang">text</span><span class="code-tag tested">Tested</span></div>
+<pre>STOP: /var/tmp/memlab-10/run already exists
+STOP: lab ownership check failed
+STOP: container ownership check failed</pre></div>
+</li></ol>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: unsecured defaults</p>
+  <p>Authentication and TLS are off by default. Bind privately; firewall or tunnel access from untrusted hosts.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: the cache must not be the only copy</p>
+  <p>Write the source of truth to a durable store first, so a miss is only slower, never wrong.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: stale or cross-user answers</p>
+  <p>Include authorization scope, model, parameters, prompt and data version in every response key. Memcached cannot delete by prefix. Commit data and its version together; fill from the same snapshot under that version. New-version readers cannot hit old entries, which age out. Missing scope risks cross-user answers; missing versions risk stale advice.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: semantic false hits</p>
+  <p>Questions that read alike can need opposite answers. Tighten the threshold (walkthrough step 3), gate by metadata, and measure hit precision on real logs first.<sup class="cite"><a href="#s10-5">5</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: prompt-cache misses are silent</p>
+  <p>Anthropic documents silent misses below the minimum prefix length; check usage counters. An entry is available only after the first response starts, so parallel requests on a cold prefix can all miss; start one first, then fan out.<sup class="cite"><a href="#s10-8">8</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: a stampede on one key</p>
+  <p>Popular-entry expiry can send many workers to the model together. Within one process, share one in-progress fill per key. Across processes, Memcached add creates a short-lived lease only if absent; only the successful caller fills. On a failed add, back off and recheck. Size the lease for slow fills, and tolerate duplicate work if one outlasts it.</p>
+</aside>
+
+
+
+
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: use a cache, never as memory</p>
+  <p><strong>Add a cache layer when</strong> prompts, texts or tool calls repeat. Count repeated requests, unchanged chunks and shared prefixes within provider retention; measure hit precision and savings per hit. Adopt layers whose savings exceed lookup, write and storage costs. Include full authorization scope in response keys. Choose Memcached for existing installations or exact-match bytes with TTLs; otherwise reuse Redis or Valkey.</p>
+  <p>For shared state or persistence choose Redis or Valkey (Chapter 09); for semantic matching choose a vector index (Chapter 11). Keep required facts durably (Chapter 08 or 11). Chapter 22 applies these keys to a regulated office: actor, patient, task, policy and data version.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s10-1"><span class="src-title">Memcached protocol description (master branch)</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/memcached/memcached/master/doc/protocol.txt">https://raw.githubusercontent.com/memcached/memcached/master/doc/protocol.txt</a></li>
+<li id="s10-2"><span class="src-title">Memcached maintenance and evictions</span> <span class="src-note">(official)</span><a class="url" href="https://docs.memcached.org/serverguide/maintenance/">https://docs.memcached.org/serverguide/maintenance/</a></li>
+<li id="s10-3"><span class="src-title">Memcached warm restart</span> <span class="src-note">(official)</span><a class="url" href="https://docs.memcached.org/features/restart/">https://docs.memcached.org/features/restart/</a></li>
+  <li id="s10-4"><span class="src-title">GPTCache repository</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/zilliztech/GPTCache">https://github.com/zilliztech/GPTCache</a></li>
+  <li id="s10-5"><span class="src-title">RedisVL SemanticCache user guide</span> <span class="src-note">(official)</span><a class="url" href="https://docs.redisvl.com/en/stable/api/cache.html">https://docs.redisvl.com/en/stable/api/cache.html</a></li>
+  <li id="s10-6"><span class="src-title">Redis, semantic cache use case</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/develop/use-cases/semantic-cache/">https://redis.io/docs/latest/develop/use-cases/semantic-cache/</a></li>
+  <li id="s10-7"><span class="src-title">Amazon ElastiCache, semantic caching overview</span> <span class="src-note">(official)</span><a class="url" href="https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/semantic-caching-overview.html">https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/semantic-caching-overview.html</a></li>
+  <li id="s10-8"><span class="src-title">Anthropic prompt caching documentation</span> <span class="src-note">(official)</span><a class="url" href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">https://platform.claude.com/docs/en/build-with-claude/prompt-caching</a></li>
+<li id="s10-9"><span class="src-title">Anthropic model pricing</span> <span class="src-note">(official)</span><a class="url" href="https://platform.claude.com/docs/en/about-claude/pricing">https://platform.claude.com/docs/en/about-claude/pricing</a></li>
+  <li id="s10-10"><span class="src-title">OpenAI prompt caching guide</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/guides/prompt-caching">https://developers.openai.com/api/docs/guides/prompt-caching</a></li>
+<li id="s10-11"><span class="src-title">OpenAI API pricing</span> <span class="src-note">(official)</span><a class="url" href="https://developers.openai.com/api/docs/pricing">https://developers.openai.com/api/docs/pricing</a></li>
+  <li id="s10-12"><span class="src-title">Gemini context caching documentation</span> <span class="src-note">(official)</span><a class="url" href="https://aistudio.google.com/docs/caching">https://aistudio.google.com/docs/caching</a></li>
+<li id="s10-13"><span class="src-title">Gemini API pricing</span> <span class="src-note">(official)</span><a class="url" href="https://ai.google.dev/gemini-api/docs/pricing">https://ai.google.dev/gemini-api/docs/pricing</a></li>
+  <li id="s10-14"><span class="src-title">llama.cpp server README (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md">https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md</a></li>
+  <li id="s10-15"><span class="src-title">LM Studio, MLX engine for agentic workloads (2026-06-05)</span> <span class="src-note">(maintainer blog)</span><a class="url" href="https://lmstudio.ai/blog/mlx-engine-agentic-workloads">https://lmstudio.ai/blog/mlx-engine-agentic-workloads</a></li>
+  <li id="s10-16"><span class="src-title">oMLX project site</span> <span class="src-note">(vendor)</span><a class="url" href="https://omlx.ai/">https://omlx.ai/</a></li>
+  <li id="s10-17"><span class="src-title">vLLM, automatic prefix caching</span> <span class="src-note">(official)</span><a class="url" href="https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html">https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html</a></li>
+  <li id="s10-18"><span class="src-title">LMCache repository, README (checked 2026-11-20)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/LMCache/LMCache">https://github.com/LMCache/LMCache</a></li>
+<li id="s10-19"><span class="src-title">Memcached flash storage</span> <span class="src-note">(official)</span><a class="url" href="https://docs.memcached.org/features/flashstorage/">https://docs.memcached.org/features/flashstorage/</a></li>
+  <li id="s10-20"><span class="src-title">Memcached 1.6.45 release notes (2026-07-09)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/memcached/memcached/wiki/ReleaseNotes1645">https://github.com/memcached/memcached/wiki/ReleaseNotes1645</a></li>
+</ol>
+</section>
+
+</article>

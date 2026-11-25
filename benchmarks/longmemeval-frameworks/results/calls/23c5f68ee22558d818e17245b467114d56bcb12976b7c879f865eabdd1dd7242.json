@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 25
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "cc70aafceeaea3b6619ef3ed7b306a3f3158f1e24cdfe7a3e8970f5d66948f8e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0775547c-b208-4336-bc2a-07dc679bc8a1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"facts\": [\n        \"Tourism is the most significant driver of the Maldives economy, accounting for more than 28% of the country's GDP.\",\n        \"The Maldives has implemented several measures to ensure that its fishing industry is sustainable and environmentally friendly, including the use of a traditional pole-and-line fishing method and the establishment of marine protected areas.\",\n        \"The Maldives is working to transition to 100% renewable energy by 2030 to reduce its carbon footprint, promote energy security, and lower electricity prices.\",\n        \"The Maldives has implemented waste management initiatives to reduce the amount of single-use plastics and other waste generated on its islands.\",\n        \"The Maldives is promoting sustainable tourism practices by introducing eco-friendly hotels and resorts, implementing waste management policies, and establishing marine conservation areas.\",\n        \"The Maldives is developing innovative techniques to combat coastal erosion, promote mangrove regeneration, and improve water management to mitigate the impacts of climate change.\"\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795365884,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 203,
+      "prompt_tokens": 2298,
+      "total_tokens": 2501,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"facts\": [\n        \"Tourism is the most significant driver of the Maldives economy, accounting for more than 28% of the country's GDP.\",\n        \"The Maldives has implemented several measures to ensure that its fishing industry is sustainable and environmentally friendly, including the use of a traditional pole-and-line fishing method and the establishment of marine protected areas.\",\n        \"The Maldives is working to transition to 100% renewable energy by 2030 to reduce its carbon footprint, promote energy security, and lower electricity prices.\",\n        \"The Maldives has implemented waste management initiatives to reduce the amount of single-use plastics and other waste generated on its islands.\",\n        \"The Maldives is promoting sustainable tourism practices by introducing eco-friendly hotels and resorts, implementing waste management policies, and establishing marine conservation areas.\",\n        \"The Maldives is developing innovative techniques to combat coastal erosion, promote mangrove regeneration, and improve water management to mitigate the impacts of climate change.\"\n    ]\n}",
+  "seconds": 17.696357311011525,
+  "prompt_tokens_local": 2298
+}

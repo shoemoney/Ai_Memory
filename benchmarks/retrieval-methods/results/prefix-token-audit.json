@@ -1,0 +1,41 @@
+{
+  "tokenizer_url": "https://huggingface.co/Qwen/Qwen3.5-4B/resolve/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a/tokenizer.json",
+  "tokenizer_sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42",
+  "generation_cap": 120,
+  "chat_wrapper_safety_tokens": 128,
+  "datasets": {
+    "scifact": {
+      "chunks": 10066,
+      "maximum_raw_prompt_tokens": 2227,
+      "observed_chat_wrapper_delta_min": 12,
+      "observed_chat_wrapper_delta_max": 14,
+      "conservative_prompt_plus_generation": 2475,
+      "fits_4096": true,
+      "fits_3072": true,
+      "fits_3008": true,
+      "fits_2976": true
+    },
+    "nfcorpus": {
+      "chunks": 7349,
+      "maximum_raw_prompt_tokens": 2720,
+      "observed_chat_wrapper_delta_min": 12,
+      "observed_chat_wrapper_delta_max": 20,
+      "conservative_prompt_plus_generation": 2968,
+      "fits_4096": true,
+      "fits_3072": true,
+      "fits_3008": true,
+      "fits_2976": true
+    },
+    "locomo": {
+      "chunks": 1204,
+      "maximum_raw_prompt_tokens": 1859,
+      "observed_chat_wrapper_delta_min": 12,
+      "observed_chat_wrapper_delta_max": 12,
+      "conservative_prompt_plus_generation": 2107,
+      "fits_4096": true,
+      "fits_3072": true,
+      "fits_3008": true,
+      "fits_2976": true
+    }
+  }
+}

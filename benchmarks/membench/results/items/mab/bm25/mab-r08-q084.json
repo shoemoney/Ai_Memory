@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r08-q084",
+  "context": "mab-r08",
+  "kind": "eventqa_65536",
+  "question_sha256": "f6432a1aefb44695197fb6a8ca63ec929514bdf55cdcdc8a3d862527ca92273a",
+  "reference_sha256": "d436e70471149d19078d6ce13c72f2ee5be37f009e2055baa2b53b2ee1760080",
+  "method": "bm25",
+  "answer": "Person347 Person218 entered the room where the Bishop was sleeping.",
+  "response": {
+    "text": "Person347 Person218 entered the room where the Bishop was sleeping.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 3163,
+      "total_tokens": 3181,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 8.529073732002871,
+    "request_sha256": "23082dd084afc596fee4a84f6dda389006f5abb30c9f86b99ce10cfd3acd7432",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    517,
+    419,
+    537,
+    467,
+    512,
+    514,
+    550,
+    542,
+    581,
+    552,
+    427,
+    543,
+    541,
+    430,
+    513,
+    439,
+    440,
+    507,
+    422,
+    356
+  ],
+  "retrieval_scores": [
+    206.1204639859427,
+    203.59380031928936,
+    201.49711830127927,
+    199.48516503538596,
+    197.08028006713775,
+    192.0337276522181,
+    190.72506395597878,
+    184.79497948741712,
+    181.6693957000481,
+    180.92423440861197,
+    178.58486999982637,
+    178.54527484973204,
+    177.96237997700464,
+    177.51161860050374,
+    176.7100201838169,
+    175.29676215794638,
+    175.25991360900395,
+    174.44459803917007,
+    173.39773702971266,
+    173.16785754644746
+  ],
+  "retrieval_seconds": 0.08040886600792874,
+  "provided_context_sha256": "eb805aaea019ed74169974938791a332e86fa81acc39b4b33c630115cf4ee5d1",
+  "provided_context_tokens": 2793,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "bd3994dd8d5fd856f368ad55415062bcbf9922a043d5d0ccb3cfa8f91e7cc166",
+    "raw_answer_sha256": "c99edca7c552c4841f7a4c4e0b2a8758aaf3f1f6d8b57a8da66a0a38e0db7573",
+    "answer_redacted": false
+  }
+}

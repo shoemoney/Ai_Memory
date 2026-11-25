@@ -1,0 +1,529 @@
+### repo: $COOKBOOK_DIR @ 603ae98d17b7ddc423a0a5260daa129c42211d21
+modules: tinker_cookbook
+-- repo-wide (vs HEAD, staged+unstaged) --
+diff --git a/tinker_cookbook/recipes/agent_memory/distill.py b/tinker_cookbook/recipes/agent_memory/distill.py
+index 7d25ab4..ed71e5d 100644
+--- a/tinker_cookbook/recipes/agent_memory/distill.py
++++ b/tinker_cookbook/recipes/agent_memory/distill.py
+@@ -20,6 +20,7 @@ import argparse
+ import asyncio
+ import hashlib
+ import json
++import random
+ from collections import Counter
+ from pathlib import Path
+ from typing import Any
+@@ -145,6 +146,155 @@ async def sample(rows: list[dict[str, Any]], out: Path, max_tokens: int, paralle
+         await service.close("success" if ok else "errored")
+ 
+ 
++async def sample_extra(
++    rows: list[dict[str, Any]], out: Path, extra: int, max_tokens: int, parallel: int
++) -> None:
++    """Draw `extra` more samples per item (one request each, `num_samples=extra`)."""
++    import tinker
++
++    out.mkdir(parents=True, exist_ok=False)
++    renderer = make_renderer(MODEL_NAME)
++    service = tinker.ServiceClient(
++        display_name="distill-extra-" + out.name, user_metadata={"purpose": "shortest-of-k"}
++    )
++    ok = False
++    try:
++        client = await service.create_sampling_client(base_model=MODEL_NAME)
++        gate = asyncio.Semaphore(parallel)
++
++        async def one(row: dict[str, Any]) -> list[dict[str, Any]]:
++            async with gate:
++                prompt = renderer.build_generation_prompt(row["messages"], effort=EFFORT)
++                response = await client.sample_async(
++                    prompt=prompt,
++                    num_samples=extra,
++                    sampling_params=tinker.SamplingParams(
++                        max_tokens=max_tokens, temperature=1.0, stop=renderer.get_stop_sequences()
++                    ),
++                )
++            records = []
++            for n, sequence in enumerate(response.sequences, start=1):
++                message, termination = renderer.parse_response(sequence.tokens)
++                records.append(
++                    {
++                        "id": row["id"],
++                        "kind": row["kind"],
++                        "level": row["level"],
++                        "draw": n,
++                        "response": message,
++                        "termination": termination.value,
++                        "prompt_tokens": prompt.length,
++                        "sample_tokens": len(sequence.tokens),
++                        **verdict(row, message, termination.is_clean),
++                    }
++                )
++            return records
++
++        results = [r for group in await asyncio.gather(*(one(r) for r in rows)) for r in group]
++        results.sort(key=lambda r: (r["id"], r["draw"]))
++        (out / "samples.jsonl").write_text("".join(json.dumps(r) + "\n" for r in results))
++        usd = (
++            sum(r["prompt_tokens"] for r in results) / extra * 0.15
++            + sum(r["sample_tokens"] for r in results) * 0.50
++        ) / 1e6
++        report = {
++            "draws": len(results),
++            "sample_tokens": sum(r["sample_tokens"] for r in results),
++            "estimated_sampling_usd_prefill_once_per_request": usd,
++            "estimated_sampling_usd_prefill_per_draw": (
++                sum(r["prompt_tokens"] for r in results) * 0.15
++                + sum(r["sample_tokens"] for r in results) * 0.50
++            )
++            / 1e6,
++        }
++        (out / "sampling-report.json").write_text(json.dumps(report, indent=2) + "\n")
++        ok = True
++        print(json.dumps(report, indent=2))
++    finally:
++        await service.close("success" if ok else "errored")
++
++
++def select_shortest(
++    first: list[dict[str, Any]], extra: list[dict[str, Any]]
++) -> tuple[list[dict[str, Any]], dict[str, Any]]:
++    """Per item, keep the shortest verified sample out of the first draw and the extra ones."""
++    draws: dict[str, list[dict[str, Any]]] = {}
++    for record in first:
++        draws.setdefault(record["id"], []).append({**record, "draw": 0})
++    for record in extra:
++        draws.setdefault(record["id"], []).append(record)
++    chosen, per_item = [], []
++    for item_id in sorted(draws):
++        group = sorted(draws[item_id], key=lambda r: r["draw"])
++        good = [r for r in group if r["keep"]]
++        row = group[0]
++        info = {
++            "id": item_id,
++            "kind": row["kind"],
++            "level": row["level"],
++            "draws": len(group),
++            "n_correct": len(good),
++            "first_draw_correct": group[0]["keep"],
++        }
++        if good:
++            best = min(good, key=lambda r: (r["sample_tokens"], r["draw"]))
++            mean_correct = sum(r["sample_tokens"] for r in good) / len(good)
++            info.update(
++                kept_tokens=best["sample_tokens"],
++                mean_correct_tokens=mean_correct,
++                longest_correct_tokens=max(r["sample_tokens"] for r in good),
++                kept_draw=best["draw"],
++            )
++            chosen.append({**best, **info})
++        per_item.append(info)
++    by_kind: dict[str, dict[str, float]] = {}
++    for kind in hard.KINDS:
++        items = [i for i in per_item if i["kind"] == kind]
++        if not items:
++            continue
++        solved = [i for i in items if i["n_correct"]]
++        by_kind[kind] = {
++            "items": len(items),
++            "first_draw_keep_rate": sum(i["first_draw_correct"] for i in items) / len(items),
++            "at_least_one_correct_rate": len(solved) / len(items),
++            "mean_kept_tokens": (
++                sum(i["kept_tokens"] for i in solved) / len(solved) if solved else 0.0
++            ),
++            "mean_of_all_correct_tokens": (
++                sum(i["mean_correct_tokens"] for i in solved) / len(solved) if solved else 0.0
++            ),
++            "mean_kept_over_mean_correct": (
++                sum(i["kept_tokens"] / i["mean_correct_tokens"] for i in solved) / len(solved)
++                if solved
++                else 0.0
++            ),
++        }
++    consistency: dict[str, dict[str, float]] = {}
++    for n in range(1, max((i["draws"] for i in per_item), default=0) + 1):
++        group = [i for i in per_item if i["n_correct"] == n]
++        if group:
++            consistency[str(n)] = {
++                "items": len(group),
++                "mean_kept_tokens": sum(i["kept_tokens"] for i in group) / len(group),
++            }
++    solved_all = [i for i in per_item if i["n_correct"]]
++    report = {
++        "items": len(per_item),
++        "first_draw_keep_rate": sum(i["first_draw_correct"] for i in per_item) / len(per_item),
++        "at_least_one_correct_rate": len(solved_all) / len(per_item),
++        "kinds_under_50_percent": [
++            k for k, v in by_kind.items() if v["at_least_one_correct_rate"] < 0.5
++        ],
++        "mean_kept_tokens": sum(i["kept_tokens"] for i in solved_all) / len(solved_all),
++        "mean_of_all_correct_tokens": sum(i["mean_correct_tokens"] for i in solved_all)
++        / len(solved_all),
++        "kept_under_100_tokens": sum(i["kept_tokens"] < 100 for i in solved_all),
++        "by_kind": by_kind,
++        "kept_tokens_by_number_of_correct_draws": consistency,
++    }
++    return chosen, report
++
++
+ def keep_report(results: list[dict[str, Any]]) -> dict[str, Any]:
+     by_kind: dict[str, dict[str, float]] = {}
+     for kind in hard.KINDS:
+@@ -188,10 +338,25 @@ def sample_record(
+     }
+ 
+ 
++ARMS = {"R": "reasoning", "S": "answer"}
++
++
+ def build(
+-    rows: list[dict[str, Any]], samples: list[dict[str, Any]], out: Path, count: int, held_out: int
++    rows: list[dict[str, Any]],
++    samples: list[dict[str, Any]],
++    out: Path,
++    count: int,
++    held_out: int,
++    arms: dict[str, str] | None = None,
++    subsample_seed: int | None = None,
+ ) -> dict[str, Any]:
+-    """Write `R/` and `S/` curricula (train, valid, test) and a manifest of what was kept."""
++    """Write curricula (train, valid, test per arm) and a manifest of what was kept.
++
++    `arms` maps an arm name to `reasoning` (thinking plus answer targets) or `answer`
++    (final text only). With `subsample_seed`, `count` items are drawn at random from the
++    usable ones (kept in id order) instead of taking the first `count`.
++    """
++    arms = arms or ARMS
+     by_id = {r["id"]: r for r in rows}
+     kept = [s for s in samples if s["keep"]]
+     renderer = make_renderer(MODEL_NAME)
+@@ -206,7 +371,11 @@ def build(
+             usable.append(s)
+     if len(usable) < count:
+         raise ValueError(f"only {len(usable)} usable items for a requested {count}")
+-    chosen = usable[:count]
++    if subsample_seed is None:
++        chosen = usable[:count]
++    else:
++        pool = sorted(usable, key=lambda s: s["id"])
++        chosen = sorted(random.Random(subsample_seed).sample(pool, count), key=lambda s: s["id"])
+     splits: dict[str, list[dict[str, Any]]] = {}
+     for name, seed in SPLIT_SEEDS.items():
+         if name == "train":
+@@ -217,12 +386,13 @@ def build(
+             sample_record({**r, "id": f"{name}-{r['id']}"}, base + i, r["answer"])
+             for i, r in enumerate(extra)
+         ]
+-    train_r, train_s = [], []
++    trains: dict[str, list[dict[str, Any]]] = {arm: [] for arm in arms}
+     for i, s in enumerate(chosen):
+         row = by_id[s["id"]]
+-        train_r.append(sample_record(row, i, s["response"]["content"]))
+-        train_s.append(sample_record(row, i, s["text"]))
+-    for arm, train in (("R", train_r), ("S", train_s)):
++        for arm, mode in arms.items():
++            target = s["response"]["content"] if mode == "reasoning" else s["text"]
++            trains[arm].append(sample_record(row, i, target))
++    for arm, train in trains.items():
+         arm_dir = out / arm
+         arm_dir.mkdir(parents=True, exist_ok=False)
+         (arm_dir / "train.jsonl").write_text("".join(json.dumps(r) + "\n" for r in train))
+@@ -239,7 +409,7 @@ def build(
+             f"{arm}/train.jsonl": hashlib.sha256(
+                 (out / arm / "train.jsonl").read_bytes()
+             ).hexdigest()
+-            for arm in ("R", "S")
++            for arm in arms
+         },
+     }
+     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+@@ -248,7 +418,9 @@ def build(
+ 
+ def main() -> None:
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument("action", choices=("generate", "preflight", "sample", "build"))
++    parser.add_argument(
++        "action", choices=("generate", "preflight", "sample", "sample-extra", "select", "build")
++    )
+     parser.add_argument("--data", type=Path, help="candidate items (jsonl)")
+     parser.add_argument("--out", type=Path)
+     parser.add_argument("--samples", type=Path)
+@@ -256,6 +428,10 @@ def main() -> None:
+     parser.add_argument("--held-out", type=int, default=48)
+     parser.add_argument("--max-tokens", type=int, default=2048)
+     parser.add_argument("--parallel", type=int, default=300)
++    parser.add_argument("--extra", type=int, default=3, help="sample-extra: draws per item")
++    parser.add_argument("--extra-samples", type=Path, help="select: dir from sample-extra")
++    parser.add_argument("--selected", type=Path, help="build: selected.jsonl from select (arm K)")
++    parser.add_argument("--subsample-seed", type=int, help="build: random subsample of --count")
+     args = parser.parse_args()
+     if args.action == "generate":
+         if args.out is None:
+@@ -273,11 +449,39 @@ def main() -> None:
+         if args.out is None:
+             parser.error("sample requires --out")
+         asyncio.run(sample(rows, args.out, args.max_tokens, args.parallel))
++    elif args.action == "sample-extra":
++        if args.out is None:
++            parser.error("sample-extra requires --out")
++        asyncio.run(sample_extra(rows, args.out, args.extra, args.max_tokens, args.parallel))
++    elif args.action == "select":
++        if args.samples is None or args.extra_samples is None or args.out is None:
++            parser.error("select requires --samples, --extra-samples and --out")
++        chosen, report = select_shortest(
++            read_rows(args.samples / "samples.jsonl"),
++            read_rows(args.extra_samples / "samples.jsonl"),
++        )
++        args.out.mkdir(parents=True, exist_ok=False)
++        write_rows(args.out / "selected.jsonl", chosen)
++        (args.out / "shortest-report.json").write_text(json.dumps(report, indent=2) + "\n")
++        print(json.dumps(report, indent=2))
+     else:
+-        if args.samples is None or args.out is None:
+-            parser.error("build requires --samples and --out")
+-        samples = read_rows(args.samples / "samples.jsonl")
+-        print(json.dumps(build(rows, samples, args.out, args.count, args.held_out), indent=2))
++        if args.out is None or (args.samples is None and args.selected is None):
++            parser.error("build requires --out and --samples or --selected")
++        if args.selected is not None:
++            manifest = build(
++                rows,
++                read_rows(args.selected),
++                args.out,
++                args.count,
++                args.held_out,
++                arms={"K": "reasoning"},
++                subsample_seed=args.subsample_seed,
++            )
++        else:
++            manifest = build(
++                rows, read_rows(args.samples / "samples.jsonl"), args.out, args.count, args.held_out
++            )
++        print(json.dumps(manifest, indent=2))
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/tinker_cookbook/recipes/agent_memory/distill_test.py b/tinker_cookbook/recipes/agent_memory/distill_test.py
+index 8bac4e2..f20373a 100644
+--- a/tinker_cookbook/recipes/agent_memory/distill_test.py
++++ b/tinker_cookbook/recipes/agent_memory/distill_test.py
+@@ -143,3 +143,81 @@ def test_reasoning_targets_are_trained_and_answer_only_targets_are_short(tmp_pat
+         assert termination.is_clean
+         assert renderers.get_text_content(parsed) == renderers.get_text_content(messages[-1])
+     assert sizes["R"] > sizes["S"]
++
++
++def draw(row, tokens, correct=True, n=0):
++    message = fake_response(row, answer=None if correct else "Zzz-00")
++    return {
++        "id": row["id"],
++        "kind": row["kind"],
++        "level": row["level"],
++        "draw": n,
++        "response": message,
++        "termination": "stop_sequence",
++        "prompt_tokens": row["prompt_tokens"],
++        "sample_tokens": tokens,
++        **distill.verdict(row, message, True),
++    }
++
++
++def test_select_shortest_keeps_the_shortest_correct_draw_and_reports_it(cands):
++    a, b, c = cands[0], cands[1], cands[2]
++    first = [draw(a, 500), draw(b, 300, correct=False), draw(c, 400, correct=False)]
++    extra = [
++        draw(a, 200, n=1),
++        draw(a, 100, correct=False, n=2),  # shorter but wrong: never kept
++        draw(a, 700, n=3),
++        draw(b, 350, n=1),
++        draw(b, 900, n=2),
++        draw(c, 120, correct=False, n=1),
++    ]
++    chosen, report = distill.select_shortest(first, extra)
++    by_id = {s["id"]: s for s in chosen}
++    assert by_id[a["id"]]["sample_tokens"] == 200 and by_id[a["id"]]["kept_draw"] == 1
++    assert by_id[b["id"]]["sample_tokens"] == 350  # first draw was wrong, later ones rescued it
++    assert c["id"] not in by_id  # no correct draw at all
++    assert by_id[a["id"]]["n_correct"] == 3
++    assert by_id[a["id"]]["mean_correct_tokens"] == pytest.approx((500 + 200 + 700) / 3)
++    assert report["items"] == 3 and report["at_least_one_correct_rate"] == pytest.approx(2 / 3)
++    assert report["first_draw_keep_rate"] == pytest.approx(1 / 3)
++    kind_a = report["by_kind"][a["kind"]]
++    assert kind_a["mean_kept_over_mean_correct"] < 1
++    assert report["kept_tokens_by_number_of_correct_draws"]["3"]["items"] == 1
++
++
++def test_build_k_arm_subsamples_with_a_fixed_seed(tmp_path: Path, cands):
++    samples = fake_samples(cands)
++    first = distill.build(
++        cands,
++        samples,
++        tmp_path / "a",
++        count=20,
++        held_out=6,
++        arms={"K": "reasoning"},
++        subsample_seed=0,
++    )
++    second = distill.build(
++        cands,
++        samples,
++        tmp_path / "b",
++        count=20,
++        held_out=6,
++        arms={"K": "reasoning"},
++        subsample_seed=0,
++    )
++    other = distill.build(
++        cands,
++        samples,
++        tmp_path / "c",
++        count=20,
++        held_out=6,
++        arms={"K": "reasoning"},
++        subsample_seed=1,
++    )
++    assert first["sha256"] == second["sha256"] != other["sha256"]
++    assert list(first["sha256"]) == ["K/train.jsonl"]
++    ids = [
++        json.loads(x)["id"] for x in (tmp_path / "a" / "K" / "train.jsonl").read_text().splitlines()
++    ]
++    assert ids == sorted(ids) and len(set(ids)) == 20
++    assert not (tmp_path / "a" / "R").exists()
+diff --git a/tinker_cookbook/recipes/agent_memory/reasoning_report.py b/tinker_cookbook/recipes/agent_memory/reasoning_report.py
+index 92e395a..984ff25 100644
+--- a/tinker_cookbook/recipes/agent_memory/reasoning_report.py
++++ b/tinker_cookbook/recipes/agent_memory/reasoning_report.py
+@@ -8,6 +8,7 @@ from __future__ import annotations
+ 
+ import argparse
+ import json
++import random
+ from pathlib import Path
+ 
+ from tinker_cookbook.recipes.agent_memory.hard_report import paired_bootstrap, wilson
+@@ -17,11 +18,13 @@ NAMES = {
+     "stock": {256: "stock-cap256", 512: "stock", 1024: "stock-cap1024", 2048: "stock-cap2048"},
+     "R": {c: f"R-final-cap{c}" for c in CAPS},
+     "S": {c: f"S-final-cap{c}" for c in CAPS},
++    "K": {c: f"K-final-cap{c}" for c in CAPS},
+ }
+ LABELS = {
+     "stock": "stock model",
+     "R": "R: trained on own reasoning + answer",
+     "S": "S: trained on answer only",
++    "K": "K: trained on shortest correct of 4",
+ }
+ 
+ 
+@@ -32,6 +35,25 @@ def load(root: Path, name: str) -> dict[str, dict]:
+     return {r["id"]: r for r in map(json.loads, path.read_text().splitlines())}
+ 
+ 
++def paired_bootstrap_mean(
++    left: list[float], right: list[float], draws: int = 10_000, seed: int = 0
++) -> dict[str, float]:
++    """Paired bootstrap of the difference in means (for completion tokens)."""
++    rng = random.Random(seed)
++    n = len(left)
++    diffs = sorted(
++        sum(left[i] - right[i] for i in (rng.randrange(n) for _ in range(n))) / n
++        for _ in range(draws)
++    )
++    return {
++        "difference": sum(left) / n - sum(right) / n,
++        "low": diffs[int(0.025 * draws)],
++        "high": diffs[int(0.975 * draws) - 1],
++        "draws": draws,
++        "seed": seed,
++    }
++
++
+ def summarise(root: Path, stock_margin: float = 0.05, token_fraction: float = 0.5) -> dict:
+     data = {m: {c: load(root, n) for c, n in caps.items()} for m, caps in NAMES.items()}
+     report: dict = {"points": {}, "bootstrap": {}, "primary": {}}
+@@ -51,29 +73,37 @@ def summarise(root: Path, stock_margin: float = 0.05, token_fraction: float = 0.
+                 "parse_clean": sum(r["parse_clean"] for r in rows.values()) / len(rows),
+             }
+     for cap in CAPS:
+-        for left, right in (("R", "S"), ("R", "stock"), ("S", "stock")):
++        for left, right in (("R", "S"), ("R", "stock"), ("S", "stock"), ("K", "R"), ("K", "stock")):
+             a, b = data[left][cap], data[right][cap]
+             if a and b:
+                 ids = sorted(a)
+                 report["bootstrap"][f"{left} minus {right} @{cap}"] = paired_bootstrap(
+                     [a[i]["correct"] for i in ids], [b[i]["correct"] for i in ids]
+                 )
++                report["bootstrap"][f"{left} minus {right} tokens @{cap}"] = paired_bootstrap_mean(
++                    [float(a[i]["sample_tokens"]) for i in ids],
++                    [float(b[i]["sample_tokens"]) for i in ids],
++                )
+     stock = report["points"].get("stock@2048")
+     if stock:
+         need_acc = stock["accuracy"] - stock_margin
+         need_tokens = stock["mean_tokens"] * token_fraction
+         report["primary"] = {"required_accuracy": need_acc, "max_mean_tokens": need_tokens}
+-        for cap in CAPS:
+-            point = report["points"].get(f"R@{cap}")
+-            if point:
+-                report["primary"][str(cap)] = {
+-                    "accuracy_ok": point["accuracy"] >= need_acc,
+-                    "tokens_ok": point["mean_tokens"] <= need_tokens,
+-                    "passes": point["accuracy"] >= need_acc and point["mean_tokens"] <= need_tokens,
+-                }
+-        report["primary"]["passes_at_any_cap"] = any(
+-            v["passes"] for k, v in report["primary"].items() if k.isdigit()
+-        )
++        for model in ("R", "K"):
++            results = {}
++            for cap in CAPS:
++                point = report["points"].get(f"{model}@{cap}")
++                if point:
++                    ok_acc = point["accuracy"] >= need_acc
++                    ok_tok = point["mean_tokens"] <= need_tokens
++                    results[str(cap)] = {
++                        "accuracy_ok": ok_acc,
++                        "tokens_ok": ok_tok,
++                        "passes": ok_acc and ok_tok,
++                    }
++            if results:
++                results["passes_at_any_cap"] = any(v["passes"] for v in results.values())
++                report["primary"][model] = results
+     return report
+ 
+ 
+diff --git a/tinker_cookbook/recipes/agent_memory/reasoning_report_test.py b/tinker_cookbook/recipes/agent_memory/reasoning_report_test.py
+index ac720e2..e796820 100644
+--- a/tinker_cookbook/recipes/agent_memory/reasoning_report_test.py
++++ b/tinker_cookbook/recipes/agent_memory/reasoning_report_test.py
+@@ -37,8 +37,27 @@ def test_primary_requires_both_accuracy_and_token_savings(tmp_path: Path):
+     write(tmp_path, "R-final-cap2048", 350, 360, 500)  # accurate, no token savings
+     write(tmp_path, "R-final-cap256", 100, 360, 200)  # cheap, inaccurate
+     report = rr.summarise(tmp_path)
+-    assert report["primary"]["2048"] == {"accuracy_ok": True, "tokens_ok": False, "passes": False}
+-    assert report["primary"]["256"]["tokens_ok"] and not report["primary"]["256"]["accuracy_ok"]
+-    assert report["primary"]["passes_at_any_cap"] is False
++    assert report["primary"]["R"]["2048"] == {
++        "accuracy_ok": True,
++        "tokens_ok": False,
++        "passes": False,
++    }
++    assert (
++        report["primary"]["R"]["256"]["tokens_ok"]
++        and not report["primary"]["R"]["256"]["accuracy_ok"]
++    )
++    assert report["primary"]["R"]["passes_at_any_cap"] is False
+     write(tmp_path, "R-final-cap1024", 345, 360, 240)  # both
+-    assert rr.summarise(tmp_path)["primary"]["passes_at_any_cap"] is True
++    assert rr.summarise(tmp_path)["primary"]["R"]["passes_at_any_cap"] is True
++
++
++def test_k_arm_gets_its_own_primary_verdict_and_token_bootstrap(tmp_path: Path):
++    write(tmp_path, "stock-cap2048", 358, 360, 500)
++    write(tmp_path, "R-final-cap1024", 330, 360, 450)
++    write(tmp_path, "K-final-cap1024", 345, 360, 200)
++    report = rr.summarise(tmp_path)
++    assert report["primary"]["K"]["passes_at_any_cap"] is True
++    assert report["primary"]["R"]["passes_at_any_cap"] is False
++    tokens = report["bootstrap"]["K minus R tokens @1024"]
++    assert tokens["difference"] == pytest.approx(-250) and tokens["high"] < 0
++    assert report["bootstrap"]["K minus R @1024"]["difference"] == pytest.approx(15 / 360)

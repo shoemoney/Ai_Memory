@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "graphiti",
+    "episode": 28
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "fc62923a1d3ae08942db6a4585cc67ff8d6ebe91efd109120b59ea0eb0976bb5",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a7445a52-be89-4a8a-a2ee-a496e331aefb",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Taboo\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Riverside Park\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Trigger\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Nisha's dad\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Jordan's cat\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Wits & Wagers\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Deception: Murder in Hong Kong\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Mysterium\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Forbidden Island\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Forbidden Desert\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Wits & Wagers\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Taboo\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Pictionary\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Cranium\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795343698,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 490,
+      "prompt_tokens": 9268,
+      "total_tokens": 9758,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5718
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"Denver\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Lockheed Martin\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Belmont Arts Center\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Taboo\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Riverside Park\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Trigger\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Nisha's dad\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Jordan's cat\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Wits & Wagers\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Deception: Murder in Hong Kong\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Mysterium\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Forbidden Island\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Forbidden Desert\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Wits & Wagers\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Taboo\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Pictionary\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Cranium\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"Mustang\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"cracked windshield\", \"entity_type_id\": 0, \"episode_indices\": [0]}]}",
+  "seconds": 313.0083075349976,
+  "prompt_tokens_local": 9268
+}

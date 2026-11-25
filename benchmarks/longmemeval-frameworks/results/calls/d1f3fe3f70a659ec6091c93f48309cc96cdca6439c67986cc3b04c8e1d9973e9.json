@@ -1,0 +1,56 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 38
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "d38ac858a04527b4bfb4b43334e0a3617b55e61f79f7a5dc3bfe1fb58da38b5d",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-61d2b75d-49bf-489e-8fa7-cc55e7f1c887",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"Shakespeare's works are diverse and complex, with characters that reflect human nature. Universal human experiences, such as love, jealousy, power, betrayal, tragedy, and triumph, are explored in his plays. His writing style is powerful and evocative, making his works timeless and relevant to contemporary society.\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795332530,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 67,
+      "prompt_tokens": 1476,
+      "total_tokens": 1543,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 660
+      }
+    }
+  },
+  "text": "{\"facts\": [\"Shakespeare's works are diverse and complex, with characters that reflect human nature. Universal human experiences, such as love, jealousy, power, betrayal, tragedy, and triumph, are explored in his plays. His writing style is powerful and evocative, making his works timeless and relevant to contemporary society.\"]}",
+  "seconds": 2.4757793430035235,
+  "prompt_tokens_local": 1476,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

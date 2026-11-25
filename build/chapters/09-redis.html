@@ -1,0 +1,665 @@
+<article class="chapter" data-ch="09" data-part="d" data-running="Redis and Valkey">
+
+<header class="opener">
+  <p class="opener-eyebrow">Part D &middot; Chapter 09</p>
+  <div class="opener-num" aria-hidden="true">09</div>
+  <h1>Redis and Valkey</h1>
+  <p class="opener-summary">An in-memory server for agent sessions, recent history and vector lookups, backed by a durable store.</p>
+  <div class="glance">
+    <div class="glance-cell">
+      <p class="glance-label">Maturity</p>
+      <p class="glance-value"><span class="badge badge-shipped">Shipped</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Setup effort</p>
+      <p class="glance-value"><span class="rating r2" role="img" aria-label="2 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">2 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Running cost</p>
+      <p class="glance-value"><span class="rating r3" role="img" aria-label="3 of 5"><i></i><i></i><i></i><i></i><i></i></span><span class="of">3 of 5</span></p>
+    </div>
+    <div class="glance-cell">
+      <p class="glance-label">Best for</p>
+      <p class="glance-value">Agents needing fast shared state, with a database as the record.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<div class="plain">
+  <p class="lead">Redis is a fast shared notepad for agents: a server that keeps data in RAM in ready-made structures (hashes, lists, streams, sorted sets), with keys that can expire. Valkey is a community fork with the same protocol.</p>
+  <p>Agents use it for sessions, recent messages and facts, cached answers and worker coordination. Disk writes are optional (snapshots or a log), so a crash can lose recent writes.<sup class="cite"><a href="#s09-1">1</a></sup></p>
+  <p>Redis is a <strong>hot tier in front of a durable store</strong>: Chapter 08’s database stays the record and rebuilds Redis when needed. Chapter 10 covers caching.</p>
+</div>
+<aside class="terms">
+  <p class="terms-title">Terms new in this chapter</p>
+  <dl>
+    <dt>TTL</dt><dd>A key's lifetime, set with <code>EXPIRE</code>.</dd>
+    <dt>Hit, miss, eviction</dt><dd>A hit returns a cached result; a miss finds none. Eviction drops keys at the memory limit.</dd>
+    <dt>RDB snapshot</dt><dd>A copy of the whole dataset written to disk on a schedule such as <code>save 60 1000</code> (seconds, then changed keys).<sup class="cite"><a href="#s09-1">1</a></sup></dd>
+    <dt>AOF</dt><dd>Append-only file. A log of every write, flushed to disk under one of three policies: <code>always</code> (each write batch), <code>everysec</code> or <code>no</code> (when the OS decides).<sup class="cite"><a href="#s09-1">1</a></sup></dd>
+    <dt>Stream</dt><dd>An append-only log of entries with ids, read by position or by a group of workers.</dd>
+    <dt>Consumer group</dt><dd>A stream feature that hands each entry to one worker in the group and tracks whether it was acknowledged.</dd>
+  </dl>
+  <p class="small muted">HNSW is defined in the Chapter 00 terms box and compared with other index families in Chapter 11. KNN, FLAT and quantization are in the glossary appendix.</p>
+</aside>
+</section>
+
+<section>
+<h2>How it works</h2>
+<p>The app names keys such as <code>session:alice</code>; the key's type sets its commands. HGET reads the summary in one round trip; pipeline it with XREVRANGE to fetch history in that round trip too. Redis stores and compares embeddings from your model (Chapter 03) and makes no model call.</p>
+
+<figure class="diagram">
+<svg viewBox="0 0 600 290" role="img" aria-label="Diagram: the agent app reads and writes four kinds of key in Redis, a durable store sits beside it and refills it, and the top hits go to the model.">
+  <text class="d-label" x="175" y="16">Redis or Valkey, in RAM</text>
+  <rect class="d-box soft" x="175" y="24" width="235" height="248" rx="4"/>
+
+  <rect class="d-box" x="15" y="106" width="110" height="80" rx="4"/>
+  <text class="d-title" x="70" y="140" text-anchor="middle">Agent app</text>
+  <text class="d-sub" x="70" y="158" text-anchor="middle">writes and reads</text>
+
+  <rect class="d-box accent" x="195" y="38" width="195" height="46" rx="3"/>
+  <text class="d-title" x="292" y="57" text-anchor="middle">Session hash</text>
+  <text class="d-mono" x="292" y="74" text-anchor="middle">session:id + EXPIRE</text>
+
+  <rect class="d-box accent" x="195" y="92" width="195" height="46" rx="3"/>
+  <text class="d-title" x="292" y="111" text-anchor="middle">History stream</text>
+  <text class="d-mono" x="292" y="128" text-anchor="middle">history:id</text>
+
+  <rect class="d-box accent" x="195" y="146" width="195" height="46" rx="3"/>
+  <text class="d-title" x="292" y="165" text-anchor="middle">Recency sorted set</text>
+  <text class="d-mono" x="292" y="182" text-anchor="middle">recent:id</text>
+
+  <rect class="d-box accent" x="195" y="200" width="195" height="62" rx="3"/>
+  <text class="d-title" x="292" y="219" text-anchor="middle">Vector index or set</text>
+  <text class="d-mono" x="292" y="236" text-anchor="middle">FT.SEARCH or VSIM</text>
+  <text class="d-sub" x="292" y="252" text-anchor="middle">embedding bytes</text>
+
+  <rect class="d-box" x="470" y="38" width="115" height="96" rx="4"/>
+  <text class="d-title" x="527" y="76" text-anchor="middle">Durable store</text>
+  <text class="d-sub" x="527" y="94" text-anchor="middle">Chapter 08</text>
+  <text class="d-sub" x="527" y="108" text-anchor="middle">system of record</text>
+
+  <rect class="d-box dark" x="470" y="186" width="115" height="76" rx="4"/>
+  <text class="d-title d-on-dark" x="527" y="219" text-anchor="middle">Model</text>
+  <text class="d-sub d-on-dark" x="527" y="237" text-anchor="middle">reads top hits</text>
+
+  <path class="d-line" d="M125 146 H173"/>
+  <path class="d-line accent dash" d="M410 70 H468"/>
+  <path class="d-line accent dash" d="M468 104 H412"/>
+  <path class="d-line" d="M410 224 H468"/>
+</svg>
+<figcaption><b>Figure 1.</b> The app keeps live state in four key types. Writes also go to the durable store (upper dashed arrow), which can refill Redis after a restart (lower dashed arrow). The model sees only what a read returns.</figcaption>
+</figure>
+
+<p><code>EXPIRE</code> sets a TTL on a whole key of any type and removes the key when it fires. Stream and sorted-set entries stay until your code trims them, and Vector Set elements until VREM or key expiry.</p>
+
+<h3>Two vector options</h3>
+<p>Redis 8 has two ways to search by meaning. The <strong>Query Engine</strong> (formerly the RediSearch module, now in Redis 8) indexes hashes or JSON documents. A vector field can be FLAT, HNSW or (from Redis 8.2) SVS-VAMANA (a graph index with vector compression), in float32 or a narrower type; the figures here are float32 HNSW. One query can filter on tag, numeric and text fields.<sup class="cite"><a href="#s09-2">2</a></sup> <strong>Vector Sets</strong> are a separate data type: <code>VADD</code> adds an element, <code>VREM</code> removes it and <code>VSIM</code> searches. With persistence on, the graph is stored in the snapshot and reloaded at restart, so vectors need no re-insert. Recent-write survival depends on the persistence policy and crash type (see the restart test). Docs claim, not tested here.<sup class="cite"><a href="#s09-3">3</a></sup></p>
+<aside class="callout gotcha">
+  <p class="callout-label">Note: two score scales</p>
+  <p><code>VSIM ... WITHSCORES</code> returns a score <em>s</em> from 0 to 1, where 1 is identical and 0 is opposite. The module README documents this; a test with three unquantized vectors (identical, orthogonal, opposite) returned 1, 0.5 and 0.<sup class="cite"><a href="#s09-4">4</a></sup> <code>FT.SEARCH</code> and RedisVL (see the products table) return a distance instead: for cosine, 0 is identical and 2 opposite. Convert thresholds between APIs (cosine index only):</p>
+  <ul>
+    <li>Score from cosine similarity: <em>s</em> = (1 + cosine) / 2.</li>
+    <li>Cosine similarity from score: 2<em>s</em> &minus; 1.</li>
+    <li>Cosine distance from score: 2(1 &minus; <em>s</em>).</li>
+  </ul>
+</aside>
+<p class="table-title">How the two options differ</p>
+<table class="data">
+  <colgroup><col class="c20"><col class="c40"><col class="c40"></colgroup>
+  <thead><tr><th>Aspect</th><th>Query Engine index</th><th>Vector Set</th></tr></thead>
+  <tbody>
+    <tr><td>Filtering</td><td>Tag, numeric and text fields in one query. Tested with a tag filter.</td><td>Filters on per-element attributes; benchmarks/stores/worker.py tests VSETATTR and returns only the match among three.<sup class="cite"><a href="#s09-5">5</a></sup></td></tr>
+    <tr><td>Memory</td><td>Measured about 15.3 kB per 1,536-dimension vector (15,306 B, hash plus index).</td><td>The maintainer reports default 8-bit codes at about 25% of float32 payload space.<sup class="cite"><a href="#s09-3">3</a></sup> Measured 2,293 B per vector including the graph; hash plus index stores each vector twice, while the Vector Set is quantized.</td></tr>
+    <tr><td>Status</td><td>Part of Redis 8 core.<sup class="cite"><a href="#s09-6">6</a></sup></td><td>Beta in the 8.0.0 release notes and still in the 8.10.3 README.<sup class="cite"><a href="#s09-6">6</a>,<a href="#s09-7">7</a></sup></td></tr>
+  </tbody>
+</table>
+<h3>Choose Redis or Valkey: licenses and versions</h3>
+<p>Default to Redis 8 if AGPLv3 is acceptable; choose Valkey when you need a BSD license. Valkey forks Redis 7.2.4 and stays BSD-3 under the Linux Foundation.<sup class="cite"><a href="#s09-8">8</a></sup> Redis itself changed license:</p>
+<ul>
+  <li>Redis 7.2 and earlier stay BSD-3; the 7.2.12 patch release of 2 November 2025 still ships the BSD license file.<sup class="cite"><a href="#s09-9">9</a>,<a href="#s09-10">10</a></sup></li>
+  <li>From 20 March 2024, Redis 7.4 and later are available under RSALv2 or SSPLv1.<sup class="cite"><a href="#s09-9">9</a></sup></li>
+  <li>Redis 8 (1 May 2025) adds AGPLv3 as a third option.<sup class="cite"><a href="#s09-11">11</a></sup> Its 8.0.0 release notes say the Query Engine, JSON, time series, five probabilistic structures and Vector Sets moved into core.<sup class="cite"><a href="#s09-6">6</a></sup></li>
+</ul>
+<p class="table-title">Products and versions (state as of 22 November 2026; later lab verification below)</p>
+<table class="data">
+  <colgroup><col class="c22"><col class="c48"><col class="c30"></colgroup>
+  <thead><tr><th>Product</th><th>What it is</th><th>Version</th></tr></thead>
+  <tbody>
+    <tr><td>Redis 8</td><td>Redis with the Query Engine, JSON and Vector Sets built in.<sup class="cite"><a href="#s09-6">6</a></sup></td><td>8.12.0 is the latest stable (2026-11-22). Runs used 8.10.3 (2026-10-26); date in walkthrough.<sup class="cite"><a href="#s09-12">12</a></sup></td></tr>
+    <tr><td>Valkey</td><td>BSD-3 fork. The core image has no search bundle.<sup class="cite"><a href="#s09-8">8</a></sup></td><td>9.2.0 (November 2026). It reports <code>redis_version</code> 7.2.4 for compatibility.<sup class="cite"><a href="#s09-13">13</a></sup></td></tr>
+    <tr><td>RedisVL and LangCache</td><td>RedisVL is an MIT Python client with <code>SearchIndex</code>, <code>SemanticCache</code> and <code>SemanticMessageHistory</code>, for Python 3.11 or later.<sup class="cite"><a href="#s09-14">14</a>,<a href="#s09-15">15</a></sup> LangCache is a managed semantic answer cache, "currently available in preview".<sup class="cite"><a href="#s09-16">16</a></sup></td><td>RedisVL 0.32.1 on PyPI.<sup class="cite"><a href="#s09-15">15</a></sup></td></tr>
+    <tr><td>Redis Agent Memory</td><td>The current Redis memory product: session memory plus background extraction of long-term facts, managed or on Kubernetes. It is not compatible with the deprecated open-source Agent Memory Server (last release 0.15.2, 2026-04-10), and switching does not copy memories.<sup class="cite"><a href="#s09-17">17</a></sup></td><td>Python package <code>redis-iris</code>, 1.0.0 or later.<sup class="cite"><a href="#s09-17">17</a></sup></td></tr>
+    <tr><td>langgraph-checkpoint-redis</td><td>JavaScript: <code>RedisSaver</code> for full checkpoints and <code>ShallowRedisSaver</code> for the latest one per thread.<sup class="cite"><a href="#s09-18">18</a></sup></td><td>Not tested.</td></tr>
+    <tr><td>KeyDB, Dragonfly</td><td>Other Redis-compatible servers. KeyDB is BSD-3, latest release 6.3.4 (October 2023).<sup class="cite"><a href="#s09-19">19</a></sup> Dragonfly's source-available license caps production use at 100 vCPUs in total.<sup class="cite"><a href="#s09-20">20</a></sup></td><td>Not tested.</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section>
+<h2>Good for and not for</h2>
+<div class="gnf">
+  <div class="gnf-col good">
+    <p class="gnf-title">Good for</p>
+    <ul>
+      <li>Session state and scratch memory that should expire on its own.</li>
+      <li>The last N messages of a conversation, read on every turn.</li>
+      <li>Shared locks, counters and queues across agent workers.</li>
+      <li>A cache of model answers keyed by meaning.</li>
+      <li>A hot slice of recent facts, refilled from a database.</li>
+    </ul>
+  </div>
+  <div class="gnf-col not">
+    <p class="gnf-title">Not for</p>
+    <ul>
+      <li>The only copy of facts that matter. Keep the system of record in Chapter 08's database.</li>
+      <li>A vector corpus larger than RAM. Use a disk-based store (Chapter 11); keep the hot slice here.</li>
+      <li>Multi-record transactions or relational queries (use PostgreSQL).</li>
+      <li>A team that has not approved the AGPL, RSAL or SSPL terms. Use Valkey or review the license.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Use cases</h2>
+<div class="ucases">
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">1</span>Support chat: session summary and last messages</h3>
+  <dl>
+    <dt>Situation</dt><dd>A few thousand open support chats need summaries, ticket ids and the last twenty messages after worker restarts; abandoned chats should expire.</dd>
+    <dt>Why it fits</dt><dd>Refresh each chat’s hash and stream with <code>EXPIRE 1800</code> every turn. <code>XADD</code> appends one message per entry. MAXLEN ~ trims approximately; the stream can exceed the cap. COUNT bounds the read. <code>XREVRANGE history:alice + - COUNT 20</code> reads the newest twenty, newest first; the app reverses them (step 3).<sup class="cite"><a href="#s09-21">21</a></sup></dd>
+    <dt>Pair with</dt><dd>PostgreSQL (Chapter 08) commits turn and numbered outbox row together. The relay’s Redis script atomically checks sequence, XADDs messages, updates summary/sequence and refreshes both TTLs. Old numbers return “already applied”; missing sessions or gaps trigger a PostgreSQL rebuild. Untested design sketch. Image defaults lose open chats in a crash (restart test below), so also enable the AOF.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">2</span>A fleet of workers sharing one job</h3>
+  <dl>
+    <dt>Situation</dt><dd>Twelve workers watch one task list. Uncoordinated workers can summarize the same user, write conflicting notes and both pay for model calls.</dd>
+    <dt>Why it fits</dt><dd>Consumer groups assign each task to one worker. Commit under a unique job id before XACK; XAUTOCLAIM only after the slowest job’s timeout. For different tasks touching one user, <code>SET key value NX PX 30000</code> grants one lease (a lock with a TTL). Leases reduce overlap; reclaims can repeat model calls. Database uniqueness prevents duplicate commits. The walkthrough tests XREADGROUP, XAUTOCLAIM and XACK. The lock guide accepts single-instance locks where occasional races are acceptable.<sup class="cite"><a href="#s09-22">22</a></sup></dd>
+    <dt>Pair with</dt><dd>Database cases: accept any result with a unique job id; accept only the current owner with fencing (atomically check its database-issued, increasing generation). Calls can outlast leases; failover can lose them or roll back Redis INCR. Token checks on delete only protect another worker’s lease.</dd>
+  </dl>
+</article>
+
+<article class="ucase">
+  <h3 class="ucase-title"><span class="n">3</span>Answer cache for repeated questions</h3>
+  <dl>
+    <dt>Situation</dt><dd>An internal help bot pays for model calls for paraphrases of one question.</dd>
+    <dt>Why it fits</dt><dd>RedisVL's <code>SemanticCache</code> stores answers keyed by the question's embedding and returns one only when a new question is close enough. <code>distance_threshold</code> defaults to 0.1 (lower is stricter).<sup class="cite"><a href="#s09-23">23</a></sup> Define a tenant tag in filterable_fields, store it on each entry and require its exact match on lookup. Skip shared caching for personalized answers. Key prefixes are not a security boundary: use ACL users and TLS (Chapter 17).</dd>
+    <dt>Pair with</dt><dd>Chapter 10, on setting and testing the threshold, exact-key caching and invalidation.</dd>
+  </dl>
+</article>
+
+</div>
+</section>
+
+<section>
+<h2>Numbers</h2>
+<p>Three reruns used 10,000 seeded uniform-random (synthetic) 1,536-dimension vectors; walkthrough environment/date. Timings include serialization. Real embedding clusters can change latency/recall; memory sizing is indicative. Prose-only tests: companion repository, benchmarks/stores.</p>
+<p class="table-title">Sizes, speeds and limits</p>
+<table class="numbers">
+  <thead><tr><th>Figure</th><th>What it measures</th><th class="src">Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>7,378 B</td><td>Memory per 1,536-dimension float32 vector held as a hash. Three runs: 7,364 to 7,378 B.</td><td class="src"><span class="pill example">Tested</span></td></tr>
+    <tr><td>7,928 B</td><td>Memory the HNSW index added per vector (three runs: 7,926 to 7,933 B).</td><td class="src"><span class="pill example">Tested</span></td></tr>
+    <tr><td>2,293 B</td><td>Memory per vector in a Vector Set with default 8-bit quantization (three runs: 2,293 to 2,299 B).</td><td class="src"><span class="pill example">Tested</span></td></tr>
+    <tr><td>8.4 to 15.3 ms</td><td>Median <code>FT.SEARCH</code> top-10, 200 queries per run, three runs. Returns distances, not embeddings; the tag filter matches every vector, testing no selectivity.</td><td class="src"><span class="pill example">Tested</span></td></tr>
+    <tr><td>2.2 to 3.1 ms</td><td>Median <code>VSIM</code> top-10, same dimensions. Different configuration: 8-bit codes, no filter. Recall unmeasured for either method.</td><td class="src"><span class="pill example">Tested</span></td></tr>
+    <tr><td>About 1 second</td><td>The docs report this crash-loss window with <code>appendfsync everysec</code>; power failure was not tested.<sup class="cite"><a href="#s09-1">1</a></sup></td><td class="src"><span class="pill official">Official docs</span></td></tr>
+  </tbody>
+</table>
+
+<p><strong>Tested:</strong> with 100,000 vectors of 384 dimensions, CPU only, default 8-bit quantization (Q8) halved memory: 114,057,608 B against 229,225,160 B without it (2.010x, graph and ids included), short of the payload saving because the graph is not quantized. Both started empty, with the walkthrough’s measurement limits. Sizes are decimal except the GiB container limit.</p>
+
+<h3>Scope and scale</h3>
+<table class="data">
+  <colgroup><col class="c20"><col class="c80"></colgroup>
+  <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+  <tbody>
+    <tr><td>Job</td><td>The slice read every turn (session summary, last messages, cached answers, leases): a bounded prompt and fewer repeat model calls.</td></tr>
+    <tr><td>Single-key write</td><td>One command. A chat turn uses several; pipeline to reduce round trips; use MULTI/EXEC for atomic writes, Lua for read-dependent writes. A semantic write adds one embedding call from your model (Chapter 03) and the per-vector RAM measured above.</td></tr>
+    <tr><td>Single-command read</td><td>One round trip, plus one query embedding for a semantic read; medians are above.</td></tr>
+    <tr><td>Growth</td><td>RAM grows linearly with keys and vectors. More users add keys, and more workers add lock and stream traffic.</td></tr>
+    <tr><td>Breaks first</td><td>RAM, then the crash loss window. Snapshot writes retain old and new memory pages. Measure peak parent/child memory under write load; budget replicas and fragmentation (mem_fragmentation_ratio in INFO memory) separately.</td></tr>
+    <tr><td>Move on when</td><td>Vectors outgrow the memory budget (Chapter 11 or 08), or facts need history, joins or a durable record (Chapter 08).</td></tr>
+  </tbody>
+</table>
+
+<p>Raw float32 sizes are in the Chapter 00 sizing reference. This estimate scales the measured per-vector figure (15,306 B for hash plus index) linearly, though graph overhead can change with size: at 100,000, 1 million and 10 million vectors, hash plus HNSW comes to 1.5 GB, 15.3 GB and 153 GB, a Vector Set to 229 MB, 2.3 GB and 23 GB.</p>
+</section>
+
+<section>
+<h2>Setup walkthrough</h2>
+<p>Later verification beyond the research cutoff: Tested blocks and <code>$</code> commands ran on 23 November 2026: Ubuntu, Docker, 32-thread x86 CPU only, Python 3.14.4, redis-py 8.1.0. Images: <code>redis:8.10.3</code> (digest <code>sha256:1f88291b...</code>) and <code>valkey/valkey-bundle:9.2.0</code> (digest <code>sha256:cc210fe6...</code>). Measurements used fresh containers, 2 CPUs and 3 GiB RAM per phase.</p>
+<p>Reserve unused <code>memlab-09-*</code> names and ports. Setup continues on errors and volumes can reuse data; never clean up after a collision. Servers bind to 127.0.0.1.</p>
+<ol class="steps">
+  <li class="step-long">
+    <p class="step-title">Start Redis 8 and Valkey, then write session, history and lock keys</p>
+    <p>Save as setup.sh; run bash setup.sh in an empty parent folder; step 2 enters memdemo. Valkey needs the bundle image for search. The second <code>SET ... NX</code> returns blank: the random-token lease is held. INCR then EXPIRE can leave an immortal counter on interruption; production needs atomic Lua (untested). ZADD orders recent facts; history and facts expire. Last four commands read back data. Demo TTL: 300 s; use case: 1800 s.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">setup.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>mkdir memdemo &amp;&amp; cd memdemo
+docker network create memlab-09-net
+docker run -d --name memlab-09-redis --network memlab-09-net --tmpfs /data \
+  -p 127.0.0.1:39090:6379 redis:8.10.3
+docker run -d --name memlab-09-valkey --network memlab-09-net --tmpfs /data \
+  -p 127.0.0.1:39091:6379 \
+  valkey/valkey-bundle:9.2.0
+sleep 2
+rc() { docker exec memlab-09-redis redis-cli "$@"; }
+rc HSET session:alice summary "likes databases" turns 1
+rc EXPIRE session:alice 300
+rc XADD history:alice MAXLEN '~' 20 '*' role user content "remember me"
+rc EXPIRE history:alice 300
+rc ZADD recent:alice 1795187953 fact:1 1795187999 fact:2
+rc EXPIRE recent:alice 300
+token=$(python3 -c 'import secrets; print(secrets.token_hex(16))')
+rc SET lock:summarize:alice "$token" NX PX 30000
+rc SET lock:summarize:alice other-token NX PX 30000
+count=$(rc INCR rate:alice:minute)
+printf '%s\n' "$count"
+if [ "$count" = 1 ]; then rc EXPIRE rate:alice:minute 60; fi
+rc TTL session:alice
+rc HGET session:alice summary
+rc XLEN history:alice
+rc ZREVRANGE recent:alice 0 0</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span></div>
+<pre>$ bash setup.sh
+2
+1
+1795417950076-0
+1
+2
+1
+OK
+
+1
+1
+300
+likes databases
+1
+fact:2</pre></div>
+    <p class="small muted">Container, network and volume creation output is omitted. The stream id is a millisecond timestamp plus a counter, so yours differs. The TTL depends on elapsed time.</p>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Install the client and build a vector index with a tag filter</p>
+    <p>This field is declared FLOAT32, so send packed values, not a text list; <code>struct.pack</code> builds the payload. The 6 after HNSW counts the words that follow; DIALECT 2 enables the KNN syntax. The tag filter excludes Bob’s close memory.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>cd memdemo
+python3 -m venv venv
+venv/bin/pip install redis==8.1.0</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">vec_index.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import struct
+import redis
+
+import sys
+
+r = redis.Redis(port=int(sys.argv[1]) if len(sys.argv) &gt; 1 else 39090)
+print(r.execute_command(
+    "FT.CREATE", "memidx", "ON", "HASH", "PREFIX", 1, "memory:", "SCHEMA",
+    "user_id", "TAG", "text", "TEXT",
+    "embedding", "VECTOR", "HNSW", 6,
+    "TYPE", "FLOAT32", "DIM", 4, "DISTANCE_METRIC", "COSINE"))
+docs = [("alice", "likes pizza", (1, 0, 0, 0)),
+        ("alice", "writes rust", (0, 1, 0, 0)),
+        ("bob", "likes pizza too", (0.9, 0.1, 0, 0))]
+for i, (user, text, vec) in enumerate(docs, 1):
+    r.hset(f"memory:{i}", mapping={
+        "user_id": user, "text": text, "embedding": struct.pack("&lt;4f", *vec)})
+q = struct.pack("&lt;4f", 1, 0, 0, 0)
+res = r.execute_command(
+    "FT.SEARCH", "memidx", "(@user_id:{alice})=&gt;[KNN 2 @embedding $q AS dist]",
+    "PARAMS", 2, "q", q, "SORTBY", "dist", "RETURN", 2, "text", "dist",
+    "DIALECT", 2)
+if isinstance(res, dict):
+    hits = [(row[b"id"], row[b"extra_attributes"]) for row in res[b"results"]]
+else:
+    hits = [(res[i], dict(zip(res[i + 1][::2], res[i + 1][1::2])))
+            for i in range(1, len(res), 2)]
+for key, fields in hits:
+    print(key, dict(sorted(fields.items())))</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span></div>
+<pre>$ venv/bin/python vec_index.py
+b'OK'
+b'memory:1' {b'dist': b'0', b'text': b'likes pizza'}
+b'memory:2' {b'dist': b'1', b'text': b'writes rust'}</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Read only the newest twenty messages, in prompt order</p>
+    <p><code>XRANGE key - + COUNT 20</code> starts at the oldest entry. <code>XREVRANGE</code> starts at the newest, so reverse its bounded result to get chronological prompt order.<sup class="cite"><a href="#s09-21">21</a></sup> The test appends 25 messages with approximate trimming; only messages 6 to 25 reach the prompt. Its placeholder content says “turn”.</p>
+    <div class="codeblock splittable"><div class="code-head"><span class="code-lang">python</span><span class="code-file">last_turns.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import redis
+
+r = redis.Redis(port=39090, decode_responses=True)
+key = "history:window-demo"
+if r.exists(key):
+    raise SystemExit("STOP: test stream already exists")
+for turn in range(1, 26):
+    r.xadd(key, {"role": "user", "content": f"turn {turn:02d}"},
+           maxlen=20, approximate=True)
+r.expire(key, 1800)
+newest = r.xrevrange(key, max="+", min="-", count=20)
+prompt_turns = list(reversed(newest))
+contents = [fields["content"] for _, fields in prompt_turns]
+assert contents == [f"turn {turn:02d}" for turn in range(6, 26)]
+print("stored:", r.xlen(key), "selected:", len(prompt_turns))
+for start in range(0, len(contents), 5):
+    print("prompt:", ", ".join(contents[start:start + 5]))</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span></div>
+<pre>$ venv/bin/python last_turns.py
+stored: 25 selected: 20
+prompt: turn 06, turn 07, turn 08, turn 09, turn 10
+prompt: turn 11, turn 12, turn 13, turn 14, turn 15
+prompt: turn 16, turn 17, turn 18, turn 19, turn 20
+prompt: turn 21, turn 22, turn 23, turn 24, turn 25</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Add a Vector Set and read it from a second process</p>
+    <p>Vectors arrive as numbers after <code>VALUES</code>, with the dimension first. Run it with add, then query. Scores are the rescaled cosine from the note above. The second element’s cosine is 0.193 versus exact 0.196, from 8-bit quantization.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">vec_set.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import sys
+import redis
+
+r = redis.Redis(port=39090)
+if sys.argv[1] == "add":
+    print(r.execute_command("VADD", "memvectors", "VALUES", 4, 1, 0, 0, 0, "fact:1"))
+    print(r.execute_command("VADD", "memvectors", "VALUES", 4, 0, 1, 0, 0, "fact:2"))
+else:
+    hits = r.execute_command(
+        "VSIM", "memvectors", "VALUES", 4, 1, 0.2, 0, 0, "COUNT", 2, "WITHSCORES")
+    for name, s in hits.items():
+        print(name, "score", round(s, 4), "cosine", round(2 * s - 1, 4))</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span></div>
+<pre>$ venv/bin/python vec_set.py add
+True
+True
+$ venv/bin/python vec_set.py query
+b'fact:1' score 0.9903 cosine 0.9806
+b'fact:2' score 0.5965 cosine 0.193</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Try a tag-plus-vector index and <code>VADD</code> on Valkey</p>
+    <p>The Valkey bundle accepts the same TEXT, tag and vector schema and returns the same two matches. vec_index.py normalizes Redis’s map reply and Valkey’s flat list. Valkey has no <code>VADD</code>.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>vc() { docker exec memlab-09-valkey valkey-cli "$@"; }
+vc INFO server | grep valkey_version
+venv/bin/python vec_index.py 39091
+vc VADD v VALUES 4 1 0 0 0 x</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span></div>
+<pre>valkey_version:9.2.0
+b'OK'
+b'memory:1' {b'dist': b'0', b'text': b'likes pizza'}
+b'memory:2' {b'dist': b'1', b'text': b'writes rust'}
+ERR unknown command 'VADD', with args beginning with: 'v' 'VALUES' '4' '1' '0' '0' '0' 'x'</pre></div>
+  </li>
+  <li>
+    <p class="step-title">Reclaim an abandoned task with a second worker</p>
+    <p>Entries stay pending until acknowledged. Worker w2 reclaims w1’s entry after 100 ms idle, then acknowledges it. Production timeouts must exceed the slowest job. Lua on both servers, Redis DELEX and Valkey DELIFEQ delete only when the value matches the caller’s token.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">coord.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import secrets
+import time
+import redis
+
+r = redis.Redis(port=39090)
+r.xgroup_create("tasks", "workers", id="0", mkstream=True)
+r.xadd("tasks", {"job": "summarize alice"})
+job = r.xreadgroup("workers", "w1", {"tasks": "&gt;"}, count=1)
+print("claimed:", job[0][1][0][1])
+print("pending:", r.xpending("tasks", "workers")["pending"])
+time.sleep(0.1)
+reclaimed = r.xautoclaim("tasks", "workers", "w2", 100, "0-0", count=1)
+print("reclaimed:", reclaimed[1][0][1])
+print("owner:", r.xpending_range("tasks", "workers", "-", "+", 1)[0]["consumer"])
+r.xack("tasks", "workers", reclaimed[1][0][0])
+print("pending after ack:", r.xpending("tasks", "workers")["pending"])
+lua = """if redis.call('GET', KEYS[1]) == ARGV[1] then
+    return redis.call('DEL', KEYS[1]) else return 0 end"""
+for port in (39090, 39091):
+    r = redis.Redis(port=port)
+    token = secrets.token_hex(16)
+    r.set("lease:demo", token, px=30000)
+    print("Lua wrong/right:", r.eval(lua, 1, "lease:demo", "wrong"),
+          r.eval(lua, 1, "lease:demo", token))
+    r.set("lease:demo", token, px=30000)
+    def release(value):
+        if "valkey_version" in r.info("server"):
+            return r.execute_command("DELIFEQ", "lease:demo", value)
+        return r.execute_command("DELEX", "lease:demo", "IFEQ", value)
+    print("native wrong/right:", release("wrong"), release(token))</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span></div>
+<pre>$ venv/bin/python coord.py
+claimed: {b'job': b'summarize alice'}
+pending: 1
+reclaimed: {b'job': b'summarize alice'}
+owner: b'w2'
+pending after ack: 0
+Lua wrong/right: 0 1
+native wrong/right: 0 1
+Lua wrong/right: 0 1
+native wrong/right: 0 1</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Test what a restart loses</p>
+    <p>The first container uses image defaults, killed with <code>docker kill</code> (SIGKILL). The second uses the AOF with <code>everysec</code>.<sup class="cite"><a href="#s09-1">1</a></sup> The empty output line is the first <code>GET</code>: <code>fact:1</code> was lost.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-file">restart.sh</span><span class="code-tag tested">Tested</span></div>
+<pre>docker volume create memlab-09-p1-data
+docker run -d --name memlab-09-p1 --network memlab-09-net \
+  -v memlab-09-p1-data:/data -p 127.0.0.1:39092:6379 redis:8.10.3
+sleep 2
+docker exec memlab-09-p1 redis-cli SET fact:1 "likes databases"
+docker exec memlab-09-p1 redis-cli CONFIG GET save
+docker exec memlab-09-p1 redis-cli CONFIG GET appendonly
+docker kill memlab-09-p1 &amp;&amp; docker start memlab-09-p1 &amp;&amp; sleep 2
+docker exec memlab-09-p1 redis-cli GET fact:1
+docker volume create memlab-09-p2-data
+docker run -d --name memlab-09-p2 --network memlab-09-net \
+  -v memlab-09-p2-data:/data -p 127.0.0.1:39093:6379 redis:8.10.3 \
+  redis-server --appendonly yes --appendfsync everysec
+sleep 2
+docker exec memlab-09-p2 redis-cli SET fact:2 "written just now"
+docker kill memlab-09-p2 &amp;&amp; docker start memlab-09-p2 &amp;&amp; sleep 2
+docker exec memlab-09-p2 redis-cli GET fact:2</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span></div>
+<pre>OK
+save
+3600 1 300 100 60 10000
+appendonly
+no
+memlab-09-p1
+memlab-09-p1
+
+OK
+memlab-09-p2
+memlab-09-p2
+written just now</pre></div>
+  </li>
+  <li class="step-long">
+    <p class="step-title">Measure vector RAM and query time</p>
+    <p>The script creates a private network and fresh containers with the measurement limits, without published ports or FLUSHALL. It loads 10,000 seeded uniform-random (synthetic) vectors, reads <code>used_memory</code> and times 200 queries per method. FT.SEARCH returns only distances; both phases use identical vectors and queries.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">python</span><span class="code-file">mem_measure.py</span><span class="code-tag tested">Tested</span></div>
+<pre>import contextlib
+import random
+import struct
+import subprocess
+import time
+import redis
+
+N, DIM, Q = 10000, 1536, 200
+rng = random.Random(7)
+network = "memlab-09-measure"
+
+
+def docker(*args):
+    return subprocess.check_output(["docker", *args], text=True).strip()
+
+
+@contextlib.contextmanager
+def server(phase):
+    name = f"memlab-09-{phase}"
+    docker("run", "-d", "--name", name, "--network", network,
+           "--cpus", "2", "--memory", "3g", "--tmpfs", "/data", "redis:8.10.3")
+    try:
+        address = docker("inspect", "-f",
+                         "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}", name)
+        r = redis.Redis(host=address)
+        for attempt in range(100):
+            try:
+                r.ping()
+                break
+            except redis.ConnectionError:
+                time.sleep(0.1)
+        else:
+            raise RuntimeError("server did not become ready")
+        yield r
+        r.close()
+    finally:
+        docker("rm", "-fv", name)
+
+
+def vec():
+    return [rng.random() for _ in range(DIM)]
+
+
+def blob(v):
+    return struct.pack(f"&lt;{DIM}f", *v)
+
+
+def used(r):
+    return r.info("memory")["used_memory"]
+
+
+def median_ms(fn, queries):
+    times = []
+    for q in queries:
+        start = time.perf_counter()
+        fn(q)
+        times.append(time.perf_counter() - start)
+    times.sort()
+    return round(times[len(times) // 2] * 1000, 1)
+
+
+docker("network", "create", "--internal", network)
+try:
+    with server("index") as r:
+        base = used(r)
+        for i in range(N):
+            r.hset(f"memory:{i}", mapping={"user_id": "alice", "embedding": blob(vec())})
+        after_hash = used(r)
+        r.execute_command(
+            "FT.CREATE", "memidx", "ON", "HASH", "PREFIX", 1, "memory:", "SCHEMA",
+            "user_id", "TAG", "embedding", "VECTOR", "HNSW", 6,
+            "TYPE", "FLOAT32", "DIM", DIM, "DISTANCE_METRIC", "COSINE")
+        while r.execute_command("FT.INFO", "memidx")[b"indexing"] not in (0, b"0"):
+            time.sleep(0.5)
+        after_index = used(r)
+        queries = [vec() for _ in range(Q)]
+        index_ms = median_ms(lambda q: r.execute_command(
+            "FT.SEARCH", "memidx", "(@user_id:{alice})=&gt;[KNN 10 @embedding $q AS d]",
+            "PARAMS", 2, "q", blob(q), "RETURN", 1, "d", "DIALECT", 2), queries)
+    rng = random.Random(7)
+    with server("set") as r:
+        base2 = used(r)
+        for i in range(N):
+            r.execute_command("VADD", "memvectors", "VALUES", DIM, *vec(), f"fact:{i}")
+        after_set = used(r)
+        set_ms = median_ms(lambda q: r.execute_command(
+            "VSIM", "memvectors", "VALUES", DIM, *q, "COUNT", 10), queries)
+finally:
+    docker("network", "rm", network)
+print("hash B/vector", (after_hash - base) // N)
+print("index B/vector", (after_index - after_hash) // N)
+print("vector set B/vector", (after_set - base2) // N)
+print("median ms, FT.SEARCH top 10 with tag filter", index_ms)
+print("median ms, VSIM top 10", set_ms)</pre></div>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">text</span></div>
+<pre>$ venv/bin/python mem_measure.py
+hash B/vector 7378
+index B/vector 7928
+vector set B/vector 2293
+median ms, FT.SEARCH top 10 with tag filter 8.4
+median ms, VSIM top 10 2.2</pre></div>
+    <p class="small muted">Two other runs fell within the Numbers table ranges.</p>
+  </li>
+  <li>
+    <p class="step-title">Clean up</p>
+    <p>Removes the named containers, anonymous and named volumes, network and folder; verify ownership first.</p>
+    <div class="codeblock"><div class="code-head"><span class="code-lang">bash</span><span class="code-tag tested">Tested</span></div>
+<pre>docker rm -fv memlab-09-redis memlab-09-valkey memlab-09-p1 memlab-09-p2
+docker volume rm memlab-09-p1-data memlab-09-p2-data
+docker network rm memlab-09-net
+cd .. &amp;&amp; rm -rf memdemo</pre></div>
+  </li>
+</ol>
+</section>
+
+<section>
+<h2>Gotchas</h2>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: a restart can erase the memory</p>
+  <p>Image defaults (<code>save 3600 1 300 100 60 10000</code>, <code>appendonly no</code>) lost a seconds-old key after restart: no snapshot had run. With <code>appendfsync everysec</code> the docs report about one second of loss, more with <code>appendfsync no</code>.<sup class="cite"><a href="#s09-1">1</a></sup> AOF retained its write; process kill leaves the fsync window untested. No host crash was run.</p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: a full server errors or evicts</p>
+  <p>On 64-bit systems maxmemory defaults to unlimited; set a dataset limit below container/host RAM. At the <code>maxmemory</code> threshold, the default <code>noeviction</code> rejects writes that need more memory and <code>allkeys-lru</code> evicts approximately least-recently-used keys; process RAM can exceed the limit. Run answer caches on an evicting instance and keep sessions, leases and vector-bearing hashes on a non-evicting one: the policy is server-wide, and an evicted hash silently drops out of search results. A test on both servers (limit 2 MB above idle) got write errors under the default and, under LRU, accepted all 4,000 writes and evicted earlier keys.<sup class="cite"><a href="#s09-24">24</a></sup></p>
+</aside>
+
+<aside class="callout gotcha">
+  <p class="callout-label">Gotcha: release only your own lease</p>
+  <p>Acquire each lease with a fresh random token; release only your own. Use <code>DELEX key IFEQ value</code> (Redis 8.4 or later), which deletes only on a value match. The walkthrough rejected the wrong token and removed the matching lease with Redis's command, Valkey's DELIFEQ and the compare-and-delete Lua fallback on both servers.<sup class="cite"><a href="#s09-22">22</a></sup></p>
+</aside>
+
+<aside class="callout unverified">
+  <p class="callout-label">Unverified: open questions</p>
+  <ul>
+    <li>Single-instance tests omit failover, clustered leases/rate limits and database commits.</li>
+    <li><code>SemanticCache</code> runtime behavior, precision and filtered Vector Set recall at scale remain untested.</li>
+  </ul>
+</aside>
+
+</section>
+
+<section>
+<h2>Verdict</h2>
+<aside class="callout verdict">
+  <p class="callout-label">Verdict: the hot tier, not the record</p>
+  <p><strong>Pick it for</strong> sessions, recent history, answer caches and worker coordination backed by a database.</p>
+  <p>Default to Query Engine for per-user memory; consider Vector Sets or narrower types at RAM limits. Vector Sets remain beta; test filtered top-10 overlap against brute force before scaling. For BSD choose Valkey’s search bundle (no Vector Sets); its tag-filtered search returned expected matches.<sup class="cite"><a href="#s09-8">8</a></sup> Keep vectors plus other keys below maxmemory with measured fork/fragmentation headroom. During snapshot/rewrite load, inspect used_memory_peak (INFO memory), rdb_last_cow_size and aof_last_cow_size (INFO persistence). At budget, move vectors to PostgreSQL (Chapter 08) or disk (Chapter 11). Chapter 23 uses regional Redis for sessions/caches, never signed facts.</p>
+</aside>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ol class="sources-list">
+  <li id="s09-1"><span class="src-title">Redis persistence documentation</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/</a></li>
+  <li id="s09-2"><span class="src-title">Redis vector search concepts</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/develop/ai/search-and-query/vectors/">https://redis.io/docs/latest/develop/ai/search-and-query/vectors/</a></li>
+  <li id="s09-3"><span class="src-title">Antirez, Vector Sets are part of Redis (2025-04)</span> <span class="src-note">(maintainer blog)</span><a class="url" href="https://antirez.com/news/149">https://antirez.com/news/149</a></li>
+  <li id="s09-4"><span class="src-title">Vector sets module README at tag 8.10.3, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/redis/redis/8.10.3/modules/vector-sets/README.md">https://raw.githubusercontent.com/redis/redis/8.10.3/modules/vector-sets/README.md</a></li>
+  <li id="s09-5"><span class="src-title">Redis vector sets, filter expressions</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/develop/data-types/vector-sets/filtered-search/">https://redis.io/docs/latest/develop/data-types/vector-sets/filtered-search/</a></li>
+  <li id="s09-6"><span class="src-title">Redis 8.0.0 GA release notes (GitHub)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/redis/redis/releases/tag/8.0.0">https://github.com/redis/redis/releases/tag/8.0.0</a></li>
+  <li id="s09-7"><span class="src-title">Redis README at tag 8.10.3</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/redis/redis/8.10.3/README.md">https://raw.githubusercontent.com/redis/redis/8.10.3/README.md</a></li>
+  <li id="s09-8"><span class="src-title">Redis blog, What is Valkey?</span> <span class="src-note">(vendor, Redis's own account of the fork)</span><a class="url" href="https://redis.io/blog/what-is-valkey/">https://redis.io/blog/what-is-valkey/</a></li>
+  <li id="s09-9"><span class="src-title">Redis licenses page, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/legal/licenses/">https://redis.io/legal/licenses/</a></li>
+  <li id="s09-10"><span class="src-title">COPYING file at Redis tag 7.2.12 (released 2025-11-02)</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/redis/redis/7.2.12/COPYING">https://raw.githubusercontent.com/redis/redis/7.2.12/COPYING</a></li>
+  <li id="s09-11"><span class="src-title">Redis blog, Redis is now available under the AGPLv3</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/blog/agplv3/">https://redis.io/blog/agplv3/</a></li>
+  <li id="s09-12"><span class="src-title">Redis releases on GitHub, read 2026-11-20 and 2026-11-22 (8.10.3 published 2026-10-26; 8.12.0 published 2026-11-22)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/redis/redis/releases">https://github.com/redis/redis/releases</a></li>
+  <li id="s09-13"><span class="src-title">Valkey 9.2.0 release notes (dated 2026-11-18; GitHub published_at 2026-11-19T08:45:20Z) and the valkey-bundle image tag 9.2.0</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/valkey-io/valkey/releases/tag/9.2.0">https://github.com/valkey-io/valkey/releases/tag/9.2.0</a><a class="url" href="https://api.github.com/repos/valkey-io/valkey/releases/tags/9.2.0">https://api.github.com/repos/valkey-io/valkey/releases/tags/9.2.0</a></li>
+  <li id="s09-14"><span class="src-title">RedisVL README</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/redis/redis-vl-python/main/README.md">https://raw.githubusercontent.com/redis/redis-vl-python/main/README.md</a></li>
+  <li id="s09-15"><span class="src-title">redisvl on PyPI (0.32.1, MIT, requires Python 3.11 or later)</span> <span class="src-note">(official)</span><a class="url" href="https://pypi.org/project/redisvl/">https://pypi.org/project/redisvl/</a></li>
+  <li id="s09-16"><span class="src-title">Redis LangCache documentation</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/develop/ai/langcache/">https://redis.io/docs/latest/develop/ai/langcache/</a></li>
+  <li id="s09-17"><span class="src-title">redis/agent-memory-server README</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/redis/agent-memory-server/main/README.md">https://raw.githubusercontent.com/redis/agent-memory-server/main/README.md</a></li>
+  <li id="s09-18"><span class="src-title">langgraph-checkpoint-redis reference</span> <span class="src-note">(official)</span><a class="url" href="https://reference.langchain.com/javascript/langchain-langgraph-checkpoint-redis">https://reference.langchain.com/javascript/langchain-langgraph-checkpoint-redis</a></li>
+  <li id="s09-19"><span class="src-title">KeyDB repository and releases (BSD-3, latest release v6.3.4, 2023-10-30)</span> <span class="src-note">(official)</span><a class="url" href="https://github.com/Snapchat/KeyDB">https://github.com/Snapchat/KeyDB</a></li>
+  <li id="s09-20"><span class="src-title">Dragonfly Source-Available License</span> <span class="src-note">(official)</span><a class="url" href="https://raw.githubusercontent.com/dragonflydb/dragonfly/main/LICENSE.md">https://raw.githubusercontent.com/dragonflydb/dragonfly/main/LICENSE.md</a></li>
+  <li id="s09-21"><span class="src-title">Redis XRANGE and XREVRANGE command references, read 2026-11-20</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/commands/xrange/">https://redis.io/docs/latest/commands/xrange/</a><a class="url" href="https://redis.io/docs/latest/commands/xrevrange/">https://redis.io/docs/latest/commands/xrevrange/</a></li>
+  <li id="s09-22"><span class="src-title">Redis distributed locks guide</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/">https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/</a></li>
+  <li id="s09-23"><span class="src-title">RedisVL API reference, LLM cache</span> <span class="src-note">(official)</span><a class="url" href="https://docs.redisvl.com/en/stable/api/cache.html">https://docs.redisvl.com/en/stable/api/cache.html</a></li>
+  <li id="s09-24"><span class="src-title">Redis key eviction documentation</span> <span class="src-note">(official)</span><a class="url" href="https://redis.io/docs/latest/develop/reference/eviction/">https://redis.io/docs/latest/develop/reference/eviction/</a></li>
+</ol>
+</section>
+
+</article>

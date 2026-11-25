@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "874d252f7549a4b69778219a3e95ddf26bf2205b6e8c845bded0bb52a4360e9e",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0d39243c-a350-41aa-a451-7bc00cd22749",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Google Cloud Platform\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Google Cloud Storage\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Google Cloud Dataflow\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Google Cloud Spanner\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Google Bigtable\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Apache NiFi\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Apache Kafka\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Alpha Vantage\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Google Cloud ML Engine\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Cloud Dataproc\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Google Data Studio\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 11,\n            \"name\": \"cycling\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795363814,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 364,
+      "prompt_tokens": 5229,
+      "total_tokens": 5593,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 6
+      }
+    }
+  },
+  "text": "{\n    \"entity_resolutions\": [\n        {\n            \"id\": 0,\n            \"name\": \"Google Cloud Platform\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Google Cloud Storage\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Google Cloud Dataflow\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Google Cloud Spanner\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Google Bigtable\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Apache NiFi\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Apache Kafka\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Alpha Vantage\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Google Cloud ML Engine\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Cloud Dataproc\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Google Data Studio\",\n            \"duplicate_candidate_id\": -1\n        },\n        {\n            \"id\": 11,\n            \"name\": \"cycling\",\n            \"duplicate_candidate_id\": -1\n        }\n    ]\n}",
+  "seconds": 17.519023330009077,
+  "prompt_tokens_local": 5229
+}

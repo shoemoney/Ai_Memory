@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 0
+  },
+  "phase": "graphiti-json-repair-1",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f6b957a574bb3ba163627fa028759eee7d0db768bf0654a7d3cf6713fbe33223",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-9ab46faa-2af8-4fe1-b8bd-c4dac808cce5",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "```json\n{\n  \"summaries\": [\n    {\n      \"name\": \"Levi's jeans\",\n      \"summary\": \"The Levi's jeans are comfortable and stylish, fitting well. They are known for their high-quality denim and classic styles. The user enjoys wearing them with various tops, from casual tees to dressier button-downs. Tips for extending their life include washing inside out in cold water, avoiding over-washing, using a mild detergent, air drying or tumble drying on low heat, and avoiding over-drying.\"\n    }\n  ]\n}\n```",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795358269,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 116,
+      "prompt_tokens": 354,
+      "total_tokens": 470,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "```json\n{\n  \"summaries\": [\n    {\n      \"name\": \"Levi's jeans\",\n      \"summary\": \"The Levi's jeans are comfortable and stylish, fitting well. They are known for their high-quality denim and classic styles. The user enjoys wearing them with various tops, from casual tees to dressier button-downs. Tips for extending their life include washing inside out in cold water, avoiding over-washing, using a mild detergent, air drying or tumble drying on low heat, and avoiding over-drying.\"\n    }\n  ]\n}\n```",
+  "seconds": 34.07602606801083,
+  "prompt_tokens_local": 354
+}

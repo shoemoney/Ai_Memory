@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 49
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "f0163f28052c01d52806f22175aaee0a9fd5bb64187f6874ddd3b8ca3f2f0fdc",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-122189cb-d3ff-4579-8b50-4b38fe42a10f",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n  \"facts\": [\n    {\"Reading log created\", \"Started reading 'The Hating Game' on January 10th, finished on January 15th, rated 4 stars\"},\n    {\"Reading log updated\", \"Started reading 'The Silent Patient' on February 15th, current page 120\"},\n    {\"Reading habits\", \"Read 'The Nightingale' and 'The Hating Game'\"},\n    {\"Reading status\", \"Currently reading 'The Silent Patient'\"},\n    {\"Rating\", \"'The Hating Game' rated 4 stars, 'The Silent Patient' - ongoing\"},\n    {\"Reading method\", \"Read 'The Silent Patient' on daily commute\"},\n    {\"Reading thoughts\", \"'The Silent Patient' is a slow read but enjoyable, 'The Hating Game' was fun and lighthearted\"}\n  ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330422,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 179,
+      "prompt_tokens": 2825,
+      "total_tokens": 3004,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n  \"facts\": [\n    {\"Reading log created\", \"Started reading 'The Hating Game' on January 10th, finished on January 15th, rated 4 stars\"},\n    {\"Reading log updated\", \"Started reading 'The Silent Patient' on February 15th, current page 120\"},\n    {\"Reading habits\", \"Read 'The Nightingale' and 'The Hating Game'\"},\n    {\"Reading status\", \"Currently reading 'The Silent Patient'\"},\n    {\"Rating\", \"'The Hating Game' rated 4 stars, 'The Silent Patient' - ongoing\"},\n    {\"Reading method\", \"Read 'The Silent Patient' on daily commute\"},\n    {\"Reading thoughts\", \"'The Silent Patient' is a slow read but enjoyable, 'The Hating Game' was fun and lighthearted\"}\n  ]\n}",
+  "seconds": 3.3313668240007246,
+  "prompt_tokens_local_gemma_estimate": 2946
+}

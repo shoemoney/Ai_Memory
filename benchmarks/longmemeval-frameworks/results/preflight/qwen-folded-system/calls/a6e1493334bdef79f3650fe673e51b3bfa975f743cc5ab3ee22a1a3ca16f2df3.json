@@ -1,0 +1,53 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 43
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2f9293b88cdda9d8df3f3706d32accc55c147c1d9952671b12cbcdf18ec8b207",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-0ad837b6-6bf0-4b94-903f-93a84167e9ae",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Shakespeare's characters are complex and multi-dimensional, reflecting different sides of human nature.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"enjoyed the recommendations for thriller and suspense\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Shakespeare's works touch on universal human experiences that people across time and cultures can relate to.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Shakespeare's writing style is powerful and evocative.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Shakespeare's life in London had a significant impact on his writing.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"promote open communication and dialogue\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"promote cultural awareness and sensitivity\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"explored different podcasts and books\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Community forum for users to connect and share experiences\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Meditation can reduce stress and improve focus\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"use of flashbacks and alternate storylines impact the audience's emotional connection to the characters\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"show the past experiences and motivations of the characters\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"12\",\n            \"text\": \"create a deeper emotional connection between the audience and the characters\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"13\",\n            \"text\": \"create a sense of mystery and intrigue\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795330389,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 497,
+      "prompt_tokens": 1876,
+      "total_tokens": 2373,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 24
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"0\",\n            \"text\": \"Shakespeare's characters are complex and multi-dimensional, reflecting different sides of human nature.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"1\",\n            \"text\": \"enjoyed the recommendations for thriller and suspense\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"2\",\n            \"text\": \"Shakespeare's works touch on universal human experiences that people across time and cultures can relate to.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"3\",\n            \"text\": \"Shakespeare's writing style is powerful and evocative.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"4\",\n            \"text\": \"Shakespeare's life in London had a significant impact on his writing.\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"5\",\n            \"text\": \"promote open communication and dialogue\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"6\",\n            \"text\": \"promote cultural awareness and sensitivity\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"7\",\n            \"text\": \"explored different podcasts and books\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"8\",\n            \"text\": \"Community forum for users to connect and share experiences\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"9\",\n            \"text\": \"Meditation can reduce stress and improve focus\",\n            \"event\": \"NONE\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"use of flashbacks and alternate storylines impact the audience's emotional connection to the characters\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"11\",\n            \"text\": \"show the past experiences and motivations of the characters\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"12\",\n            \"text\": \"create a deeper emotional connection between the audience and the characters\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"13\",\n            \"text\": \"create a sense of mystery and intrigue\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 10.423406774003524,
+  "prompt_tokens_local_gemma_estimate": 2001
+}

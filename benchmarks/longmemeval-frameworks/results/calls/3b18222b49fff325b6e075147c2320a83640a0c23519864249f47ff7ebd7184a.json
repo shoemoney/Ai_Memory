@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "graphiti",
+    "episode": 52
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "7c158eb2ceabb3b439f76e4da70ee35e7171b460271a344220d12131b9b74742",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-a43011dc-8762-4c9a-a30d-7f3fd5998ed7",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"red and purple lighting\", \"relation_type\": \"IS_ATTENDED_BY\", \"fact\": \"The red and purple lighting was attended by a Mustang.\", \"valid_at\": \"2023-05-27T13:09:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795371804,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 89,
+      "prompt_tokens": 8041,
+      "total_tokens": 8130,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 3875
+      }
+    }
+  },
+  "text": "{\"edges\": [{\"source_entity_name\": \"Mustang\", \"target_entity_name\": \"red and purple lighting\", \"relation_type\": \"IS_ATTENDED_BY\", \"fact\": \"The red and purple lighting was attended by a Mustang.\", \"valid_at\": \"2023-05-27T13:09:00Z\", \"invalid_at\": null, \"episode_indices\": [0]}]}",
+  "seconds": 29.17685182398418,
+  "prompt_tokens_local": 8041
+}

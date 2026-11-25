@@ -1,0 +1,31 @@
+| Stratum | Signal | Threshold | Avg passes | Agreement |
+|---|---|---:|---:|---:|
+| code | probe | 0.5 | 1.9667 | 1.0000 |
+| code | probe | 0.7 | 1.8333 | 0.9667 |
+| code | probe | 0.9 | 1.6833 | 0.8917 |
+| code | probe | 1.01 | 1.0000 | 0.5500 |
+| code | fixed1 | 0 | 1.0000 | 0.5500 |
+| memory | probe | 0.5 | 1.9333 | 1.0000 |
+| memory | probe | 0.7 | 1.7833 | 0.9250 |
+| memory | probe | 0.9 | 1.6000 | 0.8333 |
+| memory | probe | 1.01 | 1.0000 | 0.5333 |
+| memory | fixed1 | 0 | 1.0000 | 0.5333 |
+| recall | gate | 1 | 2.0000 | 1.0000 |
+| recall | gate | 1.01 | 2.0000 | 1.0000 |
+| recall | kl | 1 | 2.0000 | 1.0000 |
+| recall | kl | 10 | 2.0000 | 1.0000 |
+| recall | kl | inf | 2.0000 | 1.0000 |
+| recall | probe | 0.5 | 2.0000 | 1.0000 |
+| recall | probe | 0.7 | 1.8500 | 0.9333 |
+| recall | probe | 0.9 | 1.6833 | 0.8500 |
+| recall | probe | 1.01 | 1.0000 | 0.5083 |
+| recall | fixed1 | 0 | 1.0000 | 0.5083 |
+| two_hop | gate | 1 | 2.0000 | 1.0000 |
+| two_hop | gate | 1.01 | 2.0000 | 1.0000 |
+| two_hop | kl | 1 | 2.0000 | 1.0000 |
+| two_hop | kl | 10 | 2.0000 | 1.0000 |
+| two_hop | kl | inf | 2.0000 | 1.0000 |
+| two_hop | probe | 0.7 | 1.9500 | 0.9333 |
+| two_hop | probe | 0.9 | 1.6833 | 0.8000 |
+| two_hop | probe | 1.01 | 1.0000 | 0.4583 |
+| two_hop | fixed1 | 0 | 1.0000 | 0.4583 |

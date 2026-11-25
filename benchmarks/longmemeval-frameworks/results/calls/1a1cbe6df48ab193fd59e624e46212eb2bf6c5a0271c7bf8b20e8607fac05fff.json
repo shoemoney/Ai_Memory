@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 74
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e802e27b9ce555ae6410bf3b83c68be3a0312eeb8f9719ff051f441e7eb6f3a1",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-31648af0-a561-4f5c-8910-2c6a00a2d9a6",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"29\",\n            \"text\": \"access to financing\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"plan to freeze wood chips for longer storage if not used within a year\"\n        },\n        {\n            \"id\": \"30\",\n            \"text\": \"Plan to freeze wood chips for longer storage if not used within a year\",\n            \"event\": \"DELETE\",\n            \"old_memory\": \"access to financing\"\n        },\n        {\n            \"id\": \"31\",\n            \"text\": \"tax incentives\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"plan to freeze wood chips for longer storage if not used within a year; access to financing\"\n        },\n        {\n            \"id\": \"32\",\n            \"text\": \"fabric or wood grain design\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"33\",\n            \"text\": \"balance between style and protection\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"34\",\n            \"text\": \"thick material\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"35\",\n            \"text\": \"shock-absorbing features\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"36\",\n            \"text\": \"raised bezel\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"37\",\n            \"text\": \"customer reviews\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"38\",\n            \"text\": \"manufacturer warranty\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795367187,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 361,
+      "prompt_tokens": 2347,
+      "total_tokens": 2708,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"29\",\n            \"text\": \"access to financing\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"plan to freeze wood chips for longer storage if not used within a year\"\n        },\n        {\n            \"id\": \"30\",\n            \"text\": \"Plan to freeze wood chips for longer storage if not used within a year\",\n            \"event\": \"DELETE\",\n            \"old_memory\": \"access to financing\"\n        },\n        {\n            \"id\": \"31\",\n            \"text\": \"tax incentives\",\n            \"event\": \"NONE\",\n            \"old_memory\": \"plan to freeze wood chips for longer storage if not used within a year; access to financing\"\n        },\n        {\n            \"id\": \"32\",\n            \"text\": \"fabric or wood grain design\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"33\",\n            \"text\": \"balance between style and protection\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"34\",\n            \"text\": \"thick material\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"35\",\n            \"text\": \"shock-absorbing features\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"36\",\n            \"text\": \"raised bezel\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"37\",\n            \"text\": \"customer reviews\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"38\",\n            \"text\": \"manufacturer warranty\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 32.718238905014005,
+  "prompt_tokens_local": 2347
+}

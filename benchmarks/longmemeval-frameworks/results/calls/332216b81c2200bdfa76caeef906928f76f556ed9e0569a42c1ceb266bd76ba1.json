@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "gpt4_8c8961ae",
+    "system": "mem0-extract",
+    "episode": 67
+  },
+  "phase": "mem0-json",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "c439646ed34c6856e33b36d9ae5924cdbe39f32b00cadf4e9b8465d3273bcb7e",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-ed4ffa42-ea97-4401-92eb-f3d16bcc34ff",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\": [\n        {\n            \"id\": \"9\",\n            \"text\": \"humor is inappropriate when discussing serious topics like war\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"the use of humor in 'catch-22' is not a valid or respectful approach to criticize war institutions\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795333019,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g13d",
+    "usage": {
+      "completion_tokens": 91,
+      "prompt_tokens": 1868,
+      "total_tokens": 1959,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\": [\n        {\n            \"id\": \"9\",\n            \"text\": \"humor is inappropriate when discussing serious topics like war\",\n            \"event\": \"ADD\"\n        },\n        {\n            \"id\": \"10\",\n            \"text\": \"the use of humor in 'catch-22' is not a valid or respectful approach to criticize war institutions\",\n            \"event\": \"ADD\"\n        }\n    ]\n}",
+  "seconds": 4.211698354993132,
+  "prompt_tokens_local": 1868,
+  "model_hardware_class": "Apple M1 Ultra, 64 GB",
+  "hardware_provenance": "Recorded at authorized host migration from known execution allocation."
+}

@@ -1,0 +1,200 @@
+{
+  "started": 1795328070.7277617,
+  "deadline": 1795378174.1061378,
+  "finished_models": [],
+  "events": [
+    {
+      "time": 1795328194.8788087,
+      "event": "model_start",
+      "size": "0.8B",
+      "deadline": 1795340553.8381367
+    },
+    {
+      "time": 1795328225.534694,
+      "event": "serving_profile",
+      "size": "0.8B",
+      "slots": 4,
+      "context_per_slot": 65536,
+      "output_cap": 16384
+    },
+    {
+      "time": 1795328689.213228,
+      "event": "worker_error",
+      "size": "0.8B",
+      "returncode": -9
+    },
+    {
+      "time": 1795328695.875596,
+      "event": "serving_profile",
+      "size": "0.8B",
+      "slots": 2,
+      "context_per_slot": 65536,
+      "output_cap": 16384
+    },
+    {
+      "time": 1795328826.0976138,
+      "event": "server_interrupted",
+      "size": "0.8B"
+    },
+    {
+      "time": 1795328827.0418627,
+      "event": "model_finished",
+      "size": "0.8B"
+    },
+    {
+      "time": 1795328860.7401037,
+      "event": "shared_disk_pause",
+      "minimum_observed_free_mib": 553,
+      "owned_resources_cleaned": true,
+      "checkpoints_preserved": true,
+      "resume_same_model_allocation": true
+    },
+    {
+      "time": 1795328889.322274,
+      "event": "shared_disk_resume",
+      "free_gib_before_setup": 14,
+      "deadline_unchanged": true
+    },
+    {
+      "time": 1795328986.2912621,
+      "event": "model_start",
+      "size": "0.8B",
+      "deadline": 1795340553.8381367
+    },
+    {
+      "time": 1795329001.1366038,
+      "event": "serving_profile",
+      "size": "0.8B",
+      "slots": 4,
+      "context_per_slot": 65536,
+      "output_cap": 16384
+    },
+    {
+      "time": 1795329639.2442799,
+      "event": "server_interrupted",
+      "size": "0.8B"
+    },
+    {
+      "time": 1795329715.911983,
+      "event": "authorized_deadline_credit",
+      "seconds": 297.49638390541077,
+      "pending_migration_pause_started": 1795329631.188111
+    },
+    {
+      "time": 1795329746.3950129,
+      "event": "model_start",
+      "size": "0.8B",
+      "deadline": 1795340851.3345206
+    },
+    {
+      "time": 1795329755.6776557,
+      "event": "serving_profile",
+      "size": "0.8B",
+      "slots": 4,
+      "context_per_slot": 65536,
+      "output_cap": 16384
+    },
+    {
+      "time": 1795329757.0718515,
+      "event": "authorized_pause_credit",
+      "size": "0.8B",
+      "seconds": 125.88199138641357,
+      "new_global_deadline": 1795378174.1061378,
+      "new_model_deadline": 1795340977.216512
+    },
+    {
+      "time": 1795330744.23293,
+      "event": "server_interrupted",
+      "size": "0.8B"
+    },
+    {
+      "time": 1795330776.0925636,
+      "event": "serving_profile",
+      "size": "0.8B",
+      "slots": 1,
+      "context_per_slot": 65536,
+      "output_cap": 16384
+    },
+    {
+      "time": 1795332932.5918689,
+      "event": "worker_error",
+      "size": "0.8B",
+      "returncode": -9
+    },
+    {
+      "time": 1795332939.3526812,
+      "event": "serving_profile",
+      "size": "0.8B",
+      "slots": 1,
+      "context_per_slot": 65536,
+      "output_cap": 16384
+    },
+    {
+      "time": 1795333851.2347136,
+      "event": "server_interrupted",
+      "size": "0.8B"
+    },
+    {
+      "time": 1795333852.3690906,
+      "event": "memory_pause",
+      "size": "0.8B"
+    },
+    {
+      "time": 1795333884.0537589,
+      "event": "serving_profile",
+      "size": "0.8B",
+      "slots": 1,
+      "context_per_slot": 65536,
+      "output_cap": 16384
+    },
+    {
+      "time": 1795333925.443124,
+      "event": "server_interrupted",
+      "size": "0.8B"
+    },
+    {
+      "time": 1795333926.6046615,
+      "event": "memory_pause",
+      "size": "0.8B"
+    },
+    {
+      "time": 1795333958.3458927,
+      "event": "serving_profile",
+      "size": "0.8B",
+      "slots": 1,
+      "context_per_slot": 65536,
+      "output_cap": 16384
+    }
+  ],
+  "sample_per_category": 60,
+  "source_run": "full",
+  "note": "New task budget; prior run deadlines and terminal evidence unchanged.",
+  "model_deadlines": {
+    "0.8B": 1795340977.216512
+  },
+  "pause_credits": [
+    {
+      "reason": "Shared system-disk shortage; explicit parent authorization to credit actual lost time.",
+      "pause_started": 1795328816.227591,
+      "resumed_worker_started": 1795329113.723975,
+      "pause_started_utc": "2026-11-22T06:26:56.227591+00:00",
+      "resumed_worker_started_utc": "2026-11-22T06:31:53.723975+00:00",
+      "credited_seconds": 297.49638390541077,
+      "sources": [
+        "systemd journal stop event",
+        "0.8B progress.started from resumed worker"
+      ],
+      "note": "The task had already resumed before the later coordination message; active inference time was not credited."
+    },
+    {
+      "started": 1795329631.188111,
+      "proof_folder": "pauses/shared-disk-2",
+      "reason": "Requested migration of active benchmark environment to large scratch filesystem.",
+      "resumed": 1795329757.0701025,
+      "credited_seconds": 125.88199138641357,
+      "pause_started_utc": "2026-11-22T06:40:31.188111+00:00",
+      "resumed_utc": "2026-11-22T06:42:37.070102+00:00",
+      "note": "Authorized pause credit ends when environment and serving are ready to launch the resumed worker."
+    }
+  ]
+}

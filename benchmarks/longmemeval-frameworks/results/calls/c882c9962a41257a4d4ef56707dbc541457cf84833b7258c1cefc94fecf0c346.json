@@ -1,0 +1,54 @@
+{
+  "item": {
+    "question_id": "681a1674",
+    "system": "mem0-extract",
+    "episode": 65
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "e24450d8650dbeba9603240aa445b1eed4727c73e161c109162e0fd8d1f5a8c3",
+  "message_roles": [
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-42694101-e33c-47f3-a0c6-3eeae5c83579",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Leveraged blockchain technology and smart contracts for security and transparency\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"infrastructure development\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Developed a cryptocurrency token system for expressing gratitude and apologies\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"simplified regulations\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Received an example of how a completed I-129 form for Ugne Karaliute might look like\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"Another paragraph on the methodology without encryption of IPFS\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795366978,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 234,
+      "prompt_tokens": 1702,
+      "total_tokens": 1936,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Leveraged blockchain technology and smart contracts for security and transparency\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"infrastructure development\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Developed a cryptocurrency token system for expressing gratitude and apologies\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"3\",\n            \"text\" : \"simplified regulations\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"4\",\n            \"text\" : \"Received an example of how a completed I-129 form for Ugne Karaliute might look like\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"5\",\n            \"text\" : \"Another paragraph on the methodology without encryption of IPFS\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}",
+  "seconds": 24.444374312995933,
+  "prompt_tokens_local": 1702
+}

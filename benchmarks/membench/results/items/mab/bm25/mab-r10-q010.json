@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q010",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "697eb64cec288372c1cfa97ae9ebb45f2588214569577d7a15de5c530c2761ff",
+  "reference_sha256": "cc139bc44072bbe5fc8a2dc38dea2ec8ea66d10a2196d2caf4f9e57520789e96",
+  "method": "bm25",
+  "answer": "Person513 conveyed her concern about Mrs. Person409's ill health.",
+  "response": {
+    "text": "Person513 conveyed her concern about Mrs. Person409's ill health.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 19,
+      "prompt_tokens": 3479,
+      "total_tokens": 3498,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.164687874988886,
+    "request_sha256": "61482530814ff17894cf006352b391b05e17f173ef86d63d6d5d6c995f3c31eb",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    25,
+    18,
+    29,
+    30,
+    36,
+    32,
+    23,
+    39,
+    40,
+    110,
+    197,
+    504,
+    214,
+    34,
+    472,
+    35,
+    37,
+    26,
+    186,
+    553
+  ],
+  "retrieval_scores": [
+    107.72716878631691,
+    101.80219881747881,
+    101.43939528223055,
+    100.69505675343511,
+    97.73901411569236,
+    95.66247263939864,
+    94.80709810023032,
+    93.53152254991427,
+    92.97197511929407,
+    90.40153801379451,
+    89.11153139806925,
+    88.95388445923648,
+    88.20467216625626,
+    87.95800609178625,
+    87.42997710059193,
+    86.41840899404981,
+    85.35599332532412,
+    82.62685626958223,
+    82.42788072961164,
+    82.00677091539711
+  ],
+  "retrieval_seconds": 0.013502404995961115,
+  "provided_context_sha256": "ba911870a0533da1c760b06071def0237b3ce64378a26cf270e45e5d33567973",
+  "provided_context_tokens": 3114,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "cccc20249f8bf1523cf1a2dcaced47fe23cb4bc6837e57342be8451c4fb40e7b",
+    "raw_answer_sha256": "5f3dcec44127f64d4ae9757d38629c660cc62916ef718c85fa4feeecaf99d691",
+    "answer_redacted": false
+  }
+}

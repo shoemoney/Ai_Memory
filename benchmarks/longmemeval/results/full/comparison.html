@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><style>
+:root{font-family:var(--font-sans);color:var(--foreground)}
+body{margin:0}svg{display:block;width:100%;height:320px;overflow:visible}
+.grid{stroke:var(--border);stroke-width:1}.interval{stroke:var(--chart-1);stroke-width:3}
+.point{fill:var(--chart-1)}text{fill:var(--foreground);font-family:var(--font-sans)}
+.label{font-size:14px}.detail{font-size:12px;fill:var(--muted-foreground)}
+p{font-size:14px;line-height:1.5;margin:12px 0}table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{text-align:left;vertical-align:top;padding:9px 5px;border-bottom:1px solid var(--border)}
+th{font-weight:600}.note{color:var(--muted-foreground)}
+</style><p><strong>Local answer accuracy</strong> · Gemma 2 9B, 4-bit · Apple M1 Ultra, 64 GB</p><svg viewBox="0 0 650 310" role="img" aria-label="Local answer accuracy with 95 percent Wilson intervals"><line x1="185.0" x2="185.0" y1="20" y2="265" class="grid"/><text x="185.0" y="290" text-anchor="middle" class="detail">0%</text><line x1="271.0" x2="271.0" y1="20" y2="265" class="grid"/><text x="271.0" y="290" text-anchor="middle" class="detail">20%</text><line x1="357.0" x2="357.0" y1="20" y2="265" class="grid"/><text x="357.0" y="290" text-anchor="middle" class="detail">40%</text><line x1="443.0" x2="443.0" y1="20" y2="265" class="grid"/><text x="443.0" y="290" text-anchor="middle" class="detail">60%</text><line x1="529.0" x2="529.0" y1="20" y2="265" class="grid"/><text x="529.0" y="290" text-anchor="middle" class="detail">80%</text><line x1="615.0" x2="615.0" y1="20" y2="265" class="grid"/><text x="615.0" y="290" text-anchor="middle" class="detail">100%</text><text x="0" y="50" class="label">BM25</text><line x1="434.75759869662437" x2="481.28976408545077" y1="45" y2="45" class="interval"/><circle cx="458.76666666666665" cy="45" r="5" class="point"/><text x="185" y="68" class="detail">191/300 · 63.7% · 95% Wilson 58.1–68.9%</text><text x="0" y="115" class="label">Dense MiniLM</text><line x1="397.1730099453007" x2="445.2833422920439" y1="110" y2="110" class="interval"/><circle cx="421.5" cy="110" r="5" class="point"/><text x="185" y="133" class="detail">165/300 · 55.0% · 95% Wilson 49.3–60.5%</text><text x="0" y="180" class="label">Mem0 raw storage</text><line x1="397.1730099453007" x2="445.2833422920439" y1="175" y2="175" class="interval"/><circle cx="421.5" cy="175" r="5" class="point"/><text x="185" y="198" class="detail">165/300 · 55.0% · 95% Wilson 49.3–60.5%</text><text x="0" y="245" class="label">Oracle reference</text><line x1="413.7119189479482" x2="469.96060670433155" y1="240" y2="240" class="interval"/><circle cx="442.59433962264154" cy="240" r="5" class="point"/><text x="185" y="263" class="detail">127/212 · 59.9% · 95% Wilson 53.2–66.3%</text></svg><p class="note">The three retrieval systems receive the same 300 full standard haystacks.
+Oracle history is a separate, easier reference with its own official timestamps and only the cases
+that fit the 8,192-token model window. Full standard-history reading fits 0/300 cases; accuracy is unavailable.</p>
+<table><tr><th>Published anchor</th><th>Why it differs</th></tr>
+<tr><td>Llama 3.1 8B: 45.4% standard; 71.0% Oracle, N=500</td>
+<td>Different reader, context capacity, sample, prompts, and GPT-4o judge.</td></tr>
+<tr><td>Mem0 managed: 94.4%, top-200 retrieval; headline N unstated</td>
+<td>Local Mem0 is OSS raw storage with MiniLM, not the managed algorithm or fact extraction.</td></tr>
+<tr><td>BM25: 71.0% session / 53.8% round Recall@10</td>
+<td>Retrieval recall, not answer accuracy. No matched local QA comparator.</td></tr></table><p class="note">Direct agent review agreed with 37/40 local judgments (92.5%). This is not independent human validation. Oracle judge scores include 31 empty answers labeled positive; see the report sensitivity check. Three greedy local judge calls use the official prompts; repeated votes do not remove systematic errors.</p>

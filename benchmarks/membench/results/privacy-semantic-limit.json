@@ -1,0 +1,68 @@
+{
+  "finding": "Frozen input pseudonymization falsely masks some capitalized non-name words. Counts are a diagnostic of these three confirmed examples, not an exhaustive error estimate. No scored inputs changed.",
+  "confirmed_examples": [
+    {
+      "non_name_term": "Mar",
+      "alias": "Person227",
+      "item_counts": {
+        "halu": {
+          "question": 5,
+          "gold": 0,
+          "evidence": 0
+        },
+        "mab": {
+          "question": 0,
+          "gold": 0,
+          "evidence": 0
+        }
+      }
+    },
+    {
+      "non_name_term": "Jun",
+      "alias": "Person669",
+      "item_counts": {
+        "halu": {
+          "question": 7,
+          "gold": 0,
+          "evidence": 1
+        },
+        "mab": {
+          "question": 0,
+          "gold": 0,
+          "evidence": 0
+        }
+      }
+    },
+    {
+      "non_name_term": "Abnormal",
+      "alias": "Person225",
+      "item_counts": {
+        "halu": {
+          "question": 0,
+          "gold": 1,
+          "evidence": 1
+        },
+        "mab": {
+          "question": 0,
+          "gold": 0,
+          "evidence": 0
+        }
+      }
+    }
+  ],
+  "affected_question_or_reference_items": [
+    "halu-u00-s29-q06",
+    "halu-u07-s11-q02",
+    "halu-u00-s29-q07",
+    "halu-u07-s11-q08",
+    "halu-u11-s15-q00",
+    "halu-u05-s28-q01",
+    "halu-u05-s07-q04",
+    "halu-u02-s23-q02",
+    "halu-u01-s08-q01",
+    "halu-u18-s06-q01",
+    "halu-u15-s20-q09",
+    "halu-u15-s20-q06"
+  ],
+  "affected_question_or_reference_n": 12
+}

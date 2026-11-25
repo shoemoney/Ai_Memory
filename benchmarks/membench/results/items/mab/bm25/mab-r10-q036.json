@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q036",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "429b1245ae0eed6a05e8638182ed30901e13e7de761cc543983bd8aad02d78c9",
+  "reference_sha256": "166f4f41fccbb86a03ada53b1b600586512f25040a78e2efc107e8eea0d4041b",
+  "method": "bm25",
+  "answer": "Person252's mother inquired about Person252's day with Mr. Person126.",
+  "response": {
+    "text": "Person252's mother inquired about Person252's day with Mr. Person126.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 24,
+      "prompt_tokens": 3485,
+      "total_tokens": 3509,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 8.001035855006194,
+    "request_sha256": "fc559efaed719266600fe5f496bd07b48277355fd378d9d7777c78f4bd573103",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    110,
+    80,
+    124,
+    261,
+    212,
+    213,
+    260,
+    504,
+    96,
+    289,
+    77,
+    526,
+    105,
+    204,
+    197,
+    472,
+    187,
+    189,
+    389,
+    195
+  ],
+  "retrieval_scores": [
+    113.55847175229486,
+    111.35051789753567,
+    107.40941875211735,
+    103.21698682185591,
+    102.57479298743324,
+    102.18724348725735,
+    101.85377672977077,
+    98.97350554966445,
+    98.11815984314751,
+    96.92309124876317,
+    96.70866390948864,
+    94.6053435496462,
+    93.54961643882545,
+    93.19937395113435,
+    92.8833261614159,
+    92.61187388932711,
+    92.11618156319922,
+    90.99915006732087,
+    90.95786867201524,
+    90.77074899566823
+  ],
+  "retrieval_seconds": 0.012743604005663656,
+  "provided_context_sha256": "2b226ea7e39df619bd31b5146f6b343ce1d77fde2747edbf219e7ebfb3581c16",
+  "provided_context_tokens": 3104,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "65494c76759eea65220dcb8e8ae140888f097d8f3147222e9d1eafdb43f62b99",
+    "raw_answer_sha256": "77bf38650dd79d8deb4cb3e349a797b89d42228a4739dff552c8265dd2da3d61",
+    "answer_redacted": false
+  }
+}

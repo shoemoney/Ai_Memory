@@ -1,0 +1,79 @@
+{
+  "benchmark": "mab",
+  "item_id": "mab-r10-q009",
+  "context": "mab-r10",
+  "kind": "eventqa_65536",
+  "question_sha256": "40115fbc305f0895599454fc0211b4ab46171cb9abeeb8ba344619ae440cf1d2",
+  "reference_sha256": "94719a64ad5b1d5167b264811566a1366d0272056591dfd31eb5b0201d86a260",
+  "method": "bm25",
+  "answer": "Person355 Person680 asked Person714 if she knew how to keep house.",
+  "response": {
+    "text": "Person355 Person680 asked Person714 if she knew how to keep house.",
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 22,
+      "prompt_tokens": 3429,
+      "total_tokens": 3451,
+      "prompt_tokens_details": {
+        "cached_tokens": 66
+      }
+    },
+    "seconds": 9.269638694997411,
+    "request_sha256": "e815419602d3aea9bf99f1692e148eca0abc184a0eb6c500c1c9de828257ed29",
+    "max_tokens": 192,
+    "seed": 20261122
+  },
+  "retrieved_chunk_ids": [
+    25,
+    36,
+    30,
+    23,
+    34,
+    39,
+    32,
+    18,
+    29,
+    37,
+    35,
+    26,
+    40,
+    22,
+    504,
+    10,
+    19,
+    33,
+    27,
+    55
+  ],
+  "retrieval_scores": [
+    185.7090820050631,
+    166.71315827250652,
+    164.81566033832155,
+    164.0043939780236,
+    160.34816676062067,
+    159.43799571340955,
+    159.06032175425642,
+    158.4530625135295,
+    157.27033653415816,
+    156.2621023586632,
+    151.25850026859553,
+    144.1807669445804,
+    140.1154181228978,
+    133.58666422209058,
+    128.17441626161502,
+    126.4638939960371,
+    125.85266191913033,
+    125.4203727736367,
+    122.83132719135918,
+    122.33586766931248
+  ],
+  "retrieval_seconds": 0.053502747003221884,
+  "provided_context_sha256": "46427a4d7e935ad48b57fdf1f3422373842cd91754acc15cde1d85bd1de87b6a",
+  "provided_context_tokens": 3041,
+  "score": 1,
+  "privacy_export": {
+    "raw_record_sha256": "a41aa2981cb72d2510a1329c60912b18abd36d71bc22eb2520dc0ed94174b486",
+    "raw_answer_sha256": "7188e46c394b3ac2199cddcc5a9ee0e2dfa8c07a369217378837b7d70de8bf57",
+    "answer_redacted": false
+  }
+}

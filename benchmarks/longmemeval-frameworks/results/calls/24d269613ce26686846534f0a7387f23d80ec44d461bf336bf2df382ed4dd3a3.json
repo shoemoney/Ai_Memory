@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "graphiti",
+    "episode": 68
+  },
+  "phase": "graphiti-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "2f989c12d1b4658de0d81469238ae0704ced0ddf7b4578c52795519c66734ad3",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 4096,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-53ca2a73-39d7-42ba-bc19-007f7b2c5e96",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"extracted_entities\": [{\"name\": \"DaySculpting\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"DaySculpting\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"DaySculpting\", \"entity_type_id\": 0, \"episode_indices\": [2]}]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795364715,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 82,
+      "prompt_tokens": 7849,
+      "total_tokens": 7931,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"extracted_entities\": [{\"name\": \"DaySculpting\", \"entity_type_id\": 0, \"episode_indices\": [0]}, {\"name\": \"DaySculpting\", \"entity_type_id\": 0, \"episode_indices\": [1]}, {\"name\": \"DaySculpting\", \"entity_type_id\": 0, \"episode_indices\": [2]}]}",
+  "seconds": 8.976132987008896,
+  "prompt_tokens_local": 7849
+}

@@ -1,0 +1,55 @@
+{
+  "item": {
+    "question_id": "fca70973",
+    "system": "mem0-extract",
+    "episode": 21
+  },
+  "phase": "mem0-json",
+  "model_hardware_class": "Apple M3 Ultra, 96 GB",
+  "served_model": "membench-longmemeval-frameworks-tmp/extraction-model",
+  "prompt_sha256": "88fb6620e785d570bbedeb3e9425babd74aac54cd7585df07491853a7d768605",
+  "message_roles": [
+    "system",
+    "user"
+  ],
+  "max_tokens": 1536,
+  "seed": 20261122,
+  "temperature": 0,
+  "response": {
+    "id": "chatcmpl-63e79829-8c9a-4417-806c-4c3edbaf8700",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "{\"facts\": [\"strength training\", \"upper body exercises\", \"lower body exercises\", \"core exercises\", \"bodyweight exercises\", \"scheduling strength training\", \"morning routine\", \"evening routine\", \"fitness apps\", \"self-care\", \"flexibility\"]}",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null
+        }
+      }
+    ],
+    "created": 1795355215,
+    "model": "membench-longmemeval-frameworks-tmp/extraction-model",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": "0.32.2-0.32.4-macOS-27.2.1-arm64-arm-64bit-Mach-O-applegpu_g15d",
+    "usage": {
+      "completion_tokens": 55,
+      "prompt_tokens": 2737,
+      "total_tokens": 2792,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 5
+      }
+    }
+  },
+  "text": "{\"facts\": [\"strength training\", \"upper body exercises\", \"lower body exercises\", \"core exercises\", \"bodyweight exercises\", \"scheduling strength training\", \"morning routine\", \"evening routine\", \"fitness apps\", \"self-care\", \"flexibility\"]}",
+  "seconds": 12.1534425419959,
+  "prompt_tokens_local": 2737
+}
